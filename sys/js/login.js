@@ -1,8 +1,3 @@
-const LOGIN_IMGS = [
-  'img/login01.jpg',
-  'img/login02.jpg'
-];
-
 $(init);
 
 function init() {
