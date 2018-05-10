@@ -8,6 +8,14 @@ function init() {
   $('body').on('click', '#regSellBtn', showRegSell);
 }
 
+function hideAllPages() {
+  PAGES.forEach(page => {
+    if (!$(`.${page}`).is('.hide')) {
+      $(`.${page}`).addClass('hide');
+    }
+  })
+}
+
 function toggleUserLogin() {
   const index = $(this).index();
   $('.login-hd li').toggleClass('on');
@@ -15,21 +23,16 @@ function toggleUserLogin() {
 }
 
 function goLoginPage() {
-  if ($('.login').is('.hide')) {
-    $('.login').toggleClass('hide');
-    $('.register').toggleClass('hide');
-  }
+  hideAllPages();
+  $('.login').removeClass('hide');
 }
 
 function goRegisterPage() {
-  if ($('.register').is('.hide')) {
-    $('.login').toggleClass('hide');
-    $('.register').toggleClass('hide');
-  }
+  hideAllPages();
+  $('.register').removeClass('hide');
 }
 
 function showRegSell() {
-  $('.login').addClass('hide');
-  $('.register').addClass('hide');
+  hideAllPages();
   $('.regs').removeClass('hide');
 }
