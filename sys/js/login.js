@@ -6,8 +6,6 @@ function init() {
   $('body').on('click', '.action-register', goRegisterPage);
   $('body').on('click', '.action-reg', goRegisterPage);
   $('body').on('click', '#regSellBtn', showRegSell);
-
-  
 }
 
 function toggleUserLogin() {
