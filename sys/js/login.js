@@ -5,7 +5,7 @@ function init() {
   $('body').on('click', '.action-login', goLoginPage);
   $('body').on('click', '.action-register', goRegisterPage);
   $('body').on('click', '.action-reg', goRegisterPage);
-  $('body').on('click', '#regSellBtn', doRegSell);
+  $('body').on('click', '#regSellBtn', showRegSell);
 
   
 }
@@ -27,10 +27,11 @@ function goRegisterPage() {
   if ($('.register').is('.hide')) {
     $('.login').toggleClass('hide');
     $('.register').toggleClass('hide');
-
   }
 }
 
-function doRegSell() {
-  
+function showRegSell() {
+  $('.login').addClass('hide');
+  $('.register').addClass('hide');
+  $('.regs').removeClass('hide');
 }
