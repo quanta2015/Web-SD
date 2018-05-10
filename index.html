@@ -46,7 +46,7 @@
   </ul>
 </nav>
 
-<section class="login">
+<section class="login ">
   <div class="login-cnt">
     <div class="login-logo"><img src="img/login01.jpg" alt=""></div>
     <div class="login-main">
@@ -68,7 +68,7 @@
               <input class="login-input" id="password" type="password" placeholder="请输入密码">
               <i class="fa fa-key"></i>
             </div>
-            <button>登 录</button>
+            <button class="md-btn">登 录</button>
             <div class="tip-register">
               <span>没有账号？</span>
               <a class="action-register">[免费注册]</a>
@@ -87,7 +87,7 @@
       <p>我想要免费试用，</p>
       <p>体验商品带给我更多快乐，</p>
       <p>并将这份快乐传递给更多人！猛戳立即注册！</p>
-      <button>买家注册</button>
+      <button class="md-btn">买家注册</button>
       <p>我已注册，现在就 <span class="font-red action-login">买家登录</span></p>
     </div>
 
@@ -97,10 +97,63 @@
       <p>我想要推广商品、</p>
       <p>收集新品市场反馈、 提升产品销量。</p>
       <p>打造专属于我的品牌！猛戳立即注册！</p>
-      <button class="b-blue">商家注册</button>
+      <button class="b-blue md-btn" id="regSellBtn">商家注册</button>
       <p>我已注册，现在就 <span class="font-blue action-login">商家登录</span></p>
     </div
     <div class="register-box"></div>
+  </div>
+</section>
+
+<section class="regs hide">
+  <div class="regs-cnt">
+    <span class="login-title">手机号：</span>
+    <div class="input-group">
+      <input class="login-input" id="mobile" type="text" placeholder="平台登入账号">
+      <p><span class="hide"><i class="fas fa-exclamation-circle err"></i>请填写手机号码</span></p>
+      <i class="far fa-user"></i>
+    </div>
+
+    <span class="login-title">填写验证码：</span>
+    <div class="input-group">
+      <input class="login-input code" id="code" type="text" placeholder="请输入验证码">
+      <button class="code" type="button">获取验证码</button>
+      <p><span class="hide"><i class="fas fa-exclamation-circle err"></i>请填写验证码</span></p>
+      <i class="far fa-user"></i>
+    </div>
+
+    <span class="login-title">QQ号：</span>
+    <div class="input-group">
+      <input class="login-input" id="qq" type="text" placeholder="QQ号码">
+      <p><span class="hide"><i class="fas fa-exclamation-circle err"></i>请填写QQ号</span></p>
+      <i class="far fa-user"></i>
+    </div>
+
+    <span class="login-title">微信号：</span>
+    <div class="input-group">
+      <input class="login-input" id="weixin" type="text" placeholder="微信号码">
+      <p><span class="hide"><i class="fas fa-exclamation-circle err"></i>请填写微信号</span></p>
+      <i class="far fa-user"></i>
+    </div>
+
+    <span class="login-title">登录密码：</span>
+    <div class="input-group">
+      <input class="login-input" id="password" type="password" placeholder="微信号码">
+      <p><span class="hide"><i class="fas fa-exclamation-circle err"></i>请填写6-16位密码</span></p>
+      <i class="far fa-user"></i>
+    </div>
+
+    <span class="login-title">确认密码：</span>
+    <div class="input-group">
+      <input class="login-input" id="repassword" type="password" placeholder="微信号码">
+      <p><span class="hide"><i class="fas fa-exclamation-circle err"></i>请再次输入密码</span></p>
+      <i class="far fa-user"></i>
+    </div>
+
+    <div class="agreement">
+      <label><input type="checkbox" checked="checked" disabled="disabled">我已仔细阅读并同意接受 <span>《用户使用协议》 </span></label>
+    </div>
+
+    <button type="button" class="md-btn" id="reg-btn">立即注册</button>
   </div>
 </section>
 

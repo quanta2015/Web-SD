@@ -75,6 +75,27 @@ body {
     cursor: pointer;
 }
 
+footer>div {
+    margin: 10px;
+}
+
+footer>.help {
+    flex:1;
+}
+
+footer>.qr>img {
+    width: 100px;
+}
+
+footer>.info>ul {
+    display: flex;
+    flex-direction: row;
+}
+
+footer>.info>ul>li {
+    margin-right:10px;
+}
+
 
 nav {
     background: #f00000;
@@ -105,19 +126,33 @@ nav>ul>li:last-child {
 }
 
 
-section.login,
-section.register {
+section {
     background: #eee;
     flex:1;
 }
 
 section.login>.login-cnt,
-section.register>.register-ctn {
+section.register>.register-ctn,
+section.regs>.regs-cnt {
     width: 1000px;
     margin: 0 auto;
     padding: 40px 0;
     display: flex;
     flex-direction: row;
+}
+
+section.regs {
+    background: #fff;
+}
+
+section.regs>.regs-cnt {
+    width: 800px;
+    /*border: 1px solid #aaa;*/
+    margin: 40px auto;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 20px;
 }
 
 
@@ -167,6 +202,42 @@ section.register>.register-ctn {
 
 .input-group {
     position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.input-group>* {
+    flex:2;
+}
+
+.input-group .err {
+    color:#ff6600;
+}
+
+.input-group p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input-group div span{
+    display: inline-block;
+    height: 100%;
+    
+}
+
+.input-group>i {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 20px;
+    font-size: 20px;
+    color: #aaa;
+}
+
+.input-group p {
+    padding-left: 10px;
 }
 
 .login-input {
@@ -177,36 +248,13 @@ section.register>.register-ctn {
     padding: 0 10px 0 45px;
     box-sizing: border-box;
     line-height: 50px;
-    margin-bottom: 25px;
-}
-
-.input-group i {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    width: 20px;
-    font-size: 20px;
-    color: #aaa;
-}
-
-button {
-    width: 100%;
-    margin: 20px 0;
-    border-radius: 4px;
-    border: none;
-    outline: none;
-    background: #dd2726;
-    cursor: pointer;
-    padding: 0;
-    height: 45px;
-    color: #fff;
-    font-size: 16px;
 }
 
 .login .tip-register {
     text-align: center;
     font-size: 14px;
     color: #aaa;
+    margin-top: 10px;
 }
 
 .login .tip-register>a {
@@ -223,26 +271,7 @@ footer {
     min-height: 120px;
 }
 
-footer>div {
-    margin: 10px;
-}
 
-footer>.help {
-    flex:1;
-}
-
-footer>.qr>img {
-    width: 100px;
-}
-
-footer>.info>ul {
-    display: flex;
-    flex-direction: row;
-}
-
-footer>.info>ul>li {
-    margin-right:10px;
-}
 
 ul>li>span {
     display: inline-block;
@@ -321,4 +350,36 @@ ul>li>span {
     cursor: pointer;
 }
 
+
+.md-btn {
+    height: 45px;
+}
+
+.code {
+    flex:1;
+}
+
+button {
+    width: 100%;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    background: #dd2726;
+    cursor: pointer;
+    padding: 0;
+    color: #fff;
+    font-size: 16px;
+}
+
+button.code {
+    margin:5px;
+}
+
+.agreement {
+    margin-bottom: 10px;
+}
+
+.agreement label span {
+    color: #6495ED;
+}
 

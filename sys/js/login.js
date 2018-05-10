@@ -5,6 +5,9 @@ function init() {
   $('body').on('click', '.action-login', goLoginPage);
   $('body').on('click', '.action-register', goRegisterPage);
   $('body').on('click', '.action-reg', goRegisterPage);
+  $('body').on('click', '#regSellBtn', doRegSell);
+
+  
 }
 
 function toggleUserLogin() {
@@ -26,4 +29,8 @@ function goRegisterPage() {
     $('.register').toggleClass('hide');
 
   }
+}
+
+function doRegSell() {
+  
 }
