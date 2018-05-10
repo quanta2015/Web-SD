@@ -12,12 +12,8 @@ function init() {
 }
 
 function toggleUserLogin() {
-  const el = $(this);
-  const index = el.index();
-  $('.login-hd li').removeClass('on');
-  if (!el.is('.on')) {
-    el.addClass('on');
-  }
+  const index = $(this).index();
+  $('.login-hd li').toggleClass('on');
   $('.login-logo>img').attr('src', LOGIN_IMGS[index]);
 }
 
@@ -26,13 +22,12 @@ function goLoginPage() {
     $('.login').toggleClass('hide');
     $('.register').toggleClass('hide');
   }
-
-
 }
 
 function goRegisterPage() {
   if ($('.register').is('.hide')) {
     $('.login').toggleClass('hide');
     $('.register').toggleClass('hide');
+
   }
 }
