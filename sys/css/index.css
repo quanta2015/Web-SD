@@ -220,6 +220,7 @@ footer {
     display: flex;
     color: #fff;
     align-items: flex-end;
+    min-height: 120px;
 }
 
 footer>div {
@@ -316,6 +317,8 @@ ul>li>span {
     border-radius: 30px;
 }
 
-.action-login {
+.action-login,.action-reg {
     cursor: pointer;
 }
+
+

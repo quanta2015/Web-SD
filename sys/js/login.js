@@ -9,6 +9,7 @@ function init() {
   $('body').on('click', '.login-hd li', toggleUserLogin);
   $('body').on('click', '.action-login', goLoginPage);
   $('body').on('click', '.action-register', goRegisterPage);
+  $('body').on('click', '.action-reg', goRegisterPage);
 }
 
 function toggleUserLogin() {
