@@ -10,6 +10,9 @@ function init() {
   $('body').on('click', '#regSellBtn', showRegSell);
   $('body').on('click', '#reg-btn', doRegister);
   $('body').on('click', '#getcode-btn', doGetCode);
+  $('body').on('click', '#loginBtn', doLogin);
+
+  
 }
 
 function hideAllPages() {
@@ -20,10 +23,18 @@ function hideAllPages() {
   })
 }
 
+function showUserLogin(type) {
+  $('section').addClass('hide');
+  $('.login').removeClass('hide');
+  $('.login-hd li').removeClass('on');
+  type?$('.loginSj').addClass('on'):$('.loginYh').addClass('on');
+}
+
 function toggleUserLogin() {
-  const index = $(this).index();
-  $('.login-hd li').toggleClass('on');
-  $('.login-logo>img').attr('src', LOGIN_IMGS[index]);
+  const el = $(this);
+  $('.login-hd li').removeClass('on');
+  (!el.is('.on'))?el.addClass('on'):null;
+  $('.login-logo>img').attr('src', LOGIN_IMGS[el.index()])
 }
 
 function goLoginPage() {
@@ -87,7 +98,14 @@ function doRegister() {
 }
 
 function cbInfo(e) {
-  console.log(e);
+  if (e.code == 0) {
+    showUserLogin(BUY)
+    notifyInfo(MSG_REGIS_SUCCESS);
+  }else if (e.code==99) {
+    notifyInfo(e.message);
+  }else if (e.code==-1) {
+    relogin();
+  };
 }
 
 function cbCode(e) {
@@ -105,10 +123,8 @@ function doGetCode() {
   doCounter(count);
 }
 
-
-
 function doCounter(count) {
-  setTimeout(function(){
+  setTimeout( () => {
     $('#getcode-btn').text(--count);
     if (count) {
       doCounter(count)
@@ -117,4 +133,27 @@ function doCounter(count) {
       $('#getcode-btn').attr("disabled",false);
     }
   }, 1000 );
+}
+
+
+function doLogin() {
+  $('.loginYh').is('.on')?type=BUY:type=SELL;
+  if (type == BUY) {
+    //BUY login
+  }else{
+    //SELL login
+    obj = { mobile:$('#login-mobile').val(), password:$('#login-password').val() };
+    promiseData('POST', '/users/shoper_login', JSON.stringify(obj), cbLogin);
+  }
+}
+
+function cbLogin(e) {
+  if (e.code == 0) {
+    // 跳转到管理页面
+    notifyInfo(MSG_LOGIN_SUCCESS);
+  }else if (e.code==99) {
+    notifyInfo(e.message);
+  }else if (e.code==-1) {
+    relogin();
+  };
 }

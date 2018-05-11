@@ -1,4 +1,9 @@
 const CODE_COUNT = 10
+const BUY = 0
+const SELL = 1
+
+const MSG_LOGIN_SUCCESS = '登录成功！'
+const MSG_REGIS_SUCCESS = '注册成功！'
 
 const LOGIN_IMGS = [
   'img/login01.jpg',
@@ -27,4 +32,14 @@ function promiseData(method, url, data, cb) {
     data:data
   });
   promise.done(cb);
+}
+
+function errorInfo(info) {
+  alertify.set({ delay: 5000 });
+  alertify.error(info);
+}
+
+function notifyInfo(info) {
+  alertify.set({ delay: 5000 });
+  alertify.success(info);
 }
