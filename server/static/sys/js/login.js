@@ -1,3 +1,5 @@
+let _code;
+
 $(init);
 
 function init() {
@@ -8,7 +10,6 @@ function init() {
   $('body').on('click', '#regSellBtn', showRegSell);
   $('body').on('click', '#reg-btn', doRegister);
   $('body').on('click', '#getcode-btn', doGetCode);
-
 }
 
 function hideAllPages() {
@@ -59,9 +60,14 @@ function doRegister() {
   if (infoMap['repassword'].val !== infoMap['password'].val) {
     infoMap['repassword'].isValid = false;
   }
+  // 验证码
+  if ((infoMap['code'].val)!==_code) {
+    infoMap['code'].isValid = false;
+  }
+
   // 展示结果
   ids.forEach(id => {
-    if (!infoMap[id].val || infoMap[id].val === '' || !infoMap[id].isValid) {
+    if (!infoMap[id].val || infoMap[id].val === '' || !infoMap[id].isValid ) {
       $(`#${id}`).siblings('p').find('span').removeClass('hide');
       success = false;
       return;
@@ -70,15 +76,13 @@ function doRegister() {
     }
   })
 
-  
-
   if (success) {
     obj = {};
     for(key in infoMap) {
       if ((key === 'code')||(key == 'repassword')) continue;
       obj[key]=infoMap[key].val
     }
-    promiseData('POST', '/users/shoper_reg', obj, cbInfo)
+    promiseData('POST', '/users/shoper_reg', JSON.stringify(obj), cbInfo);
   }
 }
 
@@ -86,12 +90,22 @@ function cbInfo(e) {
   console.log(e);
 }
 
+function cbCode(e) {
+  _code = e.message;
+  $('#reg-btn').attr("disabled",false);
+}
 
 function doGetCode() {
+  var obj = {
+    'mobilephone':$('#mobile').val()
+  }
   $('#getcode-btn').attr("disabled",true);
+  promiseData('GET', '/users/sms_send', obj, cbCode);
   let count = CODE_COUNT;
   doCounter(count);
 }
+
+
 
 function doCounter(count) {
   setTimeout(function(){
