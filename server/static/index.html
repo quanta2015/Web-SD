@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>刷单平台</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<link href="sys/css/common.css" rel="stylesheet">
+<link href="sys/css/index.css" rel="stylesheet">
+<link href="lib/fontawesome/css/fontawesome-all.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+
+<header>
+  <div class="top">
+    <ul>
+      <li class="action-login"><i class="far fa-user"></i> 用户登录</li>
+      <li class="action-reg font-red"><i class="far fa-registered"></i> 免费注册</li>
+      <li><i class="far fa-star"></i> 收藏我们</li>
+    </ul>
+  </div>
+  <div class="bar">
+    <div class="logo">Logo</div>
+    <div class="search">
+      <input type="text" name="key" id="key" value="" placeholder="请输入您要搜索的商品">
+      <div class="search_img"><i class="fas fa-search"></i></div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><i class="fas fa-list"></i> 分类导航</li>
+    <li>首页</li>
+    <li>优惠购</li>
+    <li>9.9元包邮</li>
+    <li>限时疯抢</li>
+    <li>人气榜</li>
+    <li>免费试用</li>
+    <li>平台优势</li>
+    <li><i class="fas fa-shopping-cart"></i> 卖家免费入驻</li>
+  </ul>
+</nav>
+
+<section class="login hide">
+  <div class="login-cnt">
+    <div class="login-logo"><img src="img/login01.jpg" alt=""></div>
+    <div class="login-main">
+      <div class="login-hd">
+        <li class="loginYh on">买家登录</li>
+        <li class="loginSj">商家登录</li>
+      </div>
+
+
+      <form>
+          <div class="form-cnt">
+            <span class="login-title">登录账户：</span>
+            <div class="input-group">
+              <input class="login-input" id="username" type="text" placeholder="手机号">
+              <i class="far fa-user"></i>
+            </div>
+            <span class="login-title">登录密码：</span>
+            <div class="input-group">
+              <input class="login-input" id="login-password" type="password" placeholder="请输入密码">
+              <i class="fa fa-key"></i>
+            </div>
+            <button class="md-btn">登 录</button>
+            <div class="tip-register">
+              <span>没有账号？</span>
+              <a class="action-register">[免费注册]</a>
+            </div>
+          </div>
+        </form>
+    </div>
+  </div>
+</section>
+
+<section class="register hide">
+  <div class="register-cnt">
+    <div class="register-box">
+      <img src="img/zhuce02.png">
+      <h1><span>买家注册</span></h1>
+      <p>我想要免费试用，</p>
+      <p>体验商品带给我更多快乐，</p>
+      <p>并将这份快乐传递给更多人！猛戳立即注册！</p>
+      <button class="md-btn">买家注册</button>
+      <p>我已注册，现在就 <span class="font-red action-login">买家登录</span></p>
+    </div>
+
+    <div class="register-box">
+      <img src="img/zhuce01.png">
+      <h1><span>商家注册</span></h1>
+      <p>我想要推广商品、</p>
+      <p>收集新品市场反馈、 提升产品销量。</p>
+      <p>打造专属于我的品牌！猛戳立即注册！</p>
+      <button class="b-blue md-btn" id="regSellBtn">商家注册</button>
+      <p>我已注册，现在就 <span class="font-blue action-login">商家登录</span></p>
+    </div
+    <div class="register-box"></div>
+  </div>
+</section>
+
+<section class="regs ">
+  <div class="regs-cnt">
+    <span class="login-title">手机号：</span>
+    <div class="input-group">
+      <input class="login-input" id="mobile" type="text" placeholder="平台登入账号">
+      <p><span class="hide"><i class="fas fa-exclamation-circle err"></i>请填写正确的手机号码</span></p>
+      <i class="far fa-user"></i>
+    </div>
+
+    <span class="login-title">填写验证码：</span>
+    <div class="input-group">
+      <input class="login-input code" id="code" type="text" placeholder="请输入验证码">
+      <button class="code" type="button" id="getcode-btn">获取验证码</button>
+      <p><span class="hide"><i class="fas fa-exclamation-circle err"></i>请填写验证码</span></p>
+      <i class="far fa-user"></i>
+    </div>
+
+    <span class="login-title">QQ号：</span>
+    <div class="input-group">
+      <input class="login-input" id="qq" type="text" placeholder="QQ号码">
+      <p><span class="hide"><i class="fas fa-exclamation-circle err"></i>请填写正确的QQ号</span></p>
+      <i class="far fa-user"></i>
+    </div>
+
+    <span class="login-title">微信号：</span>
+    <div class="input-group">
+      <input class="login-input" id="weixin" type="text" placeholder="微信号码">
+      <p><span class="hide"><i class="fas fa-exclamation-circle err"></i>请填写正确的微信号</span></p>
+      <i class="far fa-user"></i>
+    </div>
+
+    <span class="login-title">登录密码：</span>
+    <div class="input-group">
+      <input class="login-input" id="password" type="password" placeholder="登录密码">
+      <p><span class="hide"><i class="fas fa-exclamation-circle err"></i>请填写6-16位密码</span></p>
+      <i class="far fa-user"></i>
+    </div>
+
+    <span class="login-title">确认密码：</span>
+    <div class="input-group">
+      <input class="login-input" id="repassword" type="password" placeholder="请再次输入密码">
+      <p><span class="hide"><i class="fas fa-exclamation-circle err"></i>两次输入密码不一致</span></p>
+      <i class="far fa-user"></i>
+    </div>
+
+    <div class="agreement">
+      <label><input type="checkbox" checked="checked" disabled="disabled">我已仔细阅读并同意接受 <span>《用户使用协议》 </span></label>
+    </div>
+
+    <button type="button" class="md-btn" id="reg-btn">立即注册</button>
+  </div>
+</section>
+
+<footer>
+  <div class="qr"><img src="img/qr.png" alt=""></div>
+  <div class="help"></div>
+  <div class="info">
+    <ul>
+      <li><span>关于我们</span></li>
+      <li><span>帮助中心</span></li>
+      <li>
+        <ul class="ctt">
+          <li>联系我们</li>
+          <li><i class="fas fa-basketball-ball"></i> www.weburl.com</li>
+          <li><i class="fas fa-phone"></i> 13xxxxxxxx</li>
+        </ul>
+      </li>
+    </ul>
+     
+  </div>
+</footer>
+
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="sys/js/common.js"></script>
+<script src="sys/js/login.js"></script>
+</html>
