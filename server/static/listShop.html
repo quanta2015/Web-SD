@@ -14,7 +14,7 @@
     <link href="lib/alertify/alertify.default.css" rel="stylesheet" >
 
     <link href="sys/css/common.css"  rel="stylesheet" type="text/css" >
-    <link href="sys/css/bindshop.css"  rel="stylesheet" type="text/css" >
+
     
   </head>
   <body>
@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="portlet-body">
-            <div class="table-scrollable table-scrollable-borderless"></div>
+           
         </div>
     </div>
     </div>
@@ -85,7 +85,7 @@
             <td> {{:businesstype}} </td>
             <td> {{:addressProvince}}{{:addressCity}}{{:addressCounty}} </td>
             <td> {{:shopurl}} </td>
-            <td> <a href="javascript:;" class="btn blue-madison btn-sm btn-outline sbold uppercase"><i class="fa fa-edit"></i> 修改 </a> <a href="javascript:;" class="btn blue-madison btn-sm btn-outline sbold uppercase"><i class="fa fa-times"></i> 删除 </a> </td>
+            <td class="fn-right"> <a href="javascript:;" class="btn blue-madison btn-sm btn-outline sbold uppercase"><i class="fa fa-edit"></i> 修改 </a> <a href="javascript:;" class="btn blue-madison btn-sm btn-outline sbold uppercase del-shop" id="{{:id}} "><i class="fa fa-times"></i> 删除 </a> </td>
         </tr>
       {{/for}}
     </tbody>

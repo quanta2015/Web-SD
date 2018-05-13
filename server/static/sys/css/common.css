@@ -50,3 +50,8 @@ a {
 .hide {
   display: none;  
 }
+
+
+.fn-right {
+    text-align: right
+}
