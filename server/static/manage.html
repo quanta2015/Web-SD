@@ -10,7 +10,7 @@
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="lib/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="lib/metronic/components.min.css"  id="style_components"  rel="stylesheet" type="text/css" >
+  <link href="lib/metronic/components.css"  id="style_components"  rel="stylesheet" type="text/css" >
   <link href="lib/metronic/layout.min.css"  rel="stylesheet" type="text/css" >
   <link href="lib/metronic/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color">
 
@@ -34,10 +34,16 @@
       <div class="top-menu">
         <ul class="nav navbar-nav pull-right">
           <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
-            <a href="#" >新手任务</a>
+            <a href="#" ><i class="icon-user"></i> 新手任务</a>
+          </li>
+          <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+            <a href="#" ><i class="icon-film"></i> 新手教学</a>
+          </li>
+          <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+            <a href="#" ><i class=" icon-paper-plane"></i> 推广赚金</a>
           </li>
           <li class="dropdown dropdown-quick-sidebar-toggler">
-            <a><i class="icon-logout"></i></a>
+            <a id="exitBtn"><i class="icon-power"></i> 退出</a>
           </li>
         </ul>
       </div>
@@ -173,7 +179,7 @@
 
     <div class="page-content-wrapper">
       <div class="page-content" style="min-height:440px">
-        <iframe src="bingShop.html" id="mainframe"></iframe>
+        <iframe src="bindShop.html" id="mainframe"></iframe>
       </div>
     </div>
   </div>

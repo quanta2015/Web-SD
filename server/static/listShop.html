@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="lib/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="lib/metronic/plugins.min.css" rel="stylesheet" type="text/css">
+    <link href="lib/metronic/components.css"  rel="stylesheet" type="text/css" id="style_components" >
+    <link href="lib/metronic/layout.min.css"  rel="stylesheet" type="text/css" >
+    <link href="lib/alertify/alertify.core.css" rel="stylesheet" >
+    <link href="lib/alertify/alertify.default.css" rel="stylesheet" >
+
+    <link href="sys/css/common.css"  rel="stylesheet" type="text/css" >
+    <link href="sys/css/bindshop.css"  rel="stylesheet" type="text/css" >
+    
+  </head>
+  <body>
+    <div class="page-bar">
+      <ul class="page-breadcrumb">
+        <li>
+          <a href="index.html">店铺管理</a>
+          <i class="fa fa-circle"></i>
+        </li>
+        <li>
+          <span>店铺列表</span>
+        </li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="portlet ">
+        <div class="portlet-title">
+          <div class="caption">
+            <i class="fa fa-shopping-cart"></i> 店铺列表</div>
+          <div class="actions">
+            <div class="btn-group btn-group-devided" data-toggle="buttons">
+              <label class="btn grey-salsa btn-sm active">
+                <input type="radio" name="options" class="toggle" id="option1">绑定新店铺
+              </label>
+              <label class="btn grey-salsa btn-sm">
+                <input type="radio" name="options" class="toggle" id="option2">设置
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="portlet-body">
+            <div class="table-scrollable table-scrollable-borderless"></div>
+        </div>
+    </div>
+    </div>
+
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery/jquery.cookie.js"></script>
+    <script src="lib/jsrender/jsrender.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/alertify/alertify.min.js"></script>
+    <script src="lib/bootbox/bootbox.min.js"></script>
+
+    <script src="sys/js/common.js"></script>
+    <script src="sys/js/listshop.js"></script>
+</body>
+</html>
+
+<script id="shopTmpl" type="text/x-jsrender">
+  <table class="table table-hover table-light">
+    <thead>
+        <tr class="uppercase">
+            <th> # </th>
+            <th> 店铺名称 </th>
+            <th> 平台 </th>
+            <th> 店铺类型 </th>
+            <th> 所属地区 </th>
+            <th> 地址链接 </th>
+            <th> 功能 </th>
+        </tr>
+    </thead>
+    <tbody>
+      {{for data}}
+        <tr>
+            <td> {{:#index+1}} </td>
+            <td> {{:name}}</td>
+            <td> {{:type}} </td>
+            <td> {{:businesstype}} </td>
+            <td> {{:addressProvince - addressCity - addressCounty}} </td>
+            <td> {{:shopurl}} </td>
+            <td>  </td>
+        </tr>
+      {{/for}}
+    </tbody>
+</table>
+</script>

@@ -11,8 +11,6 @@ function init() {
   $('body').on('click', '#reg-btn', doRegister);
   $('body').on('click', '#getcode-btn', doGetCode);
   $('body').on('click', '#loginBtn', doLogin);
-
-  
 }
 
 function hideAllPages() {
@@ -53,7 +51,7 @@ function showRegSell() {
 }
 
 function doRegister() {
-  const ids = ['mobile', 'qq', 'code', 'weixin', 'password', 'repassword'];
+  const ids = ['mobile', 'qq', 'smscode', 'weixin', 'password', 'repassword'];
   const infoMap = {};
   const errMap = {};
   let success = true;
@@ -71,11 +69,6 @@ function doRegister() {
   if (infoMap['repassword'].val !== infoMap['password'].val) {
     infoMap['repassword'].isValid = false;
   }
-  // 验证码
-  if ((infoMap['code'].val)!==_code) {
-    infoMap['code'].isValid = false;
-  }
-
   // 展示结果
   ids.forEach(id => {
     if (!infoMap[id].val || infoMap[id].val === '' || !infoMap[id].isValid ) {
@@ -90,7 +83,7 @@ function doRegister() {
   if (success) {
     obj = {};
     for(key in infoMap) {
-      if ((key === 'code')||(key == 'repassword')) continue;
+      if (key == 'repassword') continue;
       obj[key]=infoMap[key].val
     }
     promiseData('POST', '/users/shoper_reg', JSON.stringify(obj), cbInfo);
@@ -109,8 +102,9 @@ function cbInfo(e) {
 }
 
 function cbCode(e) {
-  _code = e.message;
-  $('#reg-btn').attr("disabled",false);
+  if (e.code == 0) {
+     $('#reg-btn').attr("disabled",false);
+  }
 }
 
 function doGetCode() {
@@ -149,7 +143,10 @@ function doLogin() {
 
 function cbLogin(e) {
   if (e.code == 0) {
-    // 跳转到管理页面
+    $.cookie('mobile', e.data.mobile, {expires: 30});
+    $.cookie('password', $('#login-password').val, { expires: 30 });
+    $.cookie('id', e.data.id, { expires: 30 });
+    location.href = "manage.html";
     notifyInfo(MSG_LOGIN_SUCCESS);
   }else if (e.code==99) {
     notifyInfo(e.message);

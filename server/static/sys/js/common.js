@@ -43,3 +43,18 @@ function notifyInfo(info) {
   alertify.set({ delay: 5000 });
   alertify.success(info);
 }
+
+function msgbox(info,titleA,titleB,cb) {
+  bootbox.confirm({
+    message: info,
+    buttons: {
+        confirm: {
+            label: '<i class="fa fa-times"></i> '+ titleA
+        },
+        cancel: {
+            label: '<i class="fa fa-check"></i> '+ titleB
+        }
+    },
+    callback: cb
+  })
+}
