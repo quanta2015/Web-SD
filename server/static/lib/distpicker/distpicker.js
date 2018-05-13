@@ -28,7 +28,7 @@ var DEFAULTS = {
   placeholder: true,
 
   // Select value. Options: 'name' and 'code'
-  valueType: 'code',
+  valueType: 'name',
 
   // Defines the initial value of province.
   province: '请选择省',

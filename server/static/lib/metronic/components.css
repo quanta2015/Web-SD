@@ -14376,11 +14376,11 @@ Tasks Widget
   padding-bottom: 10px; }
 
 .mt-element-step .step-thin .mt-step-number {
-  font-size: 26px;
-  border-radius: 50% !important;
-  float: left;
-  margin: auto;
-  padding: 3px 14px; }
+    font-size: 16px;
+    border-radius: 50% !important;
+    float: left;
+    margin: auto;
+    padding: 3px 10px; }
 
 .mt-element-step .step-thin .mt-step-title {
   font-size: 24px;
@@ -14390,7 +14390,8 @@ Tasks Widget
 
 .mt-element-step .step-thin .mt-step-content {
   padding-left: 60px;
-  margin-top: -5px; }
+  margin-top: 3px;
+  font-size: 16px; }
 
 .mt-element-step .step-thin .active {
   background-color: #32c5d2 !important; }

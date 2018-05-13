@@ -10,7 +10,7 @@ var DEFAULTS = {
   autoselect: 0,
   placeholder: true,
   // Select value. Options: 'name' and 'code'
-  valueType: 'code',
+  valueType: 'name',
   // Defines the initial value of province.
   province: '请选择主类',
   city: '请选择次类'

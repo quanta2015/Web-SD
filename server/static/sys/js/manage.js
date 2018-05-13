@@ -11,8 +11,8 @@ function init() {
       $("#mainframe", parent.document.body).attr("src", "listShop.html");
   });
 
-  $('[data-button="listShopBtn"]').on('click', function(e) {
-      $("#mainframe", parent.document.body).attr("src", "listShop.html");
+  $('[data-button="createTaskBtn"]').on('click', function(e) {
+      $("#mainframe", parent.document.body).attr("src", "createTask.html");
   });
 
   $('#exitBtn').on('click', function(e) {

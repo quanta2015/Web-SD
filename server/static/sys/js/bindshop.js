@@ -73,11 +73,11 @@ var bind = function(data){
       "address": $('#shop_addr').val(),
       "name": $('#shop_name').val(),
       "shopurl": $('#shop_url').val(),
-      "businesstype": $('#shop-btype').val(),
-      "subtype": $('#shop-btype').val(),
-      "addressProvince": $('#area').val(),
-      "addressCity": $('#area').val(),
-      "addressCounty": $('#area').val(),
+      "businesstype": $('#shop-businesstype').val(),
+      "subtype": $('#shop-subtype').val(),
+      "addressProvince": $('#shop-province').val(),
+      "addressCity": $('#shop-city').val(),
+      "addressCounty": $('#shop-county').val(),
       "shopimg1": data
     };
 
