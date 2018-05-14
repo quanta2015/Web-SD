@@ -14,8 +14,7 @@
     <link href="lib/alertify/alertify.default.css" rel="stylesheet" >
 
     <link href="sys/css/common.css"  rel="stylesheet" type="text/css" >
-
-    
+    <link href="sys/css/listshop.css"  rel="stylesheet" type="text/css" >
   </head>
   <body>
     <div class="page-bar">
@@ -42,21 +41,27 @@
               <label class="btn grey-salsa btn-sm">
                 <input type="radio" name="options" class="toggle" id="option2">设置
               </label>
+              
             </div>
           </div>
         </div>
-        <div class="portlet-body">
-           
-        </div>
+        <div class="portlet-body"></div>
     </div>
     </div>
 
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/jquery/jquery.cookie.js"></script>
+    <script src="lib/jquery-ui/jquery-ui.min.js"></script>
     <script src="lib/jsrender/jsrender.js"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="lib/alertify/alertify.min.js"></script>
     <script src="lib/bootbox/bootbox.min.js"></script>
+
+    <script src="lib/distpicker/distpicker.js" type="text/javascript"></script>
+    <script src="lib/typepicker/typepicker.js" type="text/javascript"></script>
+
+
+    <script src="lib/metronic/ui-modals.min.js"></script>
 
     <script src="sys/js/common.js"></script>
     <script src="sys/js/listshop.js"></script>
@@ -73,7 +78,7 @@
             <th> 店铺类型 </th>
             <th> 所属地区 </th>
             <th> 地址链接 </th>
-            <th> 功能 </th>
+            <th class="fn-center"> 功能 </th>
         </tr>
     </thead>
     <tbody>
@@ -84,10 +89,72 @@
             <td> {{:type}} </td>
             <td> {{:businesstype}} </td>
             <td> {{:addressProvince}}{{:addressCity}}{{:addressCounty}} </td>
-            <td> {{:shopurl}} </td>
-            <td class="fn-right"> <a href="javascript:;" class="btn blue-madison btn-sm btn-outline sbold uppercase"><i class="fa fa-edit"></i> 修改 </a> <a href="javascript:;" class="btn blue-madison btn-sm btn-outline sbold uppercase del-shop" id="{{:id}} "><i class="fa fa-times"></i> 删除 </a> </td>
+            <td> {{:address}} </td>
+            <td class="fn-center"> 
+              <a href="#basic" class="btn blue-madison btn-sm btn-outline sbold uppercase  edit-shop"  data-toggle="modal" data-index="{{:#index}}" data-id="{{:id}}"><i class="fa fa-edit"></i> 修改 </a> 
+              <a href="javascript:;" class="btn blue-madison btn-sm btn-outline sbold uppercase del-shop" id="{{:id}} " ><i class="fa fa-times"></i> 删除 </a> 
+            </td>
         </tr>
       {{/for}}
     </tbody>
-</table>
+  </table>
 </script>
+
+
+<div class="modal fade" id="basic" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">修改店铺</h4>
+      </div>
+      <div class="modal-body">
+        <form action="#" id="form-bind" class="form-horizontal form-bordered">
+          <div class="form-group">
+            <label class="control-label col-xs-2">店铺名称</label>
+            <div class="col-xs-6">
+              <input type="text" class="form-control" id="shop_name">
+            </div>
+            <div class="col-xs-4 form-info">(务必跟手机端报表页显示的店铺名一致)</div>
+          </div>
+
+          <div class="form-group" data-toggle="typepicker" id="typepicker">
+            <label class="control-label col-xs-2">店铺类别</label>
+            <div class="col-xs-3">
+              <select class="form-control" id="shop-businesstype"></select>
+            </div>
+            <div class="col-xs-3">
+              <select class="form-control" id="shop-subtype"><option data-code="" data-text="请选择次类" value="">请选择次类</option></select>
+            </div>
+            <div class="col-xs-4 form-info"></div>
+          </div>
+
+          <div class="form-group" data-toggle="distpicker" id="pick">
+            <label class="control-label col-xs-2">省市区</label>
+            <div class="col-xs-3">
+              <select class="form-control" id="shop-province"></select>
+            </div>
+            <div class="col-xs-3">
+              <select class="form-control" id="shop-city"></select>
+            </div>
+            <div class="col-xs-3">
+              <select class="form-control" id="shop-county"></select>
+            </div>
+          </div> 
+
+          <div class="form-group">
+            <label class="control-label col-xs-2">发货地址</label>
+            <div class="col-xs-10">
+              <input type="text" class="form-control" id="shop_addr">
+            </div>
+          </div>
+        </form>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn dark btn-outline close-btn" data-dismiss="modal">Close</button>
+        <button type="button" class="btn green save-shop">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

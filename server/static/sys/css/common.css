@@ -55,3 +55,7 @@ a {
 .fn-right {
     text-align: right
 }
+
+.fn-center {
+    text-align: center;
+}

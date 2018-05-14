@@ -329,7 +329,7 @@ if ($.fn) {
 
 if (WINDOW.document) {
   $(function () {
-    $('[data-toggle="' + NAMESPACE + '"]').distpicker();
+    $('[data-toggle="' + NAMESPACE + '"]').typepicker();
   });
 }
 
