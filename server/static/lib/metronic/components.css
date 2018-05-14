@@ -5861,7 +5861,8 @@ Custom color buttons
     left: 0;
     height: 19px;
     width: 19px;
-    background: #E6E6E6; }
+    background: #fff; 
+  border: 1px solid #999;}
     .mt-radio > span:after,
     .mt-checkbox > span:after {
       content: '';
@@ -5871,7 +5872,7 @@ Custom color buttons
   .mt-radio > input:focus ~ span,
   .mt-checkbox:hover > input:not([disabled]) ~ span,
   .mt-checkbox > input:focus ~ span {
-    background: #d9d9d9;
+    background: #fff;
     webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -ms-transition: all 0.3s;
@@ -5884,7 +5885,7 @@ Custom color buttons
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
-    background: #d9d9d9; }
+    background: #fff; }
     .mt-radio > input:checked ~ span:after,
     .mt-checkbox > input:checked ~ span:after {
       display: block; }
@@ -5897,7 +5898,7 @@ Custom color buttons
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
-    background: #d9d9d9; }
+    background: #fff; }
   .mt-radio > input:disabled ~ span,
   .mt-checkbox > input:disabled ~ span {
     opacity: 0.6 ;
@@ -5939,10 +5940,10 @@ Custom color buttons
   -o-border-radius: 50%!important;
   border-radius: 50%!important; }
   .mt-radio > span:after {
-    left: 6px;
-    top: 6px;
-    height: 6px;
-    width: 6px;
+        left: 5px;
+    top: 5px;
+    height: 8px;
+    width: 8px;
     border-radius: 50%;
     background: #666666; }
 

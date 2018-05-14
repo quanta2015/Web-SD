@@ -1,3 +1,34 @@
 body {
     min-width: 950px;
 }
+
+.mt-radio-inline .mt-radio {
+    margin-bottom: 0;
+}
+
+.mt-radio-list .mt-radio:last-child {
+    margin-bottom: 0;
+}
+
+.ctrl {
+    text-align: center;
+}
+
+.stop-title {
+    font: 14px/1.5 "Microsoft Yahei";
+    font-weight: 600;
+    color: #f00000;
+    margin: 10px 0 20px;
+    padding: 5px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.form-info {
+    margin-left: 10px;
+    color: #999;
+}
+
+.form-group .wide-3 {
+    width: 600px;
+}
+

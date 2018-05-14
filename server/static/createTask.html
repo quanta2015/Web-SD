@@ -7,6 +7,16 @@
     <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="lib/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <link href="lib/bootstrap-datepicker/css/bootstrap-datepicker3.css" rel="stylesheet" type="text/css">
+    <link href="lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
+
+
+    <link href="lib/select2/css/select2.min.css" rel="stylesheet" type="text/css">
+    <link href="lib/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css">
+
+
+    <link href="lib/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css">
     <link href="lib/metronic/plugins.min.css" rel="stylesheet" type="text/css">
     <link href="lib/metronic/components.css"  rel="stylesheet" type="text/css" id="style_components" >
     <link href="lib/metronic/layout.min.css"  rel="stylesheet" type="text/css" >
@@ -14,7 +24,8 @@
     <link href="lib/alertify/alertify.default.css" rel="stylesheet" >
     <link href="sys/css/common.css"  rel="stylesheet" type="text/css" >
     <link href="sys/css/createtask.css"  rel="stylesheet" type="text/css" >
-    
+
+
   </head>
   <body>
     <div class="page-bar">
@@ -50,21 +61,406 @@
           
         </div>
       </div>
-      <div class="portlet light bordered">                     
-        <div class="portlet-body">
-            第一步：选择平台
+      <form id="form-task" class="form-horizontal">
+        <div class="step1 hide">
+          <div class="portlet light bordered">                     
+            <div class="portlet-body">
+                第一步：选择平台
+            </div>
+            <div class="mt-radio-inline">
+              <label class="mt-radio">
+                  <input type="radio" name="r-platform" id="rp-tb"> 淘宝
+                  <span></span>
+              </label>
+              <label class="mt-radio">
+                  <input type="radio" name="r-platform" id="rp-jd"> 京东
+                  <span></span>
+              </label>
+            </div>
+          </div>
+          <div class="portlet light bordered">                     
+            <div class="portlet-body">
+                第二步：选择任务类型
+            </div>
+            <div class="mt-radio-list">
+              <label class="mt-radio">
+                  <input type="radio" name="r-type" id="rt-mobile" > 手机淘宝任务
+                  <span></span>
+              </label>
+              <label class="mt-radio">
+                  <input type="radio" name="r-type" id="rt-pc" > PC淘宝任务
+                  <span></span>
+              </label>
+            </div>
+          </div>
+          <div class="portlet light bordered">                     
+            <div class="portlet-body">
+                第三步：选择平台返款模式
+            </div>
+            <div class="mt-radio-list">
+              <label class="mt-radio">
+                  <input type="radio" name="r-money" id="rm-money" > 平台服务
+                  <span></span>
+              </label>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="portlet light bordered">                     
-        <div class="portlet-body">
-            第二步：选择任务类型
+
+        <div class="step2 ">
+          <div class="portlet light bordered">                     
+            <div class="stop-title">
+                第一步：填写商品信息
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a> 商品链接</label>
+              
+              <div class="col-xs-9 form-inline">
+                <input type="text" class="form-control wide-3" id="url">
+                <span class="form-info">仅平台核实任务，用户不可见</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a>  商品名称</label>
+              <div class="col-xs-9 form-inline">
+                <input type="text" class="form-control wide-3" id="name">
+                <span class="form-info">仅平台核实任务，用户不可见</span>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a>  商品主图</label>
+              <div class="col-xs-9">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                  <div class="fileinput-new thumbnail">
+                    <img src="img/noimg.png">
+                  </div>
+                  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 10px;"></div>
+                  <div>
+                    <span class="btn default btn-file">
+                      <span class="fileinput-new"> 选择图片 </span>
+                      <span class="fileinput-exists"> 更换 </span>
+                      <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="upload">
+                    </span>
+                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 删除 </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a>  颜色尺码规格</label>
+              <div class="col-xs-9 form-inline">
+                <input type="text" class="form-control wide-3" id="name">
+                <span class="form-info">买家下单选择的颜色尺码规格</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a>  商品实际成交价格</label>
+              <div class="col-xs-9 form-inline">
+                <input type="text" class="form-control" id="name"> 元
+                <span class="form-info">买家拍戏时的付款价格，如不同等级买家看到商品价格不同，取最大值</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a>  手机搜索页面显示价格</label>
+              <div class="col-xs-9 form-inline">
+                <input type="text" class="form-control" id="name"> 元
+                <span class="form-info">务必亲自在手机端搜索，商品价格准确</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a>  每单拍的数量</label>
+              <div class="col-xs-9 form-inline">
+                <input type="text" class="form-control" id="name"> 件
+                <span class="form-info">买家下单时，选择的颜色尺码规格</span>
+              </div>
+            </div>
+            
+            <div class="stop-title">
+                第二步：设置如何找到商品
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a>  定位目标商品排序方式</label>
+              <div class="col-xs-9 form-inline">
+                <div class="mt-radio-inline">
+                  <label class="mt-radio">
+                    <input type="radio" name="r-platform" id="rp-tb"> 综合<span></span>
+                  </label>
+                  <label class="mt-radio">
+                    <input type="radio" name="r-platform" id="rp-jd"> 销量<span></span>
+                  </label>
+                  <label class="mt-radio">
+                    <input type="radio" name="r-platform" id="rp-tb"> 评论数<span></span>
+                  </label>
+                  <label class="mt-radio">
+                    <input type="radio" name="r-platform" id="rp-jd"> 新品<span></span>
+                  </label>
+                  <label class="mt-radio">
+                    <input type="radio" name="r-platform" id="rp-tb"> 直通车快车<span></span>
+                  </label>
+                </div>
+                <span class="form-info">如果排序在20名之后，买家很难找到，为确保任务顺利执行，请设置价格区间</span>
+              </div>
+            </div>
+
+            <div class="form-group form-inline">
+              <label class="control-label col-xs-3">价格区间</label>
+              <div class="col-xs-9">
+                <input type="text" class="form-control" id="url"> - 
+                <input type="text" class="form-control" id="url">
+              </div>
+            </div>
+
+            <div class="form-group form-inline">
+              <label class="control-label col-xs-3">商品所在地</label>
+              <div class="col-xs-9">
+                <select class="form-control " id="shop_type">
+                  <option value="北京" selected>北京</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group form-inline">
+              <label class="control-label col-xs-3">商品现有销量约</label>
+              <div class="col-xs-9">
+                <input type="text" class="form-control" id="url">  单
+              </div>
+            </div>
+
+            <div class="form-group form-inline">
+              <label class="control-label col-xs-3">订单留言</label>
+              <div class="col-xs-9">
+                <input type="text" class="form-control" id="url"> 
+                <span class="form-info">买家拍下后卸载订单量留言中的内容；出于安全考虑不建议大批量使用。</span>
+              </div>
+            </div>
+
+
+            <div class="stop-title">
+                第三步：选择任务类型和单数
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3">任务模式</label>
+              <div class="col-xs-9">
+
+                <div class="mt-checkbox-list">
+                  <label class="mt-checkbox mt-checkbox-outline">
+                      <input type="checkbox"> 普通好评任务
+                      <span></span>
+                  </label>
+                  <label class="mt-checkbox mt-checkbox-outline">
+                      <input type="checkbox"> 指定关键词好评任务
+                      <span></span>
+                  </label>
+                  <label class="mt-checkbox mt-checkbox-outline">
+                      <input type="checkbox"> 指定图片好评任务
+                      <span></span>
+                  </label>
+                  <label class="mt-checkbox mt-checkbox-outline">
+                      <input type="checkbox"> 指定文字好评任务
+                      <span></span>
+                  </label>
+                </div>
+               
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3">发布时间设置</label>
+              <div class="col-xs-9 form-inline">
+                <div class="input-group input-medium date date-picker" data-date="12-02-2012" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
+                  <input type="text" class="form-control" readonly="">
+                  <span class="input-group-btn">
+                      <button class="btn default" type="button">
+                          <i class="fa fa-calendar"></i>
+                      </button>
+                  </span>
+                </div>
+                总单量：
+                <input type="text" class="form-control" id="url"> 单
+               
+              </div>
+            </div>
+
+
+            <div class="stop-title">
+                第四步：增值服务
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3">加赏任务佣金：每单加赏</label>
+              <div class="col-xs-9 form-inline">
+                <input type="text" class="form-control" id="url"> 金
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3">是否分享宝贝</label>
+              <div class="col-xs-9 form-inline">
+                <select class="form-control " id="shop_type">
+                  <option value="">请选择</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3">是否匹配标签</label>
+              <div class="col-xs-9 form-inline">
+                <select class="form-control " id="shop_type">
+                  <option value="">请选择</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3">性别选择</label>
+              <div class="col-xs-9 form-inline">
+                <select class="form-control " id="shop_type">
+                  <option value="">请选择</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3">年龄选择</label>
+              <div class="col-xs-9 form-inline">
+                <select class="form-control " id="shop_type">
+                  <option value="">请选择</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3">区域限制</label>
+              <div class="col-xs-9 form-inline">
+                <select class="form-control " id="shop_type">
+                  <option value="">请选择</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3">使用信用卡/花呗/白条</label>
+              <div class="col-xs-9 form-inline">
+                <select class="form-control " id="shop_type">
+                  <option value="">请选择</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3">是否开通花呗/白条</label>
+              <div class="col-xs-9 form-inline">
+                <select class="form-control " id="shop_type">
+                  <option value="">请选择</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3">淘宝会员等级</label>
+              <div class="col-xs-9 form-inline">
+                <select class="form-control " id="shop_type">
+                  <option value="">请选择</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3">重复购买限制</label>
+              <div class="col-xs-9 form-inline">
+                <select class="form-control " id="shop_type">
+                  <option value="">请选择</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3">快递</label>
+              <div class="col-xs-9 form-inline">
+                <select class="form-control " id="shop_type">
+                  <option value="">请选择</option>
+                </select>
+                ，包裹重量
+                <input type="text" class="form-control" id="url">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3">是否默认签收</label>
+              <div class="col-xs-9 form-inline">
+                <select class="form-control " id="shop_type">
+                  <option value="">请选择</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group ">
+              <label class="control-label col-xs-3">
+                <label class="mt-checkbox mt-checkbox-outline"><input type="checkbox"> 问大家<span></span>
+                  </label>
+              </label>
+              <div class="col-xs-9 ">
+                <span class="form-info">可提问可回答</span>
+              </div>
+            </div>
+
+            <div class="stop-title">
+                最后：任务额外说明
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a>  是否需要聊天</label>
+              <div class="col-xs-9 form-inline">
+                <div class="mt-radio-inline">
+                  <label class="mt-radio">
+                    <input type="radio" name="r-platform" id="rp-tb"> 是<span></span>
+                  </label>
+                  <label class="mt-radio">
+                    <input type="radio" name="r-platform" id="rp-jd"> 否<span></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
         </div>
-      </div>
-      <div class="portlet light bordered">                     
-        <div class="portlet-body">
-            第三步：选择平台返款模式
+
+        <div class="step3 hide">
+          <div class="portlet light bordered">                     
+            <div class="portlet-body">
+                第三步：支付
+            </div>
+          </div>
         </div>
-      </div>
+
+        <div class="step4 hide">
+          <div class="portlet light bordered">                     
+            <div class="portlet-body">
+                第四步：发布成功
+            </div>
+          </div>
+        </div>
+
+         
+
+        <div class="ctrl">
+          <a href="#" class="btn blue-madison btn-pre"  ><i class="fa fa-arrow-left"></i> 上一步 </a> 
+          <a href="#" class="btn blue-madison btn-next"  ><i class="fa fa-arrow-right"></i> 下一步 </a> 
+          <a href="#" class="btn blue-madison btn-finish hide"  ><i class="fa fa-arrow-right"></i> 完成 </a> 
+        </div>
+      </form>
+
+
     </div>
   </div>
 </div>
@@ -72,9 +468,18 @@
 <script src="lib/jquery/jquery.cookie.js"></script>
 <script src="lib/jsrender/jsrender.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script src="lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+<script src="lib/select2/js/select2.full.min.js"></script>
+<script src="lib/metronic/app.min.js"></script>
+<script src="lib/metronic/components-select2.min.js"></script>
+<script src="lib/metronic/components-date-time-pickers.min.js"></script>
+
+
 <script src="lib/alertify/alertify.min.js"></script>
 <script src="lib/bootbox/bootbox.min.js"></script>
 <script src="sys/js/common.js"></script>
-<script src="sys/js/listshop.js"></script>
+<script src="sys/js/createtask.js"></script>
 </body>
 </html>
