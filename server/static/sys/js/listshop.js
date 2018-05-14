@@ -51,6 +51,11 @@ function cbDelShop(e) {
 
 
 function doEditShop() {
+  $('#areapick').distpicker('destroy');
+  $('#areapick').distpicker();
+  $('#typepicker').typepicker('destroy');
+  $('#typepicker').typepicker();
+
   index = $(this).data('index');
   _id = $(this).data('id');
 
@@ -66,13 +71,10 @@ function doEditShop() {
   $("#shop-businesstype").find("option[value='" + _listshop[index].businesstype + "']").attr("selected",true);
   $("#shop-businesstype").trigger("change");
   $("#shop-subtype").find("option[value='" + _listshop[index].subtype + "']").attr("selected",true);
-
- 
 }
 
 function cbEditShop(e) {
   console.log(e);
-
   if (e.code == 0) {
     $("#basic .close").click()
     notifyInfo("更新数据成功！")
@@ -80,8 +82,6 @@ function cbEditShop(e) {
   } else if (e.code == -1) {
     relogin();
   }
-
-  
 }
 
 function doSaveShop() {
