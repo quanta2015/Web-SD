@@ -12,6 +12,8 @@ function init() {
   $('body').on('click', '.imgtask-del', delImgTask);
 
 
+  //初始化普通好评任务栏
+  $(".nor-task-add").before($("#taskTmpl").render({ data:1, show:false }));
 
   //初始化普通好评任务栏
   $(".nor-task-add").before($("#taskTmpl").render({ type:'nor-task', data:1, show:false }));
@@ -120,3 +122,56 @@ function delImgTask() {
 }
 
 
+function doPublish() {
+  let obj = {
+    tasktype: $("input[name='r-task-type']:checked").val(),
+    returntype: $("input[name='r-return-type']:checked").val(),
+    goodsurl: $('#url').val(),
+    goodsname: $('#name').val(),
+    goodsmainimg: '',
+    colorSize: $('#color-size-info').val(),
+    factprice: $('#real-price').val(),
+    searchprice: $('#mobile-price').val(),
+    number: $('#buy-count').val(),
+    locationway: $("input[name='r-locationway']:checked").val(),
+    lowprice: $('#price-from').val(),
+    highprice: $('#price-to').val(),
+    goodsposition: $('#goods-location').val(),
+    sales_volume: $('#sell-count').val(),
+    orderwords: $('#order-message').val(),
+    // TODO：需要补第三步好评数据
+    commontask: [],
+    keywordtask: [],
+    picturetask: [],
+    commenttask: [],
+    startdate: $('#start-date').val(),
+    num: $('#task-count').val(),
+    addcharges: $('#addcharges').val(),
+    share: $('#share').val(),
+    matchLabel: $('#match-label').val(),
+    sex: $('#sex').val(),
+    lowage: $('#age').val().split('-')[0],
+    highage: $('#age').val().split('-')[1],
+    location: $('#limit-location').val(),
+    useHuabei: $('#use-huabei').val(),
+    huabeiStart: $('#huabei-start').val(),
+    jingdongLevel: $('#jingdong-level').val(),
+    taobaoLevel: $('#taobao-level').val(),
+    rebuy: $('#rebuy').val(),
+    isRecieve: $('#is-recieve').val(),
+    expressCompany: $('#express-company').val(),
+    ask: $('#ask').val(),
+    chartNecessary: $("input[name='r-chart-necessary']:checked").val(),
+  }
+  promiseData('POST', '/task/task_publish', JSON.stringify(obj), cbInfo);
+}
+
+function cbInfo(e) {
+  if (e.code == 0) {
+    notifyInfo(MSG_PUBLISH_SUCCESS);
+  }else if (e.code==99) {
+    notifyInfo(e.message);
+  }else if (e.code==-1) {
+    relogin();
+  };
+}
