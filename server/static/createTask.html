@@ -113,7 +113,7 @@
             </div>
 
             <div class="form-group">
-              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a> 商品链接</label>
+              <label class="control-label col-xs-3 "> <span class="form-imp">商品链接</span> </label>
               
               <div class="col-xs-9 form-inline">
                 <input type="text" class="form-control wide-3" id="url">
@@ -122,7 +122,7 @@
             </div>
 
             <div class="form-group">
-              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a>  商品名称</label>
+              <label class="control-label col-xs-3"><span class="form-imp">商品名称</span></label>
               <div class="col-xs-9 form-inline">
                 <input type="text" class="form-control wide-3" id="name">
                 <span class="form-info">仅平台核实任务，用户不可见</span>
@@ -131,7 +131,7 @@
 
 
             <div class="form-group">
-              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a>  商品主图</label>
+              <label class="control-label col-xs-3"><span class="form-imp">商品主图</span></label>
               <div class="col-xs-9">
                 <div class="fileinput fileinput-new" data-provides="fileinput">
                   <div class="fileinput-new thumbnail">
@@ -151,7 +151,7 @@
             </div>
 
             <div class="form-group">
-              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a>  颜色尺码规格</label>
+              <label class="control-label col-xs-3"><span class="form-imp">颜色尺码规格</span> </label>
               <div class="col-xs-9 form-inline">
                 <input type="text" class="form-control wide-3" id="name">
                 <span class="form-info">买家下单选择的颜色尺码规格</span>
@@ -159,7 +159,7 @@
             </div>
 
             <div class="form-group">
-              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a>  商品实际成交价格</label>
+              <label class="control-label col-xs-3"><span class="form-imp">实际成交价格</span>  </label>
               <div class="col-xs-9 form-inline">
                 <input type="text" class="form-control" id="name"> 元
                 <span class="form-info">买家拍戏时的付款价格，如不同等级买家看到商品价格不同，取最大值</span>
@@ -167,7 +167,7 @@
             </div>
 
             <div class="form-group">
-              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a>  手机搜索页面显示价格</label>
+              <label class="control-label col-xs-3"><span class="form-imp">手机搜索价格</span>  </label>
               <div class="col-xs-9 form-inline">
                 <input type="text" class="form-control" id="name"> 元
                 <span class="form-info">务必亲自在手机端搜索，商品价格准确</span>
@@ -175,7 +175,7 @@
             </div>
 
             <div class="form-group">
-              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a>  每单拍的数量</label>
+              <label class="control-label col-xs-3"><span class="form-imp">每单拍的数量</span>  </label>
               <div class="col-xs-9 form-inline">
                 <input type="text" class="form-control" id="name"> 件
                 <span class="form-info">买家下单时，选择的颜色尺码规格</span>
@@ -187,7 +187,7 @@
             </div>
 
             <div class="form-group">
-              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a>  定位目标商品排序方式</label>
+              <label class="control-label col-xs-3"><span class="form-imp">定位目标商品排序方式</span></label>
               <div class="col-xs-9 form-inline">
                 <div class="mt-radio-inline">
                   <label class="mt-radio">
@@ -249,24 +249,28 @@
 
             <div class="form-group">
               <label class="control-label col-xs-3">任务模式</label>
-              <div class="col-xs-9">
+              <div class="col-xs-9 ">
 
-                <div class="mt-checkbox-list">
-                  <label class="mt-checkbox mt-checkbox-outline">
+                <div class="mt-checkbox-list ">
+                  <label class="mt-checkbox mt-checkbox-outline ">
                       <input type="checkbox"> 普通好评任务
                       <span></span>
+                      <i class="form-info">(即买家确认收货后评价自由发挥，不能有额外要求，若是 淘口令 ，则直接将淘口令链接复制到关键词输入框里)</i>
                   </label>
                   <label class="mt-checkbox mt-checkbox-outline">
                       <input type="checkbox"> 指定关键词好评任务
                       <span></span>
+                      <i class="form-info">( 指定好评关键字任务佣金 + 1.50金/单 )</i>
                   </label>
                   <label class="mt-checkbox mt-checkbox-outline">
                       <input type="checkbox"> 指定图片好评任务
-                      <span></span>
+                      <span> </span>
+                      <i class="form-info">( 指定图片好评任务佣金 + 3.50金/单,为规避风险，买家无法直接复制文字内容，必须手工输入。因此买家实际的评价内容不保证100%与您的评价要求保持一致 )</i>
                   </label>
                   <label class="mt-checkbox mt-checkbox-outline">
                       <input type="checkbox"> 指定文字好评任务
                       <span></span>
+                      <i class="form-info"> ( 指定文字好评任务佣金 + 1.80金/单)</i>
                   </label>
                 </div>
                
@@ -307,6 +311,8 @@
               <div class="col-xs-9 form-inline">
                 <select class="form-control " id="shop_type">
                   <option value="">请选择</option>
+                  <option value="是">是</option>
+                  <option value="否">否</option>
                 </select>
               </div>
             </div>
@@ -316,6 +322,8 @@
               <div class="col-xs-9 form-inline">
                 <select class="form-control " id="shop_type">
                   <option value="">请选择</option>
+                  <option value="是">是</option>
+                  <option value="否">否</option>
                 </select>
               </div>
             </div>
@@ -325,6 +333,8 @@
               <div class="col-xs-9 form-inline">
                 <select class="form-control " id="shop_type">
                   <option value="">请选择</option>
+                  <option value="男">男</option>
+                  <option value="女">女</option>
                 </select>
               </div>
             </div>
@@ -334,6 +344,12 @@
               <div class="col-xs-9 form-inline">
                 <select class="form-control " id="shop_type">
                   <option value="">请选择</option>
+                  <option value="10-20">10-20</option>
+                  <option value="20-30">20-30</option>
+                  <option value="30-40">30-40</option>
+                  <option value="40-50">40-50</option>
+                  <option value="50-60">50-60</option>
+                  <option value="50-60">60以上</option>
                 </select>
               </div>
             </div>
@@ -352,6 +368,9 @@
               <div class="col-xs-9 form-inline">
                 <select class="form-control " id="shop_type">
                   <option value="">请选择</option>
+                  <option value="">信用卡</option>
+                  <option value="">花呗</option>
+                  <option value="">白条</option>
                 </select>
               </div>
             </div>
@@ -360,7 +379,24 @@
               <label class="control-label col-xs-3">是否开通花呗/白条</label>
               <div class="col-xs-9 form-inline">
                 <select class="form-control " id="shop_type">
+                  <option value="">请选择</option>            
+                    <option value="1">是(1.20金币/单)</option>
+                    <option value="0">否(1.20金币/单)</option>              
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-xs-3">京东会员等级</label>
+              <div class="col-xs-9 form-inline">
+                <select class="form-control " id="shop_type">
                   <option value="">请选择</option>
+                  <option value="0">随机会员(免费)</option>
+                  <option value="1">铜牌会员(0.50金/单)</option>
+                  <option value="2">银牌会员(1.00金/单)</option>
+                  <option value="3">金牌会员(1.50金/单)</option>
+                  <option value="4">钻石会员(2.00金/单)</option>
+                  <option value="5">PLUS会员(2.00金/单)</option>
                 </select>
               </div>
             </div>
@@ -370,6 +406,11 @@
               <div class="col-xs-9 form-inline">
                 <select class="form-control " id="shop_type">
                   <option value="">请选择</option>
+                    <option value="0">1心~2心(免费)</option>
+                    <option value="1">3心~4心( + 0.50金币/单)</option>
+                    <option value="2">5心~1钻( + 1.00金币/单)</option>
+                    <option value="3">2钻~4钻( + 1.50金币/单)</option>
+                    <option value="4">5钻以上( + 2.00金币/单)</option>
                 </select>
               </div>
             </div>
@@ -379,6 +420,9 @@
               <div class="col-xs-9 form-inline">
                 <select class="form-control " id="shop_type">
                   <option value="">请选择</option>
+                    <option value="2">7天不重复(免费)</option>
+                    <option value="0">15天不重复(免费)</option>
+                    <option value="1">30不重复(2.00金/单)</option>
                 </select>
               </div>
             </div>
@@ -388,6 +432,10 @@
               <div class="col-xs-9 form-inline">
                 <select class="form-control " id="shop_type">
                   <option value="">请选择</option>
+                    <option value="136">申通京东(2.00元/个)</option>
+                    <option value="236">韵达淘宝快递(3.00元/个)</option>
+                    <option value="536">申通拼多多(2.00元/个)</option>
+                    <option value="436">韵达蘑菇街(3.00元/个)</option>
                 </select>
                 ，包裹重量
                 <input type="text" class="form-control" id="url">
@@ -399,6 +447,8 @@
               <div class="col-xs-9 form-inline">
                 <select class="form-control " id="shop_type">
                   <option value="">请选择</option>
+                    <option value="1">是(2.00金币/单)</option>
+                    <option value="0">否(免费)</option>      
                 </select>
               </div>
             </div>
@@ -409,7 +459,7 @@
                   </label>
               </label>
               <div class="col-xs-9 ">
-                <span class="form-info">可提问可回答</span>
+                <span class="form-info">(可提问可回答,例：选择了提问则买家在下单前提问题，选择了回答则买家在收货评价后回答指定问题)  </span>
               </div>
             </div>
 
@@ -418,7 +468,7 @@
             </div>
 
             <div class="form-group">
-              <label class="control-label col-xs-3"><a href="#" class="btn red btn-outline btn-xs">必填</a>  是否需要聊天</label>
+              <label class="control-label col-xs-3"><span class="form-imp">是否需要聊天</span>  </label>
               <div class="col-xs-9 form-inline">
                 <div class="mt-radio-inline">
                   <label class="mt-radio">

@@ -32,3 +32,21 @@ body {
     width: 600px;
 }
 
+.form-imp {
+    position: relative;
+}
+
+.form-imp:before {
+    content: "必填";
+    display: inline-block;
+    margin-right: 5px;
+    background: #ff0000;
+    color: #fff;
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+i {
+    font-style: normal;
+    font-size: 12px;
+}
