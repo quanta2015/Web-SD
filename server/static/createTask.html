@@ -328,26 +328,42 @@
                   <i class="form-info">(即买家确认收货后评价自由发挥，不能有额外要求，若是 淘口令 ，则直接将淘口令链接复制到关键词输入框里)</i>
                 </label>
               </div>
-              <div class="col-xs-12 nor-task-wrap" style="display: none;" >
-                <div class="nor-task-add">
+              <div class="col-xs-12 task-wrap nor-task-wrap" style="display: none;" >
+                <div class="task-add nor-task-add">
                   <a href="javascript: void(0)"> + 添加搜索关键字</a>
                 </div>
               </div>
               
               <div class="col-xs-12">
                 <label class="mt-checkbox mt-checkbox-outline">
-                      <input type="checkbox" id="keywordtask"> 指定关键词好评任务
-                      <span></span>
-                      <i class="form-info">( 指定好评关键字任务佣金 + 1.50金/单 )</i>
-                  </label>
+                  <input type="checkbox" id="keywordtask"> 指定关键词好评任务<span></span>
+                  <i class="form-info">( 指定好评关键字任务佣金 + 1.50金/单 )</i>
+                </label>
               </div>
+              <div class="col-xs-12 task-wrap key-task-wrap"  style="display: none;" >
+                <div class="task-add key-task-add">
+                  <a href="javascript: void(0)"> + 添加关键词好评任务 </a>
+                </div>
+                <div class="key-task-main">
+                  <span class="form-imp"> 设置指定关键词：建议至少设3个关键字，最多可设置5个</span>
+                  <input type="text" class="wide-s2 ipt-keyword" >
+                  <input type="text" class="wide-s2 ipt-keyword">
+                  <input type="text" class="wide-s2 ipt-keyword" >
+                  <input type="text" class="wide-s2 ipt-keyword" >
+                  <input type="text" class="wide-s2 ipt-keyword" >
+                </div>
+              </div> 
 
               <div class="col-xs-12">
                 <label class="mt-checkbox mt-checkbox-outline">
-                      <input type="checkbox" id="picturetask"> 指定图片好评任务
-                      <span> </span>
-                      <i class="form-info">( 指定图片好评任务佣金 + 3.50金/单,为规避风险，买家无法直接复制文字内容，必须手工输入。因此买家实际的评价内容不保证100%与您的评价要求保持一致 )</i>
-                  </label>
+                  <input type="checkbox" id="picturetask"> 指定图片好评任务<span> </span>
+                  <i class="form-info">( 指定图片好评任务佣金 + 3.50金/单,为规避风险，买家无法直接复制文字内容，必须手工输入。因此买家实际的评价内容不保证100%与您的评价要求保持一致 )</i>
+                </label>
+              </div>
+              <div class="col-xs-12 task-wrap img-task-wrap" style="display: none;" >>
+                <div class="task-add img-task-add">
+                  <a href="javascript: void(0)"> + 增加图片好评任务 </a>
+                </div>
               </div>
 
               <div class="col-xs-12">
@@ -620,13 +636,57 @@
 
 
 <script id="taskTmpl" type="text/x-jsrender">
-<div class="nor-task">
+<div class="{{:type}}">
   <span class="form-imp"> 搜索关键词</span>
-  <input type="text" id="nt-key{{:data}}">
-   添加 <input type="text" class="wide-s1" id="nt-count{{:data}}"> 单   
-   放单时间从 <input type="text" class="wide-s1" id="nt-from{{:data}}"> 点 <input type="text" class="wide-s1" id="nt-to{{:data}}"> 分
-    到 <input type="text" class="wide-s1" id="name"> 点 <input type="text" class="wide-s1" id="name"> 分
+  <input type="text" id="ipt-key{{:data}}">
+   添加 <input type="text" class="wide-s1" id="ipt-count{{:data}}"> 单   
+   放单时间从 <input type="text" class="wide-s1" id="ipt-from-h{{:data}}"> 点 <input type="text" class="wide-s1" id="ipt-from-m{{:data}}"> 分
+    到 <input type="text" class="wide-s1" id="ipt-to-h{{:data}}"> 点 <input type="text" class="wide-s1" id="ipt-to-m{{:data}}"> 分
     {{if show}}<a class="btn red btn-outline btn-xs task-del">删除</a>{{/if}}  
-    
+</div>
+</script>
+
+
+<script id="imgTaskTmpl" type="text/x-jsrender">
+  <div class="img-task-wrap-item">
+    <div class="row img-task img-task-title">
+      <div class="col-xs-2 fn-right"> 上传第{{:data}}单的图片</div>
+      <div class="col-xs-10">{{if show}}<a class="btn red btn-outline btn-xs imgtask-del">删除图片好评任务</a>{{/if}}</div> 
+    </div>
+    <div class="row img-task">
+      <div class="col-xs-2 form-imp"> 搜索关键词</div>
+      <div class="col-xs-10">
+        <input type="text" id="ipt-key{{:data}}">
+       添加 <input type="text" class="wide-s1" id="ipt-count{{:data}}"> 单   
+       放单时间从 <input type="text" class="wide-s1" id="ipt-from-h{{:data}}"> 点 <input type="text" class="wide-s1" id="ipt-from-m{{:data}}"> 分
+        到 <input type="text" class="wide-s1" id="ipt-to-h{{:data}}"> 点 <input type="text" class="wide-s1" id="ipt-to-m{{:data}}"> 分
+      </div>
+    </div>
+    <div class="row img-task img-task-list">
+      <div class="col-xs-2 form-imp"> 请选择图片</div>
+      <div class="col-xs-10">
+        {{for list}}
+        <div class="fileinput fileinput-new" data-provides="fileinput" >
+          <div class="fileinput-new thumbnail" style="max-width: 150px; max-height: 120px;">
+            <img src="img/noimg.png">
+          </div>
+          <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+          <div>
+            <span class="btn default btn-file">
+              <span class="fileinput-new"> 选择图片 </span>
+              <span class="fileinput-exists"> 更换 </span>
+              <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="upload{{:~root.data}}-{{:#index+1}}">
+            </span>
+            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 删除 </a>
+          </div>
+        </div>
+        {{/for}}
+      </div>
+    </div>
+
+    <div class="row  img-task-desc">
+      <div class="col-xs-2 fn-right"> 评价描述</div>
+      <div class="col-xs-10"><textarea></textarea></div>
+    </div>
 </div>
 </script>

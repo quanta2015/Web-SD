@@ -9,11 +9,14 @@ function init() {
   $('body').on('click', '.btn-next', doNext);
   $('body').on('click', '.alladdress', getAddr);
   $('body').on('click', '.task-del', delTask);
+  $('body').on('click', '.imgtask-del', delImgTask);
+
 
 
   //初始化普通好评任务栏
-  $(".nor-task-add").before($("#taskTmpl").render({ data:1, show:false }));
-
+  $(".nor-task-add").before($("#taskTmpl").render({ type:'nor-task', data:1, show:false }));
+  $(".key-task-add").before($("#taskTmpl").render({ type:'key-task', data:1, show:false }));
+  $(".img-task-add").before($("#imgTaskTmpl").render({ data:1,list:[1,1,1,1,1], show:false }));
 
 
   //地区下拉框
@@ -21,12 +24,14 @@ function init() {
   $('.alladdress').on('mouseover', showAddress).on('mouseout', hideAddress)
 
   //普通好评任务切换显示
-  $("#normaltask").change(function() { 
-    $('.nor-task-wrap').toggle()
-  });
-  
-  //添加普通好评任务
-  $('.nor-task-add a').on('click', addTaskItem);
+  $("#normaltask").change( ()=> $('.nor-task-wrap').toggle() );
+  $("#keywordtask").change( ()=> $('.key-task-wrap').toggle() );
+  $("#picturetask").change( ()=> $('.img-task-wrap').toggle() );
+
+  //添加好评任务
+  $('.nor-task-add a').on('click', addNorTaskItem);
+  $('.key-task-add a').on('click', addKeyTaskItem);
+  $('.img-task-add a').on('click', addImgTaskItem);
 
   
 
@@ -43,8 +48,6 @@ function init() {
   $('#task-count').mask("#,##0", {reverse: true});
   $('#award-money').mask("#,##0.0", {reverse: true});
 }
-
-
 
 function doPre() {
   renderTask(PREV)
@@ -93,11 +96,27 @@ function getAddr(e) {
 }
 
 
-function addTaskItem() {
+function addNorTaskItem() {
   var count = $('.nor-task').length + 1
-  $(".nor-task-add").before($("#taskTmpl").render({ data:count, show:true }));
+  $(".nor-task-add").before($("#taskTmpl").render({ type:'nor-task', data:count, show:true }));
+}
+
+function addKeyTaskItem() {
+  var count = $('.key-task').length + 1
+  $(".key-task-add").before($("#taskTmpl").render({ type:'key-task', data:count, show:true }));
+}
+
+function addImgTaskItem() {
+  var count = $('.img-task-title').length + 1
+  $(".img-task-add").before($("#imgTaskTmpl").render({ data:count,list:[1,1,1,1,1], show:true }));
 }
 
 function delTask() {
   $(this).parent().remove();
 }
+
+function delImgTask() {
+  $(this).parents('.img-task-wrap-item').remove();
+}
+
+

@@ -42,16 +42,21 @@ a {
     width: 50px;
 }
 
+.form-group .wide-s2 {
+    width: 100px;
+}
+
 .form-imp {
     position: relative;
+    text-align: right;
 }
 
 .form-imp:before {
     content: "必填";
     display: inline-block;
     margin-right: 5px;
-    background: #ff0000;
-    color: #fff;
+    border: 1px solid #ff0000;
+    color: #ff0000;
     padding: 2px 5px;
     font-size: 12px;
 }
@@ -93,13 +98,39 @@ i {
     margin:0;
 }
 
-.nor-task,.nor-task-add {
+.task-wrap {
+    border: 1px solid #aaa;
+    padding: 10px;
+    margin: 5px 0 15px 15px;
+    box-sizing: border-box;
+    width: calc( 100% - 25px )
+}
+
+.nor-task,.key-task, .task-add, .img-task {
     margin-bottom:10px;
 }
 
-.nor-task-add {
+.task-add {
     margin-bottom: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px dashed #bebfbf
 }
 
+
+.img-task-list {
+    display: flex;
+}
+
+.img-task-list .fileinput-new {
+    padding: 5px;
+}
+
+.img-task-desc textarea {
+    width: 800px;
+    height: 80px;
+}
+
+.img-task-title {
+    font-weight: 600;
+    margin-top: 10px;
+    padding: 10px 0 ;
+}
