@@ -14,8 +14,14 @@ li {
   list-style: none;
 }
 
+
 a {
-  text-decoration: none;
+    color: #006699;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
 }
 
 .c-light {
