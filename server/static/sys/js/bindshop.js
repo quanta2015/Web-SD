@@ -25,7 +25,7 @@ function uploadaaa() {
     var form = new FormData();
     form.append("file", file);
     $.ajax({    
-        url: "/users/upload",   
+        url: HOST + "/users/upload",   
         type: 'POST',    
         data: form,       
         async:false,
@@ -53,7 +53,7 @@ var upload = function(){
         var form = new FormData();
         form.append("file", file);
         $.ajax({    
-            url: "/users/upload",   
+            url: HOST + "/users/upload",   
             type: 'POST',    
             data: form,       
             async:false,
@@ -83,7 +83,7 @@ var bind = function(data){
 
     $.ajax({
       type: 'POST',
-      url: '/users/shop_bind',
+      url: HOST + '/users/shop_bind',
       dataType: "json",
       contentType: "application/json",
       data:JSON.stringify(obj)

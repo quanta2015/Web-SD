@@ -1,6 +1,7 @@
 const CODE_COUNT = 10
 const BUY = 0
 const SELL = 1
+const HOST = 'http://localhost:8011'
 
 const MSG_LOGIN_SUCCESS = '登录成功！'
 const MSG_REGIS_SUCCESS = '注册成功！'
@@ -26,10 +27,14 @@ function jsonData(urlTmpl, urlData, cb, err) {
 function promiseData(method, url, data, cb) {
   var promise = $.ajax({
     type: method,
-    url: url,
+    url: HOST + url,
     dataType: "json",
     contentType: "application/json",
-    data:data
+    data: data,
+    xhrFields: {
+      withCredentials: true
+    },
+    crossDomain: true,
   });
   promise.done(cb);
 }

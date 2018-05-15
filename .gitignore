@@ -1,2 +1,4 @@
 *.jar
 *.zip
+*/.DS_Store
+*/.vscode
