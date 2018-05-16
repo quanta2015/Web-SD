@@ -5,12 +5,6 @@ NEXT = 1;
 $(init);
 
 
-function initLocationSelect(id, ret) {
-  $("#"+id).after(ret)
-      .on('mouseover mouseout', ()=> { $('.alladdress').toggle() });
-  $('.alladdress').on('mouseover', ()=> { $('.alladdress').show() })
-      .on('mouseout', ()=> { $('.alladdress').hide() })
-}
 
 function init() {
   $('body').on('click', '.btn-pre', doPre);
@@ -47,7 +41,6 @@ function init() {
   $('.img-task-add a').on('click', addImgTaskItem);
   $('.word-task-add a').on('click', addWordTaskItem);
 
-  
 
   $('#rp-tb').prop('checked',true);
   $('#rt-mobile').prop('checked',true);
@@ -62,8 +55,14 @@ function init() {
   $('#task-count').mask("#,##0", {reverse: true});
   $('#award-money').mask("#,##0.0", {reverse: true});
   $('#express-weight').mask("#,##0.0", {reverse: true});
+}
 
 
+function initLocationSelect(id, ret) {
+  $("#"+id).after(ret)
+      .on('mouseover mouseout', ()=> { $('.alladdress').toggle() });
+  $('.alladdress').on('mouseover', ()=> { $('.alladdress').show() })
+      .on('mouseout', ()=> { $('.alladdress').hide() })
 }
 
 function doPre() {
