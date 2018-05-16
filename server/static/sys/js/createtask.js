@@ -17,6 +17,7 @@ function init() {
   $('body').on('click', '.btn-next', doNext);
   $('body').on('click', '.alladdress', getAddr);
   $('body').on('click', '.task-del', delTask);
+  $('body').on('click', '#publish-task-btn', doPublish);
 
 
   //地区下拉框
@@ -136,28 +137,37 @@ function delTask() {
 function doPublish() {
   let obj = {
     tasktype: $("input[name='r-task-type']:checked").val(),
-    returntype: $("input[name='r-return-type']:checked").val(),
-    goodsurl: $('#url').val(),
+    returntype: 0,
+    goodsList: [{
+      colorSize: $('#color-size-info').val(),
+      factprice: $('#real-price').val().replace(/,/g, ''),
+      goodsmainimg: '',
+      goodsimg1: '',
+      goodsimg2: '',
+      goodsname: $('#name').val(),
+      goodsposition: $('#goods-location').val(),
+      goodsurl: $('#url').val(),
+      highprice: $('#price-to').val().replace(/,/g, ''),
+      lowprice: $('#price-from').val().replace(/,/g, ''),
+      number: $('#buy-count').val().replace(/,/g, ''),
+      locationway: $("input[name='r-locationway']:checked").val(),
+      orderwords: $('#order-message').val(),
+      salesVolume: $('#sell-count').val().replace(/,/g, ''),
+      searchprice: $('#mobile-price').val().replace(/,/g, ''),
+    }],
     goodsname: $('#name').val(),
-    goodsmainimg: '',
-    colorSize: $('#color-size-info').val(),
-    factprice: $('#real-price').val(),
-    searchprice: $('#mobile-price').val(),
-    number: $('#buy-count').val(),
-    locationway: $("input[name='r-locationway']:checked").val(),
-    lowprice: $('#price-from').val(),
-    highprice: $('#price-to').val(),
-    goodsposition: $('#goods-location').val(),
-    sales_volume: $('#sell-count').val(),
-    orderwords: $('#order-message').val(),
     // TODO：需要补第三步好评数据
-    commontask: [],
-    keywordtask: [],
-    picturetask: [],
-    commenttask: [],
+    commontask: 0,
+    commonTaskKeyList: [],
+    keywordtask: 0,
+    keywordTaskKeyList: [],
+    picturetask: 0,
+    pictureTaskKeyList: [],
+    commenttask: 0,
+    commentTaskKeyList: [],
     startdate: $('#start-date').val(),
-    num: $('#task-count').val(),
-    addcharges: $('#addcharges').val(),
+    num: $('#task-count').val().replace(/,/g, ''),
+    addcharges: $('#award-money').val().replace(/,/g, ''),
     share: $('#share').val(),
     matchLabel: $('#match-label').val(),
     sex: $('#sex').val(),
@@ -171,13 +181,17 @@ function doPublish() {
     rebuy: $('#rebuy').val(),
     isRecieve: $('#is-recieve').val(),
     expressCompany: $('#express-company').val(),
-    ask: $('#ask').val(),
-    chartNecessary: $("input[name='r-chart-necessary']:checked").val(),
+    expressWeight: $('#express-weight').val(),
+    ask: $('#ask').prop('checked')?1:0,
+    chatNecessary: $("input[name='r-chat-necessary']:checked").val(),
+    shopId: 0,
   }
+  console.log(obj)
   promiseData('POST', '/task/task_publish', JSON.stringify(obj), cbInfo);
 }
 
 function cbInfo(e) {
+  console.log(e)
   if (e.code == 0) {
     notifyInfo(MSG_PUBLISH_SUCCESS);
   }else if (e.code==99) {
