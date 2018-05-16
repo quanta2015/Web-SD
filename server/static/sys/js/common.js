@@ -1,9 +1,11 @@
 const CODE_COUNT = 10
 const BUY = 0
 const SELL = 1
+const HOST = 'http://localhost:8011'
 
 const MSG_LOGIN_SUCCESS = '登录成功！'
 const MSG_REGIS_SUCCESS = '注册成功！'
+const MSG_PUBLISH_SUCCESS = '发布成功！'
 
 const LOGIN_IMGS = [
   'img/login01.jpg',
@@ -26,10 +28,14 @@ function jsonData(urlTmpl, urlData, cb, err) {
 function promiseData(method, url, data, cb) {
   var promise = $.ajax({
     type: method,
-    url: url,
+    url: HOST + url,
     dataType: "json",
     contentType: "application/json",
-    data:data
+    data: data,
+    xhrFields: {
+      withCredentials: true
+    },
+    crossDomain: true,
   });
   promise.done(cb);
 }
@@ -57,4 +63,38 @@ function msgbox(info,titleA,titleB,cb) {
     },
     callback: cb
   })
+}
+
+var uploadFile = function() {
+  return new Promise(function(resolve, reject){
+    var file = $('#upload')[0].files[0];
+    var fileSize = file.size;  
+    var maxSize = 1048576;    //最大1MB  
+    if(parseInt(fileSize) >= parseInt(maxSize)){  
+        notifyInfo('上传的文件不能超过1MB');  
+        return false;  
+    }else{    
+      var form = new FormData();
+      form.append("file", file);
+      $.ajax({    
+          url: HOST + "/users/upload",   
+          type: 'POST',    
+          data: form,       
+          async:false,
+          processData: false,
+          contentType: false,
+          xhrFields: {
+            withCredentials: true
+          },
+          crossDomain: true,
+      }).done(function(e) {
+        console.log('上传图片成功！');
+        resolve(e.data);
+      })   
+    }
+  })
+}
+
+function relogin() {
+  top.location.href = 'index.html';
 }
