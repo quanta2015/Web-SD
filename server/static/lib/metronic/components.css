@@ -14395,9 +14395,9 @@ Tasks Widget
   font-size: 16px; }
 
 .mt-element-step .step-thin .active {
-  background-color: #32c5d2 !important; }
+  background-color: #ff6600 !important; }
   .mt-element-step .step-thin .active .mt-step-number {
-    color: #32c5d2 !important; }
+    color: #ff6600 !important; }
   .mt-element-step .step-thin .active .mt-step-title,
   .mt-element-step .step-thin .active .mt-step-content {
     color: #fff !important; }
@@ -14448,9 +14448,9 @@ Tasks Widget
   position: relative; }
 
 .mt-element-step .step-background .active {
-  background-color: #32c5d2 !important; }
+  background-color: #ff6600 !important; }
   .mt-element-step .step-background .active .mt-step-number {
-    color: #2ab4c0 !important; }
+    color: #ff6600 !important; }
   .mt-element-step .step-background .active .mt-step-title,
   .mt-element-step .step-background .active .mt-step-content {
     color: #fff !important; }
@@ -14500,9 +14500,9 @@ Tasks Widget
   z-index: 5; }
 
 .mt-element-step .step-background-thin .active {
-  background-color: #32c5d2 !important; }
+  background-color: #ff6600 !important; }
   .mt-element-step .step-background-thin .active .mt-step-number {
-    color: #2ab4c0 !important; }
+    color: #ff6600 !important; }
   .mt-element-step .step-background-thin .active .mt-step-title,
   .mt-element-step .step-background-thin .active .mt-step-content {
     color: #fff !important; }
@@ -14543,13 +14543,13 @@ Tasks Widget
   font-weight: 100; }
 
 .mt-element-step .step-no-background .active .mt-step-number {
-  color: #32c5d2 !important;
-  border-color: #32c5d2 !important;
+  color: #ff6600 !important;
+  border-color: #ff6600 !important;
   font-weight: 700; }
 
 .mt-element-step .step-no-background .active .mt-step-title,
 .mt-element-step .step-no-background .active .mt-step-content {
-  color: #32c5d2 !important;
+  color: #ff6600 !important;
   font-weight: 700; }
 
 .mt-element-step .step-no-background .done .mt-step-number {
@@ -14680,15 +14680,15 @@ Tasks Widget
   content: none; }
 
 .mt-element-step .step-line .active .mt-step-number {
-  color: #32c5d2 !important;
-  border-color: #32c5d2 !important; }
+  color: #ff6600 !important;
+  border-color: #ff6600 !important; }
 
 .mt-element-step .step-line .active .mt-step-title,
 .mt-element-step .step-line .active .mt-step-content {
-  color: #32c5d2 !important; }
+  color: #ff6600 !important; }
 
 .mt-element-step .step-line .active .mt-step-title:after, .mt-element-step .step-line .active .mt-step-title:before {
-  background-color: #32c5d2; }
+  background-color: #ff6600; }
 
 .mt-element-step .step-line .done .mt-step-number {
   color: #26C281 !important;

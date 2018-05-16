@@ -73,6 +73,8 @@ function doNext() {
   renderTask(NEXT)
 }
 
+
+//不同步骤页面渲染控制
 function renderTask(type) {
   _cid =  parseInt($('.active .mt-step-number').text()) - 1;
   type?next=_cid+1:next=_cid-1
@@ -92,6 +94,10 @@ function renderTask(type) {
     $('.mt-element-step .mt-step-col:eq('+ next + ')').addClass('active').removeClass('done')
     $('.mt-element-step .mt-step-col:eq('+ _cid + ')').removeClass('active')
   }
+
+  (type==NEXT)?cur=_cid+2:cur=_cid;
+  $('.step').addClass('hide');
+  $('.step'+cur).removeClass('hide');
 }
 
 
