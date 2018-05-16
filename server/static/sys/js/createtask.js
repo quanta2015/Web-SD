@@ -27,7 +27,7 @@ function init() {
   //初始化普通好评任务栏
   $(".nor-task-add").before($("#taskTmpl").render({ type:'nor-task', data:1, show:false }));
   $(".key-task-add").before($("#taskTmpl").render({ type:'key-task', data:1, show:false }));
-  $(".img-task-add").before($("#imgTaskTmpl").render({ data:1,list:[1,1,1,1,1], show:false }));
+  $(".img-task-add").before($("#imgTaskTmpl").render({ type:'img-task', data:1,list:[1,1,1,1,1], show:false }));
   $(".word-task-add").before($("#taskTmpl").render({ type:'word-task',data:1, show:false, word: true }));
 
 
@@ -122,7 +122,7 @@ function addKeyTaskItem() {
 
 function addImgTaskItem() {
   var count = $('.img-task-title').length + 1
-  $(".img-task-add").before($("#imgTaskTmpl").render({ data:count,list:[1,1,1,1,1], show:true }));
+  $(".img-task-add").before($("#imgTaskTmpl").render({ type:'img-task', data:count,list:[1,1,1,1,1], show:true }));
 }
 
 
@@ -143,7 +143,7 @@ function doPublish() {
     goodsList: [{
       colorSize: $('#color-size-info').val(),
       factprice: $('#real-price').val().replace(/,/g, ''),
-      goodsmainimg: '',
+      goodsmainimg: $('#upload').val(),
       goodsimg1: '',
       goodsimg2: '',
       goodsname: $('#name').val(),
@@ -158,14 +158,13 @@ function doPublish() {
       searchprice: $('#mobile-price').val().replace(/,/g, ''),
     }],
     goodsname: $('#name').val(),
-    // TODO：需要补第三步好评数据
-    commontask: 0,
+    commontask: $('#normaltask').prop('checked')?1:0,
     commonTaskKeyList: [],
-    keywordtask: 0,
+    keywordtask: $('#keywordtask').prop('checked')?1:0,
     keywordTaskKeyList: [],
-    picturetask: 0,
+    picturetask: $('#picturetask').prop('checked')?1:0,
     pictureTaskKeyList: [],
-    commenttask: 0,
+    commenttask: $('#wordtask').prop('checked')?1:0,
     commentTaskKeyList: [],
     startdate: $('#start-date').val(),
     num: $('#task-count').val().replace(/,/g, ''),
@@ -188,8 +187,64 @@ function doPublish() {
     chatNecessary: $("input[name='r-chat-necessary']:checked").val(),
     shopId: $('#shop-list').val(),
   }
+  obj.commonTaskKeyList = obj.commontask ? getGreatCommentData('nor-task') : [];
+  obj.keywordTaskKeyList = obj.keywordtask ? getGreatCommentData('key-task') : [];
+  obj.pictureTaskKeyList = obj.picturetask ? getGreatCommentData('img-task') : [];
+  obj.commentTaskKeyList = obj.commenttask ? getGreatCommentData('word-task') : [];
   console.log(obj)
   promiseData('POST', '/task/task_publish', JSON.stringify(obj), cbInfo);
+}
+
+function getGreatCommentData(type) {
+  let taskTypeMap = {
+    'nor-task': 1,
+    'key-task': 2,
+    'img-task': 3,
+    'word-task': 4,
+  };
+  let result = [];
+  for(let i = 1; i < 5; i++) {
+    if ($(`#${type}-ipt-key${i}`).length < 1) break;
+    let item = {
+      keyword: $(`#${type}-ipt-key${i}`).val(),
+      fromHour: $(`#${type}-ipt-from-h${i}`).val(),
+      fromMin: $(`#${type}-ipt-from-m${i}`).val(),
+      toHour: $(`#${type}-ipt-to-h${i}`).val(),
+      toMin: $(`#${type}-ipt-to-m${i}`).val(),
+      appoints: '',
+      taskPictureList: [],
+      taskkeyNum: $(`#${type}-ipt-count${i}`).val(),
+      taskkeyType: taskTypeMap[type],
+    };
+    switch(type) {
+      case 'nor-task':
+        break;
+      case 'key-task':
+        item.appoints = [];
+        $('.ipt-keyword').each(function() {
+          if ($(this).val()) {
+            item.appoints.push($(this).val());
+          }
+        });
+        item.appoints = item.appoints.join(',');
+        break;
+      case 'img-task':
+        item.desc = $(`#${type}-ipt-desc${i}`).val();
+        for(let j = 1; j <= 5; j++) {
+          let imgUrl = ($(`#img-task-upload${i}-${j}`).attr('url'));
+          if (!imgUrl) continue;
+          item.taskPictureList.push({
+            picture: imgUrl
+          });
+        }
+        break;
+      case 'word-task':
+        item.appoints = $(`#${type}-ipt-word${i}`).val();
+        break;
+    }
+    result.push(item);
+  }
+  return result;
 }
 
 function cbInfo(e) {

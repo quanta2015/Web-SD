@@ -677,16 +677,16 @@
   <div class="task-wrap-item">
     <div class="{{:type}} {{:type}}-title">
       <span class="form-imp"> 搜索关键词</span>
-      <input type="text" id="ipt-key{{:data}}">
-       添加 <input type="text" class="wide-s1" id="ipt-count{{:data}}"> 单   
-       放单时间从 <input type="text" class="wide-s1" id="ipt-from-h{{:data}}"> 点 <input type="text" class="wide-s1" id="ipt-from-m{{:data}}"> 分
-        到 <input type="text" class="wide-s1" id="ipt-to-h{{:data}}"> 点 <input type="text" class="wide-s1" id="ipt-to-m{{:data}}"> 分
+      <input type="text" id="{{:type}}-ipt-key{{:data}}">
+       添加 <input type="text" class="wide-s1" id="{{:type}}-ipt-count{{:data}}"> 单   
+       放单时间从 <input type="text" class="wide-s1" id="{{:type}}-ipt-from-h{{:data}}"> 点 <input type="text" class="wide-s1" id="{{:type}}-ipt-from-m{{:data}}"> 分
+        到 <input type="text" class="wide-s1" id="{{:type}}-ipt-to-h{{:data}}"> 点 <input type="text" class="wide-s1" id="{{:type}}-ipt-to-m{{:data}}"> 分
         {{if show}}<a class="btn red btn-outline btn-xs task-del">删除</a>{{/if}}  
     </div>
     {{if word}}
     <div class="{{:type}}">
       <span class="form-imp"> 指定文字</span>
-      <input type="text" id="ipt-word{{:data}}" class="wide-3" placeholder="注意！不能超过50个字！"> 
+      <input type="text" id="{{:type}}-ipt-word{{:data}}" class="wide-3" placeholder="注意！不能超过50个字！"> 
     </div>
     {{/if}}
   </div>
@@ -702,10 +702,10 @@
     <div class="row img-task">
       <div class="col-xs-2 form-imp"> 搜索关键词</div>
       <div class="col-xs-10">
-        <input type="text" id="ipt-key{{:data}}">
-       添加 <input type="text" class="wide-s1" id="ipt-count{{:data}}"> 单   
-       放单时间从 <input type="text" class="wide-s1" id="ipt-from-h{{:data}}"> 点 <input type="text" class="wide-s1" id="ipt-from-m{{:data}}"> 分
-        到 <input type="text" class="wide-s1" id="ipt-to-h{{:data}}"> 点 <input type="text" class="wide-s1" id="ipt-to-m{{:data}}"> 分
+        <input type="text" id="{{:~root.type}}-ipt-key{{:data}}">
+       添加 <input type="text" class="wide-s1" id="{{:type}}-ipt-count{{:data}}"> 单   
+       放单时间从 <input type="text" class="wide-s1" id="{{:type}}-ipt-from-h{{:data}}"> 点 <input type="text" class="wide-s1" id="{{:type}}-ipt-from-m{{:data}}"> 分
+        到 <input type="text" class="wide-s1" id="{{:type}}-ipt-to-h{{:data}}"> 点 <input type="text" class="wide-s1" id="{{:type}}-ipt-to-m{{:data}}"> 分
       </div>
     </div>
     <div class="row img-task img-task-list">
@@ -721,7 +721,7 @@
             <span class="btn default btn-file">
               <span class="fileinput-new"> 选择图片 </span>
               <span class="fileinput-exists"> 更换 </span>
-              <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="upload{{:~root.data}}-{{:#index+1}}">
+              <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="{{:~root.type}}-upload{{:~root.data}}-{{:#index+1}}">
             </span>
             <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 删除 </a>
           </div>
@@ -732,7 +732,7 @@
 
     <div class="row  img-task-desc">
       <div class="col-xs-2 fn-right"> 评价描述</div>
-      <div class="col-xs-10"><textarea></textarea></div>
+      <div class="col-xs-10"><textarea id="{{:type}}-ipt-desc{{:data}}"></textarea></div>
     </div>
 </div>
 </script>
