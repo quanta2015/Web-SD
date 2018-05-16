@@ -49,7 +49,8 @@ var bind = function(data){
 }
 
 function doSave() {
-  uploadFile().then((data) => { bind(data) })
+  $file = $('#upload')[0].files[0];
+  uploadFile($file).then((data) => { bind(data) })
 }
 
 

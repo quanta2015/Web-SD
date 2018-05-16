@@ -65,11 +65,11 @@ function msgbox(info,titleA,titleB,cb) {
   })
 }
 
-var uploadFile = function() {
+var uploadFile = function(target) {
   return new Promise(function(resolve, reject){
-    var file = $('#upload')[0].files[0];
+    var file = target;
     var fileSize = file.size;  
-    var maxSize = 1048576;    //最大1MB  
+    var maxSize = 5048576;    //最大5MB  
     if(parseInt(fileSize) >= parseInt(maxSize)){  
         notifyInfo('上传的文件不能超过1MB');  
         return false;  
