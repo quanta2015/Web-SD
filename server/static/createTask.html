@@ -46,11 +46,8 @@
             <div class="mt-step-number bg-white font-grey">1</div>
             <div class="mt-step-content font-grey-cascade">选择任务类型</div>
           </div>
-<<<<<<< HEAD
+
           <div class="col-xs-3 bg-grey mt-step-col ">
-=======
-          <div class="col-xs-3 bg-grey mt-step-col">
->>>>>>> bbc7c6fdc905b8e50afe38f4eae30ac333a111a4
             <div class="mt-step-number bg-white font-grey">2</div>
             <div class="mt-step-content font-grey-cascade">填写任务信息</div>
           </div>
@@ -69,12 +66,12 @@
         <div class="step step1 ">
           <div class="portlet light bordered">                     
             <div class="portlet-body">
-                第一步：选择平台
+              第一步：选择平台和店铺
             </div>
-            <div class="mt-radio-list">
-              <div class="col-xs-9 form-inline">
-                <select class="form-control " id="platform-list">
-                </select>
+            <div class="portlet-body">
+              <div class="form-inline">
+                <select class="form-control " id="platform-list"></select> - 
+                <select class="form-control " id="shop-list"> </select>
               </div>
             </div>
           </div>
@@ -102,17 +99,6 @@
                   <input type="radio" name="r-return-type" value="平台服务" checked> 平台服务
                   <span></span>
               </label>
-            </div>
-          </div>
-          <div class="portlet light bordered">                     
-            <div class="portlet-body">
-                第三步：选择店铺
-            </div>
-            <div class="mt-radio-list">
-              <div class="col-xs-9 form-inline">
-                <select class="form-control " id="shop-list">
-                </select>
-              </div>
             </div>
           </div>
         </div>
@@ -752,14 +738,14 @@
 </script>
 
 <script id="platformTmpl" type="text/x-jsrender">
-  <option value="">请选择</option>
+  <option value="">请选择平台</option>
   {{for list}}
   <option value="{{:#data}}">{{:#data}}</option>
   {{/for}}
 </script>
 
 <script id="shopTmpl" type="text/x-jsrender">
-  <option value="">请选择</option>
+  <option value="">请选择店铺</option>
   {{for list}}
   <option value="{{:#data.id}}">{{:#data.name}}</option>
   {{/for}}
