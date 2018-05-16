@@ -13,34 +13,6 @@ function doResetForm() {
   document.getElementById("form-bind").reset()
 }
 
-function uploadaaa() {
-  var file = $('#upload')[0].files[0];
-  var fileSize = file.size;  
-  var maxSize = 1048576;    //最大1MB  
-    
-  if(parseInt(fileSize) >= parseInt(maxSize)){  
-      notifyInfo('上传的文件不能超过1MB');  
-      return false;  
-  }else{    
-    var form = new FormData();
-    form.append("file", file);
-    $.ajax({    
-        url: HOST + "/users/upload",   
-        type: 'POST',    
-        data: form,       
-        async:false,
-        processData: false,  
-        contentType: false,
-        xhrFields: {
-          withCredentials: true
-        },
-        crossDomain: true,
-    }).done(function(e) {
-      console.log(e);
-    })   
-  }
-}
-
 function cbUpload(e) {
   console.log(e);
 }

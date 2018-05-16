@@ -106,7 +106,16 @@ i {
     width: calc( 100% - 25px )
 }
 
-.nor-task,.key-task, .task-add, .img-task {
+.task-wrap-item:first-child {
+    border-top: none;
+}
+
+.task-wrap-item {
+    border-top: 1px dashed #bebfbf;
+    padding-top: 10px;
+}
+
+.nor-task,.key-task, .task-add, .img-task, .word-task {
     margin-bottom:10px;
 }
 

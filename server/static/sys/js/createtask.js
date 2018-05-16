@@ -4,36 +4,47 @@ NEXT = 1;
 
 $(init);
 
+
+function initLocationSelect(id, ret) {
+  $("#"+id).after(ret)
+      .on('mouseover mouseout', ()=> { $('.alladdress').toggle() });
+  $('.alladdress').on('mouseover', ()=> { $('.alladdress').show() })
+      .on('mouseout', ()=> { $('.alladdress').hide() })
+}
+
 function init() {
   $('body').on('click', '.btn-pre', doPre);
   $('body').on('click', '.btn-next', doNext);
   $('body').on('click', '.alladdress', getAddr);
   $('body').on('click', '.task-del', delTask);
-  $('body').on('click', '.imgtask-del', delImgTask);
 
 
-  //初始化普通好评任务栏
-  $(".nor-task-add").before($("#taskTmpl").render({ data:1, show:false }));
+  //地区下拉框
+  $.ajax('./tmpl/addr.tmpl').done( (ret) => {
+    initLocationSelect('goods-location', ret)
+    initLocationSelect('limit-location', ret)
+  })
+
 
   //初始化普通好评任务栏
   $(".nor-task-add").before($("#taskTmpl").render({ type:'nor-task', data:1, show:false }));
   $(".key-task-add").before($("#taskTmpl").render({ type:'key-task', data:1, show:false }));
   $(".img-task-add").before($("#imgTaskTmpl").render({ data:1,list:[1,1,1,1,1], show:false }));
+  $(".word-task-add").before($("#taskTmpl").render({ type:'word-task',data:1, show:false, word: true }));
 
 
-  //地区下拉框
-  $('#goods-location').on('mouseover mouseout', toggleAddress)
-  $('.alladdress').on('mouseover', showAddress).on('mouseout', hideAddress)
 
   //好评任务切换显示
   $("#normaltask").change( ()=> $('.nor-task-wrap').toggle() );
   $("#keywordtask").change( ()=> $('.key-task-wrap').toggle() );
   $("#picturetask").change( ()=> $('.img-task-wrap').toggle() );
+  $("#wordtask").change( ()=> $('.word-task-wrap').toggle() );
 
   //添加好评任务
   $('.nor-task-add a').on('click', addNorTaskItem);
   $('.key-task-add a').on('click', addKeyTaskItem);
   $('.img-task-add a').on('click', addImgTaskItem);
+  $('.word-task-add a').on('click', addWordTaskItem);
 
   
 
@@ -49,6 +60,9 @@ function init() {
   $('#price-to').mask("#,##0.0", {reverse: true});
   $('#task-count').mask("#,##0", {reverse: true});
   $('#award-money').mask("#,##0.0", {reverse: true});
+  $('#express-weight').mask("#,##0.0", {reverse: true});
+
+
 }
 
 function doPre() {
@@ -80,20 +94,9 @@ function renderTask(type) {
   }
 }
 
-function toggleAddress() {
-  $('.alladdress').toggle()
-}
-
-function showAddress() {
-  $('.alladdress').show()
-}
-
-function hideAddress() {
-  $('.alladdress').hide()
-}
 
 function getAddr(e) {
-  $('#goods-location').val(e.target.innerText);
+  $(e.target).parents('.alladdress').prev().val(e.target.innerText)
   $('.alladdress').hide()
 }
 
@@ -113,12 +116,14 @@ function addImgTaskItem() {
   $(".img-task-add").before($("#imgTaskTmpl").render({ data:count,list:[1,1,1,1,1], show:true }));
 }
 
-function delTask() {
-  $(this).parent().remove();
+
+function addWordTaskItem() {
+  var count = $('.word-task-title').length + 1
+  $(".word-task-add").before($("#taskTmpl").render({ type:'word-task',data:count, show:false, word: true }));
 }
 
-function delImgTask() {
-  $(this).parents('.img-task-wrap-item').remove();
+function delTask() {
+  $(this).parents('.task-wrap-item').remove();
 }
 
 
