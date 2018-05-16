@@ -23,7 +23,7 @@ function init() {
   $('#goods-location').on('mouseover mouseout', toggleAddress)
   $('.alladdress').on('mouseover', showAddress).on('mouseout', hideAddress)
 
-  //普通好评任务切换显示
+  //好评任务切换显示
   $("#normaltask").change( ()=> $('.nor-task-wrap').toggle() );
   $("#keywordtask").change( ()=> $('.key-task-wrap').toggle() );
   $("#picturetask").change( ()=> $('.img-task-wrap').toggle() );
