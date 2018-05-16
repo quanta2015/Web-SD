@@ -62,20 +62,14 @@
         </div>
       </div>
       <form id="form-task" class="form-horizontal">
-        <div class="step step1 hide">
+        <div class="step step1 ">
           <div class="portlet light bordered">                     
             <div class="portlet-body">
                 第一步：选择平台
             </div>
             <div class="mt-radio-inline">
-              <label class="mt-radio">
-                  <input type="radio" name="r-platform" value="淘宝" checked> 淘宝
-                  <span></span>
-              </label>
-              <label class="mt-radio">
-                  <input type="radio" name="r-platform" value="京东"> 京东
-                  <span></span>
-              </label>
+              <select class="form-control " id="platform-list">
+              </select>
             </div>
           </div>
           <div class="portlet light bordered">                     
@@ -102,6 +96,17 @@
                   <input type="radio" name="r-return-type" value="平台服务" checked> 平台服务
                   <span></span>
               </label>
+            </div>
+          </div>
+          <div class="portlet light bordered">                     
+            <div class="portlet-body">
+                第三步：选择店铺
+            </div>
+            <div class="mt-radio-list">
+              <div class="col-xs-9 form-inline">
+                <select class="form-control " id="shop-list">
+                </select>
+              </div>
             </div>
           </div>
         </div>
@@ -738,4 +743,18 @@
       <div class="col-xs-10"><textarea></textarea></div>
     </div>
 </div>
+</script>
+
+<script id="platformTmpl" type="text/x-jsrender">
+  <option value="">请选择</option>
+  {{for list}}
+  <option value="{{:#data}}">{{:#data}}</option>
+  {{/for}}
+</script>
+
+<script id="shopTmpl" type="text/x-jsrender">
+  <option value="">请选择</option>
+  {{for list}}
+  <option value="{{:#data.id}}">{{:#data.name}}</option>
+  {{/for}}
 </script>

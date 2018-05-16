@@ -7,6 +7,9 @@ $(init);
 
 
 function init() {
+
+  initPlatforms();
+
   $('body').on('click', '.btn-pre', doPre);
   $('body').on('click', '.btn-next', doNext);
   $('body').on('click', '.alladdress', getAddr);
@@ -135,7 +138,7 @@ function delTask() {
 
 function doPublish() {
   let obj = {
-    tasktype: $("input[name='r-task-type']:checked").val(),
+    tasktype: $("#platform-list").val(),
     returntype: 0,
     goodsList: [{
       colorSize: $('#color-size-info').val(),
@@ -183,7 +186,7 @@ function doPublish() {
     expressWeight: $('#express-weight').val(),
     ask: $('#ask').prop('checked')?1:0,
     chatNecessary: $("input[name='r-chat-necessary']:checked").val(),
-    shopId: 0,
+    shopId: $('#shop-list').val(),
   }
   console.log(obj)
   promiseData('POST', '/task/task_publish', JSON.stringify(obj), cbInfo);
@@ -198,4 +201,27 @@ function cbInfo(e) {
   }else if (e.code==-1) {
     relogin();
   };
+}
+
+function initPlatforms() {
+  promiseData('GET', '/task/all_platform', null, cbPlatformInfo);
+}
+
+function cbPlatformInfo(e) {
+  console.log(e);
+  if (e.code == 0) {
+    initPlatformList(e.data);
+  } else if (e.code == -1) {
+    relogin();
+  }
+}
+
+function initPlatformList(data) {
+  let platforms = data.map(v => v.platform);
+  let shops = [];
+  data.forEach(v => {
+    shops = shops.concat(v.shops);
+  })
+  $("#platform-list").append($("#platformTmpl").render({ list:platforms }));
+  $("#shop-list").append($("#shopTmpl").render({ list:shops }));
 }
