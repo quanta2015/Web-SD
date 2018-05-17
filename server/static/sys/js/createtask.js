@@ -212,10 +212,10 @@ function getGreatCommentData(type) {
     if ($(`#${type}-ipt-key${i}`).length < 1) break;
     let item = {
       keyword: $(`#${type}-ipt-key${i}`).val(),
-      fromHour: $(`#${type}-ipt-from-h${i}`).val(),
-      fromMin: $(`#${type}-ipt-from-m${i}`).val(),
-      toHour: $(`#${type}-ipt-to-h${i}`).val(),
-      toMin: $(`#${type}-ipt-to-m${i}`).val(),
+      fromHour: $(`#${type}-ipt-time-from${i}`).val().split(':')[0],
+      fromMin: $(`#${type}-ipt-time-from${i}`).val().split(':')[1],
+      toHour: $(`#${type}-ipt-time-to${i}`).val().split(':')[0],
+      toMin: $(`#${type}-ipt-time-to${i}`).val().split(':')[1],
       appoints: '',
       taskPictureList: [],
       taskkeyNum: $(`#${type}-ipt-count${i}`).val(),
