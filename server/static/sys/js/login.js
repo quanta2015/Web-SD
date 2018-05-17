@@ -146,7 +146,7 @@ function cbLogin(e) {
     $.cookie('mobile', e.data.mobile, {expires: 30});
     $.cookie('password', $('#login-password').val, { expires: 30 });
     $.cookie('id', e.data.id, { expires: 30 });
-    location.href = "manage.html";
+    location.href = "mainSell.html";
     notifyInfo(MSG_LOGIN_SUCCESS);
   }else if (e.code==99) {
     notifyInfo(e.message);
