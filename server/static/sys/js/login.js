@@ -8,6 +8,7 @@ function init() {
   $('body').on('click', '.action-register', goRegisterPage);
   $('body').on('click', '.action-reg', goRegisterPage);
   $('body').on('click', '#regSellBtn', showRegSell);
+  $('body').on('click', '#regBuyBtn', showRegBuy);
   $('body').on('click', '#reg-btn', doRegister);
   $('body').on('click', '#getcode-btn', doGetCode);
   $('body').on('click', '#loginBtn', doLogin);
@@ -47,7 +48,12 @@ function goRegisterPage() {
 
 function showRegSell() {
   hideAllPages();
-  $('.regs').removeClass('hide');
+  $('.regs').empty().removeClass('hide').append($("#regTmpl").render({ type:'sell' }));
+}
+
+function showRegBuy() {
+  hideAllPages();
+  $('.regs').empty().removeClass('hide').append($("#regTmpl").render({ type:'buy' }));
 }
 
 function doRegister() {
