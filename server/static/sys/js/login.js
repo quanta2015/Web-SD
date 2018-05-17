@@ -92,7 +92,7 @@ function doRegister() {
       if (key == 'repassword') continue;
       obj[key]=infoMap[key].val
     }
-    promiseData('POST', '/users/shoper_reg', JSON.stringify(obj), cbInfo);
+    promiseData('POST', URL_SELL_REG, JSON.stringify(obj), cbInfo);
   }
 }
 
@@ -118,7 +118,7 @@ function doGetCode() {
     'mobilephone':$('#mobile').val()
   }
   $('#getcode-btn').attr("disabled",true);
-  promiseData('GET', '/users/sms_send', obj, cbCode);
+  promiseData('GET', URL_SMS_SEND, obj, cbCode);
   let count = CODE_COUNT;
   doCounter(count);
 }
@@ -143,7 +143,7 @@ function doLogin() {
   }else{
     //SELL login
     obj = { mobile:$('#login-mobile').val(), password:$('#login-password').val() };
-    promiseData('POST', '/users/shoper_login', JSON.stringify(obj), cbLogin);
+    promiseData('POST', URL_SELL_LOGIN, JSON.stringify(obj), cbLogin);
   }
 }
 

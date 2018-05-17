@@ -12,7 +12,7 @@ function init() {
 
 function initList() {
   var id = parseInt($.cookie('id'));
-  promiseData('GET', '/task/all_tasks/', null, cbListTask);
+  promiseData('GET', URL_SELL_ALL_TASK, null, cbListTask);
 }
 
 

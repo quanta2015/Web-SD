@@ -18,7 +18,7 @@ function init() {
 
 
   //地区下拉框
-  $.ajax('./tmpl/addr.tmpl').done( (ret) => {
+  $.ajax(TEPL_ADDR).done( (ret) => {
     initLocationSelect('goods-location', ret)
     initLocationSelect('limit-location', ret)
   })
@@ -197,7 +197,7 @@ function doPublish() {
   obj.pictureTaskKeyList = obj.picturetask ? getGreatCommentData('img-task') : [];
   obj.commentTaskKeyList = obj.commenttask ? getGreatCommentData('word-task') : [];
   console.log(obj)
-  promiseData('POST', '/task/task_publish', JSON.stringify(obj), cbInfo);
+  promiseData('POST', URL_TASK_PUB, JSON.stringify(obj), cbInfo);
 }
 
 function getGreatCommentData(type) {
@@ -264,7 +264,7 @@ function cbInfo(e) {
 }
 
 function initPlatforms() {
-  promiseData('GET', '/task/all_platform', null, cbPlatformInfo);
+  promiseData('GET', URL_TASK_ALL_PLATFORM, null, cbPlatformInfo);
 }
 
 function cbPlatformInfo(e) {

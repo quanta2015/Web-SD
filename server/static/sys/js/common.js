@@ -3,9 +3,24 @@ const BUY = 0
 const SELL = 1
 const HOST = 'http://localhost:8011'
 
+const URL_SELL_REG          = HOST + '/users/shoper_reg'
+const URL_SMS_SEND          = HOST + '/users/sms_send'
+const URL_SELL_LOGIN        = HOST + '/users/shoper_login'
+const URL_SHOP_BIND         = HOST + '/users/shop_bind'
+const URL_TASK_PUBLISH      = HOST + '/task/task_publish'
+const URL_TASK_ALL_PLATFORM = HOST + '/task/all_platform'
+const URL_SELL_SHOPS        = HOST + '/users/shoper_shops/'
+const URL_SELL_SHOP_DEL     = HOST + '/users/shop_del/'
+const URL_SELL_SHOP_UPDATE  = HOST + '/users/shop_update/'
+const URL_SELL_ALL_TASK     = HOST + '/task/all_tasks/'
+
+const TEPL_ADDR = './tmpl/addr.tmpl'
+
 const MSG_LOGIN_SUCCESS = '登录成功！'
 const MSG_REGIS_SUCCESS = '注册成功！'
 const MSG_PUBLISH_SUCCESS = '发布成功！'
+
+
 
 const LOGIN_IMGS = [
   'img/login01.jpg',

@@ -14,7 +14,7 @@ function init() {
 
 function initList() {
   var id = parseInt($.cookie('id'));
-  promiseData('GET', '/users/shoper_shops/' + id, null, cbListShop);
+  promiseData('GET', URL_SELL_SHOPS + id, null, cbListShop);
 }
 
 
@@ -35,7 +35,7 @@ function doDelShop() {
 
   function cbDel(e) {
     if (!e) {
-      promiseData('GET', '/users/shop_del/' + sid, null, cbDelShop);
+      promiseData('GET', URL_SELL_SHOP_DEL + sid, null, cbDelShop);
     }
   }
 }
@@ -96,5 +96,5 @@ function doSaveShop() {
     addressCounty: $('#shop-county').val()
   }
 
-  promiseData('POST', '/users/shop_update/', JSON.stringify(obj), cbEditShop);
+  promiseData('POST', URL_SELL_SHOP_UPDATE, JSON.stringify(obj), cbEditShop);
 }
