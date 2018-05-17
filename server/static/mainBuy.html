@@ -14,7 +14,7 @@
   <link href="lib/metronic/layout.min.css"  rel="stylesheet" type="text/css" >
   <link href="lib/metronic/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color">
 
-  <link href="sys/css/mainsys.css"  rel="stylesheet" type="text/css" >
+  <link href="sys/css/mainbuy.css"  rel="stylesheet" type="text/css" >
 </head>
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white" cz-shortcut-listen="true">
@@ -33,6 +33,15 @@
       </a>
       <div class="top-menu">
         <ul class="nav navbar-nav pull-right">
+          <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+            <a href="#" ><i class="icon-user"></i> 新手任务</a>
+          </li>
+          <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+            <a href="#" ><i class="icon-film"></i> 新手教学</a>
+          </li>
+          <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+            <a href="#" ><i class=" icon-paper-plane"></i> 推广赚金</a>
+          </li>
           <li class="dropdown dropdown-quick-sidebar-toggler">
             <a id="exitBtn"><i class="icon-power"></i> 退出</a>
           </li>
@@ -44,109 +53,117 @@
   <div class="page-container">
     <div class="page-sidebar-wrapper">
       <div class="page-sidebar navbar-collapse collapse">
-        <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
+        <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="true" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
           <li class="heading">
-            <h3 class="uppercase">系统中心</h3>
+            <h3 class="uppercase">买家中心</h3>
           </li>
-          <li class="nav-item  ">
+          <li class="nav-item  active open">
             <a href="javascript:;" class="nav-link nav-toggle">
               <i class="icon-home"></i>
-              <span class="title">商家管理</span>
+              <span class="title">垫付任务</span>
               <span class="arrow"></span>
             </a>
-            <ul class="sub-menu">
-              <li class="nav-item  ">
-                <a href="#" class="nav-link ">
-                  <span class="title">发布任务审核</span>
+            <ul class="sub-menu ">
+              <li class="nav-item ">
+                <a href="#" class="nav-link " data-button="">
+                  <span class="title">淘宝垫付任务</span>
                 </a>
               </li>
               <li class="nav-item  ">
-                <a href="#" class="nav-link ">
-                  <span class="title">XXXX</span>
+                <a href="#" class="nav-link " data-button="">
+                  <span class="title">京东垫付任务</span>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item  ">
+          <li class="nav-item  active open">
             <a href="javascript:;" class="nav-link nav-toggle">
               <i class="icon-puzzle"></i>
-              <span class="title">刷手管理</span>
+              <span class="title">我的订单</span>
               <span class="arrow"></span>
             </a>
             <ul class="sub-menu">
               <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="bingShopBtn">
-                  <span class="title">XXXX</span>
+                <a href="#" class="nav-link " data-button="">
+                  <span class="title">待操作</span>
                 </a>
               </li>
               <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="listShopBtn">
-                  <span class="title">XXXX</span>
+                <a href="#" class="nav-link " data-button="">
+                  <span class="title">待支付</span>
+                  <span class="badge badge-danger">2</span>
+                </a>
+              </li>
+              <li class="nav-item  ">
+                <a href="#" class="nav-link " data-button="">
+                  <span class="title">待发货</span>
+                  <span class="badge badge-danger">2</span>
+                </a>
+              </li>
+              <li class="nav-item  ">
+                <a href="#" class="nav-link " data-button="">
+                  <span class="title">待评价</span>
+                  <span class="badge badge-danger">2</span>
+                </a>
+              </li>
+              <li class="nav-item  ">
+                <a href="#" class="nav-link " data-button="">
+                  <span class="title">已完成</span>
+                  <span class="badge badge-danger">2</span>
+                </a>
+              </li>
+              <li class="nav-item  ">
+                <a href="#" class="nav-link " data-button="">
+                  <span class="title">所有订单</span>
+                  <span class="badge badge-danger">2</span>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="heading">
-            <h3 class="uppercase">配置中心</h3>
-          </li>
-          <li class="nav-item  ">
+          <li class="nav-item  active open">
             <a href="javascript:;" class="nav-link nav-toggle">
               <i class="icon-layers"></i>
-              <span class="title">任务数据</span>
+              <span class="title">账户信息</span>
               <span class="arrow"></span>
             </a>
             <ul class="sub-menu">
               <li class="nav-item  ">
                 <a href="#" class="nav-link " data-button="createTaskBtn">
-                  <span class="title">配置任务佣金</span>
+                  <span class="title">我的账户</span>
                 </a>
               </li>
               <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="listTaskBtn">
-                  <span class="title">XXXX</span>
+                <a href="#" class="nav-link " data-button="">
+                  <span class="title">提现</span>
+                </a>
+              </li>
+              <li class="nav-item  ">
+                <a href="#" class="nav-link " data-button="">
+                  <span class="title">修改密码</span>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item  ">
+          <li class="nav-item  active open">
             <a href="javascript:;" class="nav-link nav-toggle">
               <i class="icon-diamond"></i>
-              <span class="title">充值审核</span>
+              <span class="title">绑定信息</span>
               <span class="arrow"></span>
             </a>
             <ul class="sub-menu">
               <li class="nav-item  ">
-                <a href="#" class="nav-link ">
-                  <span class="title">XXXX</span>
+                <a href="#" class="nav-link " data-button="">
+                  <span class="title">实名认证</span>
                 </a>
               </li>
               <li class="nav-item  ">
-                <a href="#" class="nav-link ">
-                  <span class="title">XXXX</span>
+                <a href="#" class="nav-link " data-button="">
+                  <span class="title">绑定银行卡</span>
                 </a>
               </li>
               <li class="nav-item  ">
-                <a href="#" class="nav-link ">
-                  <span class="title">XXXX</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-              <i class="icon-folder-alt"></i>
-              <span class="title">资金统计</span>
-              <span class="arrow"></span>
-            </a>
-            <ul class="sub-menu">
-              <li class="nav-item  ">
-                <a href="#" class="nav-link ">
-                  <span class="title">XXXX</span>
-                </a>
-              </li>
-              <li class="nav-item  ">
-                <a href="#" class="nav-link ">
-                  <span class="title">XXXX</span>
+                <a href="#" class="nav-link " data-button="">
+                  <span class="title">绑定账号</span>
                 </a>
               </li>
             </ul>
@@ -169,5 +186,5 @@
 
   <script src="lib/metronic/app.min.js" type="text/javascript"></script>
   <script src="lib/metronic/layout.min.js" type="text/javascript"></script>
-  <script src="sys/js/mainsys.js" type="text/javascript"></script>
+  <script src="sys/js/mainbuy.js" type="text/javascript"></script>
 </body></html>
