@@ -34,7 +34,7 @@ var bind = function(data){
 
     $.ajax({
       type: 'POST',
-      url: URL_SHOP_BIND,
+      url: HOST + URL_SHOP_BIND,
       dataType: "json",
       contentType: "application/json",
       data:JSON.stringify(obj),

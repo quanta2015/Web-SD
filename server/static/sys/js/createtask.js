@@ -4,11 +4,7 @@ NEXT = 1;
 
 $(init);
 
-
-
 function init() {
-
-  initPlatforms();
 
   $('body').on('click', '.btn-pre', doPre);
   $('body').on('click', '.btn-next', doNext);
@@ -18,20 +14,15 @@ function init() {
 
 
   //地区下拉框
-  $.ajax(TEPL_ADDR).done( (ret) => {
+  $.ajax(TMPL_ADDR).done( (ret) => {
     initLocationSelect('goods-location', ret)
     initLocationSelect('limit-location', ret)
   })
 
-
+  // 初始化平台、店铺下拉栏
+  initPlatforms();
   //初始化普通好评任务栏
-  $(".nor-task-add").before($("#taskTmpl").render({ type:'nor-task', data:1, show:false }));
-  $(".key-task-add").before($("#taskTmpl").render({ type:'key-task', data:1, show:false }));
-  $(".img-task-add").before($("#imgTaskTmpl").render({ type:'img-task', data:1,list:[1,1,1,1,1], show:false }));
-  $(".word-task-add").before($("#taskTmpl").render({ type:'word-task',data:1, show:false, word: true }));
-
-  $('.timepicker-24').timepicker({ showMeridian: false });
-
+  initTaskTmpl();
 
   //好评任务切换显示
   $("#normaltask").change( ()=> $('.nor-task-wrap').toggle() );
@@ -61,6 +52,14 @@ function init() {
   $('#express-weight').mask("#,##0.0", {reverse: true});
 }
 
+async function initTaskTmpl() {
+  $(".nor-task-add").before(await renderTmpl(TMPL_TASK, { type:'nor-task', data:1, show:false }));
+  $(".key-task-add").before(await renderTmpl(TMPL_TASK, { type:'key-task', data:1, show:false }));
+  $(".img-task-add").before(await renderTmpl(TMPL_IMG_TASK, { type:'img-task', data:1,list:[1,1,1,1,1], show:false }));
+  $(".word-task-add").before(await renderTmpl(TMPL_TASK, { type:'word-task',data:1, show:false, word: true }));
+
+  $('.timepicker-24').timepicker({ showMeridian: false });
+}
 
 function initLocationSelect(id, ret) {
   $("#"+id).after(ret)
@@ -76,7 +75,6 @@ function doPre() {
 function doNext() {
   renderTask(NEXT)
 }
-
 
 //不同步骤页面渲染控制
 function renderTask(type) {
@@ -111,28 +109,28 @@ function getAddr(e) {
 }
 
 
-function addNorTaskItem() {
+async function addNorTaskItem() {
   var count = $('.nor-task').length + 1
-  $(".nor-task-add").before($("#taskTmpl").render({ type:'nor-task', data:count, show:true }));
+  $(".nor-task-add").before(await renderTmpl(TMPL_TASK, { type:'nor-task', data:count, show:true }));
   $('.timepicker-24').timepicker({ showMeridian: false });
 }
 
-function addKeyTaskItem() {
+async function addKeyTaskItem() {
   var count = $('.key-task').length + 1
-  $(".key-task-add").before($("#taskTmpl").render({ type:'key-task', data:count, show:true }));
+  $(".key-task-add").before(await renderTmpl(TMPL_TASK, { type:'key-task', data:count, show:true }));
   $('.timepicker-24').timepicker({ showMeridian: false });
 }
 
-function addImgTaskItem() {
+async function addImgTaskItem() {
   var count = $('.img-task-title').length + 1
-  $(".img-task-add").before($("#imgTaskTmpl").render({ type:'img-task', data:count,list:[1,1,1,1,1], show:true }));
+  $(".img-task-add").before(await renderTmpl(TMPL_IMG_TASK, { type:'img-task', data:count,list:[1,1,1,1,1], show:true }));
   $('.timepicker-24').timepicker({ showMeridian: false });
 }
 
 
-function addWordTaskItem() {
+async function addWordTaskItem() {
   var count = $('.word-task-title').length + 1
-  $(".word-task-add").before($("#taskTmpl").render({ type:'word-task',data:count, show:false, word: true }));
+  $(".word-task-add").before(await renderTmpl(TMPL_TASK, { type:'word-task',data:count, show:false, word: true }));
   $('.timepicker-24').timepicker({ showMeridian: false });
 }
 
@@ -143,8 +141,8 @@ function delTask() {
 
 function doPublish() {
   let obj = {
-    tasktype: $("#platform-list").val(),
-    returntype: 0,
+    tasktype: $("input[name='r-task-type']:checked").val(),
+    returntype: $("input[name='r-return-type']:checked").val(),
     goodsList: [{
       colorSize: $('#color-size-info').val(),
       factprice: $('#real-price').val().replace(/,/g, ''),
@@ -197,7 +195,7 @@ function doPublish() {
   obj.pictureTaskKeyList = obj.picturetask ? getGreatCommentData('img-task') : [];
   obj.commentTaskKeyList = obj.commenttask ? getGreatCommentData('word-task') : [];
   console.log(obj)
-  promiseData('POST', URL_TASK_PUB, JSON.stringify(obj), cbInfo);
+  promiseData('POST', URL_TASK_PUBLISH, JSON.stringify(obj), cbInfo);
 }
 
 function getGreatCommentData(type) {
@@ -276,12 +274,13 @@ function cbPlatformInfo(e) {
   }
 }
 
-function initPlatformList(data) {
+async function initPlatformList(data) {
   let platforms = data.map(v => v.platform);
   let shops = [];
   data.forEach(v => {
     shops = shops.concat(v.shops);
   })
-  $("#platform-list").append($("#platformTmpl").render({ list:platforms }));
-  $("#shop-list").append($("#shopTmpl").render({ list:shops }));
+  console.log(shops)
+  $("#platform-list").append(await renderTmpl(TMPL_PLATFORM_SELECT, { list:platforms }));
+  $("#shop-list").append(await renderTmpl(TMPL_SHOP_SELECT, { list:shops }));
 }
