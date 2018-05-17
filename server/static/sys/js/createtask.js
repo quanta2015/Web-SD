@@ -30,6 +30,7 @@ function init() {
   $(".img-task-add").before($("#imgTaskTmpl").render({ type:'img-task', data:1,list:[1,1,1,1,1], show:false }));
   $(".word-task-add").before($("#taskTmpl").render({ type:'word-task',data:1, show:false, word: true }));
 
+  $('.timepicker-24').timepicker({ showMeridian: false });
 
 
   //好评任务切换显示
@@ -113,22 +114,26 @@ function getAddr(e) {
 function addNorTaskItem() {
   var count = $('.nor-task').length + 1
   $(".nor-task-add").before($("#taskTmpl").render({ type:'nor-task', data:count, show:true }));
+  $('.timepicker-24').timepicker({ showMeridian: false });
 }
 
 function addKeyTaskItem() {
   var count = $('.key-task').length + 1
   $(".key-task-add").before($("#taskTmpl").render({ type:'key-task', data:count, show:true }));
+  $('.timepicker-24').timepicker({ showMeridian: false });
 }
 
 function addImgTaskItem() {
   var count = $('.img-task-title').length + 1
   $(".img-task-add").before($("#imgTaskTmpl").render({ type:'img-task', data:count,list:[1,1,1,1,1], show:true }));
+  $('.timepicker-24').timepicker({ showMeridian: false });
 }
 
 
 function addWordTaskItem() {
   var count = $('.word-task-title').length + 1
   $(".word-task-add").before($("#taskTmpl").render({ type:'word-task',data:count, show:false, word: true }));
+  $('.timepicker-24').timepicker({ showMeridian: false });
 }
 
 function delTask() {
