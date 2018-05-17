@@ -3,16 +3,16 @@ const BUY = 0
 const SELL = 1
 const HOST = 'http://localhost:8011'
 
-const URL_SELL_REG          = HOST + '/users/shoper_reg'
-const URL_SMS_SEND          = HOST + '/users/sms_send'
-const URL_SELL_LOGIN        = HOST + '/users/shoper_login'
-const URL_SHOP_BIND         = HOST + '/users/shop_bind'
-const URL_TASK_PUBLISH      = HOST + '/task/task_publish'
-const URL_TASK_ALL_PLATFORM = HOST + '/task/all_platform'
-const URL_SELL_SHOPS        = HOST + '/users/shoper_shops/'
-const URL_SELL_SHOP_DEL     = HOST + '/users/shop_del/'
-const URL_SELL_SHOP_UPDATE  = HOST + '/users/shop_update/'
-const URL_SELL_ALL_TASK     = HOST + '/task/all_tasks/'
+const URL_SELL_REG          = '/users/shoper_reg'
+const URL_SMS_SEND          = '/users/sms_send'
+const URL_SELL_LOGIN        = '/users/shoper_login'
+const URL_SHOP_BIND         = '/users/shop_bind'
+const URL_TASK_PUBLISH      = '/task/task_publish'
+const URL_TASK_ALL_PLATFORM = '/task/all_platform'
+const URL_SELL_SHOPS        = '/users/shoper_shops/'
+const URL_SELL_SHOP_DEL     = '/users/shop_del/'
+const URL_SELL_SHOP_UPDATE  = '/users/shop_update/'
+const URL_SELL_ALL_TASK     = '/task/all_tasks/'
 
 const TEPL_ADDR = './tmpl/addr.tmpl'
 
