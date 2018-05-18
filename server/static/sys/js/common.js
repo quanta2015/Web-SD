@@ -19,6 +19,8 @@ const URL_SELL_SHOP_UPDATE  = '/users/shop_update/'
 const URL_SELL_ALL_TASK     = '/task/all_tasks/'
 const URL_UPLOAD_FILE       = '/users/upload'
 const URL_BUY_REG           = '/users/buyer_reg'
+const URL_ADMIN_ALL_TASK    = '/admin/all_tasks'
+const URL_ADMIN_TASK_AUDIT  = '/admin/task_approve'
 
 // TMPL DEF
 const TMPL_ADDR            = './tmpl/addr.tmpl'
