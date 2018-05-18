@@ -1,8 +1,12 @@
+// BASIC DEF
 const CODE_COUNT = 10
 const BUY = 0
 const SELL = 1
 const HOST = 'http://localhost:8011'
 
+
+
+// URL DEF
 const URL_SELL_REG          = '/users/shoper_reg'
 const URL_SMS_SEND          = '/users/sms_send'
 const URL_SELL_LOGIN        = '/users/shoper_login'
@@ -16,19 +20,23 @@ const URL_SELL_ALL_TASK     = '/task/all_tasks/'
 const URL_UPLOAD_FILE       = '/users/upload'
 const URL_BUY_REG           = '/users/buyer_reg'
 
+// TMPL DEF
 const TMPL_ADDR            = './tmpl/addr.tmpl'
 const TMPL_REG             = './tmpl/reg.tmpl'
 const TMPL_SHOP_SELECT     = './tmpl/shop_select.tmpl'
 const TMPL_PLATFORM_SELECT = './tmpl/platform_select.tmpl'
 const TMPL_TASK            = './tmpl/task.tmpl'
 const TMPL_IMG_TASK        = './tmpl/img_task.tmpl'
+const TMPL_TASK_LIST       = './tmpl/task_list.tmpl'
 
+// MSG DEF
 const MSG_LOGIN_SUCCESS   = '登录成功！'
 const MSG_REGIS_SUCCESS   = '注册成功！'
 const MSG_PUBLISH_SUCCESS = '发布成功！'
 
 
 
+// ARRAY & OBJ DEF
 const LOGIN_IMGS = [
   'img/login01.jpg',
   'img/login02.jpg'
@@ -43,23 +51,10 @@ const REGISTER_REGEXS = {
   password: /\w{6,16}/,
 };
 
-function jsonData(urlTmpl, urlData, cb, err) {
-  $.when($.ajax(urlTmpl), $.ajax(urlData)).done(cb).fail(err);
-}
 
-function promiseData(method, url, data, cb) {
-  var promise = $.ajax({
-    type: method,
-    url: HOST + url,
-    dataType: "json",
-    contentType: "application/json",
-    data: data,
-    xhrFields: {
-      withCredentials: true
-    },
-    crossDomain: true,
-  });
-  promise.done(cb);
+// FUNCTION DEF
+function relogin() {
+  top.location.href = 'index.html';
 }
 
 function errorInfo(info) {
@@ -87,6 +82,65 @@ function msgbox(info,titleA,titleB,cb) {
   })
 }
 
+
+// AJAX FUNCTION DEF
+function promiseData(method, url, data, cb) {
+  var promise = $.ajax({
+    type: method,
+    url: HOST + url,
+    dataType: "json",
+    contentType: "application/json",
+    data: data,
+    xhrFields: {
+      withCredentials: true
+    },
+    crossDomain: true,
+  });
+  promise.done(cb);
+}
+
+
+function TmplData(urlTmpl, urlData, data, cb) {
+  $.when($.ajax(urlTmpl), 
+    $.ajax({
+      type: 'GET',
+      url: HOST + urlData,
+      dataType: "json",
+      contentType: "application/json",
+      data: data,
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true,
+  })).done(cb)
+}
+
+
+
+// TMPL FUNCTION DEF
+var timeHelp = {
+  formatTime: (t) => { return moment(t).format("YYYY-M-D h:mm:ss") }
+}
+
+const renderTmpl = (url, data) => {
+  return new Promise((resolve, reject) => {
+    $.ajax(url).done(tmpl => {
+      resolve($.templates(tmpl).render(data));
+    })
+  })
+}
+
+
+const renderTmplHelp = (url, data, help) => {
+  return new Promise((resolve, reject) => {
+    $.ajax(url).done(tmpl => {
+      resolve($.templates(tmpl).render(data, help));
+    })
+  })
+}
+
+
+// UPLOAD IMAGE FUNCTION
 var uploadFile = function(target) {
   return new Promise(function(resolve, reject){
     var file = target;
@@ -117,14 +171,3 @@ var uploadFile = function(target) {
   })
 }
 
-const renderTmpl = (url, data) => {
-  return new Promise((resolve, reject) => {
-    $.ajax(url).done(tmpl => {
-      resolve($.templates(tmpl).render(data));
-    })
-  })
-}
-
-function relogin() {
-  top.location.href = 'index.html';
-}

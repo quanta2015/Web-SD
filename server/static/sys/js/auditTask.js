@@ -5,28 +5,20 @@ $(init);
 
 function init() {
   initList();
-
   // $('body').on('click', '.del-shop', doDelShop);
 }
 
 
 function initList() {
-  promiseData('GET', URL_SELL_ALL_TASK, null, cbListTask);
+  TmplData(TMPL_TASK_LIST,URL_SELL_ALL_TASK,null, cbListTask)
 }
 
 
-
-var timeHelp = {
-  formatTime: (t) => { return moment(t).format("YYYY-M-D h:mm:ss") }
-}
-
-
-function cbListTask(e) {
-  console.log(e);
-  if (e.code == 0) {
+function cbListTask(r, e) {
+  if (e[0].code == 0) {
     _listtask = e.data;
     $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($("#taskTmpl").render(e, timeHelp ));
+    $(".portlet-body").prepend($.templates(r[0]).render(e[0], timeHelp));
   } else if (e.code == -1) {
     relogin();
   }

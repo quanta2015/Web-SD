@@ -1,0 +1,38 @@
+<table class="table table-hover table-light">
+    <thead>
+        <tr class="uppercase">
+            <th> 序号 </th>
+            <th> 发布时间 </th>
+            <th> 平台 </th>
+            <th> 任务类型 </th>
+            <th> 店铺名称 </th>
+            <th> 商品名称 </th>
+            <th> 单数 </th>
+            <th> 搜索关键词 </th>
+            <th> 状态 </th>
+            <th> 审批原因 </th>
+            <th> 任务编号 </th>
+            <th> 操作 </th>
+        </tr>
+    </thead>
+    <tbody>
+      {{for data}}
+        <tr>
+            <td> {{:#index+1}} </td>
+            <td> {{:~formatTime(createtime)}}</td>
+            <td> {{:platform}} </td>
+            <td> {{:tasktype}}</td>
+            <td> {{:shopId}}</td>
+            <td> 商品名称</td>
+            <td> {{:num}}</td>
+            <td> 搜索关键词</td>
+            <td> {{:approveName}}</td>
+            <td> {{:approveReason}}</td>
+            <td> {{:id}}</td>
+            <td class="fn-center"> 
+              <a href="#basic" class="btn blue-madison btn-sm btn-outline sbold uppercase  edit-shop"  data-toggle="modal" data-index="{{:#index}}" data-id="{{:id}}"><i class="fa fa-edit"></i> 审核通过 </a> 
+            </td>
+        </tr>
+      {{/for}}
+    </tbody>
+  </table>
