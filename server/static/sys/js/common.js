@@ -13,11 +13,18 @@ const URL_SELL_SHOPS        = '/users/shoper_shops/'
 const URL_SELL_SHOP_DEL     = '/users/shop_del/'
 const URL_SELL_SHOP_UPDATE  = '/users/shop_update/'
 const URL_SELL_ALL_TASK     = '/task/all_tasks/'
+const URL_UPLOAD_FILE       = '/users/upload'
+const URL_BUY_REG           = '/users/buyer_reg'
 
-const TEPL_ADDR = './tmpl/addr.tmpl'
+const TMPL_ADDR            = './tmpl/addr.tmpl'
+const TMPL_REG             = './tmpl/reg.tmpl'
+const TMPL_SHOP_SELECT     = './tmpl/shop_select.tmpl'
+const TMPL_PLATFORM_SELECT = './tmpl/platform_select.tmpl'
+const TMPL_TASK            = './tmpl/task.tmpl'
+const TMPL_IMG_TASK        = './tmpl/img_task.tmpl'
 
-const MSG_LOGIN_SUCCESS = '登录成功！'
-const MSG_REGIS_SUCCESS = '注册成功！'
+const MSG_LOGIN_SUCCESS   = '登录成功！'
+const MSG_REGIS_SUCCESS   = '注册成功！'
 const MSG_PUBLISH_SUCCESS = '发布成功！'
 
 
@@ -83,18 +90,18 @@ function msgbox(info,titleA,titleB,cb) {
 var uploadFile = function(target) {
   return new Promise(function(resolve, reject){
     var file = target;
-    var fileSize = file.size;  
-    var maxSize = 5048576;    //最大5MB  
-    if(parseInt(fileSize) >= parseInt(maxSize)){  
-        notifyInfo('上传的文件不能超过1MB');  
+    var fileSize = file.size;
+    var maxSize = 5048576;    //最大5MB
+    if(parseInt(fileSize) >= parseInt(maxSize)){
+        notifyInfo('上传的文件不能超过1MB');
         return false;  
     }else{    
       var form = new FormData();
       form.append("file", file);
       $.ajax({    
-          url: HOST + "/users/upload",   
-          type: 'POST',    
-          data: form,       
+          url: HOST + URL_UPLOAD_FILE,
+          type: 'POST',
+          data: form,
           async:false,
           processData: false,
           contentType: false,
@@ -107,6 +114,14 @@ var uploadFile = function(target) {
         resolve(e.data);
       })   
     }
+  })
+}
+
+const renderTmpl = (url, data) => {
+  return new Promise((resolve, reject) => {
+    $.ajax(url).done(tmpl => {
+      resolve($.templates(tmpl).render(data));
+    })
   })
 }
 

@@ -46,37 +46,36 @@ function goRegisterPage() {
   $('.register').removeClass('hide');
 }
 
-function showRegSell() {
+async function showRegSell() {
   hideAllPages();
-  $('.regs').empty().removeClass('hide').append($("#regTmpl").render({ type:'sell' }));
+  $('.regs').empty().addClass('reg-sj').removeClass('hide').append(await renderTmpl(TMPL_REG, { type:'sell' }));
 }
 
-function showRegBuy() {
+async function showRegBuy() {
   hideAllPages();
-  $('.regs').empty().removeClass('hide').append($("#regTmpl").render({ type:'buy' }));
+  $('.regs').empty().removeClass('hide reg-sj').append(await renderTmpl(TMPL_REG, { type:'buy' }));
 }
 
 function doRegister() {
-  const ids = ['mobile', 'qq', 'smscode', 'weixin', 'password', 'repassword'];
+  const ids = ['mobile', 'qq', 'smscode', 'weixin', 'password', 'repassword', 'invitecode'];
   const infoMap = {};
-  const errMap = {};
   let success = true;
-
+  let newIds = [];
   ids.forEach(id => {
+    if ($(`#${id}`).length < 1) return;
+    let val = $(`#${id}`).val()
     infoMap[id] = {
-      val: $(`#${id}`).val(),
-      isValid: true
+      val: val,
+      isValid: REGISTER_REGEXS[id] ? REGISTER_REGEXS[id].test(val) : true,
     };
+    newIds.push(id);
   });
-  for(let id in REGISTER_REGEXS) {
-    infoMap[id].isValid = REGISTER_REGEXS[id].test(infoMap[id].val);
-  }
   // 确认密码
   if (infoMap['repassword'].val !== infoMap['password'].val) {
     infoMap['repassword'].isValid = false;
   }
   // 展示结果
-  ids.forEach(id => {
+  newIds.forEach(id => {
     if (!infoMap[id].val || infoMap[id].val === '' || !infoMap[id].isValid ) {
       $(`#${id}`).siblings('p').find('span').removeClass('hide');
       success = false;
@@ -92,7 +91,13 @@ function doRegister() {
       if (key == 'repassword') continue;
       obj[key]=infoMap[key].val
     }
-    promiseData('POST', URL_SELL_REG, JSON.stringify(obj), cbInfo);
+
+    $('.regs').is('.reg-sj') ? type = SELL : type = BUY;
+    if (type == BUY) {
+      promiseData('POST', URL_BUY_REG, JSON.stringify(obj), cbInfo);
+    } else {
+      promiseData('POST', URL_SELL_REG, JSON.stringify(obj), cbInfo);
+    }
   }
 }
 
@@ -140,6 +145,9 @@ function doLogin() {
   $('.loginYh').is('.on')?type=BUY:type=SELL;
   if (type == BUY) {
     //BUY login
+    // obj = { mobile:$('#login-mobile').val(), password:$('#login-password').val() };
+    // promiseData('POST', URL_SELL_LOGIN, JSON.stringify(obj), cbLogin);
+    location.href = 'mainBuy.html'
   }else{
     //SELL login
     obj = { mobile:$('#login-mobile').val(), password:$('#login-password').val() };
@@ -152,7 +160,7 @@ function cbLogin(e) {
     $.cookie('mobile', e.data.mobile, {expires: 30});
     $.cookie('password', $('#login-password').val, { expires: 30 });
     $.cookie('id', e.data.id, { expires: 30 });
-    location.href = "mainSell.html";
+    location.href = $('.loginYh').is('.on')? 'mainBuy.html' : 'mainSell.html';
     notifyInfo(MSG_LOGIN_SUCCESS);
   }else if (e.code==99) {
     notifyInfo(e.message);

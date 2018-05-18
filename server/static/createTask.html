@@ -1,4 +1,4 @@
-se<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -100,7 +100,11 @@ se<!DOCTYPE html>
             </div>
             <div class="mt-radio-list">
               <label class="mt-radio">
-                  <input type="radio" name="r-return-type" value="平台服务" checked> 平台服务
+                  <input type="radio" name="r-return-type" value="1" checked> 平台服务
+                  <span></span>
+              </label>
+              <label class="mt-radio">
+                  <input type="radio" name="r-return-type" value="0"> 其他
                   <span></span>
               </label>
             </div>
@@ -678,82 +682,3 @@ se<!DOCTYPE html>
 <script src="sys/js/createtask.js"></script>
 </body>
 </html>
-
-
-<script id="taskTmpl" type="text/x-jsrender">
-  <div class="task-wrap-item">
-    <div class="{{:type}} {{:type}}-title">
-      <span class="form-imp"> 搜索关键词</span>
-      <input type="text" id="{{:type}}-ipt-key{{:data}}">
-       添加 <input type="text" class="wide-s1" id="{{:type}}-ipt-count{{:data}}"> 单   
-       放单时间从 <input type="text" class="timepicker timepicker-24" id="{{:type}}-ipt-time-from{{:data}}">
-        到 <input type="text" class="timepicker timepicker-24" id="{{:type}}-ipt-time-to{{:data}}">
-        {{if show}}<a class="btn red btn-outline btn-xs task-del">删除</a>{{/if}}
-    </div>
-    {{if word}}
-    <div class="{{:type}}">
-      <span class="form-imp"> 指定文字</span>
-      <input type="text" id="{{:type}}-ipt-word{{:data}}" class="wide-3" placeholder="注意！不能超过50个字！"> 
-    </div>
-    {{/if}}
-  </div>
-</script>
-
-
-<script id="imgTaskTmpl" type="text/x-jsrender">
-  <div class="task-wrap-item">
-    <div class="row img-task img-task-title">
-      <div class="col-xs-2 fn-right"> 上传第{{:data}}单的图片</div>
-      <div class="col-xs-10">{{if show}}<a class="btn red btn-outline btn-xs task-del">删除图片好评任务</a>{{/if}}</div> 
-    </div>
-    <div class="row img-task">
-      <div class="col-xs-2 form-imp"> 搜索关键词</div>
-      <div class="col-xs-10">
-        <input type="text" id="{{:type}}-ipt-key{{:data}}">
-       添加 <input type="text" class="wide-s1" id="{{:type}}-ipt-count{{:data}}"> 单   
-       放单时间从  <input type="text" class="timepicker timepicker-24" id="{{:type}}-ipt-time-from{{:data}}">
-        到 <input type="text" class="timepicker timepicker-24" id="{{:type}}-ipt-time-to{{:data}}">
-      </div>
-    </div>
-    <div class="row img-task img-task-list">
-      <div class="col-xs-2 form-imp"> 请选择图片</div>
-      <div class="col-xs-10">
-        {{for list}}
-        <div class="fileinput fileinput-new" data-provides="fileinput" >
-          <div class="fileinput-new thumbnail" style="max-width: 150px; max-height: 120px;">
-            <img src="img/noimg.png">
-          </div>
-          <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-          <div>
-            <span class="btn default btn-file">
-              <span class="fileinput-new"> 选择图片 </span>
-              <span class="fileinput-exists"> 更换 </span>
-              <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="{{:~root.type}}-upload{{:~root.data}}-{{:#index+1}}">
-            </span>
-            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 删除 </a>
-          </div>
-        </div>
-        {{/for}}
-      </div>
-    </div>
-
-    <div class="row  img-task-desc">
-      <div class="col-xs-2 fn-right"> 评价描述</div>
-      <div class="col-xs-10"><textarea id="{{:type}}-ipt-desc{{:data}}"></textarea></div>
-    </div>
-</div>
-</script>
-
-<script id="platformTmpl" type="text/x-jsrender">
-  <option value="">请选择平台</option>
-  {{for list}}
-  <option value="{{:#data}}">{{:#data}}</option>
-  {{/for}}
-</script>
-
-<script id="shopTmpl" type="text/x-jsrender">
-  <option value="">请选择店铺</option>
-  {{for list}}
-  <option value="{{:#data.id}}">{{:#data.name}}</option>
-  {{/for}}
-</script>
