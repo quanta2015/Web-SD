@@ -21,6 +21,7 @@ const URL_UPLOAD_FILE       = '/users/upload'
 const URL_BUY_REG           = '/users/buyer_reg'
 const URL_BUY_LOGIN         = '/users/buyer_login'
 const URL_BUY_BIND_ID_CARD  = '/users/buyer_validate'
+const URL_BUY_BIND_BANK     = '/users/buyer_bankbind'
 const URL_ADMIN_ALL_TASK    = '/admin/all_tasks'
 const URL_ADMIN_TASK_AUDIT  = '/admin/task_approve'
 
@@ -41,7 +42,7 @@ const MSG_REGIS_SUCCESS   = '注册成功！'
 const MSG_PUBLISH_SUCCESS = '发布成功！'
 const MSG_BIND_SUCCESS    = '绑定成功！'
 
-
+const TEXT_BIND_SUCCESS = '已绑定'
 
 // ARRAY & OBJ DEF
 const LOGIN_IMGS = [
