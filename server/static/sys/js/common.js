@@ -90,6 +90,18 @@ function msgbox(info,titleA,titleB,cb) {
   })
 }
 
+function alertBox(info, cb) {
+  bootbox.alert({
+    message: info,
+    size: 'small',
+    callback: cb
+  });
+}
+
+function goto(url) {
+  $("#mainframe", parent.document.body).attr("src", url);
+}
+
 
 // AJAX FUNCTION DEF
 function promiseData(method, url, data, cb) {

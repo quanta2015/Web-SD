@@ -24,10 +24,9 @@ function doSave(data) {
   console.log(obj)
   promiseData('POST', URL_BUY_BIND_ID_CARD, JSON.stringify(obj), cbBind);
 }
-
 function cbBind(e) {
   if (e.code === 0) {
-    notifyInfo(MSG_BIND_SUCCESS);
+    alertBox(MSG_BIND_SUCCESS, ()=>{ goto("newTask.html") })   
   } else if (e.code==99) {
     notifyInfo(e.message);
   } else if (e.code==-1) {
