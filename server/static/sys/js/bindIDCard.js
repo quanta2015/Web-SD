@@ -3,9 +3,9 @@ $(init);
 function init() {
 
   initBindInfo();
-  initIDCartImg();
+  // initIDCartImg();
 
-  $('body').on('click', '#resetBtn', doResetForm);
+  $('body').on('click', '#returnBtn', ()=>{ goto('newTask.html')});
   $('body').on('click', '#saveBtn', doSave);
 }
 
@@ -34,16 +34,25 @@ function cbBind(e) {
   };
 }
 
-async function initIDCartImg() {
-  $('#id-cards').append(await renderTmpl(TMPL_ID_CARD_IMG, { list:[1,1,1] }));
-}
 
-function initBindInfo() {
-  if ($.cookie('idCard')) {
-    $(".container").empty();
-    $(".container").prepend($("#id-card-info").render({
+async function initBindInfo() {
+
+  var status = parseInt($.cookie('approveState'))
+  // var status = 1
+  
+  if ( status == 0 ) {
+    //未绑定
+    $('.container').append(await renderTmpl(TMPL_ID_CARD_IMG, { list:[1,1,1] }));
+  }else if ( status == 1){
+    //显示已经绑定表单
+    $(".container").append(await renderTmpl(TMPL_ID_CARD_IMG, {
       name: $.cookie('name'),
       idCard: $.cookie('idCard'),
-    }));
+      idImg1: $.cookie('idcardpng1'),
+      idImg2: $.cookie('idcardpng2'),
+      idImg3: $.cookie('idcardpng3'),
+      isbind: 1,
+      type: "disabled"
+    }) );
   }
 }

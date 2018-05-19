@@ -153,11 +153,15 @@ function cbLogin(e) {
     $.cookie('password', $('#login-password').val, { expires: 30 });
     $.cookie('id', e.data.id, { expires: 30 });
     $.cookie('name', e.data.name, { expires: 30 });
+    $.cookie('approveState', e.data.approveState, { expires: 30 });
+    $.cookie('bankcardState', e.data.bankcardState, { expires: 30 });
+    $.cookie('idcard', e.data.idcard, { expires: 30 });
 
-    if ($('.loginYh').is('.on')) {
-      $.cookie('idCard', e.data.idcard, { expires: 30 });
-      $.cookie('bankCardState', e.data.bankcardState, { expires: 30 });
-    }
+    $.cookie('idcardpng1', e.data.idcardpng1, { expires: 30 });
+    $.cookie('idcardpng2', e.data.idcardpng2, { expires: 30 });
+    $.cookie('idcardpng3', e.data.idcardpng3, { expires: 30 });
+    
+    
     location.href = $('.loginYh').is('.on')? 'mainBuy.html' : 'mainSell.html';
     notifyInfo(MSG_LOGIN_SUCCESS);
   }else if (e.code==99) {
