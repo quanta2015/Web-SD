@@ -2,6 +2,7 @@ $(init);
 
 function init() {
 
+  initBindInfo();
   initIDCartImg();
 
   $('body').on('click', '#resetBtn', doResetForm);
@@ -18,8 +19,9 @@ function doSave(data) {
     idcard: $('#id-card').val(),
   };
   for (let i = 1; i <= 3; i++) {
-    obj[`idcardpng${i}`] = $(`id-card-ipt${i}`).attr('url');
+    obj[`idcardpng${i}`] = $(`#id-card-ipt${i}`).attr('url');
   }
+  console.log(obj)
   promiseData('POST', URL_BUY_BIND_ID_CARD, JSON.stringify(obj), cbBind);
 }
 
@@ -35,4 +37,14 @@ function cbBind(e) {
 
 async function initIDCartImg() {
   $('#id-cards').append(await renderTmpl(TMPL_ID_CARD_IMG, { list:[1,1,1] }));
+}
+
+function initBindInfo() {
+  if ($.cookie('idCard')) {
+    $(".container").empty();
+    $(".container").prepend($("#id-card-info").render({
+      name: $.cookie('name'),
+      idCard: $.cookie('idCard'),
+    }));
+  }
 }

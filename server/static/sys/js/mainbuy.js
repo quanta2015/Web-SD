@@ -9,11 +9,16 @@ function init() {
   });
 
   $('[data-button="bindIDCardBtn"]').on('click', function(e) {
-      $("#mainframe", parent.document.body).attr("src", "bindIDCard.html");
+    $("#mainframe", parent.document.body).attr("src", "bindIDCard.html");
   });
 
+  $('[data-button="bindBankCardBtn"]').on('click', function(e) {
+    $("#mainframe", parent.document.body).attr("src", "bindBankCard.html");
+  });
 
-  
+  $('[data-button="bindAccountBtn"]').on('click', function(e) {
+    $("#mainframe", parent.document.body).attr("src", "bindIDCard.html");
+  });
  
   $('#exitBtn').on('click', function(e) {
       location.href = 'index.html'
@@ -21,6 +26,3 @@ function init() {
 
 
 }
-
-
-
