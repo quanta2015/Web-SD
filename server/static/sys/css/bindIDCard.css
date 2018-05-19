@@ -16,3 +16,6 @@ body {
   margin-left: 0;
 }
 
+#bind-info .col-xs-6 {
+  padding-top: 7px;
+}
