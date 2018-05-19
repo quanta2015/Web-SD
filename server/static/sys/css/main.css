@@ -1,0 +1,10 @@
+iframe{
+    width: 100%;
+    border: 0;
+}
+
+.page-logo a {
+    line-height: 2;
+    font-size: 24px;
+    color: #ff6600;
+}
