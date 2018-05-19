@@ -19,8 +19,11 @@ const URL_SELL_SHOP_UPDATE  = '/users/shop_update/'
 const URL_SELL_ALL_TASK     = '/task/all_tasks/'
 const URL_UPLOAD_FILE       = '/users/upload'
 const URL_BUY_REG           = '/users/buyer_reg'
+const URL_BUY_LOGIN         = '/users/buyer_login'
+const URL_BUY_BIND_ID_CARD  = '/users/buyer_validate'
 const URL_ADMIN_ALL_TASK    = '/admin/all_tasks'
 const URL_ADMIN_TASK_AUDIT  = '/admin/task_approve'
+
 
 // TMPL DEF
 const TMPL_ADDR            = './tmpl/addr.tmpl'
@@ -30,11 +33,13 @@ const TMPL_PLATFORM_SELECT = './tmpl/platform_select.tmpl'
 const TMPL_TASK            = './tmpl/task.tmpl'
 const TMPL_IMG_TASK        = './tmpl/img_task.tmpl'
 const TMPL_TASK_LIST       = './tmpl/task_list.tmpl'
+const TMPL_ID_CARD_IMG     = './tmpl/id_card_img.tmpl'
 
 // MSG DEF
 const MSG_LOGIN_SUCCESS   = '登录成功！'
 const MSG_REGIS_SUCCESS   = '注册成功！'
 const MSG_PUBLISH_SUCCESS = '发布成功！'
+const MSG_BIND_SUCCESS    = '绑定成功！'
 
 
 
@@ -124,22 +129,16 @@ var timeHelp = {
   formatTime: (t) => { return moment(t).format("YYYY-M-D h:mm:ss") }
 }
 
-const renderTmpl = (url, data) => {
-  return new Promise((resolve, reject) => {
-    $.ajax(url).done(tmpl => {
-      resolve($.templates(tmpl).render(data));
-    })
-  })
-}
 
-
-const renderTmplHelp = (url, data, help) => {
+// RENDER TMPL FUNCTION
+const renderTmpl = (url, data, help = null) => {
   return new Promise((resolve, reject) => {
     $.ajax(url).done(tmpl => {
       resolve($.templates(tmpl).render(data, help));
     })
   })
 }
+
 
 
 // UPLOAD IMAGE FUNCTION

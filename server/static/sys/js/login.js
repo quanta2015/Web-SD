@@ -142,17 +142,9 @@ function doCounter(count) {
 
 
 function doLogin() {
-  $('.loginYh').is('.on')?type=BUY:type=SELL;
-  if (type == BUY) {
-    //BUY login
-    // obj = { mobile:$('#login-mobile').val(), password:$('#login-password').val() };
-    // promiseData('POST', URL_SELL_LOGIN, JSON.stringify(obj), cbLogin);
-    location.href = 'mainBuy.html'
-  }else{
-    //SELL login
-    obj = { mobile:$('#login-mobile').val(), password:$('#login-password').val() };
-    promiseData('POST', URL_SELL_LOGIN, JSON.stringify(obj), cbLogin);
-  }
+  let url = $('.loginYh').is('.on') ? URL_BUY_LOGIN : URL_SELL_LOGIN;
+  let obj = { mobile:$('#login-mobile').val(), password:$('#login-password').val() };
+  promiseData('POST', url, JSON.stringify(obj), cbLogin);
 }
 
 function cbLogin(e) {
