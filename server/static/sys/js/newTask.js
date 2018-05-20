@@ -26,6 +26,7 @@ function initStatus() {
   let jingdongState = parseInt(cookie2('approve', 'jingdongList'));
   let taobaoState = parseInt(cookie2('approve', 'taobaoList'));
 
+
   if (approveState) {
     $('#id-card .task-status').removeClass('status-no-bind').text(TEXT_BIND_SUCCESS);
     $('#id-card a').removeClass('btn-outline').text(TEXT_BIND_SUCCESS)
