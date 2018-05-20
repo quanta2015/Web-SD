@@ -24,6 +24,7 @@ function doSave(data) {
 }
 function cbBind(e) {
   if (e.code === 0) {
+    initUserInfo();
     alertBox(MSG_BIND_SUCCESS, ()=>{ goto("newTask.html") })
   } else if (e.code==99) {
     notifyInfo(e.message);

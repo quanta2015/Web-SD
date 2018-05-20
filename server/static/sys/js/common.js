@@ -191,3 +191,31 @@ var uploadFile = function(target) {
   })
 }
 
+function initUserCookie(data) {
+
+  // baseinfo
+  $.cookie('id', data.id, { expires: 30 });
+  $.cookie('mobile', data.mobile, { expires: 30 });
+  
+  // idcard
+  $.cookie('name', data.name, { expires: 30 });
+  $.cookie('approveState', data.approveState, { expires: 30 });
+  $.cookie('idcard', data.idcard, { expires: 30 });
+  $.cookie('idcardpng1', data.idcardpng1, { expires: 30 });
+  $.cookie('idcardpng2', data.idcardpng2, { expires: 30 });
+  $.cookie('idcardpng3', data.idcardpng3, { expires: 30 });
+  
+  // bankcard
+  $.cookie('bankcardState', data.bankcardState, { expires: 30 });
+  $.cookie('buyerBankList', JSON.stringify(data.buyerBankList), { expires: 30 });
+
+}
+
+function initUserInfo() {
+  let obj = { mobile:$.cookie('mobile'), password: $.cookie('password') };
+  let url = parseInt($.cookie('userType')) === 0 ? URL_BUY_LOGIN : URL_SELL_LOGIN;
+  promiseData('POST', url, JSON.stringify(obj), (e) => {
+    console.log(e)
+    initUserCookie(e.data);
+  });
+}
