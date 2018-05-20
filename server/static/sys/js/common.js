@@ -34,7 +34,8 @@ const TMPL_PLATFORM_SELECT = './tmpl/platform_select.tmpl'
 const TMPL_TASK            = './tmpl/task.tmpl'
 const TMPL_IMG_TASK        = './tmpl/img_task.tmpl'
 const TMPL_TASK_LIST       = './tmpl/task_list.tmpl'
-const TMPL_ID_CARD_IMG     = './tmpl/id_card_img.tmpl'
+const TMPL_BIND_IDCARD     = './tmpl/bind_idcard.tmpl'
+const TMPL_BIND_BKCARD     = './tmpl/bind_bkcard.tmpl'
 
 // MSG DEF
 const MSG_LOGIN_SUCCESS   = '登录成功！'

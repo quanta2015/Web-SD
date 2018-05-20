@@ -1,13 +1,44 @@
 $(init);
 
 function init() {
+  initBindInfo();
 
-  $('body').on('click', '#resetBtn', doResetForm);
+  $('body').on('click', '#returnBtn', doReturn );
   $('body').on('click', '#saveBtn', doSave);
 }
 
-function doResetForm() {
-  document.getElementById("form-bind").reset()
+async function initBindInfo() {
+  var status = parseInt($.cookie('approveState'))
+  // var status = 1
+  
+  if ( status == 0 ) {
+    //未绑定
+    $('.container').append(await renderTmpl(TMPL_BIND_BKCARD, {
+      name: null,
+      bank: null,
+      bank_no: null,
+      acount_name: null,
+      acount_subbank: null,
+      acount_bankno: null,
+      isband:0
+    }));
+  }else if ( status == 1){
+    //显示已经绑定表单
+    $(".container").append(await renderTmpl(TMPL_BIND_BKCARD, {
+      name: $.cookie('name'),
+      bank: $.cookie('bank'),
+      bank_no: $.cookie('bank_no'),
+      acount_name: $.cookie('acount_name'),
+      acount_subbank: $.cookie('acount_subbank'),
+      acount_bankno: $.cookie('acount_bankno'),
+      isband:1
+    }) );
+  }
+}
+
+
+function doReturn() {
+  goto('newTask.html')
 }
 
 function doSave(data) {

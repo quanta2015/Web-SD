@@ -1,17 +1,16 @@
 $(init);
 
 function init() {
-
   initBindInfo();
-  // initIDCartImg();
 
-  $('body').on('click', '#returnBtn', ()=>{ goto('newTask.html')});
+  $('body').on('click', '#returnBtn', doReturn);
   $('body').on('click', '#saveBtn', doSave);
 }
 
-function doResetForm() {
-  document.getElementById("form-bind").reset()
+function doReturn() {
+  goto('newTask.html')
 }
+
 
 function doSave(data) {
   let obj = {
@@ -36,16 +35,15 @@ function cbBind(e) {
 
 
 async function initBindInfo() {
-
   var status = parseInt($.cookie('approveState'))
   // var status = 1
   
   if ( status == 0 ) {
     //未绑定
-    $('.container').append(await renderTmpl(TMPL_ID_CARD_IMG, { list:[1,1,1] }));
+    $('.container').append(await renderTmpl(TMPL_BIND_IDCARD, { list:[1,1,1] }));
   }else if ( status == 1){
     //显示已经绑定表单
-    $(".container").append(await renderTmpl(TMPL_ID_CARD_IMG, {
+    $(".container").append(await renderTmpl(TMPL_BIND_IDCARD, {
       name: $.cookie('name'),
       idCard: $.cookie('idCard'),
       idImg1: $.cookie('idcardpng1'),

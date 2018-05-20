@@ -13,10 +13,10 @@ function init() {
 }
 
 function initStatus() {
-  let idCard = $.cookie('idcard');
+  let approveState = parseInt($.cookie('approveState'));
   let bankCardState = parseInt($.cookie('bankcardState'));
 
-  if (idCard) {
+  if (approveState) {
     $('#id-card .task-status').removeClass('status-no-bind').text(TEXT_BIND_SUCCESS);
     $('#id-card a').removeClass('btn-outline').text(TEXT_BIND_SUCCESS);
   }
