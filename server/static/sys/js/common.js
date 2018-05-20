@@ -205,13 +205,3 @@ function cookie2(id, pid) {
   var obj = JSON.parse($.cookie('cko'));
   return obj[pid][0][id];
 }
-
-
-function initUserInfo() {
-  let obj = { mobile:$.cookie('mobile'), password: $.cookie('password') };
-  let url = parseInt($.cookie('userType')) === 0 ? URL_BUY_LOGIN : URL_SELL_LOGIN;
-  promiseData('POST', url, JSON.stringify(obj), (e) => {
-    console.log(e)
-    initUserCookie(e.data);
-  });
-}
