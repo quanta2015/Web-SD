@@ -8,9 +8,9 @@ function init() {
 }
 
 async function initBindInfo() {
-  var status = parseInt($.cookie('approveState'))
+  var status = parseInt($.cookie('bankcardState'))
   // var status = 1
-  
+  console.log(status)
   if ( status == 0 ) {
     //未绑定
     $('.container').append(await renderTmpl(TMPL_BIND_BKCARD, {
@@ -20,18 +20,20 @@ async function initBindInfo() {
       acount_name: null,
       acount_subbank: null,
       acount_bankno: null,
-      isband:0
+      isband: 0
     }));
   }else if ( status == 1){
     //显示已经绑定表单
+    let buyerBankInfo = JSON.parse($.cookie('buyerBankList'))[0];
     $(".container").append(await renderTmpl(TMPL_BIND_BKCARD, {
       name: $.cookie('name'),
-      bank: $.cookie('bank'),
-      bank_no: $.cookie('bank_no'),
-      acount_name: $.cookie('acount_name'),
-      acount_subbank: $.cookie('acount_subbank'),
-      acount_bankno: $.cookie('acount_bankno'),
-      isband:1
+      bank: buyerBankInfo.bank,
+      bankNo: buyerBankInfo.bankNo,
+      acountName: buyerBankInfo.acountName,
+      acountSubbank: buyerBankInfo.acountSubbank,
+      acountBankno: buyerBankInfo.acountBankno,
+      isband: 1,
+      type: "disabled"
     }) );
   }
 }
@@ -53,13 +55,12 @@ function doSave(data) {
   };
   if (obj.reBankNo !== obj.bankNo) return;
   delete obj.reBankNo;
-  console.log(obj)
   promiseData('POST', URL_BUY_BIND_BANK, JSON.stringify(obj), cbBind);
 }
 
 function cbBind(e) {
   if (e.code === 0) {
-    notifyInfo(MSG_BIND_SUCCESS);
+    alertBox(MSG_BIND_SUCCESS, ()=>{ goto("newTask.html") })   
   } else if (e.code==99) {
     notifyInfo(e.message);
   } else if (e.code==-1) {
