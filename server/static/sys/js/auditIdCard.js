@@ -28,7 +28,7 @@ function doAuditIdCard(e) {
   var type = $(this).data('type')
   var obj = {
     id: sid,
-    approve: (type=='pass')?1:2,
+    approve: (type=='pass')?AUDIT_PASS:AUDIT_FAIL,
     reason: (type=='pass')?'数据正确！':'数据有误!'
   }
 

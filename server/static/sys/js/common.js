@@ -3,6 +3,8 @@ const CODE_COUNT = 10
 const BUY = 0
 const SELL = 1
 const HOST = 'http://localhost:8011'
+const AUDIT_PASS = 2
+const AUDIT_FAIL = 3
 
 
 
