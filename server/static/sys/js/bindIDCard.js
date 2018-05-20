@@ -39,10 +39,10 @@ async function initBindInfo() {
   
   if ( status == 0 ) {
     //未绑定
-    $('.container').append(await renderTmpl(TMPL_BIND_IDCARD, { list:[1,1,1] }));
+    $('.container-fluid').append(await renderTmpl(TMPL_BIND_IDCARD, { list:[1,1,1] }));
   }else if ( status == 1){
     //显示已经绑定表单
-    $(".container").append(await renderTmpl(TMPL_BIND_IDCARD, {
+    $(".container-fluid").append(await renderTmpl(TMPL_BIND_IDCARD, {
       name: $.cookie('name'),
       idCard: $.cookie('idcard'),
       idImg: [ $.cookie('idcardpng1'),$.cookie('idcardpng2'),$.cookie('idcardpng3') ],

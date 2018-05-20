@@ -8,6 +8,10 @@ function init() {
       $("#mainframe", parent.document.body).attr("src", "auditTask.html");
   });
 
+  $('[data-button="auditIdCardBtn"]').on('click', function(e) {
+      $("#mainframe", parent.document.body).attr("src", "auditIdCard.html");
+  });
+
 
   $('#exitBtn').on('click', function(e) {
       location.href = 'auditTask.html'
