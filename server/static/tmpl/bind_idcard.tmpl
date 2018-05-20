@@ -17,9 +17,11 @@
     <div class="form-group">
       <label class="control-label col-xs-2">身份证图片</label>
       <div class="col-xs-10 id-card-box">
-        <img src="img/noimg.png" alt="">
-        <img src="img/noimg.png" alt="">
-        <img src="img/noimg.png" alt="">
+        {{for idImg}}
+        {{if #data}}
+        <img src="http://localhost:8011/file/{{:#data}}" style="width: 200px; height: 150px;">
+        {{/if}}
+        {{/for}}
       </div>
     </div>
     {{else}}
@@ -38,7 +40,7 @@
                 <span class="btn default btn-file">
                 <span class="fileinput-new"> 选择图片 </span>
                 <span class="fileinput-exists"> 更换 </span>
-                  <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="id-card-iptFor #index in nested block use #getIndex().1">
+                  <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="id-card-ipt{{:#index+1}}">
                 </span>
                 <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 删除 </a>
             </div>

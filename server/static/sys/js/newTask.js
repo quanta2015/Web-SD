@@ -18,7 +18,7 @@ function initStatus() {
 
   if (approveState) {
     $('#id-card .task-status').removeClass('status-no-bind').text(TEXT_BIND_SUCCESS);
-    $('#id-card a').removeClass('btn-outline').text(TEXT_BIND_SUCCESS);
+    $('#id-card a').removeClass('btn-outline').text(TEXT_BIND_SUCCESS)
   }
   if (bankCardState) {
     $('#bank-card .task-status').removeClass('status-no-bind').text(TEXT_BIND_SUCCESS);

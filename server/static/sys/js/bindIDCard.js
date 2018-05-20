@@ -35,7 +35,7 @@ function cbBind(e) {
 
 async function initBindInfo() {
   var status = parseInt($.cookie('approveState'))
-  // var status = 1
+  // var status = 0
   
   if ( status == 0 ) {
     //未绑定
@@ -45,9 +45,7 @@ async function initBindInfo() {
     $(".container").append(await renderTmpl(TMPL_BIND_IDCARD, {
       name: $.cookie('name'),
       idCard: $.cookie('idcard'),
-      idImg1: $.cookie('idcardpng1'),
-      idImg2: $.cookie('idcardpng2'),
-      idImg3: $.cookie('idcardpng3'),
+      idImg: [ $.cookie('idcardpng1'),$.cookie('idcardpng2'),$.cookie('idcardpng3') ],
       isbind: 1,
       type: "disabled"
     }) );
