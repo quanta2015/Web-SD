@@ -27,7 +27,10 @@ const URL_BUY_BIND_BANK     = '/buyer/buyer_bankbind'
 const URL_ADMIN_ALL_TASK    = '/admin/all_tasks'
 const URL_ADMIN_TASK_AUDIT  = '/admin/task_approve'
 const URL_ADMIN_ALL_IDCARD  = '/admin/buyer_list'
-const URL_ADMIN_IDCARD_AUDIT  = '/admin/buyer_approve'
+const URL_ADMIN_IDCARD_AUDIT= '/admin/buyer_approve'
+const URL_ADMIN_ACOUNT_LIST = '/admin/buyer_acount_list'
+
+
 
 
 // TMPL DEF
@@ -39,6 +42,7 @@ const TMPL_TASK            = './tmpl/task.tmpl'
 const TMPL_IMG_TASK        = './tmpl/img_task.tmpl'
 const TMPL_TASK_LIST       = './tmpl/list_task.tmpl'
 const TMPL_IDCARD_LIST     = './tmpl/list_idcard.tmpl'
+const TMPL_ACCOUNT_LIST    = './tmpl/list_account.tmpl'
 const TMPL_BIND_IDCARD     = './tmpl/bind_idcard.tmpl'
 const TMPL_BIND_BKCARD     = './tmpl/bind_bkcard.tmpl'
 

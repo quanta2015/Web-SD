@@ -1,0 +1,15 @@
+body {
+    min-width: 1050px;
+}
+
+.pass {
+  color: #ff6600;
+}
+
+.pass1 {
+    color: #006699;
+}
+
+#g-audit-idcard .pass2 {
+    color: #f00000;
+}
