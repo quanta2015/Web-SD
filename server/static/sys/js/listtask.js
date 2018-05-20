@@ -11,7 +11,7 @@ function init() {
 
 
 function initList() {
-  var id = parseInt($.cookie('id'));
+  var id = parseInt(cookie('id'));
   promiseData('GET', URL_SELL_ALL_TASK, null, cbListTask);
 }
 

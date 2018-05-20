@@ -8,7 +8,8 @@ function init() {
 }
 
 async function initBindInfo() {
-  var status = parseInt($.cookie('bankcardState'))
+  // var status = parseInt($.cookie('bankcardState'))
+  var status = parseInt( cookie('bankcardState') )
   // var status = 1
   console.log(status)
   if ( status == 0 ) {
@@ -24,7 +25,7 @@ async function initBindInfo() {
     }));
   }else if ( status == 1){
     //显示已经绑定表单
-    let buyerBankInfo = cookie('buyerBankList')[0];
+    let buyerBankInfo = JSON.parse(cookie('buyerBankList'))[0];
     $(".container").append(await renderTmpl(TMPL_BIND_BKCARD, {
       name: cookie('name'),
       bank: buyerBankInfo.bank,

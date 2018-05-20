@@ -13,7 +13,7 @@ function init() {
 
 
 function initList() {
-  var id = parseInt($.cookie('id'));
+  var id = parseInt(cookie('id'));
   promiseData('GET', URL_SELL_SHOPS + id, null, cbListShop);
 }
 

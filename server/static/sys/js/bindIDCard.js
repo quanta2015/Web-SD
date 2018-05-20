@@ -24,6 +24,7 @@ function doSave(data) {
 }
 function cbBind(e) {
   if (e.code === 0) {
+    initUserInfo();
     alertBox(MSG_BIND_SUCCESS, ()=>{ goto("newTask.html") })
   } else if (e.code==99) {
     notifyInfo(e.message);
@@ -34,18 +35,18 @@ function cbBind(e) {
 
 
 async function initBindInfo() {
-  var status = parseInt($.cookie('approveState'))
+  var status = parseInt(cookie('approveState'))
   // var status = 0
   
   if ( status == 0 ) {
     //未绑定
     $('.container-fluid').append(await renderTmpl(TMPL_BIND_IDCARD, { list:[1,1,1] }));
-  }else if ( status == 1){
+  }else{
     //显示已经绑定表单
     $(".container-fluid").append(await renderTmpl(TMPL_BIND_IDCARD, {
-      name: $.cookie('name'),
-      idCard: $.cookie('idcard'),
-      idImg: [ $.cookie('idcardpng1'),$.cookie('idcardpng2'),$.cookie('idcardpng3') ],
+      name: cookie('name'),
+      idCard: cookie('idcard'),
+      idImg: [ cookie('idcardpng1'),cookie('idcardpng2'),cookie('idcardpng3') ],
       isbind: 1,
       type: "disabled"
     }) );
