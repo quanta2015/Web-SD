@@ -20,14 +20,16 @@ const URL_SELL_SHOP_DEL     = '/shoper/shop_del/'
 const URL_SELL_SHOP_UPDATE  = '/shoper/shop_update/'
 const URL_SELL_ALL_TASK     = '/task/all_tasks/'
 const URL_UPLOAD_FILE       = '/upload'
-const URL_BUY_REG           = '/buyer/buyer_reg'
-const URL_BUY_LOGIN         = '/buyer/buyer_login'
-const URL_BUY_BIND_ID_CARD  = '/buyer/buyer_validate'
-const URL_BUY_BIND_BANK     = '/buyer/buyer_bankbind'
 const URL_ADMIN_ALL_TASK    = '/admin/all_tasks'
 const URL_ADMIN_TASK_AUDIT  = '/admin/task_approve'
 const URL_ADMIN_ALL_IDCARD  = '/admin/buyer_list'
 const URL_ADMIN_IDCARD_AUDIT  = '/admin/buyer_approve'
+
+const URL_BUY_REG           = '/buyer/buyer_reg'
+const URL_BUY_LOGIN         = '/buyer/buyer_login'
+const URL_BUY_BIND_ID_CARD  = '/buyer/buyer_validate'
+const URL_BUY_BIND_BANK     = '/buyer/buyer_bankbind'
+const URL_BUY_BIND_ACCOUNT  = '/buyer/buyer_acountbind'
 
 
 // TMPL DEF
@@ -41,6 +43,7 @@ const TMPL_TASK_LIST       = './tmpl/list_task.tmpl'
 const TMPL_IDCARD_LIST     = './tmpl/list_idcard.tmpl'
 const TMPL_BIND_IDCARD     = './tmpl/bind_idcard.tmpl'
 const TMPL_BIND_BKCARD     = './tmpl/bind_bkcard.tmpl'
+const TMPL_BIND_PLATFORM    = './tmpl/bind_platform.tmpl'
 
 // MSG DEF
 const MSG_LOGIN_SUCCESS   = '登录成功！'
@@ -203,5 +206,14 @@ function cookie(id) {
 
 function cookie2(id, pid) {
   var obj = JSON.parse($.cookie('cko'));
-  return obj[pid][0][id];
+  return obj[pid][0] ? obj[pid][0][id] : null;
+}
+
+function initUserInfo() {
+  let obj = { mobile: cookie('mobile'), password: cookie('password') };
+  let url = parseInt(cookie('userType')) === 0 ? URL_BUY_LOGIN : URL_SELL_LOGIN;
+  promiseData('POST', url, JSON.stringify(obj), (e) => {
+    console.log(e)
+    saveCookie(e.data);
+  });
 }
