@@ -155,12 +155,13 @@ function cbLogin(e) {
     $.cookie('name', e.data.name, { expires: 30 });
     $.cookie('approveState', e.data.approveState, { expires: 30 });
     $.cookie('bankcardState', e.data.bankcardState, { expires: 30 });
-    $.cookie('idcard', e.data.idcard, { expires: 30 });
 
+    $.cookie('idcard', e.data.idcard, { expires: 30 });
     $.cookie('idcardpng1', e.data.idcardpng1, { expires: 30 });
     $.cookie('idcardpng2', e.data.idcardpng2, { expires: 30 });
     $.cookie('idcardpng3', e.data.idcardpng3, { expires: 30 });
-    
+
+    $.cookie('buyerBankList', JSON.stringify(e.data.buyerBankList), { expires: 30 });
     
     location.href = $('.loginYh').is('.on')? 'mainBuy.html' : 'mainSell.html';
     notifyInfo(MSG_LOGIN_SUCCESS);

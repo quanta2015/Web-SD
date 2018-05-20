@@ -2,36 +2,36 @@
   <div class="form-group">
     <label class="control-label col-xs-2">开户姓名</label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" id="acount-name" placeholder="请输入开户姓名">
+      <input type="text" class="form-control" id="acount-name" placeholder="请输入开户姓名" value="{{:name}}" {{:type}}>
     </div>
     <div class="col-xs-4 form-info">(银行卡姓名必须与身份证姓名一致)</div>
   </div>
   <div class="form-group">
     <label class="control-label col-xs-2">银行名称</label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" id="bank" placeholder="请输入正确的银行名称" value="{{:bank}}">
+      <input type="text" class="form-control" id="bank" placeholder="请输入正确的银行名称" value="{{:bank}}" {{:type}}>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-xs-2">开户支行</label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" id="acount-subbank" placeholder="请输入正确的开户支行" value="{{:acount_subbank}}">
+      <input type="text" class="form-control" id="acount-subbank" placeholder="请输入正确的开户支行" value="{{:acountSubbank}}" {{:type}}>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-xs-2">开户行号</label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" id="acount-bankno" placeholder="请输入正确的开户行号" value="{{:acount_bankno}}">
+      <input type="text" class="form-control" id="acount-bankno" placeholder="请输入正确的开户行号" value="{{:acountBankno}}" {{:type}}>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-xs-2">银行账号</label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" id="bankno" placeholder="请输入正确的银行账号" value="{{:bank_no}}">
+      <input type="text" class="form-control" id="bankno" placeholder="请输入正确的银行账号" value="{{:bankNo}}" {{:type}}>
     </div>
   </div>
 
-  {{if isband}}
+  {{if !isband}}
   <div class="form-group">
     <label class="control-label col-xs-2">确认账号</label>
     <div class="col-xs-6">
@@ -43,7 +43,7 @@
   <div class="form-group">
     <label class="control-label col-xs-2"></label>
     <div class="col-xs-10">
-      {{if isband}}
+      {{if !isband}}
       <button type="button" class="btn blue" id="saveBtn">保存</button>
       {{/if}}
       <button type="button" class="btn red" id="returnBtn"> 返回</button>

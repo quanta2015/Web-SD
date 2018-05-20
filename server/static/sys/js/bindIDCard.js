@@ -20,12 +20,11 @@ function doSave(data) {
   for (let i = 1; i <= 3; i++) {
     obj[`idcardpng${i}`] = $(`#id-card-ipt${i}`).attr('url');
   }
-  console.log(obj)
   promiseData('POST', URL_BUY_BIND_ID_CARD, JSON.stringify(obj), cbBind);
 }
 function cbBind(e) {
   if (e.code === 0) {
-    alertBox(MSG_BIND_SUCCESS, ()=>{ goto("newTask.html") })   
+    alertBox(MSG_BIND_SUCCESS, ()=>{ goto("newTask.html") })
   } else if (e.code==99) {
     notifyInfo(e.message);
   } else if (e.code==-1) {
@@ -45,7 +44,7 @@ async function initBindInfo() {
     //显示已经绑定表单
     $(".container").append(await renderTmpl(TMPL_BIND_IDCARD, {
       name: $.cookie('name'),
-      idCard: $.cookie('idCard'),
+      idCard: $.cookie('idcard'),
       idImg1: $.cookie('idcardpng1'),
       idImg2: $.cookie('idcardpng2'),
       idImg3: $.cookie('idcardpng3'),
