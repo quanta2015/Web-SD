@@ -149,20 +149,28 @@ function doLogin() {
 
 function cbLogin(e) {
   if (e.code == 0) {
-    $.cookie('mobile', e.data.mobile, {expires: 30});
-    $.cookie('password', $('#login-password').val, { expires: 30 });
-    $.cookie('id', e.data.id, { expires: 30 });
-    $.cookie('name', e.data.name, { expires: 30 });
-    $.cookie('approveState', e.data.approveState, { expires: 30 });
-    $.cookie('bankcardState', e.data.bankcardState, { expires: 30 });
 
+    $.cookie('id', e.data.id, { expires: 30 });
+    $.cookie('mobile', e.data.mobile, {expires: 30});
+
+    $.cookie('name', e.data.name, { expires: 30 });
+    $.cookie('password', $('#login-password').val, { expires: 30 });
     $.cookie('idcard', e.data.idcard, { expires: 30 });
     $.cookie('idcardpng1', e.data.idcardpng1, { expires: 30 });
     $.cookie('idcardpng2', e.data.idcardpng2, { expires: 30 });
     $.cookie('idcardpng3', e.data.idcardpng3, { expires: 30 });
-
-    $.cookie('buyerBankList', JSON.stringify(e.data.buyerBankList), { expires: 30 });
     
+    $.cookie('approveState', e.data.approveState, { expires: 30 });
+    $.cookie('bankcardState', e.data.bankcardState, { expires: 30 });
+    $.cookie('buyerBankList', JSON.stringify(e.data.buyerBankList), { expires: 30 });
+
+    saveCookie(e.data);
+
+    var m  = getCookie('mobile', null)
+    var p  = getCookie('approveState', null)
+    var aaa  = getCookie('idcardpng3', null)
+    var bbb  = getCookie('acountName', 'buyerBankList')
+
     location.href = $('.loginYh').is('.on')? 'mainBuy.html' : 'mainSell.html';
     notifyInfo(MSG_LOGIN_SUCCESS);
   }else if (e.code==99) {

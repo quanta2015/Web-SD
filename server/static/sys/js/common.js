@@ -191,3 +191,13 @@ var uploadFile = function(target) {
   })
 }
 
+
+
+function saveCookie(data) {
+  $.cookie('cko', JSON.stringify(data), { expires: 30 });
+}
+
+function getCookie(id, pid) {
+  var obj = JSON.parse($.cookie('cko'));
+  return (pid?obj[pid][0][id]:obj[id]);
+}
