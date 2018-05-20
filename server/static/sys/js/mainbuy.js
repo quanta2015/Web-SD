@@ -17,7 +17,7 @@ function init() {
   });
 
   $('[data-button="bindAccountBtn"]').on('click', function(e) {
-    $("#mainframe", parent.document.body).attr("src", "bindIDCard.html");
+    $("#mainframe", parent.document.body).attr("src", "bindAccount.html");
   });
  
   $('#exitBtn').on('click', function(e) {
