@@ -25,6 +25,7 @@ const URL_ADMIN_TASK_AUDIT  = '/admin/task_approve'
 const URL_ADMIN_ALL_IDCARD  = '/admin/buyer_list'
 const URL_ADMIN_IDCARD_AUDIT= '/admin/buyer_approve'
 const URL_ADMIN_ACOUNT_LIST = '/admin/buyer_acount_list'
+const URL_ADMIN_ACOUNT_AUDIT= '/admin/buyer_acount_approve'
 
 
 

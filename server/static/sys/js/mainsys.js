@@ -12,6 +12,10 @@ function init() {
       $("#mainframe", parent.document.body).attr("src", "auditIdCard.html");
   });
 
+  $('[data-button="auditAccountBtn"]').on('click', function(e) {
+      $("#mainframe", parent.document.body).attr("src", "auditAccount.html");
+  });
+
 
   $('#exitBtn').on('click', function(e) {
       location.href = 'auditTask.html'

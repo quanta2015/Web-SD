@@ -36,6 +36,7 @@ async function initBindInfo() {
       isband: 1,
       type: "disabled"
     }) );
+
   }
 }
 

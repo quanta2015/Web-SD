@@ -2,14 +2,18 @@ body {
     min-width: 1050px;
 }
 
-.pass {
+#g-audit.pass {
   color: #ff6600;
 }
 
-.pass1 {
+#g-audit.pass1 {
     color: #006699;
 }
 
-#g-audit-idcard .pass2 {
+#g-audit .pass2 {
     color: #f00000;
+}
+
+#g-audit .pass3 {
+    color: #009900;
 }
