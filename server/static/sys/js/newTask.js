@@ -3,21 +3,11 @@ $(init)
 function init() {
   initStatus();
 
-  $('[data-button="bindIDCardBtn"]').on('click', function(e) {
-    $("#mainframe", parent.document.body).attr("src", "bindIDCard.html");
+  $('[data-button]').on('click', function(e) {
+    var pageName = $(this).data('button') + '.html'
+    $("#mainframe", parent.document.body).attr("src", pageName);
   });
 
-  $('[data-button="bindBankCardBtn"]').on('click', function(e) {
-    $("#mainframe", parent.document.body).attr("src", "bindBankCard.html");
-  });
-
-  $('[data-button="bindJingdongBtn"]').on('click', function(e) {
-    $("#mainframe", parent.document.body).attr("src", "bindJingdong.html");
-  });
-
-  $('[data-button="bindTaobaoBtn"]').on('click', function(e) {
-    $("#mainframe", parent.document.body).attr("src", "bindTaobao.html");
-  });
 }
 
 function initStatus() {
@@ -26,22 +16,14 @@ function initStatus() {
   let jingdongState = parseInt(cookie2('approve', 'jingdongList'));
   let taobaoState = parseInt(cookie2('approve', 'taobaoList'));
 
-  if (approveState) {
-    $('#id-card .task-status').removeClass('status-no-bind').text(TEXT_BIND_SUCCESS);
-    $('#id-card a').removeClass('btn-outline').text(TEXT_BIND_SUCCESS)
-  }
-  if (bankCardState) {
-    $('#bank-card .task-status').removeClass('status-no-bind').text(TEXT_BIND_SUCCESS);
-    $('#bank-card a').removeClass('btn-outline').text(TEXT_BIND_SUCCESS);
-  }
+  taobaoState ? toggleBindStatus('taobao') : null;
+  approveState ? toggleBindStatus('id-card') : null;
+  jingdongState ? toggleBindStatus('jingdong') : null;
+  bankCardState ? toggleBindStatus('bank-card') : null;
 
-  if (jingdongState) {
-    $('#jingdong .task-status').removeClass('status-no-bind').text(TEXT_BIND_SUCCESS);
-    $('#jingdong a').removeClass('btn-outline').text(TEXT_BIND_SUCCESS);
-  }
+}
 
-  if (taobaoState) {
-    $('#taobao .task-status').removeClass('status-no-bind').text(TEXT_BIND_SUCCESS);
-    $('#taobao a').removeClass('btn-outline').text(TEXT_BIND_SUCCESS);
-  }
+function toggleBindStatus(id) {
+  $(`#${id} .task-status`).removeClass('status-no-bind').text(TEXT_BIND_SUCCESS);
+  $(`#${id} a`).removeClass('btn-outline').text(TEXT_BIND_SUCCESS);
 }
