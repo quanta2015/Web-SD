@@ -1,0 +1,19 @@
+body {
+    min-width: 1050px;
+}
+
+#g-audit.pass {
+  color: #ff6600;
+}
+
+#g-audit.pass1 {
+    color: #006699;
+}
+
+#g-audit .pass2 {
+    color: #f00000;
+}
+
+#g-audit .pass3 {
+    color: #009900;
+}

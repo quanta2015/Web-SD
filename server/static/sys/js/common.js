@@ -15,7 +15,7 @@ const URL_SELL_LOGIN        = '/shoper/shoper_login'
 const URL_SHOP_BIND         = '/shoper/shop_bind'
 const URL_TASK_PUBLISH      = '/task/task_publish'
 const URL_TASK_ALL_PLATFORM = '/task/all_platform'
-const URL_SELL_SHOPS        = '/users/shoper_shops/'
+const URL_SELL_SHOPS        = '/shoper/shoper_shops/'
 const URL_SELL_SHOP_DEL     = '/shoper/shop_del/'
 const URL_SELL_SHOP_UPDATE  = '/shoper/shop_update/'
 const URL_SELL_ALL_TASK     = '/task/all_tasks/'
@@ -26,7 +26,7 @@ const URL_ADMIN_ALL_IDCARD  = '/admin/buyer_list'
 const URL_ADMIN_IDCARD_AUDIT= '/admin/buyer_approve'
 const URL_ADMIN_ACOUNT_LIST = '/admin/buyer_acount_list'
 const URL_ADMIN_ACOUNT_AUDIT= '/admin/buyer_acount_approve'
-
+const URL_BUYER_ALL_TASK    = '/buyertask/all_tasks'
 
 
 const URL_BUY_REG           = '/buyer/buyer_reg'
@@ -48,7 +48,8 @@ const TMPL_IDCARD_LIST     = './tmpl/list_idcard.tmpl'
 const TMPL_ACCOUNT_LIST    = './tmpl/list_account.tmpl'
 const TMPL_BIND_IDCARD     = './tmpl/bind_idcard.tmpl'
 const TMPL_BIND_BKCARD     = './tmpl/bind_bkcard.tmpl'
-const TMPL_BIND_PLATFORM    = './tmpl/bind_platform.tmpl'
+const TMPL_BIND_PLATFORM   = './tmpl/bind_platform.tmpl'
+const TMPL_BUYER_ALL_TASK  = './tmpl/list_buyer_all_task.tmpl'
 
 // MSG DEF
 const MSG_LOGIN_SUCCESS   = '登录成功！'
@@ -211,7 +212,7 @@ function cookie(id) {
 
 function cookie2(id, pid) {
   var obj = JSON.parse($.cookie('cko'));
-  return obj[pid][0] ? obj[pid][0][id] : null;
+  return obj[pid][0][id];
 }
 
 function initUserInfo() {
