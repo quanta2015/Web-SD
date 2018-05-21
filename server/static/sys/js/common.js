@@ -6,7 +6,25 @@ const HOST = 'http://localhost:8011'
 const AUDIT_PASS = 2
 const AUDIT_FAIL = 3
 
-
+const PLATFORM_DATA = {
+  jingdong: {
+    type: '京东',
+    creditType: '白条',
+    levels: ['注册会员','铜牌会员','银牌会员','金牌会员','钻石会员'],
+    cko: 'jingdongList',
+  },
+  taobao: {
+    type: '淘宝',
+    creditType: '花呗',
+    levels: [
+      '一星','二星','三星','四星','五星',
+      '一钻','二钻','三钻','四钻','五钻',
+      '一皇冠','二皇冠','三皇冠','四皇冠','五皇冠',
+      '一金冠','二金冠','三金冠','四金冠','五金冠',
+    ],
+    cko: 'taobaoList',
+  } 
+}
 
 // URL DEF
 const URL_SELL_REG          = '/shoper/shoper_reg'
@@ -49,7 +67,11 @@ const TMPL_ACCOUNT_LIST    = './tmpl/list_account.tmpl'
 const TMPL_BIND_IDCARD     = './tmpl/bind_idcard.tmpl'
 const TMPL_BIND_BKCARD     = './tmpl/bind_bkcard.tmpl'
 const TMPL_BIND_PLATFORM   = './tmpl/bind_platform.tmpl'
+<<<<<<< HEAD
 const TMPL_BUYER_ALL_TASK  = './tmpl/list_buyer_all_task.tmpl'
+=======
+const TMPL_BIND_ACCOUNT    = './tmpl/bind_account.tmpl'
+>>>>>>> 0c0c0176815d07296baeb790614a8c941cbc1677
 
 // MSG DEF
 const MSG_LOGIN_SUCCESS   = '登录成功！'
@@ -219,8 +241,13 @@ function initUserInfo() {
   let obj = { mobile: cookie('mobile'), password: cookie('password') };
   let url = parseInt(cookie('userType')) === 0 ? URL_BUY_LOGIN : URL_SELL_LOGIN;
   promiseData('POST', url, JSON.stringify(obj), (e) => {
-    console.log(e)
     saveCookie(e.data);
   });
 }
 
+// 获取url中的参数
+function getUrlParam(name) {
+  let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+  let r = window.location.search.substr(1).match(reg);
+  if (r != null) return unescape(r[2]); return null;
+}
