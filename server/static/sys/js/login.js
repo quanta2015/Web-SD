@@ -149,7 +149,7 @@ function doLogin() {
 
 function cbLogin(e) {
   if (e.code == 0) {
-    e.data.userType =  $('.loginYh').is('.on')?BUY:SELL;
+    e.data.userType = $('.loginYh').is('.on')?BUY:SELL;
     e.data.password = $('#login-password').val();
     saveCookie(e.data);
     location.href = $('.loginYh').is('.on')? 'mainBuy.html' : 'mainSell.html';

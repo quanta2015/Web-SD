@@ -14,7 +14,7 @@ async function initBindInfo() {
   var status = cookie2('approve', platform.cko);
   status?parseInt(cookie2('approve', platform.cko)):null;
 
-  console.log(status)
+  // status = 3
   if ( status == 0 || status == null) {
     //未绑定
     $('body').append(await renderTmpl(TMPL_BIND_ACCOUNT, {
@@ -22,13 +22,14 @@ async function initBindInfo() {
       creditType: platform.creditType,
       levels: platform.levels,
       list: [1,1,1],
-      isbind: 0
+      status: 0,
     }));
-  } else if ( status == 1) {
+  } else {
     //显示已经绑定表单
     $("body").append(await renderTmpl(TMPL_BIND_ACCOUNT, {
       platform: platform.type,
       creditType: platform.creditType,
+      levels: platform.levels,
       buyerId: cookie('id'),
       acount: cookie2('acount', platform.cko),
       acountLevel: cookie2('acountLevel', platform.cko),
@@ -38,13 +39,15 @@ async function initBindInfo() {
       receiveAddress: cookie2('receiveAddress', platform.cko),
       receiver: cookie2('receiver', platform.cko),
       receiveMobile: cookie2('receiveMobile', platform.cko),
-      img: [
+      accountImg: [
         cookie2('baitiaoImg', platform.cko),
         cookie2('mysiteImg', platform.cko),
         cookie2('myacountImg', platform.cko)
       ],
-      isbind: 1,
-      type: "disabled"
+      list: [1,1,1],
+      type: status !== 3 ? "disabled" : null,
+      status: status,
+      statusText: AUDIT_STATUS[status],
     }) );
   }
   $('#pick').distpicker();
@@ -66,9 +69,9 @@ function doSave(data) {
     receiveAddress: $('#receive-address').val(),
     receiver: $('#receiver').val(),
     receiveMobile: $('#receive-mobile').val(),
-    baitiaoImg: $('#platform-ipt1').attr('url'),
-    mysiteImg: $('#platform-ipt2').attr('url'),
-    myacountImg: $('#platform-ipt3').attr('url'),
+    baitiaoImg: $('#platform-ipt1').attr('url') || cookie2('baitiaoImg', platform.cko),
+    mysiteImg: $('#platform-ipt2').attr('url') || cookie2('mysiteImg', platform.cko),
+    myacountImg: $('#platform-ipt3').attr('url') || cookie2('myacountImg', platform.cko)
   };
   console.log(obj)
   promiseData('POST', URL_BUY_BIND_ACCOUNT, JSON.stringify(obj), cbBind);

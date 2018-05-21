@@ -16,14 +16,19 @@ function initStatus() {
   let jingdongState = parseInt(cookie2('approve', 'jingdongList'));
   let taobaoState = parseInt(cookie2('approve', 'taobaoList'));
 
-  taobaoState ? toggleBindStatus('taobao') : null;
-  approveState ? toggleBindStatus('id-card') : null;
-  jingdongState ? toggleBindStatus('jingdong') : null;
-  bankCardState ? toggleBindStatus('bank-card') : null;
+  toggleBindStatus('taobao', taobaoState);
+  toggleBindStatus('id-card', approveState);
+  toggleBindStatus('jingdong', jingdongState);
+  toggleBindStatus('bank-card', bankCardState);
 
 }
 
-function toggleBindStatus(id) {
-  $(`#${id} .task-status`).removeClass('status-no-bind').text(TEXT_BIND_SUCCESS);
-  $(`#${id} a`).removeClass('btn-outline').text(TEXT_BIND_SUCCESS);
+function toggleBindStatus(id, status) {
+  if ([1, 2].includes(status)) {
+    $(`#${id} .task-status`).removeClass('status-no-bind').text(AUDIT_STATUS[status]);
+    $(`#${id} a`).removeClass('btn-outline').text(AUDIT_STATUS[status]);
+  } else if (status === 3) {
+    $(`#${id} .task-status`).text(AUDIT_STATUS[status]);
+    $(`#${id} a`).text(AUDIT_STATUS[status]);
+  }
 }

@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    {{if isbind}}
+    {{if status == 1 || status == 2}}
     <div class="form-group">
       <label class="control-label col-xs-2">身份证图片</label>
       <div class="col-xs-10 id-card-box">
@@ -34,7 +34,11 @@
           {{for list}}
           <div class="fileinput fileinput-new" data-provides="fileinput">
             <div class="fileinput-new thumbnail" style="max-width: 150px; max-height: 120px;">
-                <img src="img/noimg.png">
+              {{if ~root.idImg && ~root.idImg[#getIndex()]}}
+              <img src="http://localhost:8011/file/{{:~root.idImg[#getIndex()]}}">
+              {{else}}
+              <img src="img/noimg.png">
+              {{/if}}
             </div>
             <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
             
@@ -54,10 +58,19 @@
     </div>
     {{/if}}
 
+    {{if status !== 0}}
+    <div class="form-group">
+      <label class="control-label col-xs-2">审核状态</label>
+      <div class="col-xs-6">
+        <input type="text" class="form-control" value="{{:statusText}}" disabled>
+      </div>
+    </div>
+    {{/if}}
+
     <div class="form-group">
       <label class="control-label col-xs-2"></label>
       <div class="col-xs-10">
-        {{if !isbind}}
+        {{if status == 0 || status == 3}}
         <button type="button" class="btn blue" id="saveBtn">保存</button>
         {{/if}}
         <button type="button" class="btn red" id="returnBtn"> 返回</button>
