@@ -5,13 +5,16 @@ function init() {
   $("iframe").height(h - 50);
 
   $('[data-button]').on('click', function(e) {
-    var pageName = $(this).data('button') + '.html'
+    var platform = $(this).data('platform')
+    var pageName = $(this).data('button') + '.html';
+    platform ? pageName += `?platform=${platform}` : null;
+
     $("#mainframe", parent.document.body).attr("src", pageName);
   });
 
 
   $('#exitBtn').on('click', function(e) {
-      location.href = 'auditTask.html'
+      location.href = 'index.html'
   });
 
 
