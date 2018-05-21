@@ -17,22 +17,21 @@ async function initBindInfo() {
     $('.container').append(await renderTmpl(TMPL_BIND_PLATFORM, {
       type: '京东',
       creditType: '白条',
+      levels: ['注册会员','铜牌会员','银牌会员','金牌会员','钻石会员'],
       list: [1,1,1],
       isbind: 0
     }));
   }else if ( status == 1) {
     //显示已经绑定表单
-    console.log(cookie2('baitiaoImg', 'jingdongList'))
     $(".container").append(await renderTmpl(TMPL_BIND_PLATFORM, {
       platform: '京东',
+      creditType: '白条',
       buyerId: cookie('id'),
       acount: cookie2('acount', 'jingdongList'),
       acountLevel: cookie2('acountLevel', 'jingdongList'),
       baitiaoStart: parseInt(cookie2('baitiaoStart', 'jingdongList'))?"checked":null,
       baitiaoUnStart: parseInt(cookie2('baitiaoStart', 'jingdongList'))?null:"checked",
-      receiveProvince:cookie2('acount', 'jingdongList'),
-      // receiveCity: cookie2('receiveCity', 'jingdongList'),
-      // receiveCountry: cookie2('receiveCountry', 'jingdongList'),
+      receiveProvince: cookie2('receiveProvince', 'jingdongList'),
       receiveAddress: cookie2('receiveAddress', 'jingdongList'),
       receiver: cookie2('receiver', 'jingdongList'),
       receiveMobile: cookie2('receiveMobile', 'jingdongList'),
@@ -45,6 +44,7 @@ async function initBindInfo() {
       type: "disabled"
     }) );
   }
+  $('#pick').distpicker();
 }
 
 
@@ -59,12 +59,10 @@ function doSave(data) {
     acount: $('#receiver').val(),
     acountLevel: $('#acount-level').val(),
     baitiaoStart: $("input[name='r-baitiao-start']:checked").val(),
-    receiveProvince: $('#receiver').val(),
-    // receiveCity: $('#receiver').val(),
-    // receiveCountry: $('#receiver').val(),
-    receiveAddress: $('#receiver').val(),
+    receiveProvince: $('#receive-province').val(),
+    receiveAddress: $('#receive-address').val(),
     receiver: $('#receiver').val(),
-    receiveMobile: $('#receiver').val(),
+    receiveMobile: $('#receive-mobile').val(),
     baitiaoImg: $('#platform-ipt1').attr('url'),
     mysiteImg: $('#platform-ipt2').attr('url'),
     myacountImg: $('#platform-ipt3').attr('url'),
