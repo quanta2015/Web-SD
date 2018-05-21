@@ -41,7 +41,7 @@ async function initBindInfo() {
   if ( status == 0 ) {
     //未绑定
     $('.container-fluid').append(await renderTmpl(TMPL_BIND_IDCARD, { list:[1,1,1] }));
-  }else{
+  } else {
     //显示已经绑定表单
     $(".container-fluid").append(await renderTmpl(TMPL_BIND_IDCARD, {
       name: cookie('name'),
@@ -51,4 +51,5 @@ async function initBindInfo() {
       type: "disabled"
     }) );
   }
+  $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
 }
