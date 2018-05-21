@@ -8,8 +8,17 @@
   </div>
   <div class="form-group">
     <label class="control-label col-xs-2">{{:platform}}账号等级</label>
-    <div class="col-xs-6">
-      <input type="text" class="form-control" id="acount-level" placeholder="请输入{{:type}}账号等级" value="{{:acountLevel}}" {{:type}}>
+    <div class="col-xs-6 form-inline">
+      <select class="form-control " id="acount-level" {{:type}}>
+        {{if !isbind}}
+        <option value="">请选择</option>
+        {{else}}
+        <option value="">{{:acountLevel}}</option>
+        {{/if}}
+        {{for levels}}
+        <option value="{{:#data}}">{{:#data}}</option>
+        {{/for}}
+      </select>
     </div>
   </div>
 
@@ -27,8 +36,6 @@
     </div>
   </div>
 
-
-
   <div class="form-group">
     <label class="control-label col-xs-2">收货人</label>
     <div class="col-xs-6">
@@ -41,22 +48,23 @@
       <input type="text" class="form-control" id="receive-mobile" placeholder="请输入正确的收货人手机号" value="{{:receiveMobile}}" {{:type}}>
     </div>
   </div>
-  <div class="form-group">
+
+  <div class="form-group" data-toggle="distpicker" id="pick">
     <label class="control-label col-xs-2">收货人省份</label>
-    <div class="col-xs-6">
-      <input type="text" class="form-control" id="receive-province" placeholder="请输入正确的收货人手机号" value="{{:receiveProvince}}" {{:type}}>
+    <div class="col-xs-3">
+      <select class="form-control" id="receive-province" data-province="{{:receiveProvince}}" {{:type}}></select>
     </div>
-  </div>
+  </div> 
   <div class="form-group">
     <label class="control-label col-xs-2">详细地址</label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" id="receive-address" placeholder="请输入正确的收货人手机号" value="{{:receiveAddress}}" {{:type}}>
+      <input type="text" class="form-control" id="receive-address" placeholder="请输入正确的详细地址" value="{{:receiveAddress}}" {{:type}}>
     </div>
   </div>
 
   {{if isbind}}
   <div class="form-group">
-    <label class="control-label col-xs-2"></label>
+    <label class="control-label col-xs-2">上传截图</label>
     <div class="col-xs-10 id-card-box">
       {{for img}}
       {{if #data}}
@@ -96,7 +104,7 @@
   <div class="form-group">
     <label class="control-label col-xs-2"></label>
     <div class="col-xs-10">
-      {{if !isband}}
+      {{if !isbind}}
       <button type="button" class="btn blue" id="saveBtn">保存</button>
       {{/if}}
       <button type="button" class="btn red" id="returnBtn"> 返回</button>

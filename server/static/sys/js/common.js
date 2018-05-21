@@ -222,3 +222,4 @@ function initUserInfo() {
     saveCookie(e.data);
   });
 }
+
