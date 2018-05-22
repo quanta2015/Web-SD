@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  {{if !isband}}
+  {{if status == 0 || status == 3}}
   <div class="form-group">
     <label class="control-label col-xs-2">确认账号</label>
     <div class="col-xs-6">
@@ -40,10 +40,19 @@
   </div>
   {{/if}}
 
+  {{if status !== 0}}
+  <div class="form-group">
+    <label class="control-label col-xs-2">审核状态</label>
+    <div class="col-xs-6">
+      <input type="text" class="form-control" value="{{:statusText}}" disabled>
+    </div>
+  </div>
+  {{/if}}
+
   <div class="form-group">
     <label class="control-label col-xs-2"></label>
     <div class="col-xs-10">
-      {{if !isband}}
+      {{if status == 0 || status == 3}}
       <button type="button" class="btn blue" id="saveBtn">保存</button>
       {{/if}}
       <button type="button" class="btn red" id="returnBtn"> 返回</button>

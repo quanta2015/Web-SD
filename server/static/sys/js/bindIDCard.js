@@ -11,14 +11,13 @@ function doReturn() {
   goto('newTask.html')
 }
 
-
 function doSave(data) {
   let obj = {
     name: $('#name').val(),
     idcard: $('#id-card').val(),
   };
   for (let i = 1; i <= 3; i++) {
-    obj[`idcardpng${i}`] = $(`#id-card-ipt${i}`).attr('url');
+    obj[`idcardpng${i}`] = $(`#id-card-ipt${i}`).attr('url') || cookie(`idcardpng${i}`);
   }
   promiseData('POST', URL_BUY_BIND_ID_CARD, JSON.stringify(obj), cbBind);
 }
@@ -33,22 +32,25 @@ function cbBind(e) {
   };
 }
 
-
 async function initBindInfo() {
-  var status = parseInt(cookie('approveState'))
-  // var status = 0
-  
-  if ( status == 0 ) {
+  let status = parseInt(cookie('approveState'))
+  // status = 2
+  if ( status == 0 || status == null) {
     //未绑定
-    $('.container-fluid').append(await renderTmpl(TMPL_BIND_IDCARD, { list:[1,1,1] }));
+    $('.container-fluid').append(await renderTmpl(TMPL_BIND_IDCARD, {
+      list:[1,1,1],
+      status: 0,
+    }));
   } else {
-    //显示已经绑定表单
+    // 待审核或审核通过 显示已经绑定表单
     $(".container-fluid").append(await renderTmpl(TMPL_BIND_IDCARD, {
       name: cookie('name'),
       idCard: cookie('idcard'),
       idImg: [ cookie('idcardpng1'),cookie('idcardpng2'),cookie('idcardpng3') ],
-      isbind: 1,
-      type: "disabled"
+      status: status,
+      list: [1,1,1],
+      type: status !== 3 ? "disabled" : null,
+      statusText: AUDIT_STATUS[status],
     }) );
   }
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
