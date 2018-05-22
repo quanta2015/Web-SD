@@ -14,16 +14,16 @@ function init() {
 
 function initList() {
   var id = parseInt(cookie('id'));
-  promiseData('GET', URL_SELL_SHOPS + id, null, cbListShop);
+  TmplData(TMPL_SHOP_LIST,URL_SELL_SHOPS + id,null, cbListShop)
 }
 
 
-function cbListShop(e) {
+function cbListShop(r, e) {
   console.log(e);
-  if (e.code == 0) {
-    _listshop = e.data;
+  if (e[0].code == 0) {
+    _listshop = e[0].data;
     $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($("#shopTmpl").render(e));
+    $(".portlet-body").prepend($.templates(r[0]).render(e[0], null));
   } else if (e.code == -1) {
     relogin();
   }

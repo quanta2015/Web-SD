@@ -67,17 +67,17 @@ const TMPL_ACCOUNT_LIST    = './tmpl/list_account.tmpl'
 const TMPL_BIND_IDCARD     = './tmpl/bind_idcard.tmpl'
 const TMPL_BIND_BKCARD     = './tmpl/bind_bkcard.tmpl'
 const TMPL_BIND_PLATFORM   = './tmpl/bind_platform.tmpl'
-<<<<<<< HEAD
 const TMPL_BUYER_ALL_TASK  = './tmpl/list_buyer_all_task.tmpl'
-=======
 const TMPL_BIND_ACCOUNT    = './tmpl/bind_account.tmpl'
->>>>>>> 0c0c0176815d07296baeb790614a8c941cbc1677
+const TMPL_SHOP_LIST       = './tmpl/list_shop.tmpl'
+const TMPL_RECHARGE_LIST   = './tmpl/list_recharge.tmpl'
 
 // MSG DEF
 const MSG_LOGIN_SUCCESS   = '登录成功！'
 const MSG_REGIS_SUCCESS   = '注册成功！'
 const MSG_PUBLISH_SUCCESS = '发布成功！'
 const MSG_BIND_SUCCESS    = '绑定成功！'
+const MSG_UPDATE_SUCCESS  = '修改信息成功'
 
 const TEXT_BIND_SUCCESS = '已绑定'
 
