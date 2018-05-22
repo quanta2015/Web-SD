@@ -52,6 +52,8 @@ const URL_ADMIN_IDCARD_AUDIT= '/admin/buyer_approve'
 const URL_ADMIN_ACOUNT_LIST = '/admin/buyer_acount_list'
 const URL_ADMIN_ACOUNT_AUDIT= '/admin/buyer_acount_approve'
 const URL_BUYER_ALL_TASK    = '/buyertask/all_tasks'
+const URL_ADMIN_ALL_RECHARGE= '/admin/shoper_transfer_list'
+const URL_ADMIN_AUDIT_RECHARGE = '/admin/shoper_transfer_approve'
 
 
 const URL_BUY_REG           = '/buyer/buyer_reg'
@@ -76,11 +78,9 @@ const TMPL_BIND_BKCARD     = './tmpl/bind_bkcard.tmpl'
 const TMPL_BIND_PLATFORM   = './tmpl/bind_platform.tmpl'
 const TMPL_BUYER_ALL_TASK  = './tmpl/list_buyer_all_task.tmpl'
 const TMPL_BIND_ACCOUNT    = './tmpl/bind_account.tmpl'
-<<<<<<< HEAD
 const TMPL_SHOP_LIST       = './tmpl/list_shop.tmpl'
 const TMPL_RECHARGE_LIST   = './tmpl/list_recharge.tmpl'
-=======
->>>>>>> ba9c48d06f7c2118af0996d7b4726c961b9bda45
+
 
 // MSG DEF
 const MSG_LOGIN_SUCCESS   = '登录成功！'
