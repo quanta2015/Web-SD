@@ -1,6 +1,13 @@
+var $v = {
+  transferPerson:'',
+  fromAccount:'',
+  toAccount:'',
+  transferMoney:'',
+  bankName:'',
+  remark:'',
+  file: null
+};
 
-
-var seller;
 var optList = ['工商银行', '农业银行', '建设银行', '中国银行', '招商银行']
 
 $(init);
@@ -10,21 +17,20 @@ function init() {
 }
 
 function initList() {
-  promiseData('GET','/shoper/shoper_detail/7',null, cbList)
-}
-
-function cbList(e) {
-  seller = new Vue({
-    el: '#seller',
+  recharge = new Vue({
+    el: '#recharge',
     data: {
-      seller: e.data,
+      recharge: $v,
       opts: optList
     },
     methods: {
       doSave: doSave
     }
   })
+
+  $('#acountList input:eq(0)').trigger('click');
 }
+
 
 function saveList(s, list) {
   var data = {};
@@ -35,15 +41,16 @@ function saveList(s, list) {
 }
 
 function doSave(e) {
-  var $s = seller._data.seller
-  var $l = ['id','name','qq','bank','mobile','weixin','bankcard']
+  var $s = recharge._data.recharge
+  var $l = ['toAccount','transferMoney','bankName','fromAccount','transferPerson','remark']
   var data = saveList($s, $l)
-  promiseData('POST','/shoper/shoper_update',JSON.stringify(data), cbSave)
+  data.picture = $s.file;
+  promiseData('POST','/shoper/shoper_transfer',JSON.stringify(data), cbSave)
 }
 
 function cbSave(e) {
   if (e.code == 0) {
-    notifyInfo(MSG_UPDATE_SUCCESS)
+    notifyInfo(MSG_RECHARGE_SUCCESS)
   } else if (e.code == -1) {
     relogin();
   }

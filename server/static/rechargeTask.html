@@ -26,7 +26,7 @@
     <link href="lib/alertify/alertify.core.css" rel="stylesheet" >
     <link href="lib/alertify/alertify.default.css" rel="stylesheet" >
     <link href="sys/css/common.css"  rel="stylesheet" type="text/css" >
-    <link href="sys/css/createtask.css"  rel="stylesheet" type="text/css" >
+    <link href="sys/css/rechargeTask.css"  rel="stylesheet" type="text/css" >
 
 
   </head>
@@ -43,8 +43,8 @@
         </li>
       </ul>
     </div>
-    <div class="container-fluid">
-      <form id="form-task" class="form-horizontal">
+    <div class="container-fluid" id="recharge" >
+      <form class="form-horizontal">
         
         <div class="portlet light bordered">                     
           <div class="portlet-body">
@@ -61,13 +61,13 @@
           <div class="portlet-body">
               第一步：请先转账到平台官方账号
           </div>
-          <div class="mt-radio-list">
+          <div class="mt-radio-list" id="acountList">
             <label class="mt-radio">
-                <input type="radio" name="r-task-type" value="手机淘宝任务" checked> 招商银行(浙江杭州文艺路支行) 6214838625412046 韩XX
+                <input type="radio" name="r-task-type" value="6214838625412046" checked v-model="recharge.toAccount"> 招商银行(浙江杭州文艺路支行) 6214838625412046 韩XX
                 <span></span>
             </label>
             <label class="mt-radio">
-                <input type="radio" name="r-task-type" value="PC淘宝任务"> 工商银行(浙江杭州文艺路支行) 6212264100021438753 韩XX
+                <input type="radio" name="r-task-type" value="6212264100021438753" v-model="recharge.toAccount"> 工商银行(浙江杭州文艺路支行) 6212264100021438753 韩XX
                 <span></span>
             </label>
           </div>
@@ -83,7 +83,7 @@
               <label class="control-label col-xs-2 form-imp"> <span>转账金额：</span> </label>
               
               <div class="col-xs-10 form-inline">
-                <input type="text" class="form-control" id="url">
+                <input type="text" class="form-control" v-model="recharge.transferMoney">
                 <span class="form-info">元  (恶意提交、未打款后提交，将罚款100元/次，甚至封号.)</span>
               </div>
             </div>
@@ -92,10 +92,8 @@
               <label class="control-label col-xs-2 form-imp"> <span>转账银行名称：</span> </label>
               
               <div class="col-xs-10 form-inline">
-                <select class="form-control " id="share">
-                  <option value="">请选择</option>
-                  <option value="1">是</option>
-                  <option value="0">否</option>
+                <select class="form-control " v-model="recharge.bankName">
+                  <option v-for="opt in opts" v-bind:value="opt">{{opt}}</option>
                 </select>
               </div>
             </div>
@@ -104,7 +102,7 @@
               <label class="control-label col-xs-2 form-imp"> <span>打款人姓名：</span> </label>
               
               <div class="col-xs-10 form-inline">
-                <input type="text" class="form-control" id="url">
+                <input type="text" class="form-control" v-model="recharge.transferPerson">
                 <span class="form-info">(输入正确转出账户持有人的全称)</span>
               </div>
             </div>
@@ -112,7 +110,7 @@
             <div class="form-group">
               <label class="control-label col-xs-2 form-imp"> <span>汇款账户：</span> </label>
               <div class="col-xs-10 form-inline">
-                <input type="text" class="form-control" id="url">
+                <input type="text" class="form-control"  v-model="recharge.fromAccount">
                 <span class="form-info">(输入转出账号全称)</span>
               </div>
             </div>
@@ -120,12 +118,12 @@
             <div class="form-group">
               <label class="control-label col-xs-2 "> <span>备注：</span> </label>
               <div class="col-xs-10 form-inline">
-                <input type="text" class="form-control" id="url">
+                <input type="text" class="form-control"  v-model="recharge.remark">
               </div>
             </div>
 
             <div class="form-group">
-              <div class="row img-task img-task-list">
+              
                 <div class="col-xs-2 form-imp"> 请选择图片</div>
                 <div class="col-xs-10">
                   <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -137,21 +135,21 @@
                       <span class="btn default btn-file">
                         <span class="fileinput-new"> 选择图片 </span>
                         <span class="fileinput-exists"> 更换 </span>
-                        <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="upload">
+                        <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="upload" v-bind:url="recharge.picture">
                       </span>
                       <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 删除 </a>
                     </div>
                   </div>
                 </div>
                 
-              </div>
+              
             </div>
 
             <div class="form-group">
               <label class="control-label col-xs-2 "></label>
               <div class="col-xs-10 form-inline">
-                <a href="#" class="btn red btn-outline "  >重置 </a>
-                <a href="#" class="btn red " > 提交 </a> 
+                
+                <a href="#" class="btn red " id="saveBtn"  v-on:click="doSave"> 充 值 </a> 
               </div>
             </div>
         </div>
@@ -181,7 +179,8 @@
 
 <script src="lib/alertify/alertify.min.js"></script>
 <script src="lib/bootbox/bootbox.min.js"></script>
+<script src="lib/vue/vue.js"></script>
 
-<script src="sys/js/createtask.js"></script>
+<script src="sys/js/rechargeTask.js"></script>
 </body>
 </html>

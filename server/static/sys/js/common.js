@@ -78,6 +78,7 @@ const MSG_REGIS_SUCCESS   = '注册成功！'
 const MSG_PUBLISH_SUCCESS = '发布成功！'
 const MSG_BIND_SUCCESS    = '绑定成功！'
 const MSG_UPDATE_SUCCESS  = '修改信息成功'
+const MSG_RECHARGE_SUCCESS  = '充值成功！'
 
 const TEXT_BIND_SUCCESS = '已绑定'
 
@@ -250,4 +251,13 @@ function getUrlParam(name) {
   let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
   let r = window.location.search.substr(1).match(reg);
   if (r != null) return unescape(r[2]); return null;
+}
+
+
+function saveList(s, list) {
+  var data = {};
+  for(i=0; i<list.length; i++) {
+    data[list[i]] = s[list[i]];
+  }
+  return data;
 }

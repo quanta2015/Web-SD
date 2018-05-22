@@ -96,6 +96,10 @@
 
         preview.append('<div class="status">uploading</div>')
         uploadFile(file).then((data) => { 
+
+          if (typeof($v)!="undefined") {
+            $v.file = data
+          }
           $(e.target).attr('url', data) ; 
           preview.find('.status').remove()
           console.log(data); 
