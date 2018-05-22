@@ -32,13 +32,7 @@ function initList() {
 }
 
 
-function saveList(s, list) {
-  var data = {};
-  for(i=0; i<list.length; i++) {
-    data[list[i]] = s[list[i]];
-  }
-  return data;
-}
+
 
 function doSave(e) {
   var $s = recharge._data.recharge
