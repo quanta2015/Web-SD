@@ -12,6 +12,11 @@ function init() {
   $('body').on('click', '#reg-btn', doRegister);
   $('body').on('click', '#getcode-btn', doGetCode);
   $('body').on('click', '#loginBtn', doLogin);
+  $('body').on('keydown', doPressLogin);
+}
+
+function doPressLogin(e) {
+  (e.keyCode == 13) ? doLogin():null;
 }
 
 function hideAllPages() {

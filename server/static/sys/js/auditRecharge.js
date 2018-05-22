@@ -9,7 +9,7 @@ function init() {
 
 
 function initList() {
-  TmplData(TMPL_RECHARGE_LIST,URL_ADMIN_ALL_RECHARGE,null, cbListTask)
+  TmplData(TMPL_ADMIN_RECHARGE_LIST,URL_ADMIN_ALL_RECHARGE,null, cbListTask)
 }
 
 

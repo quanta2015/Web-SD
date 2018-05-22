@@ -269,6 +269,8 @@ function cbPlatformInfo(e) {
   console.log(e);
   if (e.code == 0) {
     initPlatformList(e.data);
+  }else if (e.code==99) {
+    notifyInfo(e.message);
   } else if (e.code == -1) {
     relogin();
   }

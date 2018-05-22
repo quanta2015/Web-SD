@@ -14,8 +14,15 @@ function init() {
 
 
   $('#exitBtn').on('click', function(e) {
-      location.href = 'index.html'
+    promiseData('GET',URL_EXIT,null, cbExit)
   });
 
 
+}
+
+
+function cbExit(e) {
+  if (e.code == 0) {
+    location.href = 'index.html'
+  }
 }

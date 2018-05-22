@@ -54,6 +54,8 @@ const URL_ADMIN_ACOUNT_AUDIT= '/admin/buyer_acount_approve'
 const URL_BUYER_ALL_TASK    = '/buyertask/all_tasks'
 const URL_ADMIN_ALL_RECHARGE= '/admin/shoper_transfer_list'
 const URL_ADMIN_AUDIT_RECHARGE = '/admin/shoper_transfer_approve'
+const URL_SELL_ALL_RECHARGE = '/shoper/shoper_transfer_list'
+
 
 
 const URL_BUY_REG           = '/buyer/buyer_reg'
@@ -61,6 +63,7 @@ const URL_BUY_LOGIN         = '/buyer/buyer_login'
 const URL_BUY_BIND_ID_CARD  = '/buyer/buyer_validate'
 const URL_BUY_BIND_BANK     = '/buyer/buyer_bankbind'
 const URL_BUY_BIND_ACCOUNT  = '/buyer/buyer_acountbind'
+const URL_EXIT              = '/exist'
 
 
 // TMPL DEF
@@ -79,7 +82,8 @@ const TMPL_BIND_PLATFORM   = './tmpl/bind_platform.tmpl'
 const TMPL_BUYER_ALL_TASK  = './tmpl/list_buyer_all_task.tmpl'
 const TMPL_BIND_ACCOUNT    = './tmpl/bind_account.tmpl'
 const TMPL_SHOP_LIST       = './tmpl/list_shop.tmpl'
-const TMPL_RECHARGE_LIST   = './tmpl/list_recharge.tmpl'
+const TMPL_ADMIN_RECHARGE_LIST   = './tmpl/list_admin_recharge.tmpl'
+const TMPL_SELL_RECHARGE_LIST   = './tmpl/list_sell_recharge.tmpl'
 
 
 // MSG DEF

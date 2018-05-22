@@ -15,7 +15,7 @@ function cbList(r, e) {
   if (e[0].code == 0) {
     $(".portlet-body .table").remove();
     $(".portlet-body").prepend($.templates(r[0]).render(e[0], timeHelp));
-    $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
+    // $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
   } else if (e.code == -1) {
     relogin();
   }
