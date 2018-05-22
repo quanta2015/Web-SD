@@ -26,6 +26,13 @@ const PLATFORM_DATA = {
   } 
 }
 
+const AUDIT_STATUS = {
+  0: '未审核',
+  1: '待审核',
+  2: '审核通过',
+  3: '审核不通过',
+}
+
 // URL DEF
 const URL_SELL_REG          = '/shoper/shoper_reg'
 const URL_SMS_SEND          = '/sms_send'
@@ -67,11 +74,8 @@ const TMPL_ACCOUNT_LIST    = './tmpl/list_account.tmpl'
 const TMPL_BIND_IDCARD     = './tmpl/bind_idcard.tmpl'
 const TMPL_BIND_BKCARD     = './tmpl/bind_bkcard.tmpl'
 const TMPL_BIND_PLATFORM   = './tmpl/bind_platform.tmpl'
-<<<<<<< HEAD
 const TMPL_BUYER_ALL_TASK  = './tmpl/list_buyer_all_task.tmpl'
-=======
 const TMPL_BIND_ACCOUNT    = './tmpl/bind_account.tmpl'
->>>>>>> 0c0c0176815d07296baeb790614a8c941cbc1677
 
 // MSG DEF
 const MSG_LOGIN_SUCCESS   = '登录成功！'
@@ -224,6 +228,9 @@ var uploadFile = function(target) {
 
 
 function saveCookie(data) {
+  // 先获取 password 和 userType，防止清空
+  data.password ? null : data.password = cookie('password');
+  data.userType || data.userType === 0 ? null : data.userType = cookie('userType');
   $.cookie('cko', JSON.stringify(data), { expires: 30 });
 }
 
@@ -234,7 +241,7 @@ function cookie(id) {
 
 function cookie2(id, pid) {
   var obj = JSON.parse($.cookie('cko'));
-  return obj[pid][0][id];
+  return obj[pid][0] ? obj[pid][0][id] : null;
 }
 
 function initUserInfo() {

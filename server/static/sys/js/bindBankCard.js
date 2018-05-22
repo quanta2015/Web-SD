@@ -8,10 +8,10 @@ function init() {
 }
 
 async function initBindInfo() {
-  var status = parseInt($.cookie('bankcardState'))
-  // var status = 1
+  var status = parseInt(cookie('bankcardState'))
+  // var status = 0
   console.log(status)
-  if ( status == 0 ) {
+  if ( status == 0 || status == null) {
     //未绑定
     $('.container').append(await renderTmpl(TMPL_BIND_BKCARD, {
       name: null,
@@ -20,9 +20,9 @@ async function initBindInfo() {
       acount_name: null,
       acount_subbank: null,
       acount_bankno: null,
-      isband: 0
+      status: 0,
     }));
-  }else if ( status == 1){
+  } else {
     //显示已经绑定表单
     let buyerBankInfo = cookie('buyerBankList')[0];
     $(".container").append(await renderTmpl(TMPL_BIND_BKCARD, {
@@ -32,8 +32,9 @@ async function initBindInfo() {
       acountName: buyerBankInfo.acountName,
       acountSubbank: buyerBankInfo.acountSubbank,
       acountBankno: buyerBankInfo.acountBankno,
-      isband: 1,
-      type: "disabled"
+      type: status !== 3 ? "disabled" : null,
+      status: status,
+      statusText: AUDIT_STATUS[status],
     }) );
   }
 }
