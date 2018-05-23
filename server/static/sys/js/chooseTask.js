@@ -22,14 +22,15 @@ function cbList(r, e) {
 }
 
 function doChoose(e) {
-  var sid = $(this).data('id')
-  var type = $(this).data('type')
+  var id = $(this).data('id')
+  var kid = $(this).data('kid')
   var obj = {
-    id: sid,
-    // approve: (type=='pass')?AUDIT_PASS:AUDIT_FAIL
-    // reason: (type=='pass')?'数据正确！':'数据有误!'
+    taskId: kid,
+    taskKeyId: (type=='pass')?AUDIT_PASS:AUDIT_FAIL,
+    taskType: (type=='pass')?'数据正确！':'数据有误!',
+    status: 1
   }
-  promiseData('POST',URL_ADMIN_ACOUNT_AUDIT,JSON.stringify(obj), cbChoose)
+  promiseData('POST',URL_BUYER_GET_TASK,JSON.stringify(obj), cbChoose)
 }
 
 function cbChoose(e) {

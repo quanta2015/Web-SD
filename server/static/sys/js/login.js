@@ -157,7 +157,7 @@ function cbLogin(e) {
     e.data.userType = $('.loginYh').is('.on')?BUY:SELL;
     e.data.password = $('#login-password').val();
     saveCookie(e.data);
-    location.href = $('.loginYh').is('.on')? 'mainBuy.html' : 'mainSell.html';
+    location.href = $('.loginYh').is('.on')? 'html/buyer/mainBuy.html' : 'html/seller/mainSell.html';
     notifyInfo(MSG_LOGIN_SUCCESS);
   }else if (e.code==99) {
     notifyInfo(e.message);
