@@ -801,10 +801,7 @@ function cloneVNode (vnode) {
   cloned.fnContext = vnode.fnContext;
   cloned.fnOptions = vnode.fnOptions;
   cloned.fnScopeId = vnode.fnScopeId;
-<<<<<<< HEAD
   cloned.asyncMeta = vnode.asyncMeta;
-=======
->>>>>>> 增加刷手资金提现
   cloned.isCloned = true;
   return cloned
 }
@@ -983,17 +980,10 @@ function defineReactive (
 
   // cater for pre-defined getter/setters
   var getter = property && property.get;
-<<<<<<< HEAD
   var setter = property && property.set;
   if ((!getter || setter) && arguments.length === 2) {
     val = obj[key];
   }
-=======
-  if (!getter && arguments.length === 2) {
-    val = obj[key];
-  }
-  var setter = property && property.set;
->>>>>>> 增加刷手资金提现
 
   var childOb = !shallow && observe(val);
   Object.defineProperty(obj, key, {
@@ -1940,11 +1930,7 @@ var initProxy;
   var hasHandler = {
     has: function has (target, key) {
       var has = key in target;
-<<<<<<< HEAD
       var isAllowed = allowedGlobals(key) || (typeof key === 'string' && key.charAt(0) === '_');
-=======
-      var isAllowed = allowedGlobals(key) || key.charAt(0) === '_';
->>>>>>> 增加刷手资金提现
       if (!has && !isAllowed) {
         warnNonPresent(target, key);
       }
@@ -2660,12 +2646,6 @@ function initLifecycle (vm) {
 function lifecycleMixin (Vue) {
   Vue.prototype._update = function (vnode, hydrating) {
     var vm = this;
-<<<<<<< HEAD
-=======
-    if (vm._isMounted) {
-      callHook(vm, 'beforeUpdate');
-    }
->>>>>>> 增加刷手资金提现
     var prevEl = vm.$el;
     var prevVnode = vm._vnode;
     var prevActiveInstance = activeInstance;
@@ -2675,18 +2655,7 @@ function lifecycleMixin (Vue) {
     // based on the rendering backend used.
     if (!prevVnode) {
       // initial render
-<<<<<<< HEAD
       vm.$el = vm.__patch__(vm.$el, vnode, hydrating, false /* removeOnly */);
-=======
-      vm.$el = vm.__patch__(
-        vm.$el, vnode, hydrating, false /* removeOnly */,
-        vm.$options._parentElm,
-        vm.$options._refElm
-      );
-      // no need for the ref nodes after initial patch
-      // this prevents keeping a detached DOM tree in memory (#5851)
-      vm.$options._parentElm = vm.$options._refElm = null;
->>>>>>> 增加刷手资金提现
     } else {
       // updates
       vm.$el = vm.__patch__(prevVnode, vnode);
@@ -2814,7 +2783,6 @@ function mountComponent (
   // we set this to vm._watcher inside the watcher's constructor
   // since the watcher's initial patch may call $forceUpdate (e.g. inside child
   // component's mounted hook), which relies on vm._watcher being already defined
-<<<<<<< HEAD
   new Watcher(vm, updateComponent, noop, {
     before: function before () {
       if (vm._isMounted) {
@@ -2822,9 +2790,6 @@ function mountComponent (
       }
     }
   }, true /* isRenderWatcher */);
-=======
-  new Watcher(vm, updateComponent, noop, null, true /* isRenderWatcher */);
->>>>>>> 增加刷手资金提现
   hydrating = false;
 
   // manually mounted instance, call mounted on self
@@ -3008,12 +2973,9 @@ function flushSchedulerQueue () {
   // as we run existing watchers
   for (index = 0; index < queue.length; index++) {
     watcher = queue[index];
-<<<<<<< HEAD
     if (watcher.before) {
       watcher.before();
     }
-=======
->>>>>>> 增加刷手资金提现
     id = watcher.id;
     has[id] = null;
     watcher.run();
@@ -3133,27 +3095,16 @@ var Watcher = function Watcher (
   if (options) {
     this.deep = !!options.deep;
     this.user = !!options.user;
-<<<<<<< HEAD
     this.computed = !!options.computed;
     this.sync = !!options.sync;
     this.before = options.before;
   } else {
     this.deep = this.user = this.computed = this.sync = false;
-=======
-    this.lazy = !!options.lazy;
-    this.sync = !!options.sync;
-  } else {
-    this.deep = this.user = this.lazy = this.sync = false;
->>>>>>> 增加刷手资金提现
   }
   this.cb = cb;
   this.id = ++uid$1; // uid for batching
   this.active = true;
-<<<<<<< HEAD
   this.dirty = this.computed; // for computed watchers
-=======
-  this.dirty = this.lazy; // for lazy watchers
->>>>>>> 增加刷手资金提现
   this.deps = [];
   this.newDeps = [];
   this.depIds = new _Set();
@@ -3174,18 +3125,12 @@ var Watcher = function Watcher (
       );
     }
   }
-<<<<<<< HEAD
   if (this.computed) {
     this.value = undefined;
     this.dep = new Dep();
   } else {
     this.value = this.get();
   }
-=======
-  this.value = this.lazy
-    ? undefined
-    : this.get();
->>>>>>> 增加刷手资金提现
 };
 
 /**
@@ -3257,7 +3202,6 @@ Watcher.prototype.cleanupDeps = function cleanupDeps () {
  * Will be called when a dependency changes.
  */
 Watcher.prototype.update = function update () {
-<<<<<<< HEAD
     var this$1 = this;
 
   /* istanbul ignore else */
@@ -3279,11 +3223,6 @@ Watcher.prototype.update = function update () {
         this$1.dep.notify();
       });
     }
-=======
-  /* istanbul ignore else */
-  if (this.lazy) {
-    this.dirty = true;
->>>>>>> 增加刷手资金提现
   } else if (this.sync) {
     this.run();
   } else {
@@ -3297,7 +3236,6 @@ Watcher.prototype.update = function update () {
  */
 Watcher.prototype.run = function run () {
   if (this.active) {
-<<<<<<< HEAD
     this.getAndInvoke(this.cb);
   }
 };
@@ -3324,35 +3262,11 @@ Watcher.prototype.getAndInvoke = function getAndInvoke (cb) {
       }
     } else {
       cb.call(this.vm, value, oldValue);
-=======
-    var value = this.get();
-    if (
-      value !== this.value ||
-      // Deep watchers and watchers on Object/Arrays should fire even
-      // when the value is the same, because the value may
-      // have mutated.
-      isObject(value) ||
-      this.deep
-    ) {
-      // set new value
-      var oldValue = this.value;
-      this.value = value;
-      if (this.user) {
-        try {
-          this.cb.call(this.vm, value, oldValue);
-        } catch (e) {
-          handleError(e, this.vm, ("callback for watcher \"" + (this.expression) + "\""));
-        }
-      } else {
-        this.cb.call(this.vm, value, oldValue);
-      }
->>>>>>> 增加刷手资金提现
     }
   }
 };
 
 /**
-<<<<<<< HEAD
  * Evaluate and return the value of the watcher.
  * This only gets called for computed property watchers.
  */
@@ -3370,25 +3284,6 @@ Watcher.prototype.evaluate = function evaluate () {
 Watcher.prototype.depend = function depend () {
   if (this.dep && Dep.target) {
     this.dep.depend();
-=======
- * Evaluate the value of the watcher.
- * This only gets called for lazy watchers.
- */
-Watcher.prototype.evaluate = function evaluate () {
-  this.value = this.get();
-  this.dirty = false;
-};
-
-/**
- * Depend on all deps collected by this watcher.
- */
-Watcher.prototype.depend = function depend () {
-    var this$1 = this;
-
-  var i = this.deps.length;
-  while (i--) {
-    this$1.deps[i].depend();
->>>>>>> 增加刷手资金提现
   }
 };
 
@@ -3551,11 +3446,7 @@ function getData (data, vm) {
   }
 }
 
-<<<<<<< HEAD
 var computedWatcherOptions = { computed: true };
-=======
-var computedWatcherOptions = { lazy: true };
->>>>>>> 增加刷手资金提现
 
 function initComputed (vm, computed) {
   // $flow-disable-line
@@ -3635,18 +3526,8 @@ function createComputedGetter (key) {
   return function computedGetter () {
     var watcher = this._computedWatchers && this._computedWatchers[key];
     if (watcher) {
-<<<<<<< HEAD
       watcher.depend();
       return watcher.evaluate()
-=======
-      if (watcher.dirty) {
-        watcher.evaluate();
-      }
-      if (Dep.target) {
-        watcher.depend();
-      }
-      return watcher.value
->>>>>>> 增加刷手资金提现
     }
   }
 }
@@ -4248,16 +4129,7 @@ function mergeProps (to, from) {
 
 // inline hooks to be invoked on component VNodes during patch
 var componentVNodeHooks = {
-<<<<<<< HEAD
   init: function init (vnode, hydrating) {
-=======
-  init: function init (
-    vnode,
-    hydrating,
-    parentElm,
-    refElm
-  ) {
->>>>>>> 增加刷手资金提现
     if (
       vnode.componentInstance &&
       !vnode.componentInstance._isDestroyed &&
@@ -4269,13 +4141,7 @@ var componentVNodeHooks = {
     } else {
       var child = vnode.componentInstance = createComponentInstanceForVnode(
         vnode,
-<<<<<<< HEAD
         activeInstance
-=======
-        activeInstance,
-        parentElm,
-        refElm
->>>>>>> 增加刷手资金提现
       );
       child.$mount(hydrating ? vnode.elm : undefined, hydrating);
     }
@@ -4433,25 +4299,12 @@ function createComponent (
 
 function createComponentInstanceForVnode (
   vnode, // we know it's MountedComponentVNode but flow doesn't
-<<<<<<< HEAD
   parent // activeInstance in lifecycle state
 ) {
   var options = {
     _isComponent: true,
     _parentVnode: vnode,
     parent: parent
-=======
-  parent, // activeInstance in lifecycle state
-  parentElm,
-  refElm
-) {
-  var options = {
-    _isComponent: true,
-    parent: parent,
-    _parentVnode: vnode,
-    _parentElm: parentElm || null,
-    _refElm: refElm || null
->>>>>>> 增加刷手资金提现
   };
   // check inline-template render functions
   var inlineTemplate = vnode.data.inlineTemplate;
@@ -4466,7 +4319,6 @@ function installComponentHooks (data) {
   var hooks = data.hook || (data.hook = {});
   for (var i = 0; i < hooksToMerge.length; i++) {
     var key = hooksToMerge[i];
-<<<<<<< HEAD
     var existing = hooks[key];
     var toMerge = componentVNodeHooks[key];
     if (existing !== toMerge && !(existing && existing._merged)) {
@@ -4485,12 +4337,6 @@ function mergeHook$1 (f1, f2) {
   return merged
 }
 
-=======
-    hooks[key] = componentVNodeHooks[key];
-  }
-}
-
->>>>>>> 增加刷手资金提现
 // transform component v-model info (value and callback) into
 // prop and event handler respectively.
 function transformModel (options, data) {
@@ -4814,11 +4660,6 @@ function initInternalComponent (vm, options) {
   var parentVnode = options._parentVnode;
   opts.parent = options.parent;
   opts._parentVnode = parentVnode;
-<<<<<<< HEAD
-=======
-  opts._parentElm = options._parentElm;
-  opts._refElm = options._refElm;
->>>>>>> 增加刷手资金提现
 
   var vnodeComponentOptions = parentVnode.componentOptions;
   opts.propsData = vnodeComponentOptions.propsData;
@@ -5257,11 +5098,7 @@ Object.defineProperty(Vue, 'FunctionalRenderContext', {
   value: FunctionalRenderContext
 });
 
-<<<<<<< HEAD
 Vue.version = '2.5.17-beta.0';
-=======
-Vue.version = '2.5.16';
->>>>>>> 增加刷手资金提现
 
 /*  */
 
@@ -5778,11 +5615,7 @@ function createPatchFunction (backend) {
     if (isDef(i)) {
       var isReactivated = isDef(vnode.componentInstance) && i.keepAlive;
       if (isDef(i = i.hook) && isDef(i = i.init)) {
-<<<<<<< HEAD
         i(vnode, false /* hydrating */);
-=======
-        i(vnode, false /* hydrating */, parentElm, refElm);
->>>>>>> 增加刷手资金提现
       }
       // after calling the init hook, if the vnode is a child component
       // it should've created a child instance and mounted it. the child
@@ -5790,10 +5623,7 @@ function createPatchFunction (backend) {
       // in that case we can just return the element and be done.
       if (isDef(vnode.componentInstance)) {
         initComponent(vnode, insertedVnodeQueue);
-<<<<<<< HEAD
         insert(parentElm, vnode.elm, refElm);
-=======
->>>>>>> 增加刷手资金提现
         if (isTrue(isReactivated)) {
           reactivateComponent(vnode, insertedVnodeQueue, parentElm, refElm);
         }
@@ -6257,11 +6087,7 @@ function createPatchFunction (backend) {
     }
   }
 
-<<<<<<< HEAD
   return function patch (oldVnode, vnode, hydrating, removeOnly) {
-=======
-  return function patch (oldVnode, vnode, hydrating, removeOnly, parentElm, refElm) {
->>>>>>> 增加刷手资金提现
     if (isUndef(vnode)) {
       if (isDef(oldVnode)) { invokeDestroyHook(oldVnode); }
       return
@@ -6273,11 +6099,7 @@ function createPatchFunction (backend) {
     if (isUndef(oldVnode)) {
       // empty mount (likely as component), create new root element
       isInitialPatch = true;
-<<<<<<< HEAD
       createElm(vnode, insertedVnodeQueue);
-=======
-      createElm(vnode, insertedVnodeQueue, parentElm, refElm);
->>>>>>> 增加刷手资金提现
     } else {
       var isRealElement = isDef(oldVnode.nodeType);
       if (!isRealElement && sameVnode(oldVnode, vnode)) {
@@ -6313,11 +6135,7 @@ function createPatchFunction (backend) {
 
         // replacing existing element
         var oldElm = oldVnode.elm;
-<<<<<<< HEAD
         var parentElm = nodeOps.parentNode(oldElm);
-=======
-        var parentElm$1 = nodeOps.parentNode(oldElm);
->>>>>>> 增加刷手资金提现
 
         // create new node
         createElm(
@@ -6326,11 +6144,7 @@ function createPatchFunction (backend) {
           // extremely rare edge case: do not insert if old element is in a
           // leaving transition. Only happens when combining transition +
           // keep-alive + HOCs. (#4590)
-<<<<<<< HEAD
           oldElm._leaveCb ? null : parentElm,
-=======
-          oldElm._leaveCb ? null : parentElm$1,
->>>>>>> 增加刷手资金提现
           nodeOps.nextSibling(oldElm)
         );
 
@@ -6365,13 +6179,8 @@ function createPatchFunction (backend) {
         }
 
         // destroy old node
-<<<<<<< HEAD
         if (isDef(parentElm)) {
           removeVnodes(parentElm, [oldVnode], 0, 0);
-=======
-        if (isDef(parentElm$1)) {
-          removeVnodes(parentElm$1, [oldVnode], 0, 0);
->>>>>>> 增加刷手资金提现
         } else if (isDef(oldVnode.tag)) {
           invokeDestroyHook(oldVnode);
         }
@@ -8566,7 +8375,6 @@ delete props.mode;
 var TransitionGroup = {
   props: props,
 
-<<<<<<< HEAD
   beforeMount: function beforeMount () {
     var this$1 = this;
 
@@ -8584,8 +8392,6 @@ var TransitionGroup = {
     };
   },
 
-=======
->>>>>>> 增加刷手资金提现
   render: function render (h) {
     var tag = this.tag || this.$vnode.data.tag || 'span';
     var map = Object.create(null);
@@ -8629,20 +8435,6 @@ var TransitionGroup = {
     return h(tag, null, children)
   },
 
-<<<<<<< HEAD
-=======
-  beforeUpdate: function beforeUpdate () {
-    // force removing pass
-    this.__patch__(
-      this._vnode,
-      this.kept,
-      false, // hydrating
-      true // removeOnly (!important, avoids unnecessary moves)
-    );
-    this._vnode = this.kept;
-  },
-
->>>>>>> 增加刷手资金提现
   updated: function updated () {
     var children = this.prevChildren;
     var moveClass = this.moveClass || ((this.name || 'v') + '-move');
@@ -10197,12 +9989,8 @@ var keyCodes = {
 
 // KeyboardEvent.key aliases
 var keyNames = {
-<<<<<<< HEAD
   // #7880: IE11 and Edge use `Esc` for Escape key name.
   esc: ['Esc', 'Escape'],
-=======
-  esc: 'Escape',
->>>>>>> 增加刷手资金提现
   tab: 'Tab',
   enter: 'Enter',
   space: ' ',
@@ -11187,8 +10975,4 @@ Vue.compile = compileToFunctions;
 
 return Vue;
 
-<<<<<<< HEAD
 })));
-=======
-})));
->>>>>>> 增加刷手资金提现
