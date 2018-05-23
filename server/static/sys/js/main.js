@@ -1,6 +1,10 @@
 $(init)
 
 function init() {
+  if (cookie('mobile') == null) {
+    location.href = 'index.html'
+  }
+
   var h = $(document).height();
   $("iframe").height(h - 50);
 
@@ -12,17 +16,8 @@ function init() {
     $("#mainframe", parent.document.body).attr("src", pageName);
   });
 
-
   $('#exitBtn').on('click', function(e) {
-    promiseData('GET',URL_EXIT,null, cbExit)
-  });
-
-
-}
-
-
-function cbExit(e) {
-  if (e.code == 0) {
+    $.cookie('cko', null);
     location.href = 'index.html'
-  }
+  });
 }

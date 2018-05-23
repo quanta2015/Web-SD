@@ -247,7 +247,8 @@ function saveCookie(data) {
 
 function cookie(id) {
   var obj = JSON.parse($.cookie('cko'));
-  return obj[id];
+
+  return (obj!= null)?obj[id]:null;
 }
 
 function cookie2(id, pid) {
