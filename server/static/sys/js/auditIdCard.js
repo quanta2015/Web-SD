@@ -15,6 +15,7 @@ function initList() {
 
 function cbListIdCard(r, e) {
   if (e[0].code == 0) {
+    e[0].imgPrefix = IMG_PREFIX;
     $(".portlet-body .table").remove();
     $(".portlet-body").prepend($.templates(r[0]).render(e[0], null));
     $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});

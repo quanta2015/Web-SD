@@ -48,6 +48,7 @@ async function initBindInfo() {
       type: status !== 3 ? "disabled" : null,
       status: status,
       statusText: AUDIT_STATUS[status],
+      imgPrefix: IMG_PREFIX
     }) );
   }
   $('#pick').distpicker();

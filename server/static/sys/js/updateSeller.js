@@ -10,7 +10,7 @@ function init() {
 }
 
 function initList() {
-  promiseData('GET','/shoper/shoper_detail/7',null, cbList)
+  promiseData('GET', `/shoper/shoper_detail/${cookie('id')}`, null, cbList)
 }
 
 function cbList(e) {
@@ -43,6 +43,7 @@ function doSave(e) {
 
 function cbSave(e) {
   if (e.code == 0) {
+    initUserInfo();
     notifyInfo(MSG_UPDATE_SUCCESS)
   } else if (e.code == -1) {
     relogin();

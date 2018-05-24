@@ -51,6 +51,7 @@ async function initBindInfo() {
       list: [1,1,1],
       type: status !== 3 ? "disabled" : null,
       statusText: AUDIT_STATUS[status],
+      imgPrefix: IMG_PREFIX
     }) );
   }
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
