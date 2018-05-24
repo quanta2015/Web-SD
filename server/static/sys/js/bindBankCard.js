@@ -24,14 +24,13 @@ async function initBindInfo() {
     }));
   } else {
     //显示已经绑定表单
-    let buyerBankInfo = cookie('buyerBankList')[0];
     $(".container").append(await renderTmpl(TMPL_BIND_BKCARD, {
       name: cookie('name'),
-      bank: buyerBankInfo.bank,
-      bankNo: buyerBankInfo.bankNo,
-      acountName: buyerBankInfo.acountName,
-      acountSubbank: buyerBankInfo.acountSubbank,
-      acountBankno: buyerBankInfo.acountBankno,
+      bank: cookie2('bank', 'buyerBankList'),
+      bankNo: cookie2('bankNo', 'buyerBankList'),
+      acountName: cookie2('acountName', 'buyerBankList'),
+      acountSubbank: cookie2('acountSubbank', 'buyerBankList'),
+      acountBankno: cookie2('acountBankno', 'buyerBankList'),
       type: status !== 3 ? "disabled" : null,
       status: status,
       statusText: AUDIT_STATUS[status],

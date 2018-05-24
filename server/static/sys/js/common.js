@@ -82,9 +82,12 @@ const TMPL_BIND_PLATFORM   = '/tmpl/bind_platform.tmpl'
 const TMPL_BUYER_ALL_TASK  = '/tmpl/list_buyer_all_task.tmpl'
 const TMPL_BIND_ACCOUNT    = '/tmpl/bind_account.tmpl'
 const TMPL_SHOP_LIST       = '/tmpl/list_shop.tmpl'
-const TMPL_ADMIN_RECHARGE_LIST   = '/tmpl/list_admin_recharge.tmpl'
-const TMPL_SELL_RECHARGE_LIST   = '/tmpl/list_sell_recharge.tmpl'
-
+const TMPL_ADMIN_RECHARGE_LIST = '/tmpl/list_admin_recharge.tmpl'
+// TMPL SELL
+const TMPL_SELL_RECHARGE_LIST = '/tmpl/list_sell_recharge.tmpl'
+const TMPL_SELL_CAPITAL_LIST  = '/tmpl/list_sell_capital.tmpl'
+const TMPL_SELL_SRH_WITHDRAW  = '/tmpl/sell/srh_withdraw.tmpl'
+const TMPL_SELL_SRH_CAPITAL   = '/tmpl/sell/srh_capital.tmpl'
 
 
 // MSG DEF

@@ -1,0 +1,27 @@
+.form-search {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.form-search div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.form-search label {
+  margin-right: 10px;
+}
+
+.form-search .form-control {
+  width: 180px;
+}
+
+.form-search .date {
+  margin-right: 0;
+}
