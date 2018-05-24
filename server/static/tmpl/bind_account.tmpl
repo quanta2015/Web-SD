@@ -80,8 +80,8 @@
       <div class="col-xs-10 id-card-box">
         {{for accountImg}}
         {{if #data}}
-        <a href="http://localhost:8011/file/{{:#data}}" class="fancybox">
-          <img src="http://localhost:8011/file/{{:#data}}" style="width: 200px; height: 150px;">
+        <a href="{{:~root.imgPrefix}}{{:#data}}" class="fancybox">
+          <img src="{{:~root.imgPrefix}}{{:#data}}" style="width: 200px; height: 150px;">
         </a>
         {{/if}}
         {{/for}}
@@ -96,7 +96,7 @@
             <div class="fileinput fileinput-new" data-provides="fileinput">
               <div class="fileinput-new thumbnail" style="max-width: 150px; max-height: 120px;">
                   {{if ~root.accountImg && ~root.accountImg[#getIndex()]}}
-                  <img src="http://localhost:8011/file/{{:~root.accountImg[#getIndex()]}}">
+                  <img src="{{:~root.imgPrefix}}{{:~root.accountImg[#getIndex()]}}">
                   {{else}}
                   <img src="/img/noimg.png">
                   {{/if}}

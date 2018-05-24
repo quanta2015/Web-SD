@@ -17,8 +17,8 @@
             <td class="pass{{:approve}}"> {{:approveString}} </td>
             <td> {{:acount}}</td>
             <td> {{:type}} </td> 
-            <td> {{if mysiteImg}}<a href="http://localhost:8011/file/{{:mysiteImg}}" class="fancybox"><img src="http://localhost:8011/file/{{:mysiteImg}}" style="width: 150px; height: 100px;"></a>{{/if}}</td>
-            <td> {{if baitiaoImg}}<a href="http://localhost:8011/file/{{:baitiaoImg}}" class="fancybox"><img src="http://localhost:8011/file/{{:baitiaoImg}}" style="width: 150px; height: 100px;"></a>{{/if}}</td>
+            <td> {{if mysiteImg}}<a href="{{:~root.imgPrefix}}{{:mysiteImg}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:mysiteImg}}" style="width: 150px; height: 100px;"></a>{{/if}}</td>
+            <td> {{if baitiaoImg}}<a href="{{:~root.imgPrefix}}{{:baitiaoImg}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:baitiaoImg}}" style="width: 150px; height: 100px;"></a>{{/if}}</td>
             
             <td class="fn-center"> 
               {{if approve!=2}}
