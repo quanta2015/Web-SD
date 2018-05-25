@@ -6,3 +6,21 @@ body {
   width: 120px;
 
 }
+
+.wide-2x {
+    width: 200px;
+}
+
+.form-inline {
+    display: flex;
+}
+
+.form-inline input {
+    order:1;
+}
+
+.form-info {
+    margin: 5px 0 5px 10px;
+    order:2;
+}
+

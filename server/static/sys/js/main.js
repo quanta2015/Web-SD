@@ -1,9 +1,7 @@
 $(init)
 
 function init() {
-  if (cookie('mobile') == null) {
-    location.href = 'index.html'
-  }
+
 
   var h = $(document).height();
   $("iframe").height(h - 50);

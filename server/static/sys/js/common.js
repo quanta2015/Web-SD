@@ -56,6 +56,7 @@ const URL_ADMIN_ALL_RECHARGE= '/admin/shoper_transfer_list'
 const URL_ADMIN_AUDIT_RECHARGE = '/admin/shoper_transfer_approve'
 const URL_SELL_ALL_RECHARGE = '/shoper/shoper_transfer_list'
 const URL_BUYER_GET_TASK    = '/buyertask/receive_task'
+const URL_ADMIN_LOGIN       = '/admin/admin_login'
 
 
 const URL_BUY_REG           = '/buyer/buyer_reg'
@@ -88,7 +89,7 @@ const TMPL_SELL_RECHARGE_LIST = '/tmpl/list_sell_recharge.tmpl'
 const TMPL_SELL_CAPITAL_LIST  = '/tmpl/list_sell_capital.tmpl'
 const TMPL_SELL_SRH_WITHDRAW  = '/tmpl/sell/srh_withdraw.tmpl'
 const TMPL_SELL_SRH_CAPITAL   = '/tmpl/sell/srh_capital.tmpl'
-
+const TMPL_SELL_TASK_LIST     = '/tmpl/sell/task_list.tmpl'
 
 // MSG DEF
 const MSG_LOGIN_SUCCESS   = '登录成功！'

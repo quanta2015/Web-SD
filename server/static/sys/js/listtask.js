@@ -12,18 +12,19 @@ function init() {
 
 function initList() {
   var id = parseInt(cookie('id'));
-  promiseData('GET', URL_SELL_ALL_TASK, null, cbListTask);
+  // promiseData('GET', URL_SELL_ALL_TASK, null, cbListTask);
+  TmplData(TMPL_SELL_TASK_LIST,URL_SELL_ALL_TASK,null, cbListTask)
 }
 
 
 
 
-function cbListTask(e) {
+function cbListTask(r,e) {
     console.log(e);
-  if (e.code == 0) {
-    _listtask = e.data;
+  if (e[0].code == 0) {
+    _listtask = e[0].data;
     $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($("#taskTmpl").render(e));
+    $(".portlet-body").prepend($.templates(r[0]).render(e[0], timeHelp));
   } else if (e.code == -1) {
     relogin();
   }

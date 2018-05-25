@@ -100,7 +100,7 @@
           if (typeof($v)!="undefined") {
             $v.file = data
           }
-          $(e.target).attr('url', data) ; 
+          $(e.target).attr('picurl', data) ; 
           preview.find('.status').remove()
           console.log(data); 
         })

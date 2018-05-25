@@ -22,15 +22,10 @@ function cbList(r, e) {
 }
 
 function doChoose(e) {
-  var id = $(this).data('id')
-  var kid = $(this).data('kid')
   var obj = {
-    taskId: kid,
-    taskKeyId: (type=='pass')?AUDIT_PASS:AUDIT_FAIL,
-    taskType: (type=='pass')?'数据正确！':'数据有误!',
-    status: 1
+    taskKeyId: $(this).data('kid')
   }
-  promiseData('POST',URL_BUYER_GET_TASK,JSON.stringify(obj), cbChoose)
+  promiseData('GET',URL_BUYER_GET_TASK+'?taskkeyId='+ $(this).data('kid') ,null, cbChoose)
 }
 
 function cbChoose(e) {
