@@ -2,7 +2,8 @@
 const CODE_COUNT = 10
 const BUY = 0
 const SELL = 1
-const HOST = 'http://localhost:8011'
+const HOST = 'http://114.116.31.36:8011'
+const IMG_PREFIX = HOST + '/file/'
 const AUDIT_PASS = 2
 const AUDIT_FAIL = 3
 
@@ -87,6 +88,7 @@ const TMPL_ADMIN_RECHARGE_LIST = '/tmpl/list_admin_recharge.tmpl'
 // TMPL SELL
 const TMPL_SELL_RECHARGE_LIST = '/tmpl/list_sell_recharge.tmpl'
 const TMPL_SELL_CAPITAL_LIST  = '/tmpl/list_sell_capital.tmpl'
+const TMPL_SELL_WITHDRAW_LIST  = '/tmpl/list_sell_withdraw.tmpl'
 const TMPL_SELL_SRH_WITHDRAW  = '/tmpl/sell/srh_withdraw.tmpl'
 const TMPL_SELL_SRH_CAPITAL   = '/tmpl/sell/srh_capital.tmpl'
 const TMPL_SELL_TASK_LIST     = '/tmpl/sell/task_list.tmpl'
