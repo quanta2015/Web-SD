@@ -53,10 +53,10 @@ function init() {
 }
 
 async function initTaskTmpl() {
-  $(".nor-task-add").before(await renderTmpl(TMPL_TASK, { type:'nor-task', data:1, show:false }));
-  $(".key-task-add").before(await renderTmpl(TMPL_TASK, { type:'key-task', data:1, show:false }));
-  $(".img-task-add").before(await renderTmpl(TMPL_IMG_TASK, { type:'img-task', data:1,list:[1,1,1,1,1], show:false }));
-  $(".word-task-add").before(await renderTmpl(TMPL_TASK, { type:'word-task',data:1, show:false, word: true }));
+  $(".nor-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'nor-task', data:1, show:false }));
+  $(".key-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'key-task', data:1, show:false }));
+  $(".img-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_I, { type:'img-task', data:1,list:[1,1,1,1,1], show:false }));
+  $(".word-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'word-task',data:1, show:false, word: true }));
 
   $('.timepicker-24').timepicker({ showMeridian: false });
 }
@@ -283,6 +283,6 @@ async function initPlatformList(data) {
     shops = shops.concat(v.shops);
   })
   console.log(shops)
-  $("#platform-list").append(await renderTmpl(TMPL_PLATFORM_SELECT, { list:platforms }));
-  $("#shop-list").append(await renderTmpl(TMPL_SHOP_SELECT, { list:shops }));
+  $("#platform-list").append(await renderTmpl(TMPL_SELL_PLAT_SELECT, { list:platforms }));
+  $("#shop-list").append(await renderTmpl(TMPL_SELL_SHOP_SELECT, { list:shops }));
 }

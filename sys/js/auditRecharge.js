@@ -9,15 +9,16 @@ function init() {
 
 
 function initList() {
-  TmplData(TMPL_TASK_LIST,URL_ADMIN_ALL_TASK,null, cbListTask)
+  TmplData(TMPL_ADMIN_RECHARGE_LIST,URL_ADMIN_ALL_RECHARGE,null, cbListTask)
 }
 
 
 function cbListTask(r, e) {
   if (e[0].code == 0) {
-    _listtask = e.data;
+    e[0].imgPrefix = IMG_PREFIX;
     $(".portlet-body .table").remove();
     $(".portlet-body").prepend($.templates(r[0]).render(e[0], timeHelp));
+    $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
   } else if (e.code == -1) {
     relogin();
   }
@@ -33,7 +34,7 @@ function doAuditTask(e) {
     reason: (type=='pass')?'数据正确！':'数据有误!'
   }
 
-  promiseData('POST',URL_ADMIN_TASK_AUDIT,JSON.stringify(obj), cbAuditTask)
+  promiseData('POST',URL_ADMIN_AUDIT_RECHARGE,JSON.stringify(obj), cbAuditTask)
 }
 
 function cbAuditTask(e) {

@@ -8,7 +8,7 @@ function init() {
 }
 
 function initList() {
-  TmplData(TMPL_BUYER_ALL_TASK,URL_BUYER_ALL_TASK,null, cbList)
+  TmplData(TMPL_BUY_ALL_TASK,URL_BUYER_ALL_TASK,null, cbList)
 }
 
 function cbList(r, e) {

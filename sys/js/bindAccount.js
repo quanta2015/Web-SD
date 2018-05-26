@@ -17,7 +17,7 @@ async function initBindInfo() {
   // status = 3
   if ( status == 0 || status == null) {
     //未绑定
-    $('body').append(await renderTmpl(TMPL_BIND_ACCOUNT, {
+    $('body').append(await renderTmpl(TMPL_BUY_BIND_ACCOUNT, {
       platform: platform.type,
       creditType: platform.creditType,
       levels: platform.levels,
@@ -26,7 +26,7 @@ async function initBindInfo() {
     }));
   } else {
     //显示已经绑定表单
-    $("body").append(await renderTmpl(TMPL_BIND_ACCOUNT, {
+    $("body").append(await renderTmpl(TMPL_BUY_BIND_ACCOUNT, {
       platform: platform.type,
       creditType: platform.creditType,
       levels: platform.levels,

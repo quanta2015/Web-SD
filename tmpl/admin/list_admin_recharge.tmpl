@@ -8,6 +8,7 @@
             <th> 转账银行 </th>
             <th> 转账账号 </th>
             <th> 充值账号 </th>
+            <th> 充值凭证 </th>
             <th> 功能 </th>
         </tr>
     </thead>
@@ -21,6 +22,7 @@
             <td> {{:bankName}} </td>
             <td> {{:fromAccount}}</td>
             <td> {{:toAccount}}</td>
+            <td> <a href="{{:~root.imgPrefix}}{{:picture}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture}}" style="width: 100px; height: 70px;"></a> </td>
             <td>
                 {{if !approve}}
               <a href="#basic" class="btn red btn-sm btn-outline audit-task"   data-id="{{:id}}" data-type="unpass"><i class="fa fa-edit"></i> 取消 </a> {{/if}}

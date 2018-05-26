@@ -9,7 +9,7 @@ function init() {
 
 
 function initList() {
-  TmplData(TMPL_ADMIN_RECHARGE_LIST,URL_ADMIN_ALL_RECHARGE,null, cbListTask)
+  TmplData(TMPL_ADMIN_TASK_LIST,URL_ADMIN_ALL_TASK,null, cbListTask)
 }
 
 
@@ -33,7 +33,7 @@ function doAuditTask(e) {
     reason: (type=='pass')?'数据正确！':'数据有误!'
   }
 
-  promiseData('POST',URL_ADMIN_AUDIT_RECHARGE,JSON.stringify(obj), cbAuditTask)
+  promiseData('POST',URL_ADMIN_TASK_AUDIT,JSON.stringify(obj), cbAuditTask)
 }
 
 function cbAuditTask(e) {

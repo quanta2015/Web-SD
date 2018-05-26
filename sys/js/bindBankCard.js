@@ -13,7 +13,7 @@ async function initBindInfo() {
   console.log(status)
   if ( status == 0 || status == null) {
     //未绑定
-    $('.container').append(await renderTmpl(TMPL_BIND_BKCARD, {
+    $('.container').append(await renderTmpl(TMPL_BUY_BIND_BKCARD, {
       name: null,
       bank: null,
       bank_no: null,
@@ -24,7 +24,7 @@ async function initBindInfo() {
     }));
   } else {
     //显示已经绑定表单
-    $(".container").append(await renderTmpl(TMPL_BIND_BKCARD, {
+    $(".container").append(await renderTmpl(TMPL_BUY_BIND_BKCARD, {
       name: cookie('name'),
       bank: cookie2('bank', 'buyerBankList'),
       bankNo: cookie2('bankNo', 'buyerBankList'),

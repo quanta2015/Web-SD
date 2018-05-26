@@ -37,13 +37,13 @@ async function initBindInfo() {
   // status = 2
   if ( status == 0 || status == null) {
     //未绑定
-    $('.container-fluid').append(await renderTmpl(TMPL_BIND_IDCARD, {
+    $('.container-fluid').append(await renderTmpl(TMPL_BUY_BIND_IDCARD, {
       list:[1,1,1],
       status: 0,
     }));
   } else {
     // 待审核或审核通过 显示已经绑定表单
-    $(".container-fluid").append(await renderTmpl(TMPL_BIND_IDCARD, {
+    $(".container-fluid").append(await renderTmpl(TMPL_BUY_BIND_IDCARD, {
       name: cookie('name'),
       idCard: cookie('idcard'),
       idImg: [ cookie('idcardpng1'),cookie('idcardpng2'),cookie('idcardpng3') ],

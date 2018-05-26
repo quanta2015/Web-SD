@@ -14,7 +14,7 @@ function init() {
 
 function initList() {
   var id = parseInt(cookie('id'));
-  TmplData(TMPL_SHOP_LIST,URL_SELL_SHOPS + id,null, cbListShop)
+  TmplData(TMPL_SELL_SHOP_LIST,URL_SELL_SHOPS + id,null, cbListShop)
 }
 
 

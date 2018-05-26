@@ -69,29 +69,39 @@ const URL_EXIT              = '/exist'
 
 
 // TMPL DEF
-const TMPL_ADDR            = '/tmpl/addr.tmpl'
-const TMPL_REG             = '/tmpl/reg.tmpl'
-const TMPL_SHOP_SELECT     = '/tmpl/shop_select.tmpl'
-const TMPL_PLATFORM_SELECT = '/tmpl/platform_select.tmpl'
-const TMPL_TASK            = '/tmpl/task.tmpl'
-const TMPL_IMG_TASK        = '/tmpl/img_task.tmpl'
-const TMPL_TASK_LIST       = '/tmpl/list_task.tmpl'
-const TMPL_IDCARD_LIST     = '/tmpl/list_idcard.tmpl'
-const TMPL_ACCOUNT_LIST    = '/tmpl/list_account.tmpl'
-const TMPL_BIND_IDCARD     = '/tmpl/bind_idcard.tmpl'
-const TMPL_BIND_BKCARD     = '/tmpl/bind_bkcard.tmpl'
-const TMPL_BIND_PLATFORM   = '/tmpl/bind_platform.tmpl'
-const TMPL_BUYER_ALL_TASK  = '/tmpl/list_buyer_all_task.tmpl'
-const TMPL_BIND_ACCOUNT    = '/tmpl/bind_account.tmpl'
-const TMPL_SHOP_LIST       = '/tmpl/list_shop.tmpl'
-const TMPL_ADMIN_RECHARGE_LIST = '/tmpl/list_admin_recharge.tmpl'
-// TMPL SELL
-const TMPL_SELL_RECHARGE_LIST = '/tmpl/list_sell_recharge.tmpl'
-const TMPL_SELL_CAPITAL_LIST  = '/tmpl/list_sell_capital.tmpl'
-const TMPL_SELL_WITHDRAW_LIST  = '/tmpl/list_sell_withdraw.tmpl'
-const TMPL_SELL_SRH_WITHDRAW  = '/tmpl/sell/srh_withdraw.tmpl'
-const TMPL_SELL_SRH_CAPITAL   = '/tmpl/sell/srh_capital.tmpl'
-const TMPL_SELL_TASK_LIST     = '/tmpl/sell/task_list.tmpl'
+
+// SELL
+const TMPL_SELL_SRH_WITHDRAW      = '/tmpl/sell/srh_withdraw.tmpl'
+const TMPL_SELL_SRH_CAPITAL       = '/tmpl/sell/srh_capital.tmpl'
+const TMPL_SELL_RECHARGE_LIST     = '/tmpl/sell/list_recharge.tmpl'
+const TMPL_SELL_CAPITAL_LIST      = '/tmpl/sell/list_capital.tmpl'
+const TMPL_SELL_WITHDRAW_LIST     = '/tmpl/sell/list_withdraw.tmpl'
+const TMPL_SELL_TASK_LIST         = '/tmpl/sell/list_task.tmpl'
+const TMPL_SELL_SHOP_LIST         = '/tmpl/sell/list_shop.tmpl'
+const TMPL_SELL_CREATETASK_P      = '/tmpl/sell/createtask_plain.tmpl'
+const TMPL_SELL_CREATETASK_I      = '/tmpl/sell/createtask_img.tmpl'
+const TMPL_SELL_SHOP_SELECT       = '/tmpl/sell/select_shop.tmpl'
+const TMPL_SELL_PLAT_SELECT       = '/tmpl/sell/select_platform.tmpl'
+
+
+
+// ADMIN
+const TMPL_ADMIN_TASK_LIST        = '/tmpl/admin/list_task.tmpl'
+const TMPL_ADMIN_IDCARD_LIST      = '/tmpl/admin/list_idcard.tmpl'
+const TMPL_ADMIN_ACOUNT_LIST      = '/tmpl/admin/list_account.tmpl'
+const TMPL_ADMIN_RECHARGE_LIST    = '/tmpl/admin/list_admin_recharge.tmpl'
+
+
+// BUYER
+const TMPL_BUY_BIND_IDCARD        = '/tmpl/buy/bind_idcard.tmpl'
+const TMPL_BUY_BIND_BKCARD        = '/tmpl/buy/bind_bkcard.tmpl'
+const TMPL_BUY_BIND_ACCOUNT       = '/tmpl/buy/bind_account.tmpl'
+const TMPL_BUY_ALL_TASK           = '/tmpl/buy/list_all_task.tmpl'
+
+
+const TMPL_ADDR                   = '/tmpl/addr.tmpl'
+const TMPL_REG                    = '/tmpl/reg.tmpl'
+
 
 // MSG DEF
 const MSG_LOGIN_SUCCESS   = '登录成功！'
