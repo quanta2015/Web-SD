@@ -9,7 +9,7 @@ function init() {
 
 async function initBindInfo() {
   var status = parseInt(cookie('bankcardState'))
-  // var status = 0
+  // var status = 3
   console.log(status)
   if ( status == 0 || status == null) {
     //未绑定
@@ -21,6 +21,7 @@ async function initBindInfo() {
       acount_subbank: null,
       acount_bankno: null,
       status: 0,
+      banks: BANKS
     }));
   } else {
     //显示已经绑定表单
@@ -34,6 +35,7 @@ async function initBindInfo() {
       type: status !== 3 ? "disabled" : null,
       status: status,
       statusText: AUDIT_STATUS[status],
+      banks: BANKS
     }) );
   }
 }
