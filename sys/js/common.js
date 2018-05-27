@@ -58,7 +58,8 @@ const URL_ADMIN_AUDIT_RECHARGE = '/admin/shoper_transfer_approve'
 const URL_SELL_ALL_RECHARGE = '/shoper/shoper_transfer_list'
 const URL_BUYER_GET_TASK    = '/buyertask/receive_task'
 const URL_ADMIN_LOGIN       = '/admin/admin_login'
-
+const URL_SELL_UPDATE       = '/shoper/shoper_update'
+const URL_SELL_PASSWD       = '/shoper/edit_password'
 
 const URL_BUY_REG           = '/buyer/buyer_reg'
 const URL_BUY_LOGIN         = '/buyer/buyer_login'

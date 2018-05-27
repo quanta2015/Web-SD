@@ -38,7 +38,7 @@ function doSave(e) {
   var $s = seller._data.seller
   var $l = ['id','name','qq','bank','mobile','weixin','bankcard']
   var data = saveList($s, $l)
-  promiseData('POST','/shoper/shoper_update',JSON.stringify(data), cbSave)
+  promiseData('POST',URL_SELL_UPDATE,JSON.stringify(data), cbSave)
 }
 
 function cbSave(e) {
