@@ -37,38 +37,45 @@ const AUDIT_STATUS = {
 const BANKS = ['工商银行', '农业银行', '建设银行', '中国银行', '招商银行']
 
 // URL DEF
-const URL_SELL_REG          = '/shoper/shoper_reg'
+
 const URL_SMS_SEND          = '/sms_send'
+const URL_EXIT              = '/exist'
+const URL_UPLOAD_FILE       = '/upload'
+
+const URL_SELL_REG          = '/shoper/shoper_reg'
 const URL_SELL_LOGIN        = '/shoper/shoper_login'
-const URL_SHOP_BIND         = '/shoper/shop_bind'
 const URL_TASK_PUBLISH      = '/task/task_publish'
 const URL_TASK_ALL_PLATFORM = '/task/all_platform'
 const URL_SELL_SHOPS        = '/shoper/shoper_shops/'
 const URL_SELL_SHOP_DEL     = '/shoper/shop_del/'
 const URL_SELL_SHOP_UPDATE  = '/shoper/shop_update/'
 const URL_SELL_ALL_TASK     = '/task/all_tasks/'
-const URL_UPLOAD_FILE       = '/upload'
+const URL_SELL_ALL_RECHARGE = '/shoper/shoper_transfer_list'
+const URL_SELL_UPDATE       = '/shoper/shoper_update'
+const URL_SELL_PASSWD       = '/shoper/edit_password'
+
+
 const URL_ADMIN_ALL_TASK    = '/admin/all_tasks'
 const URL_ADMIN_TASK_AUDIT  = '/admin/task_approve'
 const URL_ADMIN_ALL_IDCARD  = '/admin/buyer_list'
 const URL_ADMIN_IDCARD_AUDIT= '/admin/buyer_approve'
 const URL_ADMIN_ACOUNT_LIST = '/admin/buyer_acount_list'
 const URL_ADMIN_ACOUNT_AUDIT= '/admin/buyer_acount_approve'
-const URL_BUYER_ALL_TASK    = '/buyertask/all_tasks'
+const URL_ADMIN_LOGIN       = '/admin/admin_login'
 const URL_ADMIN_ALL_RECHARGE= '/admin/shoper_transfer_list'
 const URL_ADMIN_AUDIT_RECHARGE = '/admin/shoper_transfer_approve'
-const URL_SELL_ALL_RECHARGE = '/shoper/shoper_transfer_list'
-const URL_BUYER_GET_TASK    = '/buyertask/receive_task'
-const URL_ADMIN_LOGIN       = '/admin/admin_login'
-const URL_SELL_UPDATE       = '/shoper/shoper_update'
-const URL_SELL_PASSWD       = '/shoper/edit_password'
 
+
+const URL_SHOP_BIND         = '/shoper/shop_bind'
+const URL_BUYER_GET_TASK    = '/buyertask/receive_task'
 const URL_BUY_REG           = '/buyer/buyer_reg'
 const URL_BUY_LOGIN         = '/buyer/buyer_login'
 const URL_BUY_BIND_ID_CARD  = '/buyer/buyer_validate'
 const URL_BUY_BIND_BANK     = '/buyer/buyer_bankbind'
 const URL_BUY_BIND_ACCOUNT  = '/buyer/buyer_acountbind'
-const URL_EXIT              = '/exist'
+const URL_BUYER_ALL_TASK    = '/buyertask/all_tasks'
+
+const URL_BUYER_ALL_ORDER   = '/buyertask/all_tasks'
 
 
 // TMPL DEF
@@ -100,7 +107,7 @@ const TMPL_BUY_BIND_IDCARD        = '/tmpl/buy/bind_idcard.tmpl'
 const TMPL_BUY_BIND_BKCARD        = '/tmpl/buy/bind_bkcard.tmpl'
 const TMPL_BUY_BIND_ACCOUNT       = '/tmpl/buy/bind_account.tmpl'
 const TMPL_BUY_ALL_TASK           = '/tmpl/buy/list_all_task.tmpl'
-
+const TMPL_BUY_ALL_ORDER          = '/tmpl/buy/list_all_order.tmpl'
 
 const TMPL_ADDR                   = '/tmpl/addr.tmpl'
 const TMPL_REG                    = '/tmpl/reg.tmpl'
