@@ -34,6 +34,8 @@ const AUDIT_STATUS = {
   3: '审核不通过',
 }
 
+const BANKS = ['工商银行', '农业银行', '建设银行', '中国银行', '招商银行']
+
 // URL DEF
 const URL_SELL_REG          = '/shoper/shoper_reg'
 const URL_SMS_SEND          = '/sms_send'
