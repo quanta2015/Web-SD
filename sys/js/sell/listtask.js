@@ -35,7 +35,7 @@ function cbPayTask(e) {
 
 
 function cbListTask(r,e) {
-    console.log(e);
+  console.log('listTask', e);
   if (e[0].code == 0) {
     _listtask = e[0].data;
     $(".portlet-body .table").remove();

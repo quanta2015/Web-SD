@@ -1,4 +1,5 @@
-var _id;
+let _id;
+let pageData = Object.assign({}, PAGE_DATA);
 
 $(init);
 
@@ -7,22 +8,32 @@ function init() {
   $('body').on('click', '.audit-task', doAuditTask);
 }
 
-
-function initList() {
-  TmplData(TMPL_ADMIN_TASK_LIST,URL_ADMIN_ALL_TASK,null, cbListTask)
+function initList(param = pageData) {
+  TmplData(TMPL_ADMIN_TASK_LIST, [URL_ADMIN_ALL_TASK, encodeQuery(param)].join('?'), null, cbListTask)
 }
 
-
 function cbListTask(r, e) {
-  if (e[0].code == 0) {
-    _listtask = e.data;
+  let data = e[0];
+  if (data.code == 0) {
+    Object.assign(data, pageData);
+    totalPages = Math.ceil(data.total/PAGE_DATA.pageSize);
     $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(e[0], timeHelp));
+    $(".portlet-body .table-data").append($.templates(r[0]).render(data, timeHelp));
+    if ($('.table-pg').text() == '') initPage(totalPages);
   } else if (e.code == -1) {
     relogin();
   }
 }
 
+function initPage(totalPages) {
+  $('.portlet-body .table-pg').twbsPagination({
+    totalPages: totalPages,
+    onPageClick: function(event, page) {
+      pageData.pageIndex = page - 1;
+      initList(pageData);
+    }
+  })
+}
 
 function doAuditTask(e) {
   var sid = $(this).data('id')

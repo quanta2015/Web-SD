@@ -111,26 +111,26 @@ function getAddr(e) {
 
 async function addNorTaskItem() {
   var count = $('.nor-task').length + 1
-  $(".nor-task-add").before(await renderTmpl(TMPL_TASK, { type:'nor-task', data:count, show:true }));
+  $(".nor-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'nor-task', data:count, show:true }));
   $('.timepicker-24').timepicker({ showMeridian: false });
 }
 
 async function addKeyTaskItem() {
   var count = $('.key-task').length + 1
-  $(".key-task-add").before(await renderTmpl(TMPL_TASK, { type:'key-task', data:count, show:true }));
+  $(".key-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'key-task', data:count, show:true }));
   $('.timepicker-24').timepicker({ showMeridian: false });
 }
 
 async function addImgTaskItem() {
   var count = $('.img-task-title').length + 1
-  $(".img-task-add").before(await renderTmpl(TMPL_IMG_TASK, { type:'img-task', data:count,list:[1,1,1,1,1], show:true }));
+  $(".img-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_I, { type:'img-task', data:count,list:[1,1,1,1,1], show:true }));
   $('.timepicker-24').timepicker({ showMeridian: false });
 }
 
 
 async function addWordTaskItem() {
   var count = $('.word-task-title').length + 1
-  $(".word-task-add").before(await renderTmpl(TMPL_TASK, { type:'word-task',data:count, show:false, word: true }));
+  $(".word-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'word-task',data:count, show:true, word: true }));
   $('.timepicker-24').timepicker({ showMeridian: false });
 }
 
