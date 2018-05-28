@@ -1,4 +1,4 @@
-var rules = {
+let rules = {
   money: {
     required: !0,
     number: !0
@@ -19,8 +19,6 @@ var rules = {
   }
 }
 
-var optList = ['工商银行', '农业银行', '建设银行', '中国银行', '招商银行']
-
 $(init);
 
 function init() {
@@ -30,8 +28,8 @@ function init() {
 function initList() {
 
   $('#acountList input:eq(0)').trigger('click');
-  for(item in optList) {
-    $('#bankName').append('<option >' + optList[item] +'</option>')
+  for(item in BANKS) {
+    $('#bankName').append('<option >' + BANKS[item] +'</option>')
   }
 
   $("#rechargeForm").validate({
