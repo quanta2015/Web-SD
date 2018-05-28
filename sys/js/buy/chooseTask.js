@@ -1,4 +1,5 @@
-var _id;
+let _id;
+let pageData = Object.assign({}, PAGE_DATA);
 
 $(init);
 
@@ -7,25 +8,40 @@ function init() {
   $('body').on('click', '.audit-task', doChoose);
 }
 
-function initList() {
-  TmplData(TMPL_BUY_ALL_TASK,URL_BUYER_ALL_TASK,null, cbList)
+function initList(param = pageData) {
+  TmplData(TMPL_BUY_ALL_TASK, [URL_BUYER_ALL_TASK, encodeQuery(param)].join('?'),null, cbList)
 }
 
 function cbList(r, e) {
-  if (e[0].code == 0) {
+  let ret = e[0];
+  if (ret.code == 0) {
+    
+    Object.assign(ret, pageData);
+    totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
     $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(e[0], timeHelp));
-    // $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
+    $(".portlet-body .table-data").append($.templates(r[0]).render(ret, timeHelp));
+    if ($('.table-pg').text() == '') initPage(totalPages);
   } else if (e.code == -1) {
     relogin();
   }
 }
 
+
+function initPage(totalPages) {
+  $('.portlet-body .table-pg').twbsPagination({
+    totalPages: totalPages,
+    onPageClick: function(event, page) {
+      pageData.pageIndex = page - 1;
+      initList(pageData);
+    }
+  })
+}
+
 function doChoose(e) {
   var obj = {
-    taskKeyId: $(this).data('kid')
+    taskkeyId: $(this).data('kid')
   }
-  promiseData('GET',URL_BUYER_GET_TASK+'?taskkeyId='+ $(this).data('kid') ,null, cbChoose)
+  promiseData('GET',[URL_BUYER_GET_TASK, encodeQuery(obj)].join('?') ,null, cbChoose)
 }
 
 function cbChoose(e) {
