@@ -52,7 +52,8 @@ const URL_SELL_SHOP_UPDATE  = '/shoper/shop_update/'
 const URL_SELL_ALL_TASK     = '/task/all_tasks/'
 const URL_SELL_ALL_RECHARGE = '/shoper/shoper_transfer_list'
 const URL_SELL_UPDATE       = '/shoper/shoper_update'
-const URL_SELL_PASSWD       = '/shoper/edit_password'
+const URL_SELL_PASSWD       = '/edit_password'
+const URL_SELL_PAY_TASK     = '/task/prePayForTask?taskId='
 
 
 const URL_ADMIN_ALL_TASK    = '/admin/all_tasks'

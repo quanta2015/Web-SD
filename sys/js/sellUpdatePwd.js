@@ -24,7 +24,7 @@ function doSave(e) {
     $('.form-cnf').addClass('has-error')
   }else {
     data = {
-      id: _id,
+      oldPassword: oldPwd,
       password: newPwd
     }
     promiseData('POST',URL_SELL_PASSWD,JSON.stringify(data), cbSave)
@@ -33,8 +33,9 @@ function doSave(e) {
 
 function cbSave(e) {
   if (e.code == 0) {
-    initUserInfo();
     notifyInfo(MSG_UPDATE_SUCCESS)
+  } else if (e.code == 99 ) {
+    notifyInfo(e.message);
   } else if (e.code == -1) {
     relogin();
   }

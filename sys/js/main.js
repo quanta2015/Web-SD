@@ -6,6 +6,14 @@ function init() {
   var h = $(document).height();
   $("iframe").height(h - 50);
 
+  //显示用户名
+  $("#username").text(cookie('name'));
+
+  //显示金额
+  promiseData('GET','/shoper/shoper_balance',null, (e)=>{
+    $("#balance").text(e.data)
+  } )
+
   $('[data-button]').on('click', function(e) {
     var type = $('.page-sidebar-wrapper').data('type');
     var platform = $(this).data('platform');
@@ -20,3 +28,6 @@ function init() {
     location.href = '/index.html'
   });
 }
+
+
+
