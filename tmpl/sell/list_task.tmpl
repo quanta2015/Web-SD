@@ -17,7 +17,7 @@
     <tbody>
       {{for data}}
         <tr>
-            <td> {{:#index+1}} </td>
+            <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
             <td> {{:id}}</td>
             <td> {{:approveName}} </td>
             <td> {{:~formatTime(createtime)}}</td>
