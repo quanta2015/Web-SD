@@ -36,6 +36,11 @@ const AUDIT_STATUS = {
 
 const BANKS = ['工商银行', '农业银行', '建设银行', '中国银行', '招商银行']
 
+const PAGE_DATA = {
+  pageIndex: 0,
+  pageSize: 10,
+}
+
 // URL DEF
 
 const URL_SMS_SEND          = '/sms_send'
@@ -306,4 +311,20 @@ function saveList(s, list) {
     data[list[i]] = s[list[i]];
   }
   return data;
+}
+
+function encodeQuery(obj) {
+  const params = []
+
+  Object.keys(obj).forEach((key) => {
+    let value = obj[key]
+    // 如果值为undefined我们将其置空
+    if (typeof value === 'undefined') {
+      value = ''
+    }
+    // 对于需要编码的文本（比如说中文）我们要进行编码
+    params.push([key, encodeURIComponent(value)].join('='))
+  })
+
+  return params.join('&')
 }

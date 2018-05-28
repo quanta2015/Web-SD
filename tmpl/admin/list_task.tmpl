@@ -18,7 +18,7 @@
     <tbody>
       {{for data}}
         <tr>
-            <td> {{:#index+1}} </td>
+            <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
             <td> {{:~formatTime(createtime)}}</td>
             <td> {{:platform}} </td>
             <td> {{:tasktype}}</td>
