@@ -16,171 +16,174 @@
 </head>
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white" cz-shortcut-listen="true">
- 
-  <div class="page-header navbar navbar-fixed-top">
-    <div class="page-header-inner ">
-      <div class="page-logo">
-        <a href="#"><span class="logo-default">BUY-Cet</span>
-        <!-- <img src="img/logo.png" alt="logo" class="logo-default"> --> </a>
-        <div class="menu-toggler sidebar-toggler">
+  <div class="page-wrap">
+    <div class="page-header navbar navbar-fixed-top">
+      <div class="page-header-inner ">
+        <div class="page-logo">
+          <a href="#"><span class="logo-default">BUY-Cet</span>
+          <!-- <img src="img/logo.png" alt="logo" class="logo-default"> --> </a>
+          <div class="menu-toggler sidebar-toggler">
+            <span></span>
+          </div>
+        </div>
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
           <span></span>
+        </a>
+        <div class="top-menu">
+          <ul class="nav navbar-nav pull-right">
+            <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar" data-button="newTask">
+              <a href="#" ><i class="icon-user"></i> 新手任务</a>
+            </li>
+            <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+              <a href="#" ><i class="icon-film"></i> 新手教学</a>
+            </li>
+            <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+              <a href="#" ><i class=" icon-paper-plane"></i> 推广赚金</a>
+            </li>
+            <li class="dropdown dropdown-quick-sidebar-toggler">
+              <a id="exitBtn"><i class="icon-power"></i> 退出</a>
+            </li>
+          </ul>
         </div>
       </div>
-      <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
-        <span></span>
-      </a>
-      <div class="top-menu">
-        <ul class="nav navbar-nav pull-right">
-          <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar" data-button="newTask">
-            <a href="#" ><i class="icon-user"></i> 新手任务</a>
-          </li>
-          <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
-            <a href="#" ><i class="icon-film"></i> 新手教学</a>
-          </li>
-          <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
-            <a href="#" ><i class=" icon-paper-plane"></i> 推广赚金</a>
-          </li>
-          <li class="dropdown dropdown-quick-sidebar-toggler">
-            <a id="exitBtn"><i class="icon-power"></i> 退出</a>
-          </li>
-        </ul>
+    </div>
+
+    <div class="page-container">
+      <div class="page-sidebar-wrapper" data-type="buyer">
+        <div class="page-sidebar navbar-collapse collapse">
+          <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="true" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
+            <li class="heading">
+              <h3 class="uppercase">买家中心</h3>
+            </li>
+            <li class="nav-item  active open">
+              <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-home"></i>
+                <span class="title">垫付任务</span>
+                <span class="arrow"></span>
+              </a>
+              <ul class="sub-menu ">
+                <li class="nav-item ">
+                  <a href="#" class="nav-link " data-button="chooseTask">
+                    <span class="title">淘宝垫付任务</span>
+                  </a>
+                </li>
+                <li class="nav-item  ">
+                  <a href="#" class="nav-link " data-button="chooseTask">
+                    <span class="title">京东垫付任务</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item  active open">
+              <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-puzzle"></i>
+                <span class="title">我的订单</span>
+                <span class="arrow"></span>
+              </a>
+              <ul class="sub-menu">
+                <li class="nav-item  ">
+                  <a href="#" class="nav-link " data-button="listOrder">
+                    <span class="title">待操作</span>
+                  </a>
+                </li>
+                <li class="nav-item  ">
+                  <a href="#" class="nav-link " data-button="listOrder">
+                    <span class="title">待支付</span>
+                    <span class="badge badge-danger">2</span>
+                  </a>
+                </li>
+                <li class="nav-item  ">
+                  <a href="#" class="nav-link " data-button="listOrder">
+                    <span class="title">待发货</span>
+                    <span class="badge badge-danger">2</span>
+                  </a>
+                </li>
+                <li class="nav-item  ">
+                  <a href="#" class="nav-link " data-button="listOrder">
+                    <span class="title">待评价</span>
+                    <span class="badge badge-danger">2</span>
+                  </a>
+                </li>
+                <li class="nav-item  ">
+                  <a href="#" class="nav-link " data-button="listOrder">
+                    <span class="title">已完成</span>
+                    <span class="badge badge-danger">2</span>
+                  </a>
+                </li>
+                <li class="nav-item  ">
+                  <a href="#" class="nav-link " data-button="listOrder">
+                    <span class="title">所有订单</span>
+                    <span class="badge badge-danger">2</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item  active open">
+              <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-layers"></i>
+                <span class="title">账户信息</span>
+                <span class="arrow"></span>
+              </a>
+              <ul class="sub-menu">
+                <li class="nav-item  ">
+                  <a href="#" class="nav-link " data-button="">
+                    <span class="title">我的账户</span>
+                  </a>
+                </li>
+                <li class="nav-item  ">
+                  <a href="#" class="nav-link " data-button="withdraw">
+                    <span class="title">资金提现</span>
+                  </a>
+                </li>
+                <li class="nav-item  ">
+                  <a href="#" class="nav-link " data-button="">
+                    <span class="title">修改密码</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item  active open">
+              <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-diamond"></i>
+                <span class="title">绑定信息</span>
+                <span class="arrow"></span>
+              </a>
+              <ul class="sub-menu">
+                <li class="nav-item  ">
+                  <a href="#" class="nav-link " data-button="bindIDCard">
+                    <span class="title">实名认证</span>
+                  </a>
+                </li>
+                <li class="nav-item  ">
+                  <a href="#" class="nav-link " data-button="bindBankCard">
+                    <span class="title">绑定银行卡</span>
+                  </a>
+                </li>
+                <li class="nav-item  ">
+                  <a href="#" class="nav-link " data-button="bindAccount" data-platform="jingdong">
+                    <span class="title">绑定京东</span>
+                  </a>
+                </li>
+                <li class="nav-item  ">
+                  <a href="#" class="nav-link " data-button="bindAccount" data-platform="taobao">
+                    <span class="title">绑定淘宝</span>
+                  </a>
+                </li>       
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="page-content-wrapper">
+        <div class="page-content" style="min-height:440px">
+          <iframe src="newTask.html" id="mainframe"></iframe>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="page-container">
-    <div class="page-sidebar-wrapper" data-type="buyer">
-      <div class="page-sidebar navbar-collapse collapse">
-        <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="true" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
-          <li class="heading">
-            <h3 class="uppercase">买家中心</h3>
-          </li>
-          <li class="nav-item  active open">
-            <a href="javascript:;" class="nav-link nav-toggle">
-              <i class="icon-home"></i>
-              <span class="title">垫付任务</span>
-              <span class="arrow"></span>
-            </a>
-            <ul class="sub-menu ">
-              <li class="nav-item ">
-                <a href="#" class="nav-link " data-button="chooseTask">
-                  <span class="title">淘宝垫付任务</span>
-                </a>
-              </li>
-              <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="chooseTask">
-                  <span class="title">京东垫付任务</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item  active open">
-            <a href="javascript:;" class="nav-link nav-toggle">
-              <i class="icon-puzzle"></i>
-              <span class="title">我的订单</span>
-              <span class="arrow"></span>
-            </a>
-            <ul class="sub-menu">
-              <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="listOrder">
-                  <span class="title">待操作</span>
-                </a>
-              </li>
-              <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="listOrder">
-                  <span class="title">待支付</span>
-                  <span class="badge badge-danger">2</span>
-                </a>
-              </li>
-              <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="listOrder">
-                  <span class="title">待发货</span>
-                  <span class="badge badge-danger">2</span>
-                </a>
-              </li>
-              <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="listOrder">
-                  <span class="title">待评价</span>
-                  <span class="badge badge-danger">2</span>
-                </a>
-              </li>
-              <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="listOrder">
-                  <span class="title">已完成</span>
-                  <span class="badge badge-danger">2</span>
-                </a>
-              </li>
-              <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="listOrder">
-                  <span class="title">所有订单</span>
-                  <span class="badge badge-danger">2</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item  active open">
-            <a href="javascript:;" class="nav-link nav-toggle">
-              <i class="icon-layers"></i>
-              <span class="title">账户信息</span>
-              <span class="arrow"></span>
-            </a>
-            <ul class="sub-menu">
-              <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="">
-                  <span class="title">我的账户</span>
-                </a>
-              </li>
-              <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="withdraw">
-                  <span class="title">资金提现</span>
-                </a>
-              </li>
-              <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="">
-                  <span class="title">修改密码</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item  active open">
-            <a href="javascript:;" class="nav-link nav-toggle">
-              <i class="icon-diamond"></i>
-              <span class="title">绑定信息</span>
-              <span class="arrow"></span>
-            </a>
-            <ul class="sub-menu">
-              <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="bindIDCard">
-                  <span class="title">实名认证</span>
-                </a>
-              </li>
-              <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="bindBankCard">
-                  <span class="title">绑定银行卡</span>
-                </a>
-              </li>
-              <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="bindAccount" data-platform="jingdong">
-                  <span class="title">绑定京东</span>
-                </a>
-              </li>
-              <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="bindAccount" data-platform="taobao">
-                  <span class="title">绑定淘宝</span>
-                </a>
-              </li>       
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="page-content-wrapper">
-      <div class="page-content" style="min-height:440px">
-        <iframe src="newTask.html" id="mainframe"></iframe>
-      </div>
-    </div>
-  </div>
+  <div class="mask" style="display: none;"></div>
    
 
   <script src="/lib/jquery/jquery.min.js"></script>
