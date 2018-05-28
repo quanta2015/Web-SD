@@ -17,7 +17,9 @@ function init() {
   $('[data-button]').on('click', function(e) {
     var type = $('.page-sidebar-wrapper').data('type');
     var platform = $(this).data('platform');
-    var pageName = $(this).data('button') + '.html';
+    var pos = $(this).data('pos');
+    (pos=='root')?pos='/':pos='';
+    var pageName = pos + $(this).data('button') + '.html';
     platform ? pageName += `?platform=${platform}` : null;
 
     $("#mainframe", parent.document.body).attr("src", pageName);

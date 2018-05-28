@@ -1,0 +1,21 @@
+body {
+    min-width: 1000px;
+}
+
+.form-group button {
+  width: 120px;
+  margin-right: 10px;
+}
+
+.form-info {
+  padding-top: 7px;
+  color:#aaa;
+}
+
+.id-card-box .row {
+  margin-left: 0;
+}
+
+#bind-info .col-xs-6 {
+  padding-top: 7px;
+}
