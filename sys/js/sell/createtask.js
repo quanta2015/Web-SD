@@ -25,7 +25,7 @@ function init() {
   initTaskTmpl();
 
   //好评任务切换显示
-  $("#normaltask").change( ()=> $('.nor-task-wrap').toggle() );
+  // $("#normaltask").change( ()=> $('.nor-task-wrap').toggle() );
   $("#keywordtask").change( ()=> $('.key-task-wrap').toggle() );
   $("#picturetask").change( ()=> $('.img-task-wrap').toggle() );
   $("#wordtask").change( ()=> $('.word-task-wrap').toggle() );
@@ -41,15 +41,15 @@ function init() {
   $('#rt-mobile').prop('checked',true);
   $('#rm-money').prop('checked',true);
 
-  $('#real-price').mask("#,##0.0", {reverse: true});
-  $('#mobile-price').mask("#,##0.0", {reverse: true});
+  $('#real-price').mask("#,##0", {reverse: true});
+  $('#mobile-price').mask("#,##0", {reverse: true});
   $('#buy-count').mask("#,##0", {reverse: true});
   $('#sell-count').mask("#,##0", {reverse: true});
-  $('#price-from').mask("#,##0.0", {reverse: true});
-  $('#price-to').mask("#,##0.0", {reverse: true});
+  $('#price-from').mask("#,##0", {reverse: true});
+  $('#price-to').mask("#,##0", {reverse: true});
   $('#task-count').mask("#,##0", {reverse: true});
-  $('#award-money').mask("#,##0.0", {reverse: true});
-  $('#express-weight').mask("#,##0.0", {reverse: true});
+  $('#award-money').mask("#,##0", {reverse: true});
+  $('#express-weight').mask("#,##0", {reverse: true});
 }
 
 async function initTaskTmpl() {

@@ -81,7 +81,7 @@ const URL_BUY_BIND_BANK     = '/buyer/buyer_bankbind'
 const URL_BUY_BIND_ACCOUNT  = '/buyer/buyer_acountbind'
 const URL_BUYER_ALL_TASK    = '/buyertask/all_tasks'
 
-const URL_BUYER_ALL_ORDER   = '/buyertask/all_tasks'
+const URL_BUYER_ALL_ORDER   = '/buyertask/received_tasks'
 
 
 // TMPL DEF

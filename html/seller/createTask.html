@@ -253,12 +253,12 @@
               <!-- start 普通好评  -->
               <div class="col-xs-12">
                 <label class="mt-checkbox mt-checkbox-outline ">
-                  <input type="checkbox" id="normaltask"> 普通好评任务
+                  <input type="checkbox" id="normaltask" disabled checked> 普通好评任务
                   <span></span>
                   <i class="form-info">(即买家确认收货后评价自由发挥，不能有额外要求，若是 淘口令 ，则直接将淘口令链接复制到关键词输入框里)</i>
                 </label>
               </div>
-              <div class="col-xs-12 task-wrap nor-task-wrap" style="display: none;" >
+              <div class="col-xs-12 task-wrap nor-task-wrap" >
                 <div class="task-add nor-task-add">
                   <a href="javascript: void(0)"> + 添加搜索关键字</a>
                 </div>
@@ -316,10 +316,19 @@
               </div>
               <!-- end 文字好评  -->
             </div>
+
+            <div class="form-group">
+              <div class="col-xs-4">
+                发布间隔时间<input type="text" class="form-control" id="pub-itl-time" >
+              </div>
+              <div class="col-xs-4">
+                放单量<input type="text" class="form-control" id="pub-itl-amount" >
+              </div>
+            </div>
             
             <div class="form-group">
-              <div class="col-xs-12 form-inline">
-                发布时间设置
+              <div class="col-xs-4">
+                发布时间
                 <div class="input-group input-medium date date-picker" data-date="2018-01-01" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
                   <input type="text" class="form-control" readonly="" id="start-date">
                   <span class="input-group-btn">
@@ -327,8 +336,10 @@
                     </button>
                   </span>
                 </div>
-                总单量：
-                <input type="text" class="form-control" id="task-count"> 单
+              </div>
+              <div class="col-xs-4">
+                总单量
+                <input type="text" class="form-control" id="task-count" disabled> 
               </div>
             </div>
             <!-- end 第三步 -->
@@ -505,7 +516,7 @@
             </div>
 
             <div class="form-group">
-              <label class="control-label col-xs-3"><span class="form-imp">是否需要聊天</span>  </label>
+              <label class="control-label col-xs-3"><span class="form-imp">是否需要聊天</span></label>
               <div class="col-xs-9 form-inline">
                 <div class="mt-radio-inline">
                   <label class="mt-radio">
@@ -515,6 +526,10 @@
                     <input type="radio" name="r-chat-necessary" value="0"> 否<span></span>
                   </label>
                 </div>
+              </div>
+              <label class="control-label col-xs-3"><span class="form-imp">商家额外说明内容</span></label>
+              <div class="col-xs-9 form-inline">
+                <textarea id="other" cols="100" rows="4"></textarea>
               </div>
             </div>
 
@@ -643,7 +658,7 @@
 
          
         <div class="ctrl">
-          <a href="#" class="btn blue-madison btn-pre"  ><i class="fa fa-arrow-left"></i> 上一步 </a> 
+          <a href="#" class="btn blue-madison btn-pre hide"  ><i class="fa fa-arrow-left"></i> 上一步 </a> 
           <a href="#" class="btn blue-madison btn-next"  ><i class="fa fa-arrow-right"></i> 下一步 </a> 
           <a href="#" class="btn blue-madison btn-finish hide" id="publish-task-btn"><i class="fa fa-arrow-right"></i> 完成 </a> 
         </div>
