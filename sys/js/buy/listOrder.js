@@ -15,7 +15,7 @@ function initList() {
 function cbList(r, e) {
   if (e[0].code == 0) {
     $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(e[0], timeHelp));
+    $(".portlet-body").prepend($.templates(r[0]).render(e[0], rdHelper));
   } else if (e[0].code == 99) {
     notifyInfo(e.message);
   } else if (e[0].code == -1) {

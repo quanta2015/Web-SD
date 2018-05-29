@@ -16,11 +16,10 @@ function initList(param = pageData) {
 function cbList(r, e) {
   let ret = e[0];
   if (ret.code == 0) {
-    
     Object.assign(ret, pageData);
     totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
     $(".portlet-body .table").remove();
-    $(".portlet-body .table-data").append($.templates(r[0]).render(ret, timeHelp));
+    $(".portlet-body").prepend($.templates(r[0]).render(ret, rdHelper));
     if ($('.table-pg').text() == '') initPage(totalPages);
   } else if (e.code == -1) {
     relogin();
