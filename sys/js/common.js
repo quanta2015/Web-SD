@@ -34,6 +34,15 @@ const AUDIT_STATUS = {
   3: '审核不通过',
 }
 
+const STATUS_MAP = {
+  0: '未支付',
+  20: '待审核', // 需要发布
+  30: '任务进行中', // 审核通过，任务进行中
+  40: '审核不通过', // 需要重新修改发布
+  50: '任务完成',
+  60: '任务已过时',
+}
+
 const BANKS = ['工商银行', '农业银行', '建设银行', '中国银行', '招商银行']
 
 const PAGE_DATA = {
@@ -59,7 +68,7 @@ const URL_SELL_ALL_RECHARGE = '/shoper/shoper_transfer_list'
 const URL_SELL_UPDATE       = '/shoper/shoper_update'
 const URL_SELL_PASSWD       = '/edit_password'
 const URL_SELL_PAY_TASK     = '/task/prePayForTask?taskId='
-
+const URL_SELL_BALANCE      = '/shoper/shoper_balance'
 
 const URL_ADMIN_ALL_TASK    = '/admin/all_tasks'
 const URL_ADMIN_TASK_AUDIT  = '/admin/task_approve'
@@ -99,6 +108,7 @@ const TMPL_SELL_CREATETASK_P      = '/tmpl/sell/createtask_plain.tmpl'
 const TMPL_SELL_CREATETASK_I      = '/tmpl/sell/createtask_img.tmpl'
 const TMPL_SELL_SHOP_SELECT       = '/tmpl/sell/select_shop.tmpl'
 const TMPL_SELL_PLAT_SELECT       = '/tmpl/sell/select_platform.tmpl'
+const TMPL_SELL_WITHDRAW          = '/tmpl/sell/withdraw.tmpl'
 
 
 
@@ -117,6 +127,8 @@ const TMPL_BUY_ALL_TASK           = '/tmpl/buy/list_all_task.tmpl'
 const TMPL_BUY_ALL_ORDER          = '/tmpl/buy/list_all_order.tmpl'
 const TMPL_BUY_ORDER_DETAIL       = '/tmpl/buy/detail_order.tmpl'
 const TMPL_BUY_UPLOAD_IMG         = '/tmpl/buy/upload_img.tmpl'
+const TMPL_BUY_WITHDRAW           = '/tmpl/buy/withdraw.tmpl'
+
 const TMPL_ADDR                   = '/tmpl/addr.tmpl'
 const TMPL_REG                    = '/tmpl/reg.tmpl'
 
@@ -222,11 +234,9 @@ function TmplData(urlTmpl, urlData, data, cb) {
   })).done(cb)
 }
 
-
-
 // TMPL FUNCTION DEF
-var timeHelp = {
-  formatTime: (t) => { return moment(t).format("YYYY-M-D h:mm:ss") }
+const rdHelper = {
+  formatTime: (t) => { return moment(t).format("YYYY-M-D HH:mm:ss") },
 }
 
 

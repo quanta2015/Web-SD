@@ -11,12 +11,11 @@ function initList(param = pageData) {
 
 function cbList(r, e) {
   let data = e[0];
-  console.log(data)
   if (data.code == 0) {
     Object.assign(data, pageData);
     totalPages = Math.ceil(data.total/PAGE_DATA.pageSize);
     $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(data, timeHelp));
+    $(".portlet-body").prepend($.templates(r[0]).render(data, rdHelper));
     if ($('.table-pg').text() == '') initPage(totalPages);
   } else if ([-1, 99].includes(e.code)) {
     relogin();

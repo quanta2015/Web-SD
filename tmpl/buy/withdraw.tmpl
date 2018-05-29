@@ -1,0 +1,55 @@
+<form action="#" id="form-bind" class="form-horizontal form-bordered">
+  <div class="form-group">
+    <label class="control-label col-xs-2">姓名</label>
+    <div class="col-xs-6">
+      <input type="text" class="form-control" value="{{:name}}" disabled>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-2">银行账户</label>
+    <div class="col-xs-6">
+      <input type="text" class="form-control" value="{{:bankNo}}" disabled>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-2">扣取手续费账户</label>
+    <div class="col-xs-6 form-inline">
+      <select class="form-control " id="acount-level">
+        <option value="">请选择</option>
+        <option value="本金账户" selected>本金账户</option>
+        <option value="佣金账户" >佣金账户</option>
+        <option value="精灵豆账户" >精灵豆账户</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-2">本金提现</label>
+    <div class="col-xs-6">
+      <input type="text" class="form-control" v-model="capWithdraw">
+    </div>
+    <div class="col-xs-4 form-info">(本金余额 <span class="font-red">{{:capBalance}}</span> 元)</div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-2">佣金提现</label>
+    <div class="col-xs-6">
+      <input type="text" class="form-control" v-model="comWithdraw">
+    </div>
+    <div class="col-xs-4 form-info">(佣金余额 <span class="font-red">{{:comBalance}}</span> 金)</div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-2">
+      <label class="control-label">提现总金额:  <span class="font-red">{{:amount}}</span> 元</label>
+    </div>
+    <div class="col-xs-2">
+      <label class="control-label">提现手续费: <span class="font-red">{{:poundage}}</span> 元</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-xs-2"></label>
+    <div class="col-xs-10">
+      <button type="button" class="btn blue" id="saveBtn">确认</button>
+    </div>
+  </div>
+</form>

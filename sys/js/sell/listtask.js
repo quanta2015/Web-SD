@@ -26,20 +26,24 @@ function cbPayTask(e) {
   if (e.code == 0) {
     _listtask = e.data;
     $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(e[0], timeHelp));
+    $(".portlet-body").prepend($.templates(r[0]).render(e[0], rdHelper));
   } else if (e.code == -1) {
     relogin();
   }
 }
 
 function cbListTask(r,e) {
-  let data = e[0];
-  if (data.code == 0) {
-    _listtask = e[0].data;
-    Object.assign(data, pageData);
-    totalPages = Math.ceil(data.total/PAGE_DATA.pageSize);
+  let ret = e[0];
+  if (ret.code == 0) {
+    _listtask = ret.data;
+    Object.assign(ret, pageData);
+    ret.data = ret.data.map(v => {
+      v.statusName = STATUS_MAP[v.status];
+      return v;
+    });
+    totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
     $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(data, timeHelp));
+    $(".portlet-body").prepend($.templates(r[0]).render(ret, rdHelper));
     if ($('.table-pg').text() == '') initPage(totalPages);
   } else if (e[0].code == -1) {
     relogin();
