@@ -1,6 +1,7 @@
-var _cid;
-PREV = 0;
-NEXT = 1;
+let _cid;
+let PREV = 0;
+let NEXT = 1;
+let platformMap = {};
 
 $(init);
 
@@ -11,6 +12,7 @@ function init() {
   $('body').on('click', '.alladdress', getAddr);
   $('body').on('click', '.task-del', delTask);
   $('body').on('click', '#publish-task-btn', doPublish);
+  $('body').on('change', '#platform-list', doInitShop);
 
 
   //地区下拉框
@@ -278,11 +280,14 @@ function cbPlatformInfo(e) {
 
 async function initPlatformList(data) {
   let platforms = data.map(v => v.platform);
-  let shops = [];
   data.forEach(v => {
-    shops = shops.concat(v.shops);
+    platformMap[v.platform] = v.shops;
   })
-  console.log(shops)
   $("#platform-list").append(await renderTmpl(TMPL_SELL_PLAT_SELECT, { list:platforms }));
-  $("#shop-list").append(await renderTmpl(TMPL_SELL_SHOP_SELECT, { list:shops }));
+  $("#shop-list").append(await renderTmpl(TMPL_SELL_SHOP_SELECT, { list:platformMap[platforms[0]] }));
+}
+
+async function doInitShop() {
+  let platform = $(this).val();
+  $("#shop-list").empty().append(await renderTmpl(TMPL_SELL_SHOP_SELECT, { list:platformMap[platform] }));
 }
