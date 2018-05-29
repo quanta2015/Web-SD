@@ -115,7 +115,8 @@ const TMPL_BUY_BIND_BKCARD        = '/tmpl/buy/bind_bkcard.tmpl'
 const TMPL_BUY_BIND_ACCOUNT       = '/tmpl/buy/bind_account.tmpl'
 const TMPL_BUY_ALL_TASK           = '/tmpl/buy/list_all_task.tmpl'
 const TMPL_BUY_ALL_ORDER          = '/tmpl/buy/list_all_order.tmpl'
-
+const TMPL_BUY_ORDER_DETAIL       = '/tmpl/buy/detail_order.tmpl'
+const TMPL_BUY_UPLOAD_IMG         = '/tmpl/buy/upload_img.tmpl'
 const TMPL_ADDR                   = '/tmpl/addr.tmpl'
 const TMPL_REG                    = '/tmpl/reg.tmpl'
 

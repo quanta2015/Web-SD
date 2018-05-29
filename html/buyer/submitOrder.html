@@ -48,13 +48,13 @@
             <div class="col-1">商铺店家名称</div>
           </li>
           <li>
-            <div class="col-1"><input type="text" class="form-control" placeholder="请输入店家名称"></div>
+            <div class="col-1"><input type="text" class="form-control" placeholder="请输入店家名称" id="shop-name"></div>
           </li>
           <li></li>
           <li>
             <div class="col-1">
-              <a href="#" class="btn btn-outline btn-sm blue">清除</a>
-               <a href="#" class="btn btn-outline btn-sm red">核对</a>
+              <a href="#" class="btn btn-outline btn-sm blue" id="clear-shop">清除</a>
+               <a href="#" class="btn btn-outline btn-sm red" id="check-shop">核对</a>
             </div>
           </li>
         </div>
@@ -80,9 +80,9 @@
           </li>
           <li>
             <div class="col-1 col-img">
-              <div class="m-img" type="搜索结果页"></div>
-              <div class="m-img" type="随机商品1"></div>
-              <div class="m-img" type="随机商品2"></div>
+              <div class="m-img" type="搜索结果页" pid="i-s-result"></div>
+              <div class="m-img" type="随机商品1"  pid="i-r-goods1"></div>
+              <div class="m-img" type="随机商品2"  pid="i-r-goods2"></div>
             </div>
           </li>
         </div>
@@ -108,10 +108,10 @@
           </li>
           <li>
             <div class="col-1 col-img">
-              <div class="m-img" type="目标商品头部"></div>
-              <div class="m-img" type="商品问答"></div>
-              <div class="m-img" type="商品详情"></div>
-              <div class="m-img" type="加入购物车"></div>
+              <div class="m-img" pid="i-s-head"   type="目标商品头部"></div>
+              <div class="m-img" pid="i-s-ask"    type="商品问答"></div>
+              <div class="m-img" pid="i-s-detail" type="商品详情"></div>
+              <div class="m-img" pid="i-s-cart"   type="加入购物车"></div>
             </div>
           </li>
         </div>
@@ -134,8 +134,8 @@
           </li>
           <li>
             <div class="col-1 col-img">
-              <div class="m-img" type="聊天"></div>
-              <div class="m-img" type="下单支付"></div>
+              <div class="m-img" pid="i-s-talk" type="聊天"></div>
+              <div class="m-img" pid="i-s-pay" type="下单支付"></div>
             </div>
           </li>
         </div>
@@ -154,16 +154,16 @@
             <div class="col-1">1. 填写淘宝订单编号，青岛手机淘宝查看并复制</div>
           </li>
           <li>
-            <input type="text" class="form-control" placeholder="请输入订单编号">
+            <input type="text" class="form-control" placeholder="请输入订单编号" id="order-id">
           </li>
           <li>
             <div class="col-1">2. 填写实际付款金额，手机淘宝订单详情显示的金额就是实付金额</div>
           </li>
           <li>
-            <input type="text" class="form-control" placeholder="请输入实际付款金额">
+            <input type="text" class="form-control" placeholder="请输入实际付款金额" id="pay-money">
           </li>
           <li>
-            <div class="col-1"><a href="#" class="btn bnt-outline red">提交任务</a></div>
+            <div class="col-1"><a href="#" class="btn btn-outline red" id="submit-buy">提交任务</a></div>
           </li>
         </div>
       </div>
