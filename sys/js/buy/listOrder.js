@@ -29,18 +29,18 @@ function doCommit() {
 
 function doCancelTask() {
   var obj = {
-    buyerTaskId: $(this).data('kid')
+    buyerTaskId: $(this).data('id')
   }
   promiseData('GET',[URL_BUY_CANCEL_TASK, encodeQuery(obj)].join('?') ,null, cbCancelTask)
 }
 
 function cbCancelTask(e)  {
-  if (e[0].code == 0) {
+  if (e.code == 0) {
     notifyInfo('退单成功！');
     initList()
-  } else if (e[0].code == 99) {
+  } else if (e.code == 99) {
     notifyInfo(e.message);
-  } else if (e[0].code == -1) {
+  } else if (e.code == -1) {
     relogin();
   }
 }
