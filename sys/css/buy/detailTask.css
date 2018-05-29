@@ -1,35 +1,17 @@
-body {
-    min-width: 1050px;
-    font-family: "microsoft yahei";
-}
-
-/*
-.g-detail {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0 ,0 ,0, 0.4);
-    color: #666;
-}
-
-
-.g-detail .m-detail-wrap {
+.m-detail-wrap {
     background: #fff;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    width: 900px;
     display: flex;
     flex-direction: column;
 }
 
 
-.m-d-title .row, .m-d-main .row {
-    margin: 0;
-    padding: 10px 0;
+.m-title {
+    padding: 15px;
+    background: #eee;
+}
+
+.m-d-item {
+    margin: 5px 5px 0 5px;
 }
 
 .m-d-title .v-title {
@@ -39,7 +21,7 @@ body {
 
 .v-sub-title {
     font-size: 18px;
-
+    display: flex;
 }
 
 .m-d-goods {
@@ -47,6 +29,8 @@ body {
     background: #eee;
     display: flex;
 }
+
+
 
 .m-d-main, .m-d-other {
     padding: 0 15px 15px 15px;
@@ -102,6 +86,15 @@ body {
 }
 
 
-.fn-blur {
-    filter: blur(10px);
-}*/
+
+.m-d-commit {
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+.m-d-commit a {
+    width: 200px;
+    margin-right: 20px;
+}

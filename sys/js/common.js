@@ -80,6 +80,7 @@ const URL_BUY_BIND_ID_CARD  = '/buyer/buyer_validate'
 const URL_BUY_BIND_BANK     = '/buyer/buyer_bankbind'
 const URL_BUY_BIND_ACCOUNT  = '/buyer/buyer_acountbind'
 const URL_BUYER_ALL_TASK    = '/buyertask/all_tasks'
+const URL_BUY_CANCEL_TASK   = '/buyertask/cancel_task'
 
 const URL_BUYER_ALL_ORDER   = '/buyertask/received_tasks'
 

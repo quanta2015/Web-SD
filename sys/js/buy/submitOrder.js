@@ -1,17 +1,25 @@
-var _id;
-
 $(init);
 
 function init() {
-  initList();
-  // $('body').on('click', '.detail-task', doDetail);
-  
 
+  initDetail();
+
+  initList();
+
+  // $('body').on('click', '.detail-task', doDetail);
 }
 
 function initList() {
   // TmplData(TMPL_BUY_ALL_ORDER,URL_BUYER_ALL_ORDER,null, cbList)
   renderImg()
+}
+
+
+async function initDetail() {
+  d = {  
+        show:false
+    }
+  $('.m-d-detail').append(await renderTmpl('/tmpl/buy/detail_order.tmpl', d))
 }
 
 

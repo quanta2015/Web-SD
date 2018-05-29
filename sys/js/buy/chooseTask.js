@@ -4,8 +4,9 @@ let pageData = Object.assign({}, PAGE_DATA);
 $(init);
 
 function init() {
+
   initList();
-  $('body').on('click', '.audit-task', doChoose);
+  $('body').on('click', '.audit-task', doDetail);
 }
 
 function initList(param = pageData) {
@@ -37,11 +38,8 @@ function initPage(totalPages) {
   })
 }
 
-function doChoose(e) {
-  var obj = {
-    taskkeyId: $(this).data('kid')
-  }
-  promiseData('GET',[URL_BUYER_GET_TASK, encodeQuery(obj)].join('?') ,null, cbChoose)
+function doDetail() {
+  location.href = 'detailTask.html?id=' + $(this).data('kid')
 }
 
 function cbChoose(e) {

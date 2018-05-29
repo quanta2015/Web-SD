@@ -4,6 +4,41 @@ body {
     color: #666;
 }
 
+.m-detail-wrap {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.m-d-item {
+    margin: 5px 5px 0 5px;
+}
+
+.v-sub-title {
+    font-size: 18px;
+    display: flex;
+}
+
+.m-d-goods {
+    padding: 15px;
+    background: #eee;
+    display: flex;
+}
+
+.m-d-main, .m-d-other {
+    padding: 0 15px 15px 15px;
+    background: #eee;
+    display: flex;
+}
+
+.m-d>div {
+    flex:1;
+    background: #fff;
+    /*padding: 10px;*/
+}
+
+
+
 
 
 .g-submit {
@@ -19,7 +54,7 @@ body {
 .m-title {
     font-size: 20px;
     border-bottom: 1px solid #ccc;  
-    padding:  15px;
+    /*padding:  15px;*/
     color: #578EBE
 }
 
@@ -30,7 +65,7 @@ body {
 
 
 .m-d-main {
-    padding: 10px 10px 0 10px;
+    padding: 5px;
     background: #eee;
     display: flex;
 }
@@ -41,10 +76,10 @@ body {
     padding: 10px;
 }
 
-.m-d>div:first-child {
+/*.m-d>div:first-child {
     margin-right: 10px;
 }
-
+*/
 
 .m-d div li {
     display: flex;
