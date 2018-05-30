@@ -13,6 +13,7 @@ function init() {
   $('body').on('click', '.task-del', delTask);
   $('body').on('click', '#publish-task-btn', doPublish);
   $('body').on('change', '#platform-list', doInitShop);
+  $('body').on('input propertychange', '.task-count', doCountTask);
 
 
   //地区下拉框
@@ -191,6 +192,8 @@ function doPublish() {
     ask: $('#ask').prop('checked')?1:0,
     chatNecessary: $("input[name='r-chat-necessary']:checked").val(),
     shopId: $('#shop-list').val(),
+    singleAmount: $('#pub-itl-amount').val(),
+    intervals: $('#pub-itl-time').val(),
   }
   obj.commonTaskKeyList = obj.commontask ? getGreatCommentData('nor-task') : [];
   obj.keywordTaskKeyList = obj.keywordtask ? getGreatCommentData('key-task') : [];
@@ -290,4 +293,12 @@ async function initPlatformList(data) {
 async function doInitShop() {
   let platform = $(this).val();
   $("#shop-list").empty().append(await renderTmpl(TMPL_SELL_SHOP_SELECT, { list:platformMap[platform] }));
+}
+
+function doCountTask() {
+  let count = 0;
+  $('.task-count').each(function() {
+    count += parseInt($(this).val() || 0);
+  });
+  $('#task-count').val(count);
 }
