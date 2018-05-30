@@ -23,19 +23,19 @@
             <td> {{:~formatTime(createtime)}}</td>
             <td> platform </td>
             <td> {{:tasktype}}</td>
-            <td> {{:shopId}}</td>
+            <td> {{:shopName}}</td>
             <td> {{:goodsname}}</td>
             <td> {{:num}}</td>
             <td> {{:keywordtask}}</td>
-            <td class="fn-center"> 
+            <td class="fn-center">
               {{if (status==0 || status==40)}}
               <a href="#basic" class="btn blue-madison btn-sm btn-outline sbold uppercase  edit-task"  data-toggle="modal" data-index="{{:#index}}" data-id="{{:id}}"><i class="fa fa-edit"></i> 修改 </a> 
               {{/if}}
-              {{if (status==0 || status==40 || status==50 || status==60)}}
+              {{if (status==0 || status==40 || status==20)}}
               <a href="javascript:;" class="btn blue-madison btn-sm btn-outline sbold uppercase del-task" id="{{:id}} " ><i class="fa fa-times"></i> 删除 </a> 
               {{/if}}
-              {{if (status==20)}}
-              <a href="javascript:;" class="btn blue-madison btn-sm btn-outline sbold uppercase pay-task" id="{{:id}} " ><i class="fa fa-hand-o-right"></i> 发布 </a> 
+              {{if (status==0)}}
+              <a href="javascript:;" class="btn blue-madison btn-sm btn-outline sbold uppercase pay-task" id="{{:id}} " ><i class="fa fa-hand-o-right"></i> 预支付 </a> 
               {{/if}}
             </td>
         </tr>

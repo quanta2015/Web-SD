@@ -36,7 +36,7 @@ const AUDIT_STATUS = {
 
 const STATUS_MAP = {
   0: '未支付',
-  20: '待审核', // 需要发布
+  20: '待审核', // 支付完成后的状态
   30: '任务进行中', // 审核通过，任务进行中
   40: '审核不通过', // 需要重新修改发布
   50: '任务完成',
@@ -69,6 +69,7 @@ const URL_SELL_UPDATE       = '/shoper/shoper_update'
 const URL_SELL_PASSWD       = '/edit_password'
 const URL_SELL_PAY_TASK     = '/task/prePayForTask?taskId='
 const URL_SELL_BALANCE      = '/shoper/shoper_balance'
+const URL_SELL_DEL_TASK     = '/task/task_del/'
 
 const URL_ADMIN_ALL_TASK    = '/admin/all_tasks'
 const URL_ADMIN_TASK_AUDIT  = '/admin/task_approve'
@@ -140,6 +141,9 @@ const MSG_PUBLISH_SUCCESS = '发布成功！'
 const MSG_BIND_SUCCESS    = '绑定成功！'
 const MSG_UPDATE_SUCCESS  = '修改信息成功'
 const MSG_RECHARGE_SUCCESS  = '充值成功！'
+
+const MSG_PUBLISH_FAILED  = '发布失败！'
+const MSG_DEL_FAILED  = '删除失败！'
 
 const TEXT_BIND_SUCCESS = '已绑定'
 

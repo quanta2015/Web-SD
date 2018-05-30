@@ -6,7 +6,7 @@
     <div class="row img-task">
         <div class="col-xs-2 form-imp"> 搜索关键词</div>
         <div class="col-xs-10">
-            <input type="text" id="{{:type}}-ipt-key{{:data}}"> 添加 <input type="text" class="wide-s1" id="{{:type}}-ipt-count{{:data}}"> 单 放单时间从 <input type="text" class="timepicker timepicker-24" id="{{:type}}-ipt-time-from{{:data}}"> 到 <input type="text"
+            <input type="text" id="{{:type}}-ipt-key{{:data}}"> 添加 <input type="number" class="wide-s1 task-count" id="{{:type}}-ipt-count{{:data}}"> 单 放单时间从 <input type="text" class="timepicker timepicker-24" id="{{:type}}-ipt-time-from{{:data}}"> 到 <input type="text"
                 class="timepicker timepicker-24" id="{{:type}}-ipt-time-to{{:data}}">
         </div>
     </div>
@@ -21,7 +21,7 @@
                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
                 <div>
                     <span class="btn default btn-file">
-              <span class="fileinput-new"> 选择图片 </span>
+                    <span class="fileinput-new"> 选择图片 </span>
                     <span class="fileinput-exists"> 更换 </span>
                     <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="{{:~root.type}}-upload{{:~root.data}}-{{:#index+1}}">
                     </span>

@@ -8,6 +8,7 @@ function init() {
 
   initList();
   $('body').on('click', '.pay-task', doPayTask);
+  $('body').on('click', '.del-task', doDelTask);
 
 }
 
@@ -17,18 +18,17 @@ function initList(param = pageData) {
 }
 
 function doPayTask(e) {
-  let id = $(e.target).attr('id')
-
+  let id = $(e.target).attr('id');
   promiseData('GET', URL_SELL_PAY_TASK + id, null, cbPayTask);
 }
 
 function cbPayTask(e) {
   if (e.code == 0) {
-    _listtask = e.data;
-    $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(e[0], rdHelper));
+    initList();
   } else if (e.code == -1) {
     relogin();
+  } else {
+    errorInfo(MSG_PUBLISH_FAILED);
   }
 }
 
@@ -59,4 +59,19 @@ function initPage(totalPages) {
       initList(pageData);
     }
   })
+}
+
+function doDelTask(e) {
+  let id = $(e.target).attr('id');
+  promiseData('DELETE', URL_SELL_DEL_TASK + id, null, cbDelTask);
+}
+
+function cbDelTask(e) {
+  if (e.code == 0) {
+    initList();
+  } else if (e.code == -1) {
+    relogin();
+  } else {
+    errorInfo(MSG_DEL_FAILED);
+  }
 }
