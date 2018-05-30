@@ -19,7 +19,7 @@ function cbListTask(r, e) {
     Object.assign(data, pageData);
     totalPages = Math.ceil(data.total/PAGE_DATA.pageSize);
     $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(data, timeHelp));
+    $(".portlet-body").prepend($.templates(r[0]).render(data, rdHelper));
     $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
     if ($('.table-pg').text() == '') initPage(totalPages);
   } else if (e.code == -1) {

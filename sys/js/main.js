@@ -10,7 +10,7 @@ function init() {
   $("#username").text(cookie('name'));
 
   //显示金额
-  promiseData('GET','/shoper/shoper_balance',null, (e)=>{
+  promiseData('GET',URL_SELL_BALANCE,null, (e)=>{
     $("#balance").text(e.data)
   } )
 

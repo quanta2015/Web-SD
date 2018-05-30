@@ -18,7 +18,7 @@ function cbListTask(r, e) {
     Object.assign(data, pageData);
     totalPages = Math.ceil(data.total/PAGE_DATA.pageSize);
     $(".portlet-body .table").remove();
-    $(".portlet-body .table-data").append($.templates(r[0]).render(data, timeHelp));
+    $(".portlet-body .table-data").append($.templates(r[0]).render(data, rdHelper));
     if ($('.table-pg').text() == '') initPage(totalPages);
   } else if (e.code == -1) {
     relogin();
