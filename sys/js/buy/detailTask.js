@@ -12,10 +12,10 @@ function init() {
 }
 
 async function initList() {
-  d = {  
-        show:true
-    }
-  $('.g-detail').append(await renderTmpl('/tmpl/buy/detail_order.tmpl', d))
+  param = { taskkeyid: _id }
+  ret = await promiseCall( ['/buyertask/taskdetail', encodeQuery(param)].join('?'), null )
+  Object.assign(ret.data, { show:true });
+  $('.g-detail').append(await renderTmpl('/tmpl/buy/detail_order.tmpl', ret.data))
 }
 
 

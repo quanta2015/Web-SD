@@ -240,6 +240,26 @@ const renderTmpl = (url, data, help = null) => {
 }
 
 
+const promiseCall = (url, data) => {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      type: 'get',
+      url: HOST + url,
+      dataType: "json",
+      contentType: "application/json",
+      data: data,
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true,
+    }).done(ret => {
+      resolve(ret)
+    })
+  })
+}
+
+
+
 
 // UPLOAD IMAGE FUNCTION
 var uploadFile = function(target) {

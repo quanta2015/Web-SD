@@ -55,7 +55,8 @@ function doSubmitBuy(e) {
     talk:   $('#i-s-talk').attr('picurl'),
     pay:    $('#i-s-pay').attr('picurl'),
     orderid:$('#order-id').val(),
-    paymoney:$('#pay-money').val()
+    paymoney:$('#pay-money').val(),
+    shopname:$('#shop-name').val()
   }
 
   promiseData('post', '/buyertask/task_complete' , JSON.stringify(data), cbSubmitBuy)

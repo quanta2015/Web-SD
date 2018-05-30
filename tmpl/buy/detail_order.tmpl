@@ -3,9 +3,9 @@
   <div class="m-d m-title">
     <div class="v-sub-title ">
       <div class="col-1">订单编号</div>
-      <div class="col-2 font-red-thunderbird">201805042328272263</div>
+      <div class="col-2 font-red-thunderbird">{{:taskid}}</div>
       <div class="col-1">佣金</div>
-      <div class="col-2 font-red-thunderbird">10.00元</div>
+      <div class="col-2 font-red-thunderbird"></div>
     </div>
   </div>
   {{/if}}
@@ -13,7 +13,7 @@
   <div class="m-d m-d-main">
     <div class="m-d-item col-1">
       <li class="v-m-title">
-        <div class="col-1"><span class="icon-basket"></span>店铺名称：购*慢*店</div>
+        <div class="col-1"><span class="icon-basket"></span>店铺名称：</div>
       </li>
       <li>
         <div class="col-1 v-img"><img src="/img/login.jpg" alt=""></div>
@@ -25,15 +25,15 @@
       </li>
       <li>
         <div class="col-1">搜索展示价格</div>
-        <div class="col-2 font-red-thunderbird fn-right">59.50元</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:searchprice}}元</div>
       </li>
       <li>
         <div class="col-1">商品成交价格</div>
-        <div class="col-2 font-red-thunderbird fn-right">50.50元</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:goodsPrice}}元</div>
       </li>
       <li>
         <div class="col-1">件数</div>
-        <div class="col-2 font-red-thunderbird fn-right">1件</div>
+        <div class="col-2 font-red-thunderbird fn-right">件</div>
       </li>
     </div>
   </div>
@@ -46,27 +46,27 @@
       </li>
       <li>
         <div class="col-1">任务类型</div>
-        <div class="col-2 font-red-thunderbird fn-right">手机淘宝任务</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:tasktype}}</div>
       </li>
       <li>
         <div class="col-1">搜索关键字</div>
-        <div class="col-2 font-red-thunderbird fn-right">化妆品</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:keyword}}</div>
       </li>
       <li>
         <div class="col-1">规则尺码</div>
-        <div class="col-2 font-red-thunderbird fn-right">水乳精华三套件</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:colorSize}}</div>
       </li>
       <li>
         <div class="col-1">订单留言</div>
-        <div class="col-2 font-red-thunderbird fn-right">无</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:remark}}</div>
       </li>
       <li>
         <div class="col-1">评论要求</div>
-        <div class="col-2 font-red-thunderbird fn-right">普通好评任务</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:taskkeyTypeStr}}</div>
       </li>
       <li>
         <div class="col-1">是否假聊</div>
-        <div class="col-2 font-red-thunderbird fn-right">否</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{if chatNecessary}}是{{else}}否{{/if}}</div>
       </li>
     </div>
     <div class="m-d-item col-1">
@@ -74,7 +74,7 @@
         <div class="col-1"><span class="icon-layers"></span>买家额外要求</div>
       </li>
       <li>
-        <div class="col-1 font-red-thunderbird">以往有购买过的，请在已购买的商品中进入下单，请核对正常店铺名称。</div>
+        <div class="col-1 font-red-thunderbird">{{:explain}}</div>
       </li>
     </div>
   </div> 
