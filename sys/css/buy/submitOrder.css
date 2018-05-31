@@ -152,3 +152,12 @@ body {
 .m-step {
     color: #D91E18
 }
+
+.col-btn {
+    text-align: center;
+}
+
+.col-btn a {
+    width: 120px;
+    margin-right: 20px;
+}

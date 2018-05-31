@@ -1,7 +1,7 @@
 body {
     font-family: Microsoft Yahei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
     font-size: 14px;
-    color: #3b3b3b;
+    color: #8896a0;
     margin:0;
 }
 
@@ -68,3 +68,49 @@ a:hover {
 .form-group img {
   border: 1px solid #ddd;
 }
+
+.z-status0 {
+  font-weight: 600;
+  color: #E7505A;
+}
+
+.z-status10 {
+  font-weight: 600;
+  color: #1BA39C;
+}
+
+.z-status20 {
+  font-weight: 600;
+  color: #4B77BE;
+}
+
+.z-status30 {
+  font-weight: 600;
+  color: #D91E18;
+}
+
+.z-status40 {
+  font-weight: 600;
+  color: #E87E04;
+}
+
+.z-status50 {
+  font-weight: 600;
+  color: #8E44AD;
+}
+
+.z-status60 {
+  font-weight: 600;
+  color: #525E64;
+}
+
+.z-status70 {
+  font-weight: 600;
+  color: #95A5A6;
+}
+
+.z-status80 {
+  font-weight: 600;
+  color: #67809F;
+}
+

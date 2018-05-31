@@ -11996,7 +11996,7 @@ Light Table
   .table.table-light > tbody > tr > td {
     border: 0;
     border-bottom: 1px solid #F2F5F8;
-    color: #8896a0;
+    /*color: #8896a0;*/
     vertical-align: middle; }
     .table.table-light > tbody > tr > td.fit {
       width: 1px;

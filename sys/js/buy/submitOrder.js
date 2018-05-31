@@ -1,6 +1,9 @@
+var _id;
+
 $(init);
 
 function init() {
+  _id = getUrlParam('id')
 
   initDetail();
 
@@ -9,6 +12,8 @@ function init() {
   $('body').on('click', '#clear-shop', doClearShop);
   $('body').on('click', '#check-shop', doCheckShop);
   $('body').on('click', '#submit-buy', doSubmitBuy);
+  $('body').on('click', '#return-list', gotoPage);
+
 }
 
 function initList() {
@@ -17,13 +22,20 @@ function initList() {
 }
 
 
-async function initDetail() {
-  d = {  
-        show:false
-    }
-  $('.m-d-detail').append(await renderTmpl(TMPL_BUY_ORDER_DETAIL, d))
-}
+// async function initDetail() {
+//   d = {  
+//         show:false
+//     }
+//   $('.m-d-detail').append(await renderTmpl(TMPL_BUY_ORDER_DETAIL, d))
+// }
 
+
+async function initDetail() {
+  param = { taskkeyid: _id }
+  ret = await promiseCall( ['/buyertask/taskdetail', encodeQuery(param)].join('?'), null )
+  Object.assign(ret.data, { show:false });
+  $('.m-d-detail').append(await renderTmpl('/tmpl/buy/detail_order.tmpl', ret.data))
+}
 
 
 function renderImg() {
@@ -45,6 +57,7 @@ function renderImg() {
 
 function doSubmitBuy(e) {
   data = {
+    buyerTaskId: _id,
     result: $('#i-s-result').attr('picurl'),
     goods1: $('#i-r-goods1').attr('picurl'),
     goods2: $('#i-r-goods2').attr('picurl'),
@@ -59,7 +72,7 @@ function doSubmitBuy(e) {
     shopname:$('#shop-name').val()
   }
 
-  promiseData('post', '/buyertask/task_complete' , JSON.stringify(data), cbSubmitBuy)
+  promiseData('post', '/buyertask/task_submit' , JSON.stringify(data), cbSubmitBuy)
 }
 
 

@@ -265,7 +265,7 @@ const promiseCall = (url, data) => {
       xhrFields: {
         withCredentials: true
       },
-      crossDomain: true,
+      crossDomain: true
     }).done(ret => {
       resolve(ret)
     })

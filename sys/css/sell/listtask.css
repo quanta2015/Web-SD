@@ -1,4 +1,9 @@
 body {
-    min-width: 950px;
+    min-width: 1000px;
 }
 
+.u-task-status {
+    text-align: center;
+    font-size: 12px;
+    padding-bottom: 3px;
+}

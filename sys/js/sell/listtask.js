@@ -9,12 +9,18 @@ function init() {
   initList();
   $('body').on('click', '.pay-task', doPayTask);
   $('body').on('click', '.del-task', doDelTask);
-
+  $('body').on('click', '.mag-task', doMagTask);
 }
 
 function initList(param = pageData) {
   let id = parseInt(cookie('id'));
   TmplData(TMPL_SELL_TASK_LIST, [URL_SELL_ALL_TASK, encodeQuery(param)].join('?'), null, cbListTask)
+}
+
+
+function doMagTask(e) {
+  let id = $(e.target).attr('id');
+  location.href = 'listTaskItem.html?id=' + id
 }
 
 function doPayTask(e) {

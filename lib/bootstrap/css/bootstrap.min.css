@@ -5257,7 +5257,7 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
 
 .progress {
     height: 20px;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
     background-color: #f5f5f5;
     border-radius: 4px;
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
