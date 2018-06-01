@@ -1,5 +1,5 @@
-var _listtask;
-var _id;
+let _listtask;
+let _id;
 let pageData = Object.assign({}, PAGE_DATA);
 
 $(init);
@@ -59,7 +59,7 @@ function cbListTask(r,e) {
 
 function initPage(totalPages) {
   $('.portlet-body .table-pg').twbsPagination({
-    totalPages: totalPages,
+    totalPages: totalPages || 1,
     onPageClick: function(event, page) {
       pageData.pageIndex = page - 1;
       initList(pageData);

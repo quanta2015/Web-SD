@@ -1,4 +1,5 @@
 let _id;
+let _listtask;
 let pageData = Object.assign({}, PAGE_DATA);
 
 $(init);
@@ -16,6 +17,7 @@ function initList(param = pageData) {
 function cbList(r, e) {
   let ret = e[0];
   if (ret.code == 0) {
+    _listtask = ret.data;
     Object.assign(ret, pageData);
     totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
     $(".portlet-body .table").remove();
@@ -29,7 +31,7 @@ function cbList(r, e) {
 
 function initPage(totalPages) {
   $('.portlet-body .table-pg').twbsPagination({
-    totalPages: totalPages,
+    totalPages: totalPages || 1,
     onPageClick: function(event, page) {
       pageData.pageIndex = page - 1;
       initList(pageData);
