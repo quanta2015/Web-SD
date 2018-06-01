@@ -8,6 +8,7 @@ function init() {
 
   initList(pageData);
   $('body').on('click', '.return-list', doReturnList);
+  $('body').on('click', '.sub-goods', doSubmitGoods);
 
 }
 
@@ -19,6 +20,13 @@ function initList(param) {
 function doReturnList() {
   location.href = 'listTask.html'
 }
+
+function doSubmitGoods(e) {
+  let id = $(e.target).attr('id');
+  location.href = 'submitGoods.html?id=' + id
+}
+
+
 
 
 // function cbPayTask(e) {

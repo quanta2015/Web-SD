@@ -29,16 +29,15 @@
            {{/if}} 
             </td>
             <td> {{:taskkeyId}}</td>
-            <th> xxx </th>
+            <td> BID{{:buyerId}} </td>
             <td> {{:~formatTime(createtime)}}</td>
-            <td> taobao id </td>
+            <td> {{:orderid}} </td>
             <td> {{:goodsPrice}} </td>
             
             <td class="fn-center">
               {{if (status==10)}}
-              <a href="javascript:;" class="btn blue-madison btn-sm btn-outline sbold uppercase mag-task" id="{{:id}} " ><i class="fa fa-hand-o-right"></i> 发货 </a> 
+              <a href="javascript:;" class="btn blue-madison btn-sm btn-outline sbold uppercase sub-goods" id="{{:id}} " ><i class="fa fa-hand-o-right"></i> 发货 </a> 
               {{/if}}
-              <a href="javascript:;" class="btn blue-madison btn-sm btn-outline sbold uppercase mag-task" id="{{:id}} " ><i class="fa fa-hand-o-right"></i> 发货 </a> 
             </td>
         </tr>
       {{/for}}
