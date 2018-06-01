@@ -49,7 +49,7 @@ function cbListTask(r,e) {
 
 function initPage(totalPages) {
   $('.portlet-body .table-pg').twbsPagination({
-    totalPages: totalPages,
+    totalPages: totalPages || 1,
     onPageClick: function(event, page) {
       pageData.pageIndex = page - 1;
       initList(pageData);
