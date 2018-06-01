@@ -111,7 +111,7 @@ function cbInfo(e) {
     showUserLogin(BUY)
     notifyInfo(MSG_REGIS_SUCCESS);
   }else if (e.code==99) {
-    notifyInfo(e.message);
+    errorInfo(e.message);
   }else if (e.code==-1) {
     relogin();
   };

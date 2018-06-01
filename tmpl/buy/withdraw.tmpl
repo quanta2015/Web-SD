@@ -1,20 +1,26 @@
 <form action="#" id="form-bind" class="form-horizontal form-bordered">
   <div class="form-group">
+    <label class="control-label col-xs-2">ID</label>
+    <div class="col-xs-6">
+      <input type="number" class="form-control" id="buyer-id" value="{{:id}}" disabled>
+    </div>
+  </div>
+  <div class="form-group">
     <label class="control-label col-xs-2">姓名</label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" value="{{:name}}" disabled>
+      <input type="text" class="form-control" id="buyer-name" value="{{:name}}" disabled>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-xs-2">银行账户</label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" value="{{:bankNo}}" disabled>
+      <input type="number" class="form-control" id="to-account" value="{{:bankNo}}" disabled>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-xs-2">扣取手续费账户</label>
     <div class="col-xs-6 form-inline">
-      <select class="form-control " id="acount-level">
+      <select class="form-control " id="from-poundage">
         <option value="">请选择</option>
         <option value="本金账户" selected>本金账户</option>
         <option value="佣金账户" >佣金账户</option>
@@ -25,24 +31,24 @@
   <div class="form-group">
     <label class="control-label col-xs-2">本金提现</label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" v-model="capWithdraw">
+      <input type="number" class="form-control withdraw" id="cap-withdraw">
     </div>
     <div class="col-xs-4 form-info">(本金余额 <span class="font-red">{{:capBalance}}</span> 元)</div>
   </div>
   <div class="form-group">
     <label class="control-label col-xs-2">佣金提现</label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" v-model="comWithdraw">
+      <input type="number" class="form-control withdraw" id="com-withdraw">
     </div>
     <div class="col-xs-4 form-info">(佣金余额 <span class="font-red">{{:comBalance}}</span> 金)</div>
   </div>
   <div class="form-group">
     <div class="col-xs-2"></div>
     <div class="col-xs-2">
-      <label class="control-label">提现总金额:  <span class="font-red">{{:amount}}</span> 元</label>
+      <label class="control-label" >提现总金额:  <span class="font-red" id="amount">0.00</span> 元</label>
     </div>
     <div class="col-xs-2">
-      <label class="control-label">提现手续费: <span class="font-red">{{:poundage}}</span> 元</label>
+      <label class="control-label">提现手续费: <span class="font-red" id="poundage">0.00</span> 元</label>
     </div>
   </div>
 

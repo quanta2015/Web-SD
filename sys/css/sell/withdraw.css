@@ -25,3 +25,8 @@
 .form-search .date {
   margin-right: 0;
 }
+
+.form-info {
+  padding-top: 7px;
+  color:#aaa;
+}

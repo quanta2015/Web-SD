@@ -149,7 +149,7 @@ function doPublish() {
     goodsList: [{
       colorSize: $('#color-size-info').val(),
       factprice: $('#real-price').val().replace(/,/g, ''),
-      goodsmainimg: $('#upload').val(),
+      goodsmainimg: $('#upload').attr('picurl'),
       goodsimg1: '',
       goodsimg2: '',
       goodsname: $('#name').val(),
@@ -239,7 +239,7 @@ function getGreatCommentData(type) {
       case 'img-task':
         item.desc = $(`#${type}-ipt-desc${i}`).val();
         for(let j = 1; j <= 5; j++) {
-          let imgUrl = ($(`#img-task-upload${i}-${j}`).attr('url'));
+          let imgUrl = ($(`#img-task-upload${i}-${j}`).attr('picurl'));
           if (!imgUrl) continue;
           item.taskPictureList.push({
             picture: imgUrl
