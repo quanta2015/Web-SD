@@ -14,7 +14,7 @@ function init() {
 async function initList() {
   param = { taskkeyid: _id }
   ret = await promiseCall( ['/buyertask/taskdetail', encodeQuery(param)].join('?'), null )
-  Object.assign(ret.data, { show:true });
+  Object.assign(ret.data, { show:true,imgPrefix: IMG_PREFIX });
   $('.g-detail').append(await renderTmpl('/tmpl/buy/detail_order.tmpl', ret.data))
 }
 

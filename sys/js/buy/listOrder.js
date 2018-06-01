@@ -30,8 +30,11 @@ function cbList(r, e) {
 }
 
 function doCommit() {
-  var id = $(this).data("id")
-  location.href = 'submitOrder.html?id=' + id
+  var obj = {
+    id: $(this).data("id"),
+    tid: $(this).data("tid")
+  }
+  location.href = ['submitOrder.html', encodeQuery(obj)].join('?') 
 }
 
 function doCancelTask() {

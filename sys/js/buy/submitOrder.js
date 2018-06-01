@@ -1,9 +1,10 @@
-var _id;
+var _id, _tid;
 
 $(init);
 
 function init() {
   _id = getUrlParam('id')
+  _tid = getUrlParam('tid')
 
   initDetail();
 
@@ -31,9 +32,10 @@ function initList() {
 
 
 async function initDetail() {
-  param = { taskkeyid: _id }
+  param = { taskkeyid: _tid }
   ret = await promiseCall( ['/buyertask/taskdetail', encodeQuery(param)].join('?'), null )
-  Object.assign(ret.data, { show:false });
+  Object.assign(ret.data, { show:false,imgPrefix: IMG_PREFIX });
+  $('#shop-name').text(ret.data.shopName)
   $('.m-d-detail').append(await renderTmpl('/tmpl/buy/detail_order.tmpl', ret.data))
 }
 

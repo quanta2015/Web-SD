@@ -14,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-    {{for data.content}}
+    {{for data}}
     <tr>
       <td> {{:#index+1}} </td>
       <td class="z-status{{:status}}"> 
@@ -40,7 +40,7 @@
         <a href="#basic" class="btn blue-madison btn-sm btn-outline cancel-task "  data-id="{{:id}}" ><i class="fa fa-edit"></i> 退单 </a>
         {{/if}}
         {{if (status == 0)}}
-        <a href="#basic" class="btn red btn-sm btn-outline commit-task"  data-id="{{:id}}" ><i class="fa fa-edit"></i> 提交购买信息 </a>
+        <a href="#basic" class="btn red btn-sm btn-outline commit-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-edit"></i> 提交购买信息 </a>
         {{/if}}
 
       </td>
