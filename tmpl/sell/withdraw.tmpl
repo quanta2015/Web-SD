@@ -4,6 +4,7 @@
     <div class="col-xs-6">
       <input type="text" class="form-control" id="acount-name" value="{{:name}}" disabled>
     </div>
+    {{if !name}}<div class="col-xs-4 form-info">(商家信息不完整，请<a class="font-red" href="updateSeller.html">点击前往填写</a>)</div>{{/if}}
   </div>
   <div class="form-group">
     <label class="control-label col-xs-2">银行账号</label>
@@ -15,10 +16,9 @@
     <label class="control-label col-xs-2">扣取手续费账户</label>
     <div class="col-xs-6 form-inline">
       <select class="form-control " id="acount-level">
-        <option value="">请选择</option>
         <option value="本金账户" selected>本金账户</option>
-        <option value="佣金账户" selected>佣金账户</option>
-        <option value="精灵豆账户" selected>精灵豆账户</option>
+        <option value="佣金账户" >佣金账户</option>
+        <option value="精灵豆账户" >精灵豆账户</option>
       </select>
     </div>
   </div>

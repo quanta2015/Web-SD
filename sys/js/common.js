@@ -71,15 +71,17 @@ const URL_SELL_PAY_TASK     = '/task/prePayForTask?taskId='
 const URL_SELL_BALANCE      = '/shoper/shoper_balance'
 const URL_SELL_DEL_TASK     = '/task/task_del/'
 
-const URL_ADMIN_ALL_TASK    = '/admin/all_tasks'
-const URL_ADMIN_TASK_AUDIT  = '/admin/task_approve'
-const URL_ADMIN_ALL_IDCARD  = '/admin/buyer_list'
-const URL_ADMIN_IDCARD_AUDIT= '/admin/buyer_approve'
-const URL_ADMIN_ACOUNT_LIST = '/admin/buyer_acount_list'
-const URL_ADMIN_ACOUNT_AUDIT= '/admin/buyer_acount_approve'
-const URL_ADMIN_LOGIN       = '/admin/admin_login'
-const URL_ADMIN_ALL_RECHARGE= '/admin/shoper_transfer_list'
+const URL_ADMIN_ALL_SHOP       = '/admin/all_shops'
+const URL_ADMIN_ALL_TASK       = '/admin/all_tasks'
+const URL_ADMIN_ALL_IDCARD     = '/admin/buyer_list'
+const URL_ADMIN_LOGIN          = '/admin/admin_login'
+const URL_ADMIN_TASK_AUDIT     = '/admin/task_approve'
+const URL_ADMIN_IDCARD_AUDIT   = '/admin/buyer_approve'
+const URL_ADMIN_ACOUNT_LIST    = '/admin/buyer_acount_list'
+const URL_ADMIN_ALL_RECHARGE   = '/admin/shoper_transfer_list'
+const URL_ADMIN_ACOUNT_AUDIT   = '/admin/buyer_acount_approve'
 const URL_ADMIN_AUDIT_RECHARGE = '/admin/shoper_transfer_approve'
+const URL_ADMIN_SHOP_AUDIT     = '/admin/shop_approve'
 
 
 const URL_SHOP_BIND         = '/shoper/shop_bind'
@@ -91,6 +93,7 @@ const URL_BUY_BIND_BANK     = '/buyer/buyer_bankbind'
 const URL_BUY_BIND_ACCOUNT  = '/buyer/buyer_acountbind'
 const URL_BUYER_ALL_TASK    = '/buyertask/all_tasks'
 const URL_BUY_CANCEL_TASK   = '/buyertask/cancel_task'
+const URL_BUY_WITHDRAW      = '/buyer/buyer_withdraw_apply'
 
 const URL_BUYER_ALL_ORDER   = '/buyertask/received_tasks'
 
@@ -114,6 +117,7 @@ const TMPL_SELL_WITHDRAW          = '/tmpl/sell/withdraw.tmpl'
 
 
 // ADMIN
+const TMPL_ADMIN_SHOP_LIST        = '/tmpl/admin/list_shop.tmpl'
 const TMPL_ADMIN_TASK_LIST        = '/tmpl/admin/list_task.tmpl'
 const TMPL_ADMIN_IDCARD_LIST      = '/tmpl/admin/list_idcard.tmpl'
 const TMPL_ADMIN_ACOUNT_LIST      = '/tmpl/admin/list_account.tmpl'
