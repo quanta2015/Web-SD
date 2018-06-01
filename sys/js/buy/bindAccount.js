@@ -70,11 +70,10 @@ function doSave(data) {
     receiveAddress: $('#receive-address').val(),
     receiver: $('#receiver').val(),
     receiveMobile: $('#receive-mobile').val(),
-    baitiaoImg: $('#platform-ipt1').attr('url') || cookie2('baitiaoImg', platform.cko),
-    mysiteImg: $('#platform-ipt2').attr('url') || cookie2('mysiteImg', platform.cko),
-    myacountImg: $('#platform-ipt3').attr('url') || cookie2('myacountImg', platform.cko)
+    baitiaoImg: $('#platform-ipt1').attr('picurl') || cookie2('baitiaoImg', platform.cko),
+    mysiteImg: $('#platform-ipt2').attr('picurl') || cookie2('mysiteImg', platform.cko),
+    myacountImg: $('#platform-ipt3').attr('picurl') || cookie2('myacountImg', platform.cko)
   };
-  console.log(obj)
   promiseData('POST', URL_BUY_BIND_ACCOUNT, JSON.stringify(obj), cbBind);
 }
 

@@ -47,5 +47,7 @@ function cbSave(e) {
     notifyInfo(MSG_UPDATE_SUCCESS)
   } else if (e.code == -1) {
     relogin();
+  } else {
+    errorInfo(e.message);
   }
 }

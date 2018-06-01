@@ -17,7 +17,7 @@ function doSave(data) {
     idcard: $('#id-card').val(),
   };
   for (let i = 1; i <= 3; i++) {
-    obj[`idcardpng${i}`] = $(`#id-card-ipt${i}`).attr('url') || cookie(`idcardpng${i}`);
+    obj[`idcardpng${i}`] = $(`#id-card-ipt${i}`).attr('picurl') || cookie(`idcardpng${i}`);
   }
   promiseData('POST', URL_BUY_BIND_ID_CARD, JSON.stringify(obj), cbBind);
 }
