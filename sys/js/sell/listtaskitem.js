@@ -22,11 +22,12 @@ function doReturnList() {
 }
 
 function doSubmitGoods(e) {
-  let id = $(e.target).attr('id');
-  location.href = 'submitGoods.html?id=' + id
+  var obj = {
+    id: $(this).attr('id'),
+    tid: $(this).attr('tid')
+  }
+  location.href = ['submitGoods.html', encodeQuery(obj)].join('?')
 }
-
-
 
 
 // function cbPayTask(e) {

@@ -1,6 +1,6 @@
 let _id;
 let pageData = Object.assign({}, PAGE_DATA);
-pageData.pageSize= 1
+// pageData.pageSize= 1
 $(init);
 
 function init() {

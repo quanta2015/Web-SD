@@ -7,29 +7,17 @@ function init() {
   _tid = getUrlParam('tid')
 
   initDetail();
-
   initList();
 
   $('body').on('click', '#clear-shop', doClearShop);
   $('body').on('click', '#check-shop', doCheckShop);
   $('body').on('click', '#submit-buy', doSubmitBuy);
   $('body').on('click', '#return-list', gotoPage);
-
 }
 
 function initList() {
-  // TmplData(TMPL_BUY_ALL_ORDER,URL_BUYER_ALL_ORDER,null, cbList)
   renderImg()
 }
-
-
-// async function initDetail() {
-//   d = {  
-//         show:false
-//     }
-//   $('.m-d-detail').append(await renderTmpl(TMPL_BUY_ORDER_DETAIL, d))
-// }
-
 
 async function initDetail() {
   param = { taskkeyid: _tid }
@@ -97,5 +85,20 @@ function doClearShop() {
 }
 
 function doCheckShop() {
+  var data = {
+    buyTaskId: _id,
+    shopName: $('#u-shop-name').val()
+  }
+  promiseData('get', '/buyertask/check_shop' , data, cbCheckShop)
+}
 
+function cbCheckShop(e) {
+  if (e.code == 0) {
+    alertBox("店铺名称正确",null)
+    
+  }else if (e.code==99) {
+    notifyInfo(e.message);
+  }else if (e.code==-1) {
+    relogin();
+  };
 }
