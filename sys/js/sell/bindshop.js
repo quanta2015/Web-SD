@@ -43,7 +43,7 @@ var bind = function(data){
       },
       crossDomain: true,
     }).done(function(e) {
-      msgbox("绑定商店成功！","继续绑定商店","进去店铺管理",cbGoto)
+      msgbox(MSG_BIND_SHOP_SUCC,MSG_CONT_BIND_SHOP,MSG_GOTO_SHOP_LIST,cbGoto)
     }) 
   })
 }

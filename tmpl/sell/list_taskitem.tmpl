@@ -36,7 +36,10 @@
             
             <td class="fn-center">
               {{if (status==10)}}
-              <a href="javascript:;" class="btn blue-madison btn-sm btn-outline sbold uppercase sub-goods" id="{{:id}}"  tid="{{:taskkeyId}}" ><i class="fa fa-hand-o-right"></i> 发货 </a> 
+              <a href="javascript:;" class="btn blue-madison btn-sm btn-outline sbold uppercase sub-goods" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 发货 </a> 
+              {{/if}}
+              {{if (status==30)}}
+              <a href="javascript:;" class="btn red-mint btn-sm btn-outline sbold uppercase pay-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 审核 </a> 
               {{/if}}
             </td>
         </tr>

@@ -70,6 +70,9 @@ const URL_SELL_PASSWD       = '/edit_password'
 const URL_SELL_PAY_TASK     = '/task/prePayForTask?taskId='
 const URL_SELL_BALANCE      = '/shoper/shoper_balance'
 const URL_SELL_DEL_TASK     = '/task/task_del/'
+const URL_SELL_ACC_TASK_DETAIL = '/task/task_accept_detail'
+const URL_SELL_DELIVERY     = '/task/shoper_delivery'
+const URL_SELL_ACCEPT_LIST  = '/task/task_accept_list'
 
 const URL_ADMIN_ALL_SHOP       = '/admin/all_shops'
 const URL_ADMIN_ALL_TASK       = '/admin/all_tasks'
@@ -94,6 +97,9 @@ const URL_BUY_BIND_ACCOUNT  = '/buyer/buyer_acountbind'
 const URL_BUYER_ALL_TASK    = '/buyertask/all_tasks'
 const URL_BUY_CANCEL_TASK   = '/buyertask/cancel_task'
 const URL_BUY_WITHDRAW      = '/buyer/buyer_withdraw_apply'
+const URL_BUY_CHECK_SHOP    = '/buyertask/check_shop'
+const URL_BUY_SUBMIT_ORDER  = '/buyertask/task_submit'
+const URL_BUY_TASKDETAIL    = '/buyertask/taskdetail'
 
 const URL_BUYER_ALL_ORDER   = '/buyertask/received_tasks'
 
@@ -113,7 +119,7 @@ const TMPL_SELL_CREATETASK_I      = '/tmpl/sell/createtask_img.tmpl'
 const TMPL_SELL_SHOP_SELECT       = '/tmpl/sell/select_shop.tmpl'
 const TMPL_SELL_PLAT_SELECT       = '/tmpl/sell/select_platform.tmpl'
 const TMPL_SELL_WITHDRAW          = '/tmpl/sell/withdraw.tmpl'
-
+const TMPL_SELL_TASKITEM_LIST     = '/tmpl/sell/list_taskitem.tmpl'
 
 
 // ADMIN
@@ -134,6 +140,8 @@ const TMPL_BUY_ORDER_DETAIL       = '/tmpl/buy/detail_order.tmpl'
 const TMPL_BUY_UPLOAD_IMG         = '/tmpl/buy/upload_img.tmpl'
 const TMPL_BUY_WITHDRAW           = '/tmpl/buy/withdraw.tmpl'
 
+
+
 const TMPL_ADDR                   = '/tmpl/addr.tmpl'
 const TMPL_REG                    = '/tmpl/reg.tmpl'
 
@@ -145,9 +153,24 @@ const MSG_PUBLISH_SUCCESS = '发布成功！'
 const MSG_BIND_SUCCESS    = '绑定成功！'
 const MSG_UPDATE_SUCCESS  = '修改信息成功'
 const MSG_RECHARGE_SUCCESS  = '充值成功！'
-
+const MSG_SHOPNAME_CORRECT  = '店铺名称正确!'
+const MSG_SUBMIT_BUY_CORRECT = '提交购买任务成功！'
 const MSG_PUBLISH_FAILED  = '发布失败！'
 const MSG_DEL_FAILED  = '删除失败！'
+const MSG_DELIVERY_SUCCESS= "发货成功！"
+const MSG_DELIVERY_ERR = "发货出错！"
+const MSG_PAY_SUCC= "支付成功！"
+const MSG_PAY_ERR = "支付出错！"
+const MSG_GET_TASK_DETAIL_ERR = "取买家任务详细信息出错！"
+const MSG_BIND_SHOP_SUCC = "绑定商店成功！"
+const MSG_CONT_BIND_SHOP = "继续绑定商店"
+const MSG_GOTO_SHOP_LIST = "进入店铺管理"
+const MSG_GOON_RECHARGE  = "继续充值"
+const MSG_LOOKUP_RECHARGE = "查看充值记录"
+const MSG_ACCEPT_TASK_SUCC = "接单成功！"
+const MSG_GOON_ACCEPT = "继续接单"
+const MSG_LOOKUP_TASK = "查看任务"
+
 
 const TEXT_BIND_SUCCESS = '已绑定'
 

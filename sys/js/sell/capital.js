@@ -16,8 +16,6 @@ function init() {
 }
 
 async function initList(tab) {
-  // TmplData(TMPL_SELL_CAPITAL_LIST, URL_SELL_ALL_TASK, null, cbList)
-
   // 初始化搜索框
   $(`${tab} .table-search`).append(await renderTmpl(TMPL_SELL_SRH_CAPITAL, {}));
   // 初始化table数据

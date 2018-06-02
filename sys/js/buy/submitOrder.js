@@ -21,10 +21,10 @@ function initList() {
 
 async function initDetail() {
   param = { taskkeyid: _tid }
-  ret = await promiseCall( ['/buyertask/taskdetail', encodeQuery(param)].join('?'), null )
+  ret = await promiseCall( [URL_BUY_TASKDETAIL, encodeQuery(param)].join('?'), null )
   Object.assign(ret.data, { show:false,imgPrefix: IMG_PREFIX });
   $('#shop-name').text(ret.data.shopName)
-  $('.m-d-detail').append(await renderTmpl('/tmpl/buy/detail_order.tmpl', ret.data))
+  $('.m-d-detail').append(await renderTmpl(TMPL_BUY_ORDER_DETAIL, ret.data))
 }
 
 
@@ -62,13 +62,13 @@ function doSubmitBuy(e) {
     shopname:$('#shop-name').val()
   }
 
-  promiseData('post', '/buyertask/task_submit' , JSON.stringify(data), cbSubmitBuy)
+  promiseData('post', URL_BUY_SUBMIT_ORDER , JSON.stringify(data), cbSubmitBuy)
 }
 
 
 function cbSubmitBuy(e) {
   if (e.code == 0) {
-    alertBox("提交购买任务成功！",gotoPage)
+    alertBox(MSG_SUBMIT_BUY_CORRECT ,gotoPage)
   }else if (e.code==99) {
     notifyInfo(e.message);
   }else if (e.code==-1) {
@@ -89,13 +89,13 @@ function doCheckShop() {
     buyTaskId: _id,
     shopName: $('#u-shop-name').val()
   }
-  promiseData('get', '/buyertask/check_shop' , data, cbCheckShop)
+  promiseData('get', URL_BUY_CHECK_SHOP , data, cbCheckShop)
 }
 
 function cbCheckShop(e) {
   if (e.code == 0) {
-    alertBox("店铺名称正确",null)
-    
+    alertBox(MSG_SHOPNAME_CORRECT,null)
+
   }else if (e.code==99) {
     notifyInfo(e.message);
   }else if (e.code==-1) {

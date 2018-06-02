@@ -33,7 +33,7 @@
       <div class="m-d m-d-detail"></div>
 
       <div class="m-d m-d-main">
-        <div class="m-d-item col-2">
+        <div class="m-d-item col-1">
           <li class="v-m-title">
             <div class="col-1">
               <span class="icon-magnifier"></span>
@@ -44,15 +44,15 @@
           <li class="col-1">
             <div class="u-img">
               <p class="m-img-title">搜索结果页</p>
-              <img src="/img/login.jpg" alt="">
+              <a href="/img/noimg.png" class="fancybox"><img src="/img/noimg.png" id="u-result"></a>
             </div>
             <div class="u-img">
               <p class="m-img-title">随机商品1</p>
-              <img src="/img/login.jpg" alt="">
+              <a href="/img/noimg.png" class="fancybox"><img src="/img/noimg.png" id="u-goods1"></a>
             </div>
             <div class="u-img">
               <p class="m-img-title">随机商品2</p>
-              <img src="/img/login.jpg" alt="">
+              <a href="/img/noimg.png" class="fancybox"><img src="/img/noimg.png" id="u-goods2"></a>
             </div>
           </li>
         </div>
@@ -67,19 +67,19 @@
           <li>
             <div class="u-img">
               <p class="m-img-title">目标商品头部</p>
-              <img src="/img/login.jpg" alt="">
+              <a href="/img/noimg.png" class="fancybox"><img src="/img/noimg.png" id="u-head"></a>
             </div>
             <div class="u-img">
               <p class="m-img-title">商品问答</p>
-              <img src="/img/login.jpg" alt="">
+              <a href="/img/noimg.png" class="fancybox"><img src="/img/noimg.png" id="u-ask"></a>
             </div>
             <div class="u-img">
               <p class="m-img-title">商品详情</p>
-              <img src="/img/login.jpg" alt="">
+              <a href="/img/noimg.png" class="fancybox"><img src="/img/noimg.png" id="u-detail"></a>
             </div>
             <div class="u-img">
               <p class="m-img-title">加入购物车</p>
-              <img src="/img/login.jpg" alt="">
+              <a href="/img/noimg.png" class="fancybox"><img src="/img/noimg.png" id="u-cart"></a>
             </div>
           </li>
         </div>
@@ -97,11 +97,11 @@
           <li>
             <div class="u-img">
               <p class="m-img-title">聊天</p>
-              <img src="/img/login.jpg" alt="">
+              <a href="/img/noimg.png" class="fancybox"><img src="/img/noimg.png" id="u-talk"></a>
             </div>
             <div class="u-img">
               <p class="m-img-title">下单支付</p>
-              <img src="/img/login.jpg" alt="">
+              <a href="/img/noimg.png" class="fancybox"><img src="/img/noimg.png" id="u-pay"></a>
             </div>
           </li>
         </div>
@@ -110,28 +110,66 @@
             <div class="col-1">
               <span class=" icon-credit-card"></span>
               <span class="m-step">第4步 </span>
-              填写订单编号
+              核对买家购买单号和价格
             </div>
           </li>
           <li>
-            <div class="col-1">1. 填写发货订单编号</div>
+            <div class="col-1">交易订单编号：<span  id="u-orderid"></span></div>
           </li>
           <li>
-            <input type="text" class="form-control" placeholder="请输入订单编号" id="order-id">
+            <div class="col-1">交易订单金额：<span id="u-paymoney"></span></div>
+          </li>
+          
+        </div>
+      </div>
+
+
+      <div class="m-d m-d-main">
+        <div class="m-d-item col-1">
+          <li class="v-m-title">
+            <div class="col-1">
+              <span class="icon-list"></span>
+              <span class="m-step">第5步 </span>
+              填写快递和快递单号
+            </div>
           </li>
           <li>
-            <div class="col-1">2. 选择快递公司</div>
+            <div class="col-1">1. 选择发货方式</div>
           </li>
           <li>
-            <input type="text" class="form-control" placeholder="请输入实际付款金额" id="pay-money">
+            <select class="form-control" id="u-express-status">
+              <option value="1">空包</option>
+              <option value="2">虚拟物流</option>
+              <option value="3">发货无物流</option>
+              <option value="4">虚拟商品</option>
+              <option value="5">长时间</option>
+            </select>
+          </li>
+          <li>
+            <div class="col-1">1. 选择快递公司</div>
+          </li>
+          <li>
+ 
+            <select class="form-control" id="u-delivery">
+              <option value="圆通快递">圆通快递</option>
+              <option value="申通快递">申通快递</option>
+              <option value="顺丰快递">顺丰快递</option>
+            </select>
+          </li>
+          <li>
+            <div class="col-1">2. 填写快递单号</div>
+          </li>
+          <li>
+            <input type="text" class="form-control" placeholder="请输入快递单号" id="u-expressno">
           </li>
           <li>
             <div class="col-1 col-btn">
-              <a href="#" class="btn btn-outline red" id="submit-buy">发 货</a>
+              <a href="#" class="btn btn-outline red" id="submit-goods">发 货</a>
               <a href="#" class="btn btn-outline blue-steel" id="return-list">返回任务列表</a></div>
           </li>
         </div>
       </div>
+
     </div>
     <script src="/lib/jquery/jquery.min.js"></script>
     <script src="/lib/jquery/jquery-migrate.js"></script>

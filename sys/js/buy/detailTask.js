@@ -29,7 +29,7 @@ function doChoose(e) {
 
 function cbChoose(e) {
   if (e.code == 0) {
-    msgbox("接单成功！","继续接单","查看任务",gotoPage)
+    msgbox(MSG_ACCEPT_TASK_SUCC,MSG_GOON_ACCEPT,MSG_LOOKUP_TASK,gotoPage)
   }else if (e.code==99) {
     notifyInfo(e.message);
   }else if (e.code==-1) {

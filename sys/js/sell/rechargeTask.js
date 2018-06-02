@@ -55,7 +55,7 @@ function doSave(e) {
 
 function cbSave(e) {
   if (e.code == 0) {
-    msgbox(MSG_RECHARGE_SUCCESS,"继续充值","查看充值记录",cbGoto)
+    msgbox(MSG_RECHARGE_SUCCESS,MSG_GOON_RECHARGE,MSG_LOOKUP_RECHARGE,cbGoto)
   } else if (e.code == -1) {
     relogin();
   }

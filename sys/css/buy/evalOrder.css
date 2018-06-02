@@ -52,10 +52,10 @@ body {
 }
 
 .m-title {
-    font-size: 16px;
+    font-size: 20px;
     border-bottom: 1px solid #ccc;  
     padding:  10px;
-    color: #666
+    color: #578EBE
 }
 
 .m-title .col-1 span {
@@ -160,14 +160,4 @@ body {
 .col-btn a {
     width: 120px;
     margin-right: 20px;
-}
-
-.u-img {
-    margin-right: 10px;
-}
-.u-img img {
-    max-width: 120px;
-    max-height: 90px;
-    border: 1px solid #ccc;
-    padding: 5px;
 }

@@ -7,6 +7,8 @@ function init() {
   initList();
   $('body').on('click', '.commit-task', doCommit);
   $('body').on('click', '.cancel-task', doCancelTask);
+  $('body').on('click', '.evaluate-task', doEvalTask);
+
 }
 
 function initList(param = pageData) {
@@ -37,6 +39,14 @@ function doCommit() {
   location.href = ['submitOrder.html', encodeQuery(obj)].join('?') 
 }
 
+function doEvalTask(e) {
+  var obj = {
+    id: $(this).data("id"),
+    tid: $(this).data("tid")
+  }
+  location.href = ['evalOrder.html', encodeQuery(obj)].join('?') 
+}
+
 function doCancelTask() {
   var obj = {
     buyerTaskId: $(this).data('id')
@@ -54,6 +64,8 @@ function cbCancelTask(e)  {
     relogin();
   }
 }
+
+
 
 function initPage(totalPages) {
   $('.portlet-body .table-pg').twbsPagination({

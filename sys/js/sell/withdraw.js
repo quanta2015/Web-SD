@@ -7,8 +7,6 @@ function init() {
 }
 
 async function initList(tab) {
-  // TmplData(TMPL_SELL_CAPITAL_LIST, URL_SELL_ALL_TASK, null, cbList)
-
   // 初始化table数据
   $(`${tab} .table-data`).append(await renderTmpl(TMPL_SELL_WITHDRAW_LIST, {
     data: [1,1,1]
