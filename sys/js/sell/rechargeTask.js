@@ -39,6 +39,13 @@ function initList() {
 }
 
 function doSave(e) {
+  var pic = $('#upload').attr('picurl');
+  if (isNull(pic)) {
+    notifyInfo('请上传图片！')
+    return;
+  }
+
+
   data = {
     toAccount: $("input[name='toAccount']:checked").val(),
     transferMoney: $('#transferMoney').val(),

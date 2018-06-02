@@ -36,15 +36,16 @@ function initPage(totalPages) {
 }
 
 function doAuditTask(e) {
-  var sid = $(this).data('id')
-  var type = $(this).data('type')
-  var obj = {
-    id: sid,
-    approve: (type=='pass')?1:2,
-    reason: (type=='pass')?'数据正确！':'数据有误!'
-  }
-
-  promiseData('POST',URL_ADMIN_TASK_AUDIT,JSON.stringify(obj), cbAuditTask)
+  bootbox.prompt(MSG_INPUT_AUDIT_INFO, function(ret){ 
+    if( ret !== null) {
+      var obj = {
+        id: sid = $(e.currentTarget).data('id'),
+        approve: ($(e.currentTarget).data('type')=='pass')?1:2,
+        reason: ret
+      }
+      promiseData('POST',URL_ADMIN_TASK_AUDIT,JSON.stringify(obj), cbAuditTask)
+    }; 
+  }); 
 }
 
 function cbAuditTask(e) {

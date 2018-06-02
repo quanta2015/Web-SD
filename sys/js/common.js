@@ -172,6 +172,7 @@ const MSG_ACCEPT_TASK_SUCC = "接单成功！"
 const MSG_GOON_ACCEPT = "继续接单"
 const MSG_LOOKUP_TASK = "查看任务"
 const MSG_UPDATE_FAILED = '更新数据失败！'
+const MSG_INPUT_AUDIT_INFO = '请填写审批内容!'
 
 const TEXT_BIND_SUCCESS = '已绑定'
 
@@ -230,7 +231,16 @@ function alertBox(info, cb) {
 }
 
 function goto(url) {
-  $("#mainframe", parent.document.body).attr("src", url);
+  // $("#mainframe", parent.document.body).attr("src", url);
+  location.href = url
+}
+
+function isNull(exp) {
+  if( (typeof(exp) == "undefined")||(typeof(exp) == "null")||(exp == "") ) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 

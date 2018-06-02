@@ -5,7 +5,7 @@ $(init);
 
 function init() {
   initList();
-  $('body').on('click', '.audit-task', doAuditTask);
+  $('body').on('click', '.audit-task', doAudit);
 }
 
 function initList(param = pageData) {
@@ -37,19 +37,20 @@ function initPage(totalPages) {
   })
 }
 
-function doAuditTask(e) {
-  var sid = $(this).data('id')
-  var type = $(this).data('type')
-  var obj = {
-    id: sid,
-    approve: (type=='pass')?1:2,
-    reason: (type=='pass')?'数据正确！':'数据有误!'
-  }
-
-  promiseData('POST',URL_ADMIN_AUDIT_RECHARGE,JSON.stringify(obj), cbAuditTask)
+function doAudit(e) {
+  bootbox.prompt(MSG_INPUT_AUDIT_INFO, function(ret){ 
+    if( ret !== null) {
+      var obj = {
+        id: sid = $(e.currentTarget).data('id'),
+        approve: ($(e.currentTarget).data('type')=='pass')?1:2,
+        reason: ret
+      }
+      promiseData('POST',URL_ADMIN_AUDIT_RECHARGE,JSON.stringify(obj), cbAudit)
+    }; 
+  }); 
 }
 
-function cbAuditTask(e) {
+function cbAudit(e) {
   if (e.code == 0) {
     initList()
   } else if (e.code == -1) {

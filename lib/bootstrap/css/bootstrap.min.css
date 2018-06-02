@@ -3197,7 +3197,7 @@ textarea.form-control {
 }
 
 .help-block {
-    /*display: block;*/
+    display: block!important;
     order:99;
     margin-top: 5px;
     margin-bottom: 10px;
