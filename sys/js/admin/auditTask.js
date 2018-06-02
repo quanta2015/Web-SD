@@ -52,6 +52,8 @@ function cbAuditTask(e) {
   if (e.code == 0) {
     initList()
   } else if (e.code == -1) {
+    notifyInfo(e.message)
+  }  else if (e.code == -1) {
     relogin();
   }
 }

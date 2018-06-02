@@ -5,6 +5,7 @@ let pageData = Object.assign({}, PAGE_DATA);
 $(init);
 
 function init() {
+  
   initList();
   $('body').on('click', '.audit-shop', doAudit);
   $('body').on('click', '.shop-name', doShowDetail);
@@ -25,6 +26,9 @@ function cbListShop(r, e) {
     $(".portlet-body .table-data").append($.templates(r[0]).render(data, rdHelper));
     $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
     if ($('.table-pg').text() == '') initPage(totalPages);
+
+    
+
   } else if (e.code == -1) {
     relogin();
   } else {

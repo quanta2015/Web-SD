@@ -50,6 +50,9 @@ const PAGE_DATA = {
   pageSize: 10,
 }
 
+
+const LOADER = '<div class="mask" id="i-mask" style="position:absolute; top:0; left:0;right:0; bottom:0;z-index:9999999;background:rgba(0,0,0,.4);display:flex;justify-content: center;align-items: center;"><div class="loaded"><div class="loaders "><div class="loader"><div class="loader-inner ball-spin-fade-loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div></div></div>'
+
 // URL DEF
 
 const URL_SMS_SEND          = '/sms_send'
@@ -246,6 +249,7 @@ function isNull(exp) {
 
 // AJAX FUNCTION DEF
 function promiseData(method, url, data, cb) {
+  $("body").append(LOADER);
   var promise = $.ajax({
     type: method,
     url: HOST + url,
@@ -257,11 +261,14 @@ function promiseData(method, url, data, cb) {
     },
     crossDomain: true,
   });
-  promise.done(cb);
+  promise.done(cb).always(()=>{
+    $("#i-mask").remove()
+  })
 }
 
 
 function TmplData(urlTmpl, urlData, data, cb) {
+  $("body").append(LOADER);
   $.when($.ajax(urlTmpl), 
     $.ajax({
       type: 'GET',
@@ -273,7 +280,30 @@ function TmplData(urlTmpl, urlData, data, cb) {
         withCredentials: true
       },
       crossDomain: true,
-  })).done(cb)
+  })).done(cb).always(()=>{
+    $("#i-mask").remove()
+  })
+}
+
+const promiseCall = (url, data) => {
+  return new Promise((resolve, reject) => {
+    $("body").append(LOADER);
+    $.ajax({
+      type: 'get',
+      url: HOST + url,
+      dataType: "json",
+      contentType: "application/json",
+      data: data,
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true
+    }).done(ret => {
+      resolve(ret)
+    }).always(()=>{
+    $("#i-mask").remove()
+    })
+  })
 }
 
 // TMPL FUNCTION DEF
@@ -291,27 +321,6 @@ const renderTmpl = (url, data, help = null) => {
     })
   })
 }
-
-
-const promiseCall = (url, data) => {
-  return new Promise((resolve, reject) => {
-    $.ajax({
-      type: 'get',
-      url: HOST + url,
-      dataType: "json",
-      contentType: "application/json",
-      data: data,
-      xhrFields: {
-        withCredentials: true
-      },
-      crossDomain: true
-    }).done(ret => {
-      resolve(ret)
-    })
-  })
-}
-
-
 
 
 // UPLOAD IMAGE FUNCTION
