@@ -171,7 +171,7 @@ const MSG_LOOKUP_RECHARGE = "查看充值记录"
 const MSG_ACCEPT_TASK_SUCC = "接单成功！"
 const MSG_GOON_ACCEPT = "继续接单"
 const MSG_LOOKUP_TASK = "查看任务"
-
+const MSG_UPDATE_FAILED = '更新数据失败！'
 
 const TEXT_BIND_SUCCESS = '已绑定'
 

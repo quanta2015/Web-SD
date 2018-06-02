@@ -1,4 +1,5 @@
 let _id;
+let _listshop;
 let pageData = Object.assign({}, PAGE_DATA);
 
 $(init);
@@ -6,6 +7,7 @@ $(init);
 function init() {
   initList();
   $('body').on('click', '.audit-shop', doAuditShop);
+  $('body').on('click', '.shop-name', doShowDetail);
 }
 
 function initList(param = pageData) {
@@ -15,6 +17,7 @@ function initList(param = pageData) {
 function cbListShop(r, e) {
   let data = e[0];
   if (data.code == 0) {
+    _listshop = e[0].data;
     data.imgPrefix = IMG_PREFIX;
     Object.assign(data, pageData);
     totalPages = Math.ceil(data.total/PAGE_DATA.pageSize);
@@ -24,6 +27,8 @@ function cbListShop(r, e) {
     if ($('.table-pg').text() == '') initPage(totalPages);
   } else if (e.code == -1) {
     relogin();
+  } else {
+    errorInfo(e.message)
   }
 }
 
@@ -57,4 +62,10 @@ function cbAuditShop(e) {
   } else {
     errorInfo(e.message);
   }
+}
+
+function doShowDetail() {
+  let index = $(this).data('index');
+  $('#shop-url').val(_listshop[index].shopurl);
+  $('#shop-addr').val(_listshop[index].address);
 }
