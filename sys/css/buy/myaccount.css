@@ -1,0 +1,113 @@
+
+.m-detail-wrap {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.m-d-money {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.m-d-money>a {
+    margin: 5px;
+}
+
+.u-money {
+    font-weight: 600;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.u-money-title {
+    font-size: 24px;
+}
+
+.u-money-st {
+    text-align: right;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.u-money-val {
+    font-size: 16px;
+    color: #E43A45;
+
+}
+
+.m-d-item-money {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.m-title {
+    font-size: 20px;
+    border-bottom: 1px solid #ccc;  
+    padding:  10px;
+    color: #578EBE
+}
+
+.m-title .col-1 span {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.m-d-main {
+    padding: 5px;
+    background: #eee;
+    display: flex;
+}
+
+.m-d-item {
+    flex:1;
+    background: #fff;
+    padding: 10px;
+    margin: 5px;
+}
+
+.m-d>div {
+    flex:1;
+    background: #fff;
+}
+
+
+.m-d div li {
+    display: flex;
+    margin:10px;
+}
+
+.m-d .v-m-title {
+    border-bottom: 1px dashed #999;  
+    padding-bottom: 10px;
+    color:  #4B77BE;
+    font-weight: 600;
+}
+
+.m-d .v-m-title span {
+    margin-right: 10px;
+}
+
+
+.col-1 {
+    flex: 1;
+}
+
+.col-2 {
+    flex: 2;
+}
+
+.col-3 {
+    flex: 3;
+}
+
+.col-btn {
+    text-align: center;
+}
+
+.col-btn a {
+    width: 120px;
+    margin-right: 20px;
+}
