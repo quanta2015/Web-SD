@@ -1,3 +1,15 @@
 body {
     min-width: 950px;
 }
+
+.pass {
+  color: #ff6600;
+}
+
+.pass1 {
+  color: #006699;
+}
+
+.pass2 {
+  color: #f00000;
+}

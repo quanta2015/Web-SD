@@ -60,7 +60,9 @@ function doEditShop() {
   _id = $(this).data('id');
 
   $('#shop_name').val(_listshop[index].name);
+  $('#shop_url').val(_listshop[index].shopurl);
   $('#shop_addr').val(_listshop[index].address);
+  _listshop[index].shopimg1 ? $('#shop_img').attr('src', IMG_PREFIX + _listshop[index].shopimg1) : null;
 
   $("#shop-province").find("option[value='" + _listshop[index].addressProvince + "']").attr("selected",true);
   $("#shop-province").trigger("change");
@@ -81,6 +83,8 @@ function cbEditShop(e) {
     initList()
   } else if (e.code == -1) {
     relogin();
+  } else {
+    errorInfo(e.message);
   }
 }
 
@@ -93,7 +97,8 @@ function doSaveShop() {
     subtype: $('#shop-subtype').val(),
     addressProvince: $('#shop-province').val(),
     addressCity: $('#shop-city').val(),
-    addressCounty: $('#shop-county').val()
+    addressCounty: $('#shop-county').val(),
+    shopimg1: $('#upload').attr('picurl')
   }
 
   promiseData('POST', URL_SELL_SHOP_UPDATE, JSON.stringify(obj), cbEditShop);
