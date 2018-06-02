@@ -22,6 +22,7 @@ function cbListShop(r, e) {
   console.log(e);
   if (e[0].code == 0) {
     _listshop = e[0].data;
+    e[0].imgPrefix = IMG_PREFIX;
     $(".portlet-body .table").remove();
     $(".portlet-body").prepend($.templates(r[0]).render(e[0], null));
   } else if (e.code == -1) {
@@ -49,7 +50,6 @@ function cbDelShop(e) {
   }
 }
 
-
 function doEditShop() {
   $('#areapick').distpicker('destroy');
   $('#areapick').distpicker();
@@ -58,12 +58,12 @@ function doEditShop() {
 
   index = $(this).data('index');
   _id = $(this).data('id');
-
+  $('#file-input').fileinput('clear')
   $('#shop_name').val(_listshop[index].name);
   $('#shop_url').val(_listshop[index].shopurl);
   $('#shop_addr').val(_listshop[index].address);
-  _listshop[index].shopimg1 ? $('#shop_img').attr('src', IMG_PREFIX + _listshop[index].shopimg1) : null;
-
+  $('#shop_img').attr('src', IMG_PREFIX + _listshop[index].shopimg1);
+  $("#shop_type").find("option[value='" + _listshop[index].type + "']").attr("selected",true);
   $("#shop-province").find("option[value='" + _listshop[index].addressProvince + "']").attr("selected",true);
   $("#shop-province").trigger("change");
   $("#shop-city").find("option[value='" + _listshop[index].addressCity + "']").attr("selected",true);
@@ -91,6 +91,7 @@ function cbEditShop(e) {
 function doSaveShop() {
    obj = {
     id: _id,
+    type: $('#shop_type').val(),
     name: $('#shop_name').val(),
     address: $('#shop_addr').val(),
     businesstype: $('#shop-businesstype').val(),
@@ -100,6 +101,6 @@ function doSaveShop() {
     addressCounty: $('#shop-county').val(),
     shopimg1: $('#upload').attr('picurl')
   }
-
+  console.log(obj)
   promiseData('POST', URL_SELL_SHOP_UPDATE, JSON.stringify(obj), cbEditShop);
 }
