@@ -6,7 +6,6 @@
             <th> 平台 </th>
             <th> 店铺类型 </th>
             <th> 所属地区 </th>
-            <th> 地址 </th>
             <th> 链接 </th>
             <th> 审核状态 </th>
             <th class="fn-center"> 功能 </th>
@@ -16,12 +15,11 @@
       {{for data}}
         <tr>
             <td> {{:#index+1}} </td>
-            <td> {{:name}}</td>
+            <td> <a href="{{:shopurl}}" target="_blank">{{:name}}</a></td>
             <td> {{:type}} </td>
             <td> {{:businesstype}} - {{:subtype}}</td>
             <td> {{:addressProvince}}{{:addressCity}}{{:addressCounty}} </td>
             <td> {{:address}} </td>
-            <td> {{:shopurl}} </td>
             <td class="pass{{:approveState}}"> {{:approveStr}} </td>
             <td class="fn-center">
               {{if approveState==0 || approveState==2}}
