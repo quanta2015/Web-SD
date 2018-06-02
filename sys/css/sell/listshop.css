@@ -13,3 +13,8 @@ body {
 .pass2 {
   color: #f00000;
 }
+
+.word-break {
+  max-width: 240px;
+  word-break:break-all;
+}
