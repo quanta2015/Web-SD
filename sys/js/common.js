@@ -73,6 +73,7 @@ const URL_SELL_DEL_TASK     = '/task/task_del/'
 const URL_SELL_ACC_TASK_DETAIL = '/task/task_accept_detail'
 const URL_SELL_DELIVERY     = '/task/shoper_delivery'
 const URL_SELL_ACCEPT_LIST  = '/task/task_accept_list'
+const URL_SELL_TRANSFER     = '/shoper/shoper_transfer'
 
 const URL_ADMIN_ALL_SHOP       = '/admin/all_shops'
 const URL_ADMIN_ALL_TASK       = '/admin/all_tasks'
@@ -268,6 +269,7 @@ function TmplData(urlTmpl, urlData, data, cb) {
 // TMPL FUNCTION DEF
 const rdHelper = {
   formatTime: (t) => { return moment(t).format("YYYY-M-D HH:mm:ss") },
+  div: (val1,val2) => { return  Number(val1) / Number(val2) * 100}
 }
 
 

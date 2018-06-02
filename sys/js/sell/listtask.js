@@ -19,12 +19,12 @@ function initList(param = pageData) {
 
 
 function doMagTask(e) {
-  let id = $(e.target).attr('id');
+  let id = $(this).attr('id');
   location.href = 'listTaskItem.html?id=' + id
 }
 
-function doPayTask(e) {
-  let id = $(e.target).attr('id');
+function doPayTask() {
+  let id = $(this).attr('id');
   promiseData('GET', URL_SELL_PAY_TASK + id, null, cbPayTask);
 }
 

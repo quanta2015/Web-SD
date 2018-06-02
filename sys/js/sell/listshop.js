@@ -13,8 +13,8 @@ function init() {
 
 
 function initList() {
-  var id = parseInt(cookie('id'));
-  TmplData(TMPL_SELL_SHOP_LIST,URL_SELL_SHOPS + id,null, cbListShop)
+  // var id = parseInt(cookie('id'));
+  TmplData(TMPL_SELL_SHOP_LIST,URL_SELL_SHOPS,null, cbListShop)
 }
 
 
@@ -74,7 +74,7 @@ function doEditShop() {
 }
 
 function cbEditShop(e) {
-  console.log(e);
+ 
   if (e.code == 0) {
     $("#basic .close").click()
     notifyInfo("更新数据成功！")

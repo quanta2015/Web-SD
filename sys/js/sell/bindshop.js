@@ -13,13 +13,8 @@ function doResetForm() {
   document.getElementById("form-bind").reset()
 }
 
-function cbUpload(e) {
-  console.log(e);
-}
-
-var bind = function(data){
-  return new Promise(function(resolve, reject){
-    obj = { 
+function doSave() {
+  obj = { 
       "type": $('#shop_type').val(),
       "address": $('#shop_addr').val(),
       "name": $('#shop_name').val(),
@@ -29,34 +24,29 @@ var bind = function(data){
       "addressProvince": $('#shop-province').val(),
       "addressCity": $('#shop-city').val(),
       "addressCounty": $('#shop-county').val(),
-      "shopimg1": data
+      "shopimg1": $("#upload").attr('picurl')
     };
-
-    $.ajax({
-      type: 'POST',
-      url: HOST + URL_SHOP_BIND,
-      dataType: "json",
-      contentType: "application/json",
-      data:JSON.stringify(obj),
-      xhrFields: {
-        withCredentials: true
-      },
-      crossDomain: true,
-    }).done(function(e) {
-      msgbox(MSG_BIND_SHOP_SUCC,MSG_CONT_BIND_SHOP,MSG_GOTO_SHOP_LIST,cbGoto)
-    }) 
-  })
+    $("#saveBtn").attr('disabled',true)
+  promiseData('POST', URL_SHOP_BIND, JSON.stringify(obj), cbSave);
 }
 
-function doSave() {
-  $file = $('#upload')[0].files[0];
-  uploadFile($file).then((data) => { bind(data) })
+function cbSave(e) {
+  if (e.code == 0) {
+    msgbox(MSG_BIND_SHOP_SUCC,MSG_CONT_BIND_SHOP,MSG_GOTO_SHOP_LIST,cbGoto)
+  } else if (e.code == 99) {
+    notifyInfo(e.message)
+    $("#saveBtn").attr('disabled',false)
+  } else if (e.code == -1) {
+    relogin();
+  }
 }
 
 
 function cbGoto(result) {
   if (!result) {
-    parent.$("#mainframe").attr('src','listShop.html');
+     location.href = 'listShop.html'
+  } else {
+    location.href = 'bindShop.html'
   }
 }
 

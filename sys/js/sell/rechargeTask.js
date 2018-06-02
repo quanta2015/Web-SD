@@ -49,8 +49,7 @@ function doSave(e) {
     picture: $('#upload').attr('picurl')
   }
 
-
-  promiseData('POST','/shoper/shoper_transfer',JSON.stringify(data), cbSave)
+  promiseData('POST',URL_SELL_TRANSFER,JSON.stringify(data), cbSave)
 }
 
 function cbSave(e) {
