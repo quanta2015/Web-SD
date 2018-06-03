@@ -38,6 +38,8 @@ function cbList(r, e) {
     $(".portlet-body").prepend($.templates(r[0]).render(e[0], null));
   } else if (e.code == -1) {
     relogin();
+  } else if (e.code == 99) {
+    notifyInfo(e.message);
   }
 }
 

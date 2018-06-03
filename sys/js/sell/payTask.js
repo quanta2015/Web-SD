@@ -44,8 +44,8 @@ function cbList(e) {
     renderData(e.data)
   } else if (e.code == -1) {
     relogin();
-  } else {
-    errorInfo(MSG_GET_TASK_DETAIL_ERR);
+  } else if (e.code == 99){
+    notifyInfo(MSG_GET_TASK_DETAIL_ERR);
   }
 }
 
@@ -54,7 +54,7 @@ function cbSubmitGoods(e) {
     alertBox(MSG_PAY_SUCC, doReturnList);
   } else if (e.code == -1) {
     relogin();
-  } else {
-    errorInfo(MSG_PAY_ERR);
+  } else if (e.code == 99){
+    notifyInfo(MSG_PAY_ERR);
   }  
 }

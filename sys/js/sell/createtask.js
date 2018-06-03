@@ -259,7 +259,6 @@ function cbInfo(e) {
   console.log(e)
   if (e.code == 0) {
     msgbox(MSG_PUBLISH_SUCCESS,"继续发布任务","查看任务",gotoPage)
-    // notifyInfo(MSG_PUBLISH_SUCCESS);
   }else if (e.code==99) {
     notifyInfo(e.message);
   }else if (e.code==-1) {
@@ -269,9 +268,9 @@ function cbInfo(e) {
 
 function gotoPage(result) {
   if (result) {
-    location.href = 'createTask.html'
+    goto('createTask.html')
   }else{
-    location.href = 'listTask.html'
+    goto('listTask.html')
   }
 }
 

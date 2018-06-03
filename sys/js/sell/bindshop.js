@@ -44,9 +44,9 @@ function cbSave(e) {
 
 function cbGoto(result) {
   if (!result) {
-     location.href = 'listShop.html'
+    goto('listShop.html')
   } else {
-    location.href = 'bindShop.html'
+    goto('bindShop.html')
   }
 }
 

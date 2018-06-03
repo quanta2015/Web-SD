@@ -45,7 +45,6 @@ function doSave(e) {
     return;
   }
 
-
   data = {
     toAccount: $("input[name='toAccount']:checked").val(),
     transferMoney: $('#transferMoney').val(),
@@ -64,6 +63,8 @@ function cbSave(e) {
     msgbox(MSG_RECHARGE_SUCCESS,MSG_GOON_RECHARGE,MSG_LOOKUP_RECHARGE,cbGoto)
   } else if (e.code == -1) {
     relogin();
+  } else if (e.code == 99){
+    notifyInfo(MSG_GET_TASK_DETAIL_ERR);
   }
 }
 

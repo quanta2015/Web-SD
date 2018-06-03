@@ -16,7 +16,6 @@ function init() {
 function initList() {
   var obj = { buyerTaskId: _id }
   promiseData('get',URL_SELL_ACC_TASK_DETAIL,obj, cbList)
-  
 }
 
 function doSubmitGoods() {
@@ -55,8 +54,8 @@ function cbList(e) {
     renderData(e.data)
   } else if (e.code == -1) {
     relogin();
-  } else {
-    errorInfo(MSG_GET_TASK_DETAIL_ERR);
+  } else if (e.code == 99){
+    notifyInfo(MSG_GET_TASK_DETAIL_ERR);
   }
 }
 
@@ -65,7 +64,7 @@ function cbSubmitGoods(e) {
     alertBox(MSG_DELIVERY_SUCCESS, doReturnList);
   } else if (e.code == -1) {
     relogin();
-  } else {
-    errorInfo(MSG_DELIVERY_ERR);
+  } else if (e.code == 99){
+    notifyInfo(MSG_DELIVERY_ERR);
   }  
 }

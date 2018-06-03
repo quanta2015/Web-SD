@@ -33,8 +33,8 @@ function cbPayTask(e) {
     initList();
   } else if (e.code == -1) {
     relogin();
-  } else {
-    errorInfo(MSG_PUBLISH_FAILED);
+  } else if (e.code == 99){
+    notifyInfo(MSG_PUBLISH_FAILED);
   }
 }
 
@@ -77,7 +77,7 @@ function cbDelTask(e) {
     initList();
   } else if (e.code == -1) {
     relogin();
-  } else {
-    errorInfo(MSG_DEL_FAILED);
+  } else if (e.code == 99){
+    notifyInfo(MSG_DEL_FAILED);
   }
 }

@@ -13,7 +13,6 @@ function init() {
 
 
 function initList() {
-  // var id = parseInt(cookie('id'));
   TmplData(TMPL_SELL_SHOP_LIST,URL_SELL_SHOPS,null, cbListShop)
 }
 
@@ -45,6 +44,8 @@ function cbDelShop(e) {
   console.log(e);
   if (e.code == 0) {
     initList()
+  } else if (e.code == 99) {
+    notifyInfo(e.message)
   } else if (e.code == -1) {
     relogin();
   }
@@ -83,8 +84,8 @@ function cbEditShop(e) {
     initList()
   } else if (e.code == -1) {
     relogin();
-  } else {
-    errorInfo(e.message);
+  } else if (e.code == 99){
+    notifyInfo(e.message)
   }
 }
 

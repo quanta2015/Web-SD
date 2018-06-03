@@ -4,11 +4,12 @@ let pageData = Object.assign({}, PAGE_DATA);
 $(init);
 
 function init() {
+
   initList();
   $('body').on('click', '.commit-task', doCommit);
   $('body').on('click', '.cancel-task', doCancelTask);
   $('body').on('click', '.evaluate-task', doEvalTask);
-
+  $('body').on('click', '.detail-task', doDetail);
 }
 
 function initList(param = pageData) {
@@ -24,9 +25,9 @@ function cbList(r, e) {
     $(".portlet-body .table").remove();
     $(".portlet-body").prepend($.templates(r[0]).render(ret, rdHelper));
     if ($('.table-pg').text() == '') initPage(totalPages);
-  } else if (e[0].code == 99) {
-    notifyInfo(e.message);
-  } else if (e[0].code == -1) {
+  } else if (ret.code == 99) {
+    notifyInfo(ret.message);
+  } else if (ret.code == -1) {
     relogin();
   }
 }
@@ -45,6 +46,27 @@ function doEvalTask(e) {
     tid: $(this).data("tid")
   }
   location.href = ['evalOrder.html', encodeQuery(obj)].join('?') 
+}
+
+
+function doDetail() {
+  // $("#ig-info").toggle("slide", { direction: "left" }, 200);
+
+  $("#ig-info").empty();
+  var obj = { taskkeyid: $(this).data('tid') }
+  TmplData('/tmpl/buy/show_detail.tmpl', ['/buyertask/taskdetail', encodeQuery(obj)].join('?'),null, cbDetail)
+}
+
+function cbDetail(r, e) {
+  let ret = e[0];
+  if (ret.code == 0) {
+    $("#ig-info").append($.templates(r[0]).render(ret.data, rdHelper));
+    $("#ig-info").toggle("slide", { direction: "left" }, 200);
+  } else if (ret.code == 99) {
+    notifyInfo(ret.message);
+  } else if (ret.code == -1) {
+    relogin();
+  }
 }
 
 function doCancelTask() {

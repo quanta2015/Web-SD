@@ -8,7 +8,6 @@ function init() {
 function initList(param = pageData) {
 
   Object.assign(param, { transferType:1});
-
   TmplData(TMPL_SELL_RECHARGE_LIST, [URL_SELL_ALL_RECHARGE, encodeQuery(param)].join('?'), null, cbList)
 }
 
