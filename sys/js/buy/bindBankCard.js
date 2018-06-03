@@ -1,16 +1,38 @@
+let rules = {
+  name: {
+    required: !0,
+  },
+  bank: {
+    required: !0
+  },
+  acountSubbank: {
+    required: !0
+  },
+  acountBankno: {
+    required: !0,
+    number: !0
+  },
+  bankNo: {
+    required: !0,
+    number: !0
+  },
+  rebankno: {
+    required: !0,
+    number: !0
+  }
+}
+
 $(init);
 
 function init() {
   initBindInfo();
 
   $('body').on('click', '#returnBtn', doReturn );
-  $('body').on('click', '#saveBtn', doSave);
 }
 
 async function initBindInfo() {
   var status = parseInt(cookie('bankcardState'))
-  // var status = 3
-  console.log(status)
+  // var status = 0
   if ( status == 0 || status == null) {
     //未绑定
     $('.container').append(await renderTmpl(TMPL_BUY_BIND_BKCARD, {
@@ -38,6 +60,10 @@ async function initBindInfo() {
       banks: BANKS
     }) );
   }
+  $("#form-bind").validate({
+    rules: rules,
+    submitHandler: (e) => { doSave() }
+  })
 }
 
 
