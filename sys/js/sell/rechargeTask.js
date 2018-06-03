@@ -52,7 +52,8 @@ function doSave(e) {
     transferPerson: $('#transferPerson').val(),
     fromAccount: $('#fromAccount').val(),
     remark: $('#remark').val(),
-    picture: $('#upload').attr('picurl')
+    picture: $('#upload').attr('picurl'),
+    transferType:1
   }
 
   promiseData('POST',URL_SELL_TRANSFER,JSON.stringify(data), cbSave)
@@ -64,7 +65,7 @@ function cbSave(e) {
   } else if (e.code == -1) {
     relogin();
   } else if (e.code == 99){
-    notifyInfo(MSG_GET_TASK_DETAIL_ERR);
+    notifyInfo(e.message);
   }
 }
 
