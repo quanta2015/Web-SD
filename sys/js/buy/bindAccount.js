@@ -1,5 +1,27 @@
 const platform = PLATFORM_DATA[getUrlParam('platform')];
 
+let rules = {
+  acount: {
+    required: !0,
+  },
+  acountLevel: {
+    required: !0
+  },
+  receiver: {
+    required: !0
+  },
+  receiveMobile: {
+    required: !0,
+    number: !0
+  },
+  receiveProvince: {
+    required: !0,
+  },
+  receiveAddress: {
+    required: !0,
+  }
+}
+
 $(init);
 
 function init() {
@@ -7,7 +29,7 @@ function init() {
   initBindInfo();
 
   $('body').on('click', '#returnBtn', doReturn);
-  $('body').on('click', '#saveBtn', doSave);
+
 }
 
 async function initBindInfo() {
@@ -23,6 +45,7 @@ async function initBindInfo() {
       levels: platform.levels,
       list: [1,1,1],
       status: 0,
+      baitiaoStart: "checked"
     }));
   } else {
     //显示已经绑定表单
@@ -53,6 +76,10 @@ async function initBindInfo() {
   }
   $('#pick').distpicker();
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
+  $("#form-bind").validate({
+    rules: rules,
+    submitHandler: (e) => { doSave() }
+  })
 }
 
 function doReturn() {
