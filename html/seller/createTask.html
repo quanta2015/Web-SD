@@ -198,7 +198,21 @@
                 第二步：设置如何找到商品
             </div>
 
-            <div class="form-group">
+            <div class="form-group form-group-jd">
+              <label class="control-label col-xs-3">商品定位（如果商品排名靠后时建议勾选，便于买家搜索）</label>
+              <div class="col-xs-9 form-inline">
+                <select id="jd-location">
+                  <option value="有货优先">京东物流</option>
+                  <option value="货到付款">货到付款</option>
+                  <option value="全球购商品">全球购商品</option>
+                  <option value="PLUS专享价">PLUS专享价</option>
+                  <option value="促销商品">促销商品</option>
+                  <option value="配送全球">配送全球</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group form-group-tb">
               <label class="control-label col-xs-3"><span class="form-imp">定位目标商品排序方式</span></label>
               <div class="col-xs-9 form-inline">
                 <div class="mt-radio-inline">
@@ -222,7 +236,7 @@
               </div>
             </div>
 
-            <div class="form-group form-inline">
+            <div class="form-group form-inline form-group-tb">
               <label class="control-label col-xs-3">价格区间</label>
               <div class="col-xs-9">
                 <input type="text" class="form-control" id="price-from"> - 
@@ -230,7 +244,7 @@
               </div>
             </div>
 
-            <div class="form-group form-inline">
+            <div class="form-group form-inline form-group-tb">
               <label class="control-label col-xs-3">商品所在地</label>
               <div class="col-xs-9 ">
                 <input  type="text" class="form-control" id="goods-location" value="全国">
@@ -238,14 +252,14 @@
               </div>
             </div>
 
-            <div class="form-group form-inline">
+            <div class="form-group form-inline form-group-tb">
               <label class="control-label col-xs-3">商品现有销量约</label>
               <div class="col-xs-9">
                 <input type="text" class="form-control" id="sell-count">  单
               </div>
             </div>
 
-            <div class="form-group form-inline">
+            <div class="form-group form-inline form-group-tb">
               <label class="control-label col-xs-3">订单留言</label>
               <div class="col-xs-9">
                 <input type="text" class="form-control" id="order-message"> 
@@ -381,7 +395,7 @@
             <div class="form-group">
               <label class="control-label col-xs-3">是否优先展示任务：金</label>
               <div class="col-xs-9 form-inline">
-                <select class="form-control " id="first">
+                <select class="form-control " id="show-first">
                   <option value="">请选择</option>
                   <option value="1">是</option>
                   <option value="0">否</option>
