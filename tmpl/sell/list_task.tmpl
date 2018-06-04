@@ -38,16 +38,16 @@
             <td> {{:keywords}}</td>
             <td>
               {{if (status==0 || status==40)}}
-              <a href="#basic" class="btn blue-madison btn-sm btn-outline sbold uppercase  edit-task"  data-toggle="modal" data-index="{{:#index}}" data-id="{{:id}}"><i class="fa fa-edit"></i> 修改 </a> 
+              <a href="#basic" class="btn blue-madison btn-xs btn-outline sbold uppercase  edit-task"  data-toggle="modal" data-index="{{:#index}}" data-id="{{:id}}"><i class="fa fa-edit"></i> 修改 </a> 
               {{/if}}
               {{if (status==0 || status==40 || status==20)}}
-              <a href="javascript:;" class="btn red btn-sm btn-outline sbold uppercase del-task" id="{{:id}}" ><i class="fa fa-times"></i> 删除 </a> 
+              <a href="javascript:;" class="btn red btn-xs btn-outline sbold uppercase del-task" id="{{:id}}" ><i class="fa fa-times"></i> 删除 </a> 
               {{/if}}
               {{if (status==0)}}
-              <a href="javascript:;" class="btn green-soft btn-sm btn-outline sbold uppercase pay-task" id="{{:id}}" ><i class="fa fa-hand-o-right"></i> 发布 </a> 
+              <a href="javascript:;" class="btn green-soft btn-xs btn-outline sbold uppercase pay-task" id="{{:id}}" ><i class="fa fa-hand-o-right"></i> 发布 </a> 
               {{/if}}
               {{if (status==30)}}
-              <a href="javascript:;" class="btn yellow-gold btn-sm btn-outline sbold uppercase mag-task" id="{{:id}}" ><i class="fa fa-edit"></i> 管理 </a> 
+              <a href="javascript:;" class="btn yellow-gold btn-xs btn-outline sbold uppercase mag-task" id="{{:id}}" ><i class="fa fa-edit"></i> 管理 </a> 
               {{/if}}
             </td>
         </tr>
