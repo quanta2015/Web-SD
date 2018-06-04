@@ -42,6 +42,19 @@
     <div class="col-xs-4 form-info">(佣金余额 <span class="font-red">{{:comBalance}}</span> 金)</div>
   </div>
   <div class="form-group">
+    <label class="control-label col-xs-2">是否加急</label>
+    <div class="col-xs-6 form-inline">
+      <div class="mt-radio-inline">
+        <label class="mt-radio">
+          <input type="radio" name="r-urgent" value="1">是<span></span>
+        </label>
+        <label class="mt-radio">
+          <input type="radio" name="r-urgent" value="0" checked>否<span></span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
     <div class="col-xs-2"></div>
     <div class="col-xs-2">
       <label class="control-label" >提现总金额:  <span class="font-red" id="amount">0.00</span> 元</label>
