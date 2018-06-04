@@ -14,6 +14,7 @@
     <link href="/lib/alertify/alertify.default.css" rel="stylesheet" >
     <link href="/lib/pace/pace.css" rel="stylesheet" >
     <link href="/lib/loaders/loaders.min.css" rel="stylesheet" >
+    <link href="/lib/jquery/jquery-ui.css" rel="stylesheet">
 
     <link href="/sys/css/common.css"  rel="stylesheet"  >
     <link href="/sys/css/sell/listtask.css"  rel="stylesheet"  >
@@ -22,20 +23,25 @@
     <div class="page-bar">
       <ul class="page-breadcrumb">
         <li>
-          <a href="index.html">任务管理</a>
-          <i class="fa fa-circle"></i>
-        </li>
-        <li>
-          <span>任务列表</span>
+          <a href="index.html">垫付任务管理</a>
         </li>
       </ul>
     </div>
     <div class="container-fluid">
       <div class="portlet ">
         <div class="portlet-title">
-          <div class="caption">
-            <i class="fa fa-shopping-cart"></i> 任务列表
+          <div class="row">
+            <div class="col-md-2">店铺 <select name="" id=""></select> </div>
+            <div class="col-md-4">任务编号 <input type="text"> </div>
+            <div class="col-md-6">发布日期 <input type="text" id="fromdate"> - <input type="text" id="todate"></div>
           </div>
+          <div class="row">
+            <div class="col-md-2">平台 <select name="" id=""><option value="0">全部</option></select></div>
+            <div class="col-md-2">任务模式 <select name="" id=""><option value="0">全部</option></select></div>
+            <div class="col-md-2">任务类型 <select name="" id=""><option value="0">全部</option></select></div>
+            <div class="col-md-2">任务状态 <select name="" id=""><option value="0">全部</option></select></div>
+          </div>
+          
         </div>
         <div class="portlet-body">
           <div class="table-data"></div>

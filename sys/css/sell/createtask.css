@@ -1,5 +1,7 @@
+@charset "UTF-8";
+
 body {
-    min-width: 950px;
+    min-width: 1150px;
 }
 
 a {
@@ -31,11 +33,11 @@ a {
 
 .form-info {
     margin-left: 10px;
-    color: #999;
+    color: #E43A45;
 }
 
 .form-group .wide-3 {
-    width: 600px;
+    width: 400px;
 }
 
 .form-group .wide-s1 {
@@ -52,10 +54,10 @@ a {
 }
 
 .form-imp:before {
-    content: "必填";
+    content: "*";
     display: inline-block;
     margin-right: 5px;
-    border: 1px solid #ff0000;
+    /*border: 1px solid #ff0000;*/
     color: #ff0000;
     padding: 2px 5px;
     font-size: 12px;
@@ -152,4 +154,17 @@ i {
     border-bottom: none;
     border-left: none;
     border-right: none;
+}
+
+.col-img-info {
+    display: flex;
+    flex-direction: column;
+    color: #E43A45
+}
+
+.vip {
+    color: #E43A45;
+    font-size: 12px;
+    margin-right: 5px;
+    font-weight: 600;
 }

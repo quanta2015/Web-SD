@@ -266,6 +266,24 @@ function promiseData(method, url, data, cb) {
   })
 }
 
+function TmplDataP(urlTmpl, urlData, data, cb) {
+  $("body").append(LOADER);
+  $.when($.ajax(urlTmpl), 
+    $.ajax({
+      type: 'POST',
+      url: HOST + urlData,
+      dataType: "json",
+      contentType: "application/json",
+      data: data,
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true,
+  })).done(cb).always(()=>{
+    $("#i-mask").remove()
+  })
+}
+
 
 function TmplData(urlTmpl, urlData, data, cb) {
   $("body").append(LOADER);

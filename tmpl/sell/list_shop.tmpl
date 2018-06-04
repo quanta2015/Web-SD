@@ -2,13 +2,13 @@
     <thead>
         <tr class="uppercase">
             <th> # </th>
+            <th> 电商平台 </th>
             <th> 店铺名称 </th>
-            <th> 平台 </th>
+            <th> 店铺地址 </th>
             <th> 店铺类型 </th>
-            <th> 所属地区 </th>
-            <th> 收货地址 </th>
-            <th> 店铺图片 </th>
-            <th> 审核状态 </th>
+            <th> 发货地址 </th>
+            <th> 店铺状态 </th>
+            <th> 审核意见 </th>
             <th> 功能 </th>
         </tr>
     </thead>
@@ -16,19 +16,19 @@
       {{for data}}
         <tr>
             <td> {{:#index+1}} </td>
-            <td> <a href="{{:shopurl}}" target="_blank">{{:name}}</a></td>
             <td> {{:type}} </td>
+            <td> {{:name}}</td>
+            <td> <a href="{{:shopurl}}" target="_blank">{{:shopurl}}</a> </td>
             <td> {{:businesstype}} - {{:subtype}}</td>
-            <td> {{:addressProvince}} - {{:addressCity}} - {{:addressCounty}} </td>
             <td class="word-break"> {{:address}} </td>
-            <td> <a href="{{:~root.imgPrefix}}{{:shopimg1}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:shopimg1}}" style="width: 150px; height: 100px;"></a></td>
             <td class="pass{{:approveState}}"> {{:approveStr}} </td>
+            <td>  </td>
             <td>
               {{if approveState==0 || approveState==1 }}
-              <a href="javascript:;" class="btn red btn-sm btn-outline sbold uppercase del-shop" id="{{:id}} " ><i class="fa fa-times"></i> 停用 </a> 
+              <a href="javascript:;" class="btn red btn-xs btn-outline sbold uppercase del-shop" id="{{:id}} " ><i class="fa fa-times"></i> 撤销 </a> 
               {{/if}}
               {{if approveState==0 || approveState==2}}
-              <a href="#basic" class="btn blue-madison btn-sm btn-outline sbold uppercase  edit-shop"  data-toggle="modal" data-index="{{:#getIndex()}}" data-id="{{:id}}"><i class="fa fa-edit"></i> 修改 </a> 
+              <a href="#basic" class="btn blue-madison btn-xs btn-outline sbold uppercase  edit-shop"  data-toggle="modal" data-index="{{:#getIndex()}}" data-id="{{:id}}"><i class="fa fa-edit"></i> 修改 </a> 
               {{/if}}
             </td>
         </tr>

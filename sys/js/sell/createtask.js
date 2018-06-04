@@ -1,3 +1,39 @@
+let rules_step1 = {
+  "platform-list": {
+    required: !0
+  },
+  "shop-list": {
+    required: !0
+  }
+};
+
+let rules_step2 = {
+  "goods-url": {
+    required: !0
+  },
+  "goods-name": {
+    required: !0
+  },
+  "color-size-info": {
+    required: !0
+  },
+  "real-price": {
+    required: !0
+  },
+  "mobile-price": {
+    required: !0
+  },
+  "buy-count": {
+    required: !0
+  },
+  "pub-itl-time": {
+    required: !0
+  },
+  "pub-itl-amount": {
+    required: !0
+  }
+};
+
 let _cid;
 let PREV = 0;
 let NEXT = 1;
@@ -11,9 +47,19 @@ function init() {
   $('body').on('click', '.btn-next', doNext);
   $('body').on('click', '.alladdress', getAddr);
   $('body').on('click', '.task-del', delTask);
-  $('body').on('click', '#publish-task-btn', doPublish);
+  $('body').on('click', '#publish-task-btn', doComplete);
   $('body').on('change', '#platform-list', doInitShop);
   $('body').on('input propertychange', '.task-count', doCountTask);
+
+  $("#form-step1").validate({
+    rules: rules_step1,
+    submitHandler: (e) => { GotoStep2() }
+  })
+
+  $("#form-step2").validate({
+    rules: rules_step2,
+    submitHandler: (e) => { GotoStep3() }
+  })
 
 
   //地区下拉框
@@ -26,6 +72,10 @@ function init() {
   initPlatforms();
   //初始化普通好评任务栏
   initTaskTmpl();
+
+  $("#start-date").val(moment().format('YYYY-MM-DD'))
+
+  // $('#start-date').datetimepicker("setStartDate", "2017-03-01");
 
   //好评任务切换显示
   // $("#normaltask").change( ()=> $('.nor-task-wrap').toggle() );
@@ -76,7 +126,76 @@ function doPre() {
 }
 
 function doNext() {
+  _cid =  parseInt($('.active .mt-step-number').text()) - 1;
+  switch(_cid) {
+    case 0: $('#form-step1').submit();break;
+    case 1: $('#form-step2').submit();break;
+    case 2: renderTask(NEXT);break;
+  }
+}
+
+
+function GotoStep2() {
   renderTask(NEXT)
+}
+
+function GotoStep3() {
+  var pic = $('#upload').attr('picurl');
+  if (isNull(pic)) {
+    notifyInfo('请上传图片！')
+    return;
+  }
+
+  if (checkInput('.nor-task-wrap .u-task-key',"请输入关键字！")) return;
+  if (checkInput('.nor-task-wrap .u-task-count',"请输入任务数量！"))  return;
+
+  if ( $("#keywordtask")[0].checked ) {
+    if (checkInputHasOne('.key-task-wrap .ipt-keyword',"请输入指定关键词！")) return;
+    if (checkInput('.key-task-wrap .u-task-key',"请输入关键字！")) return;
+    if (checkInput('.key-task-wrap .u-task-count',"请输入任务数量！")) return;
+  }
+
+  if ( $("#picturetask")[0].checked ) {
+    if (checkInput('.img-task-wrap .u-task-key',"请输入关键字！")) return;
+    if (checkInput('.img-task-wrap .u-task-count',"请输入任务数量！")) return;
+  }
+
+  if ( $("#wordtask")[0].checked ) {
+    if (checkInput('.word-task-wrap .u-task-key',"请输入关键字！")) return;
+    if (checkInput('.word-task-wrap .u-task-count',"请输入任务数量！")) return;
+    if (checkInput('.word-task-wrap .u-task-keyword',"请输入指定文字！")) return;
+  }
+
+  doPublish()
+}
+
+function checkInputHasOne(cls, msg) {
+  let ret = 1;
+  $(cls).each(function() {
+    if ($(this).val() !== "") {
+        ret = 0;
+        return ret;
+    }
+  })
+  if (ret == 1) {
+    notifyInfo(msg)
+  }
+  return ret;
+}
+
+
+function checkInput(cls, msg) {
+  let ret = 0;
+  $(cls).each(function() {
+    if ($(this).val() === "") {
+        ret = 1;
+        return ret;
+    }
+  })
+  if (ret == 1) {
+    notifyInfo(msg)
+  }
+  return ret;
 }
 
 //不同步骤页面渲染控制
@@ -200,7 +319,9 @@ function doPublish() {
   obj.pictureTaskKeyList = obj.picturetask ? getGreatCommentData('img-task') : [];
   obj.commentTaskKeyList = obj.commenttask ? getGreatCommentData('word-task') : [];
   console.log(obj)
-  promiseData('POST', URL_TASK_PUBLISH, JSON.stringify(obj), cbInfo);
+  // promiseData('POST', URL_TASK_PUBLISH, JSON.stringify(obj), cbInfo);
+
+  TmplDataP('/tmpl/sell/task_cost.tmpl', URL_TASK_PUBLISH, JSON.stringify(obj), cbInfo)
 }
 
 function getGreatCommentData(type) {
@@ -255,24 +376,33 @@ function getGreatCommentData(type) {
   return result;
 }
 
-function cbInfo(e) {
+function cbInfo(r, e) {
   console.log(e)
-  if (e.code == 0) {
-    msgbox(MSG_PUBLISH_SUCCESS,"继续发布任务","查看任务",gotoPage)
-  }else if (e.code==99) {
-    notifyInfo(e.message);
-  }else if (e.code==-1) {
+
+  let ret = e[0];
+  if (ret.code == 0) {
+
+    $('.step3').empty()
+    $('.step3').append($.templates(r[0]).render(ret.data.taskMoney, rdHelper))
+
+    renderTask(NEXT)
+  }else if (ret.code==99) {
+    notifyInfo(ret.message);
+  }else if (ret.code==-1) {
     relogin();
   };
 }
 
-function gotoPage(result) {
-  if (result) {
-    goto('createTask.html')
-  }else{
-    goto('listTask.html')
-  }
+function doComplete() {
+  msgbox(MSG_PUBLISH_SUCCESS,"继续发布任务","查看任务", function(ret) {
+    if (ret) {
+      goto('createTask.html')
+    }else{
+      goto('listTask.html')
+    }
+  })
 }
+
 
 function initPlatforms() {
   promiseData('GET', URL_TASK_ALL_PLATFORM, null, cbPlatformInfo);
