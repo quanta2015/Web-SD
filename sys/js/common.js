@@ -195,6 +195,9 @@ const REGISTER_REGEXS = {
 };
 
 
+
+
+
 // FUNCTION DEF
 function relogin() {
   top.location.href = '/index.html';

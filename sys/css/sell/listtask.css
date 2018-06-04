@@ -7,3 +7,40 @@ body {
     font-size: 12px;
     padding-bottom: 3px;
 }
+
+.row-s-1,.row-s-2 {
+    margin: 10px;
+}
+
+
+.row-s-1>div,.row-s-2>div {
+    display: inline-block;
+}
+
+.row-s-1>div:nth-child(1) {
+    min-width: 150px;
+}
+
+.row-s-1>div:nth-child(2) {
+    min-width: 250px;
+}
+
+.row-s-1>div:nth-child(3) {
+    min-width: 350px;
+}
+
+.row-s-2>div:nth-child(1) {
+    min-width: 150px;
+}
+
+.row-s-2>div:nth-child(2) {
+    min-width: 250px;
+}
+
+.row-s-2>div:nth-child(3) {
+    min-width: 220px;
+}
+
+.row-s-2>div:nth-child(4) {
+    min-width: 220px;
+}

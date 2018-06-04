@@ -430,6 +430,13 @@ async function initPlatformList(data) {
 
 async function doInitShop() {
   let platform = $(this).val();
+  if ( platform === '淘宝' ) {
+    $('.form-group-tb').removeClass('hide')
+    $('.form-group-jd').addClass('hide')
+  }else if(platform === '京东') {
+    $('.form-group-tb').addClass('hide')
+    $('.form-group-jd').removeClass('hide')
+  }
   $("#shop-list").empty().append(await renderTmpl(TMPL_SELL_SHOP_SELECT, { list:platformMap[platform] }));
 }
 

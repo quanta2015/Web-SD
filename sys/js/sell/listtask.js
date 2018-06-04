@@ -6,18 +6,43 @@ $(init);
 
 function init() {
 
-  $("#fromdate").datepicker({
-        dateFormat: "yy-mm-dd",
-        defaultData: '-12M'
-    });
-    $("#todate").datepicker({
-        dateFormat: "yy-mm-dd"
-    });
+let from =  moment().format('YYYY-MM-DD') + ' 00:00';
+  let to = moment().subtract('days',7).format('YYYY-MM-DD') + ' 23:59'
+  $("#task-from").datetimepicker({ value: from});
+  $("#task-to").datetimepicker({value: to});
+
+  
+
+  initShops()
+
+  
 
   initList();
   $('body').on('click', '.pay-task', doPayTask);
   $('body').on('click', '.del-task', doDelTask);
   $('body').on('click', '.mag-task', doMagTask);
+}
+
+function initShops() {
+  promiseData('GET', URL_TASK_ALL_PLATFORM, null, cbShops);
+}
+
+function cbShops(e) {
+  if (e.code == 0) {
+
+    for(i=0; i< e.data.length; i++) {
+      for(j=0; j< e.data[i].shops.length; j++) {
+        let val = e.data[i].shops[j].name;
+        let cnt = $.format('<option value="{0}">{1}</option>', val, val )
+        $("#shop-name").append( cnt )
+      }
+    }
+    
+  } else if (e.code == -1) {
+    relogin();
+  } else if (e.code == 99){
+    notifyInfo(MSG_DEL_FAILED);
+  }
 }
 
 function initList(param = pageData) {
@@ -90,3 +115,24 @@ function cbDelTask(e) {
     notifyInfo(MSG_DEL_FAILED);
   }
 }
+
+
+
+$.format = function (source, params) {
+    if (arguments.length == 1)
+        return function () {
+            var args = $.makeArray(arguments);
+            args.unshift(source);
+            return $.format.apply(this, args);
+        };
+    if (arguments.length > 2 && params.constructor != Array) {
+        params = $.makeArray(arguments).slice(1);
+    }
+    if (params.constructor != Array) {
+        params = [params];
+    }
+    $.each(params, function (i, n) {
+        source = source.replace(new RegExp("\\{" + i + "\\}", "g"), n);
+    });
+    return source;
+};
