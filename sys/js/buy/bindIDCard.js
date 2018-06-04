@@ -1,10 +1,19 @@
+let rules = {
+  name: {
+    required: !0,
+  },
+  idCard: {
+    required: !0
+  },
+}
+
 $(init);
 
 function init() {
   initBindInfo();
 
   $('body').on('click', '#returnBtn', doReturn);
-  $('body').on('click', '#saveBtn', doSave);
+
 }
 
 function doReturn() {
@@ -34,7 +43,7 @@ function cbBind(e) {
 
 async function initBindInfo() {
   let status = parseInt(cookie('approveState'))
-  // status = 2
+  // status = 0
   if ( status == 0 || status == null) {
     //未绑定
     $('.container-fluid').append(await renderTmpl(TMPL_BUY_BIND_IDCARD, {
@@ -55,4 +64,8 @@ async function initBindInfo() {
     }) );
   }
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
+  $("#form-bind").validate({
+    rules: rules,
+    submitHandler: (e) => { doSave() }
+  })
 }
