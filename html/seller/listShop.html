@@ -73,16 +73,17 @@
           <div class="form-group">
             <label class="control-label col-xs-2">平台</label>
             <div class="col-xs-6">
-              <select class="form-control " id="shop_type">
+              <input type="text" class="form-control" id="shop_type" readonly >
+              <!-- <select class="form-control " id="shop_type">
                 <option value="淘宝" >淘宝</option>
                 <option value="京东" >京东</option>
-              </select>
+              </select> -->
             </div>
           </div>
           <div class="form-group">
             <label class="control-label col-xs-2">店铺网址</label>
             <div class="col-xs-6">
-              <input type="text" class="form-control" id="shop_url">
+              <input type="text" class="form-control" id="shop_url" readonly >
             </div>
             <div class="col-xs-4 form-info">(店铺地址绑定后无法修改)</div>
           </div>
@@ -128,11 +129,13 @@
           <div class="form-group">
             <label class="control-label col-xs-2">店铺管理后台截图</label>
             <div class="col-xs-10">
-              <div class="fileinput fileinput-new" data-provides="fileinput" id="file-input">
+              <div class="fileinput fileinput-exists" data-provides="fileinput" id="file-input">
                 <div class="fileinput-new thumbnail">
-                  <img src="/img/noimg.png" id="shop_img">
+                  <img src="/img/noimg.png" id="shop_img" style="max-height: 142px;">
                 </div>
-                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 10px;"></div>
+                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 10px;">
+                  <img src="" >
+                </div>
                 <div>
                   <span class="btn default btn-file">
                     <span class="fileinput-new"> 选择图片 </span>
