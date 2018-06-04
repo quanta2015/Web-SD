@@ -125,25 +125,26 @@
             </div>
 
             <div class="form-group">
-                <div class="control-label col-xs-2 "> 请选择图片
-                  <span class="required"> * </span>
-                </div>
-                <div class="col-xs-10">
-                  <div class="fileinput fileinput-new" data-provides="fileinput">
-                    <div class="fileinput-new thumbnail">
-                      <img src="/img/noimg.png">
+              <div class="control-label col-xs-2 "> 请选择图片
+                <span class="required"> * </span>
+              </div>
+              <div class="col-xs-10">
+                <div class="fileinput fileinput-new" data-provides="fileinput" id="file-input">
+                  <div class="fileinput-new thumbnail">
+                    <img src="/img/noimg.png">
+                  </div>
+                  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 10px;"></div>
+                  <div class="form-info">
+                    <div class="form-tip">为提高审核速度，可选提交截图（截图要求：清晰看到打款时间和转账金额）</div>
+                    <div class="btn default btn-file">
+                      <span class="fileinput-new"> 选择图片 </span>
+                      <span class="fileinput-exists"> 更换 </span>
+                      <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="upload">
                     </div>
-                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 10px;"></div>
-                    <div>
-                      <span class="btn default btn-file">
-                        <span class="fileinput-new"> 选择图片 </span>
-                        <span class="fileinput-exists"> 更换 </span>
-                        <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="upload">
-                      </span>
-                      <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 删除 </a>
-                    </div>
+                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 删除 </a>
                   </div>
                 </div>
+              </div>
                 
               
             </div>
@@ -151,12 +152,23 @@
             <div class="form-group">
               <label class="control-label col-xs-2 "></label>
               <div class="col-xs-10 form-inline">
-                <button type="submit" class="btn red">充 值</button>
-                
+                <button type="button" class="btn blue" id="resetBtn"> 重置 </button>
+                <button type="submit" class="btn red">提交已打款信息</button>
               </div>
             </div>
+          </div>
         </div>
       </form>
+
+
+      <div class="portlet light bordered">
+        <div class="portlet-body">
+          第二步：请确认提交转账金额
+        </div>
+        <div class="portlet-body recharge-table">
+          <div class="table-data"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -185,7 +197,7 @@
 <script src="/lib/alertify/alertify.min.js"></script>
 <script src="/lib/bootbox/bootbox.min.js"></script>
 <script src="/lib/pace/pace.min.js"></script>
-<!-- <script src="/lib/vue/vue.min.js"></script> -->
+<script src="/lib/twbs-pagination/jquery.twbsPagination.min.js"></script>
 
 
 

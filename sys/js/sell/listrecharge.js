@@ -32,4 +32,9 @@ function initPage(totalPages) {
       initList(pageData);
     }
   })
+  $('.date-picker').datepicker({
+    rtl: App.isRTL(),
+    orientation: 'right',
+    autoclose: true
+  });
 }

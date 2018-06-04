@@ -1,26 +1,26 @@
-<form action="#" id="form-bind" class="form-horizontal form-bordered">
+<form action="#" id="form-withdraw" class="form-horizontal form-bordered">
   <div class="form-group">
     <label class="control-label col-xs-2">ID</label>
     <div class="col-xs-6">
-      <input type="number" class="form-control" id="buyer-id" value="{{:id}}" disabled>
+      <input type="number" class="form-control" id="buyer-id" value="{{:id}}" disabled name="buyerId">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-xs-2">姓名</label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" id="buyer-name" value="{{:name}}" disabled>
+      <input type="text" class="form-control" id="buyer-name" value="{{:name}}" disabled name="name">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-xs-2">银行账户</label>
     <div class="col-xs-6">
-      <input type="number" class="form-control" id="to-account" value="{{:bankNo}}" disabled>
+      <input type="number" class="form-control" id="bankno" value="{{:bankNo}}" disabled name="bankNo">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-xs-2">扣取手续费账户</label>
     <div class="col-xs-6 form-inline">
-      <select class="form-control " id="from-poundage">
+      <select class="form-control " id="from-poundage" name="poundageAccount">
         <option value="">请选择</option>
         <option value="本金账户" selected>本金账户</option>
         <option value="佣金账户" >佣金账户</option>
@@ -30,16 +30,29 @@
   <div class="form-group">
     <label class="control-label col-xs-2">本金提现</label>
     <div class="col-xs-6">
-      <input type="number" class="form-control withdraw" id="cap-withdraw">
+      <input type="number" class="form-control withdraw" id="cap-withdraw" name="capWithdraw">
     </div>
     <div class="col-xs-4 form-info">(本金余额 <span class="font-red">{{:capBalance}}</span> 元)</div>
   </div>
   <div class="form-group">
     <label class="control-label col-xs-2">佣金提现</label>
     <div class="col-xs-6">
-      <input type="number" class="form-control withdraw" id="com-withdraw">
+      <input type="number" class="form-control withdraw" id="com-withdraw" name="comWithdraw">
     </div>
     <div class="col-xs-4 form-info">(佣金余额 <span class="font-red">{{:comBalance}}</span> 金)</div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-xs-2">是否加急</label>
+    <div class="col-xs-6 form-inline">
+      <div class="mt-radio-inline">
+        <label class="mt-radio">
+          <input type="radio" name="r-urgent" value="1">是<span></span>
+        </label>
+        <label class="mt-radio">
+          <input type="radio" name="r-urgent" value="0" checked>否<span></span>
+        </label>
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <div class="col-xs-2"></div>
@@ -54,7 +67,7 @@
   <div class="form-group">
     <label class="control-label col-xs-2"></label>
     <div class="col-xs-10">
-      <button type="button" class="btn blue" id="saveBtn">确认</button>
+      <button type="submit" class="btn blue" id="saveBtn">确认</button>
     </div>
   </div>
 </form>

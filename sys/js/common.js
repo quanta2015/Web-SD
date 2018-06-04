@@ -6,6 +6,7 @@ const HOST = 'http://114.116.31.36:8011'
 const IMG_PREFIX = HOST + '/file/'
 const AUDIT_PASS = 2
 const AUDIT_FAIL = 3
+const WITHDRAW_FEE = 0.05
 
 const PLATFORM_DATA = {
   jingdong: {

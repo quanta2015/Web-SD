@@ -24,3 +24,17 @@ body {
     order:2;
 }
 
+.fileinput {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.form-tip {
+    width: 350px;
+    margin: 20px 0 20px 0;
+}
+
+#resetBtn {
+    margin-right: 20px;
+}
