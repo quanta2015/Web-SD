@@ -8,7 +8,7 @@ function init() {
 
   $('#user-id').val(cookie('id'))
   $('#user-qq').val(cookie('qq'))
-  $('#user-regtime').val(cookie('regtime'))
+  $('#user-regtime').val(moment(cookie('regtime')).format("YYYY-M-D HH:mm:ss"))
 
   $('body').on('click', '.del-shop', doDelShop);
   $('body').on('click', '.save-shop', doSaveShop);
