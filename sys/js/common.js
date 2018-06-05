@@ -250,7 +250,6 @@ function isNull(exp) {
   }
 }
 
-
 // AJAX FUNCTION DEF
 function promiseData(method, url, data, cb) {
   $("body").append(LOADER);
@@ -433,4 +432,15 @@ function encodeQuery(obj) {
   })
 
   return params.join('&')
+}
+
+
+function getCheckedVal(el) {
+  let list = []
+  $('input:checkbox[name=' + el + ']').each(function(i){
+      if($(this).prop('checked')) {
+        list.push($(this).val())
+      }
+   })
+   return list.join(';')
 }

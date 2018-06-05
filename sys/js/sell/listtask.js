@@ -5,22 +5,20 @@ let pageData = Object.assign({}, PAGE_DATA);
 $(init);
 
 function init() {
-
-let from =  moment().format('YYYY-MM-DD') + ' 00:00';
-  let to = moment().subtract('days',7).format('YYYY-MM-DD') + ' 23:59'
-  $("#task-from").datetimepicker({ value: from});
-  $("#task-to").datetimepicker({value: to});
-
-  
-
+  initTime();
   initShops()
-
-  
-
   initList();
+
   $('body').on('click', '.pay-task', doPayTask);
   $('body').on('click', '.del-task', doDelTask);
   $('body').on('click', '.mag-task', doMagTask);
+}
+
+function initTime() {
+  let from =  moment().subtract('days',7).format('YYYY-MM-DD') + ' 00:00';
+  let to = moment().format('YYYY-MM-DD') + ' 23:59'
+  $("#task-from").datetimepicker({ value: from});
+  $("#task-to").datetimepicker({value: to});
 }
 
 function initShops() {
@@ -114,7 +112,7 @@ function cbDelTask(e) {
   } else if (e.code == -1) {
     relogin();
   } else if (e.code == 99){
-    notifyInfo(MSG_DEL_FAILED);
+    notifyInfo(e.message);
   }
 }
 

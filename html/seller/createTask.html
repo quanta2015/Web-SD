@@ -78,21 +78,44 @@
               </div>
             </div>
           </div>
+
           <div class="portlet light bordered">                     
             <div class="portlet-body">
                 第二步：选择任务类型
             </div>
-            <div class="mt-radio-list">
+
+            <div class="mt-radio-list form-group-tb hide">
               <label class="mt-radio">
                   <input type="radio" name="r-task-type" value="手机淘宝任务" checked> 手机淘宝任务
                   <span></span>
+                  <i class="form-info">（通过提供的关键字，从淘宝、天猫手淘自然搜索入店找到商品下单）</i>
               </label>
               <label class="mt-radio">
                   <input type="radio" name="r-task-type" value="PC淘宝任务"> PC淘宝任务
                   <span></span>
+                  <i class="form-info">（通过提供的关键字，从淘宝、天猫在电脑端自然搜索入店找到商品下单）</i>
+              </label>
+            </div>
+
+            <div class="mt-radio-list form-group-jd hide">
+              <label class="mt-radio">
+                  <input type="radio" name="r-task-type" value="手机京东任务" checked> 手机京东任务
+                  <span></span>
+                  <i class="form-info">（通过提供的关键字，从手机京东自然搜索入店找到商品下单）</i>
+              </label>
+              <label class="mt-radio">
+                  <input type="radio" name="r-task-type" value="PC京东任务"> PC淘宝任务
+                  <span></span>
+                  <i class="form-info">（通过提供的关键字，从京东电脑端自然搜索入店找到商品下单）</i>
+              </label>
+              <label class="mt-radio">
+                  <input type="radio" name="r-task-type" value="微信京东任务"> VIP专享（微信京东任务）
+                  <span></span>
+                  <i class="form-info">（  + 1金币/单，买家通过微信进入京东购物，增加入店下单多样性）</i>
               </label>
             </div>
           </div>
+
           <div class="portlet light bordered">                     
             <div class="portlet-body">
                 第三步：选择平台返款模式
@@ -101,6 +124,7 @@
               <label class="mt-radio">
                   <input type="radio" name="r-return-type" value="1" checked> 平台服务 （收取服务费1金/单） 
                   <span></span>
+                  <i class="form-info">（商家押商品本金到平台，只需在“返款管理”中确认返款金额，一键返款给买家(24小时内)，商家无需耗费时间、人力处理退款。超时每单处罚1金。）</i>
               </label>
               <!-- <label class="mt-radio">
                   <input type="radio" name="r-return-type" value="0"> 其他
@@ -166,6 +190,9 @@
               <label class="control-label col-xs-3"><span class="form-imp">颜色尺码规格</span> </label>
               <div class="col-xs-9 form-inline">
                 <input type="text" class="form-control wide-3" id="color-size-info" name="color-size-info">
+                <label class="mt-radio">
+                  <input type="radio" name="color-size-chk" value="综合" checked="checked"> 无或任意规格<span></span>
+                </label>
                 <span class="form-info">买家下单选择的颜色尺码规格</span>
               </div>
             </div>
@@ -201,14 +228,26 @@
             <div class="form-group form-group-jd">
               <label class="control-label col-xs-3">商品定位（如果商品排名靠后时建议勾选，便于买家搜索）</label>
               <div class="col-xs-9 form-inline">
-                <select id="jd-location">
-                  <option value="有货优先">京东物流</option>
-                  <option value="货到付款">货到付款</option>
-                  <option value="全球购商品">全球购商品</option>
-                  <option value="PLUS专享价">PLUS专享价</option>
-                  <option value="促销商品">促销商品</option>
-                  <option value="配送全球">配送全球</option>
-                </select>
+                <div class="mt-checkbox-inline">
+                  <label class="mt-checkbox">
+                      <input type="checkbox" value="0" name="jd-location"> 京东物流<span></span>
+                  </label>
+                  <label class="mt-checkbox">
+                      <input type="checkbox" value="1" name="jd-location"> 货到付款<span></span>
+                  </label>
+                  <label class="mt-checkbox">
+                      <input type="checkbox" value="2" name="jd-location">全球购商品 <span></span>
+                  </label>
+                  <label class="mt-checkbox">
+                      <input type="checkbox" value="3" name="jd-location"> PLUS专享价<span></span>
+                  </label>
+                  <label class="mt-checkbox">
+                      <input type="checkbox" value="4" name="jd-location"> 促销商品<span></span>
+                  </label>
+                  <label class="mt-checkbox">
+                      <input type="checkbox" value="5" name="jd-location">配送全球 <span></span>
+                  </label>
+                </div>
               </div>
             </div>
 
@@ -236,22 +275,19 @@
               </div>
             </div>
 
+            <div class="form-group form-inline form-group-tb" id="pick" data-toggle="distpicker" >
+              <label class="control-label col-xs-3">商品所在地</label>
+              <div class="col-xs-9 ">
+                <select class="form-control" id="goods-province"></select> -
+                <select class="form-control" id="goods-city"></select>
+              </div>
+            </div>
+
             <div class="form-group form-inline form-group-tb">
               <label class="control-label col-xs-3">价格区间</label>
               <div class="col-xs-9">
                 <input type="text" class="form-control" id="price-from"> - 
                 <input type="text" class="form-control" id="price-to">
-              </div>
-            </div>
-
-            <div class="form-group form-inline form-group-tb" id="pick" data-toggle="distpicker" >
-              <label class="control-label col-xs-3">商品所在地</label>
-              <div class="col-xs-9 ">
-                <select class="form-control" id="goods-province"></select>
-                <select class="form-control" id="goods-city"></select>
-                <!-- <select class="form-control" id="shop-county"></select> -->
-                <!-- <input  type="text" class="form-control" id="goods-location" value="全国"> -->
-                
               </div>
             </div>
 
@@ -270,6 +306,47 @@
               </div>
             </div>
 
+            <div class="form-group form-inline form-group-tb">
+              <label class="control-label col-xs-3">商品定位（如果商品拍卖靠后时建议勾选，便于买家搜索）</label>
+              <div class="col-xs-9">
+                <div class="mt-checkbox-inline">
+                  <label class="mt-checkbox">
+                      <input type="checkbox" value="0" name="tb-location"> 包邮<span></span>
+                  </label>
+                  <label class="mt-checkbox">
+                      <input type="checkbox" value="1" name="tb-location"> 天猫<span></span>
+                  </label>
+                  <label class="mt-checkbox mt-checkbox-disabled">
+                      <input type="checkbox" value="2" name="tb-location">全球购 <span></span>
+                  </label>
+                  <label class="mt-checkbox">
+                      <input type="checkbox" value="3" name="tb-location"> 消费者保障<span></span>
+                  </label>
+                  <label class="mt-checkbox">
+                      <input type="checkbox" value="4" name="tb-location"> 淘金币抵钱<span></span>
+                  </label>
+                  <label class="mt-checkbox mt-checkbox-disabled">
+                      <input type="checkbox" value="5" name="tb-location">货到付款 <span></span>
+                  </label>
+                  <label class="mt-checkbox">
+                      <input type="checkbox" value="6" name="tb-location"> 7+天退换<span></span>
+                  </label>
+                  <label class="mt-checkbox mt-checkbox-disabled">
+                      <input type="checkbox" value="7" name="tb-location">花呗分期 <span></span>
+                  </label>
+                  <label class="mt-checkbox">
+                      <input type="checkbox" value="8" name="tb-location"> 天猫超市<span></span>
+                  </label>
+                  <label class="mt-checkbox">
+                      <input type="checkbox" value="9" name="tb-location"> 天猫国际<span></span>
+                  </label>
+                  <label class="mt-checkbox mt-checkbox-disabled">
+                      <input type="checkbox" value="10" name="tb-location">通用排序 <span></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
             <!-- start 第三步 -->
             <div class="stop-title">
                 第三步：选择任务类型和单数
@@ -279,12 +356,12 @@
               <!-- start 普通好评  -->
               <div class="col-xs-12">
                 <label class="mt-checkbox mt-checkbox-outline ">
-                  <input type="checkbox" id="normaltask" disabled checked> 普通好评任务
+                  <input type="checkbox" id="normaltask"> 普通好评任务
                   <span></span>
                   <i class="form-info">(免费，买家确认收货后评价自由发挥)</i>
                 </label>
               </div>
-              <div class="col-xs-12 task-wrap nor-task-wrap" >
+              <div class="col-xs-12 task-wrap nor-task-wrap"  style="display: none;">
                 <div class="task-add nor-task-add">
                   <a href="javascript: void(0)"> + 添加搜索关键字</a>
                 </div>
@@ -396,13 +473,15 @@
             </div>
 
             <div class="form-group">
-              <label class="control-label col-xs-3">是否优先展示任务：金</label>
+              <label class="control-label col-xs-3">是否优先展示任务：</label>
               <div class="col-xs-9 form-inline">
                 <select class="form-control " id="show-first">
                   <option value="">请选择</option>
                   <option value="1">是</option>
                   <option value="0">否</option>
-                </select>
+                </select> 金 
+                <span class="form-info"></span>(1金以上，增加金币数越多，推荐任务排名越靠前，便于买家更快速查看完成任务，提
+升完成任务速度。)
               </div>
             </div>
 
@@ -511,7 +590,9 @@
                   <option value="台湾省">台湾省</option>
                   <option value="香港特别行政区">香港特别行政区</option>
                   <option value="澳门特别行政区">澳门特别行政区</option>
-                </select>
+                </select> 
+                <span class="form-info">0.5金币/单，可多选，勾选区域代表不能接单的区域，例如不需要新疆买家，就勾选新
+疆</span>
               </div>
             </div>
 
@@ -520,12 +601,14 @@
               <div class="col-xs-9 form-inline">
                 <select class="form-control " id="taobao-level">
                   <option value="">请选择</option>
-                    <option value="0">1心~2心(免费)</option>
-                    <option value="1">3心~4心( + 0.50金币/单)</option>
-                    <option value="2">5心~1钻( + 1.00金币/单)</option>
-                    <option value="3">2钻~4钻( + 1.50金币/单)</option>
-                    <option value="4">5钻以上( + 2.00金币/单)</option>
+                    <option value="0">随机等级</option>
+                    <option value="1">1心~2心(免费)</option>
+                    <option value="2">3心~4心( + 0.50金币/单)</option>
+                    <option value="3">5心~1钻( + 1.00金币/单)</option>
+                    <option value="4">2钻~4钻( + 1.50金币/单)</option>
+                    <option value="5">5钻以上( + 2.00金币/单)</option>
                 </select>
+                <span class="form-info">会员等级限制，例：选择了3心～4心就只有该淘宝会员等级的买家能接单</span>
               </div>
             </div>
 
@@ -539,6 +622,7 @@
                     <option value="1">60天不重复（3金/单）</option>
                     <option value="1">永久不重复（10金/单）</option>
                 </select>
+                <span class="form-info">例：选择了30天不重复，30天内单个买家只能接商家一单）</span>
               </div>
             </div>
 
@@ -550,6 +634,8 @@
                   <option value="0">否（系统默认，免费）</option>
                   <option value="1">是（免费）</option>
                 </select>
+                <span class="form-info">免费，信用卡/花呗/白条支付限制，例：选择了“否”表示不允许买家通过信用卡/花呗/白
+条支付</span>
               </div>
             </div>
 
@@ -562,6 +648,7 @@
                     <option value="1">是(1.20金币/单)</option>
                     <option value="0">否(1.20金币/单)</option>              
                 </select>
+                <span class="form-info">开通花呗限制，例：选择了"是"就只有开通花呗的买家能接单</span>
               </div>
             </div>
 
@@ -580,7 +667,7 @@
               </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group hide">
               <label class="control-label col-xs-3">快递</label>
               <div class="col-xs-9 form-inline">
                 <select class="form-control " id="express-company">
@@ -623,8 +710,9 @@
                 <select class="form-control " id="buy-express">
                   <option value="">请选择</option> 
                     <option value="1">是(2.00金币/单)</option>
-                    <option value="0">否(1.20金币/单)</option>              
+                    <option value="0">否(免费)</option>              
                 </select>
+                <span class="form-info">例：选择了“是”表示平台会提供快递单号给到商家，商家无需发真实包裹</span>
               </div>
             </div>
 
@@ -637,6 +725,7 @@
 家在做任务时会看到，最多不超过100字)</span></label>
               <div class="col-xs-9 form-inline">
                 <textarea id="other" cols="100" rows="4"></textarea>
+                <span class="form-info">免费，如果商家有特别的说明或要求。，请在备注里说明</span>
               </div>
             </div>
 

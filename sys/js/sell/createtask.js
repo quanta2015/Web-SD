@@ -84,7 +84,7 @@ function init() {
   // $('#start-date').datetimepicker("setStartDate", "2017-03-01");
 
   //好评任务切换显示
-  // $("#normaltask").change( ()=> $('.nor-task-wrap').toggle() );
+  $("#normaltask").change( ()=> $('.nor-task-wrap').toggle() );
   $("#keywordtask").change( ()=> $('.key-task-wrap').toggle() );
   $("#picturetask").change( ()=> $('.img-task-wrap').toggle() );
   $("#wordtask").change( ()=> $('.word-task-wrap').toggle() );
@@ -268,7 +268,18 @@ function delTask() {
 
 
 function doPublish() {
+
+   // var jdList = []
+   // $('input:checkbox[name="jd-location"]').each(function(i){
+   //    if($(this).prop('checked')) {
+   //      jdList.push($(this).val())
+   //    }
+   // })
+   // var ret = jdList.join(';')
+   // console.log(ret);
   
+   // let a = getCheckedVal('jd-location')
+
   let obj = {
     tasktype: $("input[name='r-task-type']:checked").val(),
     returntype: $("input[name='r-return-type']:checked").val(),
@@ -320,10 +331,12 @@ function doPublish() {
     shopId: $('#shop-list').val(),
     singleAmount: $('#pub-itl-amount').val(),
     intervals: $('#pub-itl-time').val(),
-    jdLocation: $('#jd-location').val(),
+    jdLocation: getCheckedVal('jd-location'),
+    tbLocation: getCheckedVal('tb-location'),
     buyExpress: $('#buy-express').val(),
     auditFirst: $('#audit-first').val(),
     showFirst: $('#show-first').val()
+
   }
   obj.commonTaskKeyList = obj.commontask ? getGreatCommentData('nor-task') : [];
   obj.keywordTaskKeyList = obj.keywordtask ? getGreatCommentData('key-task') : [];

@@ -18,7 +18,7 @@ body {
 }
 
 .row-s-1>div:nth-child(1) {
-    min-width: 150px;
+    min-width: 200px;
 }
 
 .row-s-1>div:nth-child(2) {
@@ -30,7 +30,7 @@ body {
 }
 
 .row-s-2>div:nth-child(1) {
-    min-width: 150px;
+    min-width: 200px;
 }
 
 .row-s-2>div:nth-child(2) {

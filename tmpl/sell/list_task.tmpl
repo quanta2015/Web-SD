@@ -2,15 +2,17 @@
     <thead>
         <tr class="uppercase">
             <th> 序号 </th>
-            <th> 任务状态 </th>
-            <th> 任务编号 </th>
             <th> 发布时间 </th>
             <th> 平台 </th>
             <th> 任务类型 </th>
             <th> 店铺名称 </th>
             <th> 商品名称 </th>
             <th> 单数 </th>
-            <th> 搜索关键词 </th>   
+            <th> 搜索关键词 </th>  
+            <th> 是否优先审核 </th>  
+            <th> 任务状态 </th>  
+            <th> 审批原因 </th> 
+            <th> 任务编号 </th>
             <th> 操作 </th>
         </tr>
     </thead>
@@ -18,6 +20,14 @@
       {{for data}}
         <tr>
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
+            <td> {{:~formatTime(createtime)}}</td>
+            <td> {{:platform}} </td>
+            <td> {{:tasktype}}</td>
+            <td> {{:shopName}}</td>
+            <td> {{:goodsname}}</td>
+            <td> {{:num}}</td>
+            <td> {{:keywords}}</td>
+            <td> first </td>
             <td> 
               <div class="u-task-status {{if status==0 || status==40}}font-red{{/if}}">
                 {{:statusName}}
@@ -28,14 +38,8 @@
               </div>
               {{/if}}
             </td>
+            <td> {{:approveReason}} </td>
             <td> {{:id}}</td>
-            <td> {{:~formatTime(createtime)}}</td>
-            <td> {{:platform}} </td>
-            <td> {{:tasktype}}</td>
-            <td> {{:shopName}}</td>
-            <td> {{:goodsname}}</td>
-            <td> {{:num}}</td>
-            <td> {{:keywords}}</td>
             <td>
               {{if (status==0 || status==40 || status==20)}}
               <a href="javascript:;" class="btn red-sunglo btn-xs  sbold uppercase del-task" id="{{:id}}" ><i class="fa fa-times"></i> 删除 </a> 
