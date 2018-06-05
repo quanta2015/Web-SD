@@ -125,6 +125,7 @@ const TMPL_SELL_SHOP_SELECT       = '/tmpl/sell/select_shop.tmpl'
 const TMPL_SELL_PLAT_SELECT       = '/tmpl/sell/select_platform.tmpl'
 const TMPL_SELL_WITHDRAW          = '/tmpl/sell/withdraw.tmpl'
 const TMPL_SELL_TASKITEM_LIST     = '/tmpl/sell/list_taskitem.tmpl'
+const TMPL_SELL_COMMISSION_LIST   = '/tmpl/sell/list_commission.tmpl'
 
 
 // ADMIN
