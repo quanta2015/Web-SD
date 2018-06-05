@@ -244,10 +244,13 @@
               </div>
             </div>
 
-            <div class="form-group form-inline form-group-tb">
+            <div class="form-group form-inline form-group-tb" id="pick" data-toggle="distpicker" >
               <label class="control-label col-xs-3">商品所在地</label>
               <div class="col-xs-9 ">
-                <input  type="text" class="form-control" id="goods-location" value="全国">
+                <select class="form-control" id="goods-province"></select>
+                <select class="form-control" id="goods-city"></select>
+                <!-- <select class="form-control" id="shop-county"></select> -->
+                <!-- <input  type="text" class="form-control" id="goods-location" value="全国"> -->
                 
               </div>
             </div>
@@ -472,7 +475,43 @@
             <div class="form-group">
               <label class="control-label col-xs-3"><span class="vip">VIP专享</span>区域限制 0.5金币/单</label>
               <div class="col-xs-9 form-inline">
-                <input  type="text" class="form-control" id="limit-location" value="全国">
+
+                <select id="limit-location" class="form-control select2-multiple" style="width: 500px" multiple>
+                  <option value="北京市">北京市</option>
+                  <option value="天津市">天津市</option>
+                  <option value="河北省">河北省</option>
+                  <option value="山西省">山西省</option>
+                  <option value="内蒙古自治区">内蒙古自治区</option>
+                  <option value="辽宁省">辽宁省</option>
+                  <option value="吉林省">吉林省</option>
+                  <option value="黑龙江省">黑龙江省</option>
+                  <option value="上海市">上海市</option>
+                  <option value="江苏省">江苏省</option>
+                  <option value="浙江省">浙江省</option>
+                  <option value="安徽省">安徽省</option>
+                  <option value="福建省">福建省</option>
+                  <option value="江西省">江西省</option>
+                  <option value="山东省">山东省</option>
+                  <option value="河南省">河南省</option>
+                  <option value="湖北省">湖北省</option>
+                  <option value="湖南省">湖南省</option>
+                  <option value="广东省">广东省</option>
+                  <option value="广西壮族自治区">广西壮族自治区</option>
+                  <option value="海南省">海南省</option>
+                  <option value="重庆市">重庆市</option>
+                  <option value="四川省">四川省</option>
+                  <option value="贵州省">贵州省</option>
+                  <option value="云南省">云南省</option>
+                  <option value="西藏自治区">西藏自治区</option>
+                  <option value="陕西省">陕西省</option>
+                  <option value="甘肃省">甘肃省</option>
+                  <option value="青海省">青海省</option>
+                  <option value="宁夏回族自治区">宁夏回族自治区</option>
+                  <option value="新疆维吾尔自治区">新疆维吾尔自治区</option>
+                  <option value="台湾省">台湾省</option>
+                  <option value="香港特别行政区">香港特别行政区</option>
+                  <option value="澳门特别行政区">澳门特别行政区</option>
+                </select>
               </div>
             </div>
 
@@ -507,7 +546,7 @@
               <label class="control-label col-xs-3"><span class="vip">VIP专享</span>是否允许使用信用卡/花呗/白条</label>
               <div class="col-xs-9 form-inline">
                 <select class="form-control " id="use-huabei">
-                  <option >请选择</option>
+                  <option value="">请选择</option>
                   <option value="0">否（系统默认，免费）</option>
                   <option value="1">是（免费）</option>
                 </select>
@@ -759,6 +798,7 @@
 <script src="/lib/jquery-validation/js/jquery.validate.min.js"></script>
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
 <script src="/lib/jquery-validation/js/additional-methods.min.js"></script>
+<script src="/lib/distpicker/distpicker.js" type="text/javascript"></script>
 <script src="/sys/js/validation.js"></script>
 
 <script src="/sys/js/sell/createtask.js"></script>

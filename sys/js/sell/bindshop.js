@@ -24,7 +24,8 @@ function doSave() {
       "addressProvince": $('#shop-province').val(),
       "addressCity": $('#shop-city').val(),
       "addressCounty": $('#shop-county').val(),
-      "shopimg1": $("#upload").attr('picurl')
+      "shopimg1": $("#upload").attr('picurl'),
+      "wangid": $("#shop-wangid").val()
     };
     $("#saveBtn").attr('disabled',true)
   promiseData('POST', URL_SHOP_BIND, JSON.stringify(obj), cbSave);

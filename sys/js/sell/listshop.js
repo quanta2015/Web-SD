@@ -6,6 +6,10 @@ $(init);
 function init() {
   initList();
 
+  $('#user-id').val(cookie('id'))
+  $('#user-qq').val(cookie('qq'))
+  $('#user-regtime').val(cookie('regtime'))
+
   $('body').on('click', '.del-shop', doDelShop);
   $('body').on('click', '.save-shop', doSaveShop);
   $('body').on('click', '.edit-shop', doEditShop);
@@ -63,11 +67,13 @@ function doEditShop() {
   $('#shop_name').val(_listshop[index].name);
   $('#shop_url').val(_listshop[index].shopurl);
   $('#shop_addr').val(_listshop[index].address);
+  $('#shop-wangid').val(_listshop[index].wangid);
   $('#shop_img').attr('src', IMG_PREFIX + _listshop[index].shopimg1);
+  $('#upload').attr('picurl', _listshop[index].shopimg1);
 
 
-  // $("#shop_type").find("option[value='" + _listshop[index].type + "']").attr("selected",true);
-  $("#shop_type").val(_listshop[index].type)
+  $("#shop_type").find("option[value='" + _listshop[index].type + "']").attr("selected",true);
+  // $("#shop_type").val(_listshop[index].type)
   $("#shop-province").find("option[value='" + _listshop[index].addressProvince + "']").attr("selected",true);
   $("#shop-province").trigger("change");
   $("#shop-city").find("option[value='" + _listshop[index].addressCity + "']").attr("selected",true);
@@ -104,7 +110,8 @@ function doSaveShop() {
     addressCity: $('#shop-city').val(),
     addressCounty: $('#shop-county').val(),
     shopimg1: $('#upload').attr('picurl'),
-    shopurl:$('#shop_url').val()
+    shopurl:$('#shop_url').val(),
+    wangid: $('#shop-wangid').val()
   }
   console.log(obj)
   promiseData('POST', URL_SELL_SHOP_UPDATE, JSON.stringify(obj), cbEditShop);

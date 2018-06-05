@@ -68,6 +68,7 @@ function doPayTask() {
 
 function cbPayTask(e) {
   if (e.code == 0) {
+    notifyInfo("发布任务成功！");
     initList();
   } else if (e.code == -1) {
     relogin();
@@ -108,6 +109,7 @@ function initPage(totalPages) {
 
 function cbDelTask(e) {
   if (e.code == 0) {
+    notifyInfo("删除任务成功！");
     initList();
   } else if (e.code == -1) {
     relogin();

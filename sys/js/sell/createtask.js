@@ -63,10 +63,16 @@ function init() {
 
 
   //地区下拉框
-  $.ajax(TMPL_ADDR).done( (ret) => {
-    initLocationSelect('goods-location', ret)
-    initLocationSelect('limit-location', ret)
-  })
+  // $.ajax(TMPL_ADDR).done( (ret) => {
+  //   // initLocationSelect('goods-location', ret)
+  //   initLocationSelect('limit-location', ret)
+  // })
+
+  $('#pick').distpicker();
+
+  $("#limit-location").select2({
+    width: 'resolve'
+});
 
   // 初始化平台、店铺下拉栏
   initPlatforms();
@@ -262,6 +268,7 @@ function delTask() {
 
 
 function doPublish() {
+  
   let obj = {
     tasktype: $("input[name='r-task-type']:checked").val(),
     returntype: $("input[name='r-return-type']:checked").val(),
@@ -272,7 +279,7 @@ function doPublish() {
       goodsimg1: '',
       goodsimg2: '',
       goodsname: $('#name').val(),
-      goodsposition: $('#goods-location').val(),
+      goodsposition: $('#goods-province').val()+$('#goods-city').val(),
       goodsurl: $('#url').val(),
       highprice: $('#price-to').val().replace(/,/g, ''),
       lowprice: $('#price-from').val().replace(/,/g, ''),
@@ -299,7 +306,7 @@ function doPublish() {
     sex: $('#sex').val(),
     lowage: $('#age').val().split('-')[0],
     highage: $('#age').val().split('-')[1],
-    location: $('#limit-location').val(),
+    location: ( $('#limit-location').val() === null)? "":$('#limit-location').val().join(';'),
     useHuabei: $('#use-huabei').val(),
     huabeiStart: $('#huabei-start').val(),
     jingdongLevel: $('#jingdong-level').val(),
@@ -313,6 +320,10 @@ function doPublish() {
     shopId: $('#shop-list').val(),
     singleAmount: $('#pub-itl-amount').val(),
     intervals: $('#pub-itl-time').val(),
+    jdLocation: $('#jd-location').val(),
+    buyExpress: $('#buy-express').val(),
+    auditFirst: $('#audit-first').val(),
+    showFirst: $('#show-first').val()
   }
   obj.commonTaskKeyList = obj.commontask ? getGreatCommentData('nor-task') : [];
   obj.keywordTaskKeyList = obj.keywordtask ? getGreatCommentData('key-task') : [];
