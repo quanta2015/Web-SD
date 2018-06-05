@@ -35,6 +35,7 @@ let rules_step2 = {
 };
 
 let _cid;
+let _vip;
 let PREV = 0;
 let NEXT = 1;
 let platformMap = {};
@@ -51,37 +52,35 @@ function init() {
   $('body').on('change', '#platform-list', doInitShop);
   $('body').on('input propertychange', '.task-count', doCountTask);
 
+  //初始化第一步验证对象
   $("#form-step1").validate({
     rules: rules_step1,
     submitHandler: (e) => { GotoStep2() }
   })
 
+  //初始化第二步验证对象
   $("#form-step2").validate({
     rules: rules_step2,
     submitHandler: (e) => { GotoStep3() }
   })
 
+  //设置VIP过滤
+  _vip = cookie("memberValid");
+  if (!_vip) $('.u-vip').attr('disabled',true);
 
-  //地区下拉框
-  // $.ajax(TMPL_ADDR).done( (ret) => {
-  //   // initLocationSelect('goods-location', ret)
-  //   initLocationSelect('limit-location', ret)
-  // })
-
+  //设置发货地下拉框
   $('#pick').distpicker();
+  //设置VIP地区下拉框宽度
+  $("#limit-location").select2({ width: 'resolve'});
+  //设置任务开始时间
+  $("#start-date").val(moment().format('YYYY-MM-DD'));
 
-  $("#limit-location").select2({
-    width: 'resolve'
-});
 
   // 初始化平台、店铺下拉栏
   initPlatforms();
   //初始化普通好评任务栏
   initTaskTmpl();
 
-  $("#start-date").val(moment().format('YYYY-MM-DD'))
-
-  // $('#start-date').datetimepicker("setStartDate", "2017-03-01");
 
   //好评任务切换显示
   $("#normaltask").change( ()=> $('.nor-task-wrap').toggle() );
@@ -269,17 +268,6 @@ function delTask() {
 
 function doPublish() {
 
-   // var jdList = []
-   // $('input:checkbox[name="jd-location"]').each(function(i){
-   //    if($(this).prop('checked')) {
-   //      jdList.push($(this).val())
-   //    }
-   // })
-   // var ret = jdList.join(';')
-   // console.log(ret);
-  
-   // let a = getCheckedVal('jd-location')
-
   let obj = {
     tasktype: $("input[name='r-task-type']:checked").val(),
     returntype: $("input[name='r-return-type']:checked").val(),
@@ -342,8 +330,6 @@ function doPublish() {
   obj.keywordTaskKeyList = obj.keywordtask ? getGreatCommentData('key-task') : [];
   obj.pictureTaskKeyList = obj.picturetask ? getGreatCommentData('img-task') : [];
   obj.commentTaskKeyList = obj.commenttask ? getGreatCommentData('word-task') : [];
-  console.log(obj)
-  // promiseData('POST', URL_TASK_PUBLISH, JSON.stringify(obj), cbInfo);
 
   TmplDataP('/tmpl/sell/task_cost.tmpl', URL_TASK_PUBLISH, JSON.stringify(obj), cbInfo)
 }

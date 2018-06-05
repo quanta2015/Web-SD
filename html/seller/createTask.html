@@ -109,7 +109,7 @@
                   <i class="form-info">（通过提供的关键字，从京东电脑端自然搜索入店找到商品下单）</i>
               </label>
               <label class="mt-radio">
-                  <input type="radio" name="r-task-type" value="微信京东任务"> VIP专享（微信京东任务）
+                  <input type="radio" name="r-task-type" value="微信京东任务" class="u-vip"> VIP专享（微信京东任务）
                   <span></span>
                   <i class="form-info">（  + 1金币/单，买家通过微信进入京东购物，增加入店下单多样性）</i>
               </label>
@@ -529,7 +529,7 @@
             <div class="form-group">
               <label class="control-label col-xs-3"><span class="vip">VIP专享</span>选择需要的人群性别</label>
               <div class="col-xs-9 form-inline">
-                <select class="form-control " id="sex">
+                <select class="form-control u-vip" id="sex">
                   <option value="">请选择</option>
                   <option value="0">无要求（免费）</option>
                   <option value="1">男（0.5金币/单）</option>
@@ -541,7 +541,7 @@
             <div class="form-group">
               <label class="control-label col-xs-3"><span class="vip">VIP专享</span>需要的人群年龄段</label>
               <div class="col-xs-9 form-inline">
-                <select class="form-control " id="age">
+                <select class="form-control u-vip" id="age">
                   <option value="">请选择</option>
                   <option value="0">无要求（免费）</option>
                   <option value="15-25">15到25岁（0.5金币/单）</option>
@@ -555,7 +555,7 @@
               <label class="control-label col-xs-3"><span class="vip">VIP专享</span>区域限制 0.5金币/单</label>
               <div class="col-xs-9 form-inline">
 
-                <select id="limit-location" class="form-control select2-multiple" style="width: 500px" multiple>
+                <select id="limit-location" class="form-control select2-multiple u-vip" style="width: 500px" multiple>
                   <option value="北京市">北京市</option>
                   <option value="天津市">天津市</option>
                   <option value="河北省">河北省</option>
@@ -599,7 +599,7 @@
             <div class="form-group form-group-tb">
               <label class="control-label col-xs-3"><span class="vip">VIP专享</span>淘宝会员等级</label>
               <div class="col-xs-9 form-inline">
-                <select class="form-control " id="taobao-level">
+                <select class="form-control u-vip" id="taobao-level">
                   <option value="">请选择</option>
                     <option value="0">随机等级</option>
                     <option value="1">1心~2心(免费)</option>
@@ -615,7 +615,7 @@
             <div class="form-group">
               <label class="control-label col-xs-3"><span class="vip">VIP专享</span>重复购买限制</label>
               <div class="col-xs-9 form-inline">
-                <select class="form-control " id="rebuy">
+                <select class="form-control u-vip" id="rebuy">
                   <option value="">请选择</option>
                     <option value="0">15天不重复(免费)</option>
                     <option value="1">30不重复(2.00金/单)</option>
@@ -629,7 +629,7 @@
             <div class="form-group">
               <label class="control-label col-xs-3"><span class="vip">VIP专享</span>是否允许使用信用卡/花呗/白条</label>
               <div class="col-xs-9 form-inline">
-                <select class="form-control " id="use-huabei">
+                <select class="form-control u-vip" id="use-huabei">
                   <option value="">请选择</option>
                   <option value="0">否（系统默认，免费）</option>
                   <option value="1">是（免费）</option>
@@ -642,7 +642,7 @@
             <div class="form-group">
               <label class="control-label col-xs-3"><span class="vip">VIP专享</span>是否要求账号需要开通白条/花呗</label>
               <div class="col-xs-9 form-inline">
-                <select class="form-control " id="huabei-start">
+                <select class="form-control u-vip" id="huabei-start">
                   <option value="">请选择</option> 
                     <option value="2">无要求（免费）</option> 
                     <option value="1">是(1.20金币/单)</option>
@@ -653,9 +653,9 @@
             </div>
 
             <div class="form-group form-group-jd">
-              <label class="control-label col-xs-3">京东会员等级</label>
+              <label class="control-label col-xs-3"><span class="vip">VIP专享</span>京东会员等级</label>
               <div class="col-xs-9 form-inline">
-                <select class="form-control " id="jingdong-level">
+                <select class="form-control u-vip" id="jingdong-level">
                   <option value="">请选择</option>
                   <option value="0">随机会员(免费)</option>
                   <option value="1">铜牌会员(0.50金/单)</option>
@@ -693,13 +693,17 @@
               </div>
             </div>
 
-            <div class="form-group ">
+            <div class="form-group">
               <label class="control-label col-xs-3">
-                <label class="mt-checkbox mt-checkbox-outline"><input type="checkbox" id="ask"> 问大家<span></span>
-                  </label>
+                <span class="vip">VIP专享</span>问大家
               </label>
               <div class="col-xs-9 ">
-                <span class="form-info">(1金/问答，例：选择了提问则买家在下单前提问，选择了回答则买家在收获评价后回答
+                <label class="mt-checkbox mt-checkbox-outline">
+                  <input type="checkbox" id="ask" class="u-vip"> <span>
+                </label>
+                </span>
+                <span class="form-info">(1金/
+                问答，例：选择了提问则买家在下单前提问，选择了回答则买家在收获评价后回答
 指定问答)  </span>
               </div>
             </div>
