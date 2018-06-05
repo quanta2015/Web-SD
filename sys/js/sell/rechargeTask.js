@@ -18,11 +18,13 @@ let rules = {
     number: !0
   }
 }
+let pageData = Object.assign({}, PAGE_DATA);
 
 $(init);
 
 function init() {
   initList();
+  initRechargeTask();
 }
 
 function initList() {
@@ -36,6 +38,31 @@ function initList() {
     rules: rules,
     submitHandler: (e) => { doSave() }
   })
+
+  $('body').on('click', '#resetBtn', doResetForm);
+  
+}
+
+function initRechargeTask(param = pageData) {
+  Object.assign(param, { transferType:1});
+  TmplData(TMPL_SELL_RECHARGE_LIST, [URL_SELL_ALL_RECHARGE, encodeQuery(param)].join('?'), null, cbRechargeTask)
+}
+
+function cbRechargeTask(r, e) {
+  console.log('111')
+  let data = e[0];
+  if (data.code == 0) {
+    Object.assign(data, pageData);
+    // $(".portlet-body .table").remove();
+    $(".recharge-table").prepend($.templates(r[0]).render(data, rdHelper));
+  } else if ([-1, 99].includes(e.code)) {
+    relogin();
+  }
+}
+
+function doResetForm() {
+  document.getElementById("rechargeForm").reset();
+  $('#file-input').fileinput('clear')
 }
 
 function doSave(e) {
