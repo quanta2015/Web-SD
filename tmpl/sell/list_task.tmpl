@@ -27,14 +27,16 @@
             <td> {{:goodsname}}</td>
             <td> {{:num}}</td>
             <td> {{:keywords}}</td>
-            <td> first </td>
+            <td> {{if auditFirst}} 是 {{else}} 否 {{/if}} </td>
             <td> 
               <div class="u-task-status {{if status==0 || status==40}}font-red{{/if}}">
                 {{:statusName}}
               </div>
               {{if status==30}}
               <div class="progress progress-striped active">
-                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: {{:~div(acceptNum,num)}}%;"></div>
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: {{:~div(acceptNum,num)}}%;">
+                  <span class="pg-status">{{:acceptNum}}/{{:num}}</span>
+                </div>
               </div>
               {{/if}}
             </td>

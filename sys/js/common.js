@@ -338,7 +338,9 @@ const rdHelper = {
 // RENDER TMPL FUNCTION
 const renderTmpl = (url, data, help = null) => {
   return new Promise((resolve, reject) => {
+    $("body").append(LOADER);
     $.ajax(url).done(tmpl => {
+      $("#i-mask").remove()
       resolve($.templates(tmpl).render(data, help));
     })
   })
@@ -348,6 +350,7 @@ const renderTmpl = (url, data, help = null) => {
 // UPLOAD IMAGE FUNCTION
 var uploadFile = function(target) {
   return new Promise(function(resolve, reject){
+    // $("body").append(LOADER);
     var file = target;
     var fileSize = file.size;
     var maxSize = 5048576;    //最大5MB
@@ -357,6 +360,7 @@ var uploadFile = function(target) {
     }else{    
       var form = new FormData();
       form.append("file", file);
+      
       $.ajax({    
           url: HOST + URL_UPLOAD_FILE,
           type: 'POST',
@@ -369,9 +373,10 @@ var uploadFile = function(target) {
           },
           crossDomain: true,
       }).done(function(e) {
+        // $("#i-mask").remove()
         console.log('上传图片成功！');
         resolve(e.data);
-      })   
+      })
     }
   })
 }

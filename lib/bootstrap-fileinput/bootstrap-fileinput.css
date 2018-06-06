@@ -125,3 +125,22 @@
     font-size: 16px;
    
 }
+
+.fileinput-r {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.fileinput-r>div {
+    margin-right: 15px;
+}
+
+.fileinput-ctrl {
+    display: flex;
+    flex-direction: column;
+}
+
+.fileinput-ctrl span {
+    margin: 3px 0;
+}

@@ -6,8 +6,16 @@ $(init);
 function init() {
   _id = '201806021905000011'
 
+  initTime();
   initList(pageData);
   // $('body').on('click', '.return-list', doReturnList);
+}
+
+function initTime() {
+  let from =  moment().subtract('days',7).format('YYYY-MM-DD') + ' 00:00';
+  let to = moment().format('YYYY-MM-DD') + ' 23:59'
+  $("#task-from").datetimepicker({ value: from});
+  $("#task-to").datetimepicker({value: to});
 }
 
 function initList(param) {

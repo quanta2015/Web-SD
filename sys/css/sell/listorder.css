@@ -27,3 +27,8 @@ table td {
     white-space: nowrap;
 }
 
+
+.m-sbar>div>input.u-dt {
+    width: 130px;
+}
+
