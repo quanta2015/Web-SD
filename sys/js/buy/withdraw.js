@@ -10,71 +10,111 @@ let rules = {
     required: !0,
     number: !0
   },
-  poundageAccount: {
-    required: !0,
-  },
-  capWithdraw: {
+  withdrawMoney: {
     required: !0,
     number: !0
-  },
-  comWithdraw: {
-    required: !0,
-    number: !0
-  },
+  }
 }
+let _balanceData;
 
 $(init);
 
 function init() {
 
-  initWithdraw();
-  // $('body').on('click', '#saveBtn', doSave);
-  $('body').on('input propertychange', '.withdraw', doCompute);
+  initBalanceInfo();
+  $('body').on('change', '#account-type', doInitTip);
+  $('body').on('input propertychange', '#withdraw-money', doCompute);
 
 }
+function cbBind(e) {
+  if (e.code === 0) {
+    initUserInfo();
+    alertBox(MSG_BIND_SUCCESS, ()=>{ goto("newTask.html") })
+  } else if (e.code==99) {
+    notifyInfo(e.message);
+  } else if (e.code==-1) {
+    relogin();
+  };
+}
 
-function initWithdraw() {
-  // promiseData('GET', URL_SELL_BALANCE, null, (e) => {
-    renderTmpl(TMPL_BUY_WITHDRAW, {
-      id: cookie('id'),
-      name: cookie('name'),
-      bankNo: cookie2('bankNo', 'buyerBankList'),
-      capWithdraw: null,
-      comWithdraw: null,
-      capBalance: 0,
-      comBalance: 0,
-      amount: '0.00',
-      poundage: '0.00'
-    }).then(html => $('.container').append(html));
-  // })
+function initBalanceInfo() {
+  promiseData('GET', URL_BUY_BALANCE, null, cbBalanceInfo);
+}
+
+function cbBalanceInfo(e) {
+  if (e.code === 0) {
+    _balanceData = e.data;
+    $('#buyer-id').val(cookie('id'));
+    $('#buyer-name').val(cookie('name'));
+    $('#bankno').val(cookie2('bankNo', 'buyerBankList'));
+    $('#balance').text(_balanceData.balance);
+  } else if (e.code == 99) {
+    errorInfo(e.message);
+  } else if (e.code==-1) {
+    relogin();
+  };
 
   $("#form-withdraw").validate({
     rules: rules,
     submitHandler: (e) => { doWithdraw() }
   })
+
 }
 
 function doCompute() {
   // 提现总额
-  let amount = parseInt($('#cap-withdraw').val() || 0) + parseInt($('#com-withdraw').val() ||0);
+  let amount = parseInt($('#withdraw-money').val() || 0);
   $('#amount').text(amount.toFixed(2));
-  // TODO:手续费
-  let poundage = amount * WITHDRAW_FEE;
+  // 手续费
+  let rate = 0.01;
+  let type = parseInt($('#account-type').val());
+  let poundage = amount >= 2000 ? 0 : amount * rate;
+  type === 0 && poundage >= 5 ? poundage = 5 : null;
   $('#poundage').text(poundage.toFixed(2));
 }
 
 function doWithdraw() {
   let obj = {
-    buyerId: $('#buyer-id').val(),
+    buyerId: parseInt($('#buyer-id').val()),
     buyerName: $('#buyer-name').val(),
-    buyerBankId: $('#bankno').val(),
-    withdrawMoney: $('#buyer-id').val(),
-    serviceFee: $('#buyer-id').val(),
-    withdrawMoney: $('#buyer-id').val(),
+    buyerBankId:parseInt($('#bankno').val()),
+    withdrawMoney: parseInt($('#amount').text()),
   }
-  promiseData('POST', URL_BUY_WITHDRAW, JSON.stringify(obj), cdWithdraw)
+  let type = parseInt($('#account-type').val());
+  
+  if (type === 0) {
+    if (obj.withdrawMoney < 200) {
+      console.log(obj.withdrawMoney)
+      return errorInfo('提现金额必须大于200！');
+    }
+  }
+  if (type === 1) {
+    if (obj.withdrawMoney < 100) {
+      return errorInfo('提现金额必须大于100！');
+    } else if (obj.withdrawMoney/100 === 0) {
+      return errorInfo('佣金提现不是100的倍数！');
+    }
+  }
+
+  let sum = parseInt($('#amount').text()) + parseInt($('#poundage').text());
+  if (sum > parseFloat($('#balance').text()) ) {
+    return errorInfo('提现超出余额！');
+  }
+  let url = type === 0 ? URL_BUY_WITHDRAW : URL_BUY_FEE_WITHDRAW;
+  promiseData('POST', url, JSON.stringify(obj), cdWithdraw);
 }
 
-function cdWithdraw() {
-  
+function cdWithdraw(e) {
+  if (e.code === 0) {
+    notifyInfo(MSG_WITHDRAW_SUCCESS);
+  } else if (e.code == 99) {
+    errorInfo(e.message);
+  } else if (e.code==-1) {
+    relogin();
+  };
+}
+
+function doInitTip() {
+  $('.withdraw-tip').toggleClass('hide');
+  $('#balance').text(_balanceData.servicefee);
 }

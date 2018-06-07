@@ -12,7 +12,7 @@ const PLATFORM_DATA = {
   jingdong: {
     type: '京东',
     creditType: '白条',
-    levels: ['注册会员','铜牌会员','银牌会员','金牌会员','钻石会员'],
+    levels: ['注册会员','铜牌会员','银牌会员','金牌会员','钻石会员', 'PLUS会员'],
     cko: 'jingdongList',
   },
   taobao: {
@@ -21,8 +21,6 @@ const PLATFORM_DATA = {
     levels: [
       '一星','二星','三星','四星','五星',
       '一钻','二钻','三钻','四钻','五钻',
-      '一皇冠','二皇冠','三皇冠','四皇冠','五皇冠',
-      '一金冠','二金冠','三金冠','四金冠','五金冠',
     ],
     cko: 'taobaoList',
   } 
@@ -101,10 +99,12 @@ const URL_BUY_BIND_BANK     = '/buyer/buyer_bankbind'
 const URL_BUY_BIND_ACCOUNT  = '/buyer/buyer_acountbind'
 const URL_BUYER_ALL_TASK    = '/buyertask/all_tasks'
 const URL_BUY_CANCEL_TASK   = '/buyertask/cancel_task'
-const URL_BUY_WITHDRAW      = '/buyer/buyer_withdraw_apply'
+const URL_BUY_WITHDRAW      = '/buyer/withdraw_apply'
+const URL_BUY_FEE_WITHDRAW  = '/buyer/buyer_withdraw_apply'
 const URL_BUY_CHECK_SHOP    = '/buyertask/check_shop'
 const URL_BUY_SUBMIT_ORDER  = '/buyertask/task_submit'
 const URL_BUY_TASKDETAIL    = '/buyertask/taskdetail'
+const URL_BUY_BALANCE       = '/buyer/buyer_balance'
 
 const URL_BUYER_ALL_ORDER   = '/buyertask/received_tasks'
 
@@ -178,6 +178,8 @@ const MSG_GOON_ACCEPT = "继续接单"
 const MSG_LOOKUP_TASK = "查看任务"
 const MSG_UPDATE_FAILED = '更新数据失败！'
 const MSG_INPUT_AUDIT_INFO = '请填写审批内容!'
+const MSG_WITHDRAW_SUCCESS = '提现成功！'
+const MSG_WITHDRAW_FAILED = '提现失败！'
 
 const TEXT_BIND_SUCCESS = '已绑定'
 
