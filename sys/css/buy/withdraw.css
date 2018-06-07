@@ -1,3 +1,16 @@
 .mt-radio {
   margin-bottom: 0;
 }
+
+.form-info {
+  padding-top: 7px;
+  color:#aaa;
+}
+
+.form-group:nth-child(7) {
+  margin-bottom: 0;
+}
+
+.withdraw-tip {
+  font-size: 15px;
+}

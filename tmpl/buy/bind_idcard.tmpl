@@ -1,88 +1,95 @@
 <form action="#" id="form-bind" class="form-horizontal form-bordered">
-    <div class="form-group">
-      <label class="control-label col-xs-2">姓名
-        <span class="required"> * </span>
-      </label>
-      <div class="col-xs-6">
-        <input type="text" class="form-control" id="name" placeholder="请输入真实姓名" value="{{:name}}" {{:type}} name="name">
-      </div>
-    </div>
 
-    <div class="form-group">
-      <label class="control-label col-xs-2">身份证号
-        <span class="required"> * </span>
-      </label>
-      <div class="col-xs-6">
-        <input type="text" class="form-control" id="id-card" placeholder="请输入正确的身份证号" value="{{:idCard}}" {{:type}} name="idCard">
-      </div>
-    </div>
-
-    {{if status == 1 || status == 2}}
-    <div class="form-group">
-      <label class="control-label col-xs-2">身份证图片
-        <span class="required"> * </span>
-      </label>
-      <div class="col-xs-10 id-card-box">
-        {{for idImg}}
-        {{if #data}}
-        <a href="{{:~root.imgPrefix}}{{:#data}}" class="fancybox">
-          <img src="{{:~root.imgPrefix}}{{:#data}}" style="width: 200px; height: 150px;">
-        </a>
-        {{/if}}
-        {{/for}}
-      </div>
-    </div>
-    {{else}}
-    <div class="form-group">
-      <label class="control-label col-xs-2">请选择图片
-        <span class="required"> * </span>
-      </label>
-      <div class="col-xs-10 id-card-box">
-        <div class="row img-task img-task-list">
-          {{for list}}
-          <div class="fileinput fileinput-new" data-provides="fileinput">
-            <div class="fileinput-new thumbnail" style="max-width: 150px; max-height: 120px;">
-              {{if ~root.idImg && ~root.idImg[#getIndex()]}}
-              <img src="{{:~root.imgPrefix}}{{:~root.idImg[#getIndex()]}}">
-              {{else}}
-              <img src="/img/noimg.png">
-              {{/if}}
-            </div>
-            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-            
-            <div>
-                <span class="btn default btn-file">
-                <span class="fileinput-new"> 选择图片 </span>
-                <span class="fileinput-exists"> 更换 </span>
-                  <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="id-card-ipt{{:#index+1}}" >
-                </span>
-                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 删除 </a>
-            </div>
-          
+    <div class="portlet light bordered">                     
+      <div class="portlet-body">
+        <div class="form-group">
+          <label class="control-label col-xs-2">姓名
+            <span class="required"> * </span>
+          </label>
+          <div class="col-xs-6">
+            <input type="text" class="form-control" id="name" placeholder="请输入真实姓名" value="{{:name}}" {{:type}} name="name">
+          </div>
         </div>
-        {{/for}}  
-      </div>
-      </div>
-    </div>
-    {{/if}}
 
-    {{if status !== 0}}
-    <div class="form-group">
-      <label class="control-label col-xs-2">审核状态</label>
-      <div class="col-xs-6">
-        <input type="text" class="form-control" value="{{:statusText}}" disabled>
-      </div>
-    </div>
-    {{/if}}
+        <div class="form-group">
+          <label class="control-label col-xs-2">身份证号
+            <span class="required"> * </span>
+          </label>
+          <div class="col-xs-6">
+            <input type="text" class="form-control" id="id-card" placeholder="请输入正确的身份证号" value="{{:idCard}}" {{:type}} name="idCard">
+          </div>
+        </div>
 
-    <div class="form-group">
-      <label class="control-label col-xs-2"></label>
-      <div class="col-xs-10">
-        {{if status == 0 || status == 3}}
-        <button type="submit" class="btn blue" id="saveBtn">保存</button>
+        {{if status == 1 || status == 2}}
+        <div class="form-group">
+          <label class="control-label col-xs-2">身份证图片
+            <span class="required"> * </span>
+          </label>
+          <div class="col-xs-10 id-card-box">
+            {{for idImg}}
+            {{if #data}}
+            <a href="{{:~root.imgPrefix}}{{:#data}}" class="fancybox img-info-box">
+              <img src="{{:~root.imgPrefix}}{{:#data}}">
+              <span>{{:~root.imgInfo[#getIndex()]}}</span>
+            </a>
+            {{/if}}
+            {{/for}}
+          </div>
+        </div>
+        {{else}}
+        <div class="form-group">
+          <label class="control-label col-xs-2">请选择图片
+            <span class="required"> * </span>
+          </label>
+          <div class="col-xs-10 id-card-box">
+            <div class="row img-task img-task-list id-card-box">
+              {{for list}}
+              <div class="fileinput fileinput-new img-info-box" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" style="max-width: 150px; max-height: 120px;">
+                  {{if ~root.idImg && ~root.idImg[#getIndex()]}}
+                  <img src="{{:~root.imgPrefix}}{{:~root.idImg[#getIndex()]}}">
+                  {{else}}
+                  <img src="/img/noimg.png">
+                  {{/if}}
+                </div>
+                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                <span>{{:~root.imgInfo[#getIndex()]}}</span>
+                <div>
+                  <span class="btn default btn-file">
+                  <span class="fileinput-new"> 选择图片 </span>
+                  <span class="fileinput-exists"> 更换 </span>
+                    <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="id-card-ipt{{:#index+1}}" >
+                  </span>
+                  <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 删除 </a>
+                </div>
+              
+            </div>
+            {{/for}}  
+          </div>
+          </div>
+        </div>
         {{/if}}
-        <button type="button" class="btn red" id="returnBtn"> 返回</button>
+
+        {{if status !== 0}}
+        <div class="form-group">
+          <label class="control-label col-xs-2">审核状态</label>
+          <div class="col-xs-6">
+            <input type="text" class="form-control" value="{{:statusText}}" disabled>
+          </div>
+        </div>
+        {{/if}}
+
+        <div class="form-group">
+          <label class="control-label col-xs-2"></label>
+          <div class="col-xs-10">
+            {{if status == 0 || status == 3}}
+            <button type="submit" class="btn blue" id="saveBtn">保存</button>
+            {{/if}}
+            <button type="button" class="btn red" id="returnBtn"> 返回</button>
+          </div>
+        </div>
       </div>
     </div>
+
 </form>
 

@@ -12,147 +12,163 @@
 <div class="container">
   <form action="#" id="form-bind" class="form-horizontal form-bordered">
 
-    <div class="form-group">
-      <label class="control-label col-xs-2">{{:platform}}账号
-        <span class="required"> * </span>
-      </label>
-      <div class="col-xs-6">
-        <input type="text" class="form-control" id="account" placeholder="请输入{{:platform}}账号" value="{{:acount}}" {{:type}} name="acount">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-xs-2">{{:platform}}账号等级
-        <span class="required"> * </span>
-      </label>
-      <div class="col-xs-6 form-inline">
-        <select class="form-control " id="acount-level" {{:type}} name="acountLevel">
-          {{if status == 0 || status == 3}}
-          <option value="">请选择</option>
-          {{for levels}}
-          <option value="{{:#data}}" {{if #data == ~root.acountLevel}}selected{{/if}} >{{:#data}}</option>
-          {{/for}}
-          {{else}}
-          <option value="">{{:acountLevel}}</option>
-          {{/if}}
-        </select>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="control-label col-xs-2">是否开通{{:creditType}}
-        <span class="required"> * </span>
-      </label>
-      <div class="col-xs-6 form-inline">
-        <div class="mt-radio-inline">
-          <label class="mt-radio">
-            <input type="radio" name="r-baitiao-start" value="1" {{:baitiaoStart}} {{:type}}>是<span></span>
-          </label>
-          <label class="mt-radio">
-            <input type="radio" name="r-baitiao-start" value="0" {{:baitiaoUnStart}} {{:type}}>否<span></span>
-          </label>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="control-label col-xs-2">收货人
-        <span class="required"> * </span>
-      </label>
-      <div class="col-xs-6">
-        <input type="text" class="form-control" id="receiver" placeholder="请输入正确的收货人姓名" value="{{:receiver}}" {{:type}} name="receiver">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-xs-2">手机号
-        <span class="required"> * </span>
-      </label>
-      <div class="col-xs-6">
-        <input type="text" class="form-control" id="receive-mobile" placeholder="请输入正确的收货人手机号" value="{{:receiveMobile}}" {{:type}} name="receiveMobile">
-      </div>
-    </div>
-
-    <div class="form-group" data-toggle="distpicker" id="pick">
-      <label class="control-label col-xs-2">收货人省份
-        <span class="required"> * </span>
-      </label>
-      <div class="col-xs-3">
-        <select class="form-control" id="receive-province" data-province="{{:receiveProvince}}" {{:type}} name="receiveProvince"></select>
-      </div>
-    </div> 
-    <div class="form-group">
-      <label class="control-label col-xs-2">详细地址
-        <span class="required"> * </span>
-      </label>
-      <div class="col-xs-6">
-        <input type="text" class="form-control" id="receive-address" placeholder="请输入正确的详细地址" value="{{:receiveAddress}}" {{:type}} name="receiveAddress">
-      </div>
-    </div>
-
-    {{if status == 1 || status == 2}}
-    <div class="form-group">
-      <label class="control-label col-xs-2">上传截图
-        <span class="required"> * </span>
-      </label>
-      <div class="col-xs-10 id-card-box">
-        {{for accountImg}}
-        {{if #data}}
-        <a href="{{:~root.imgPrefix}}{{:#data}}" class="fancybox">
-          <img src="{{:~root.imgPrefix}}{{:#data}}" style="width: 200px; height: 150px;">
-        </a>
-        {{/if}}
-        {{/for}}
-      </div>
-    </div>
-    {{else}}
-    <div class="form-group">
-        <label class="control-label col-xs-2">请选择图片
-          <span class="required"> * </span>
-        </label>
-        <div class="col-xs-10 id-card-box">
-          <div class="row img-task img-task-list">
-            {{for list}}
-            <div class="fileinput fileinput-new" data-provides="fileinput">
-              <div class="fileinput-new thumbnail" style="max-width: 150px; max-height: 120px;">
-                  {{if ~root.accountImg && ~root.accountImg[#getIndex()]}}
-                  <img src="{{:~root.imgPrefix}}{{:~root.accountImg[#getIndex()]}}">
-                  {{else}}
-                  <img src="/img/noimg.png">
-                  {{/if}}
-              </div>
-              <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-              
-              <div>
-                  <span class="btn default btn-file">
-                  <span class="fileinput-new"> 选择图片 </span>
-                  <span class="fileinput-exists"> 更换 </span>
-                    <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="platform-ipt{{:#index+1}}">
-                  </span>
-                  <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 删除 </a>
-              </div>
-            
+    <div class="portlet light bordered">                     
+      <div class="portlet-body">
+        <div class="form-group">
+          <label class="control-label col-xs-2">注意事项</label>
+          <div class="col-xs-6">
+            <div class="portlet-body withdraw-tip">
+              <li>1. 输入{{:platform}}用户名。注意不是昵称</li>
+              <li>2. 请确保收货地址和收货联系人真实具体，并保证和{{:platform}}上下单的收货地址信息一致</li>
+              <li>3. 请确认多个{{:platform}}号之间使用不同的收货信息（收货姓名，地址和电话均不同）</li>
+              <li>4. 账号审核人工进行，正常一个工作日内完成，只有审核通过的买号才能接受任务</li>
+            </div>
           </div>
-          {{/for}}  
         </div>
-      </div>
-    </div>
-    {{/if}}
+        <div class="form-group">
+          <label class="control-label col-xs-2">{{:platform}}账号
+            <span class="required"> * </span>
+          </label>
+          <div class="col-xs-6">
+            <input type="text" class="form-control" id="account" placeholder="请输入{{:platform}}账号" value="{{:acount}}" {{:type}} name="acount">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-xs-2">{{:platform}}账号等级
+            <span class="required"> * </span>
+          </label>
+          <div class="col-xs-6 form-inline">
+            <select class="form-control " id="acount-level" {{:type}} name="acountLevel">
+              {{if status == 0 || status == 3}}
+              <option value="">请选择</option>
+              {{for levels}}
+              <option value="{{:#data}}" {{if #data == ~root.acountLevel}}selected{{/if}} >{{:#data}}</option>
+              {{/for}}
+              {{else}}
+              <option value="">{{:acountLevel}}</option>
+              {{/if}}
+            </select>
+          </div>
+        </div>
 
-    {{if status !== 0}}
-    <div class="form-group">
-      <label class="control-label col-xs-2">审核状态</label>
-      <div class="col-xs-6">
-        <input type="text" class="form-control" value="{{:statusText}}" disabled>
-      </div>
-    </div>
-    {{/if}}
+        <div class="form-group">
+          <label class="control-label col-xs-2">是否开通{{:creditType}}
+            <span class="required"> * </span>
+          </label>
+          <div class="col-xs-6 form-inline">
+            <div class="mt-radio-inline">
+              <label class="mt-radio">
+                <input type="radio" name="r-baitiao-start" value="1" {{:baitiaoStart}} {{:type}}>是<span></span>
+              </label>
+              <label class="mt-radio">
+                <input type="radio" name="r-baitiao-start" value="0" {{:baitiaoUnStart}} {{:type}}>否<span></span>
+              </label>
+            </div>
+          </div>
+        </div>
 
-    <div class="form-group">
-      <label class="control-label col-xs-2"></label>
-      <div class="col-xs-10">
-        {{if status == 0 || status == 3}}
-        <button type="submit" class="btn blue" id="saveBtn">保存</button>
+        <div class="form-group">
+          <label class="control-label col-xs-2">收货人
+            <span class="required"> * </span>
+          </label>
+          <div class="col-xs-6">
+            <input type="text" class="form-control" id="receiver" placeholder="请输入正确的收货人姓名" value="{{:receiver}}" {{:type}} name="receiver">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-xs-2">手机号
+            <span class="required"> * </span>
+          </label>
+          <div class="col-xs-6">
+            <input type="text" class="form-control" id="receive-mobile" placeholder="请输入正确的收货人手机号" value="{{:receiveMobile}}" {{:type}} name="receiveMobile">
+          </div>
+        </div>
+
+        <div class="form-group" data-toggle="distpicker" id="pick">
+          <label class="control-label col-xs-2">收货人省份
+            <span class="required"> * </span>
+          </label>
+          <div class="col-xs-3">
+            <select class="form-control" id="receive-province" data-province="{{:receiveProvince}}" {{:type}} name="receiveProvince"></select>
+          </div>
+        </div> 
+        <div class="form-group">
+          <label class="control-label col-xs-2">详细地址
+            <span class="required"> * </span>
+          </label>
+          <div class="col-xs-6">
+            <input type="text" class="form-control" id="receive-address" placeholder="请输入正确的详细地址" value="{{:receiveAddress}}" {{:type}} name="receiveAddress">
+          </div>
+        </div>
+
+        {{if status == 1 || status == 2}}
+        <div class="form-group">
+          <label class="control-label col-xs-2">上传截图
+            <span class="required"> * </span>
+          </label>
+          <div class="col-xs-10 id-card-box">
+            {{for accountImg}}
+            {{if #data}}
+            <a href="{{:~root.imgPrefix}}{{:#data}}" class="fancybox img-info-box">
+              <img src="{{:~root.imgPrefix}}{{:#data}}">
+              <span>{{:~root.imgInfo[#getIndex()]}}</span>
+            </a>
+            {{/if}}
+            {{/for}}
+          </div>
+        </div>
+        {{else}}
+        <div class="form-group">
+            <label class="control-label col-xs-2">请选择图片
+              <span class="required"> * </span>
+            </label>
+            <div class="col-xs-10 id-card-box">
+              <div class="row img-task img-task-list id-card-box">
+                {{for list}}
+                <div class="fileinput fileinput-new img-info-box" data-provides="fileinput">
+                  <div class="fileinput-new thumbnail">
+                      {{if ~root.accountImg && ~root.accountImg[#getIndex()]}}
+                      <img src="{{:~root.imgPrefix}}{{:~root.accountImg[#getIndex()]}}">
+                      {{else}}
+                      <img src="/img/noimg.png">
+                      {{/if}}
+                  </div>
+                  <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                  <span>{{:~root.imgInfo[#getIndex()]}}</span>
+                  <div>
+                      <span class="btn default btn-file">
+                      <span class="fileinput-new"> 选择图片 </span>
+                      <span class="fileinput-exists"> 更换 </span>
+                        <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="platform-ipt{{:#index+1}}">
+                      </span>
+                      <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 删除 </a>
+                  </div>
+                
+              </div>
+              {{/for}}  
+            </div>
+          </div>
+        </div>
         {{/if}}
-        <button type="button" class="btn red" id="returnBtn"> 返回</button>
+
+        {{if status !== 0}}
+        <div class="form-group">
+          <label class="control-label col-xs-2">审核状态</label>
+          <div class="col-xs-6">
+            <input type="text" class="form-control" value="{{:statusText}}" disabled>
+          </div>
+        </div>
+        {{/if}}
+
+        <div class="form-group">
+          <label class="control-label col-xs-2"></label>
+          <div class="col-xs-10">
+            {{if status == 0 || status == 3}}
+            <button type="submit" class="btn blue" id="saveBtn">保存</button>
+            {{/if}}
+            <button type="button" class="btn red" id="returnBtn"> 返回</button>
+          </div>
+        </div>
       </div>
     </div>
   </form>

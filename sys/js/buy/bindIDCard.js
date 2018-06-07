@@ -25,7 +25,7 @@ function doSave(data) {
     name: $('#name').val(),
     idcard: $('#id-card').val(),
   };
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= 2; i++) {
     obj[`idcardpng${i}`] = $(`#id-card-ipt${i}`).attr('picurl') || cookie(`idcardpng${i}`);
   }
   promiseData('POST', URL_BUY_BIND_ID_CARD, JSON.stringify(obj), cbBind);
@@ -46,18 +46,20 @@ async function initBindInfo() {
   // status = 0
   if ( status == 0 || status == null) {
     //未绑定
-    $('.container-fluid').append(await renderTmpl(TMPL_BUY_BIND_IDCARD, {
-      list:[1,1,1],
+    $('.container').append(await renderTmpl(TMPL_BUY_BIND_IDCARD, {
+      list:[1,1],
+      imgInfo: ['身份证正面', '身份证背面'],
       status: 0,
     }));
   } else {
     // 待审核或审核通过 显示已经绑定表单
-    $(".container-fluid").append(await renderTmpl(TMPL_BUY_BIND_IDCARD, {
+    $(".container").append(await renderTmpl(TMPL_BUY_BIND_IDCARD, {
       name: cookie('name'),
       idCard: cookie('idcard'),
-      idImg: [ cookie('idcardpng1'),cookie('idcardpng2'),cookie('idcardpng3') ],
+      idImg: [ cookie('idcardpng1'),cookie('idcardpng2') ],
       status: status,
-      list: [1,1,1],
+      list: [1,1],
+      imgInfo: ['身份证正面', '身份证背面'],
       type: status !== 3 ? "disabled" : null,
       statusText: AUDIT_STATUS[status],
       imgPrefix: IMG_PREFIX

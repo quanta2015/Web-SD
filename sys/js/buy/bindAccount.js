@@ -1,4 +1,5 @@
 const platform = PLATFORM_DATA[getUrlParam('platform')];
+const creditType = getUrlParam('platform')==='jingdong'?'白条':'花呗';
 
 let rules = {
   acount: {
@@ -36,7 +37,7 @@ async function initBindInfo() {
   var status = cookie2('approve', platform.cko);
   status?parseInt(cookie2('approve', platform.cko)):null;
 
-  // status = 3
+  // status = 0
   if ( status == 0 || status == null) {
     //未绑定
     $('body').append(await renderTmpl(TMPL_BUY_BIND_ACCOUNT, {
@@ -44,6 +45,7 @@ async function initBindInfo() {
       creditType: platform.creditType,
       levels: platform.levels,
       list: [1,1,1],
+      imgInfo: ['我的页面', '我的账号页面', `开通${creditType}情况`],
       status: 0,
       baitiaoStart: "checked"
     }));
@@ -68,6 +70,7 @@ async function initBindInfo() {
         cookie2('myacountImg', platform.cko)
       ],
       list: [1,1,1],
+      imgInfo: ['我的页面', '我的账号页面', `开通${creditType}情况`],
       type: status !== 3 ? "disabled" : null,
       status: status,
       statusText: AUDIT_STATUS[status],
