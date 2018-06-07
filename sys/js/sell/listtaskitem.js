@@ -49,7 +49,7 @@ function caluPG(ret) {
       case 20: ret[i].percent = 40;break;
       case 30: ret[i].percent = 60;break;
       case 40: ret[i].percent = 80;break;
-      case 80: ret[i].percent = 100;break;
+      case 70: ret[i].percent = 100;break;
       default: ret[i].percent = 0;break;
     }
   }

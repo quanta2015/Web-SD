@@ -5,6 +5,44 @@
     flex-direction: column;
 }
 
+.m-d-task {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.m-d-task>li {
+    flex: 1;
+    /*background: #4C87B9;*/
+    font-size: 10px;
+    /*color: #fff;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+
+.m-d-task>li>span {
+    text-align: center;
+}
+
+.u-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px!important;
+    height: 50px;
+    background: #4DB3A2;
+    width: 50px;
+    color: #fff;
+    font: 16px/1 "microsoft yahei";
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+
 .m-d-money {
     display: flex;
     flex-direction: column;

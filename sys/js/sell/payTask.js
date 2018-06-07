@@ -10,7 +10,8 @@ function init() {
   initList();
 
   $('body').on('click', '#return-list', doReturnList);
-  $('body').on('click', '#submit-goods', doPayTask);
+  $('body').on('click', '#pay-task', doPayTask);
+  $('body').on('click', '#cancel-task', doPayTask);
 }
 
 function initList() {
@@ -18,15 +19,18 @@ function initList() {
   promiseData('get',URL_SELL_ACC_TASK_DETAIL,obj, cbList)
 }
 
-function doPayTask() {
-    // var obj = {
-    //   buyerTaskId: _id,
-    //   delivery: $('#u-delivery').val(),
-    //   expressNo: $('#u-expressno').val(),
-    //   expressStatus: $('#u-express-status').val() 
-    // }
+function doPayTask(e) {
 
-    // promiseData('POST',URL_SELL_DELIVERY, JSON.stringify(obj), cbSubmitGoods)
+  bootbox.prompt(MSG_INPUT_AUDIT_INFO, function(ret){ 
+    if( ret !== null) {
+      var obj = {
+        id: sid = _id,
+        approve: ($(e.currentTarget).data('type')=='pass')?AUDIT_PASS:AUDIT_FAIL,
+        reason: ret
+      }
+      promiseData('POST','/task/approve_buyer_task',JSON.stringify(obj), cbAudit)
+    }; 
+  });
 }
 
 function doReturnList() {
@@ -49,12 +53,12 @@ function cbList(e) {
   }
 }
 
-function cbSubmitGoods(e) {
+function cbAudit(e) {
   if (e.code == 0) {
     alertBox(MSG_PAY_SUCC, doReturnList);
   } else if (e.code == -1) {
     relogin();
   } else if (e.code == 99){
-    notifyInfo(MSG_PAY_ERR);
+    notifyInfo(e.message);
   }  
 }

@@ -4,11 +4,8 @@
             <th> 序号 </th>
             <th> 任务编号 </th>
             <th> 发布时间 </th>
-            <th> 类型 </th>
-            <th> 平台 </th>
-            <th> 类型 </th>
-            <th> 完成限时 </th>
             <th> 佣金 </th>
+            <th> 垫付金额 </th>
             <th> 功能 </th>
         </tr>
     </thead>
@@ -17,14 +14,11 @@
         <tr>
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
             <th> {{:taskKeyId}} </th>
-            <td>{{:~formatTime(publishTime)}}</td>
-             <td> {{:taskKeyType}}</td>   
-            <td> {{:platform}}</td>
-            <td> {{:taskType}} </td>
-            <td> {{:finidshTime}} </td>
+            <td>{{:~formatTime(publishTime)}}</td>  
             <td> {{:reward}}元</td>
+            <td> paymoney </td>
             <td class="fn-center"> 
-              <a href="#basic" class="btn blue-madison btn-xs btn-outline audit-task"  data-kid="{{:taskKeyId}}" ><i class="fa fa-edit"></i> 查看 </a>
+              <a href="#basic" class="btn blue-madison btn-xs  audit-task"  data-kid="{{:taskKeyId}}" ><i class="fa fa-edit"></i> 任务详情 </a>
             </td>
         </tr>
       {{/for}}
