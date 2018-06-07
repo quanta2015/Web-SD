@@ -20,6 +20,12 @@ function init() {
     var pos = $(this).data('pos');
     (pos=='root')?pos='/':pos='';
     var pageName = pos + $(this).data('button') + '.html';
+
+    if ($(this).data('button')=='auditVipRecharge') {
+      var viptype=$(this).data('viptype');
+      pageName+='?viptype='+viptype;
+    }
+    
     platform ? pageName += `?platform=${platform}` : null;
 
     $("#mainframe", parent.document.body).attr("src", pageName);
