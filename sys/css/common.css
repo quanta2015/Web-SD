@@ -57,6 +57,9 @@ a:hover {
   display: none;  
 }
 
+.hides {
+  visibility: hidden;
+}
 
 .fn-right {
     text-align: right

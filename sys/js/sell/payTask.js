@@ -25,7 +25,7 @@ function doPayTask(e) {
     if( ret !== null) {
       var obj = {
         id: sid = _id,
-        approve: ($(e.currentTarget).data('type')=='pass')?AUDIT_PASS:AUDIT_FAIL,
+        approve: ($(e.currentTarget).data('type')=='pass')?1:2,
         reason: ret
       }
       promiseData('POST','/task/approve_buyer_task',JSON.stringify(obj), cbAudit)

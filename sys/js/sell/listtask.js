@@ -12,13 +12,15 @@ function init() {
   $('body').on('click', '.pay-task', doPayTask);
   $('body').on('click', '.del-task', doDelTask);
   $('body').on('click', '.mag-task', doMagTask);
+  $('body').on('click', '.search-task', initList);
+  
 }
 
 function initTime() {
   let from =  moment().subtract('days',7).format('YYYY-MM-DD') + ' 00:00';
   let to = moment().format('YYYY-MM-DD') + ' 23:59'
-  $("#task-from").datetimepicker({ value: from});
-  $("#task-to").datetimepicker({value: to});
+  $("#task-from").datetimepicker({ value: from, format:'Y-m-d H:i'});
+  $("#task-to").datetimepicker({value: to, format:'Y-m-d H:i'});
 }
 
 function initShops() {
@@ -31,11 +33,11 @@ function cbShops(e) {
     for(i=0; i< e.data.length; i++) {
       for(j=0; j< e.data[i].shops.length; j++) {
         let val = e.data[i].shops[j].name;
-        let cnt = $.format('<option value="{0}">{1}</option>', val, val )
+        let sid = e.data[i].shops[j].id;
+        let cnt = $.format('<option value="{0}">{1}</option>', sid, val )
         $("#shop-name").append( cnt )
       }
     }
-    
   } else if (e.code == -1) {
     relogin();
   } else if (e.code == 99){
@@ -43,9 +45,20 @@ function cbShops(e) {
   }
 }
 
-function initList(param = pageData) {
-  let id = parseInt(cookie('id'));
-  TmplData(TMPL_SELL_TASK_LIST, [URL_SELL_ALL_TASK, encodeQuery(param)].join('?'), null, cbListTask)
+function initList() {
+  let cdt = {
+    shopId: $("#shop-name").val(),
+    publishtime_s: $("#task-from").val() + ':00',
+    publishtime_e: $("#task-to").val()+ ':00',
+    shopType: $("#platform").val(),
+    taskType: $("#task-type").val(),
+    status: $("#task-status").val(),
+    taskId: $("#task-id").val()
+  }
+  param = Object.assign(cdt, PAGE_DATA);
+  TmplData(TMPL_SELL_TASK_LIST, ['/task/search_tasks', encodeQuery(param)].join('?'), null, cbListTask)
+  
+  // TmplData(TMPL_SELL_TASK_LIST, [URL_SELL_ALL_TASK, encodeQuery(param)].join('?'), null, cbListTask)
 }
 
 
