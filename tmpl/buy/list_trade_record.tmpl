@@ -1,22 +1,22 @@
 <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th> # </th>
-                  <th> 时间 </th>
-                  <th> 收款额（元） </th>
-                  <th> 余额（元） </th>
-                  <th> 内容 </th>
-                </tr>
-              </thead>
-              <tbody>
-                {{for data}}
-                <tr>
-                  <td> {{:#index}} </td>
-                  <td> {{:~formatTime(createtime)}} </td>
-                  <td> {{if (moneyType==1)}}收入{{else}}支出{{/if}}： {{:money}} </td>
-                  <td> 1000.00 </td>
-                  <td> {{if (moneyType==1)}}佣金{{else}}本金提现{{/if}} </td>
-                </tr>
-                {{/for}}
-              </tbody>
-            </table>
+  <thead>
+    <tr>
+      <th> # </th>
+      <th> 时间 </th>
+      <th> 收款额（元） </th>
+      <th> 余额（元） </th>
+      <th> 内容 </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{for data}}
+    <tr>
+      <td> {{:#index}} </td>
+      <td> {{:~formatTime(createtime)}} </td>
+      <td> {{if (moneyType==1)}}收入{{else}}支出{{/if}}： {{:money}} </td>
+      <td> 1000.00 </td>
+      <td> {{if (moneyType==1)}}佣金{{else}}本金提现{{/if}} </td>
+    </tr>
+    {{/for}}
+  </tbody>
+</table>

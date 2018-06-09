@@ -31,7 +31,10 @@
       <div class="portlet ">
         <div class="portlet-title ">
           <div class="m-sbar">
-            <div><span>店铺 </span><select name="" id="shop-name"></select> </div>
+            <div>
+              <span>店铺 </span>
+              <select name="" id="shop-name"><option value="">全部</option></select>
+            </div>
             <div><span>任务编号 </span><input type="text" id="task-id"></div>
             <div><span>订单编号 </span><input type="text" id="order-id"></div>
             <div><span>买家编号 </span><input type="text" id="buyer-id"></div>
@@ -41,21 +44,21 @@
             <div>
               <span>平台</span>
               <select id="platform">
-                <option value="0">全部</option>
-                <option value="1">淘宝</option>
-                <option value="2">京东</option>
+                <option value="">全部</option>
+                <option value="淘宝">淘宝</option>
+                <option value="京东">京东</option>
               </select>
             </div>
             
             <div>
               <span>订单类型</span>
               <select name="" id="task-type">
-                <option value="0">全部</option>
-                <option value="1">手机淘宝任务</option>
-                <option value="2">PC淘宝任务</option>
-                <option value="3">手机京东任务</option>
-                <option value="4">PC京东任务</option>
-                <option value="4">微信京东任务</option>
+                <option value="">全部</option>
+                <option value="手机淘宝任务">手机淘宝任务</option>
+                <option value="PC淘宝任务">PC淘宝任务</option>
+                <option value="手机京东任务">手机京东任务</option>
+                <option value="PC京东任务">PC京东任务</option>
+                <option value="微信京东任务">微信京东任务</option>
               </select>
             </div>
             <div>
@@ -138,6 +141,8 @@
     <script src="/lib/twbs-pagination/jquery.twbsPagination.min.js"></script>
     <script src="/lib/pace/pace.min.js"></script>
 
+    <script src="/sys/js/function.js"></script>
     <script src="/sys/js/sell/listorder.js"></script>
 </body>
 </html>
+1

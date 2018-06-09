@@ -28,7 +28,7 @@ function doPayTask(e) {
         approve: ($(e.currentTarget).data('type')=='pass')?1:2,
         reason: ret
       }
-      promiseData('POST','/task/approve_buyer_task',JSON.stringify(obj), cbAudit)
+      promiseData('POST',URL_SELL_PAY_ORDER,JSON.stringify(obj), cbAudit)
     }; 
   });
 }

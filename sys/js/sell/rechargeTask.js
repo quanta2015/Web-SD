@@ -29,6 +29,7 @@ function init() {
 
 function initList() {
 
+  $('#remark').val('商家ID:' + cookie('id'));
   $('#acountList input:eq(0)').trigger('click');
   for(item in BANKS) {
     $('#bankName').append('<option >' + BANKS[item] +'</option>')
@@ -40,7 +41,6 @@ function initList() {
   })
 
   $('body').on('click', '#resetBtn', doResetForm);
-  
 }
 
 function initRechargeTask(param = pageData) {
@@ -68,7 +68,7 @@ function doResetForm() {
 function doSave(e) {
   var pic = $('#upload').attr('picurl');
   if (isNull(pic)) {
-    notifyInfo('请上传图片！')
+    notifyInfo(MSG_UPLOAD_PIC)
     return;
   }
 

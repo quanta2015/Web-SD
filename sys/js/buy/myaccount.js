@@ -8,6 +8,10 @@ function init() {
   $('body').on('click', '#withdraw-detail', ()=>{ goto('withdraw.html') });
 
 
+
+
+  
+
   //显示金额
   promiseData('GET','/buyer/buyer_balance',null, (e)=>{
     $("#all").text(e.data.balance+e.data.servicefee);
@@ -23,7 +27,7 @@ function init() {
 
 function initList(pg) {
   param = Object.assign({}, pg);
-  TmplData('/tmpl/buy/list_trade_record.tmpl', ['/buyer/buyer_trade_records', encodeQuery(param)].join('?'), null, cbList)
+  TmplData(TMPL_BUY_TRADE_RECORD, [URL_BUY_TRADE_RECORD, encodeQuery(param)].join('?'), null, cbList)
 }
 
 

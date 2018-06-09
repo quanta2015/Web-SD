@@ -3,7 +3,7 @@
         <tr class="uppercase">
             <th> 序号 </th>
             <th> 完成时间 </th>
-            <th> 实例编号 </th>
+            <th> 订单编号 </th>
             <th> 接单用户 </th>
             <th> 淘宝订单号  </th>
             <th> 成交价格 </th>
@@ -16,7 +16,7 @@
         <tr>
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
             <td> {{:~formatTime(createtime)}}</td>
-            <td> {{:taskkeyId}}</td>
+            <td> {{:id}}</td>
             <td> {{:buyerId}} </td>
             <td> {{:orderid}} </td>
             <td> {{:goodsPrice}} </td>

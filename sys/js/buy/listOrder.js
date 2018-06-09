@@ -54,13 +54,11 @@ function doDetail() {
 
   if ($('#ig-info').hasClass('hide')) {
     var obj = { taskkeyid: $(this).data('tid') }
-    TmplData('/tmpl/buy/show_detail.tmpl', ['/buyertask/taskdetail', encodeQuery(obj)].join('?'),null, cbDetail)
+    TmplData(TMPL_BUY_TASK_DETAIL, [URL_BUY_TASKDETAIL, encodeQuery(obj)].join('?'),null, cbDetail)
   }else{
     $("#ig-info").empty();
     $("#ig-info").addClass("hide");
-    
   }
-  
 }
 
 function cbDetail(r, e) {

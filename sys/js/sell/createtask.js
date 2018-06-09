@@ -331,7 +331,7 @@ function doPublish() {
   obj.pictureTaskKeyList = obj.picturetask ? getGreatCommentData('img-task') : [];
   obj.commentTaskKeyList = obj.commenttask ? getGreatCommentData('word-task') : [];
 
-  TmplDataP('/tmpl/sell/task_cost.tmpl', URL_TASK_PUBLISH, JSON.stringify(obj), cbInfo)
+  TmplDataP(URL_SELL_TASK_COST, URL_TASK_PUBLISH, JSON.stringify(obj), cbInfo)
 }
 
 function getGreatCommentData(type) {
@@ -404,7 +404,7 @@ function cbInfo(r, e) {
 }
 
 function doComplete() {
-  msgbox("任务保存成功！","继续创建任务","发布任务", function(ret) {
+  msgbox(MSG_TASK_SAVE_SUCC,MSG_CONT_CREATE_TASK,MSG_PUB_TASK, function(ret) {
     if (ret) {
       goto('createTask.html')
     }else{

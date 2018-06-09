@@ -76,6 +76,11 @@ const URL_SELL_ACC_TASK_DETAIL = '/task/task_accept_detail'
 const URL_SELL_DELIVERY     = '/task/shoper_delivery'
 const URL_SELL_ACCEPT_LIST  = '/task/task_accept_list'
 const URL_SELL_TRANSFER     = '/shoper/shoper_transfer'
+const URL_SELL_LIST_ORDER   = '/tmpl/sell/list_order.tmpl'
+const URL_SELL_TASK_COST    = '/tmpl/sell/task_cost.tmpl'
+const URL_SELL_LIST_TASK    = '/task/search_tasks'
+const URL_SELL_PAY_ORDER     = '/task/approve_buyer_task'
+
 
 const URL_ADMIN_ALL_SHOP       = '/admin/all_shops'
 const URL_ADMIN_ALL_TASK       = '/admin/all_tasks'
@@ -105,8 +110,9 @@ const URL_BUY_CHECK_SHOP    = '/buyertask/check_shop'
 const URL_BUY_SUBMIT_ORDER  = '/buyertask/task_submit'
 const URL_BUY_TASKDETAIL    = '/buyertask/taskdetail'
 const URL_BUY_BALANCE       = '/buyer/buyer_balance'
-
+const URL_BUY_TASK_EVALUATE = '/buyertask/submit_evaluate'
 const URL_BUYER_ALL_ORDER   = '/buyertask/received_tasks'
+const URL_BUY_TRADE_RECORD  = '/buyer/buyer_trade_records'
 
 
 // TMPL DEF
@@ -145,7 +151,8 @@ const TMPL_BUY_ALL_ORDER          = '/tmpl/buy/list_all_order.tmpl'
 const TMPL_BUY_ORDER_DETAIL       = '/tmpl/buy/detail_order.tmpl'
 const TMPL_BUY_UPLOAD_IMG         = '/tmpl/buy/upload_img.tmpl'
 const TMPL_BUY_WITHDRAW           = '/tmpl/buy/withdraw.tmpl'
-
+const TMPL_BUY_TASK_DETAIL        = '/tmpl/buy/show_detail.tmpl'
+const TMPL_BUY_TRADE_RECORD       = '/tmpl/buy/list_trade_record.tmpl'
 
 
 const TMPL_ADDR                   = '/tmpl/addr.tmpl'
@@ -180,6 +187,21 @@ const MSG_UPDATE_FAILED = '更新数据失败！'
 const MSG_INPUT_AUDIT_INFO = '请填写审批内容!'
 const MSG_WITHDRAW_SUCCESS = '提现成功！'
 const MSG_WITHDRAW_FAILED = '提现失败！'
+const MSG_TASK_SAVE_SUCC = "任务保存成功！"
+const MSG_CONT_CREATE_TASK= "继续创建任务"
+const MSG_PUB_TASK = "发布任务"
+const MSG_UPDATE_SHOP_SUCC = "更新店铺数据成功！"
+const MSG_CONF_DEL_SHOP = "请确认是否要删除店铺！"
+const MSG_CANCEL = "取消"
+const MSG_OK = "确定"
+const MSG_TASK_PUB_SUCC = "发布任务成功！"
+const MSG_WAIT = "等会再说"
+const MSG_RECHARGE = "马上充值"
+const MSG_TASK_DEL_SUCC = "删除任务成功！"
+const MSG_UPLOAD_PIC = "请上传图片！"
+const MSG_EVALUATE_SUCC = '提交评价成功！'
+
+
 
 const TEXT_BIND_SUCCESS = '已绑定'
 
@@ -206,13 +228,11 @@ function relogin() {
 }
 
 function errorInfo(info) {
-  alertify.set({ delay: 5000 });
-  alertify.error(info);
+  toastr.error(info)
 }
 
 function notifyInfo(info) {
-  alertify.set({ delay: 5000 });
-  alertify.success(info);
+  toastr.success(info)
 }
 
 function msgbox(info,titleA,titleB,cb) {

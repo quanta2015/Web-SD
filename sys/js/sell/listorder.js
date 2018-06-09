@@ -1,4 +1,5 @@
 var _id;
+var _shop = {};
 let pageData = Object.assign({}, PAGE_DATA);
 
 $(init);
@@ -7,8 +8,15 @@ function init() {
   _id = '201806021905000011'
 
   initTime();
+  initShops()
   initList(pageData);
-  // $('body').on('click', '.return-list', doReturnList);
+  
+  $('#shop-name').on('change', doChangeShop);
+}
+
+function doChangeShop(e) {
+  shopname = $(e.currentTarget).find("option:selected").text();
+  $("#platform").find("option[value=" + _shop[shopname] +"]").attr("selected",true);
 }
 
 function initTime() {
@@ -18,9 +26,31 @@ function initTime() {
   $("#task-to").datetimepicker({value: to});
 }
 
+function initShops() {
+  promiseData('GET', URL_TASK_ALL_PLATFORM, null, cbShops);
+}
+
+function cbShops(e) {
+  if (e.code == 0) {
+    for(i=0; i< e.data.length; i++) {
+      for(j=0; j< e.data[i].shops.length; j++) {
+        _shop[e.data[i].shops[j].name] = e.data[i].platform;
+        let val = e.data[i].shops[j].name;
+        let sid = e.data[i].shops[j].id;
+        let cnt = $.format('<option value="{0}">{1}</option>', sid, val )
+        $("#shop-name").append(cnt)
+      }
+    }
+  } else if (e.code == -1) {
+    relogin();
+  } else if (e.code == 99){
+    notifyInfo(MSG_DEL_FAILED);
+  }
+}
+
 function initList(param) {
   Object.assign( param, { taskId: _id });
-  TmplData('/tmpl/sell/list_order.tmpl', [URL_SELL_ACCEPT_LIST, encodeQuery(param)].join('?'), null, cbListTask)
+  TmplData(URL_SELL_LIST_ORDER, [URL_SELL_ACCEPT_LIST, encodeQuery(param)].join('?'), null, cbListTask)
 }
 
 
@@ -49,3 +79,5 @@ function initPage(totalPages) {
     }
   })
 }
+
+

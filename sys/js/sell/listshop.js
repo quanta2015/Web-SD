@@ -35,7 +35,7 @@ function cbListShop(r, e) {
 
 function doDelShop() {
   var sid = $(this).attr('id')
-  msgbox("请确认是否要删除店铺！","取消","确定",cbDel)
+  msgbox(MSG_CONF_DEL_SHOP,MSG_CANCEL,MSG_OK,cbDel)
 
   function cbDel(e) {
     if (!e) {
@@ -73,7 +73,6 @@ function doEditShop() {
 
 
   $("#shop_type").find("option[value='" + _listshop[index].type + "']").attr("selected",true);
-  // $("#shop_type").val(_listshop[index].type)
   $("#shop-province").find("option[value='" + _listshop[index].addressProvince + "']").attr("selected",true);
   $("#shop-province").trigger("change");
   $("#shop-city").find("option[value='" + _listshop[index].addressCity + "']").attr("selected",true);
@@ -89,7 +88,7 @@ function cbEditShop(e) {
  
   if (e.code == 0) {
     $("#basic .close").click()
-    notifyInfo("更新数据成功！")
+    notifyInfo(MSG_UPDATE_SHOP_SUCC)
     initList()
   } else if (e.code == -1) {
     relogin();

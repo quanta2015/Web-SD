@@ -1,6 +1,7 @@
 <table class="table table-hover table-light">
     <thead>
         <tr class="uppercase">
+            <th>  </th>
             <th> 序号 </th>
             <th> 平台 </th>
             <th> 店铺 </th>
@@ -24,6 +25,7 @@
     <tbody>
       {{for data}}
         <tr>
+            <td> <input type="checkbox" name="tid" value="{{:id}}"> </td>
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
             <td> platform </td>
             <td> shop </td>

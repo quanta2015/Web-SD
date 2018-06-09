@@ -1,18 +1,26 @@
 let _listtask;
 let _id;
+var _shop = {};
 let pageData = Object.assign({}, PAGE_DATA);
 
 $(init);
 
 function init() {
   initTime();
-  initShops()
+  initShops();
   initList(pageData);
+
+  $('#shop-name').on('change', doChangeShop);
 
   $('body').on('click', '.pay-task', doPayTask);
   $('body').on('click', '.del-task', doDelTask);
   $('body').on('click', '.mag-task', doMagTask);
   $('body').on('click', '.search-task', doSearch);
+}
+
+function doChangeShop(e) {
+  shopname = $(e.currentTarget).find("option:selected").text();
+  $("#platform").find("option[value=" + _shop[shopname] +"]").attr("selected",true);
 }
 
 function initTime() {
@@ -28,13 +36,13 @@ function initShops() {
 
 function cbShops(e) {
   if (e.code == 0) {
-
     for(i=0; i< e.data.length; i++) {
       for(j=0; j< e.data[i].shops.length; j++) {
+        _shop[e.data[i].shops[j].name] = e.data[i].platform;
         let val = e.data[i].shops[j].name;
         let sid = e.data[i].shops[j].id;
         let cnt = $.format('<option value="{0}">{1}</option>', sid, val )
-        $("#shop-name").append( cnt )
+        $("#shop-name").append(cnt)
       }
     }
   } else if (e.code == -1) {
@@ -62,7 +70,7 @@ function initList(pg) {
     taskId: $("#task-id").val()
   }
   param = Object.assign(cdt, pg);
-  TmplData(TMPL_SELL_TASK_LIST, ['/task/search_tasks', encodeQuery(param)].join('?'), null, cbListTask)
+  TmplData(TMPL_SELL_TASK_LIST, [URL_SELL_LIST_TASK, encodeQuery(param)].join('?'), null, cbListTask)
 }
 
 
@@ -83,12 +91,14 @@ function doPayTask() {
 
 function cbPayTask(e) {
   if (e.code == 0) {
-    notifyInfo("发布任务成功！");
+    notifyInfo(MSG_TASK_PUB_SUCC);
     initList();
   } else if (e.code == -1) {
     relogin();
   } else if (e.code == 99){
-    notifyInfo(e.message);
+
+    // notifyInfo(e.message);
+     msgbox(e.message,MSG_WAIT,MSG_RECHARGE, cbRecharge)
   }
 }
 
@@ -126,7 +136,7 @@ function initPage(totalPages) {
 
 function cbDelTask(e) {
   if (e.code == 0) {
-    notifyInfo("删除任务成功！");
+    notifyInfo(MSG_TASK_DEL_SUCC);
     initList();
   } else if (e.code == -1) {
     relogin();
@@ -135,23 +145,9 @@ function cbDelTask(e) {
   }
 }
 
+function cbRecharge(ret) {
+  if (!ret) {
+    goto('rechargeTask.html')
+  }
+}
 
-
-$.format = function (source, params) {
-    if (arguments.length == 1)
-        return function () {
-            var args = $.makeArray(arguments);
-            args.unshift(source);
-            return $.format.apply(this, args);
-        };
-    if (arguments.length > 2 && params.constructor != Array) {
-        params = $.makeArray(arguments).slice(1);
-    }
-    if (params.constructor != Array) {
-        params = [params];
-    }
-    $.each(params, function (i, n) {
-        source = source.replace(new RegExp("\\{" + i + "\\}", "g"), n);
-    });
-    return source;
-};
