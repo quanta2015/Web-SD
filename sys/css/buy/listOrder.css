@@ -9,7 +9,7 @@ body {
     bottom: 0;
     background: rgba(120,120,120,.9);
     width: 300px;
-    display: none;
+    /*display: none;*/
     flex-direction: column;
     z-index: 1000;
     padding: 10px 15px;

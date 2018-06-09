@@ -1,40 +1,22 @@
-<div class="m-d-item m-d-item-money col-1">
-  <li class="v-m-title">
-    <div class="col-1">
-      <span class="icon-list"></span>
-      <span class="m-step">资金明细 </span>
-    </div>
-  </li>
-  <li>
-    <div class="table-scrollable">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th> # </th>
-            <th> 时间 </th>
-            <th> 收款额（元） </th>
-            <th> 余额（元） </th>
-            <th> 内容 </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td> 1 </td>
-            <td> 2018-05-12 09:12 </td>
-            <td> 支出： -120.5 </td>
-            <td> 1000.00 </td>
-            <td> 本金提现 </td>
-          </tr>
-          <tr>
-            <td> 2 </td>
-            <td> 2018-05-14 12:12  </td>
-            <td> 收入：10.00 </td>
-            <td> 1010.00 </td>
-            <td> 任务佣金 </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    
-  </li>
-</div>
+<table class="table table-hover">
+              <thead>
+                <tr>
+                  <th> # </th>
+                  <th> 时间 </th>
+                  <th> 收款额（元） </th>
+                  <th> 余额（元） </th>
+                  <th> 内容 </th>
+                </tr>
+              </thead>
+              <tbody>
+                {{for data}}
+                <tr>
+                  <td> {{:#index}} </td>
+                  <td> {{:~formatTime(createtime)}} </td>
+                  <td> {{if (moneyType==1)}}收入{{else}}支出{{/if}}： {{:money}} </td>
+                  <td> 1000.00 </td>
+                  <td> {{if (moneyType==1)}}佣金{{else}}本金提现{{/if}} </td>
+                </tr>
+                {{/for}}
+              </tbody>
+            </table>

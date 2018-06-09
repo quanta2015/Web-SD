@@ -107,6 +107,8 @@ function cbListTask(r,e) {
     if ($('.table-pg').text() == '') initPage(totalPages);
   } else if (e[0].code == -1) {
     relogin();
+  } else if (e.code == 99){
+    notifyInfo(e.message);
   }
 
 }

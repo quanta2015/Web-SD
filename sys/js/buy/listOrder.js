@@ -52,11 +52,12 @@ function doEvalTask(e) {
 function doDetail() {
   
 
-  if (('#ig-info').text() !== '') {
-    $("#ig-info").empty();
+  if ($('#ig-info').hasClass('hide')) {
     var obj = { taskkeyid: $(this).data('tid') }
     TmplData('/tmpl/buy/show_detail.tmpl', ['/buyertask/taskdetail', encodeQuery(obj)].join('?'),null, cbDetail)
   }else{
+    $("#ig-info").empty();
+    $("#ig-info").addClass("hide");
     
   }
   
@@ -67,7 +68,8 @@ function cbDetail(r, e) {
   if (ret.code == 0) {
     ret.data.imgPrefix = IMG_PREFIX;
     $("#ig-info").append($.templates(r[0]).render(ret.data, rdHelper));
-    $("#ig-info").toggle("slide", { direction: "left" }, 200);
+    // $("#ig-info").toggle("slide", { direction: "left" }, 200);
+    $("#ig-info").removeClass("hide");
   } else if (ret.code == 99) {
     notifyInfo(ret.message);
   } else if (ret.code == -1) {
