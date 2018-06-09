@@ -12,18 +12,32 @@ function init() {
   initList(pageData);
   
   $('#shop-name').on('change', doChangeShop);
+  $('#search-order').on('click', doSearch);
+  $('#batch-pay').on('click', null);
+  $('#batch-cancel').on('click', null);
+  $('#batch-send').on('click', null);
+  $('#export').on('click', null);
 }
+
+
+function doSearch() {
+  $('.portlet-body .table-pg').remove();
+  $('.portlet-body').append('<div class="table-pg"></div>');
+  initList(pageData)
+}
+
 
 function doChangeShop(e) {
   shopname = $(e.currentTarget).find("option:selected").text();
   $("#platform").find("option[value=" + _shop[shopname] +"]").attr("selected",true);
 }
 
+
 function initTime() {
   let from =  moment().subtract('days',7).format('YYYY-MM-DD') + ' 00:00';
   let to = moment().format('YYYY-MM-DD') + ' 23:59'
-  $("#task-from").datetimepicker({ value: from});
-  $("#task-to").datetimepicker({value: to});
+  $("#task-from").datetimepicker({ value: from, format:'Y-m-d H:i'});
+  $("#task-to").datetimepicker({value: to, format:'Y-m-d H:i'});
 }
 
 function initShops() {
@@ -48,9 +62,21 @@ function cbShops(e) {
   }
 }
 
-function initList(param) {
-  Object.assign( param, { taskId: _id });
-  TmplData(URL_SELL_LIST_ORDER, [URL_SELL_ACCEPT_LIST, encodeQuery(param)].join('?'), null, cbListTask)
+function initList(pg) {
+  let cdt = {
+    shopId: $("#shop-name").val(),
+    acceptStart: $("#task-from").val() + ':00',
+    acceptEnd: $("#task-to").val()+ ':00',
+    shopType: $("#platform").val(),
+    taskType: $("#task-type").val(),
+    buyTaskStatus: $("#task-status").val(),
+    taskId: $("#task-id").val(),
+    buyTaskId: $("#order-id").val(),
+    taobaoId: $("#taobao-id").val(),
+    commentType: $("#comment-type").val()
+  }
+  Object.assign( cdt, pg);
+  TmplData(URL_SELL_LIST_ORDER, ['/task/task_accept_list_all', encodeQuery(cdt)].join('?'), null, cbListTask)
 }
 
 

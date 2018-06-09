@@ -1,8 +1,13 @@
 let _code;
 
+let _invite;
+
 $(init);
 
 function init() {
+
+  checkInvite();
+
   $('body').on('click', '.login-hd li', toggleUserLogin);
   $('body').on('click', '.action-login', goLoginPage);
   $('body').on('click', '.action-register', goRegisterPage);
@@ -13,6 +18,13 @@ function init() {
   $('body').on('click', '#getcode-btn', doGetCode);
   $('body').on('click', '#loginBtn', doLogin);
   $('body').on('keydown', doPressLogin);
+}
+
+function checkInvite() {
+  _invite = getUrlParam('invite')
+  if (( _invite !== "" )&&( _invite !== null )) {
+    showRegBuy(_invite);
+  }
 }
 
 function doPressLogin(e) {
@@ -59,6 +71,7 @@ async function showRegSell() {
 async function showRegBuy() {
   hideAllPages();
   $('.regs').empty().removeClass('hide reg-sj').append(await renderTmpl(TMPL_REG, { type:'buy' }));
+  $("#invitecode").val(_invite)
 }
 
 function doRegister() {

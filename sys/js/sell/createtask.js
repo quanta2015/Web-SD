@@ -443,9 +443,13 @@ async function doInitShop() {
   if ( platform === '淘宝' ) {
     $('.form-group-tb').removeClass('hide')
     $('.form-group-jd').addClass('hide')
+    $('#r-task-mtb').prop('checked',true)
+    $('#r-task-mjd').prop('checked',false)
   }else if(platform === '京东') {
     $('.form-group-tb').addClass('hide')
     $('.form-group-jd').removeClass('hide')
+    $('#r-task-mtb').prop('checked',false)
+    $('#r-task-mjd').prop('checked',true)
   }
   $("#shop-list").empty().append(await renderTmpl(TMPL_SELL_SHOP_SELECT, { list:platformMap[platform] }));
 }

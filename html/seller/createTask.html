@@ -91,7 +91,7 @@
 
             <div class="mt-radio-list form-group-tb hide">
               <label class="mt-radio">
-                  <input type="radio" name="r-task-type" value="手机淘宝任务" checked> 手机淘宝任务
+                  <input type="radio" name="r-task-type" value="手机淘宝任务" id="r-task-mtb"> 手机淘宝任务
                   <span></span>
                   <i class="form-info">（通过提供的关键字，从淘宝、天猫手淘自然搜索入店找到商品下单）</i>
               </label>
@@ -104,7 +104,7 @@
 
             <div class="mt-radio-list form-group-jd hide">
               <label class="mt-radio">
-                  <input type="radio" name="r-task-type" value="手机京东任务" checked> 手机京东任务
+                  <input type="radio" name="r-task-type" value="手机京东任务" id="r-task-mjd"> 手机京东任务
                   <span></span>
                   <i class="form-info">（通过提供的关键字，从手机京东自然搜索入店找到商品下单）</i>
               </label>
@@ -377,12 +377,12 @@
               <!-- start 普通好评  -->
               <div class="col-xs-12">
                 <label class="mt-checkbox mt-checkbox-outline ">
-                  <input type="checkbox" id="normaltask"> 普通好评任务
+                  <input type="checkbox" id="normaltask" checked> 普通好评任务
                   <span></span>
                   <i class="form-info">(免费，买家确认收货后评价自由发挥)</i>
                 </label>
               </div>
-              <div class="col-xs-12 task-wrap nor-task-wrap"  style="display: none;">
+              <div class="col-xs-12 task-wrap nor-task-wrap">
                 <div class="task-add nor-task-add">
                   <a href="javascript: void(0)"> + 添加搜索关键字</a>
                 </div>
@@ -444,7 +444,7 @@
             </div>
 
             <div class="form-group">
-              <div class="col-xs-4 form-inline">
+              <div class="col-xs-6 form-inline">
                 发布间隔时间 <input type="text" class="form-control wide-s1" id="pub-itl-time" name="pub-itl-time" value="5"> 分钟
               </div>
               <div class="col-xs-4 form-inline">
@@ -453,7 +453,7 @@
             </div>
             
             <div class="form-group">
-              <div class="col-xs-4">
+              <div class="col-xs-6 form-inline">
                 发布任务日期设置（默认为当日）
                 <div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
                   <input type="text" class="form-control" readonly="" id="start-date">
@@ -463,9 +463,9 @@
                   </span>
                 </div>
               </div>
-              <div class="col-xs-8">
-                您已设置任务的总单数为：单
-                <input type="text" class="form-control" id="task-count" disabled> 
+              <div class="col-xs-4 form-inline">
+                您已设置任务的总单数为 
+                <input type="text" class="form-control wide-s2" id="task-count" disabled> 单 
               </div>
 
 

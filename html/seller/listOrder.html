@@ -38,7 +38,7 @@
             <div><span>任务编号 </span><input type="text" id="task-id"></div>
             <div><span>订单编号 </span><input type="text" id="order-id"></div>
             <div><span>买家编号 </span><input type="text" id="buyer-id"></div>
-            <div><span>淘宝/京东单号 </span><input type="text" id="buyer-id"></div>
+            <div><span>淘宝/京东单号 </span><input type="text" id="taobao-id"></div>
           </div>
           <div class="m-sbar">
             <div>
@@ -63,23 +63,21 @@
             </div>
             <div>
               <span>订单状态</span>
-              <select name="" id="task-status">
-                <option value="0">全部</option>
-                <option value="1">待处理</option>
-                <option value="2">待发货</option>
-                <option value="3">待评价</option>
-                <option value="4">评价待审核</option>
-                <option value="5">待确认返款</option>
-                <option value="6">评价待审核</option>
-                <option value="7">刷手撤销</option>
-                <option value="8">系统撤销</option>
-                <option value="9">已完成</option>
+              <select id="task-status">
+                <option value="">全部</option>
+                <option value="0">待处理</option>
+                <option value="10">待发货</option>
+                <option value="20">待评价</option>
+                <option value="30">评价待审核</option>
+                <option value="50">评价待审核</option>
+                <option value="60">刷手撤销</option>
+                <option value="70">系统撤销</option>
               </select>
             </div>
             <div>
               <span>评价类型</span>
-              <select name="" id="task-status">
-                <option value="0">全部</option>
+              <select name="" id="comment-type">
+                <option value="">全部</option>
                 <option value="1">普通好评任务</option>
                 <option value="2">指定关键词好评任务</option>
                 <option value="3">指定图片好评任务</option>
@@ -110,11 +108,11 @@
             </div>
           </div>
           <div class="m-sbar">
-            <a href="#basic" class="btn red-sunglo btn-sm" ><i class="fa fa-search"></i> 查询 </a>
-            <a href="#basic" class="btn green-dark btn-sm" ><i class="fa fa-rmb"></i> 批量返款 </a>
-            <a href="#basic" class="btn green-dark btn-sm" ><i class="fa fa-remove"></i> 批量撤销 </a>
-            <a href="#basic" class="btn green-dark btn-sm" ><i class="fa fa-ambulance"></i> 批量发货 </a>
-            <a href="#basic" class="btn blue-soft btn-sm" ><i class="fa fa-mail-forward"></i> 导出 </a>
+            <a href="#basic" class="btn red-sunglo btn-sm" id="search-order" ><i class="fa fa-search"></i> 查询 </a>
+            <a href="#basic" class="btn green-dark btn-sm" id="batch-pay"><i class="fa fa-rmb"></i> 批量返款 </a>
+            <a href="#basic" class="btn green-dark btn-sm" id="batch-cancel"><i class="fa fa-remove"></i> 批量撤销 </a>
+            <a href="#basic" class="btn green-dark btn-sm" id="batch-send"><i class="fa fa-ambulance"></i> 批量发货 </a>
+            <a href="#basic" class="btn blue-soft btn-sm" id="export"><i class="fa fa-mail-forward"></i> 导出 </a>
           </div>
         </div>
         <div class="portlet-body">
