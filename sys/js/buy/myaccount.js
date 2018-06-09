@@ -1,3 +1,6 @@
+let pageData = Object.assign({}, PAGE_DATA);
+
+
 $(init);
 
 function init() {
@@ -10,7 +13,20 @@ function init() {
     $("#all").text(e.data.balance+e.data.servicefee);
     $("#servicefee").text(e.data.servicefee);
     $("#balance").text(e.data.balance);
+    $("#spread").text(e.data.spread);
+  })
 
-  } )
+  //显示金额流水
+  initList(pageData);
+
+  
+  promiseData('GET','/buyer/buyer_trade_records',null, (e)=>{
+    $("#all").text(e.data.balance+e.data.servicefee);
+    $("#servicefee").text(e.data.servicefee);
+    $("#balance").text(e.data.balance);
+    $("#spread").text(e.data.spread);
+  })
+
+
 }
 

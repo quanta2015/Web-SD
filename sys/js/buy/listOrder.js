@@ -50,16 +50,22 @@ function doEvalTask(e) {
 
 
 function doDetail() {
-  // $("#ig-info").toggle("slide", { direction: "left" }, 200);
+  
 
-  $("#ig-info").empty();
-  var obj = { taskkeyid: $(this).data('tid') }
-  TmplData('/tmpl/buy/show_detail.tmpl', ['/buyertask/taskdetail', encodeQuery(obj)].join('?'),null, cbDetail)
+  if (('#ig-info').text() !== '') {
+    $("#ig-info").empty();
+    var obj = { taskkeyid: $(this).data('tid') }
+    TmplData('/tmpl/buy/show_detail.tmpl', ['/buyertask/taskdetail', encodeQuery(obj)].join('?'),null, cbDetail)
+  }else{
+    
+  }
+  
 }
 
 function cbDetail(r, e) {
   let ret = e[0];
   if (ret.code == 0) {
+    ret.data.imgPrefix = IMG_PREFIX;
     $("#ig-info").append($.templates(r[0]).render(ret.data, rdHelper));
     $("#ig-info").toggle("slide", { direction: "left" }, 200);
   } else if (ret.code == 99) {

@@ -7,13 +7,12 @@ $(init);
 function init() {
   initTime();
   initShops()
-  initList();
+  initList(pageData);
 
   $('body').on('click', '.pay-task', doPayTask);
   $('body').on('click', '.del-task', doDelTask);
   $('body').on('click', '.mag-task', doMagTask);
-  $('body').on('click', '.search-task', initList);
-  
+  $('body').on('click', '.search-task', doSearch);
 }
 
 function initTime() {
@@ -45,7 +44,14 @@ function cbShops(e) {
   }
 }
 
-function initList() {
+function doSearch() {
+  $('.portlet-body .table-pg').remove();
+  $('.portlet-body').append('<div class="table-pg"></div>');
+  initList(pageData)
+}
+
+
+function initList(pg) {
   let cdt = {
     shopId: $("#shop-name").val(),
     publishtime_s: $("#task-from").val() + ':00',
@@ -55,10 +61,8 @@ function initList() {
     status: $("#task-status").val(),
     taskId: $("#task-id").val()
   }
-  param = Object.assign(cdt, PAGE_DATA);
+  param = Object.assign(cdt, pg);
   TmplData(TMPL_SELL_TASK_LIST, ['/task/search_tasks', encodeQuery(param)].join('?'), null, cbListTask)
-  
-  // TmplData(TMPL_SELL_TASK_LIST, [URL_SELL_ALL_TASK, encodeQuery(param)].join('?'), null, cbListTask)
 }
 
 
@@ -84,7 +88,7 @@ function cbPayTask(e) {
   } else if (e.code == -1) {
     relogin();
   } else if (e.code == 99){
-    notifyInfo(MSG_PUBLISH_FAILED);
+    notifyInfo(e.message);
   }
 }
 

@@ -3,10 +3,18 @@ $(init);
 function init() {
   $('body').on('click', '#resetBtn', doResetForm);
   $('body').on('click', '#saveBtn', doSave);
+  $('#shop_type').on('change', doChange);
 
-  
   $('#typepicker').typepicker();
   $('#pick').distpicker();
+}
+
+function doChange(e) {
+  if ($(e.currentTarget).val() === '京东') {
+    $('.form-tb').hide()
+  }else{
+    $('.form-tb').show()
+  }
 }
 
 function doResetForm() {

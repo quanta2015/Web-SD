@@ -404,7 +404,7 @@ function cbInfo(r, e) {
 }
 
 function doComplete() {
-  msgbox(MSG_PUBLISH_SUCCESS,"继续发布任务","查看任务", function(ret) {
+  msgbox("任务保存成功！","继续创建任务","发布任务", function(ret) {
     if (ret) {
       goto('createTask.html')
     }else{

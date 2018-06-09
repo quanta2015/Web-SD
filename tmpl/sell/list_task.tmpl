@@ -13,6 +13,7 @@
             <th> 任务状态 </th>  
             <th> 审批原因 </th> 
             <th> 任务编号 </th>
+            <th> 总金额 </th>
             <th> 操作 </th>
         </tr>
     </thead>
@@ -28,6 +29,7 @@
             <td> {{:num}}</td>
             <td> {{:keywords}}</td>
             <td> {{if auditFirst}} 是 {{else}} 否 {{/if}} </td>
+
             <td> 
               <div class="u-task-status {{if status==0 || status==40}}font-red{{/if}}">
                 {{:statusName}}
@@ -42,6 +44,7 @@
             </td>
             <td> {{:approveReason}} </td>
             <td> {{:id}}</td>
+            <td> {{:taskMoney.sum}}</td>
             <td>
               {{if (status==0 || status==40 || status==20)}}
               <a href="javascript:;" class="btn red-sunglo btn-xs  sbold uppercase del-task" id="{{:id}}" ><i class="fa fa-times"></i> 删除 </a> 

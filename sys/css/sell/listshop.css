@@ -1,4 +1,6 @@
-
+body {
+    min-width: 1280px;
+}
 
 .pass {
   color: #ff6600;
