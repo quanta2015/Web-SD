@@ -1,83 +1,131 @@
 let rules = {
   name: {
-    required: !0,
-  },
-  bank: {
     required: !0
   },
-  acountSubbank: {
-    required: !0
-  },
-  acountBankno: {
+  bankno: {
     required: !0,
-    number: !0
   },
-  bankNo: {
-    required: !0,
-    number: !0
-  },
-  rebankno: {
+  withdrawMoney: {
     required: !0,
     number: !0
   }
 }
+let pageData = Object.assign({}, PAGE_DATA);
 
 $(init);
 
 function init() {
 
-  initList('#tab-capital');
-  initAddWithdraw();
+  initTime();
+  initList();
+  initBalanceInfo();
+  $('body').on('input propertychange', '#withdraw-money', doCompute);
+  $('body').on('click', '#btn-search', doSearch);
 }
 
-async function initList(tab) {
-  // 初始化table数据
-  $(`${tab} .table-data`).append(await renderTmpl(TMPL_SELL_WITHDRAW_LIST, {
-    data: [1,1,1]
-  }));
-  $(`${tab} .table-pg`).twbsPagination({
-    totalPages: 5,
-    visiblePages: 3,
-    onPageClick: function(event, page) {
-      // ajax request
-      console.log(page)
-      return renderTmpl(TMPL_SELL_WITHDRAW_LIST, {
-        data: new Array(page).fill(1),
-      }).then(html => {
-        $(`${tab} .table-data`).empty().append(html);
-      })
-    }
-  })
-  $('.date-picker').datepicker({
-    rtl: App.isRTL(),
-    orientation: 'right',
-    autoclose: true
-  });
+function initTime() {
+  let from =  moment().subtract('days',7).format('YYYY-MM-DD') + ' 00:00';
+  let to = moment().format('YYYY-MM-DD') + ' 23:59'
+  $("#sr-time-from").datetimepicker({ value: from});
+  $("#sr-time-to").datetimepicker({value: to});
+}
+
+function initList() {
+  let param = {
+    status: $('#sr-status'),
+    toAccount: $('#sr-bankno'),
+    publishtime_s: $("#sr-time-from").val() + ':00',
+    publishtime_e: $("#sr-time-to").val()+ ':00',
+  };
+  Object.assign(param, {transferType: 0}, pageData);
+  TmplData(TMPL_SELL_WITHDRAW_LIST, [URL_SELL_ALL_RECHARGE, encodeQuery(param)].join('?'), null, cbList)
 }
 
 function cbList(r, e) {
-  console.log(e);
-  if (e[0].code == 0) {
+  let ret = e[0];
+  if (ret.code == 0) {
+    Object.assign(ret, pageData, {name: cookie('name')});
+    totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
     $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(e[0], null));
-  } else if (e.code == -1) {
+    $('#tab-list .table-data').prepend($.templates(r[0]).render(ret, rdHelper));
+    if ($('.table-pg').text() == '') initPage(totalPages);
+  } else if (e[0].code == -1) {
     relogin();
-  } else if (e.code == 99) {
+  } else if (e.code == 99){
     notifyInfo(e.message);
   }
+
 }
 
-function initAddWithdraw() {
-  promiseData('GET', URL_SELL_BALANCE, null, (e) => {
-    renderTmpl(TMPL_SELL_WITHDRAW, {
-      name: cookie('name'),
-      bankcard: cookie('bankcard'),
-      capWithdraw: null,
-      comWithdraw: null,
-      capBalance: e.data,
-      comBalance: 0,
-      amount: '0.00',
-      poundage: '0.00'
-    }).then(html => $('#tab-commision').append(html));
+function initPage(tab, totalPages) {
+  $('#tab-list .table-pg').twbsPagination({
+    totalPages: totalPages || 1,
+    onPageClick: function(event, page) {
+      pageData.pageIndex = page - 1;
+      initList(pageData);
+    }
   })
+}
+
+function initBalanceInfo() {
+  promiseData('GET', URL_SELL_BALANCE, null, cbBalanceInfo);
+}
+
+function cbBalanceInfo(e) {
+  if (e.code === 0) {
+    $('#shoper-name').val(cookie('name'));
+    $('#bankno').val(cookie('bankcard'));
+    $('#balance').text(e.data);
+  } else if (e.code == 99) {
+    errorInfo(e.message);
+  } else if (e.code==-1) {
+    relogin();
+  };
+
+  $("#form-withdraw").validate({
+    rules: rules,
+    submitHandler: (e) => { doWithdraw() }
+  })
+
+}
+
+function doCompute() {
+  let rate = 0.005;
+  // 提现总额
+  let amount = parseInt($('#withdraw-money').val() || 0);
+  amount *= (1-rate);
+  $('#amount').text(amount.toFixed(2));
+  // 手续费
+  let poundage = amount * rate;
+  $('#poundage').text(poundage.toFixed(2));
+}
+
+function doWithdraw() {
+  let obj = {
+    shoperId: cookie('id'),
+    toAccount:parseInt($('#bankno').val()),
+    transferMoney: parseInt($('#amount').text()),
+    transferType: 0,
+  }
+
+  let sum = parseInt($('#amount').text()) + parseInt($('#poundage').text());
+  if (sum > parseFloat($('#balance').text()) ) {
+    return errorInfo('提现超出余额！');
+  }
+  promiseData('POST', URL_SELL_TRANSFER, JSON.stringify(obj), cdWithdraw);
+}
+
+function cdWithdraw(e) {
+  if (e.code === 0) {
+    notifyInfo(MSG_WITHDRAW_SUCCESS);
+  } else if (e.code == 99) {
+    errorInfo(e.message);
+  } else if (e.code==-1) {
+    relogin();
+  };
+}
+
+function doSearch() {
+  $('.portlet-body .table-pg').remove();
+  $('.portlet-body').append('<div class="table-pg"></div>');
 }
