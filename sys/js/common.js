@@ -213,6 +213,8 @@ const MSG_INPUT_KEYWORD       = '请输入关键字！'
 const MSG_INPUT_TASK_COUNT    = '请输入任务数量！'
 const MSG_INPUT_KEYWORD_EX    = '请输入指定关键词！'
 const MSG_INPUT_TEXT          = '请输入指定文字！'
+const MSG_CONF_DEL_NOTICE = "请确认是否要删除该公告！"
+
 
 
 const TEXT_BIND_SUCCESS = '已绑定'
