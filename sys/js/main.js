@@ -31,7 +31,7 @@ function init() {
     $("#mainframe", parent.document.body).attr("src", pageName);
   });
 
-  $('#exitBtn').on('click', function(e) {
+  $('#exitBtn').on('click', (e)=> {
     $.cookie('cko', null);
     location.href = '/index.html'
   });

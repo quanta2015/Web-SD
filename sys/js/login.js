@@ -164,19 +164,35 @@ function doCounter(count) {
 function doLogin() {
   let url = $('.loginYh').is('.on') ? URL_BUY_LOGIN : URL_SELL_LOGIN;
   let obj = { mobile:$('#login-mobile').val(), password: $('#login-password').val() };
-  promiseData('POST', url, JSON.stringify(obj), cbLogin);
+  promise('POST', url, JSON.stringify(obj), cbLogin);
 }
 
 function cbLogin(e) {
-  if (e.code == 0) {
-    e.data.userType = $('.loginYh').is('.on')?BUY:SELL;
-    e.data.password = $('#login-password').val();
-    saveCookie(e.data);
+    e.userType = $('.loginYh').is('.on')?BUY:SELL;
+    e.password = $('#login-password').val();
+    saveCookie(e);
     location.href = $('.loginYh').is('.on')? 'html/buyer/mainBuy.html' : 'html/seller/mainSell.html';
     notifyInfo(MSG_LOGIN_SUCCESS);
-  }else if (e.code==99) {
-    notifyInfo(e.message);
-  }else if (e.code==-1) {
-    relogin();
-  };
 }
+
+
+
+// function doLogin() {
+//   let url = $('.loginYh').is('.on') ? URL_BUY_LOGIN : URL_SELL_LOGIN;
+//   let obj = { mobile:$('#login-mobile').val(), password: $('#login-password').val() };
+//   promiseData('POST', url, JSON.stringify(obj), cbLogin);
+// }
+
+// function cbLogin(e) {
+//   if (e.code == 0) {
+//     e.data.userType = $('.loginYh').is('.on')?BUY:SELL;
+//     e.data.password = $('#login-password').val();
+//     saveCookie(e.data);
+//     location.href = $('.loginYh').is('.on')? 'html/buyer/mainBuy.html' : 'html/seller/mainSell.html';
+//     notifyInfo(MSG_LOGIN_SUCCESS);
+//   }else if (e.code==99) {
+//     notifyInfo(e.message);
+//   }else if (e.code==-1) {
+//     relogin();
+//   };
+// }

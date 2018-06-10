@@ -33,17 +33,7 @@
             <td> {{:~formatTime(taskCreatetime)}} </td>
             <td> {{:~formatTime(acceptTime)}} </td>
             <td> {{:buyerId}} </td>
-            <td class="z-status{{:status}}">
-               {{if   (status== 0)}} 待处理
-               {{else (status==10)}} 待发货
-               {{else (status==20)}} 待评价
-               {{else (status==30)}} 评价待审核
-               {{else (status==40)}} 待确认返款
-               {{else (status==50)}} 刷手撤销
-               {{else (status==60)}} 系统撤销
-               {{else (status==70)}} 已完成 
-               {{/if}} 
-            </td>
+            <td class="z-status{{:status}}"> {{:~formatOrderStatus(status)}}</td>
             <td> {{:orderid}} </td>
             <td> {{:sumMoney}} </td>
             <td> {{:serviceSum}} </td>

@@ -305,6 +305,9 @@ function promise(method, url, data, cb) {
     dataType: "json",
     contentType: "application/json",
     data: data,
+    xhrFields: {
+      withCredentials: true
+    },
     crossDomain: true
   });
   promise.then((e)=>{
@@ -412,7 +415,19 @@ const rdHelper = {
       case 6: ret = '下线佣金';break;
     }
     return ret;
-  }
+  },
+  formatOrderStatus: (s)=> {
+    switch(s) {
+      case  0: ret = '待处理';    break;
+      case 10: ret = '待发货';    break;
+      case 20: ret = '待评价';    break;
+      case 30: ret = '评价待审核'; break;
+      case 50: ret = '刷手撤销';  break;
+      case 60: ret = '系统撤销';  break;
+      case 70: ret = '已完成';    break;
+    }
+    return ret;
+  } 
 }
 
 
