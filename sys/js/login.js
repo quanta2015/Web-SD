@@ -94,6 +94,7 @@ function doRegister() {
   }
   // 展示结果
   newIds.forEach(id => {
+    if (id === 'invitecode') return;
     if (!infoMap[id].val || infoMap[id].val === '' || !infoMap[id].isValid ) {
       $(`#${id}`).siblings('p').find('span').removeClass('hide');
       success = false;

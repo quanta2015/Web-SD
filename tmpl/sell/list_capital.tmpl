@@ -3,7 +3,7 @@
         <tr class="uppercase">
             <th> 序号 </th>
             <th> 时间 </th>
-            <th> 收资 </th>
+            <th> 收支 </th>
             <th> 金额 </th>
             <th> 余额 </th>
             <th> 内容 </th>
@@ -13,9 +13,9 @@
     <tbody>
       {{for data}}
         <tr>
-            <td> {{:#index+1}} </td>
-            <td> {{:#data}}</td>
-            <td> {{:type}} </td>
+            <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
+            <td> {{:~formatTime(createtime)}}</td>
+            <td> {{:taskId}} </td>
             <td> {{:money}}</td>
             <td> {{:balance}}</td>
             <td> {{:cnt}}</td>

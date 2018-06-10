@@ -1,56 +1,71 @@
-let capPgData = Object.assign({}, PAGE_DATA);
-let comPgData = Object.assign({}, PAGE_DATA);
+let pageData = Object.assign({}, PAGE_DATA);
 
 $(init);
 
 function init() {
 
-  initList('#tab-capital');
+  initSearchBar();
+  initList();
+  
 
-  $('[data-toggle]:gt(0)').one('click', async function(e) {
-    let tab = $(this).attr('href');
-    console.log(tab)
-
-    initList(tab);
-  })
+  // $('[data-toggle]:gt(0)').one('click', async function(e) {
+  //   let tab = $(this).attr('href');
+  //   initList(tab);
+  // })
 }
 
-async function initList(tab) {
-  // 初始化搜索框
+function initTime() {
+  let from =  moment().subtract('days',7).format('YYYY-MM-DD') + ' 00:00';
+  let to = moment().format('YYYY-MM-DD') + ' 23:59'
+  $("#sr-time-from").datetimepicker({ value: from});
+  $("#sr-time-to").datetimepicker({value: to});
+}
+
+async function initSearchBar(tab = '#tab-capital') {
   $(`${tab} .table-search`).append(await renderTmpl(TMPL_SELL_SRH_CAPITAL, {}));
-  // 初始化table数据
-  $(`${tab} .table-data`).append(await renderTmpl(TMPL_SELL_CAPITAL_LIST, {
-    data: [1,1,1]
-  }));
-  $(`${tab} .table-pg`).twbsPagination({
-    totalPages: 5,
-    visiblePages: 3,
-    onPageClick: function(event, page) {
-      // ajax request
-      console.log(page)
-      return renderTmpl(TMPL_SELL_CAPITAL_LIST, {
-        data: new Array(page).fill(1),
-      }).then(html => {
-        $(`${tab} .table-data`).empty().append(html);
-      })
-    }
-  })
-  $(".date-picker").datetimepicker({
-    isRTL: App.isRTL(),
-    format: "yyyy-mm-dd hh:ii",
-    autoclose: true,
-    todayBtn: true,
-    pickerPosition: (App.isRTL() ? "bottom-right" : "bottom-left"),
-    minuteStep: 10
-  });
+  $('body').on('click', '#btn-search', doSearch);
+  initTime();
+}
+
+// TODO: 目前把佣金tab隐藏了
+function initList(tab = '#tab-capital') {
+  let param = {
+    status: $('#sr-status'),
+    content: $('#sr-cnt'),
+    publishtime_s: $("#sr-time-from").val() + ':00',
+    publishtime_e: $("#sr-time-to").val()+ ':00',
+  };
+  Object.assign(param, {transferType: 0}, pageData);
+  TmplData(TMPL_SELL_CAPITAL_LIST, [URL_SELL_TRADE_LIST, encodeQuery(param)].join('?'), null, cbList)
 }
 
 function cbList(r, e) {
-  console.log(e);
-  if (e[0].code == 0) {
-    $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(e[0], null));
-  } else if (e.code == -1) {
+  let ret = e[0];
+  if (ret.code == 0) {
+    Object.assign(ret, pageData, {name: cookie('name')});
+    totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
+    $("#tab-capital .table").remove();
+    $('#tab-capital .table-data').prepend($.templates(r[0]).render(ret, rdHelper));
+    if ($('.table-pg').text() == '') initPage(totalPages);
+  } else if (e[0].code == -1) {
     relogin();
+  } else if (e.code == 99){
+    notifyInfo(e.message);
   }
+
+}
+
+function initPage(tab, totalPages) {
+  $('#tab-capital .table-pg').twbsPagination({
+    totalPages: totalPages || 1,
+    onPageClick: function(event, page) {
+      pageData.pageIndex = page - 1;
+      initList(pageData);
+    }
+  })
+}
+
+function doSearch() {
+  $('.portlet-body .table-pg').remove();
+  $('.portlet-body').append('<div class="table-pg"></div>');
 }
