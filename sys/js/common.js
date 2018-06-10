@@ -379,7 +379,19 @@ const promiseCall = (url, data) => {
 // TMPL FUNCTION DEF
 const rdHelper = {
   formatTime: (t) => { return moment(t).format("YYYY-M-D HH:mm:ss") },
-  div: (val1,val2) => { return  Number(val1) / Number(val2) * 100}
+  div: (val1,val2) => { return  Number(val1) / Number(val2) * 100},
+  formatMoneyType: (typeId) => {
+    switch(typeId) {
+      case 0: ret = '提现本金';break;
+      case 1: ret = '商品预付款';break;
+      case 2: ret = '佣金';break;
+      case 3: ret = '会费';break;
+      case 4: ret = '提款佣金';break;
+      case 5: ret = '存款';break;
+      case 6: ret = '下线佣金';break;
+    }
+    return ret;
+  }
 }
 
 
