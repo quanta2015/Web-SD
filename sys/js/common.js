@@ -97,6 +97,9 @@ const URL_SAVE_NOTICE ='/admin/save_notice';
 const URL_ADMIN_NOTICE_LIST ='/admin/notice_list';
 const URL_ADMIN_NOTICE_DEL='/admin/notice_del';
 
+const URL_ADMIN_QQ_LIST='/admin/buyer_qq_list'
+const URL_ADMIN_AUDITQQ='/admin/buyer_qq_approve'
+
 
 const URL_SHOP_BIND         = '/shoper/shop_bind'
 const URL_BUYER_GET_TASK    = '/buyertask/receive_task'
@@ -144,6 +147,7 @@ const TMPL_ADMIN_IDCARD_LIST      = '/tmpl/admin/list_idcard.tmpl'
 const TMPL_ADMIN_ACOUNT_LIST      = '/tmpl/admin/list_account.tmpl'
 const TMPL_ADMIN_RECHARGE_LIST    = '/tmpl/admin/list_admin_recharge.tmpl'
 const TMPL_ADMIN_NOTICE = '/tmpl/admin/list_notice.tmpl'
+const TMPL_ADMIN_QQ_LIST='/tmpl/admin/list_qq.tmpl'
 
 
 // BUYER
