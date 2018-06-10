@@ -44,12 +44,14 @@ function initList() {
 }
 
 function initRechargeTask(param = pageData) {
-  Object.assign(param, { transferType:1});
+  // 最近6个月
+  let from = moment().subtract('months',6).format('YYYY-MM-DD');
+  let to = moment().format('YYYY-MM-DD');
+  Object.assign(param, { transferType:1, fromDate: from, toDate: to});
   TmplData(TMPL_SELL_RECHARGE_LIST, [URL_SELL_ALL_RECHARGE, encodeQuery(param)].join('?'), null, cbRechargeTask)
 }
 
 function cbRechargeTask(r, e) {
-  console.log('111')
   let data = e[0];
   if (data.code == 0) {
     Object.assign(data, pageData);
