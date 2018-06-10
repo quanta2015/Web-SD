@@ -14,10 +14,7 @@
     
     <link href="/lib/pace/pace.css" rel="stylesheet" >
     <link href="/lib/loaders/loaders.min.css" rel="stylesheet" >
-    <link href="/lib/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css">
-    <link href="/lib/bootstrap-datepicker/css/bootstrap-datepicker3.css" rel="stylesheet" type="text/css">
-    <link href="/lib/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css">
-    <link href="/lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
+    <link href="/lib/jquery/jquery.datetimepicker.css" rel="stylesheet">
 
     <link href="/sys/css/common.css"  rel="stylesheet"  >
     <link href="/sys/css/sell/listrecharge.css"  rel="stylesheet"  >
@@ -50,43 +47,34 @@
           </div>
         </div>
         <div class="tab-pane fade active in" id="tab-capital">
-            <div class="table-search">
-              <form action="#" class="form-bordered form-search">
-                <div class="form-group">
-                  <label class="control-label">审核状态</label>
-                  <select class="form-control" id="">
-                    <option value="全部">全部</option>
-                    <option value="0">未处理</option>
-                    <option value="1">已通过</option>
-                    <option value="2">未通过</option>
-                    <option value="3">已撤销</option>
+          <div class="portlet ">
+            <div class="portlet-title ">
+              <div class="m-sbar">
+                <div>
+                  <span>审核状态</span>
+                  <select class="form-control " id="sr-status">
+                    <option value="0">全部</option>
+                    <option value="1">未处理</option>
+                    <option value="2">已通过</option>
+                    <option value="3">未通过</option>
+                    <option value="4">已撤销</option>
                   </select>
                 </div>
-                <div class="form-group">
-                  <label class="control-label">创建日期</label>
-                  <div class="input-group date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
-                    <input type="text" class="form-control" id="start-date">
-                    <span class="input-group-btn">
-                      <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
-                    </span>
-                  </div>
-                  <span>&nbsp;- -&nbsp;</span>
-                  <div class="input-group date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
-                    <input type="text" class="form-control" id="start-date">
-                    <span class="input-group-btn">
-                      <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
-                    </span>
-                  </div>
+                <div>
+                  <span>创建日期</span>
+                  <input type="text" id="sr-time-from" class="u-dt"> - <input type="text" id="sr-time-to" class="u-dt">
                 </div>
-                <div class="form-group">
-                  <button type="button" class="btn red" id="returnBtn">查询</button>
+                <div>
+                  <a href="#basic" class="btn red-sunglo btn-sm" id="btn-search"><i class="fa fa-search"></i> 查询 </a>
                 </div>
-              </form>
+              </div>
+            </div>
+            <div class="portlet-body">
+              <div class="table-data"></div>
+              <div class="table-pg"></div>
+            </div>
           </div>
-        </div>
-        <div class="portlet-body">
-          <div class="table-data"></div>
-          <div class="table-pg"></div>
+        
         </div>
     </div>
     </div>
@@ -98,22 +86,12 @@
     <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="/lib/alertify/alertify.min.js"></script>
     <script src="/lib/bootbox/bootbox.min.js"></script>
-    <script src="/lib/distpicker/distpicker.js" type="text/javascript"></script>
-    <script src="/lib/typepicker/typepicker.js" type="text/javascript"></script>
-    <script src="/lib/metronic/moment.min.js"></script>
-    <script src="/lib/metronic/ui-modals.min.js"></script>
     <script src="/lib/twbs-pagination/jquery.twbsPagination.min.js"></script>
     <script src="/lib/pace/pace.min.js"></script>
 
     <script src="/lib/metronic/moment.min.js"></script>
-    <script src="/lib/bootstrap-daterangepicker/daterangepicker.min.js"></script>
-    <script src="/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-    <script src="/lib/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
-    <script src="/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="/lib/select2/js/select2.full.min.js"></script>
-    <script src="/lib/metronic/app.min.js"></script>
-    <script src="/lib/metronic/components-select2.min.js"></script>
-    <script src="/lib/metronic/components-date-time-pickers.min.js"></script>
+    <script src="/lib/jquery/jquery.datetimepicker.full.js"></script>
+    
 
     <script src="/sys/js/common.js"></script>
     <script src="/sys/js/sell/listrecharge.js"></script>

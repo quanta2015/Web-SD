@@ -1,12 +1,46 @@
+let rules = {
+  shopType: {
+    required: !0,
+  },
+  shopUrl: {
+    required: !0
+  },
+  shopName: {
+    required: !0
+  },
+  businesstype: {
+    required: !0,
+  },
+  subtype: {
+    required: !0,
+  },
+  province: {
+    required: !0,
+  },
+  city: {
+    required: !0,
+  },
+  county: {
+    required: !0,
+  },
+  addr: {
+    required: !0,
+  }
+}
+
 $(init);
 
 function init() {
   $('body').on('click', '#resetBtn', doResetForm);
-  $('body').on('click', '#saveBtn', doSave);
   $('#shop_type').on('change', doChange);
 
   $('#typepicker').typepicker();
   $('#pick').distpicker();
+
+  $("#form-bind").validate({
+    rules: rules,
+    submitHandler: (e) => { doSave() }
+  })
 }
 
 function doChange(e) {
@@ -35,6 +69,7 @@ function doSave() {
       "shopimg1": $("#upload").attr('picurl'),
       "wangid": $("#shop-wangid").val()
     };
+    if (!obj.shopimg1) return errorInfo('缺少店铺管理后台截图');
     $("#saveBtn").attr('disabled',true)
   promiseData('POST', URL_SHOP_BIND, JSON.stringify(obj), cbSave);
 }

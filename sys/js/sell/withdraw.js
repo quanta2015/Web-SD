@@ -24,18 +24,18 @@ function init() {
 }
 
 function initTime() {
-  let from =  moment().subtract('days',7).format('YYYY-MM-DD') + ' 00:00';
-  let to = moment().format('YYYY-MM-DD') + ' 23:59'
-  $("#sr-time-from").datetimepicker({ value: from});
-  $("#sr-time-to").datetimepicker({value: to});
+  let from =  moment().subtract('days',7).format('YYYY-MM-DD');
+  let to = moment().format('YYYY-MM-DD');
+  $("#sr-time-from").datetimepicker({ value: from, format:'Y-m-d', timepicker:false});
+  $("#sr-time-to").datetimepicker({value: to, format:'Y-m-d', timepicker:false});
 }
 
 function initList() {
   let param = {
     status: $('#sr-status'),
     toAccount: $('#sr-bankno'),
-    publishtime_s: $("#sr-time-from").val() + ':00',
-    publishtime_e: $("#sr-time-to").val()+ ':00',
+    fromDate: $("#sr-time-from").val(),
+    toDate: $("#sr-time-to").val(),
   };
   Object.assign(param, {transferType: 0}, pageData);
   TmplData(TMPL_SELL_WITHDRAW_LIST, [URL_SELL_ALL_RECHARGE, encodeQuery(param)].join('?'), null, cbList)
@@ -57,7 +57,7 @@ function cbList(r, e) {
 
 }
 
-function initPage(tab, totalPages) {
+function initPage(totalPages) {
   $('#tab-list .table-pg').twbsPagination({
     totalPages: totalPages || 1,
     onPageClick: function(event, page) {
@@ -76,6 +76,7 @@ function cbBalanceInfo(e) {
     $('#shoper-name').val(cookie('name'));
     $('#bankno').val(cookie('bankcard'));
     $('#balance').text(e.data);
+    $('#balance', parent.document).text(e.data);
   } else if (e.code == 99) {
     errorInfo(e.message);
   } else if (e.code==-1) {
@@ -104,7 +105,7 @@ function doWithdraw() {
   let obj = {
     shoperId: cookie('id'),
     toAccount:parseInt($('#bankno').val()),
-    transferMoney: parseInt($('#amount').text()),
+    transferMoney: parseFloat($('#amount').text()),
     transferType: 0,
   }
 
@@ -117,6 +118,8 @@ function doWithdraw() {
 
 function cdWithdraw(e) {
   if (e.code === 0) {
+    // 获取余额
+    initBalanceInfo();
     notifyInfo(MSG_WITHDRAW_SUCCESS);
   } else if (e.code == 99) {
     errorInfo(e.message);
@@ -128,4 +131,5 @@ function cdWithdraw(e) {
 function doSearch() {
   $('.portlet-body .table-pg').remove();
   $('.portlet-body').append('<div class="table-pg"></div>');
+  initList();
 }
