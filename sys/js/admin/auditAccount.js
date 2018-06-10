@@ -22,6 +22,8 @@ function cbList(r, e) {
     $(".portlet-body").prepend($.templates(r[0]).render(data, null));
     $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
     if ($('.table-pg').text() == '') initPage(totalPages);
+  } else if (e.code == 99) {
+    notifyInfo(e.message);
   } else if (e.code == -1) {
     relogin();
   }
@@ -52,6 +54,8 @@ function doAudit(e) {
 function cbAudit(e) {
   if (e.code == 0) {
     initList()
+  } else if (e.code == 99) {
+    notifyInfo(e.message);
   } else if (e.code == -1) {
     relogin();
   }

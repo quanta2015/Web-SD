@@ -64,6 +64,8 @@ function doAudit(e) {
 function cbAudit(e) {
   if (e.code == 0) {
     initList()
+  } else if (e.code == 99) {
+    notifyInfo(e.message);
   } else if (e.code == -1) {
     relogin();
   }

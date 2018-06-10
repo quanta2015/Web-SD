@@ -9,10 +9,10 @@ function init() {
   //显示用户名
   $("#username").text(cookie('name'));
 
-  //显示金额
-  promiseData('GET',URL_SELL_BALANCE,null, (e)=>{
-    $("#balance").text(e.data)
-  } )
+  // //显示金额
+  // promiseData('GET',URL_SELL_BALANCE,null, (e)=>{
+  //   $("#balance").text(e.data)
+  // } )
 
   $('[data-button]').on('click', function(e) {
     var type = $('.page-sidebar-wrapper').data('type');

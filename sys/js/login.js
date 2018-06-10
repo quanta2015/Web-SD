@@ -6,6 +6,7 @@ $(init);
 
 function init() {
 
+
   checkInvite();
 
   $('body').on('click', '.login-hd li', toggleUserLogin);

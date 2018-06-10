@@ -20,6 +20,8 @@ function cbListTask(r, e) {
     $(".portlet-body .table").remove();
     $(".portlet-body .table-data").append($.templates(r[0]).render(data, rdHelper));
     if ($('.table-pg').text() == '') initPage(totalPages);
+  } else if (e.code == 99) {
+    notifyInfo(e.message);
   } else if (e.code == -1) {
     relogin();
   }
@@ -51,7 +53,7 @@ function doAuditTask(e) {
 function cbAuditTask(e) {
   if (e.code == 0) {
     initList()
-  } else if (e.code == -1) {
+  } else if (e.code == 99) {
     notifyInfo(e.message)
   }  else if (e.code == -1) {
     relogin();

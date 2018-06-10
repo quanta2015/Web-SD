@@ -27,13 +27,11 @@ function cbListShop(r, e) {
     $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
     if ($('.table-pg').text() == '') initPage(totalPages);
 
-    
-
   } else if (e.code == -1) {
     relogin();
-  } else {
-    errorInfo(e.message)
-  }
+  } else if (e.code == 99) {
+    notifyInfo(e.message);
+  } 
 }
 
 function initPage(totalPages) {
@@ -64,9 +62,9 @@ function cbAudit(e) {
     initList()
   } else if (e.code == -1) {
     relogin();
-  } else {
-    errorInfo(e.message);
-  }
+  } else if (e.code == 99) {
+    notifyInfo(e.message);
+  } 
 }
 
 function doShowDetail() {

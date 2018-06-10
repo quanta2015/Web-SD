@@ -27,10 +27,10 @@ const PLATFORM_DATA = {
 }
 
 const AUDIT_STATUS = {
-  0: '未审核',
-  1: '待审核',
-  2: '审核通过',
-  3: '审核不通过',
+  '-1': '未绑定',
+  '0': '待审核',
+  '1': '审核通过',
+  '2': '审核不通过',
 }
 
 const STATUS_MAP = {
@@ -280,7 +280,7 @@ function isNull(exp) {
 }
 
 // AJAX FUNCTION DEF
-function promiseDataN(method, url, data, cb) {
+function promiseDataOLD(method, url, data, cb) {
   var promise = $.ajax({
     type: method,
     url: HOST + url,
@@ -294,6 +294,31 @@ function promiseDataN(method, url, data, cb) {
   });
   promise.done(cb)
 }
+
+
+// AJAX FUNCTION DEF
+function promise(method, url, data, cb) {
+  $("body").append(LOADER);
+  var promise = $.ajax({
+    type: method,
+    url: HOST + url,
+    dataType: "json",
+    contentType: "application/json",
+    data: data,
+    crossDomain: true
+  });
+  promise.then((e)=>{
+    $("#i-mask").remove();
+    if (e.code == 0) {
+      cb(e.data);
+    } else if (e.code == 99) {
+      notifyInfo(e.message);
+    } else if (e.code == -1) {
+      relogin();
+    }
+  })
+}
+
 
 // AJAX FUNCTION DEF
 function promiseData(method, url, data, cb) {
