@@ -93,6 +93,9 @@ const URL_ADMIN_ALL_RECHARGE   = '/admin/shoper_transfer_list'
 const URL_ADMIN_ACOUNT_AUDIT   = '/admin/buyer_acount_approve'
 const URL_ADMIN_AUDIT_RECHARGE = '/admin/shoper_transfer_approve'
 const URL_ADMIN_SHOP_AUDIT     = '/admin/shop_approve'
+const URL_SAVE_NOTICE ='/admin/save_notice';
+const URL_ADMIN_NOTICE_LIST ='/admin/notice_list';
+const URL_ADMIN_NOTICE_DEL='/admin/notice_del';
 
 
 const URL_SHOP_BIND         = '/shoper/shop_bind'
@@ -140,6 +143,7 @@ const TMPL_ADMIN_TASK_LIST        = '/tmpl/admin/list_task.tmpl'
 const TMPL_ADMIN_IDCARD_LIST      = '/tmpl/admin/list_idcard.tmpl'
 const TMPL_ADMIN_ACOUNT_LIST      = '/tmpl/admin/list_account.tmpl'
 const TMPL_ADMIN_RECHARGE_LIST    = '/tmpl/admin/list_admin_recharge.tmpl'
+const TMPL_ADMIN_NOTICE = '/tmpl/admin/list_notice.tmpl'
 
 
 // BUYER
@@ -192,6 +196,7 @@ const MSG_CONT_CREATE_TASK= "继续创建任务"
 const MSG_PUB_TASK = "发布任务"
 const MSG_UPDATE_SHOP_SUCC = "更新店铺数据成功！"
 const MSG_CONF_DEL_SHOP = "请确认是否要删除店铺！"
+const MSG_CONF_DEL_NOTICE = "请确认是否要删除该公告！"
 const MSG_CANCEL = "取消"
 const MSG_OK = "确定"
 const MSG_TASK_PUB_SUCC = "发布任务成功！"
