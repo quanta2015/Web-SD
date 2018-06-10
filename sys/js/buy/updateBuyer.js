@@ -1,5 +1,5 @@
 
-const URL_BUYER_INFO='/';
+const URL_BUYER_INFO='/buyer/person_info';
 const URL_BUY_UPDATE='/'
 var buyer;
 var optList = ['工商银行', '农业银行', '建设银行', '中国银行', '招商银行']

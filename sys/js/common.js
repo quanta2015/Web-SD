@@ -164,51 +164,6 @@ const TMPL_REG                    = '/tmpl/reg.tmpl'
 
 
 // MSG DEF
-<<<<<<< HEAD
-const MSG_LOGIN_SUCCESS   = '登录成功！'
-const MSG_REGIS_SUCCESS   = '注册成功！'
-const MSG_PUBLISH_SUCCESS = '发布成功！'
-const MSG_BIND_SUCCESS    = '绑定成功！'
-const MSG_UPDATE_SUCCESS  = '修改信息成功'
-const MSG_RECHARGE_SUCCESS  = '充值成功！'
-const MSG_SHOPNAME_CORRECT  = '店铺名称正确!'
-const MSG_SUBMIT_BUY_CORRECT = '提交购买任务成功！'
-const MSG_PUBLISH_FAILED  = '发布失败！'
-const MSG_DEL_FAILED  = '删除失败！'
-const MSG_DELIVERY_SUCCESS= "发货成功！"
-const MSG_DELIVERY_ERR = "发货出错！"
-const MSG_PAY_SUCC= "支付成功！"
-const MSG_PAY_ERR = "支付出错！"
-const MSG_GET_TASK_DETAIL_ERR = "取买家任务详细信息出错！"
-const MSG_BIND_SHOP_SUCC = "绑定商店成功！"
-const MSG_CONT_BIND_SHOP = "继续绑定商店"
-const MSG_GOTO_SHOP_LIST = "进入店铺管理"
-const MSG_GOON_RECHARGE  = "继续充值"
-const MSG_LOOKUP_RECHARGE = "查看充值记录"
-const MSG_ACCEPT_TASK_SUCC = "接单成功！"
-const MSG_GOON_ACCEPT = "继续接单"
-const MSG_LOOKUP_TASK = "查看任务"
-const MSG_UPDATE_FAILED = '更新数据失败！'
-const MSG_INPUT_AUDIT_INFO = '请填写审批内容!'
-const MSG_WITHDRAW_SUCCESS = '提现成功！'
-const MSG_WITHDRAW_FAILED = '提现失败！'
-const MSG_TASK_SAVE_SUCC = "任务保存成功！"
-const MSG_CONT_CREATE_TASK= "继续创建任务"
-const MSG_PUB_TASK = "发布任务"
-const MSG_UPDATE_SHOP_SUCC = "更新店铺数据成功！"
-const MSG_CONF_DEL_SHOP = "请确认是否要删除店铺！"
-const MSG_CONF_DEL_NOTICE = "请确认是否要删除该公告！"
-const MSG_CANCEL = "取消"
-const MSG_OK = "确定"
-const MSG_TASK_PUB_SUCC = "发布任务成功！"
-const MSG_WAIT = "等会再说"
-const MSG_RECHARGE = "马上充值"
-const MSG_TASK_DEL_SUCC = "删除任务成功！"
-const MSG_UPLOAD_PIC = "请上传图片！"
-const MSG_EVALUATE_SUCC = '提交评价成功！'
-
-
-=======
 const MSG_LOGIN_SUCCESS       = '登录成功！'
 const MSG_REGIS_SUCCESS       = '注册成功！'
 const MSG_PUBLISH_SUCCESS     = '发布成功！'
@@ -254,7 +209,7 @@ const MSG_INPUT_KEYWORD       = '请输入关键字！'
 const MSG_INPUT_TASK_COUNT    = '请输入任务数量！'
 const MSG_INPUT_KEYWORD_EX    = '请输入指定关键词！'
 const MSG_INPUT_TEXT          = '请输入指定文字！'
->>>>>>> aaaffab397d37ba5449f6ba1c86a9a1af204a04b
+
 
 const TEXT_BIND_SUCCESS = '已绑定'
 
