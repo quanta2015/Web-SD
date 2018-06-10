@@ -21,6 +21,7 @@ let rules = {
     number: !0
   }
 }
+let status = parseInt(cookie('bankcardState'))
 
 $(init);
 
@@ -31,7 +32,6 @@ function init() {
 }
 
 async function initBindInfo() {
-  var status = parseInt(cookie('bankcardState'))
   // var status = 0
   if ( status == 0 || status == null) {
     //未绑定
@@ -83,6 +83,7 @@ function doSave(data) {
   };
   if (obj.reBankNo !== obj.bankNo) return;
   delete obj.reBankNo;
+  if (status === 3) obj.id = cookie2('id', 'buyerBankList');
   promiseData('POST', URL_BUY_BIND_BANK, JSON.stringify(obj), cbBind);
 }
 
