@@ -13,9 +13,9 @@
     <tr>
       <td> {{:#index}} </td>
       <td> {{:~formatTime(createtime)}} </td>
-      <td> {{if (moneyType==1)}}收入{{else}}支出{{/if}}： {{:money}} </td>
+      <td> {{if ((moneyType==0)||(moneyType==4))}}支出{{else }}收入{{/if}}： {{:money}} </td>
       <td> 1000.00 </td>
-      <td> {{if (moneyType==1)}}佣金{{else}}本金提现{{/if}} </td>
+      <td>{{:~formatMoneyType(moneyType)}}</td>
     </tr>
     {{/for}}
   </tbody>

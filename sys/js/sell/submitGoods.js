@@ -23,7 +23,8 @@ function doSubmitGoods() {
       buyerTaskId: _id,
       delivery: $('#u-delivery').val(),
       expressNo: $('#u-expressno').val(),
-      expressStatus: $('#u-express-status').val() 
+      expressStatus: $('#u-express-status').val(),
+      approve: 1  // 1表示发货  2表示退回
     }
 
     promiseData('POST',URL_SELL_DELIVERY, JSON.stringify(obj), cbSubmitGoods)

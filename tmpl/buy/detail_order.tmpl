@@ -16,7 +16,12 @@
         <div class="col-1"><span class="icon-basket"></span>店铺名称：{{:shopName}}</div>
       </li>
       <li>
-        <div class="col-1 v-img"><img src="{{:~root.imgPrefix}}{{:goodsMainImg}}" alt=""></div>
+        <div class="col-1 v-img"><img src="
+          {{if goodsMainImg}}
+            {{:~root.imgPrefix}}{{:goodsMainImg}}
+          {{else}}
+            /img/norights.png
+          {{/if}}" alt=""></div>
       </li>
     </div>
     <div class="m-d-item col-1">
@@ -25,15 +30,33 @@
       </li>
       <li>
         <div class="col-1">搜索展示价格</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:searchprice}}元</div>
+        <div class="col-2 font-red-thunderbird fn-right">
+        {{if searchprice}}
+          {{:searchprice}}元
+        {{else}}
+          xxx元（接单后显示）
+        {{/if}}
+        </div>
       </li>
       <li>
         <div class="col-1">商品成交价格</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:goodsPrice}}元</div>
+        <div class="col-2 font-red-thunderbird fn-right">
+        {{if goodsPrice}}
+          {{:goodsPrice}}元
+        {{else}}
+          xxx元（接单后显示）
+        {{/if}}
+        </div>
       </li>
       <li>
         <div class="col-1">件数</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:number}}件</div>
+        <div class="col-2 font-red-thunderbird fn-right">
+        {{if number}}
+          {{:number}}件
+        {{else}}
+          xxx件（接单后显示）
+        {{/if}}
+        </div>
       </li>
     </div>
   </div>
