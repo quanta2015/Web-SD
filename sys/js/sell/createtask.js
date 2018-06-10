@@ -50,6 +50,7 @@ function init() {
   $('body').on('click', '.task-del', delTask);
   $('body').on('click', '#publish-task-btn', doComplete);
   $('body').on('change', '#platform-list', doInitShop);
+  $('body').on('change', '#color-size-chk', doColorSize);
   $('body').on('input propertychange', '.task-count', doCountTask);
 
   //初始化第一步验证对象
@@ -110,6 +111,15 @@ function init() {
   $('#express-weight').mask("#,##0", {reverse: true});
 }
 
+
+function doColorSize() {
+  if( $(this).prop('checked')  ) {
+    $('#color-size-info').attr('readonly',true)
+  }else{
+    $('#color-size-info').attr('readonly',false)
+  }
+}
+
 async function initTaskTmpl() {
   $(".nor-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'nor-task', data:1, show:false }));
   $(".key-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'key-task', data:1, show:false }));
@@ -151,25 +161,34 @@ function GotoStep3() {
     return;
   }
 
-  if (checkInput('.nor-task-wrap .u-task-key',"请输入关键字！")) return;
-  if (checkInput('.nor-task-wrap .u-task-count',"请输入任务数量！"))  return;
+  if ( (!$("#normaltask")[0].checked)&&(!$("#keywordtask")[0].checked)&&(!$("#picturetask")[0].checked)&&(!$("#wordtask")[0].checked) ) {
+    notifyInfo(MSG_SELECT_ONE);
+    return;
+  }
+
+  if ( $("#normaltask")[0].checked ) {
+    if (checkInput('.nor-task-wrap .u-task-key',MSG_INPUT_KEYWORD)) return;
+    if (checkInput('.nor-task-wrap .u-task-count',MSG_INPUT_TASK_COUNT))  return;
+  }
 
   if ( $("#keywordtask")[0].checked ) {
-    if (checkInputHasOne('.key-task-wrap .ipt-keyword',"请输入指定关键词！")) return;
-    if (checkInput('.key-task-wrap .u-task-key',"请输入关键字！")) return;
-    if (checkInput('.key-task-wrap .u-task-count',"请输入任务数量！")) return;
+    if (checkInputHasOne('.key-task-wrap .ipt-keyword',MSG_INPUT_KEYWORD_EX)) return;
+    if (checkInput('.key-task-wrap .u-task-key',MSG_INPUT_KEYWORD)) return;
+    if (checkInput('.key-task-wrap .u-task-count',MSG_INPUT_TASK_COUNT)) return;
   }
 
   if ( $("#picturetask")[0].checked ) {
-    if (checkInput('.img-task-wrap .u-task-key',"请输入关键字！")) return;
-    if (checkInput('.img-task-wrap .u-task-count',"请输入任务数量！")) return;
+    if (checkInput('.img-task-wrap .u-task-key',MSG_INPUT_KEYWORD)) return;
+    if (checkInput('.img-task-wrap .u-task-count',MSG_INPUT_TASK_COUNT)) return;
   }
 
   if ( $("#wordtask")[0].checked ) {
-    if (checkInput('.word-task-wrap .u-task-key',"请输入关键字！")) return;
-    if (checkInput('.word-task-wrap .u-task-count',"请输入任务数量！")) return;
-    if (checkInput('.word-task-wrap .u-task-keyword',"请输入指定文字！")) return;
+    if (checkInput('.word-task-wrap .u-task-key',MSG_INPUT_KEYWORD)) return;
+    if (checkInput('.word-task-wrap .u-task-count',MSG_INPUT_TASK_COUNT)) return;
+    if (checkInput('.word-task-wrap .u-task-keyword',MSG_INPUT_TEXT)) return;
   }
+
+
 
   doPublish()
 }
@@ -272,7 +291,7 @@ function doPublish() {
     tasktype: $("input[name='r-task-type']:checked").val(),
     returntype: $("input[name='r-return-type']:checked").val(),
     goodsList: [{
-      colorSize: $('#color-size-info').val(),
+      colorSize: $('#color-size-chk').prop('checked')?'':$('#color-size-info').val(),
       factprice: $('#real-price').val().replace(/,/g, ''),
       goodsmainimg: $('#upload').attr('picurl'),
       goodsimg1: '',

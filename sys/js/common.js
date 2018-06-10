@@ -200,7 +200,11 @@ const MSG_RECHARGE = "马上充值"
 const MSG_TASK_DEL_SUCC = "删除任务成功！"
 const MSG_UPLOAD_PIC = "请上传图片！"
 const MSG_EVALUATE_SUCC = '提交评价成功！'
-
+const MSG_SELECT_ONE = '请至少选择一个任务'
+const MSG_INPUT_KEYWORD = "请输入关键字！"
+const MSG_INPUT_TASK_COUNT = "请输入任务数量！"
+const MSG_INPUT_KEYWORD_EX = "请输入指定关键词！"
+const MSG_INPUT_TEXT    = "请输入指定文字！"
 
 
 const TEXT_BIND_SUCCESS = '已绑定'
