@@ -141,7 +141,7 @@ function doGetCode() {
     'mobilephone':$('#mobile').val()
   }
   $('#getcode-btn').attr("disabled",true);
-  promiseData('GET', URL_SMS_SEND, obj, cbCode);
+  promiseDataN('GET', URL_SMS_SEND, obj, cbCode);
   let count = CODE_COUNT;
   doCounter(count);
 }
