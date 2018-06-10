@@ -93,6 +93,9 @@ const URL_ADMIN_ALL_RECHARGE   = '/admin/shoper_transfer_list'
 const URL_ADMIN_ACOUNT_AUDIT   = '/admin/buyer_acount_approve'
 const URL_ADMIN_AUDIT_RECHARGE = '/admin/shoper_transfer_approve'
 const URL_ADMIN_SHOP_AUDIT     = '/admin/shop_approve'
+const URL_SAVE_NOTICE ='/admin/save_notice';
+const URL_ADMIN_NOTICE_LIST ='/admin/notice_list';
+const URL_ADMIN_NOTICE_DEL='/admin/notice_del';
 
 
 const URL_SHOP_BIND         = '/shoper/shop_bind'
@@ -140,6 +143,7 @@ const TMPL_ADMIN_TASK_LIST        = '/tmpl/admin/list_task.tmpl'
 const TMPL_ADMIN_IDCARD_LIST      = '/tmpl/admin/list_idcard.tmpl'
 const TMPL_ADMIN_ACOUNT_LIST      = '/tmpl/admin/list_account.tmpl'
 const TMPL_ADMIN_RECHARGE_LIST    = '/tmpl/admin/list_admin_recharge.tmpl'
+const TMPL_ADMIN_NOTICE = '/tmpl/admin/list_notice.tmpl'
 
 
 // BUYER
@@ -205,6 +209,7 @@ const MSG_INPUT_KEYWORD       = '请输入关键字！'
 const MSG_INPUT_TASK_COUNT    = '请输入任务数量！'
 const MSG_INPUT_KEYWORD_EX    = '请输入指定关键词！'
 const MSG_INPUT_TEXT          = '请输入指定文字！'
+
 
 const TEXT_BIND_SUCCESS = '已绑定'
 

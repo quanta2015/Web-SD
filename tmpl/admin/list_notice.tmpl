@@ -1,0 +1,25 @@
+<table class="table table-hover table-light">
+    <thead>
+        <tr class="uppercase">
+            <th> # </th>
+            <th> 标题 </th>
+            <th style="width: 400px;"> 内容 </th>
+            <th > 可见范围 </th>
+            <th> 创建时间</th>
+            <th> 操作 </th>
+        </tr>
+    </thead>
+    <tbody>
+      {{for data}}
+        <tr>
+            <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
+            <td> {{:title}}</td>
+            <td> {{:content}} </td>
+            <td> {{:type}} </td>
+            <td> {{:~formatTime(createtime)}} </td>
+            <td><a href="#" class="btn red btn-sm btn-outline del-notice"   id="{{:id}}"><i class="fa fa-times"></i> 删除 </a></td>
+            
+        </tr>
+      {{/for}}
+    </tbody>
+  </table>
