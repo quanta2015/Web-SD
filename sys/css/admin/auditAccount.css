@@ -1,5 +1,5 @@
 body {
-    min-width: 1050px;
+    min-width: 1700px;
 }
 
 #g-audit.pass {
@@ -16,4 +16,9 @@ body {
 
 #g-audit .pass3 {
     color: #009900;
+}
+
+td.address {
+    max-width: 160px;
+    word-break: break-all;
 }
