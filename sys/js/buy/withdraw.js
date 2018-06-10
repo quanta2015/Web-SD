@@ -62,11 +62,12 @@ function cbBalanceInfo(e) {
 }
 
 function doCompute() {
+  let rate = 0.01;
   // 提现总额
   let amount = parseInt($('#withdraw-money').val() || 0);
+  amount *= (1-rate);
   $('#amount').text(amount.toFixed(2));
   // 手续费
-  let rate = 0.01;
   let type = parseInt($('#account-type').val());
   let poundage = amount >= 2000 ? 0 : amount * rate;
   type === 0 && poundage >= 5 ? poundage = 5 : null;
