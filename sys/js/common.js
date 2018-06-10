@@ -80,7 +80,7 @@ const URL_SELL_LIST_ORDER   = '/tmpl/sell/list_order.tmpl'
 const URL_SELL_TASK_COST    = '/tmpl/sell/task_cost.tmpl'
 const URL_SELL_LIST_TASK    = '/task/search_tasks'
 const URL_SELL_PAY_ORDER     = '/task/approve_buyer_task'
-
+const URL_SELL_TRADE_LIST   = '/shoper/shoper_trade_list'
 
 const URL_ADMIN_ALL_SHOP       = '/admin/all_shops'
 const URL_ADMIN_ALL_TASK       = '/admin/all_tasks'

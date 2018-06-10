@@ -1,5 +1,7 @@
 const platform = PLATFORM_DATA[getUrlParam('platform')];
 const creditType = getUrlParam('platform')==='jingdong'?'白条':'花呗';
+let status = cookie2('approve', platform.cko);
+status?parseInt(cookie2('approve', platform.cko)):null;
 
 let rules = {
   acount: {
@@ -34,9 +36,6 @@ function init() {
 }
 
 async function initBindInfo() {
-  var status = cookie2('approve', platform.cko);
-  status?parseInt(cookie2('approve', platform.cko)):null;
-
   // status = 0
   if ( status == 0 || status == null) {
     //未绑定
