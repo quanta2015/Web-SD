@@ -2,32 +2,22 @@
     <thead>
         <tr class="uppercase">
             <th> 序号 </th>
+            <th> 创建时间 </th>
             <th> 用户名称 </th>
             <th> 收款账号 </th>
-            <th> 扣取手续费账户 </th>
             <th> 本金 </th>
-            <th> 佣金 </th>
-            <th> 总金额 </th>
             <th> 手续费 </th>
-            <th> 审核状态 </th>
-            <th> 创建时间 </th>
-            <th> 备注信息 </th>
         </tr>
     </thead>
     <tbody>
       {{for data}}
         <tr>
-            <td> {{:#index+1}} </td>
-            <td> {{:#data}}</td>
-            <td> {{:#data}}</td>
-            <td> {{:#data}}</td>
-            <td> {{:#data}}</td>
-            <td> {{:#data}}</td>
-            <td> {{:#data}}</td>
-            <td> {{:#data}}</td>
-            <td> {{:#data}}</td>
-            <td> {{:#data}}</td>
-            <td> {{:#data}}</td>
+            <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
+            <td> {{:~formatTime(createtime)}}</td>
+            <td> {{:~root.name}}</td>
+            <td> {{:toAccount}}</td>
+            <td> {{:actualValue}}</td>
+            <td> {{:serviceFee}}</td>
         </tr>
       {{/for}}
     </tbody>

@@ -94,6 +94,7 @@ function doRegister() {
   }
   // 展示结果
   newIds.forEach(id => {
+    if (id === 'invitecode') return;
     if (!infoMap[id].val || infoMap[id].val === '' || !infoMap[id].isValid ) {
       $(`#${id}`).siblings('p').find('span').removeClass('hide');
       success = false;
@@ -141,7 +142,7 @@ function doGetCode() {
     'mobilephone':$('#mobile').val()
   }
   $('#getcode-btn').attr("disabled",true);
-  promiseData('GET', URL_SMS_SEND, obj, cbCode);
+  promiseDataN('GET', URL_SMS_SEND, obj, cbCode);
   let count = CODE_COUNT;
   doCounter(count);
 }

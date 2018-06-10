@@ -1,6 +1,8 @@
 $(init)
 
 function init() {
-  $('#qrcode').qrcode("this plugin is great");
+  $('#qrcode').qrcode(HOST + '/index.html?invite=' + cookie("invitecode"));
+
+  $('#invite').text( cookie("invitecode"));
 }
 

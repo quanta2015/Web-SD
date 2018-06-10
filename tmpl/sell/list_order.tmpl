@@ -27,11 +27,11 @@
         <tr>
             <td> <input type="checkbox" name="tid" value="{{:id}}"> </td>
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
-            <td> platform </td>
-            <td> shop </td>
-            <td> {{:taskkeyId}} </td>
-            <td> {{:~formatTime(createtime)}} </td>
-            <td> {{:~formatTime(createtime)}} </td>
+            <td> {{:shopType}} </td>
+            <td> {{:shopName}} </td>
+            <td> {{:id}} </td>
+            <td> {{:~formatTime(taskCreatetime)}} </td>
+            <td> {{:~formatTime(acceptTime)}} </td>
             <td> {{:buyerId}} </td>
             <td class="z-status{{:status}}">
                {{if   (status== 0)}} 待处理
@@ -45,14 +45,14 @@
                {{/if}} 
             </td>
             <td> {{:orderid}} </td>
-            <td> money </td>
-            <td> {{:reward}} </td>
-            <td> {{:goodsPrice}} </td>
-            <td> gName </td>
-            <td> sKey </td>
+            <td> {{:sumMoney}} </td>
+            <td> {{:serviceSum}} </td>
+            <td> {{:goodsSum}} </td>
+            <td> {{:goodsname}} </td>
+            <td> {{:keyword}} </td>
             <td> 空包 </td>    
-            <td> expId </td>
-            <td> expStus  </td>        
+            <td> {{:expressNo}} </td>
+            <td> {{:expressStatus}}  </td>        
             <td>
               
             </td>

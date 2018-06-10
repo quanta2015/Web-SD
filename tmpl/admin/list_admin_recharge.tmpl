@@ -2,13 +2,13 @@
     <thead>
         <tr class="uppercase">
             <th> # </th>
-            <th> 状态</th>
             <th> 充值时间 </th>
             <th> 充值金额 </th>
             <th> 转账银行 </th>
             <th> 转账账号 </th>
             <th> 充值账号 </th>
             <th> 充值凭证 </th>
+            <th> 审核状态</th>
             <th> 功能 </th>
         </tr>
     </thead>
@@ -18,7 +18,7 @@
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
             <td> {{:approveString}}</td>
             <td> {{:~formatTime(createtime)}} </td>
-            <th> {{:transferMoney}} </th>
+            <td> {{:transferMoney}} </td>
             <td> {{:bankName}} </td>
             <td> {{:fromAccount}}</td>
             <td> {{:toAccount}}</td>

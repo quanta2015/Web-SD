@@ -65,15 +65,16 @@ function cbShops(e) {
 function initList(pg) {
   let cdt = {
     shopId: $("#shop-name").val(),
-    acceptStart: $("#task-from").val() + ':00',
-    acceptEnd: $("#task-to").val()+ ':00',
+    taskId: $("#task-id").val(),
+    buyTaskId: $("#order-id").val(),
+    buyerId: $("#buyer-id").val(),
+    orderid: $("#taobao-id").val(),
     shopType: $("#platform").val(),
     taskType: $("#task-type").val(),
     buyTaskStatus: $("#task-status").val(),
-    taskId: $("#task-id").val(),
-    buyTaskId: $("#order-id").val(),
-    taobaoId: $("#taobao-id").val(),
-    commentType: $("#comment-type").val()
+    commentType: $("#comment-type").val(),
+    acceptStart: $("#task-from").val() + ':00',
+    acceptEnd: $("#task-to").val()+ ':00'
   }
   Object.assign( cdt, pg);
   TmplData(URL_SELL_LIST_ORDER, ['/task/task_accept_list_all', encodeQuery(cdt)].join('?'), null, cbListTask)
