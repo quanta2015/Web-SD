@@ -103,6 +103,19 @@ function doSave(data) {
     mysiteImg: $('#platform-ipt2').attr('picurl') || cookie2('mysiteImg', platform.cko),
     myacountImg: $('#platform-ipt3').attr('picurl') || cookie2('myacountImg', platform.cko)
   };
+  // 没传新图片且状态为审核不通过尝试去cookie取
+  let imgKeyList = ['baitiaoImg', 'mysiteImg', 'myacountImg'];
+  let imgKeyInfos = ['我的页面', '我的账号', `开通${creditType}情况`];
+  for (let i = 0; i < imgKeyList.length; i++) {
+    let key = imgKeyList[i];
+    if (!obj[key] && status === 3) {
+      obj[key] = cookie2(key, platform.cko);
+    }
+    if (!obj[key]) {
+      return errorInfo(`缺少${imgKeyInfos[i]}图片`);
+    }
+  }
+  
   promiseData('POST', URL_BUY_BIND_ACCOUNT, JSON.stringify(obj), cbBind);
 }
 

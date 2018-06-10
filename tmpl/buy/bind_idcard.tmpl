@@ -45,14 +45,14 @@
             <div class="row img-task img-task-list id-card-box">
               {{for list}}
               <div class="fileinput fileinput-new img-info-box" data-provides="fileinput">
-                <div class="fileinput-new thumbnail" style="max-width: 150px; max-height: 150px;">
+                <div class="fileinput-new thumbnail" >
                   {{if ~root.idImg && ~root.idImg[#getIndex()]}}
                   <img src="{{:~root.imgPrefix}}{{:~root.idImg[#getIndex()]}}">
                   {{else}}
                   <img src="/img/noimg.png">
                   {{/if}}
                 </div>
-                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 150px;"></div>
+                <div class="fileinput-preview fileinput-exists thumbnail"></div>
                 <span>{{:~root.imgInfo[#getIndex()]}}</span>
                 <div>
                   <span class="btn default btn-file">
