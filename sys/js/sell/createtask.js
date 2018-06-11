@@ -9,7 +9,8 @@ let rules_step1 = {
 
 let rules_step2 = {
   "goods-url": {
-    required: !0
+    required: !0,
+    url: true
   },
   "goods-name": {
     required: !0
@@ -77,10 +78,14 @@ function init() {
   $("#start-date").val(moment().format('YYYY-MM-DD'));
 
 
+
+
   // 初始化平台、店铺下拉栏
   initPlatforms();
   //初始化普通好评任务栏
   initTaskTmpl();
+
+  
 
 
   //好评任务切换显示
@@ -109,6 +114,10 @@ function init() {
   $('#task-count').mask("#,##0", {reverse: true});
   $('#award-money').mask("#,##0", {reverse: true});
   $('#express-weight').mask("#,##0", {reverse: true});
+  $('#show-first').mask("#,##0", {reverse: true});
+  $('.u-task-count').mask("#,##0", {reverse: true});
+
+  
 }
 
 
@@ -127,6 +136,9 @@ async function initTaskTmpl() {
   $(".word-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'word-task',data:1, show:false, word: true }));
 
   $('.timepicker-24').timepicker({ showMeridian: false });
+
+  $('.timepicker-to').timepicker('setTime', moment().add('hours',3).format('HH:mm'));
+  $('.timepicker-from').timepicker('setTime', moment().format('HH:mm'));
 }
 
 function initLocationSelect(id, ret) {
@@ -259,18 +271,24 @@ async function addNorTaskItem() {
   var count = $('.nor-task').length + 1
   $(".nor-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'nor-task', data:count, show:true }));
   $('.timepicker-24').timepicker({ showMeridian: false });
+  $('.timepicker-to').timepicker('setTime', moment().add('hours',3).format('HH:mm'));
+  $('.timepicker-from').timepicker('setTime', moment().format('HH:mm'));
 }
 
 async function addKeyTaskItem() {
   var count = $('.key-task').length + 1
   $(".key-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'key-task', data:count, show:true }));
   $('.timepicker-24').timepicker({ showMeridian: false });
+  $('.timepicker-to').timepicker('setTime', moment().add('hours',3).format('HH:mm'));
+  $('.timepicker-from').timepicker('setTime', moment().format('HH:mm'));
 }
 
 async function addImgTaskItem() {
   var count = $('.img-task-title').length + 1
   $(".img-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_I, { type:'img-task', data:count,list:[1,1,1,1,1], show:true }));
   $('.timepicker-24').timepicker({ showMeridian: false });
+  $('.timepicker-to').timepicker('setTime', moment().add('hours',3).format('HH:mm'));
+  $('.timepicker-from').timepicker('setTime', moment().format('HH:mm'));
 }
 
 
@@ -278,6 +296,8 @@ async function addWordTaskItem() {
   var count = $('.word-task-title').length + 1
   $(".word-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'word-task',data:count, show:true, word: true }));
   $('.timepicker-24').timepicker({ showMeridian: false });
+  $('.timepicker-to').timepicker('setTime', moment().add('hours',3).format('HH:mm'));
+  $('.timepicker-from').timepicker('setTime', moment().format('HH:mm'));
 }
 
 function delTask() {
@@ -343,7 +363,6 @@ function doPublish() {
     buyExpress: $('#buy-express').val(),
     auditFirst: $('#audit-first').val(),
     showFirst: $('#show-first').val()
-
   }
   obj.commonTaskKeyList = obj.commontask ? getGreatCommentData('nor-task') : [];
   obj.keywordTaskKeyList = obj.keywordtask ? getGreatCommentData('key-task') : [];
