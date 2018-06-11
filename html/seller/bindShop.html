@@ -36,9 +36,11 @@
       <form action="#" id="form-bind" class="form-horizontal form-bordered">
         
         <div class="form-group">
-          <label class="control-label col-xs-2">请选择平台</label>
+          <label class="control-label col-xs-2">请选择平台
+            <span class="required"> * </span>
+          </label>
           <div class="col-xs-6">
-            <select class="form-control " id="shop_type">
+            <select class="form-control " id="shop_type" name="shopType">
               <option value="淘宝" selected>淘宝</option>
               <option value="京东" >京东</option>
             </select>
@@ -47,64 +49,76 @@
         </div>
 
         <div class="form-group">
-          <label class="control-label col-xs-2">店铺网址</label>
+          <label class="control-label col-xs-2">店铺网址
+            <span class="required"> * </span>
+          </label>
           <div class="col-xs-6">
-            <input type="text" class="form-control" id="shop_url">
+            <input type="text" class="form-control" id="shop_url" name="shopUrl">
           </div>
           <div class="col-xs-4 form-info">(店铺地址绑定后无法修改)</div>
         </div>
 
         <div class="form-group">
-          <label class="control-label col-xs-2">店铺名称</label>
+          <label class="control-label col-xs-2">店铺名称
+            <span class="required"> * </span>
+          </label>
           <div class="col-xs-6">
-            <input type="text" class="form-control" id="shop_name">
+            <input type="text" class="form-control" id="shop_name" name="shopName">
           </div>
           <div class="col-xs-4 form-info">(务必跟手机端宝贝页显示的店铺名一致)</div>
         </div>
 
-        <div class="form-group form-tb">
+        <!-- <div class="form-group form-tb">
           <label class="control-label col-xs-2">店铺主旺旺ID</label>
           <div class="col-xs-6">
             <input type="text" class="form-control" id="shop-wangid">
           </div>
           <div class="col-xs-4 form-info"></div>
-        </div>
+        </div> -->
 
 
         <div class="form-group"  data-toggle="typepicker" id="typepicker">
-          <label class="control-label col-xs-2">店铺类别</label>
+          <label class="control-label col-xs-2">店铺类别
+            <span class="required"> * </span>
+          </label>
           <div class="col-xs-3">
-            <select class="form-control" id="shop-businesstype"></select>
+            <select class="form-control" id="shop-businesstype" name="businesstype"></select>
           </div>
           <div class="col-xs-3">
-            <select class="form-control" id="shop-subtype"></select>
+            <select class="form-control" id="shop-subtype" name="subtype"></select>
           </div>
           <div class="col-xs-4 form-info"></div>
         </div>
 
         <div class="form-group" data-toggle="distpicker" id="pick">
-          <label class="control-label col-xs-2">省市区</label>
+          <label class="control-label col-xs-2">省市区
+            <span class="required"> * </span>
+          </label>
           <div class="col-xs-3">
-            <select class="form-control" id="shop-province"></select>
+            <select class="form-control" id="shop-province" name="province"></select>
           </div>
           <div class="col-xs-3">
-            <select class="form-control" id="shop-city"></select>
+            <select class="form-control" id="shop-city" name="city"></select>
           </div>
           <div class="col-xs-3">
-            <select class="form-control" id="shop-county"></select>
+            <select class="form-control" id="shop-county" name="county"></select>
           </div>
         </div> 
 
         <div class="form-group">
-          <label class="control-label col-xs-2">发货地址</label>
+          <label class="control-label col-xs-2">发货地址
+            <span class="required"> * </span>
+          </label>
           <div class="col-xs-6">
-            <input type="text" class="form-control" id="shop_addr">
+            <input type="text" class="form-control" id="shop_addr" name="addr">
           </div>
           <div class="col-xs-4 form-info">详细地址用于发空包用，请填写商品发货地址</div>
         </div>
 
         <div class="form-group">
-          <label class="control-label col-xs-2">店铺管理后台截图</label>
+          <label class="control-label col-xs-2">店铺管理后台截图
+              <span class="required"> * </span>
+          </label>
           <div class="col-xs-10">
             <div class="fileinput fileinput-new" data-provides="fileinput">
               <div class="fileinput-new thumbnail">
@@ -127,7 +141,7 @@
         <div class="form-group">
           <label class="control-label col-xs-2"></label>
           <div class="col-xs-10">
-            <button type="button" class="btn blue" id="saveBtn">保存</button>
+            <button type="submit" class="btn blue" id="saveBtn">保存</button>
             <button type="button" class="btn red" id="resetBtn"> 新建</button>
           </div>
         </div>
@@ -138,12 +152,16 @@
     <script src="/lib/jquery/jquery.min.js" type="text/javascript"></script>
     <script src="/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/lib/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+    <script src="/lib/jquery-validation/js/jquery.validate.min.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+    <script src="/lib/jquery-validation/js/additional-methods.min.js"></script>
     <script src="/lib/distpicker/distpicker.js" type="text/javascript"></script>
     <script src="/lib/typepicker/typepicker.js" type="text/javascript"></script>
     <script src="/lib/alertify/alertify.min.js"></script>
     <script src="/lib/bootbox/bootbox.min.js"></script>
     <script src="/lib/pace/pace.min.js"></script>
 
+    <script src="/sys/js/validation.js"></script>
     <script src="/sys/js/sell/bindshop.js" type="text/javascript"></script>
 </body>
 </html>

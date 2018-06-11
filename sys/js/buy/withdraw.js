@@ -79,13 +79,12 @@ function doWithdraw() {
     buyerId: parseInt($('#buyer-id').val()),
     buyerName: $('#buyer-name').val(),
     buyerBankId:parseInt($('#bankno').val()),
-    withdrawMoney: parseInt($('#amount').text()),
+    withdrawMoney: parseInt($('#withdraw-money').text()),
   }
   let type = parseInt($('#account-type').val());
   
   if (type === 0) {
     if (obj.withdrawMoney < 200) {
-      console.log(obj.withdrawMoney)
       return errorInfo('提现金额必须大于200！');
     }
   }
@@ -97,8 +96,7 @@ function doWithdraw() {
     }
   }
 
-  let sum = parseInt($('#amount').text()) + parseInt($('#poundage').text());
-  if (sum > parseFloat($('#balance').text()) ) {
+  if (obj.withdrawMoney > parseFloat($('#balance').text()) ) {
     return errorInfo('提现超出余额！');
   }
   let url = type === 0 ? URL_BUY_WITHDRAW : URL_BUY_FEE_WITHDRAW;

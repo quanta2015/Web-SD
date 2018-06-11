@@ -5,10 +5,10 @@ const URL_ADMIN_NOTICE_DEL='/admin/notice_del';*/
 
 
 
-// const MSG_CONF_DEL_NOTICE = "请确认是否要删除该公告！"
+const MSG_CONF_DEL_NOTICE = "请确认是否要删除该公告！"
 
 
-let pageData = Object.assign({}, PAGE_DATA);
+// let pageData = Object.assign({}, PAGE_DATA);
 $(init);
 
 function init() {
@@ -24,7 +24,7 @@ function init() {
 
 function initList() {
 
-  TmplData(TMPL_ADMIN_NOTICE, [URL_ADMIN_NOTICE_LIST, encodeQuery(pageData)].join('?'),null, cbListNotice)
+  TmplData(TMPL_ADMIN_NOTICE, URL_ADMIN_NOTICE_LIST,null, cbListNotice)
   
 }
 
@@ -46,11 +46,12 @@ function cbListNotice(r, e) {
      }
   });
   if (data.code == 0) {
-    Object.assign(data, pageData);
-    totalPages = Math.ceil(data.total/PAGE_DATA.pageSize);
+    // Object.assign(data, pageData);
+    // totalPages = Math.ceil(data.total/PAGE_DATA.pageSize);
     $(".portlet-body .table").remove();
     $(".portlet-body").prepend($.templates(r[0]).render(data, rdHelper));
-    if ($('.table-pg').text() == '') initPage(totalPages);
+    // if ($('.table-pg').text() == '') initPage(totalPages);
+    
   } else if ([-1, 99].includes(e.code)) {
     relogin();
   }
@@ -103,15 +104,17 @@ function cbSaveNotice(e){
 
 }
 
-function initPage(totalPages) {
+/*function initPage(totalPages) {
   $('.portlet-body .table-pg').twbsPagination({
     totalPages: totalPages || 1,
     onPageClick: function(event, page) {
       pageData.pageIndex = page - 1;
+      console.log('initList(pageData)')
       initList(pageData);
     }
   })
-}
+}*/
+
 function doResetNotice(){
   $("#form-bind")[0].reset();
 }

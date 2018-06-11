@@ -97,6 +97,9 @@ const URL_SAVE_NOTICE ='/admin/save_notice';
 const URL_ADMIN_NOTICE_LIST ='/admin/notice_list';
 const URL_ADMIN_NOTICE_DEL='/admin/notice_del';
 
+const URL_ADMIN_QQ_LIST='/admin/buyer_qq_list'
+const URL_ADMIN_AUDITQQ='/admin/buyer_qq_approve'
+
 
 const URL_SHOP_BIND         = '/shoper/shop_bind'
 const URL_BUYER_GET_TASK    = '/buyertask/receive_task'
@@ -144,6 +147,7 @@ const TMPL_ADMIN_IDCARD_LIST      = '/tmpl/admin/list_idcard.tmpl'
 const TMPL_ADMIN_ACOUNT_LIST      = '/tmpl/admin/list_account.tmpl'
 const TMPL_ADMIN_RECHARGE_LIST    = '/tmpl/admin/list_admin_recharge.tmpl'
 const TMPL_ADMIN_NOTICE = '/tmpl/admin/list_notice.tmpl'
+const TMPL_ADMIN_QQ_LIST='/tmpl/admin/list_qq.tmpl'
 
 
 // BUYER
@@ -209,6 +213,8 @@ const MSG_INPUT_KEYWORD       = '请输入关键字！'
 const MSG_INPUT_TASK_COUNT    = '请输入任务数量！'
 const MSG_INPUT_KEYWORD_EX    = '请输入指定关键词！'
 const MSG_INPUT_TEXT          = '请输入指定文字！'
+const MSG_CONF_DEL_NOTICE = "请确认是否要删除该公告！"
+
 
 
 const TEXT_BIND_SUCCESS = '已绑定'
