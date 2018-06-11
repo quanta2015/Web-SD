@@ -410,6 +410,7 @@ const promiseCall = (url, data) => {
 const rdHelper = {
   formatTime: (t) => { return moment(t).format("YYYY-M-D HH:mm:ss") },
   div: (val1,val2) => { return  Number(val1) / Number(val2) * 100},
+  add: (val1,val2,val3) => { return Number(val1) + Number(val2) + Number(val3) },
   formatMoneyType: (typeId) => {
     switch(typeId) {
       case 0: ret = '提现本金';break;

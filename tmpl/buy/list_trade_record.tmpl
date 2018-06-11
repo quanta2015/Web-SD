@@ -4,7 +4,10 @@
       <th> # </th>
       <th> 时间 </th>
       <th> 收款额（元） </th>
-      <th> 余额（元） </th>
+      <th> 本金余额（元） </th>
+      <th> 佣金余额（元） </th>
+      <th> 推广余额（元） </th>
+      <th> 总金额（元） </th>
       <th> 内容 </th>
     </tr>
   </thead>
@@ -14,7 +17,10 @@
       <td> {{:#index}} </td>
       <td> {{:~formatTime(createtime)}} </td>
       <td> {{if ((moneyType==0)||(moneyType==4))}}支出{{else }}收入{{/if}}： {{:money}} </td>
-      <td> 1000.00 </td>
+      <td> {{:balance}} </td>
+      <td> {{:servicefee}} </td>
+      <td> {{:spread}} </td>
+      <td> {{:~add(balance,servicefee,spread)}} </td>
       <td>{{:~formatMoneyType(moneyType)}}</td>
     </tr>
     {{/for}}

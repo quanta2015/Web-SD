@@ -81,7 +81,7 @@
       </li>
       <li>
         <div class="col-1">订单留言</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:remark}}</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:orderwords}}</div>
       </li>
       <li>
         <div class="col-1">评论要求</div>
@@ -91,6 +91,16 @@
         <div class="col-1">是否假聊</div>
         <div class="col-2 font-red-thunderbird fn-right">{{if chatNecessary}}是{{else}}否{{/if}}</div>
       </li>
+      <li>
+        <div class="col-1">关键词</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:keyword}}</div>
+      </li>
+      {{if (taskkeyType==2)}}
+      <li>
+        <div class="col-1">指定关键词</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:appoints}}</div>
+      </li>
+      {{/if}}
     </div>
     <div class="m-d-item col-1">
       <li class="v-m-title">
