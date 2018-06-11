@@ -6,7 +6,7 @@ $(init);
 
 function init() {
 
-  $('#task-capacity').text(cookie('numberOfMonth'))
+  $('#task-capacity').text(cookie('remainderNumberOfMonth'))
 
   initList();
   $('body').on('click', '.audit-task', doDetail);

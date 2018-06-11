@@ -7,12 +7,11 @@ function init() {
   $("iframe").height(h - 50);
 
   //显示用户名
-  $("#username").text(cookie('name'));
+  $("#u-name").text(cookie('name'));
 
-  // //显示金额
-  // promiseData('GET',URL_SELL_BALANCE,null, (e)=>{
-  //   $("#balance").text(e.data)
-  // } )
+  promise('GET','/buyer/buyer_balance',null, (e)=>{
+    $('#u-money').text(e.balance+e.servicefee)
+  })
 
   $('[data-button]').on('click', function(e) {
     var type = $('.page-sidebar-wrapper').data('type');

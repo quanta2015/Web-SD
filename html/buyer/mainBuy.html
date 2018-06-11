@@ -20,6 +20,12 @@
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white" cz-shortcut-listen="true">
   <div class="page-wrap">
     <div class="page-header navbar navbar-fixed-top">
+      <div class="page-header-info ">
+        <li><span class="m-title"><a href="#">在线咨询</a></span></li>
+        <li><span class="m-title"><a href="#">帮助中心</a></span></li>
+        <li><span class="m-title">账户金额 </span>[ <span id="u-money"></span> ]</li>
+        <li><span class="m-title">用户名称 </span>[ <span id="u-name"></span> ]</li>
+      </div>
       <div class="page-header-inner ">
         <div class="page-logo">
           <a href="#"><span class="logo-default">BUY-Cet</span>
@@ -33,8 +39,14 @@
         </a>
         <div class="top-menu">
           <ul class="nav navbar-nav pull-right">
+            <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar" data-button="myAccount">
+              <a href="#" ><i class="icon-user"></i> 我的账户</a>
+            </li>
+            <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar" data-button="">
+              <a href="#" ><i class="fa fa-vimeo-square"></i> 我的VIP</a>
+            </li>
             <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar" data-button="newTask">
-              <a href="#" ><i class="icon-user"></i> 新手任务</a>
+              <a href="#" ><i class="fa fa-tasks"></i> 新手任务</a>
             </li>
             <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
               <a href="#" ><i class="icon-film"></i> 新手教学</a>
