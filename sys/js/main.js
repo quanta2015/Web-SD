@@ -9,9 +9,6 @@ function init() {
   //显示用户名
   $("#u-name").text(cookie('name'));
 
-  promise('GET','/buyer/buyer_balance',null, (e)=>{
-    $('#u-money').text(e.balance+e.servicefee)
-  })
 
   $('[data-button]').on('click', function(e) {
     var type = $('.page-sidebar-wrapper').data('type');
