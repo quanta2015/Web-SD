@@ -37,7 +37,7 @@ function init() {
 
 async function initBindInfo() {
   // status = 0
-  if ( status == 0 || status == null) {
+  if ( status == -1 || status == null) {
     //未绑定
     $('body').append(await renderTmpl(TMPL_BUY_BIND_ACCOUNT, {
       platform: platform.type,
@@ -45,7 +45,7 @@ async function initBindInfo() {
       levels: platform.levels,
       list: [1,1,1],
       imgInfo: ['我的页面', '我的账号页面', `开通${creditType}情况`],
-      status: 0,
+      status: -1,
       baitiaoStart: "checked"
     }));
   } else {
@@ -70,7 +70,7 @@ async function initBindInfo() {
       ],
       list: [1,1,1],
       imgInfo: ['我的页面', '我的账号页面', `开通${creditType}情况`],
-      type: status !== 3 ? "disabled" : null,
+      type: status !== 2 ? "disabled" : null,
       status: status,
       statusText: AUDIT_STATUS[status],
       imgPrefix: IMG_PREFIX
@@ -108,7 +108,7 @@ function doSave(data) {
   let imgKeyInfos = ['我的页面', '我的账号', `开通${creditType}情况`];
   for (let i = 0; i < imgKeyList.length; i++) {
     let key = imgKeyList[i];
-    if (!obj[key] && status === 3) {
+    if (!obj[key] && status === 2) {
       obj[key] = cookie2(key, platform.cko);
     }
     if (!obj[key]) {
