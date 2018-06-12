@@ -95,19 +95,20 @@
         <div class="col-1">关键词</div>
         <div class="col-2 font-red-thunderbird fn-right">{{:keyword}}</div>
       </li>
-      {{if (taskkeyType==2)}}
+      {{if ((taskkeyType==2)||(taskkeyType==4))}}
       <li>
         <div class="col-1">指定关键词</div>
         <div class="col-2 font-red-thunderbird fn-right">{{:appoints}}</div>
       </li>
       {{/if}}
+
     </div>
     <div class="m-d-item col-1">
       <li class="v-m-title">
         <div class="col-1"><span class="icon-layers"></span>买家额外要求</div>
       </li>
       <li>
-        <div class="col-1 font-red-thunderbird">{{:explain}}</div>
+        <div class="col-1 font-red-thunderbird">{{:orderwords}}</div>
       </li>
     </div>
   </div> 

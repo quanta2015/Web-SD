@@ -348,6 +348,21 @@ function promiseData(method, url, data, cb) {
   })
 }
 
+function promiseDataN(method, url, data, cb) {
+  var promise = $.ajax({
+    type: method,
+    url: HOST + url,
+    dataType: "json",
+    contentType: "application/json",
+    data: data,
+    xhrFields: {
+      withCredentials: true
+    },
+    crossDomain: true,
+  });
+  promise.done(cb)
+}
+
 function TmplDataP(urlTmpl, urlData, data, cb) {
   $("body").append(LOADER);
   $.when($.ajax(urlTmpl), 
@@ -434,7 +449,18 @@ const rdHelper = {
       case 70: ret = '已完成';    break;
     }
     return ret;
-  } 
+  },
+  formatTaskStatus: (s)=> {
+    switch(s) {
+      case  0: ret = '未支付';    break;
+      case 20: ret = '待审核';    break;
+      case 30: ret = '任务进行中';break;
+      case 40: ret = '审核不通过';break;
+      case 50: ret = '任务完成';  break;
+      case 60: ret = '任务已过时';break;
+    }
+    return ret;
+  }
 }
 
 

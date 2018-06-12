@@ -20,16 +20,8 @@
             <td> {{:buyerId}} </td>
             <td> {{:orderid}} </td>
             <td> {{:goodsPrice}} </td>
-            <td class="z-status{{:status}}">
-               {{if   (status== 0)}} 待处理
-               {{else (status==10)}} 待发货
-               {{else (status==20)}} 待评价
-               {{else (status==30)}} 评价待审核
-               {{else (status==40)}} 待确认返款
-               {{else (status==50)}} 刷手撤销
-               {{else (status==60)}} 系统撤销
-               {{else (status==70)}} 已完成
-               {{/if}} 
+            <td class="z-status{{:status}}">  
+                {{:~formatOrderStatus(status)}}
                 <div class="progress progress-striped active">
                   <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: {{:percent}}%;">
                   </div>
