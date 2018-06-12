@@ -134,11 +134,7 @@ async function initTaskTmpl() {
   $(".key-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'key-task', data:1, show:false }));
   $(".img-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_I, { type:'img-task', data:1,list:[1,1,1,1,1], show:false }));
   $(".word-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'word-task',data:1, show:false, word: true }));
-
-  $('.timepicker-24').timepicker({ showMeridian: false });
-
-  $('.timepicker-to').timepicker('setTime', moment().add('hours',3).format('HH:mm'));
-  $('.timepicker-from').timepicker('setTime', moment().format('HH:mm'));
+  initTime()
 }
 
 function initLocationSelect(id, ret) {
@@ -266,38 +262,40 @@ function getAddr(e) {
   $('.alladdress').hide()
 }
 
+function initTime() {
+  $('.timepicker-24').timepicker({ showMeridian: false });
+  $('.timepicker-from').timepicker('setTime', moment().format('HH:mm'));
+
+  if (moment().diff(moment().set('hour',21).set('minute', 0)) > 0 ) {
+    $('.timepicker-to').timepicker('setTime', '23:59');
+  }else{
+    $('.timepicker-to').timepicker('setTime', moment().add('hours',3).format('HH:mm'));
+  }
+}
 
 async function addNorTaskItem() {
   var count = $('.nor-task').length + 1
   $(".nor-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'nor-task', data:count, show:true }));
-  $('.timepicker-24').timepicker({ showMeridian: false });
-  $('.timepicker-to').timepicker('setTime', moment().add('hours',3).format('HH:mm'));
-  $('.timepicker-from').timepicker('setTime', moment().format('HH:mm'));
+  initTime()
 }
 
 async function addKeyTaskItem() {
   var count = $('.key-task').length + 1
   $(".key-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'key-task', data:count, show:true }));
-  $('.timepicker-24').timepicker({ showMeridian: false });
-  $('.timepicker-to').timepicker('setTime', moment().add('hours',3).format('HH:mm'));
-  $('.timepicker-from').timepicker('setTime', moment().format('HH:mm'));
+  initTime()
 }
 
 async function addImgTaskItem() {
   var count = $('.img-task-title').length + 1
   $(".img-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_I, { type:'img-task', data:count,list:[1,1,1,1,1], show:true }));
-  $('.timepicker-24').timepicker({ showMeridian: false });
-  $('.timepicker-to').timepicker('setTime', moment().add('hours',3).format('HH:mm'));
-  $('.timepicker-from').timepicker('setTime', moment().format('HH:mm'));
+  initTime()
 }
 
 
 async function addWordTaskItem() {
   var count = $('.word-task-title').length + 1
   $(".word-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'word-task',data:count, show:true, word: true }));
-  $('.timepicker-24').timepicker({ showMeridian: false });
-  $('.timepicker-to').timepicker('setTime', moment().add('hours',3).format('HH:mm'));
-  $('.timepicker-from').timepicker('setTime', moment().format('HH:mm'));
+  initTime()
 }
 
 function delTask() {
