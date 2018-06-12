@@ -4,8 +4,9 @@ $(init);
 
 function init() {
 
-  initSearchBar();
+  initTime();
   initList();
+  $('body').on('click', '#btn-search', doSearch);
   
 
   // $('[data-toggle]:gt(0)').one('click', async function(e) {
@@ -19,12 +20,6 @@ function initTime() {
   let to = moment().format('YYYY-MM-DD');
   $("#sr-time-from").datetimepicker({ value: from, format:'Y-m-d', timepicker:false});
   $("#sr-time-to").datetimepicker({value: to, format:'Y-m-d', timepicker:false});
-}
-
-async function initSearchBar(tab = '#tab-capital') {
-  $(`${tab} .table-search`).append(await renderTmpl(TMPL_SELL_SRH_CAPITAL, {}));
-  $('body').on('click', '#btn-search', doSearch);
-  initTime();
 }
 
 // TODO: 目前把佣金tab隐藏了
@@ -60,7 +55,8 @@ function initPage(totalPages) {
     totalPages: totalPages || 1,
     onPageClick: function(event, page) {
       pageData.pageIndex = page - 1;
-      initList(pageData);
+
+      initList();
     }
   })
 }
