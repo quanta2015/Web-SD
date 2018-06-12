@@ -1,6 +1,6 @@
 header {
   padding: 10px;
-  background: #eee;
+  background: #fff;
 }
 
 header .m-title {
@@ -38,4 +38,18 @@ section .m-info {
 section .u-item {
   color: #666;
   margin: 5px;
+}
+
+
+section .u-item .u-item-s {
+  margin: 0px 5px 0px 15px ;
+}
+
+
+section .u-item .u-item-title {
+  color: #4B77BE;
+}
+
+section .u-item>div {
+    padding: 5px;
 }
