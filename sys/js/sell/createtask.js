@@ -427,7 +427,7 @@ function cbInfo(r, e) {
 
   let ret = e[0];
   if (ret.code == 0) {
-
+    Object.assign(ret.data.taskMoney, {balance: $('#u-money', parent.document).text()})
     $('.step3').empty()
     $('.step3').append($.templates(r[0]).render(ret.data.taskMoney, rdHelper))
 

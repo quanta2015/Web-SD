@@ -16,7 +16,7 @@
       <select class="form-control " id="bank" {{:type}} name="bank">
         <option value="">请选择银行</option>
         {{for banks}}
-        <option value="{{:#data}}" {{if (~root.status != 0) && #data == ~root.bank}}selected{{/if}} >{{:#data}}</option>
+        <option value="{{:#data}}" {{if (~root.status != -1) && #data == ~root.bank}}selected{{/if}} >{{:#data}}</option>
         {{/for}}
       </select>
     </div>
@@ -46,7 +46,7 @@
     </div>
   </div>
 
-  {{if status == 0 || status == 3}}
+  {{if status == -1 || status == 2}}
   <div class="form-group">
     <label class="control-label col-xs-2">确认账号
       <span class="required"> * </span>
@@ -57,7 +57,7 @@
   </div>
   {{/if}}
 
-  {{if status !== 0}}
+  {{if status !== -1}}
   <div class="form-group">
     <label class="control-label col-xs-2">审核状态</label>
     <div class="col-xs-6">
@@ -69,7 +69,7 @@
   <div class="form-group">
     <label class="control-label col-xs-2"></label>
     <div class="col-xs-10">
-      {{if status == 0 || status == 3}}
+      {{if status == -1 || status == 2}}
       <button type="submit" class="btn blue" id="saveBtn">保存</button>
       {{/if}}
       <button type="button" class="btn red" id="returnBtn"> 返回</button>

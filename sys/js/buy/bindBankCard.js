@@ -33,7 +33,7 @@ function init() {
 
 async function initBindInfo() {
   // var status = 0
-  if ( status == 0 || status == null) {
+  if ( status == -1 || status == null) {
     //未绑定
     $('.container').append(await renderTmpl(TMPL_BUY_BIND_BKCARD, {
       name: null,
@@ -42,7 +42,7 @@ async function initBindInfo() {
       acount_name: null,
       acount_subbank: null,
       acount_bankno: null,
-      status: 0,
+      status: -1,
       banks: BANKS
     }));
   } else {
@@ -54,7 +54,7 @@ async function initBindInfo() {
       acountName: cookie2('acountName', 'buyerBankList'),
       acountSubbank: cookie2('acountSubbank', 'buyerBankList'),
       acountBankno: cookie2('acountBankno', 'buyerBankList'),
-      type: status !== 3 ? "disabled" : null,
+      type: status !== 2 ? "disabled" : null,
       status: status,
       statusText: AUDIT_STATUS[status],
       banks: BANKS
@@ -83,7 +83,7 @@ function doSave(data) {
   };
   if (obj.reBankNo !== obj.bankNo) return;
   delete obj.reBankNo;
-  if (status === 3) obj.id = cookie2('id', 'buyerBankList');
+  if (status === 2) obj.id = cookie2('id', 'buyerBankList');
   promiseData('POST', URL_BUY_BIND_BANK, JSON.stringify(obj), cbBind);
 }
 

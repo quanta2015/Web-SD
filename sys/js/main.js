@@ -7,7 +7,7 @@ function init() {
   $("iframe").height(h - 50);
 
   //显示用户名
-  $("#u-name").text(cookie('name'));
+  $("#u-name").text(cookie('name') || '请完善信息');
 
 
   $('[data-button]').on('click', function(e) {
