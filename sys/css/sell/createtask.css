@@ -172,3 +172,8 @@ i {
 .m-task-info {
     margin-bottom: 15px;
 }
+
+.form-time {
+    display: inline-block;
+    margin: 0!important;
+}
