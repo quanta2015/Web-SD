@@ -23,7 +23,8 @@ section .m-title {
   font-size: 16px;
   color: #333;
   font-weight: 600;
-  margin: 10px;
+  /*margin: 10px;*/
+  padding: 10px;
 }
 
 section .m-cnt {
@@ -52,4 +53,7 @@ section .u-item .u-item-title {
 
 section .u-item>div {
     padding: 5px;
+}
+.table{
+  width: 400px;
 }
