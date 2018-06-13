@@ -15,7 +15,8 @@ async function initList() {
   param = { taskkeyid: _id }
   ret = await promiseCall( [URL_BUY_TASKDETAIL, encodeQuery(param)].join('?'), null )
   Object.assign(ret.data, { show:true,imgPrefix: IMG_PREFIX });
-  $('.g-detail').append(await renderTmpl(TMPL_BUY_ORDER_DETAIL, ret.data))
+  $('.g-detail').append(await renderTmpl(TMPL_BUY_ORDER_DETAIL, ret.data, rdHelper))
+  $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
 }
 
 

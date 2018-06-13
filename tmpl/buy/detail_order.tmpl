@@ -80,6 +80,26 @@
         <div class="col-2 font-red-thunderbird fn-right">{{:colorSize}}</div>
       </li>
       <li>
+        <div class="col-1">商品所在地</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:goodsposition}}</div>
+      </li>
+      <li>
+        <div class="col-1">价格区间</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:lowprice}}-{{:highprice}}</div>
+      </li>
+      <li>
+        <div class="col-1">商品现有销量约</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:salesVolume}}</div>
+      </li>
+      <li>
+        <div class="col-1">定位目标商品排序方式</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:locationway}}</div>
+      </li>
+      <li>
+        <div class="col-1">商品定位</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:~formatTaobaoPos(tbLocation)}}</div>
+      </li>
+      <li>
         <div class="col-1">订单留言</div>
         <div class="col-2 font-red-thunderbird fn-right">{{:orderwords}}</div>
       </li>
@@ -91,14 +111,20 @@
         <div class="col-1">是否假聊</div>
         <div class="col-2 font-red-thunderbird fn-right">{{if chatNecessary}}是{{else}}否{{/if}}</div>
       </li>
-      <li>
-        <div class="col-1">关键词</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:keyword}}</div>
-      </li>
       {{if ((taskkeyType==2)||(taskkeyType==4))}}
       <li>
         <div class="col-1">指定关键词</div>
         <div class="col-2 font-red-thunderbird fn-right">{{:appoints}}</div>
+      </li>
+      {{/if}}
+      {{if (taskkeyType==3)}}
+      <li>
+        <div class="col-1">图片好评图</div>
+        <div class="col-2 font-red-thunderbird fn-right">
+          {{for taskkeyInfo.taskPictureList}}
+          <a href="{{:~root.imgPrefix}}{{:picture}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture}}" style="width: 60px; height: 60px; border: 1px solid #ccc;"></a>
+          {{/for}}
+        </div>
       </li>
       {{/if}}
 

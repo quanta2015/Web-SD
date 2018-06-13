@@ -460,8 +460,18 @@ const rdHelper = {
       case 60: ret = '任务已过时';break;
     }
     return ret;
+  },
+  formatTaobaoPos: (s)=> {
+    if (s === '') return '';
+    tbArr = ['包邮','天猫','球购 ','消费者保障','淘金币抵钱','到付款 ','7+天退换','呗分期 ','天猫超市','天猫国际','通用排序'];
+    retArr = [];
+    s.split(';').forEach((v)=>{
+      retArr.push(tbArr[v])
+    })
+    return retArr.join('/');
   }
 }
+
 
 
 // RENDER TMPL FUNCTION
