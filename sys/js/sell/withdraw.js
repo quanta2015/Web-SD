@@ -120,6 +120,7 @@ function doWithdraw() {
 function cdWithdraw(e) {
   if (e.code === 0) {
     // 获取余额
+    document.getElementById('form-withdraw').reset();
     initBalanceInfo();
     notifyInfo(MSG_WITHDRAW_SUCCESS);
   } else if (e.code == 99) {
