@@ -24,10 +24,10 @@ function initStatus() {
 }
 
 function toggleBindStatus(id, status) {
-  if ([1, 2].includes(status)) {
+  if ([0, 1].includes(status)) {
     $(`#${id} .task-status`).removeClass('status-no-bind').text(AUDIT_STATUS[status]);
     $(`#${id} a`).removeClass('btn-outline').text(AUDIT_STATUS[status]);
-  } else if (status === 3) {
+  } else if (status === 2) {
     $(`#${id} .task-status`).text(AUDIT_STATUS[status]);
     $(`#${id} a`).text(AUDIT_STATUS[status]);
   }
