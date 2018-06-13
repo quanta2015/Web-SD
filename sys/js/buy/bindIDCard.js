@@ -31,7 +31,7 @@ function doSave(data) {
   for (let i = 1; i <= 2; i++) {
     let key = `idcardpng${i}`;
     obj[key] = $(`#id-card-ipt${i}`).attr('picurl');
-    (!obj[key] && status === 3) ? obj[key] = cookie(key) : null;
+    (!obj[key] && status === 2) ? obj[key] = cookie(key) : null;
     if (!obj[key]) {
       return errorInfo(`缺少${idCardImgInfo[i-1]}`);
     }
@@ -50,13 +50,13 @@ function cbBind(e) {
 }
 
 async function initBindInfo() {
-  // status = 0
-  if ( status == 0 || status == null) {
+  // status = -1
+  if ( status == -1 || status == null) {
     //未绑定
     $('.container').append(await renderTmpl(TMPL_BUY_BIND_IDCARD, {
       list:[1,1],
       imgInfo: idCardImgInfo,
-      status: 0,
+      status: -1,
     }));
   } else {
     // 待审核或审核通过 显示已经绑定表单
@@ -67,7 +67,7 @@ async function initBindInfo() {
       status: status,
       list: [1,1],
       imgInfo: idCardImgInfo,
-      type: status !== 3 ? "disabled" : null,
+      type: status !== 2 ? "disabled" : null,
       statusText: AUDIT_STATUS[status],
       imgPrefix: IMG_PREFIX
     }) );

@@ -74,9 +74,10 @@ function initBalanceInfo() {
 function cbBalanceInfo(e) {
   if (e.code === 0) {
     $('#shoper-name').val(cookie('name'));
+    if (!cookie('name')) $('#form-tip').removeClass('hide');
     $('#bankno').val(cookie('bankcard'));
     $('#balance').text(e.data);
-    $('#balance', parent.document).text(e.data);
+    $('#u-money', parent.document).text(e.data);
   } else if (e.code == 99) {
     errorInfo(e.message);
   } else if (e.code==-1) {
@@ -105,11 +106,11 @@ function doWithdraw() {
   let obj = {
     shoperId: cookie('id'),
     toAccount:parseInt($('#bankno').val()),
-    transferMoney: parseFloat($('#amount').text()),
+    transferMoney: parseFloat($('#withdraw-money').val()),
     transferType: 0,
   }
 
-  let sum = parseInt($('#amount').text()) + parseInt($('#poundage').text());
+  let sum = obj.transferMoney;
   if (sum > parseFloat($('#balance').text()) ) {
     return errorInfo('提现超出余额！');
   }
@@ -119,6 +120,7 @@ function doWithdraw() {
 function cdWithdraw(e) {
   if (e.code === 0) {
     // 获取余额
+    document.getElementById('form-withdraw').reset();
     initBalanceInfo();
     notifyInfo(MSG_WITHDRAW_SUCCESS);
   } else if (e.code == 99) {

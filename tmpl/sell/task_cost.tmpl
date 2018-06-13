@@ -59,42 +59,49 @@
         </tr>
         <tr>
           <td> 问大家： 金/单</td>
-          <td> {{:askAll}}金 </td>
+          <td> / </td>
+          <td> {{:askAll}}金/单 </td>
           <td> {{:askAllCount}}单</td>
           <td> {{:askAllSum}}金 </td>
         </tr>
         <tr>
           <td> 加赏佣金： 金/单</td>
-          <td> {{:extraMoney}}金 </td>
+          <td> / </td>
+          <td> {{:extraMoney}}金/单 </td>
           <td> {{:extraMoneyCount}}单</td>
           <td> {{:extraMoneySum}}金 </td>
         </tr>
         <tr>
           <td> 面单购买： 金/单</td>
-          <td> {{:buyExpress}}金 </td>
+          <td> / </td>
+          <td> {{:buyExpress}}金/单 </td>
           <td> {{:buyExpressCount}}单</td>
           <td> {{:buyExpressSum}}金 </td>
         </tr>
         <tr>
           <td> 区域服务费： 金/单</td>
-          <td> {{:areaMatch}}金 </td>
+          <td> / </td>
+          <td> {{:areaMatch}}金/单 </td>
           <td> {{:areaMatchCount}}单</td>
           <td> {{:areaMatchSum}}金 </td>
         </tr>
         <tr>
           <td> 花呗白条费： 金/单</td>
-          <td> {{:huabei}}金 </td>
+          <td> / </td>
+          <td> {{:huabei}}金/单 </td>
           <td> {{:huabeiCount}}单</td>
           <td> {{:huabeiSum}}金 </td>
         </tr>
         <tr>
           <td> 买家等级费： 金/单</td>
-          <td> {{:taobaoGrade}}金 </td>
+          <td> / </td>
+          <td> {{:taobaoGrade}}金/单 </td>
           <td> {{:taobaoGradeCount}}单</td>
           <td> {{:taobaoGradeSum}}金 </td>
         </tr>
         <tr>
           <td> 默认签收费：</td>
+          <td> / </td>
           <td> 0 金/单 </td>
           <td> 0 单</td>
           <td> 0 金 </td>
@@ -104,7 +111,7 @@
           <td> </td>
           <td> 合计 </td>
           <td> {{:serviceSum}} 单</td>
-          <td> {{:sum}} 金 </td>
+          <td> {{:serviceSum}} 金 </td>
         </tr>
       </tbody>
     </table>
@@ -145,7 +152,7 @@
 
   <div class="portlet-body">
     <label class="mt-radio">
-        <input type="radio" name="r-platform" value="淘宝" checked> 使用账户余额支付（本金账户余额 0元，佣金账户余额0金，充值成功后勤刷新账户余额）
+        <input type="radio" name="r-platform" value="淘宝" checked> 使用账户余额支付（本金账户余额 {{:balance}} 元，充值成功后请刷新账户余额）
         <span></span>
     </label>
   </div>

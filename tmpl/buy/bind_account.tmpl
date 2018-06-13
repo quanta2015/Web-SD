@@ -39,7 +39,7 @@
           </label>
           <div class="col-xs-6 form-inline">
             <select class="form-control " id="acount-level" {{:type}} name="acountLevel">
-              {{if status == 0 || status == 3}}
+              {{if status == -1 || status == 2}}
               <option value="">请选择</option>
               {{for levels}}
               <option value="{{:#data}}" {{if #data == ~root.acountLevel}}selected{{/if}} >{{:#data}}</option>
@@ -101,7 +101,7 @@
           </div>
         </div>
 
-        {{if status == 1 || status == 2}}
+        {{if status == 0 || status == 1}}
         <div class="form-group">
           <label class="control-label col-xs-2">上传截图
             <span class="required"> * </span>
@@ -151,7 +151,7 @@
         </div>
         {{/if}}
 
-        {{if status !== 0}}
+        {{if status !== -1}}
         <div class="form-group">
           <label class="control-label col-xs-2">审核状态</label>
           <div class="col-xs-6">
@@ -163,7 +163,7 @@
         <div class="form-group">
           <label class="control-label col-xs-2"></label>
           <div class="col-xs-10">
-            {{if status == 0 || status == 3}}
+            {{if status == -1 || status == 2}}
             <button type="submit" class="btn blue" id="saveBtn">保存</button>
             {{/if}}
             <button type="button" class="btn red" id="returnBtn"> 返回</button>

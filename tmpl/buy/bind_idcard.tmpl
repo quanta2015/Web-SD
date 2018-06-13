@@ -20,7 +20,7 @@
           </div>
         </div>
 
-        {{if status == 1 || status == 2}}
+        {{if status == 0 || status == 1}}
         <div class="form-group">
           <label class="control-label col-xs-2">身份证图片
             <span class="required"> * </span>
@@ -70,7 +70,7 @@
         </div>
         {{/if}}
 
-        {{if status !== 0}}
+        {{if status !== -1}}
         <div class="form-group">
           <label class="control-label col-xs-2">审核状态</label>
           <div class="col-xs-6">
@@ -82,7 +82,7 @@
         <div class="form-group">
           <label class="control-label col-xs-2"></label>
           <div class="col-xs-10">
-            {{if status == 0 || status == 3}}
+            {{if status == -1 || status == 2}}
             <button type="submit" class="btn blue" id="saveBtn">保存</button>
             {{/if}}
             <button type="button" class="btn red" id="returnBtn"> 返回</button>
