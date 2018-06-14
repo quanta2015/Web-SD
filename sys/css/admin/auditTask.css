@@ -1,8 +1,122 @@
 body {
-    min-width: 1400px;
+    min-width: 1200px;
 }
+
+
+.table.table-light > tbody > tr > td,.table.table-light > tbody > tr > th {
+    font-size: 12px;
+}
+
 
 .goodsname {
     width: 200px;
     word-break: break-all;
+}
+
+.g-detail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999999;
+    background: rgba(0,0,0,.5);
+}
+
+
+.m-detail-wrap {
+    margin: 10px auto;
+    background: #fff;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    box-shadow:1px 1px 5px #ccc;
+}
+
+
+.m-title {
+    /*padding: 15px;*/
+    background: #eee;
+}
+
+.m-d-item {
+    margin: 5px 5px 0 5px;
+}
+
+
+.v-sub-title {
+    font-size: 16px;
+    display: flex;
+    padding-top: 5px!important;
+}
+
+.m-d-goods {
+    padding: 15px;
+    background: #eee;
+    display: flex;
+}
+
+
+
+.m-d-main, .m-d-other {
+    padding: 0 5px 5px 5px;
+    background: #eee;
+    display: flex;
+}
+
+.m-d>div {
+    flex:1;
+    background: #fff;
+    padding: 0px 15px 5px 15px;
+}
+
+
+.m-d div li {
+    display: flex;
+    margin:5px 10px;
+}
+
+.m-d .v-m-title {
+    border-bottom: 1px dashed #999;  
+    padding-bottom: 5px;
+    color:  #4B77BE;
+    font-weight: 600;
+}
+
+.m-d .v-m-title span {
+    margin-right: 10px;
+}
+
+.v-img {
+    width: 120px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.v-img img {
+    width: auto;
+    height: 100%;
+}
+
+
+.col-1 {
+    flex: 1;
+}
+
+.col-2 {
+    flex: 2;
+}
+
+
+
+.m-d-commit {
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+.m-d-commit a {
+    width: 200px;
+    margin-right: 20px;
 }

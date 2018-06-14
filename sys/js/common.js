@@ -462,6 +462,7 @@ const rdHelper = {
     return ret;
   },
   formatTaobaoPos: (s)=> {
+    if (typeof s === 'undefined') return '';
     if (s === '') return '';
     tbArr = ['包邮','天猫','球购 ','消费者保障','淘金币抵钱','到付款 ','7+天退换','呗分期 ','天猫超市','天猫国际','通用排序'];
     retArr = [];
@@ -469,6 +470,9 @@ const rdHelper = {
       retArr.push(tbArr[v])
     })
     return retArr.join('/');
+  },
+  formatBool: (s)=> {
+    return ((s===1)?'是':'否')
   }
 }
 

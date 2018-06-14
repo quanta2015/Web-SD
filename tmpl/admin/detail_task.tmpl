@@ -1,0 +1,213 @@
+<div class="m-detail-wrap">
+  <div class="m-d m-title">
+    <div class="v-sub-title ">
+      <div class="col-1">订单编号</div>
+      <div class="col-2 font-red-thunderbird">{{:id}}</div>
+      <div class="col-1">佣金</div>
+      <div class="col-2 font-red-thunderbird">{{:baseMoney}}</div>
+    </div>
+  </div>
+  <div class="m-d m-d-main">
+    <div class="m-d-item col-1">
+
+      <li class="v-m-title">
+        <div class="col-1"><span class="icon-basket"></span>店铺名称：{{:shopName}}</div>
+      </li>
+      
+      <li>
+        <div class="col-1 v-img"><img src="{{:~root.imgPrefix}}{{:goodsMainImg}}"></div>
+      </li>
+    </div>
+    <div class="m-d-item col-1">
+      <li class="v-m-title">
+        <div class="col-1"><span class="icon-drawer"></span>目标商品</div>
+      </li>
+      <li>
+        <div class="col-1">商品名称</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:goodsname}}</div>
+      </li>
+      <li>
+        <div class="col-1">搜索展示价格</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:searchprice}}元</div>
+      </li>
+      <li>
+        <div class="col-1">商品成交价格</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:goodsPrice}}元</div>
+      </li>
+      <li>
+        <div class="col-1">件数</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:number}}件</div>
+      </li>
+    </div>
+  </div>
+
+
+  <div class="m-d m-d-main">
+    <div class="m-d-item col-1">
+      <li class="v-m-title">
+        <div class="col-1"><span class="icon-layers"></span>任务要点</div>
+      </li>
+      <li>
+        <div class="col-1">任务类型</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:tasktype}}</div>
+      </li>
+      <li>
+        <div class="col-1">搜索关键字</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:keyword}}</div>
+      </li>
+      <li>
+        <div class="col-1">规则尺码</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:colorSize}}</div>
+      </li>
+      <li>
+        <div class="col-1">商品所在地</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:goodsposition}}</div>
+      </li>
+      <li>
+        <div class="col-1">价格区间</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:lowprice}}-{{:highprice}}</div>
+      </li>
+      <li>
+        <div class="col-1">商品现有销量约</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:salesVolume}}</div>
+      </li>
+      <li>
+        <div class="col-1">定位目标商品排序方式</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:locationway}}</div>
+      </li>
+      <li>
+        <div class="col-1">商品定位</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:~formatTaobaoPos(tbLocation)}}</div>
+      </li>
+      <li>
+        <div class="col-1">订单留言</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:orderwords}}</div>
+      </li>
+      <li>
+        <div class="col-1">评论要求</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:taskkeyTypeStr}}</div>
+      </li>
+      <li>
+        <div class="col-1">是否假聊</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{if chatNecessary}}是{{else}}否{{/if}}</div>
+      </li>
+      {{if (taskkeyType==2)}}
+      <li class="v-m-title">
+        <div class="col-1"><span class="icon-layers"></span>指定关键字好评任务</div>
+      </li>
+      <li>
+        <div class="col-1">指定关键词</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:appoints}}</div>
+      </li>
+      {{/if}}
+      {{if (taskkeyType==3)}}
+      <li class="v-m-title">
+        <div class="col-1"><span class="icon-layers"></span>指定图片好评任务</div>
+      </li>
+      <li>
+        <div class="col-1">图片好评图</div>
+        <div class="col-2 font-red-thunderbird fn-right">
+          {{for taskkeyInfo.taskPictureList}}
+          <a href="{{:~root.imgPrefix}}{{:picture}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture}}" style="width: 60px; height: 60px; border: 1px solid #ccc;"></a>
+          {{/for}}
+        </div>
+      </li>
+      {{/if}}
+      {{if (taskkeyType==4)}}
+      <li class="v-m-title">
+        <div class="col-1"><span class="icon-layers"></span>指定文字好评任务</div>
+      </li>
+      <li>
+        <div class="col-1">指定文字</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:appoints}}</div>
+      </li>
+      {{/if}}
+
+    </div>
+    <div class="m-d-item col-1">
+      <li class="v-m-title">
+        <div class="col-1"><span class="icon-star"></span>增值服务</div>
+      </li>
+      <li>
+        <div class="col-2">是否聊天</div>
+        <div class="col-1 font-red-thunderbird fn-right">
+        {{:~formatBool(chatNecessary)}}</div>
+      </li>
+      <li>
+        <div class="col-2">是否优先展示任务</div>
+        <div class="col-1 font-red-thunderbird fn-right">
+        {{:~formatBool(showFirst)}} </div>
+      </li>
+      <li>
+        <div class="col-2">加赏任务佣金：每单加赏</div>
+        <div class="col-1 font-red-thunderbird fn-right">
+        {{:extraBuy}} </div>
+      </li>
+      <li>
+        <div class="col-2">订单优先审核</div>
+        <div class="col-1 font-red-thunderbird fn-right">
+        {{:auditFirst}} </div>
+      </li>
+      <li>
+        <div class="col-2">性别选择</div>
+        <div class="col-1 font-red-thunderbird fn-right">
+        {{:sex}} </div>
+      </li>
+      <li>
+        <div class="col-2">人群年龄段</div>
+        <div class="col-1 font-red-thunderbird fn-right">
+        {{:ageLimit}} </div>
+      </li>
+      <li>
+        <div class="col-2">区域限制</div>
+        <div class="col-1 font-red-thunderbird fn-right">
+        {{:location}} </div>
+      </li>
+      <li>
+        <div class="col-2">淘宝会员等级</div>
+        <div class="col-1 font-red-thunderbird fn-right">
+        {{:taobaoLevel}} </div>
+      </li>
+      <li>
+        <div class="col-2">重复购买限制</div>
+        <div class="col-1 font-red-thunderbird fn-right">
+        {{:rebuy}} </div>
+      </li>
+      <li>
+        <div class="col-2">是否允许使用信用卡/花呗/白条</div>
+        <div class="col-1 font-red-thunderbird fn-right">
+        {{:useHuabei}} </div>
+      </li>
+      <li>
+        <div class="col-2">是否要求账号需要开通白条/花呗</div>
+        <div class="col-1 font-red-thunderbird fn-right">
+        {{:huabeiStart}} </div>
+      </li>
+      <li>
+        <div class="col-2">是否默认签收</div>
+        <div class="col-1 font-red-thunderbird fn-right">
+        {{:isRecieve}} </div>
+      </li>
+      <li>
+        <div class="col-2">问大家</div>
+        <div class="col-1 font-red-thunderbird fn-right">
+       </div>
+      </li>
+      <li>
+        <div class="col-2">是否向平台购买面单</div>
+        <div class="col-1 font-red-thunderbird fn-right">
+        {{:buyExpress}}  </div>
+      </li>
+    </div>
+  </div> 
+  <div class="m-d m-d-main">
+    <div class="m-d-item col-1">
+      <li class="v-m-title">
+        <div class="col-1"><span class="icon-speech"></span>买家额外要求</div>
+      </li>
+      <li>
+        <div class="col-1 font-red-thunderbird">{{:orderwords}}</div>
+      </li>
+    </div>
+  </div>
+</div>

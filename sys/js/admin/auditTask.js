@@ -6,6 +6,8 @@ $(init);
 function init() {
   initList();
   $('body').on('click', '.audit-task', doAuditTask);
+  $('body').on('click', '.detail-task', doDetailTask);
+  $('body').on('click', '.g-detail', doClose);
 }
 
 function initList(param = pageData) {
@@ -37,6 +39,25 @@ function initPage(totalPages) {
   })
 }
 
+function doDetailTask(e) {
+  id = $(e.currentTarget).data('id')
+  TmplData('/tmpl/admin/detail_task.tmpl','/task/task_detail/'+ id, null, cbDetail)
+}
+
+
+function cbDetail(r, e) {
+  let ret = e[0];
+  if (ret.code == 0) {
+    $(".g-detail").empty();
+    $(".g-detail").append($.templates(r[0]).render(ret.data, rdHelper));
+    $(".g-detail").show()
+  } else if (ret.code == 99) {
+    notifyInfo(e.message);
+  } else if (ret.code == -1) {
+    relogin();
+  }
+}
+
 function doAuditTask(e) {
   bootbox.prompt(MSG_INPUT_AUDIT_INFO, function(ret){ 
     if( ret !== null) {
@@ -58,4 +79,9 @@ function cbAuditTask(e) {
   }  else if (e.code == -1) {
     relogin();
   }
+}
+
+
+function doClose() {
+  $('.g-detail').hide()
 }
