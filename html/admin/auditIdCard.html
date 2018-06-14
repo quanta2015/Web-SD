@@ -11,6 +11,7 @@
     <link href="/lib/metronic/components.css"  rel="stylesheet" id="style_components" >
     <link href="/lib/metronic/layout.min.css"  rel="stylesheet" >
     <link href="/lib/alertify/alertify.core.css" rel="stylesheet" >
+    <link href="/lib/jquery/jquery.datetimepicker.css" rel="stylesheet">
     
     <link href="/lib/fancybox/jquery.fancybox.css" rel="stylesheet" >
     <link href="/lib/pace/pace.css" rel="stylesheet" >
@@ -30,6 +31,25 @@
               <label class="btn grey-salsa btn-sm">
                 <input type="radio" name="options" class="toggle" id="option2">设置
               </label>
+            </div>
+          </div>
+        </div>
+        <div class="portlet-title ">
+          <div class="m-sbar">
+            <div>
+              <span>审核状态</span>
+              <select class="" id="sr-status">
+                <option value="0">全部</option>
+                <option value="1">未审核</option>
+                <option value="2">审核通过</option>
+                <option value="3">审核未通过</option>
+                <option value="4">已打款</option>
+              </select>
+            </div>
+            <div><span>用户名 </span><input type="text" id="sr-name" ></div>
+            <div><span>身份证 </span><input type="text" id="sr-idcard" ></div>
+            <div>
+              <a href="#basic" class="btn red-sunglo btn-sm" id="btn-search"><i class="fa fa-search"></i> 查询 </a>
             </div>
           </div>
         </div>
@@ -53,6 +73,7 @@
     <script src="/lib/metronic/moment.min.js"></script>
     <script src="/lib/metronic/ui-modals.min.js"></script>
     <script src="/lib/twbs-pagination/jquery.twbsPagination.min.js"></script>
+    <script src="/lib/jquery/jquery.datetimepicker.full.js"></script>
     <script src="/lib/pace/pace.min.js"></script>
 
     <script src="/sys/js/common.js"></script>

@@ -4,13 +4,22 @@ let pageData = Object.assign({}, PAGE_DATA);
 $(init);
 
 function init() {
+  initTime();
   initList();
   $('body').on('click', '.audit-task', doAuditTask);
   $('body').on('click', '.detail-task', doDetailTask);
   $('body').on('click', '.g-detail', doClose);
+  $('body').on('click', '#btn-search', doSearch);
 }
 
-function initList(param = pageData) {
+function initList() {
+  let param = {
+    status: $('#sr-status'),
+    toAccount: $('#sr-bankno'),
+    fromDate: $("#sr-time-from").val(),
+    toDate: $("#sr-time-to").val(),
+  };
+  Object.assign(param, pageData);
   TmplData(TMPL_ADMIN_TASK_LIST, [URL_ADMIN_ALL_TASK, encodeQuery(param)].join('?'), null, cbListTask)
 }
 
@@ -34,7 +43,7 @@ function initPage(totalPages) {
     totalPages: totalPages || 1,
     onPageClick: function(event, page) {
       pageData.pageIndex = page - 1;
-      initList(pageData);
+      initList();
     }
   })
 }
@@ -84,4 +93,17 @@ function cbAuditTask(e) {
 
 function doClose() {
   $('.g-detail').hide()
+}
+
+function initTime() {
+  let from =  moment().subtract('days',7).format('YYYY-MM-DD');
+  let to = moment().format('YYYY-MM-DD');
+  $("#sr-time-from").datetimepicker({ value: from, format:'Y-m-d', timepicker:false});
+  $("#sr-time-to").datetimepicker({value: to, format:'Y-m-d', timepicker:false});
+}
+
+function doSearch() {
+  $('.portlet-body .table-pg').remove();
+  $('.portlet-body').append('<div class="table-pg"></div>');
+  initList();
 }

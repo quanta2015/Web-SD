@@ -13,12 +13,21 @@ function init() {
   }else if (viptype==0) {
     $(".li-title").html("审核刷手VIP缴费");
   }
+  console.log(viptype)
+  initTime();
   initList();
   $('body').on('click', '.audit-task', doAudit);
+  $('body').on('click', '#btn-search', doSearch);
 }
 
-function initList(param = pageData) {
-  pageData = Object.assign(pageData, {"type":viptype});
+function initList() {
+  let param = {
+    status: $('#sr-status'),
+    toAccount: $('#sr-bankno'),
+    fromDate: $("#sr-time-from").val(),
+    toDate: $("#sr-time-to").val(),
+  };
+  pageData = Object.assign(param, pageData, {"type":viptype});
   TmplData(TMPL_ADMIN_VIPRECHARGE_LIST, [URL_ADMIN_MEMBERSHIP_TRANSFER_LIST, encodeQuery(param)].join('?'), null, cbVipRechargeList)
 }
 
@@ -42,7 +51,7 @@ function initPage(totalPages) {
     totalPages: totalPages || 1,
     onPageClick: function(event, page) {
       pageData.pageIndex = page - 1;
-      initList(pageData);
+      initList();
     }
   })
 }
@@ -69,4 +78,17 @@ function cbAudit(e) {
   } else if (e.code == -1) {
     relogin();
   }
+}
+
+function initTime() {
+  let from =  moment().subtract('days',7).format('YYYY-MM-DD');
+  let to = moment().format('YYYY-MM-DD');
+  $("#sr-time-from").datetimepicker({ value: from, format:'Y-m-d', timepicker:false});
+  $("#sr-time-to").datetimepicker({value: to, format:'Y-m-d', timepicker:false});
+}
+
+function doSearch() {
+  $('.portlet-body .table-pg').remove();
+  $('.portlet-body').append('<div class="table-pg"></div>');
+  initList();
 }
