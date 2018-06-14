@@ -51,7 +51,6 @@ function cbBind(e) {
 
 async function initBindInfo() {
   // status = -1
-  console.log(status)
   if ( status == -1 || status == null) {
     //未绑定
     $('.container').append(await renderTmpl(TMPL_BUY_BIND_IDCARD, {

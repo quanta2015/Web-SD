@@ -8,20 +8,11 @@ const URL_ADMIN_AUDITQQ='/admin/buyer_qq_approve'*/
 $(init);
 
 function init() {
-  initTime();
   initList();
   $('body').on('click', '.audit-qq', doAudit);
-  $('body').on('click', '#btn-search', doSearch);
 }
 
-function initList() {
-  let param = {
-    status: $('#sr-status'),
-    toAccount: $('#sr-bankno'),
-    fromDate: $("#sr-time-from").val(),
-    toDate: $("#sr-time-to").val(),
-  };
-  Object.assign(param, pageData);
+function initList(param = pageData) {
   TmplData(TMPL_ADMIN_QQ_LIST, [URL_ADMIN_QQ_LIST, encodeQuery(param)].join('?'), null, cbListQQ)
 }
 
@@ -44,7 +35,7 @@ function initPage(totalPages) {
     totalPages: totalPages || 1,
     onPageClick: function(event, page) {
       pageData.pageIndex = page - 1;
-      initList();
+      initList(pageData);
     }
   })
 }
@@ -68,17 +59,4 @@ function cbAudit(e) {
   } else if (e.code == -1) {
     relogin();
   }
-}
-
-function initTime() {
-  let from =  moment().subtract('days',7).format('YYYY-MM-DD');
-  let to = moment().format('YYYY-MM-DD');
-  $("#sr-time-from").datetimepicker({ value: from, format:'Y-m-d', timepicker:false});
-  $("#sr-time-to").datetimepicker({value: to, format:'Y-m-d', timepicker:false});
-}
-
-function doSearch() {
-  $('.portlet-body .table-pg').remove();
-  $('.portlet-body').append('<div class="table-pg"></div>');
-  initList();
 }
