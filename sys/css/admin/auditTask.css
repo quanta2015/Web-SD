@@ -2,11 +2,9 @@ body {
     min-width: 1200px;
 }
 
-
 .table.table-light > tbody > tr > td,.table.table-light > tbody > tr > th {
     font-size: 12px;
 }
-
 
 .goodsname {
     width: 200px;

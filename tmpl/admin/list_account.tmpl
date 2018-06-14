@@ -1,17 +1,14 @@
 <table class="table table-hover table-light">
     <thead>
         <tr class="uppercase">
-            <th> 序号 </th>
+            <th>  </th>
             <th> 账号名称 </th>
-            <th> 账号等级 </th>
-            <th> 是否开通白条/花呗 </th>
+            <th> 等级 </th>
+            <th> 白条花呗 </th>
             <th> 收货人 </th>
             <th> 手机号 </th>
-            <th> 省份 </th>
             <th> 详细地址 </th>
-            <th> 我的页面 </th>
-            <th> 我的账号页面 </th>
-            <th> 开通白条/花呗情况 </th>
+            <th> 上传图片 </th>
             <th> 审核状态 </th>
             <th> 审核原因 </th>
             <th> 功能 </th>
@@ -26,11 +23,11 @@
             <td> {{if baitiaoStart==1}}是{{else}}否{{/if}} </td> 
             <td> {{:receiver}} </td> 
             <td> {{:receiveMobile}} </td> 
-            <td> {{:receiveProvince}} </td> 
-            <td class="address"> {{:receiveAddress}} </td> 
-            <td> {{if mysiteImg}}<a href="{{:~root.imgPrefix}}{{:mysiteImg}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:mysiteImg}}" style="width: 150px; height: 100px;"></a>{{/if}}</td>
-            <td> {{if myacountImg}}<a href="{{:~root.imgPrefix}}{{:myacountImg}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:myacountImg}}" style="width: 150px; height: 100px;"></a>{{/if}}</td>
-            <td> {{if baitiaoImg}}<a href="{{:~root.imgPrefix}}{{:baitiaoImg}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:baitiaoImg}}" style="width: 150px; height: 100px;"></a>{{/if}}</td>
+            <td class="address"> {{:receiveProvince}}{{:receiveAddress}} </td> 
+            <td> 
+                {{if mysiteImg}}<a href="{{:~root.imgPrefix}}{{:mysiteImg}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:mysiteImg}}" style="width: 60px; height: 60px;"></a>{{/if}}
+                {{if myacountImg}}<a href="{{:~root.imgPrefix}}{{:myacountImg}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:myacountImg}}" style="width: 60px; height: 60px;"></a>{{/if}}
+                {{if baitiaoImg}}<a href="{{:~root.imgPrefix}}{{:baitiaoImg}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:baitiaoImg}}" style="width: 60px; height: 60px;"></a>{{/if}}</td>
             
             <td class="pass{{:approve}}"> {{:approveString}} </td>
             <td> {{:approveReason}} </td>

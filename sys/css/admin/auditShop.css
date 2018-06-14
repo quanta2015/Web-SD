@@ -2,6 +2,10 @@ body {
   min-width: 1250px;
 }
 
+.table.table-light > tbody > tr > td,.table.table-light > tbody > tr > th {
+    font-size: 12px;
+}
+
 .pass1 {
   color: #ff6600;
   }

@@ -1,5 +1,9 @@
 body {
-    min-width: 1700px;
+  
+}
+
+.table.table-light > tbody > tr > td,.table.table-light > tbody > tr > th {
+    font-size: 12px;
 }
 
 #g-audit.pass {

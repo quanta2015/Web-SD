@@ -2,3 +2,6 @@ body {
     min-width: 1280px;
 }
 
+.table.table-light > tbody > tr > td,.table.table-light > tbody > tr > th {
+    font-size: 12px;
+}
