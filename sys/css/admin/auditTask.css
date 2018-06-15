@@ -23,9 +23,10 @@ body {
 
 
 .m-detail-wrap {
+    position: relative;
     margin: 10px auto;
     background: #fff;
-    width: 900px;
+    width: 1000px;
     display: flex;
     flex-direction: column;
     box-shadow:1px 1px 5px #ccc;
@@ -122,4 +123,16 @@ body {
 .u-task-count {
     float: right;
     margin: 0!important;
+}
+
+
+.m-close {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    z-index: 9999;
+    background-image: url(/img/close.png);
 }

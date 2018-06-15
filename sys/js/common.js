@@ -302,7 +302,7 @@ function promiseDataOLD(method, url, data, cb) {
 }
 
 
-// AJAX FUNCTION DEF
+// new ajax def
 function promise(method, url, data, cb) {
   $("body").append(LOADER);
   var promise = $.ajax({
@@ -327,6 +327,38 @@ function promise(method, url, data, cb) {
     }
   })
 }
+
+
+
+function tmplPormise(method, urlTmpl, urlData, data, cb) {
+  $("body").append(LOADER);
+  $.when($.ajax(urlTmpl), 
+    $.ajax({
+      type: method,
+      url: HOST + urlData,
+      dataType: "json",
+      contentType: "application/json",
+      data: data,
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true,
+  })).done((tmpl,e)=>{
+    $("#i-mask").remove();
+    if (e[0].code == 0) {
+      cb(tmpl[0],e[0]);
+    } else if (e[0].code == 99) {
+      notifyInfo(e.message);
+    } else if (e[0].code == -1) {
+      relogin();
+    }
+  })
+}
+
+//------------------------------------------------------
+
+
+
 
 
 // AJAX FUNCTION DEF

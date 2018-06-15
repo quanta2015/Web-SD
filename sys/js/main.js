@@ -7,7 +7,7 @@ function init() {
   $("iframe").height(h - 50);
 
   //显示用户名
-  $("#u-name").text(cookie('name') || '请完善信息');
+  $("#u-name").html(cookie('name') || '<a href="updateSeller.html" target="mainframe" class="font-red">请完善信息</a>');
 
 
   $('[data-button]').on('click', function(e) {

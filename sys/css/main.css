@@ -120,3 +120,12 @@ iframe{
 .fn-blur {
     filter: blur(10px);
 }
+
+.page-admin {
+    margin-top: 50px!important;
+}
+
+.page-header-admin {
+    height: 50px!important;
+    min-height: 50px!important;
+}

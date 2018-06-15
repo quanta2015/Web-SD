@@ -7,26 +7,20 @@ function init() {
   initList();
   $('body').on('click', '.audit-task', doAuditTask);
   $('body').on('click', '.detail-task', doDetailTask);
-  $('body').on('click', '.g-detail', doClose);
+  $('body').on('click', '.m-close', doClose);
 }
 
 function initList(param = pageData) {
-  TmplData(TMPL_ADMIN_TASK_LIST, [URL_ADMIN_ALL_TASK, encodeQuery(param)].join('?'), null, cbListTask)
+  tmplPormise('GET', TMPL_ADMIN_TASK_LIST, [URL_ADMIN_ALL_TASK, encodeQuery(param)].join('?'), null, cbListTask)
 }
 
 function cbListTask(r, e) {
-  let data = e[0];
-  if (data.code == 0) {
-    Object.assign(data, pageData);
-    totalPages = Math.ceil(data.total/PAGE_DATA.pageSize);
-    $(".portlet-body .table").remove();
-    $(".portlet-body .table-data").append($.templates(r[0]).render(data, rdHelper));
-    if ($('.table-pg').text() == '') initPage(totalPages);
-  } else if (e.code == 99) {
-    notifyInfo(e.message);
-  } else if (e.code == -1) {
-    relogin();
-  }
+  let ret = e;
+  Object.assign(ret, pageData);
+  totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
+  $(".portlet-body .table").remove();
+  $(".portlet-body .table-data").append($.templates(r).render(ret, rdHelper));
+  if ($('.table-pg').text() == '') initPage(totalPages);
 }
 
 function initPage(totalPages) {
@@ -41,22 +35,15 @@ function initPage(totalPages) {
 
 function doDetailTask(e) {
   id = $(e.currentTarget).data('id')
-  TmplData('/tmpl/admin/detail_task.tmpl','/task/task_detail/'+ id, null, cbDetail)
+  tmplPormise('GET', '/tmpl/admin/detail_task.tmpl','/task/task_detail/'+ id, null, cbDetail)
 }
 
-
 function cbDetail(r, e) {
-  let ret = e[0];
-  if (ret.code == 0) {
-    $(".g-detail").empty();
-    ret.data.imgPrefix = IMG_PREFIX;
-    $(".g-detail").append($.templates(r[0]).render(ret.data, rdHelper));
-    $(".g-detail").show()
-  } else if (ret.code == 99) {
-    notifyInfo(e.message);
-  } else if (ret.code == -1) {
-    relogin();
-  }
+  let ret = e;
+  $(".g-detail").empty();
+  ret.data.imgPrefix = IMG_PREFIX;
+  $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
+  $(".g-detail").show()
 }
 
 function doAuditTask(e) {
@@ -67,21 +54,14 @@ function doAuditTask(e) {
         approve: ($(e.currentTarget).data('type')=='pass')?1:2,
         reason: ret
       }
-      promiseData('POST',URL_ADMIN_TASK_AUDIT,JSON.stringify(obj), cbAuditTask)
+      promise('POST',URL_ADMIN_TASK_AUDIT,JSON.stringify(obj), cbAuditTask)
     }; 
   }); 
 }
 
 function cbAuditTask(e) {
-  if (e.code == 0) {
-    initList()
-  } else if (e.code == 99) {
-    notifyInfo(e.message)
-  }  else if (e.code == -1) {
-    relogin();
-  }
+  initList()
 }
-
 
 function doClose() {
   $('.g-detail').hide()

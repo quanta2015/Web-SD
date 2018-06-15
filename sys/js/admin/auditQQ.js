@@ -13,21 +13,16 @@ function init() {
 }
 
 function initList(param = pageData) {
-  TmplData(TMPL_ADMIN_QQ_LIST, [URL_ADMIN_QQ_LIST, encodeQuery(param)].join('?'), null, cbListQQ)
+  tmplPormise('GET', TMPL_ADMIN_QQ_LIST, [URL_ADMIN_QQ_LIST, encodeQuery(param)].join('?'), null, cbListQQ)
 }
 
 function cbListQQ(r, e) {
-  let data = e[0];
-  if (data.code == 0) {
-    
-    Object.assign(data, pageData);
-    totalPages = Math.ceil(data.total/PAGE_DATA.pageSize);
-    $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(data, null));
-    if ($('.table-pg').text() == '') initPage(totalPages);
-  } else if (e.code == -1) {
-    relogin();
-  }
+  let ret = e;
+  Object.assign(ret, pageData);
+  totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
+  $(".portlet-body .table").remove();
+  $(".portlet-body").prepend($.templates(r).render(ret, null));
+  if ($('.table-pg').text() == '') initPage(totalPages);
 }
 
 function initPage(totalPages) {
@@ -48,15 +43,11 @@ function doAudit(e) {
         approve: ($(e.currentTarget).data('type')=='pass')?AUDIT_PASS:AUDIT_FAIL,
         reason: ret
       }
-      promiseData('POST',URL_ADMIN_AUDITQQ,JSON.stringify(obj), cbAudit)
+      promise('POST',URL_ADMIN_AUDITQQ,JSON.stringify(obj), cbAudit)
     }; 
   }); 
 }
 
 function cbAudit(e) {
-  if (e.code == 0) {
-    initList()
-  } else if (e.code == -1) {
-    relogin();
-  }
+  initList()
 }

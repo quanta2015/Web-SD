@@ -9,24 +9,18 @@ function init() {
 }
 
 function initList(param = pageData) {
-  TmplData(TMPL_ADMIN_ACOUNT_LIST, [URL_ADMIN_ACOUNT_LIST, encodeQuery(param)].join('?'), null, cbList)
+  tmplPormise('GET', TMPL_ADMIN_ACOUNT_LIST, [URL_ADMIN_ACOUNT_LIST, encodeQuery(param)].join('?'), null, cbList)
 }
 
 function cbList(r, e) {
-  let data = e[0];
-  if (data.code == 0) {
-    data.imgPrefix = IMG_PREFIX;
-    Object.assign(data, pageData);
-    totalPages = Math.ceil(data.total/PAGE_DATA.pageSize);
-    $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(data, null));
-    $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
-    if ($('.table-pg').text() == '') initPage(totalPages);
-  } else if (e.code == 99) {
-    notifyInfo(e.message);
-  } else if (e.code == -1) {
-    relogin();
-  }
+  let ret = e;
+  ret.imgPrefix = IMG_PREFIX;
+  Object.assign(ret, pageData);
+  totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
+  $(".portlet-body .table").remove();
+  $(".portlet-body").prepend($.templates(r).render(ret, null));
+  $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
+  if ($('.table-pg').text() == '') initPage(totalPages);
 }
 
 function initPage(totalPages) {
@@ -46,17 +40,11 @@ function doAudit(e) {
         id: sid = $(e.currentTarget).data('id'),
         approve: ($(e.currentTarget).data('type')=='pass')?AUDIT_PASS:AUDIT_FAIL
       }
-      promiseData('POST',URL_ADMIN_ACOUNT_AUDIT,JSON.stringify(obj), cbAudit)
+      promise('POST',URL_ADMIN_ACOUNT_AUDIT,JSON.stringify(obj), cbAudit)
     }; 
   }); 
 }
 
 function cbAudit(e) {
-  if (e.code == 0) {
-    initList()
-  } else if (e.code == 99) {
-    notifyInfo(e.message);
-  } else if (e.code == -1) {
-    relogin();
-  }
+  initList()
 }

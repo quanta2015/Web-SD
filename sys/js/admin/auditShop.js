@@ -12,27 +12,21 @@ function init() {
 }
 
 function initList(param = pageData) {
-  TmplData(TMPL_ADMIN_SHOP_LIST, [URL_ADMIN_ALL_SHOP, encodeQuery(param)].join('?'), null, cbListShop)
+  tmplPormise('GET', TMPL_ADMIN_SHOP_LIST, [URL_ADMIN_ALL_SHOP, encodeQuery(param)].join('?'), null, cbListShop)
 }
 
 function cbListShop(r, e) {
-  let data = e[0];
-  if (data.code == 0) {
-    _listshop = e[0].data;
-    data.imgPrefix = IMG_PREFIX;
-    Object.assign(data, pageData);
-    totalPages = Math.ceil(data.total/PAGE_DATA.pageSize);
+  let ret = e;
+    _listshop = ret.data;
+    ret.imgPrefix = IMG_PREFIX;
+    Object.assign(ret, pageData);
+    totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
     $(".portlet-body .table").remove();
-    $(".portlet-body .table-data").append($.templates(r[0]).render(data, rdHelper));
+    $(".portlet-body .table-data").append($.templates(r).render(ret, rdHelper));
     $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
     if ($('.table-pg').text() == '') initPage(totalPages);
-
-  } else if (e.code == -1) {
-    relogin();
-  } else if (e.code == 99) {
-    notifyInfo(e.message);
-  } 
 }
+
 
 function initPage(totalPages) {
   $('.portlet-body .table-pg').twbsPagination({
@@ -52,19 +46,13 @@ function doAudit(e) {
         approve: ($(e.currentTarget).data('type')=='pass')?1:2,
         reason: ret
       }
-      promiseData('POST',URL_ADMIN_SHOP_AUDIT,JSON.stringify(obj), cbAudit)
+      promise('POST',URL_ADMIN_SHOP_AUDIT,JSON.stringify(obj), cbAudit)
     }; 
   }); 
 }
 
 function cbAudit(e) {
-  if (e.code == 0) {
-    initList()
-  } else if (e.code == -1) {
-    relogin();
-  } else if (e.code == 99) {
-    notifyInfo(e.message);
-  } 
+  initList()
 }
 
 function doShowDetail() {

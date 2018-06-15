@@ -3,7 +3,8 @@ let rules = {
     required: !0,
   },
   shopUrl: {
-    required: !0
+    required: !0,
+    url: true
   },
   shopName: {
     required: !0
