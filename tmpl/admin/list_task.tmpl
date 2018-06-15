@@ -30,11 +30,11 @@
             <td> {{:approveName}}</td>
             <td> {{:approveReason}}</td>
             <td class="fn-center"> 
-              <a href="#basic" class="btn grey-mint btn-xs btn-outline detail-task"   data-id="{{:id}}">详情 </a>
+              <a href="#basic" class="btn grey-mint btn-xs  detail-task"   data-id="{{:id}}">详情 </a>
               {{if !approve}}
-              <a href="#basic" class="btn red btn-xs btn-outline audit-task"   data-id="{{:id}}" data-type="unpass">不通过 </a> {{/if}}
+              <a href="#basic" class="btn red btn-xs  audit-task"   data-id="{{:id}}" data-type="unpass">不通过 </a> {{/if}}
               {{if !approve}}
-              <a href="#basic" class="btn blue-madison btn-xs btn-outline audit-task"   data-id="{{:id}}" data-type="pass">通过 </a> {{/if}}
+              <a href="#basic" class="btn blue-madison btn-xs  audit-task"   data-id="{{:id}}" data-type="pass">通过 </a> {{/if}}
               
             </td>
         </tr>

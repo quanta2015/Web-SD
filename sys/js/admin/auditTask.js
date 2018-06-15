@@ -49,6 +49,7 @@ function cbDetail(r, e) {
   let ret = e[0];
   if (ret.code == 0) {
     $(".g-detail").empty();
+    ret.data.imgPrefix = IMG_PREFIX;
     $(".g-detail").append($.templates(r[0]).render(ret.data, rdHelper));
     $(".g-detail").show()
   } else if (ret.code == 99) {

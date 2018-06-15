@@ -25,7 +25,7 @@ body {
 .m-detail-wrap {
     margin: 10px auto;
     background: #fff;
-    width: 800px;
+    width: 900px;
     display: flex;
     flex-direction: column;
     box-shadow:1px 1px 5px #ccc;
@@ -63,9 +63,9 @@ body {
 }
 
 .m-d>div {
-    flex:1;
+    flex: 1;
     background: #fff;
-    padding: 0px 15px 5px 15px;
+    padding: 0px 5px 5px 5px;
 }
 
 
@@ -117,4 +117,9 @@ body {
 .m-d-commit a {
     width: 200px;
     margin-right: 20px;
+}
+
+.u-task-count {
+    float: right;
+    margin: 0!important;
 }

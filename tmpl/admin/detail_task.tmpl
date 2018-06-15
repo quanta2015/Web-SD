@@ -15,7 +15,7 @@
       </li>
       
       <li>
-        <div class="col-1 v-img"><img src="{{:~root.imgPrefix}}{{:goodsMainImg}}"></div>
+        <div class="col-1 v-img"><img src="{{:~root.imgPrefix}}{{:goodsList[0].goodsmainimg}}"></div>
       </li>
     </div>
     <div class="m-d-item col-1">
@@ -24,19 +24,23 @@
       </li>
       <li>
         <div class="col-1">商品名称</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:goodsname}}</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].goodsname}}</div>
+      </li>
+      <li>
+        <div class="col-1">商品链接</div>
+        <div class="col-2 font-red-thunderbird fn-right"><a href="{{:goodsList[0].goodsurl}}" target="_blank">{{:goodsList[0].goodsurl}}</a></div>
       </li>
       <li>
         <div class="col-1">搜索展示价格</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:searchprice}}元</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].searchprice}}元</div>
       </li>
       <li>
         <div class="col-1">商品成交价格</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:goodsPrice}}元</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].factprice}}元</div>
       </li>
       <li>
         <div class="col-1">件数</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:number}}件</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].number}}件</div>
       </li>
     </div>
   </div>
@@ -52,28 +56,24 @@
         <div class="col-2 font-red-thunderbird fn-right">{{:tasktype}}</div>
       </li>
       <li>
-        <div class="col-1">搜索关键字</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:keyword}}</div>
-      </li>
-      <li>
         <div class="col-1">规则尺码</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:colorSize}}</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].colorSize}}</div>
       </li>
       <li>
         <div class="col-1">商品所在地</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:goodsposition}}</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].goodsposition}}</div>
       </li>
       <li>
         <div class="col-1">价格区间</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:lowprice}}-{{:highprice}}</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].lowprice}}-{{:goodsList[0].highprice}}</div>
       </li>
       <li>
         <div class="col-1">商品现有销量约</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:salesVolume}}</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].salesVolume}}</div>
       </li>
       <li>
-        <div class="col-1">定位目标商品排序方式</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:locationway}}</div>
+        <div class="col-1">定位商品排序</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].locationway}}</div>
       </li>
       <li>
         <div class="col-1">商品定位</div>
@@ -81,7 +81,7 @@
       </li>
       <li>
         <div class="col-1">订单留言</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:orderwords}}</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].orderwords}}</div>
       </li>
       <li>
         <div class="col-1">评论要求</div>
@@ -91,36 +91,97 @@
         <div class="col-1">是否假聊</div>
         <div class="col-2 font-red-thunderbird fn-right">{{if chatNecessary}}是{{else}}否{{/if}}</div>
       </li>
-      {{if (taskkeyType==2)}}
+
+      {{if (commonTaskKeyList.length>0)}}
+      {{for commonTaskKeyList}}
       <li class="v-m-title">
-        <div class="col-1"><span class="icon-layers"></span>指定关键字好评任务</div>
+        <div class="col-1">
+          <span class="icon-layers"></span>普通好评任务 - {{:id}}
+          <span class="u-task-count">{{:taskkeyNum}}单</span>
+        </div>
+      </li>
+      <li>
+        <div class="col-1">搜索关键字</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:keyword}}</div>
+      </li>
+      <li>
+        <div class="col-1">任务时间段</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:fromHour}}:{{:fromMin}}-{{:toHour}}:{{:toMin}}</div>
+      </li>
+      {{/for}}
+      {{/if}}
+
+      {{if (keywordTaskKeyList.length>0)}}
+      {{for keywordTaskKeyList}}
+      <li class="v-m-title">
+        <div class="col-1">
+          <span class="icon-layers"></span>关键字好评任务 - {{:id}}
+          <span class="u-task-count">{{:taskkeyNum}}单</span>
+        </div>
+      </li>
+      <li>
+        <div class="col-1">搜索关键字</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:keyword}}</div>
       </li>
       <li>
         <div class="col-1">指定关键词</div>
         <div class="col-2 font-red-thunderbird fn-right">{{:appoints}}</div>
       </li>
+      <li>
+        <div class="col-1">任务时间段</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:fromHour}}:{{:fromMin}}-{{:toHour}}:{{:toMin}}</div>
+      </li>
+      {{/for}}
       {{/if}}
-      {{if (taskkeyType==3)}}
+
+      {{if (pictureTaskKeyList.length>0)}}
+      {{for pictureTaskKeyList}}
       <li class="v-m-title">
-        <div class="col-1"><span class="icon-layers"></span>指定图片好评任务</div>
+        <div class="col-1">
+          <span class="icon-layers"></span>图片好评任务 - {{:id}}
+          <span class="u-task-count">{{:taskkeyNum}}单</span>
+        </div>
+      </li>
+      <li>
+        <div class="col-1">搜索关键字</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:keyword}}</div>
       </li>
       <li>
         <div class="col-1">图片好评图</div>
-        <div class="col-2 font-red-thunderbird fn-right">
-          {{for taskkeyInfo.taskPictureList}}
+        <div class="col-2 font-red-thunderbird fn-right">{{for taskPictureList}}
           <a href="{{:~root.imgPrefix}}{{:picture}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture}}" style="width: 60px; height: 60px; border: 1px solid #ccc;"></a>
-          {{/for}}
-        </div>
-      </li>
-      {{/if}}
-      {{if (taskkeyType==4)}}
-      <li class="v-m-title">
-        <div class="col-1"><span class="icon-layers"></span>指定文字好评任务</div>
+          {{/for}}</div>
       </li>
       <li>
-        <div class="col-1">指定文字</div>
+        <div class="col-1">任务时间段</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:fromHour}}:{{:fromMin}}-{{:toHour}}:{{:toMin}}</div>
+      </li>
+      {{/for}}
+      {{/if}}
+
+
+
+      {{if (commentTaskKeyList.length>0)}}
+      {{for commentTaskKeyList}}
+      <li class="v-m-title">
+        <div class="col-1">
+          <span class="icon-layers"></span>文字好评任务 - {{:id}}
+          <span class="u-task-count">{{:taskkeyNum}}单</span>
+        </div>
+      </li>
+      <li>
+        <div class="col-1">搜索关键字</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:keyword}}</div>
+      </li>
+      <li>
+        <div class="col-1">指定文字内容</div>
         <div class="col-2 font-red-thunderbird fn-right">{{:appoints}}</div>
       </li>
+      <li>
+        <div class="col-1">任务时间段</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:fromHour}}:{{:fromMin}}-{{:toHour}}:{{:toMin}}</div>
+      </li>
+      {{/for}}
       {{/if}}
 
     </div>
@@ -146,7 +207,7 @@
       <li>
         <div class="col-2">订单优先审核</div>
         <div class="col-1 font-red-thunderbird fn-right">
-        {{:auditFirst}} </div>
+        {{:~formatBool(auditFirst)}} </div>
       </li>
       <li>
         <div class="col-2">性别选择</div>
@@ -186,7 +247,7 @@
       <li>
         <div class="col-2">是否默认签收</div>
         <div class="col-1 font-red-thunderbird fn-right">
-        {{:isRecieve}} </div>
+        {{:~formatBool(isRecieve)}} </div>
       </li>
       <li>
         <div class="col-2">问大家</div>
@@ -196,7 +257,7 @@
       <li>
         <div class="col-2">是否向平台购买面单</div>
         <div class="col-1 font-red-thunderbird fn-right">
-        {{:buyExpress}}  </div>
+        {{:~formatBool(buyExpress)}}  </div>
       </li>
     </div>
   </div> 

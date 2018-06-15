@@ -2,7 +2,7 @@
 const CODE_COUNT = 60
 const BUY = 0
 const SELL = 1
-const HOST = 'http://203.195.244.51:8011'
+const HOST = 'http://103.251.90.136:8011/'
 const IMG_PREFIX = HOST + '/file/'
 const AUDIT_PASS = 2
 const AUDIT_FAIL = 3
