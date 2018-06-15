@@ -13,7 +13,7 @@ function init() {
 }
 
 function initList(param = pageData) {
-  tmplPormise('GET', TMPL_ADMIN_QQ_LIST, [URL_ADMIN_QQ_LIST, encodeQuery(param)].join('?'), null, cbListQQ)
+  pormiseTmpl('GET', TMPL_ADMIN_QQ_LIST, [URL_ADMIN_QQ_LIST, encodeQuery(param)].join('?'), null, cbListQQ)
 }
 
 function cbListQQ(r, e) {

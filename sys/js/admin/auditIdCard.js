@@ -9,7 +9,7 @@ function init() {
 }
 
 function initList(param = pageData) {
-  tmplPormise('GET', TMPL_ADMIN_IDCARD_LIST, [URL_ADMIN_ALL_IDCARD, encodeQuery(param)].join('?'), null, cbListIdCard)
+  pormiseTmpl('GET', TMPL_ADMIN_IDCARD_LIST, [URL_ADMIN_ALL_IDCARD, encodeQuery(param)].join('?'), null, cbListIdCard)
 }
 
 function cbListIdCard(r, e) {

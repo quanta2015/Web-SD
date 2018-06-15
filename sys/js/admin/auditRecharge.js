@@ -9,7 +9,7 @@ function init() {
 }
 
 function initList(param = pageData) {
-  tmplPormise('GET', TMPL_ADMIN_RECHARGE_LIST, [URL_ADMIN_ALL_RECHARGE, encodeQuery(param)].join('?'), null, cbListTask)
+  pormiseTmpl('GET', TMPL_ADMIN_RECHARGE_LIST, [URL_ADMIN_ALL_RECHARGE, encodeQuery(param)].join('?'), null, cbListTask)
 }
 
 function cbListTask(r, e) {

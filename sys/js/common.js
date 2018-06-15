@@ -285,21 +285,7 @@ function isNull(exp) {
   }
 }
 
-// AJAX FUNCTION DEF
-function promiseDataOLD(method, url, data, cb) {
-  var promise = $.ajax({
-    type: method,
-    url: HOST + url,
-    dataType: "json",
-    contentType: "application/json",
-    data: data,
-    xhrFields: {
-      withCredentials: true
-    },
-    crossDomain: true,
-  });
-  promise.done(cb)
-}
+
 
 
 // new ajax def
@@ -328,9 +314,7 @@ function promise(method, url, data, cb) {
   })
 }
 
-
-
-function tmplPormise(method, urlTmpl, urlData, data, cb) {
+function pormiseTmpl(method, urlTmpl, urlData, data, cb) {
   $("body").append(LOADER);
   $.when($.ajax(urlTmpl), 
     $.ajax({
@@ -355,13 +339,55 @@ function tmplPormise(method, urlTmpl, urlData, data, cb) {
   })
 }
 
+
+const promiseObj = (url, data) => {
+  return new Promise((resolve, reject) => {
+    $("body").append(LOADER);
+    $.ajax({
+      type: 'get',
+      url: HOST + url,
+      dataType: "json",
+      contentType: "application/json",
+      data: data,
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true
+    }).done(e => {
+      $("#i-mask").remove();
+      if (e.code == 0) {
+        resolve(e);
+      } else if (e.code == 99) {
+        notifyInfo(e.message);
+      } else if (e.code == -1) {
+        relogin();
+      }
+    })
+  })
+}
+
 //------------------------------------------------------
 
 
 
 
+// OLD AJAX FUNCTION DEF
+function promiseDataOLD(method, url, data, cb) {
+  var promise = $.ajax({
+    type: method,
+    url: HOST + url,
+    dataType: "json",
+    contentType: "application/json",
+    data: data,
+    xhrFields: {
+      withCredentials: true
+    },
+    crossDomain: true,
+  });
+  promise.done(cb)
+}
 
-// AJAX FUNCTION DEF
+
 function promiseData(method, url, data, cb) {
   $("body").append(LOADER);
   var promise = $.ajax({

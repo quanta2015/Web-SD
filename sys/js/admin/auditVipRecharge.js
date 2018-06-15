@@ -19,7 +19,7 @@ function init() {
 
 function initList(param = pageData) {
   pageData = Object.assign(pageData, {"type":viptype});
-  tmplPormise('GET', TMPL_ADMIN_VIPRECHARGE_LIST, [URL_ADMIN_MEMBERSHIP_TRANSFER_LIST, encodeQuery(param)].join('?'), null, cbVipRechargeList)
+  pormiseTmpl('GET', TMPL_ADMIN_VIPRECHARGE_LIST, [URL_ADMIN_MEMBERSHIP_TRANSFER_LIST, encodeQuery(param)].join('?'), null, cbVipRechargeList)
 }
 
 function cbVipRechargeList(r, e) {

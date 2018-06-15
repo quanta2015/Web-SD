@@ -11,7 +11,7 @@ function init() {
 }
 
 function initList(param = pageData) {
-  tmplPormise('GET', TMPL_ADMIN_TASK_LIST, [URL_ADMIN_ALL_TASK, encodeQuery(param)].join('?'), null, cbListTask)
+  pormiseTmpl('GET', TMPL_ADMIN_TASK_LIST, [URL_ADMIN_ALL_TASK, encodeQuery(param)].join('?'), null, cbListTask)
 }
 
 function cbListTask(r, e) {

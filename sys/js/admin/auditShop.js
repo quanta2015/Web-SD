@@ -12,7 +12,7 @@ function init() {
 }
 
 function initList(param = pageData) {
-  tmplPormise('GET', TMPL_ADMIN_SHOP_LIST, [URL_ADMIN_ALL_SHOP, encodeQuery(param)].join('?'), null, cbListShop)
+  pormiseTmpl('GET', TMPL_ADMIN_SHOP_LIST, [URL_ADMIN_ALL_SHOP, encodeQuery(param)].join('?'), null, cbListShop)
 }
 
 function cbListShop(r, e) {
