@@ -92,17 +92,17 @@ function init() {
   
 
 
-  //好评任务切换显示
-  $("#normaltask").change( ()=> $('.nor-task-wrap').toggle() );
-  $("#keywordtask").change( ()=> $('.key-task-wrap').toggle() );
-  $("#picturetask").change( ()=> $('.img-task-wrap').toggle() );
-  $("#wordtask").change( ()=> $('.word-task-wrap').toggle() );
+  // //好评任务切换显示
+  // $("#normaltask").change( ()=> $('.nor-task-wrap').toggle() );
+  // $("#keywordtask").change( ()=> $('.key-task-wrap').toggle() );
+  // $("#picturetask").change( ()=> $('.img-task-wrap').toggle() );
+  // $("#wordtask").change( ()=> $('.word-task-wrap').toggle() );
 
-  //添加好评任务
-  $('.nor-task-add a').on('click', addNorTaskItem);
-  $('.key-task-add a').on('click', addKeyTaskItem);
-  $('.img-task-add a').on('click', addImgTaskItem);
-  $('.word-task-add a').on('click', addWordTaskItem);
+  // //添加好评任务
+  // $('.nor-task-add a').on('click', addNorTaskItem);
+  // $('.key-task-add a').on('click', addKeyTaskItem);
+  // $('.img-task-add a').on('click', addImgTaskItem);
+  // $('.word-task-add a').on('click', addWordTaskItem);
 
 
   $('#rp-tb').prop('checked',true);
@@ -178,29 +178,10 @@ function GotoStep3() {
     return;
   }
 
-  if ( $("#normaltask")[0].checked ) {
-    if (checkInput('.nor-task-wrap .u-task-key',MSG_INPUT_KEYWORD)) return;
-    if (checkInput('.nor-task-wrap .u-task-count',MSG_INPUT_TASK_COUNT))  return;
-  }
-
-  if ( $("#keywordtask")[0].checked ) {
-    if (checkInputHasOne('.key-task-wrap .ipt-keyword',MSG_INPUT_KEYWORD_EX)) return;
-    if (checkInput('.key-task-wrap .u-task-key',MSG_INPUT_KEYWORD)) return;
-    if (checkInput('.key-task-wrap .u-task-count',MSG_INPUT_TASK_COUNT)) return;
-  }
-
-  if ( $("#picturetask")[0].checked ) {
-    if (checkInput('.img-task-wrap .u-task-key',MSG_INPUT_KEYWORD)) return;
-    if (checkInput('.img-task-wrap .u-task-count',MSG_INPUT_TASK_COUNT)) return;
-  }
-
-  if ( $("#wordtask")[0].checked ) {
-    if (checkInput('.word-task-wrap .u-task-key',MSG_INPUT_KEYWORD)) return;
-    if (checkInput('.word-task-wrap .u-task-count',MSG_INPUT_TASK_COUNT)) return;
-    if (checkInput('.word-task-wrap .u-task-keyword',MSG_INPUT_TEXT)) return;
-  }
-
-
+  if (checkInput('.task-wrap-item .u-task-key',MSG_INPUT_KEYWORD)) return;
+  if (checkInput('.task-wrap-item .u-task-count',MSG_INPUT_TASK_COUNT))  return;
+  if (checkInputHasOne('.task-wrap-item .ipt-keyword',MSG_INPUT_KEYWORD_EX)) return;
+  if (checkInput('.task-wrap-item .u-task-keyword',MSG_INPUT_TEXT)) return;
 
   doPublish()
 }
@@ -279,36 +260,14 @@ function initTime() {
 
 async function addTask() {
   var count = $('.task-wrap-item').length + 1;
-  var key = $('#keywordtask').prop('checked');
-  var img = $('#picturetask').prop('checked');
-  var word = $('#wordtask').prop('checked');
+  var key   = $('#keywordtask').prop('checked');
+  var img   = $('#picturetask').prop('checked');
+  var word  = $('#wordtask').prop('checked');
+  $('#keywordtask').prop('checked', false)
+  $('#picturetask').prop('checked', false)
+  $('#wordtask').prop('checked', false);
+
   $(".task-wrap").append(await renderTmpl('/tmpl/sell/createtask.tmpl', { type:'nor-task', count:count, key:key, img:img, word:word, list:[1,1,1,1,1] }));
-  initTime()
-}
-
-
-async function addNorTaskItem() {
-  var count = $('.nor-task').length + 1
-  $(".nor-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'nor-task', data:count, show:true }));
-  initTime()
-}
-
-async function addKeyTaskItem() {
-  var count = $('.key-task').length + 1
-  $(".key-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'key-task', data:count, show:true }));
-  initTime()
-}
-
-async function addImgTaskItem() {
-  var count = $('.img-task-title').length + 1
-  $(".img-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_I, { type:'img-task', data:count,list:[1,1,1,1,1], show:true }));
-  initTime()
-}
-
-
-async function addWordTaskItem() {
-  var count = $('.word-task-title').length + 1
-  $(".word-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'word-task',data:count, show:true, word: true }));
   initTime()
 }
 
@@ -316,12 +275,11 @@ function delTask() {
   $(this).parents('.task-wrap-item').remove();
 }
 
-
 function doPublish() {
 
   let obj = {
     tasktype: $("input[name='r-task-type']:checked").val(),
-    returntype: $("input[name='r-return-type']:checked").val(),
+    // returntype: $("input[name='r-return-type']:checked").val(),
     goodsList: [{
       colorSize: $('#color-size-chk').prop('checked')?'':$('#color-size-info').val(),
       factprice: $('#real-price').val().replace(/,/g, ''),
@@ -340,14 +298,6 @@ function doPublish() {
       searchprice: $('#mobile-price').val().replace(/,/g, ''),
     }],
     goodsname: $('#name').val(),
-    // commontask: $('#normaltask').prop('checked')?1:0,
-    // commonTaskKeyList: [],
-    // keywordtask: $('#keywordtask').prop('checked')?1:0,
-    // keywordTaskKeyList: [],
-    // picturetask: $('#picturetask').prop('checked')?1:0,
-    // pictureTaskKeyList: [],
-    // commenttask: $('#wordtask').prop('checked')?1:0,
-    // commentTaskKeyList: [],
     taskKeyList: [],
     startdate: $('#start-date').val(),
     num: $('#task-count').val().replace(/,/g, ''),
@@ -378,10 +328,6 @@ function doPublish() {
     showFirst: $('#show-first').val()
   }
   obj.taskKeyList = getTaskData();
-  // obj.commonTaskKeyList = obj.commontask ? getGreatCommentData('nor-task') : [];
-  // obj.keywordTaskKeyList = obj.keywordtask ? getGreatCommentData('key-task') : [];
-  // obj.pictureTaskKeyList = obj.picturetask ? getGreatCommentData('img-task') : [];
-  // obj.commentTaskKeyList = obj.commenttask ? getGreatCommentData('word-task') : [];
 
   TmplDataP(URL_SELL_TASK_COST, URL_TASK_PUBLISH, JSON.stringify(obj), cbInfo)
 }
@@ -391,7 +337,7 @@ function doPublish() {
 function getArrVal(obj, type) {
   let arr = [];
   obj.each(function() {
-    type?arr.push($(this).val()):arr.push($(this).attr('picurl'));
+    type?arr.push($(this).val()):arr.push( { picture:$(this).attr('picurl') } );
   }) 
   if (type) {
     return arr.join(';')
@@ -409,94 +355,32 @@ function getTaskData() {
     let taskItem = {
       taskkeyType: typeArr.text(),
       keyword: $(this).find('.u-task-key').val(),
-      number: $(this).find('.u-task-count').val(),
-      taskFrom: $(this).find('.timepicker-from').val(),
-      taskTo: $(this).find('.timepicker-to').val(),
-      taskKeyword: '',
-      taskImg: '',
-      taskWord: ''
+      taskkeyNum: $(this).find('.u-task-count').val(),
+      from: $(this).find('.timepicker-from').val(),
+      to: $(this).find('.timepicker-to').val(),
+      appoints: '',
+      taskPictureList: [],
+      goodComment: ''
     }
-    // taskkey_type = typeArr.text()
-    // taskKey = $(this).find('.u-task-key').val()
-    // taskCount = $(this).find('.u-task-count').val()
-    // from = $(this).find('.timepicker-from').val()
-    // taskTo = $(this).find('.timepicker-to').val()
-    // taskKeyword = '';
-    // taskImg = '';
-    // taskWord = '';
 
     typeArr.each(function() {
       if( $(this).text() == '1' ) return;
       if( $(this).text() == '2' ) {
-        taskItem.taskKeyword = getArrVal( $(item).find('.ipt-keyword'), true)
+        taskItem.appoints = getArrVal( $(item).find('.ipt-keyword'), true)
       }
       if( $(this).text() == '3' ) {
-        taskItem.taskImg = getArrVal( $(item).find('.ipt-img'), false)
+        taskItem.taskPictureList = getArrVal( $(item).find('.ipt-img'), false)
       }
       if( $(this).text() == '4' ) {
-        taskItem.taskWord = getArrVal( $(item).find('.u-task-keyword'), true)
+        taskItem.goodComment = getArrVal( $(item).find('.u-task-keyword'), true)
       }
     })
 
     result.push( taskItem )
-    // console.log(index);
-    // console.log(taskKeyword);
-    // console.log(taskImg);
-    // console.log(taskWord);
   })
-}
-
-function getGreatCommentData(type) {
-  let taskTypeMap = {
-    'nor-task': 1,
-    'key-task': 2,
-    'img-task': 3,
-    'word-task': 4,
-  };
-  let result = [];
-  for(let i = 1; i < 5; i++) {
-    if ($(`#${type}-ipt-key${i}`).length < 1) break;
-    let item = {
-      keyword: $(`#${type}-ipt-key${i}`).val(),
-      fromHour: $(`#${type}-ipt-time-from${i}`).val().split(':')[0],
-      fromMin: $(`#${type}-ipt-time-from${i}`).val().split(':')[1],
-      toHour: $(`#${type}-ipt-time-to${i}`).val().split(':')[0],
-      toMin: $(`#${type}-ipt-time-to${i}`).val().split(':')[1],
-      appoints: '',
-      taskPictureList: [],
-      taskkeyNum: $(`#${type}-ipt-count${i}`).val(),
-      taskkeyType: taskTypeMap[type],
-    };
-    switch(type) {
-      case 'nor-task':
-        break;
-      case 'key-task':
-        item.appoints = [];
-        $('.ipt-keyword').each(function() {
-          if ($(this).val()) {
-            item.appoints.push($(this).val());
-          }
-        });
-        item.appoints = item.appoints.join(',');
-        break;
-      case 'img-task':
-        item.desc = $(`#${type}-ipt-desc${i}`).val();
-        for(let j = 1; j <= 5; j++) {
-          let imgUrl = ($(`#img-task-upload${i}-${j}`).attr('picurl'));
-          if (!imgUrl) continue;
-          item.taskPictureList.push({
-            picture: imgUrl
-          });
-        }
-        break;
-      case 'word-task':
-        item.appoints = $(`#${type}-ipt-word${i}`).val();
-        break;
-    }
-    result.push(item);
-  }
   return result;
 }
+
 
 function cbInfo(r, e) {
   console.log(e)
