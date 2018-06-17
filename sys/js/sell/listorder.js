@@ -16,7 +16,7 @@ function init() {
   $('#batch-pay').on('click', null);
   $('#batch-cancel').on('click', null);
   $('#batch-send').on('click', null);
-  $('#export').on('click', null);
+  $('#export').on('click', doExport);
 }
 
 
@@ -107,4 +107,19 @@ function initPage(totalPages) {
   })
 }
 
-
+function doExport() {
+  let cdt = {
+    shopId: $("#shop-name").val(),
+    taskId: $("#task-id").val(),
+    buyTaskId: $("#order-id").val(),
+    buyerId: $("#buyer-id").val(),
+    orderid: $("#taobao-id").val(),
+    shopType: $("#platform").val(),
+    taskType: $("#task-type").val(),
+    buyTaskStatus: $("#task-status").val(),
+    commentType: $("#comment-type").val(),
+    acceptStart: $("#task-from").val() + ':00',
+    acceptEnd: $("#task-to").val()+ ':00'
+  }
+  window.open([HOST+URL_SELL_EXPORT_TASKS, encodeQuery(cdt)].join('?'));
+}

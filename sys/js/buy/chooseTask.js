@@ -13,21 +13,18 @@ function init() {
 }
 
 function initList(param = pageData) {
-  TmplData(TMPL_BUY_ALL_TASK, [URL_BUYER_ALL_TASK, encodeQuery(param)].join('?'),null, cbList)
+  pormiseTmpl('GET', TMPL_BUY_ALL_TASK, [URL_BUYER_ALL_TASK, encodeQuery(param)].join('?'),null, cbList)
 }
 
 function cbList(r, e) {
-  let ret = e[0];
-  if (ret.code == 0) {
-    _listtask = ret.data;
-    Object.assign(ret, pageData);
-    totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
-    $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(ret, rdHelper));
-    if ($('.table-pg').text() == '') initPage(totalPages);
-  } else if (e.code == -1) {
-    relogin();
-  }
+  let ret = e;
+  console.log(e)
+  _listtask = ret.data;
+  Object.assign(ret, pageData);
+  totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
+  $(".portlet-body .table").remove();
+  $(".portlet-body").prepend($.templates(r[0]).render(ret, rdHelper));
+  if ($('.table-pg').text() == '') initPage(totalPages);
 }
 
 
