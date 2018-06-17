@@ -336,11 +336,7 @@ function pormiseTmpl(method, urlTmpl, urlData, data, cb) {
     if (e[0].code == 0) {
       cb(tmpl[0],e[0]);
     } else if (e[0].code == 99) {
-<<<<<<< HEAD
-      notifyInfo(e[0].message);
-=======
       errorInfo(e[0].message);
->>>>>>> a69439aec891f1d3db1a8db22f68416beb630337
     } else if (e[0].code == -1) {
       relogin();
     }

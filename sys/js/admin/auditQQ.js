@@ -19,7 +19,7 @@ function initList() {
     approveStatus: $('#sr-status').val(),
     qq: $('#sr-qq').val(),
     sdate: $("#sr-time-from").val() + ' 00:00:00',
-    edate: $("#sr-time-to").val() + ' 00:00:00',
+    edate: $("#sr-time-to").val() + ' 23:59:00',
   };
   Object.assign(param, pageData);
   pormiseTmpl('GET', TMPL_ADMIN_QQ_LIST, [URL_ADMIN_QQ_LIST, encodeQuery(param)].join('?'), null, cbListQQ)

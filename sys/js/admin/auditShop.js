@@ -17,7 +17,7 @@ function initList() {
     approveStatus: $('#sr-status').val(),
     shopName: $('#sr-shopname').val(),
     sdate: $("#sr-time-from").val() + ' 00:00:00',
-    edate: $("#sr-time-to").val() + ' 00:00:00',
+    edate: $("#sr-time-to").val() + ' 23:59:00',
   };
   Object.assign(param, pageData);
   pormiseTmpl('GET', TMPL_ADMIN_SHOP_LIST, [URL_ADMIN_ALL_SHOP, encodeQuery(param)].join('?'), null, cbListShop)
