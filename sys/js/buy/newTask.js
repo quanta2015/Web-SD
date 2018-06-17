@@ -1,8 +1,8 @@
 $(init)
 
 function init() {
-  initStatus();
 
+  initStatus();
   $('[data-button]').on('click', function(e) {
     var pageName = $(this).data('button') + '.html'
     $("#mainframe", parent.document.body).attr("src", pageName);
@@ -11,10 +11,14 @@ function init() {
 }
 
 function initStatus() {
-  let approveState = parseInt(cookie('approveState'));
-  let bankCardState = parseInt(cookie('bankcardState'));
-  let jingdongState = parseInt(cookie2('approve', 'jingdongList'));
-  let taobaoState = parseInt(cookie2('approve', 'taobaoList'));
+  promise('GET', URL_BUY_INFO, null, cbInitStatus);
+}
+
+function cbInitStatus(e) {
+  let approveState = parseInt(e.approveState);
+  let bankCardState = parseInt(e.bankcardState);
+  let jingdongState = parseInt(e.jingdongList[0].approve);
+  let taobaoState = parseInt(e.taobaoList[0].approve);
 
   toggleBindStatus('taobao', taobaoState);
   toggleBindStatus('id-card', approveState);
