@@ -4,13 +4,31 @@ let pageData = Object.assign({}, PAGE_DATA);
 $(init);
 
 function init() {
-  initList();
+  initTime();
+
+
+  initList(pageData);
   $('body').on('click', '.audit-task', doAuditTask);
   $('body').on('click', '.detail-task', doDetailTask);
   $('body').on('click', '.m-close', doClose);
 }
 
-function initList(param = pageData) {
+
+
+function initTime() {
+  let from =  moment().subtract('days',7).format('YYYY-MM-DD') + ' 00:00';
+  let to = moment().format('YYYY-MM-DD') + ' 23:59'
+  $("#task-from").datetimepicker({ value: from, format:'Y-m-d H:i'});
+  $("#task-to").datetimepicker({value: to, format:'Y-m-d H:i'});
+}
+
+function initList(pg) {
+  let cdt = {
+    sdate: $("#task-from").val() + ':00',
+    edate: $("#task-to").val()+ ':00'
+  }
+  param = Object.assign(cdt, pg);
+
   pormiseTmpl('GET', TMPL_ADMIN_TASK_LIST, [URL_ADMIN_ALL_TASK, encodeQuery(param)].join('?'), null, cbListTask)
 }
 

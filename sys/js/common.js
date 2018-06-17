@@ -61,6 +61,8 @@ const URL_UPLOAD_FILE       = '/upload'
 const URL_SELL_REG          = '/shoper/shoper_reg'
 const URL_SELL_LOGIN        = '/shoper/shoper_login'
 const URL_TASK_PUBLISH      = '/task/task_publish'
+const URL_TASK_CAL_MONEY    = '/task/cal_taskmoney'
+
 const URL_TASK_ALL_PLATFORM = '/task/all_platform'
 const URL_SELL_SHOPS        = '/shoper/shoper_shops/'
 const URL_SELL_SHOP_DEL     = '/shoper/shop_del/'
@@ -77,7 +79,7 @@ const URL_SELL_DELIVERY     = '/task/shoper_delivery'
 const URL_SELL_ACCEPT_LIST  = '/task/task_accept_list'
 const URL_SELL_TRANSFER     = '/shoper/shoper_transfer'
 const URL_SELL_LIST_ORDER   = '/tmpl/sell/list_order.tmpl'
-const URL_SELL_TASK_COST    = '/tmpl/sell/task_cost.tmpl'
+
 const URL_SELL_LIST_TASK    = '/task/search_tasks'
 const URL_SELL_PAY_ORDER     = '/task/approve_buyer_task'
 const URL_SELL_TRADE_LIST   = '/shoper/shoper_trade_list'
@@ -138,7 +140,7 @@ const TMPL_SELL_PLAT_SELECT       = '/tmpl/sell/select_platform.tmpl'
 const TMPL_SELL_WITHDRAW          = '/tmpl/sell/withdraw.tmpl'
 const TMPL_SELL_TASKITEM_LIST     = '/tmpl/sell/list_taskitem.tmpl'
 const TMPL_SELL_COMMISSION_LIST   = '/tmpl/sell/list_commission.tmpl'
-
+const TMPL_SELL_TASK_COST         = '/tmpl/sell/task_cost.tmpl'
 
 // ADMIN
 const TMPL_ADMIN_SHOP_LIST        = '/tmpl/admin/list_shop.tmpl'

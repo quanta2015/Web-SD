@@ -11,6 +11,7 @@
     <link href="/lib/metronic/components.css"  rel="stylesheet" id="style_components" >
     <link href="/lib/metronic/layout.min.css"  rel="stylesheet" >
     <link href="/lib/alertify/alertify.core.css" rel="stylesheet" >
+    <link href="/lib/jquery/jquery.datetimepicker.css" rel="stylesheet">
     
     <link href="/lib/pace/pace.css" rel="stylesheet" >
     <link href="/lib/loaders/loaders.min.css" rel="stylesheet" >
@@ -32,6 +33,22 @@
             </div>
           </div>
         </div>
+
+        <div class="portlet-title">
+          <div class="row row-s">
+            <div>任务编号 
+              <input type="text" id="task-id"> 
+            </div>
+            <div>发布日期 
+              <input type="text" id="task-from"> - <input type="text" id="task-to">
+            </div>
+            <div>
+              <a href="#basic" class="btn red btn-xs search-task" ><i class="fa fa-search"></i> 查询 </a>
+            </div>
+          </div>
+        </div>
+
+
         <div class="portlet-body">
           <div class="table-data"></div>
           <div class="table-pg"></div>
@@ -44,6 +61,7 @@
     </div>
 
     <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/lib/jquery/jquery.datetimepicker.full.js"></script>
     <script src="/lib/jquery/jquery.cookie.js"></script>
     <script src="/lib/jquery-ui/jquery-ui.min.js"></script>
     <script src="/lib/jsrender/jsrender.js"></script>

@@ -40,6 +40,7 @@ let _vip;
 let PREV = 0;
 let NEXT = 1;
 let platformMap = {};
+let taskObj;
 
 $(init);
 
@@ -81,28 +82,8 @@ function init() {
   //设置任务开始时间
   $("#start-date").val(moment().format('YYYY-MM-DD'));
 
-
-
-
   // 初始化平台、店铺下拉栏
   initPlatforms();
-  //初始化普通好评任务栏
-  // initTaskTmpl();
-
-  
-
-
-  // //好评任务切换显示
-  // $("#normaltask").change( ()=> $('.nor-task-wrap').toggle() );
-  // $("#keywordtask").change( ()=> $('.key-task-wrap').toggle() );
-  // $("#picturetask").change( ()=> $('.img-task-wrap').toggle() );
-  // $("#wordtask").change( ()=> $('.word-task-wrap').toggle() );
-
-  // //添加好评任务
-  // $('.nor-task-add a').on('click', addNorTaskItem);
-  // $('.key-task-add a').on('click', addKeyTaskItem);
-  // $('.img-task-add a').on('click', addImgTaskItem);
-  // $('.word-task-add a').on('click', addWordTaskItem);
 
 
   $('#rp-tb').prop('checked',true);
@@ -120,8 +101,6 @@ function init() {
   $('#express-weight').mask("#,##0", {reverse: true});
   $('#show-first').mask("#,##0", {reverse: true});
   $('.u-task-count').mask("#,##0", {reverse: true});
-
-  
 }
 
 
@@ -133,20 +112,6 @@ function doColorSize() {
   }
 }
 
-async function initTaskTmpl() {
-  $(".nor-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'nor-task', data:1, show:false }));
-  $(".key-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'key-task', data:1, show:false }));
-  $(".img-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_I, { type:'img-task', data:1,list:[1,1,1,1,1], show:false }));
-  $(".word-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'word-task',data:1, show:false, word: true }));
-  initTime()
-}
-
-function initLocationSelect(id, ret) {
-  $("#"+id).after(ret)
-      .on('mouseover mouseout', ()=> { $('.alladdress').toggle() });
-  $('.alladdress').on('mouseover', ()=> { $('.alladdress').show() })
-      .on('mouseout', ()=> { $('.alladdress').hide() })
-}
 
 function doPre() {
   renderTask(PREV)
@@ -178,16 +143,29 @@ function GotoStep3() {
     return;
   }
 
+  if ( $('.task-wrap-item .u-task-key').length == 0 ) {
+    notifyInfo('请添加任务！');
+    return;
+  }
+
+
   if (checkInput('.task-wrap-item .u-task-key',MSG_INPUT_KEYWORD)) return;
   if (checkInput('.task-wrap-item .u-task-count',MSG_INPUT_TASK_COUNT))  return;
-  if (checkInputHasOne('.task-wrap-item .ipt-keyword',MSG_INPUT_KEYWORD_EX)) return;
-  if (checkInput('.task-wrap-item .u-task-keyword',MSG_INPUT_TEXT)) return;
+
+  if ( $('.task-wrap-item .ipt-keyword').length > 0 ) {
+    if (checkInputHasOne('.task-wrap-item .ipt-keyword',MSG_INPUT_KEYWORD_EX)) return;
+  }
+
+  if ( $('.task-wrap-item .u-task-keyword').length > 0 ) {
+    if (checkInput('.task-wrap-item .u-task-keyword',MSG_INPUT_TEXT)) return;
+  }
 
   doPublish()
 }
 
 function checkInputHasOne(cls, msg) {
   let ret = 1;
+
   $(cls).each(function() {
     if ($(this).val() !== "") {
         ret = 0;
@@ -277,7 +255,7 @@ function delTask() {
 
 function doPublish() {
 
-  let obj = {
+  taskObj = {
     tasktype: $("input[name='r-task-type']:checked").val(),
     // returntype: $("input[name='r-return-type']:checked").val(),
     goodsList: [{
@@ -298,15 +276,14 @@ function doPublish() {
       searchprice: $('#mobile-price').val().replace(/,/g, ''),
     }],
     goodsname: $('#name').val(),
-    taskKeyList: [],
+    
     startdate: $('#start-date').val(),
     num: $('#task-count').val().replace(/,/g, ''),
     addcharges: $('#award-money').val().replace(/,/g, ''),
     share: $('#share').val(),
     matchLabel: $('#match-label').val(),
     sex: $('#sex').val(),
-    lowage: $('#age').val().split('-')[0],
-    highage: $('#age').val().split('-')[1],
+    ageLimit: $('#age').val(),
     location: ( $('#limit-location').val() === null)? "":$('#limit-location').val().join(';'),
     useHuabei: $('#use-huabei').val(),
     huabeiStart: $('#huabei-start').val(),
@@ -325,11 +302,11 @@ function doPublish() {
     tbLocation: getCheckedVal('tb-location'),
     buyExpress: $('#buy-express').val(),
     auditFirst: $('#audit-first').val(),
-    showFirst: $('#show-first').val()
+    showFirst: $('#show-first').val(),
+    taskKeyList: getTaskData()
   }
-  obj.taskKeyList = getTaskData();
 
-  TmplDataP(URL_SELL_TASK_COST, URL_TASK_PUBLISH, JSON.stringify(obj), cbInfo)
+  TmplDataP(TMPL_SELL_TASK_COST, URL_TASK_CAL_MONEY, JSON.stringify(taskObj), cbInfo)
 }
 
 
@@ -387,9 +364,9 @@ function cbInfo(r, e) {
 
   let ret = e[0];
   if (ret.code == 0) {
-    Object.assign(ret.data.taskMoney, {balance: $('#u-money', parent.document).text()})
+    Object.assign(ret.data, {balance: $('#u-money', parent.document).text()})
     $('.step3').empty()
-    $('.step3').append($.templates(r[0]).render(ret.data.taskMoney, rdHelper))
+    $('.step3').append($.templates(r[0]).render(ret.data, rdHelper))
 
     renderTask(NEXT)
   }else if (ret.code==99) {
@@ -400,6 +377,10 @@ function cbInfo(r, e) {
 }
 
 function doComplete() {
+  TmplDataP(TMPL_SELL_TASK_COST, URL_TASK_PUBLISH, JSON.stringify(taskObj), cbComplete)
+}
+
+function cbComplete() {
   msgbox(MSG_TASK_SAVE_SUCC,MSG_CONT_CREATE_TASK,MSG_PUB_TASK, function(ret) {
     if (ret) {
       goto('createTask.html')
