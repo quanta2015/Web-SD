@@ -27,7 +27,7 @@ function cbListIdCard(r, e) {
   Object.assign(ret, pageData);
   totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
   $(".portlet-body .table").remove();
-  $(".portlet-body").prepend($.templates(r).render(ret, null));
+  $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
   if ($('.table-pg').text() == '') initPage(totalPages);
 }
