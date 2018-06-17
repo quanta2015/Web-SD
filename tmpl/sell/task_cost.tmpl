@@ -16,56 +16,58 @@
         </tr>
       </thead>
       <tbody>
+        {{for data}}
         <tr>
-          <td rowspan='5'> 佣金</td>
+          <td rowspan='4'> 第{{:#index+1}}任务佣金</td>
           <td> 基础佣金： </td>
           <td> {{:baseMoney}}金/单 </td>
           <td> {{:baseMoneyCount}}单</td>
           <td> {{:baseMoneySum}}金 </td>
         </tr>
-
+        
         <tr>
           <td> 指定关键词好评： </td>
           <td> {{:keywordComment}}金/单 </td>
           <td> {{:keywordCommentCount}}单</td>
           <td> {{:keywordCommentSum}}金 </td>
         </tr>
-
+       
         <tr>
           <td> 指定图片好评： </td>
           <td> {{:pictureComment}}金/单 </td>
           <td> {{:pictureCommentCount}}单</td>
           <td> {{:pictureCommentSum}}金 </td>
         </tr>
-
+        
         <tr>
           <td> 指定文字好评： </td>
           <td> {{:wordComment}}金/单 </td>
           <td> {{:wordCommentCount}}单</td>
           <td> {{:wordCommentSum}}金 </td>
         </tr>
+        
+        {{/for}}
 
-        <tr>
+<!--         <tr>
           <td> 收藏商品： </td>
           <td> {{:favoriteGoods}}金/单 </td>
           <td> {{:favoriteGoodsCount}}单</td>
           <td> {{:favoriteGoodsSum}}金 </td>
-        </tr>
-
+        </tr> -->
 
         <tr>
-          <td rowspan='14'> 增值服务</td>
-          <td> 是否聊天： </td>
-          <td> {{:chatNecessary}} 金/单 </td>
-          <td> {{:chatNecessaryCount}} 单</td>
-          <td> {{:chatNecessarySum}} 金 </td>
-        </tr>
-        <tr>
+          <td rowspan='13'> 增值服务</td>
           <td> 是否优先展示任务</td>
           <td> {{:showFirst}} 金/单 </td>
           <td> {{:showFirstCount}} 单</td>
           <td> {{:showFirstSum}} 金 </td>
         </tr>
+        <!-- <tr>
+          <td> 是否聊天： </td>
+          <td> {{:chatNecessary}} 金/单 </td>
+          <td> {{:chatNecessaryCount}} 单</td>
+          <td> {{:chatNecessarySum}} 金 </td>
+        </tr> -->
         <tr>
           <td> 加赏任务佣金</td>
           <td> {{:extraMoney}}金/单 </td>
@@ -142,7 +144,7 @@
           <td>  </td>
           <td> </td>
           <td> 合计 </td>
-          <td> {{:serviceSum}} 单</td>
+          <td> {{:baseMoneyCount}} 单</td>
           <td> {{:serviceSum}} 金 </td>
         </tr>
       </tbody>
@@ -160,7 +162,7 @@
       <tbody>
         <tr>
           <td > 商品费用</td>
-          <td>  {{:goodsMoneySum}}元</td>
+          <td>  {{:goodsMoneySum}}元 ({{:goodsMoney}}元*{{:goodsCount}}件)</td>
         </tr>
         <tr>
           <td > 保证金</td>

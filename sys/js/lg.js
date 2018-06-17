@@ -14,16 +14,10 @@ function doPressLogin(e) {
 
 function doLogin() {
   let obj = { userName: $('#usr').val(), password: $('#pwd').val() };
-  promiseData('POST', URL_ADMIN_LOGIN, JSON.stringify(obj), cbLogin);
+  promise('POST', URL_ADMIN_LOGIN, JSON.stringify(obj), cbLogin);
 }
 
 function cbLogin(e) {
-  if (e.code == 0) {
-    saveCookie(e.data);
+    saveCookie(e);
     location.href = 'html/admin/mainSys.html';
-  }else if (e.code==99) {
-    errorInfo(e.message);
-  }else if (e.code==-1) {
-    relogin();
-  };
 }

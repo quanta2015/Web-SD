@@ -30,7 +30,7 @@ function initList() {
     edate: $("#sr-time-to").val() + ' 00:00:00',
   };
   Object.assign(param, pageData, {"type":viptype});
-  pormiseTmpl('GET', TMPL_ADMIN_VIPRECHARGE_LIST, [URL_ADMIN_MEMBERSHIP_TRANSFER_LIST, encodeQuery(param)].join('?'), null, cbVipRechargeList)
+  promiseTmpl('GET', TMPL_ADMIN_VIPRECHARGE_LIST, [URL_ADMIN_MEMBERSHIP_TRANSFER_LIST, encodeQuery(param)].join('?'), null, cbVipRechargeList)
 }
 
 function cbVipRechargeList(r, e) {

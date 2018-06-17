@@ -13,24 +13,16 @@ function init() {
 }
 
 function initList(param = pageData) {
-  pormiseTmpl('GET', TMPL_BUY_ALL_TASK, [URL_BUYER_ALL_TASK, encodeQuery(param)].join('?'),null, cbList)
+  promiseTmpl('GET', TMPL_BUY_ALL_TASK, [URL_BUYER_ALL_TASK, encodeQuery(param)].join('?'),null, cbList)
 }
 
 function cbList(r, e) {
   let ret = e;
-<<<<<<< HEAD
-=======
-  console.log(e)
->>>>>>> a69439aec891f1d3db1a8db22f68416beb630337
   _listtask = ret.data;
   Object.assign(ret, pageData);
   totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
   $(".portlet-body .table").remove();
-<<<<<<< HEAD
   $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
-=======
-  $(".portlet-body").prepend($.templates(r[0]).render(ret, rdHelper));
->>>>>>> a69439aec891f1d3db1a8db22f68416beb630337
   if ($('.table-pg').text() == '') initPage(totalPages);
 }
 

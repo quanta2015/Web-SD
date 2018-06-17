@@ -18,7 +18,7 @@ function initList() {
     edate: $("#sr-time-to").val() + ' 00:00:00',
   };
   Object.assign(param, pageData);
-  pormiseTmpl('GET', TMPL_ADMIN_IDCARD_LIST, [URL_ADMIN_ALL_IDCARD, encodeQuery(param)].join('?'), null, cbListIdCard)
+  promiseTmpl('GET', TMPL_ADMIN_IDCARD_LIST, [URL_ADMIN_ALL_IDCARD, encodeQuery(param)].join('?'), null, cbListIdCard)
 }
 
 function cbListIdCard(r, e) {

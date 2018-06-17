@@ -106,9 +106,11 @@ function init() {
 
 function doColorSize() {
   if( $(this).prop('checked')  ) {
-    $('#color-size-info').attr('readonly',true)
+    $('#color-size-info').attr('readonly',true);
+    $('#color-size-info').val('无规格')
   }else{
     $('#color-size-info').attr('readonly',false)
+    $('#color-size-info').val('')
   }
 }
 
@@ -358,15 +360,29 @@ function getTaskData() {
   return result;
 }
 
+function formatCost(ret) {
+  let index =0;
+  let result = Object.assign({}, ret[0]);
+  result.data = []
+  if (ret.length>1) {
+    index = 1;
+  }
+  for(i=index;i<ret.length;i++) {
+    result.data.push(ret[i]);
+  }
+  return result;
+}
+
 
 function cbInfo(r, e) {
   console.log(e)
 
   let ret = e[0];
   if (ret.code == 0) {
-    Object.assign(ret.data, {balance: $('#u-money', parent.document).text()})
+    let obj = formatCost(ret.data)
+    // Object.assign(obj, {balance: $('#u-money', parent.document).text()})
     $('.step3').empty()
-    $('.step3').append($.templates(r[0]).render(ret.data, rdHelper))
+    $('.step3').append($.templates(r[0]).render(obj, rdHelper))
 
     renderTask(NEXT)
   }else if (ret.code==99) {

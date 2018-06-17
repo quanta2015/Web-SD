@@ -20,7 +20,7 @@ function initList() {
     edate: $("#sr-time-to").val() + ' 00:00:00',
   };
   Object.assign(param, pageData);
-  pormiseTmpl('GET', TMPL_ADMIN_SHOP_LIST, [URL_ADMIN_ALL_SHOP, encodeQuery(param)].join('?'), null, cbListShop)
+  promiseTmpl('GET', TMPL_ADMIN_SHOP_LIST, [URL_ADMIN_ALL_SHOP, encodeQuery(param)].join('?'), null, cbListShop)
 }
 
 function cbListShop(r, e) {

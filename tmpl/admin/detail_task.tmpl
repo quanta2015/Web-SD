@@ -174,13 +174,11 @@
 
     <div class="m-d m-d-main">
     
-    {{if (commonTaskKeyList.length>0)}}
-    {{for commonTaskKeyList}}
+    {{for taskKeyList}}
     <div class="m-d-item col-1">
       <li class="v-m-title">
         <div class="col-1">
-          <span class="icon-layers"></span>普通好评任务 - {{:id}}
-          <span class="u-task-count">{{:taskkeyNum}}单</span>
+          <span class="icon-layers"></span>第 {{:#index+1}}个任务
         </div>
       </li>
       <li>
@@ -189,91 +187,36 @@
       <li>
         <div class="col-1">任务时间段：<span class="font-red-mint">{{:fromHour}}:{{:fromMin}}-{{:toHour}}:{{:toMin}}</span></div>
       </li>
-    </div>
-    {{/for}}
-    {{/if}}
 
-  
-    {{if (keywordTaskKeyList.length>0)}}
-    {{for keywordTaskKeyList}}
-    <div class="m-d-item col-1">
-      <li class="v-m-title">
-        <div class="col-1">
-          <span class="icon-layers"></span>关键字好评任务 - {{:id}}
-          <span class="u-task-count">{{:taskkeyNum}}单</span>
-        </div>
+      {{if appoints.length}}
+      <li>
+        <div class="col-1">指定关键词：<span class="font-red-mint">{{:appoints}}</span></div>
+      </li>
+      {{/if}}
+      
+      
+      {{if taskPictureList.length>0}}
+      <li>
+        <div class="col-1">好评图片图
       </li>
       <li>
-        <div class="col-1">搜索关键字: <span class="font-red-mint">{{:keyword}}</span></div>
-      </li>
-      <li>
-        <div class="col-1">任务时间段：<span class="font-red-mint">{{:fromHour}}:{{:fromMin}}-{{:toHour}}:{{:toMin}}</span></div>
-      </li>
-      <li>
-        <div class="col-1">指定关键词</div>
-      </li>
-      <li>
-        <div class="col-1"><span class="font-red-mint">{{:appoints}}</span></div>
-      </li>
-    </div>
-    {{/for}}
-    {{/if}}
-  
-
-  
-    {{if (pictureTaskKeyList.length>0)}}
-    {{for pictureTaskKeyList}}
-    <div class="m-d-item col-1">
-      <li class="v-m-title">
-        <div class="col-1">
-          <span class="icon-layers"></span>图片好评任务 - {{:id}}
-          <span class="u-task-count">{{:taskkeyNum}}单</span>
-        </div>
-      </li>
-      <li>
-        <div class="col-1">搜索关键字: <span class="font-red-mint">{{:keyword}}</span></div>
-      </li>
-      <li>
-        <div class="col-1">任务时间段：<span class="font-red-mint">{{:fromHour}}:{{:fromMin}}-{{:toHour}}:{{:toMin}}</span></div>
-      </li>
-      <li>
-        <div class="col-1">图片好评图</div>
-      </li>
-      <li>
-        <div class="col-2 font-red-mint fn-right">{{for taskPictureList}}
+        <div class="col-2 font-red-mint">{{for taskPictureList}}
           <a href="{{:~root.imgPrefix}}{{:picture}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture}}" style="width: 60px; height: 60px; border: 1px solid #ccc;"></a>
           {{/for}}</div>
       </li>
+      {{/if}}
+
+      {{if goodComment}}
+      <li>
+        <div class="col-1">指定文字内容：<span class="font-red-mint">{{:goodComment}}</span></div>
+      </li>
+      {{/if}}
+
     </div>
     {{/for}}
-    {{/if}}
 
-
-    {{if (commentTaskKeyList.length>0)}}
-    {{for commentTaskKeyList}}
-    <div class="m-d-item col-1">
-      <li class="v-m-title">
-        <div class="col-1">
-          <span class="icon-layers"></span>文字好评任务 - {{:id}}
-          <span class="u-task-count">{{:taskkeyNum}}单</span>
-        </div>
-      </li>
-      <li>
-        <div class="col-1">搜索关键字: <span class="font-red-mint">{{:keyword}}</span></div>
-      </li>
-      <li>
-        <div class="col-1">任务时间段：<span class="font-red-mint">{{:fromHour}}:{{:fromMin}}-{{:toHour}}:{{:toMin}}</span></div>
-      </li>
-      <li>
-        <div class="col-1">指定文字内容</div>
-      </li>
-      <li>
-        <div class="col-2 font-red-mint">{{:appoints}}</div>
-      </li>
     </div>
-    {{/for}}
-    {{/if}}
-  </div> 
+
 
 
   <div class="m-d m-d-main">

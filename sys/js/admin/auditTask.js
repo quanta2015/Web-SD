@@ -22,7 +22,7 @@ function initList() {
     edate: $("#sr-time-to").val() + ' 00:00:00',
   };
   Object.assign(param, pageData);
-  pormiseTmpl('GET', TMPL_ADMIN_TASK_LIST, [URL_ADMIN_ALL_TASK, encodeQuery(param)].join('?'), null, cbListTask)
+  promiseTmpl('GET', TMPL_ADMIN_TASK_LIST, [URL_ADMIN_ALL_TASK, encodeQuery(param)].join('?'), null, cbListTask)
 }
 
 function cbListTask(r, e) {
@@ -46,7 +46,7 @@ function initPage(totalPages) {
 
 function doDetailTask(e) {
   id = $(e.currentTarget).data('id')
-  tmplPormise('GET', '/tmpl/admin/detail_task.tmpl','/task/task_detail/'+ id, null, cbDetail)
+  promiseTmpl('GET', '/tmpl/admin/detail_task.tmpl','/task/task_detail/'+ id, null, cbDetail)
 }
 
 function cbDetail(r, e) {

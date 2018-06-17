@@ -16,7 +16,28 @@ function init() {
   $('body').on('click', '.del-task', doDelTask);
   $('body').on('click', '.mag-task', doMagTask);
   $('body').on('click', '.search-task', doSearch);
+  $('body').on('click', '.detail-task', doDetailTask);
+  $('body').on('click', '.m-close', doClose);
 }
+
+function doDetailTask(e) {
+  id = $(e.currentTarget).data('id')
+  promiseTmpl('GET', '/tmpl/admin/detail_task.tmpl','/task/task_detail/'+ id, null, cbDetail)
+}
+
+function doClose() {
+  $('.g-detail').hide()
+}
+
+function cbDetail(r, e) {
+  let ret = e;
+  $(".g-detail").empty();
+  ret.data.imgPrefix = IMG_PREFIX;
+  $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
+  $(".g-detail").show()
+  $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
+}
+
 
 function doChangeShop(e) {
   shopname = $(e.currentTarget).find("option:selected").text();
@@ -64,7 +85,7 @@ function initList(pg) {
     taskId: $("#task-id").val()
   }
   param = Object.assign(cdt, pg);
-  pormiseTmpl('GET', TMPL_SELL_TASK_LIST, [URL_SELL_LIST_TASK, encodeQuery(param)].join('?'), null, cbListTask)
+  promiseTmpl('GET', TMPL_SELL_TASK_LIST, [URL_SELL_LIST_TASK, encodeQuery(param)].join('?'), null, cbListTask)
 }
 
 

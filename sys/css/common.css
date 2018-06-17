@@ -62,7 +62,11 @@ a:hover {
 }
 
 .fn-right {
-    text-align: right
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 500px
 }
 
 .fn-center {

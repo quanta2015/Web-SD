@@ -22,7 +22,7 @@ function initList() {
     edate: $("#sr-time-to").val() + ' 00:00:00',
   };
   Object.assign(param, pageData);
-  pormiseTmpl('GET', TMPL_ADMIN_QQ_LIST, [URL_ADMIN_QQ_LIST, encodeQuery(param)].join('?'), null, cbListQQ)
+  promiseTmpl('GET', TMPL_ADMIN_QQ_LIST, [URL_ADMIN_QQ_LIST, encodeQuery(param)].join('?'), null, cbListQQ)
 }
 
 function cbListQQ(r, e) {

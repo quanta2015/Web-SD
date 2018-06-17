@@ -18,7 +18,7 @@ function initList() {
     edate: $("#sr-time-to").val() + ' 00:00:00',
   };
   Object.assign(param, pageData);
-  pormiseTmpl('GET', TMPL_ADMIN_ACOUNT_LIST, [URL_ADMIN_ACOUNT_LIST, encodeQuery(param)].join('?'), null, cbList)
+  promiseTmpl('GET', TMPL_ADMIN_ACOUNT_LIST, [URL_ADMIN_ACOUNT_LIST, encodeQuery(param)].join('?'), null, cbList)
 }
 
 function cbList(r, e) {
