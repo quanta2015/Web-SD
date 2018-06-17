@@ -9,6 +9,7 @@
             <th> 充值账号 </th>
             <th> 充值凭证 </th>
             <th> 审核状态</th>
+            <th> 审核原因</th>
             <th> 功能 </th>
         </tr>
     </thead>
@@ -16,18 +17,19 @@
       {{for data}}
         <tr>
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
-            <td> {{:approveString}}</td>
             <td> {{:~formatTime(createtime)}} </td>
             <td> {{:transferMoney}} </td>
             <td> {{:bankName}} </td>
             <td> {{:fromAccount}}</td>
             <td> {{:toAccount}}</td>
             <td> <a href="{{:~root.imgPrefix}}{{:picture}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture}}" style="width: 60px; height: 60px;"></a> </td>
+            <td> {{:approveString}}</td>
+            <td> {{:approveReason}}</td>
             <td>
                 {{if !approve}}
-              <a href="#basic" class="btn red-mint btn-xs  audit-task"   data-id="{{:id}}" data-type="unpass"><i class="fa fa-edit"></i> 不通过 </a> {{/if}}
-              {{if !approve}}
-              <a href="#basic" class="btn blue-madison btn-xs  audit-task"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 通过 </a> {{/if}}
+              <a href="#basic" class="btn red btn-sm btn-outline audit-task"   data-id="{{:id}}" data-type="unpass"><i class="fa fa-edit"></i> 不通过 </a> 
+              <a href="#basic" class="btn blue-madison btn-sm btn-outline audit-task"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 通过 </a>
+              {{/if}}
             </td>
         </tr>
       {{/for}}

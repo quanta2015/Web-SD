@@ -26,3 +26,25 @@ td.address {
     max-width: 160px;
     word-break: break-all;
 }
+
+.m-sbar {
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.m-sbar>div,
+.m-sbar>a {
+    margin-right: 15px;
+}
+
+.m-sbar>div>select,
+.m-sbar>div>input {
+    display: inline-block;
+    width: 100px;
+}
+
+.m-sbar>div>input.u-dt {
+    width: 140px;
+}

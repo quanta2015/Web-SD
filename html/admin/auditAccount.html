@@ -11,6 +11,7 @@
     <link href="/lib/metronic/components.css"  rel="stylesheet" id="style_components" >
     <link href="/lib/metronic/layout.min.css"  rel="stylesheet" >
     <link href="/lib/alertify/alertify.core.css" rel="stylesheet" >
+    <link href="/lib/jquery/jquery.datetimepicker.css" rel="stylesheet">
     
     <link href="/lib/fancybox/jquery.fancybox.css" rel="stylesheet" >
     <link href="/lib/pace/pace.css" rel="stylesheet" >
@@ -30,6 +31,29 @@
               <label class="btn grey-salsa btn-sm">
                 <input type="radio" name="options" class="toggle" id="option2">设置
               </label>
+            </div>
+          </div>
+        </div>
+        <div class="portlet-title ">
+          <div class="m-sbar">
+            <div>
+              <span>审核状态</span>
+              <select class="" id="sr-status">
+                <option value="">全部</option>
+                <option value="0">待审核</option>
+                <option value="1">审核通过</option>
+                <option value="2">审核未通过</option>
+              </select>
+            </div>
+            <div><span>账号名</span><input type="text" id="sr-name" placeholder="账号名"></div>
+            <div><span>等级</span><input type="text" id="sr-level" placeholder="等级"></div>
+            <div><span>收货人</span><input type="text" id="sr-receiver" placeholder="收货人"></div>
+            <div>
+              <span>创建时间</span>
+              <input type="text" id="sr-time-from" class="u-dt"> - <input type="text" id="sr-time-to" class="u-dt">
+            </div>
+            <div>
+              <a href="#basic" class="btn red-sunglo btn-sm" id="btn-search"><i class="fa fa-search"></i> 查询 </a>
             </div>
           </div>
         </div>
@@ -54,6 +78,7 @@
     <script src="/lib/metronic/moment.min.js"></script>
     <script src="/lib/metronic/ui-modals.min.js"></script>
     <script src="/lib/twbs-pagination/jquery.twbsPagination.min.js"></script>
+    <script src="/lib/jquery/jquery.datetimepicker.full.js"></script>
     <script src="/lib/pace/pace.min.js"></script>
 
     <script src="/sys/js/common.js"></script>

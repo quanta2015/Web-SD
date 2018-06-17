@@ -2,10 +2,10 @@
 const CODE_COUNT = 60
 const BUY = 0
 const SELL = 1
-const HOST = 'http://103.251.90.136:8011/'
+const HOST = 'http://103.251.90.136:8011'
 const IMG_PREFIX = HOST + '/file/'
-const AUDIT_PASS = 2
-const AUDIT_FAIL = 3
+const AUDIT_PASS = 1
+const AUDIT_FAIL = 2
 const WITHDRAW_FEE = 0.05
 
 const PLATFORM_DATA = {
@@ -29,7 +29,7 @@ const PLATFORM_DATA = {
 const AUDIT_STATUS = {
   '-1': '未绑定',
   '0': '待审核',
-  '1': '审核通过',
+  '1': '绑定成功',
   '2': '审核不通过',
 }
 
@@ -83,6 +83,7 @@ const URL_SELL_LIST_ORDER   = '/tmpl/sell/list_order.tmpl'
 const URL_SELL_LIST_TASK    = '/task/search_tasks'
 const URL_SELL_PAY_ORDER     = '/task/approve_buyer_task'
 const URL_SELL_TRADE_LIST   = '/shoper/shoper_trade_list'
+const URL_SELL_EXPORT_TASKS   = '/task/export_tasks'
 
 const URL_ADMIN_ALL_SHOP       = '/admin/all_shops'
 const URL_ADMIN_ALL_TASK       = '/admin/all_tasks'
@@ -309,7 +310,7 @@ function promise(method, url, data, cb, err) {
     if (e.code == 0) {
       cb(e.data);
     } else if (e.code == 99) {
-      notifyInfo(e.message);
+      errorInfo(e.message);
       err(e);
     } else if (e.code == -1) {
       relogin();
@@ -335,7 +336,11 @@ function pormiseTmpl(method, urlTmpl, urlData, data, cb) {
     if (e[0].code == 0) {
       cb(tmpl[0],e[0]);
     } else if (e[0].code == 99) {
+<<<<<<< HEAD
       notifyInfo(e[0].message);
+=======
+      errorInfo(e[0].message);
+>>>>>>> a69439aec891f1d3db1a8db22f68416beb630337
     } else if (e[0].code == -1) {
       relogin();
     }

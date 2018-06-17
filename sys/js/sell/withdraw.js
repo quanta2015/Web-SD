@@ -32,8 +32,8 @@ function initTime() {
 
 function initList() {
   let param = {
-    status: $('#sr-status'),
-    toAccount: $('#sr-bankno'),
+    status: $('#sr-status').val(),
+    toAccount: $('#sr-bankno').val(),
     fromDate: $("#sr-time-from").val(),
     toDate: $("#sr-time-to").val(),
   };

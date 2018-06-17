@@ -78,11 +78,10 @@ function doWithdraw() {
   let obj = {
     buyerId: parseInt($('#buyer-id').val()),
     buyerName: $('#buyer-name').val(),
-    buyerBankId:parseInt($('#bankno').val()),
-    withdrawMoney: parseInt($('#withdraw-money').text()),
+    // buyerBankId:parseInt($('#bankno').val()),
+    withdrawMoney: parseInt($('#withdraw-money').val()),
   }
   let type = parseInt($('#account-type').val());
-  
   if (type === 0) {
     if (obj.withdrawMoney < 200) {
       return errorInfo('提现金额必须大于200！');

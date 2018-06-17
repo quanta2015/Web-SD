@@ -2,13 +2,14 @@
     <thead>
         <tr class="uppercase">
             <th> 序号 </th>
-            <th> 审核状态 </th>
-            <th> 店铺ID </th>
+            <th> 创建时间 </th>
             <th> 平台 </th>
+            <th> 店铺ID</th>
             <th> 店铺名称 </th>
             <th> 店铺类别 </th>
             <th> 店铺地址 </th>
             <th> 店铺图片 </th>
+            <th> 审核状态 </th>
             <th> 审批原因 </th>
             <th> 操作 </th>
         </tr>
@@ -17,13 +18,14 @@
       {{for data}}
         <tr>
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
-            <td class="pass{{:approveState}}">{{:approveStr}}</td>
+            <td class="u-dt"> {{:~formatTime(createtime)}}</td>
             <td> {{:type}} </td>
             <td> {{:id}} </td>
             <td> <a href="#basic" class="shop-name" data-toggle="modal" data-index="{{:#index}}">{{:name}}</a></td>
             <td> {{:businesstype}}{{if subtype}} - {{:subtype}}{{/if}}</td>
             <td> {{:addressProvince}} - {{:addressCity}} - {{:addressCounty}}</td>
             <td> <a href="{{:~root.imgPrefix}}{{:shopimg1}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:shopimg1}}" style="width: 60px; height: 60px;"></a></td>
+            <td class="pass{{:approveState}}">{{:approveStr}}</td>
             <td> {{:approveReason}}</td>
             <td class="fn-center"> 
               {{if !approveState}}
