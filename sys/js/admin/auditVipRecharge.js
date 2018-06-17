@@ -27,7 +27,7 @@ function initList() {
     toAccount: $("#sr-to-account").val(),
     money: $("#sr-money").val(),
     sdate: $("#sr-time-from").val() + ' 00:00:00',
-    edate: $("#sr-time-to").val() + ' 00:00:00',
+    edate: $("#sr-time-to").val() + ' 23:59:00',
   };
   Object.assign(param, pageData, {"type":viptype});
   pormiseTmpl('GET', TMPL_ADMIN_VIPRECHARGE_LIST, [URL_ADMIN_MEMBERSHIP_TRANSFER_LIST, encodeQuery(param)].join('?'), null, cbVipRechargeList)
