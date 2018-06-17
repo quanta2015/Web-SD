@@ -289,7 +289,7 @@ function isNull(exp) {
 
 
 // new ajax def
-function promise(method, url, data, cb) {
+function promise(method, url, data, cb, err) {
   $("body").append(LOADER);
   var promise = $.ajax({
     type: method,
@@ -308,6 +308,7 @@ function promise(method, url, data, cb) {
       cb(e.data);
     } else if (e.code == 99) {
       notifyInfo(e.message);
+      err(e);
     } else if (e.code == -1) {
       relogin();
     }

@@ -1,0 +1,67 @@
+<div class="task-wrap-item">
+  <div class="row img-task img-task-title">
+      <div class="col-xs-2 fn-right"> 第 {{:count}} 单任务</div>
+      <div class="col-xs-10"><a class="btn red btn-xs task-del">删除任务</a></div>
+  </div>
+  <div class="row nor-task">
+    <div class="col-xs-2 form-imp"> 普通好评任务 <span class="task-type hide">1</span></div>
+    <div class="col-xs-10">
+        <span> 搜索关键词</span>
+        <input type="text" id="ipt-key{{:count}}" class="u-task-key"> 添加 <input type="text" class="wide-s1 task-count  u-task-count" id="ipt-count{{:count}}"> 单 放单时间从 
+        <div class="form-group form-time"><input type="text" class="timepicker timepicker-24 timepicker-from" id="ipt-time-from{{:count}}"></div> 到 
+        <div class="form-group form-time"><input type="text"
+            class="timepicker timepicker-24 timepicker-to" id="ipt-time-to{{:count}}"></div>
+    </div>
+  </div>
+
+  {{if key}}
+  <div class="row key-task">
+    <div class="col-xs-2 form-imp"> 关键字好评任务<span class="task-type hide">2</span></div>
+    <div class="col-xs-10">
+      <span> 设置指定关键词：建议至少设3个关键字，最多可设置5个</span>
+      <input type="text" class="wide-s2 ipt-keyword ipt-keyword1-{{:count}}" >
+      <input type="text" class="wide-s2 ipt-keyword ipt-keyword2-{{:count}}">
+      <input type="text" class="wide-s2 ipt-keyword ipt-keyword3-{{:count}}" >
+      <input type="text" class="wide-s2 ipt-keyword ipt-keyword4-{{:count}}" >
+      <input type="text" class="wide-s2 ipt-keyword ipt-keyword5-{{:count}}" >
+    </div>
+  </div>
+  {{/if}}
+
+
+
+  {{if img}}
+  <div class="row img-task img-task-list">
+    <div class="col-xs-2 form-imp"> 图片好评任务<span class="task-type hide">3</span></div>
+    <div class="col-xs-10">
+      {{for list}}
+      <div class="fileinput fileinput-new" data-provides="fileinput">
+        <div class="fileinput-new thumbnail" style="max-width: 150px; max-height: 120px;">
+            <img src="/img/noimg.png">
+        </div>
+        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+        <div>
+            <span class="btn default btn-file">
+            <span class="fileinput-new"> 选择图片 </span>
+            <span class="fileinput-exists"> 更换 </span>
+            <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="{{:~root.type}}-upload{{:~root.count}}-{{:#index+1}}" class="ipt-img">
+            </span>
+            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 删除 </a>
+        </div>
+      </div>
+      {{/for}}
+    </div>
+  </div>
+  {{/if}}
+
+  {{if word}}
+  <div class="row key-task">
+    <div class="col-xs-2 form-imp"> 指定文字好评任务<span class="task-type hide">4</span></div>
+    <div class="col-xs-10">
+        <span> 指定文字</span>
+        <input type="text" id="ipt-word{{:count}}" class="wide-3 u-task-keyword" placeholder="注意！不能超过50个字！"> 
+    </div>
+  </div>
+  {{/if}}
+
+</div>

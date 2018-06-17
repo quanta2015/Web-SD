@@ -103,9 +103,9 @@ i {
 .task-wrap {
     border: 1px solid #aaa;
     padding: 10px;
-    margin: 5px 0 15px 15px;
+/*    margin: 5px 0 15px 15px;
     box-sizing: border-box;
-    width: calc( 100% - 25px )
+    width: calc( 100% - 25px )*/
 }
 
 .task-wrap-item:first-child {
@@ -114,7 +114,7 @@ i {
 
 .task-wrap-item {
     border-top: 1px dashed #bebfbf;
-    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .nor-task,.key-task, .task-add, .img-task, .word-task {
@@ -122,8 +122,8 @@ i {
 }
 
 .task-add {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+    width: 200px;
+    /*padding-bottom: 10px;*/
 }
 
 

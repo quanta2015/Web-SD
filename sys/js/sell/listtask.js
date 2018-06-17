@@ -31,24 +31,18 @@ function initTime() {
 }
 
 function initShops() {
-  promiseData('GET', URL_TASK_ALL_PLATFORM, null, cbShops);
+  promise('GET', URL_TASK_ALL_PLATFORM, null, cbShops);
 }
 
 function cbShops(e) {
-  if (e.code == 0) {
-    for(i=0; i< e.data.length; i++) {
-      for(j=0; j< e.data[i].shops.length; j++) {
-        _shop[e.data[i].shops[j].name] = e.data[i].platform;
-        let val = e.data[i].shops[j].name;
-        let sid = e.data[i].shops[j].id;
-        let cnt = $.format('<option value="{0}">{1}</option>', sid, val )
-        $("#shop-name").append(cnt)
-      }
+  for(i=0; i< e.length; i++) {
+    for(j=0; j< e[i].shops.length; j++) {
+      _shop[e[i].shops[j].name] = e[i].platform;
+      let val = e[i].shops[j].name;
+      let sid = e[i].shops[j].id;
+      let cnt = $.format('<option value="{0}">{1}</option>', sid, val )
+      $("#shop-name").append(cnt)
     }
-  } else if (e.code == -1) {
-    relogin();
-  } else if (e.code == 99){
-    notifyInfo(MSG_DEL_FAILED);
   }
 }
 
@@ -70,13 +64,13 @@ function initList(pg) {
     taskId: $("#task-id").val()
   }
   param = Object.assign(cdt, pg);
-  TmplData(TMPL_SELL_TASK_LIST, [URL_SELL_LIST_TASK, encodeQuery(param)].join('?'), null, cbListTask)
+  pormiseTmpl('GET', TMPL_SELL_TASK_LIST, [URL_SELL_LIST_TASK, encodeQuery(param)].join('?'), null, cbListTask)
 }
 
 
 function doDelTask(e) {
   let id = $(e.target).attr('id');
-  promiseData('DELETE', URL_SELL_DEL_TASK + id, null, cbDelTask);
+  promise('DELETE', URL_SELL_DEL_TASK + id, null, cbDelTask);
 }
 
 function doMagTask(e) {
@@ -86,41 +80,29 @@ function doMagTask(e) {
 
 function doPayTask() {
   let id = $(this).attr('id');
-  promiseData('GET', URL_SELL_PAY_TASK + id, null, cbPayTask);
+  promise('GET', URL_SELL_PAY_TASK + id, null, cbPayTask, cbPayErr);
 }
 
 function cbPayTask(e) {
-  if (e.code == 0) {
-    notifyInfo(MSG_TASK_PUB_SUCC);
-    initList();
-  } else if (e.code == -1) {
-    relogin();
-  } else if (e.code == 99){
-
-    // notifyInfo(e.message);
-     msgbox(e.message,MSG_WAIT,MSG_RECHARGE, cbRecharge)
-  }
+  notifyInfo(MSG_TASK_PUB_SUCC);
+  initList();
 }
 
-function cbListTask(r,e) {
-  let ret = e[0];
-  if (ret.code == 0) {
-    _listtask = ret.data;
-    Object.assign(ret, pageData);
-    ret.data = ret.data.map(v => {
-      v.statusName = STATUS_MAP[v.status];
-      return v;
-    });
-    totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
-    $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(ret, rdHelper));
-    if ($('.table-pg').text() == '') initPage(totalPages);
-  } else if (e[0].code == -1) {
-    relogin();
-  } else if (e.code == 99){
-    notifyInfo(e.message);
-  }
+function cbPayErr(e) {
+  msgbox(e.message,MSG_WAIT,MSG_RECHARGE, cbRecharge)
+}
 
+function cbListTask(r,ret) {
+  _listtask = ret.data;
+  Object.assign(ret, pageData);
+  ret.data = ret.data.map(v => {
+    v.statusName = STATUS_MAP[v.status];
+    return v;
+  });
+  totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
+  $(".portlet-body .table").remove();
+  $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
+  if ($('.table-pg').text() == '') initPage(totalPages);
 }
 
 function initPage(totalPages) {
@@ -135,14 +117,8 @@ function initPage(totalPages) {
 
 
 function cbDelTask(e) {
-  if (e.code == 0) {
-    notifyInfo(MSG_TASK_DEL_SUCC);
-    initList();
-  } else if (e.code == -1) {
-    relogin();
-  } else if (e.code == 99){
-    notifyInfo(e.message);
-  }
+  notifyInfo(MSG_TASK_DEL_SUCC);
+  initList();
 }
 
 function cbRecharge(ret) {

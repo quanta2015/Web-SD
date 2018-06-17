@@ -9,7 +9,7 @@
             <th> 商品名称 </th>
             <th> 单数 </th>
             <th> 搜索关键词 </th>  
-            <th> 是否优先审核 </th>  
+            <th> 优先审核 </th>  
             <th> 任务状态 </th>  
             <th> 审批原因 </th> 
             <th> 任务编号 </th>
@@ -44,7 +44,7 @@
             </td>
             <td> {{:approveReason}} </td>
             <td> {{:id}}</td>
-            <td> {{:taskMoney.sum}}</td>
+            <td> {{:tasksummoney}}</td>
             <td>
               {{if (status==0 || status==40)}}
               <a href="javascript:;" class="btn red-sunglo btn-xs  sbold uppercase del-task" id="{{:id}}" ><i class="fa fa-times"></i> 删除 </a> 

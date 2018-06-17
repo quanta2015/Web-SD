@@ -54,6 +54,10 @@ function init() {
   $('body').on('change', '#color-size-chk', doColorSize);
   $('body').on('input propertychange', '.task-count', doCountTask);
 
+  $('body').on('click', '.task-add', addTask);
+
+
+
   //初始化第一步验证对象
   $("#form-step1").validate({
     rules: rules_step1,
@@ -83,7 +87,7 @@ function init() {
   // 初始化平台、店铺下拉栏
   initPlatforms();
   //初始化普通好评任务栏
-  initTaskTmpl();
+  // initTaskTmpl();
 
   
 
@@ -273,6 +277,16 @@ function initTime() {
   }
 }
 
+async function addTask() {
+  var count = $('.task-wrap-item').length + 1;
+  var key = $('#keywordtask').prop('checked');
+  var img = $('#picturetask').prop('checked');
+  var word = $('#wordtask').prop('checked');
+  $(".task-wrap").append(await renderTmpl('/tmpl/sell/createtask.tmpl', { type:'nor-task', count:count, key:key, img:img, word:word, list:[1,1,1,1,1] }));
+  initTime()
+}
+
+
 async function addNorTaskItem() {
   var count = $('.nor-task').length + 1
   $(".nor-task-add").before(await renderTmpl(TMPL_SELL_CREATETASK_P, { type:'nor-task', data:count, show:true }));
@@ -326,14 +340,15 @@ function doPublish() {
       searchprice: $('#mobile-price').val().replace(/,/g, ''),
     }],
     goodsname: $('#name').val(),
-    commontask: $('#normaltask').prop('checked')?1:0,
-    commonTaskKeyList: [],
-    keywordtask: $('#keywordtask').prop('checked')?1:0,
-    keywordTaskKeyList: [],
-    picturetask: $('#picturetask').prop('checked')?1:0,
-    pictureTaskKeyList: [],
-    commenttask: $('#wordtask').prop('checked')?1:0,
-    commentTaskKeyList: [],
+    // commontask: $('#normaltask').prop('checked')?1:0,
+    // commonTaskKeyList: [],
+    // keywordtask: $('#keywordtask').prop('checked')?1:0,
+    // keywordTaskKeyList: [],
+    // picturetask: $('#picturetask').prop('checked')?1:0,
+    // pictureTaskKeyList: [],
+    // commenttask: $('#wordtask').prop('checked')?1:0,
+    // commentTaskKeyList: [],
+    taskKeyList: [],
     startdate: $('#start-date').val(),
     num: $('#task-count').val().replace(/,/g, ''),
     addcharges: $('#award-money').val().replace(/,/g, ''),
@@ -362,12 +377,73 @@ function doPublish() {
     auditFirst: $('#audit-first').val(),
     showFirst: $('#show-first').val()
   }
-  obj.commonTaskKeyList = obj.commontask ? getGreatCommentData('nor-task') : [];
-  obj.keywordTaskKeyList = obj.keywordtask ? getGreatCommentData('key-task') : [];
-  obj.pictureTaskKeyList = obj.picturetask ? getGreatCommentData('img-task') : [];
-  obj.commentTaskKeyList = obj.commenttask ? getGreatCommentData('word-task') : [];
+  obj.taskKeyList = getTaskData();
+  // obj.commonTaskKeyList = obj.commontask ? getGreatCommentData('nor-task') : [];
+  // obj.keywordTaskKeyList = obj.keywordtask ? getGreatCommentData('key-task') : [];
+  // obj.pictureTaskKeyList = obj.picturetask ? getGreatCommentData('img-task') : [];
+  // obj.commentTaskKeyList = obj.commenttask ? getGreatCommentData('word-task') : [];
 
   TmplDataP(URL_SELL_TASK_COST, URL_TASK_PUBLISH, JSON.stringify(obj), cbInfo)
+}
+
+
+
+function getArrVal(obj, type) {
+  let arr = [];
+  obj.each(function() {
+    type?arr.push($(this).val()):arr.push($(this).attr('picurl'));
+  }) 
+  if (type) {
+    return arr.join(';')
+  }else{
+    return arr
+  }
+}
+
+function getTaskData() {
+  let result = []
+
+  $('.task-wrap-item').each(function() {
+    let item = this;
+    let typeArr = $(this).find('.task-type')
+    let taskItem = {
+      taskkeyType: typeArr.text(),
+      keyword: $(this).find('.u-task-key').val(),
+      number: $(this).find('.u-task-count').val(),
+      taskFrom: $(this).find('.timepicker-from').val(),
+      taskTo: $(this).find('.timepicker-to').val(),
+      taskKeyword: '',
+      taskImg: '',
+      taskWord: ''
+    }
+    // taskkey_type = typeArr.text()
+    // taskKey = $(this).find('.u-task-key').val()
+    // taskCount = $(this).find('.u-task-count').val()
+    // from = $(this).find('.timepicker-from').val()
+    // taskTo = $(this).find('.timepicker-to').val()
+    // taskKeyword = '';
+    // taskImg = '';
+    // taskWord = '';
+
+    typeArr.each(function() {
+      if( $(this).text() == '1' ) return;
+      if( $(this).text() == '2' ) {
+        taskItem.taskKeyword = getArrVal( $(item).find('.ipt-keyword'), true)
+      }
+      if( $(this).text() == '3' ) {
+        taskItem.taskImg = getArrVal( $(item).find('.ipt-img'), false)
+      }
+      if( $(this).text() == '4' ) {
+        taskItem.taskWord = getArrVal( $(item).find('.u-task-keyword'), true)
+      }
+    })
+
+    result.push( taskItem )
+    // console.log(index);
+    // console.log(taskKeyword);
+    // console.log(taskImg);
+    // console.log(taskWord);
+  })
 }
 
 function getGreatCommentData(type) {
