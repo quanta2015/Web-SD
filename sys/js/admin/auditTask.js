@@ -5,30 +5,23 @@ $(init);
 
 function init() {
   initTime();
-
-
-  initList(pageData);
+  initList();
   $('body').on('click', '.audit-task', doAuditTask);
   $('body').on('click', '.detail-task', doDetailTask);
   $('body').on('click', '.m-close', doClose);
+  $('body').on('click', '#btn-search', doSearch);
 }
 
-
-
-function initTime() {
-  let from =  moment().subtract('days',7).format('YYYY-MM-DD') + ' 00:00';
-  let to = moment().format('YYYY-MM-DD') + ' 23:59'
-  $("#task-from").datetimepicker({ value: from, format:'Y-m-d H:i'});
-  $("#task-to").datetimepicker({value: to, format:'Y-m-d H:i'});
-}
-
-function initList(pg) {
-  let cdt = {
-    sdate: $("#task-from").val() + ':00',
-    edate: $("#task-to").val()+ ':00'
-  }
-  param = Object.assign(cdt, pg);
-
+function initList() {
+  let param = {
+    approveStatus: $('#sr-status').val(),
+    shopName: $('#sr-shopname').val(),
+    goodsName: $('#sr-goodsname').val(),
+    taskId: $('#sr-taskid').val(),
+    sdate: $("#sr-time-from").val() + ' 00:00:00',
+    edate: $("#sr-time-to").val() + ' 00:00:00',
+  };
+  Object.assign(param, pageData);
   pormiseTmpl('GET', TMPL_ADMIN_TASK_LIST, [URL_ADMIN_ALL_TASK, encodeQuery(param)].join('?'), null, cbListTask)
 }
 
@@ -46,7 +39,7 @@ function initPage(totalPages) {
     totalPages: totalPages || 1,
     onPageClick: function(event, page) {
       pageData.pageIndex = page - 1;
-      initList(pageData);
+      initList();
     }
   })
 }
@@ -83,4 +76,17 @@ function cbAuditTask(e) {
 
 function doClose() {
   $('.g-detail').hide()
+}
+
+function initTime() {
+  let from =  moment().subtract('days',7).format('YYYY-MM-DD');
+  let to = moment().format('YYYY-MM-DD');
+  $("#sr-time-from").datetimepicker({ value: from, format:'Y-m-d', timepicker:false});
+  $("#sr-time-to").datetimepicker({value: to, format:'Y-m-d', timepicker:false});
+}
+
+function doSearch() {
+  $('.portlet-body .table-pg').remove();
+  $('.portlet-body').append('<div class="table-pg"></div>');
+  initList();
 }

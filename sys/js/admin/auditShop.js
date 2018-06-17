@@ -5,13 +5,21 @@ let pageData = Object.assign({}, PAGE_DATA);
 $(init);
 
 function init() {
-  
+  initTime();
   initList();
   $('body').on('click', '.audit-shop', doAudit);
   $('body').on('click', '.shop-name', doShowDetail);
+  $('body').on('click', '#btn-search', doSearch);
 }
 
-function initList(param = pageData) {
+function initList() {
+  let param = {
+    approveStatus: $('#sr-status').val(),
+    shopName: $('#sr-shopname').val(),
+    sdate: $("#sr-time-from").val() + ' 00:00:00',
+    edate: $("#sr-time-to").val() + ' 00:00:00',
+  };
+  Object.assign(param, pageData);
   pormiseTmpl('GET', TMPL_ADMIN_SHOP_LIST, [URL_ADMIN_ALL_SHOP, encodeQuery(param)].join('?'), null, cbListShop)
 }
 
@@ -33,7 +41,7 @@ function initPage(totalPages) {
     totalPages: totalPages || 1,
     onPageClick: function(event, page) {
       pageData.pageIndex = page - 1;
-      initList(pageData);
+      initList();
     }
   })
 }
@@ -59,4 +67,17 @@ function doShowDetail() {
   let index = $(this).data('index');
   $('#shop-url').val(_listshop[index].shopurl);
   $('#shop-addr').val(_listshop[index].address);
+}
+
+function initTime() {
+  let from =  moment().subtract('days',7).format('YYYY-MM-DD');
+  let to = moment().format('YYYY-MM-DD');
+  $("#sr-time-from").datetimepicker({ value: from, format:'Y-m-d', timepicker:false});
+  $("#sr-time-to").datetimepicker({value: to, format:'Y-m-d', timepicker:false});
+}
+
+function doSearch() {
+  $('.portlet-body .table-pg').remove();
+  $('.portlet-body').append('<div class="table-pg"></div>');
+  initList();
 }

@@ -3,6 +3,7 @@
         <tr class="uppercase">
             <th>  </th>
             <th> 账号名称 </th>
+            <th> 创建时间 </th>
             <th> 等级 </th>
             <th> 白条花呗 </th>
             <th> 收货人 </th>
@@ -18,6 +19,7 @@
       {{for data}}
         <tr>
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
+            <td> {{:~formatTime(createtime)}} </td>
             <td> {{:acount}}</td>
             <td> {{:acountLevel}} </td> 
             <td> {{if baitiaoStart==1}}是{{else}}否{{/if}} </td> 
