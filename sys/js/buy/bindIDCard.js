@@ -6,20 +6,24 @@ let rules = {
     required: !0
   },
 }
-let status = parseInt(cookie('approveState'));
+let status;
 let idCardImgInfo = ['身份证正面', '身份证背面'];
 
 $(init);
 
 function init() {
-  initBindInfo();
-
+  
+  initStatus();
   $('body').on('click', '#returnBtn', doReturn);
 
 }
 
 function doReturn() {
   goto('newTask.html')
+}
+
+function initStatus() {
+  promise('GET', URL_BUY_INFO, null, cbInitStatus);
 }
 
 function doSave(data) {
@@ -49,18 +53,20 @@ function cbBind(e) {
   };
 }
 
-async function initBindInfo() {
+function cbInitStatus(e) {
+  status = e.approveState;
+  let func;
   // status = -1
   if ( status == -1 || status == null) {
     //未绑定
-    $('.container').append(await renderTmpl(TMPL_BUY_BIND_IDCARD, {
+    func = renderTmpl(TMPL_BUY_BIND_IDCARD, {
       list:[1,1],
       imgInfo: idCardImgInfo,
       status: -1,
-    }));
+    })
   } else {
     // 待审核或审核通过 显示已经绑定表单
-    $(".container").append(await renderTmpl(TMPL_BUY_BIND_IDCARD, {
+    func = renderTmpl(TMPL_BUY_BIND_IDCARD, {
       name: cookie('name'),
       idCard: cookie('idcard'),
       idImg: [ cookie('idcardpng1'),cookie('idcardpng2') ],
@@ -70,11 +76,14 @@ async function initBindInfo() {
       type: status !== 2 ? "disabled" : null,
       statusText: AUDIT_STATUS[status],
       imgPrefix: IMG_PREFIX
-    }) );
+    })
   }
-  $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
-  $("#form-bind").validate({
-    rules: rules,
-    submitHandler: (e) => { doSave() }
+  func.then(h => {
+    $(".container").append(h);
+    $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
+    $("#form-bind").validate({
+      rules: rules,
+      submitHandler: (e) => { doSave() }
+    })
   })
 }

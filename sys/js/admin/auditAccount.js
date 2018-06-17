@@ -13,9 +13,11 @@ function init() {
 function initList() {
   let param = {
     approveStatus: $('#sr-status').val(),
-    searchKey: $('#sr-idcard').val(),
+    acount: $('#sr-name').val(),
+    acountLevel: $('#sr-level').val(),
+    receiver: $('#sr-receiver').val(),
     sdate: $("#sr-time-from").val() + ' 00:00:00',
-    edate: $("#sr-time-to").val() + ' 00:00:00',
+    edate: $("#sr-time-to").val() + ' 23:59:00',
   };
   Object.assign(param, pageData);
   promiseTmpl('GET', TMPL_ADMIN_ACOUNT_LIST, [URL_ADMIN_ACOUNT_LIST, encodeQuery(param)].join('?'), null, cbList)

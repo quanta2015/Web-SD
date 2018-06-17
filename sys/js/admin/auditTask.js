@@ -19,7 +19,7 @@ function initList() {
     goodsName: $('#sr-goodsname').val(),
     taskId: $('#sr-taskid').val(),
     sdate: $("#sr-time-from").val() + ' 00:00:00',
-    edate: $("#sr-time-to").val() + ' 00:00:00',
+    edate: $("#sr-time-to").val() + ' 23:59:00',
   };
   Object.assign(param, pageData);
   promiseTmpl('GET', TMPL_ADMIN_TASK_LIST, [URL_ADMIN_ALL_TASK, encodeQuery(param)].join('?'), null, cbListTask)

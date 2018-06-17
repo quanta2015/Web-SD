@@ -122,6 +122,7 @@ const URL_BUY_BALANCE       = '/buyer/buyer_balance'
 const URL_BUY_TASK_EVALUATE = '/buyertask/submit_evaluate'
 const URL_BUYER_ALL_ORDER   = '/buyertask/received_tasks'
 const URL_BUY_TRADE_RECORD  = '/buyer/buyer_trade_records'
+const URL_BUY_INFO          = '/buyer/person_info'
 
 
 // TMPL DEF
