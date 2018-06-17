@@ -1,7 +1,6 @@
 const platform = PLATFORM_DATA[getUrlParam('platform')];
 const creditType = getUrlParam('platform')==='jingdong'?'白条':'花呗';
-let status = cookie2('approve', platform.cko);
-status?parseInt(cookie2('approve', platform.cko)):null;
+let status;
 
 let rules = {
   acount: {
@@ -30,16 +29,22 @@ $(init);
 function init() {
 
   initBindInfo();
-
   $('body').on('click', '#returnBtn', doReturn);
 
 }
 
-async function initBindInfo() {
+function initBindInfo() {
+  promise('GET', URL_BUY_INFO, null, cbInitBindInfo);
+}
+
+async function cbInitBindInfo(e) {
+  let key = getUrlParam('platform') === 'jingdong' ? 'jingdongList' : 'taobaoList';
+  status = e[key][0].approve;
+  let func;
   // status = 0
   if ( status == -1 || status == null) {
     //未绑定
-    $('body').append(await renderTmpl(TMPL_BUY_BIND_ACCOUNT, {
+    func = renderTmpl(TMPL_BUY_BIND_ACCOUNT, {
       platform: platform.type,
       creditType: platform.creditType,
       levels: platform.levels,
@@ -47,10 +52,10 @@ async function initBindInfo() {
       imgInfo: ['我的页面', '我的账号页面', `开通${creditType}情况`],
       status: -1,
       baitiaoStart: "checked"
-    }));
+    })
   } else {
     //显示已经绑定表单
-    $("body").append(await renderTmpl(TMPL_BUY_BIND_ACCOUNT, {
+    func = renderTmpl(TMPL_BUY_BIND_ACCOUNT, {
       platform: platform.type,
       creditType: platform.creditType,
       levels: platform.levels,
@@ -74,14 +79,18 @@ async function initBindInfo() {
       status: status,
       statusText: AUDIT_STATUS[status],
       imgPrefix: IMG_PREFIX
-    }) );
+    })
   }
-  $('#pick').distpicker();
-  $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
-  $("#form-bind").validate({
-    rules: rules,
-    submitHandler: (e) => { doSave() }
+  func.then(h => {
+    $("body").append(h);
+    $('#pick').distpicker();
+    $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
+    $("#form-bind").validate({
+      rules: rules,
+      submitHandler: (e) => { doSave() }
+    })
   })
+  
 }
 
 function doReturn() {

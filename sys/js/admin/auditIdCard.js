@@ -13,7 +13,8 @@ function init() {
 function initList() {
   let param = {
     approveStatus: $('#sr-status').val(),
-    idcard: $('#sr-idcard').val(),
+    type: 1,
+    searchKey: $('#sr-idcard').val(),
     sdate: $("#sr-time-from").val() + ' 00:00:00',
     edate: $("#sr-time-to").val() + ' 23:59:00',
   };

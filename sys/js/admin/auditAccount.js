@@ -13,7 +13,9 @@ function init() {
 function initList() {
   let param = {
     approveStatus: $('#sr-status').val(),
-    searchKey: $('#sr-idcard').val(),
+    acount: $('#sr-name').val(),
+    acountLevel: $('#sr-level').val(),
+    receiver: $('#sr-receiver').val(),
     sdate: $("#sr-time-from").val() + ' 00:00:00',
     edate: $("#sr-time-to").val() + ' 23:59:00',
   };

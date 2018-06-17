@@ -21,7 +21,7 @@ let rules = {
     number: !0
   }
 }
-let status = parseInt(cookie('bankcardState'))
+let status;
 
 $(init);
 
@@ -31,11 +31,17 @@ function init() {
   $('body').on('click', '#returnBtn', doReturn );
 }
 
-async function initBindInfo() {
+function initBindInfo() {
+  promise('GET', URL_BUY_INFO, null, cbInitBindInfo);
+}
+
+function cbInitBindInfo(e) {
+  status = e.bankcardState;
+  let func;
   // var status = 0
   if ( status == -1 || status == null) {
     //未绑定
-    $('.container').append(await renderTmpl(TMPL_BUY_BIND_BKCARD, {
+    func = renderTmpl(TMPL_BUY_BIND_BKCARD, {
       name: null,
       bank: null,
       bank_no: null,
@@ -44,10 +50,10 @@ async function initBindInfo() {
       acount_bankno: null,
       status: -1,
       banks: BANKS
-    }));
+    })
   } else {
     //显示已经绑定表单
-    $(".container").append(await renderTmpl(TMPL_BUY_BIND_BKCARD, {
+    func = renderTmpl(TMPL_BUY_BIND_BKCARD, {
       name: cookie('name'),
       bank: cookie2('bank', 'buyerBankList'),
       bankNo: cookie2('bankNo', 'buyerBankList'),
@@ -58,14 +64,16 @@ async function initBindInfo() {
       status: status,
       statusText: AUDIT_STATUS[status],
       banks: BANKS
-    }) );
+    })
   }
-  $("#form-bind").validate({
-    rules: rules,
-    submitHandler: (e) => { doSave() }
+  func.then(h => {
+    $('.container').append(h);
+    $("#form-bind").validate({
+      rules: rules,
+      submitHandler: (e) => { doSave() }
+    })
   })
 }
-
 
 function doReturn() {
   goto('newTask.html')
