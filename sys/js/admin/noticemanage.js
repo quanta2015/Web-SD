@@ -4,10 +4,6 @@ const URL_ADMIN_NOTICE_LIST ='/admin/notice_list';
 const URL_ADMIN_NOTICE_DEL='/admin/notice_del';*/
 
 
-
-const MSG_CONF_DEL_NOTICE = "请确认是否要删除该公告！"
-
-
 // let pageData = Object.assign({}, PAGE_DATA);
 $(init);
 

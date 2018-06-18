@@ -10,6 +10,7 @@ function init() {
 
   //显示金额
   promise('GET','/buyer/buyer_balance',null, (e)=>{
+    $("#u-money", window.parent.document).text(e.balance+e.servicefee);
     $("#all").text(e.balance+e.servicefee);
     $("#servicefee").text(e.servicefee);
     $("#balance").text(e.balance);
