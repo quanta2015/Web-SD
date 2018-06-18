@@ -26,15 +26,15 @@
       <td> {{:finidshTime}} </td>
       <td> {{:reward}}元</td>
       <td >
-        <a href="#basic" class="btn green-seagreen btn-xs btn-outline detail-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-info"></i> 详情 </a>
+        <a href="#basic" class="btn red btn-xs  detail-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-info"></i> 详情 </a>
         {{if (status == 0)}}
-        <a href="#basic" class="btn blue-madison btn-xs btn-outline cancel-task "  data-id="{{:id}}" ><i class="fa fa-reply"></i> 退单 </a>
+        <a href="#basic" class="btn red btn-xs  cancel-task "  data-id="{{:id}}" ><i class="fa fa-reply"></i> 退单 </a>
         {{/if}}
         {{if (status == 0)}}
-        <a href="#basic" class="btn red btn-xs btn-outline commit-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-edit"></i> 提交购买信息 </a>
+        <a href="#basic" class="btn red btn-xs  commit-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-edit"></i> 提交购买信息 </a>
         {{/if}}
         {{if (status == 20)}}
-        <a href="#basic" class="btn yellow-gold btn-xs btn-outline evaluate-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-commenting-o"></i> 评价 </a>
+        <a href="#basic" class="btn red btn-xs  evaluate-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-commenting-o"></i> 评价 </a>
         {{/if}}
         
       </td>

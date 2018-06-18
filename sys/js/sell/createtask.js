@@ -306,7 +306,8 @@ function doPublish() {
     buyExpress: $('#buy-express').val(),
     auditFirst: $('#audit-first').val(),
     showFirst: $('#show-first').val(),
-    taskKeyList: getTaskData()
+    taskKeyList: getTaskData(),
+    explains: $('#other').val()
   }
 
   promiseTmpl('POST', TMPL_SELL_TASK_COST, URL_TASK_CAL_MONEY, JSON.stringify(taskObj), cbInfo)

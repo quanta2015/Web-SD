@@ -6,6 +6,9 @@ $(init);
 
 function init() {
 
+  tasktype = getUrlParam('tasktype')
+  console.log(tasktype);
+
   $('#task-capacity').text(cookie('remainderNumberOfMonth'))
 
   initList();

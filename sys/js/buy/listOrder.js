@@ -5,6 +5,9 @@ $(init);
 
 function init() {
 
+  status = getUrlParam('status')
+  console.log(status);
+
   initList();
   $('body').on('click', '.commit-task', doCommit);
   $('body').on('click', '.cancel-task', doCancelTask);

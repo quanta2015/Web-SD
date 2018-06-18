@@ -19,6 +19,8 @@ function init() {
     var type = $('.page-sidebar-wrapper').data('type');
     var platform = $(this).data('platform');
     var pos = $(this).data('pos');
+    var status = $(this).data('status');
+    var tasktype = $(this).data('tasktype');
     (pos=='root')?pos='/':pos='';
     var pageName = pos + $(this).data('button') + '.html';
 
@@ -26,7 +28,10 @@ function init() {
       var viptype=$(this).data('viptype');
       pageName+='?viptype='+viptype;
     }
-    
+
+
+    (status>=0)?pageName += `?status=${status}`: null;
+    tasktype?pageName += `?tasktype=${tasktype}`: null;
     platform ? pageName += `?platform=${platform}` : null;
 
     $("#mainframe", parent.document.body).attr("src", pageName);
