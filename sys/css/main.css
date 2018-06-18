@@ -129,3 +129,8 @@ iframe{
     height: 50px!important;
     min-height: 50px!important;
 }
+
+.u-vip {
+    font-weight: 600;
+    color: #ff3300;
+}

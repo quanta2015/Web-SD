@@ -37,7 +37,7 @@ function init() {
 }
 
 function initList() {
-
+    $('#remark').val('商家ID:' + cookie('mobile'));
     $('#acountList input:eq(0)').trigger('click');
     for (item in BANKS) {
         $('#bankName').append('<option >' + BANKS[item] + '</option>')
