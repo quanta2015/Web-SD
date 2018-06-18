@@ -570,6 +570,7 @@ const rdHelper = {
   },
   formatAge: (s)=> {
     switch(s) {
+      case 0: ret = '无要求（免费）'; break;
       case 1: ret = '15到25岁'; break;
       case 2: ret = '26到35岁'; break;
       case 3: ret = '36岁以上'; break;
@@ -589,7 +590,7 @@ const rdHelper = {
   formatRepeat: (s)=> {
     switch(s) {
       case 0: ret = '15天不重复'; break;
-      case 1: ret = '30不重复('; break;
+      case 1: ret = '30天不重复'; break;
       case 2: ret = '60天不重复'; break;
       case 3: ret = '永久不重复'; break;
     }
