@@ -52,7 +52,7 @@ function doAudit(e) {
         approve: ($(e.currentTarget).data('type')=='pass')?1:2,
         reason: ret
       }
-      promise('POST',URL_ADMIN_AUDIT_RECHARGE,JSON.stringify(obj), cbAudit)
+      promise('POST',URL_ADMIN_AUDIT_RECHARGE,JSON.stringify(obj), cbAudit, null)
     }; 
   }); 
 }

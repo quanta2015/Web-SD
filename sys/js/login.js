@@ -114,9 +114,9 @@ function doRegister() {
 
     $('.regs').is('.reg-sj') ? type = SELL : type = BUY;
     if (type == BUY) {
-      promise('POST', URL_BUY_REG, JSON.stringify(obj), cbInfo);
+      promise('POST', URL_BUY_REG, JSON.stringify(obj), cbInfo, null);
     } else {
-      promise('POST', URL_SELL_REG, JSON.stringify(obj), cbInfo);
+      promise('POST', URL_SELL_REG, JSON.stringify(obj), cbInfo, null);
     }
   }
 }
@@ -139,7 +139,7 @@ function doGetCode() {
     'mobilephone':$('#mobile').val()
   }
   $('#getcode-btn').attr("disabled",true);
-  promiseDataN('GET', URL_SMS_SEND, obj, cbCode);
+  promiseNoMask('GET', URL_SMS_SEND, obj, cbCode);
   let count = CODE_COUNT;
   doCounter(count);
 }
@@ -160,7 +160,7 @@ function doCounter(count) {
 function doLogin() {
   let url = $('.loginYh').is('.on') ? URL_BUY_LOGIN : URL_SELL_LOGIN;
   let obj = { mobile:$('#login-mobile').val(), password: $('#login-password').val() };
-  promise('POST', url, JSON.stringify(obj), cbLogin);
+  promiseNoMask('POST', url, JSON.stringify(obj), cbLogin, null);
 }
 
 function cbLogin(e) {

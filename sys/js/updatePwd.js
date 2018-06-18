@@ -29,16 +29,10 @@ function doSave(e) {
       oldPassword: oldPwd,
       password: newPwd
     }
-    promiseData('POST',URL_SELL_PASSWD,JSON.stringify(data), cbSave)
+    promise('POST',URL_SELL_PASSWD,JSON.stringify(data), cbSave, null)
   }
 }
 
 function cbSave(e) {
-  if (e.code == 0) {
-    notifyInfo(MSG_UPDATE_SUCCESS)
-  } else if (e.code == 99 ) {
-    notifyInfo(e.message);
-  } else if (e.code == -1) {
-    relogin();
-  }
+   notifyInfo(MSG_UPDATE_SUCCESS)
 }

@@ -48,18 +48,14 @@ function initRechargeTask(param = pageData) {
   let from = moment().subtract('months',6).format('YYYY-MM-DD');
   let to = moment().format('YYYY-MM-DD');
   Object.assign(param, { transferType:1, fromDate: from, toDate: to});
-  TmplData(TMPL_SELL_RECHARGE_LIST, [URL_SELL_ALL_RECHARGE, encodeQuery(param)].join('?'), null, cbRechargeTask)
+  promiseTmpl('GET', TMPL_SELL_RECHARGE_LIST, [URL_SELL_ALL_RECHARGE, encodeQuery(param)].join('?'), null, cbRechargeTask)
 }
 
 function cbRechargeTask(r, e) {
-  let data = e[0];
-  if (data.code == 0) {
-    Object.assign(data, pageData);
-    // $(".portlet-body .table").remove();
-    $(".recharge-table").prepend($.templates(r[0]).render(data, rdHelper));
-  } else if ([-1, 99].includes(e.code)) {
-    relogin();
-  }
+  let ret = e;
+  Object.assign(ret, pageData);
+  // $(".portlet-body .table").remove();
+  $(".recharge-table").prepend($.templates(r).render(ret, rdHelper));
 }
 
 function doResetForm() {
@@ -85,17 +81,11 @@ function doSave(e) {
     transferType:1
   }
 
-  promiseData('POST',URL_SELL_TRANSFER,JSON.stringify(data), cbSave)
+  promise('POST',URL_SELL_TRANSFER,JSON.stringify(data), cbSave, null)
 }
 
 function cbSave(e) {
-  if (e.code == 0) {
-    msgbox(MSG_RECHARGE_SUCCESS,MSG_GOON_RECHARGE,MSG_LOOKUP_RECHARGE,cbGoto)
-  } else if (e.code == -1) {
-    relogin();
-  } else if (e.code == 99){
-    notifyInfo(e.message);
-  }
+  msgbox(MSG_RECHARGE_SUCCESS,MSG_GOON_RECHARGE,MSG_LOOKUP_RECHARGE,cbGoto)
 }
 
 function cbGoto(result) {

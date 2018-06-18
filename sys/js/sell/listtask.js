@@ -52,7 +52,7 @@ function initTime() {
 }
 
 function initShops() {
-  promise('GET', URL_TASK_ALL_PLATFORM, null, cbShops);
+  promise('GET', URL_TASK_ALL_PLATFORM, null, cbShops, null);
 }
 
 function cbShops(e) {
@@ -106,7 +106,7 @@ function doPayTask() {
 
 function cbPayTask(e) {
   notifyInfo(MSG_TASK_PUB_SUCC);
-  initList();
+  initList(pageData);
 }
 
 function cbPayErr(e) {
@@ -139,7 +139,7 @@ function initPage(totalPages) {
 
 function cbDelTask(e) {
   notifyInfo(MSG_TASK_DEL_SUCC);
-  initList();
+  initList(pageData);
 }
 
 function cbRecharge(ret) {

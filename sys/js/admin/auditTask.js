@@ -65,7 +65,7 @@ function doAuditTask(e) {
         approve: ($(e.currentTarget).data('type')=='pass')?1:2,
         reason: ret
       }
-      promise('POST',URL_ADMIN_TASK_AUDIT,JSON.stringify(obj), cbAuditTask)
+      promise('POST',URL_ADMIN_TASK_AUDIT,JSON.stringify(obj), cbAuditTask, null)
     }; 
   }); 
 }

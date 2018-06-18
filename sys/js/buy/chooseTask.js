@@ -41,10 +41,3 @@ function doDetail() {
   location.href = 'detailTask.html?id=' + $(this).data('kid')
 }
 
-function cbChoose(e) {
-  if (e.code == 0) {
-    initList()
-  } else if (e.code == -1) {
-    relogin();
-  }
-}

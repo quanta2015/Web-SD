@@ -17,20 +17,16 @@ function init() {
 
 
 function initList() {
-  TmplData(TMPL_SELL_SHOP_LIST,URL_SELL_SHOPS,null, cbListShop)
+  promiseTmpl('GET', TMPL_SELL_SHOP_LIST,URL_SELL_SHOPS,null, cbListShop)
 }
 
 
 function cbListShop(r, e) {
-  console.log(e);
-  if (e[0].code == 0) {
-    _listshop = e[0].data;
-    e[0].imgPrefix = IMG_PREFIX;
-    $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(e[0], null));
-  } else if (e.code == -1) {
-    relogin();
-  }
+  var ret = e;
+  _listshop = ret.data;
+  ret.imgPrefix = IMG_PREFIX;
+  $(".portlet-body .table").remove();
+  $(".portlet-body").prepend($.templates(r).render(ret, null));
 }
 
 function doDelShop() {
@@ -39,20 +35,13 @@ function doDelShop() {
 
   function cbDel(e) {
     if (!e) {
-      promiseData('GET', URL_SELL_SHOP_DEL + sid, null, cbDelShop);
+      promise('GET', URL_SELL_SHOP_DEL + sid, null, cbDelShop, null);
     }
   }
 }
 
 function cbDelShop(e) {
-  console.log(e);
-  if (e.code == 0) {
-    initList()
-  } else if (e.code == 99) {
-    notifyInfo(e.message)
-  } else if (e.code == -1) {
-    relogin();
-  }
+  initList()
 }
 
 function doEditShop() {
@@ -85,16 +74,9 @@ function doEditShop() {
 }
 
 function cbEditShop(e) {
- 
-  if (e.code == 0) {
-    $("#basic .close").click()
-    notifyInfo(MSG_UPDATE_SHOP_SUCC)
-    initList()
-  } else if (e.code == -1) {
-    relogin();
-  } else if (e.code == 99){
-    notifyInfo(e.message)
-  }
+  $("#basic .close").click()
+  notifyInfo(MSG_UPDATE_SHOP_SUCC)
+  initList()
 }
 
 function doSaveShop() {
@@ -113,5 +95,5 @@ function doSaveShop() {
     wangid: $('#shop-wangid').val()
   }
   console.log(obj)
-  promiseData('POST', URL_SELL_SHOP_UPDATE, JSON.stringify(obj), cbEditShop);
+  promise('POST', URL_SELL_SHOP_UPDATE, JSON.stringify(obj), cbEditShop, null);
 }

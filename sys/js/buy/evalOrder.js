@@ -41,17 +41,11 @@ function doSubmitEval(e) {
     goodsEvaluate: $("#u-goods-evaluate").attr('picurl')
   }
 
-  promiseData('post', URL_BUY_TASK_EVALUATE , JSON.stringify(data), cbSubmitEval)
+  promise('post', URL_BUY_TASK_EVALUATE , JSON.stringify(data), cbSubmitEval, null)
 }
 
 function cbSubmitEval(e) {
-  if (e.code == 0) {
-    alertBox(MSG_EVALUATE_SUCC ,gotoPage)
-  }else if (e.code==99) {
-    notifyInfo(e.message);
-  }else if (e.code==-1) {
-    relogin();
-  };
+  alertBox(MSG_EVALUATE_SUCC ,gotoPage)
 }
 
 function gotoPage() {

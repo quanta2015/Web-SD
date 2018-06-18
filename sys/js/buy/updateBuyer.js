@@ -11,7 +11,7 @@ function init() {
 }
 
 function initList() {
-  promiseData('GET', URL_BUYER_INFO, null, cbList)
+  promise('GET', URL_BUYER_INFO, null, cbList, err)
 }
 
 function cbList(e) {
@@ -41,16 +41,10 @@ function doSave(e) {
   var $l = ['id','name','qq','mobile','weixin']
   var data = saveList($s, $l)
   console.log(JSON.stringify(data));
-  promiseData('POST',URL_BUY_UPDATE,JSON.stringify(data), cbSave)
+  promise('POST',URL_BUY_UPDATE,JSON.stringify(data), cbSave, null)
 }
 
 function cbSave(e) {
-  if (e.code == 0) {
-    initUserInfo();
-    notifyInfo(MSG_UPDATE_SUCCESS)
-  } else if (e.code == -1) {
-    relogin();
-  } else if (e.code == 99){
-    notifyInfo(e.message);
-  }
+  initUserInfo();
+  notifyInfo(MSG_UPDATE_SUCCESS)
 }

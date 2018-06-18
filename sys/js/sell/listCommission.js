@@ -7,20 +7,16 @@ function init() {
 
 function initList(param = pageData) {
   Object.assign(param, { transferType:1});
-  TmplData(TMPL_SELL_COMMISSION_LIST, [URL_SELL_ALL_RECHARGE, encodeQuery(param)].join('?'), null, cbList)
+  promiseTmpl('GET', TMPL_SELL_COMMISSION_LIST, [URL_SELL_ALL_RECHARGE, encodeQuery(param)].join('?'), null, cbList)
 }
 
 function cbList(r, e) {
-  let data = e[0];
-  if (data.code == 0) {
-    Object.assign(data, pageData);
-    totalPages = Math.ceil(data.total/PAGE_DATA.pageSize);
-    $(".portlet-body .table").remove();
-    $(".table-body").prepend($.templates(r[0]).render(data, rdHelper));
-    if ($('.table-pg').text() == '') initPage(totalPages);
-  } else if ([-1, 99].includes(e.code)) {
-    relogin();
-  }
+  let ret = e;
+  Object.assign(ret, pageData);
+  totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
+  $(".portlet-body .table").remove();
+  $(".table-body").prepend($.templates(r).render(ret, rdHelper));
+  if ($('.table-pg').text() == '') initPage(totalPages);
 }
 
 function initPage(totalPages) {

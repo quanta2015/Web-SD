@@ -32,7 +32,7 @@ function init() {
 }
 
 function initBindInfo() {
-  promise('GET', URL_BUY_INFO, null, cbInitBindInfo);
+  promise('GET', URL_BUY_INFO, null, cbInitBindInfo, null);
 }
 
 function cbInitBindInfo(e) {
@@ -92,16 +92,10 @@ function doSave(data) {
   if (obj.reBankNo !== obj.bankNo) return;
   delete obj.reBankNo;
   if (status === 2) obj.id = cookie2('id', 'buyerBankList');
-  promiseData('POST', URL_BUY_BIND_BANK, JSON.stringify(obj), cbBind);
+  promise('POST', URL_BUY_BIND_BANK, JSON.stringify(obj), cbBind, null);
 }
 
 function cbBind(e) {
-  if (e.code === 0) {
-    initUserInfo();
-    alertBox(MSG_BIND_SUCCESS, ()=>{ goto("newTask.html") })   
-  } else if (e.code==99) {
-    notifyInfo(e.message);
-  } else if (e.code==-1) {
-    relogin();
-  };
+  initUserInfo();
+  alertBox(MSG_BIND_SUCCESS, ()=>{ goto("newTask.html") })   
 }

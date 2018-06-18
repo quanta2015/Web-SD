@@ -63,7 +63,7 @@ function doAudit(e) {
         reason: ret,
         type:viptype
       }
-      promise('POST',URL_ADMIN_AUDIT_VIPRECHARGE,JSON.stringify(obj), cbAudit)
+      promise('POST',URL_ADMIN_AUDIT_VIPRECHARGE,JSON.stringify(obj), cbAudit, null)
     }; 
   }); 
 }

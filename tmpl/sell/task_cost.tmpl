@@ -18,33 +18,39 @@
       <tbody>
         {{for data}}
         <tr>
-          <td rowspan='4'> 第{{:#index+1}}任务佣金</td>
+          <td rowspan='{{:taskkeytypeLength}}'> 第{{:#index+1}}任务佣金</td>
           <td> 基础佣金： </td>
           <td> {{:baseMoney}}金/单 </td>
           <td> {{:baseMoneyCount}}单</td>
           <td> {{:baseMoneySum}}金 </td>
         </tr>
         
+        {{if keywordCommentCount>0}}
         <tr>
           <td> 指定关键词好评： </td>
           <td> {{:keywordComment}}金/单 </td>
           <td> {{:keywordCommentCount}}单</td>
           <td> {{:keywordCommentSum}}金 </td>
         </tr>
-       
+        {{/if}}
+        
+        {{if pictureCommentCount>0}}
         <tr>
           <td> 指定图片好评： </td>
           <td> {{:pictureComment}}金/单 </td>
           <td> {{:pictureCommentCount}}单</td>
           <td> {{:pictureCommentSum}}金 </td>
         </tr>
+        {{/if}}
         
+        {{if wordCommentCount>0}}
         <tr>
           <td> 指定文字好评： </td>
           <td> {{:wordComment}}金/单 </td>
           <td> {{:wordCommentCount}}单</td>
           <td> {{:wordCommentSum}}金 </td>
         </tr>
+        {{/if}}
         
         {{/for}}
 
@@ -56,7 +62,7 @@
         </tr> -->
 
         <tr>
-          <td rowspan='13'> 增值服务</td>
+          <td rowspan='12'> 增值服务</td>
           <td> 是否优先展示任务</td>
           <td> {{:showFirst}} 金/单 </td>
           <td> {{:showFirstCount}} 单</td>
@@ -122,12 +128,12 @@
           <td> {{:usehuabeiCount}}单</td>
           <td> {{:usehuabeiSum}}金 </td>
         </tr>
-        <tr>
+        <!-- <tr>
           <td> 默认签收费</td>
           <td> {{:isReceive}}金/单 </td>
           <td> {{:isReceiveCount}}单</td>
           <td> {{:isReceiveSum}}金 </td>
-        </tr>
+        </tr> -->
         <tr>
           <td> 问大家</td>
           <td> {{:askAll}}金/单 </td>

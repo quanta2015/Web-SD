@@ -16,7 +16,7 @@ function init() {
 
 function initList() {
   var obj = { buyerTaskId: _id }
-  promiseData('get',URL_SELL_ACC_TASK_DETAIL,obj, cbList)
+  promise('get',URL_SELL_ACC_TASK_DETAIL,obj, cbList, null)
 }
 
 function doPayTask(e) {
@@ -28,7 +28,7 @@ function doPayTask(e) {
         approve: ($(e.currentTarget).data('type')=='pass')?1:2,
         reason: ret
       }
-      promiseData('POST',URL_SELL_PAY_ORDER,JSON.stringify(obj), cbAudit)
+      promise('POST',URL_SELL_PAY_ORDER,JSON.stringify(obj), cbAudit, null)
     }; 
   });
 }
@@ -44,21 +44,9 @@ function renderData(ret) {
 }
 
 function cbList(e) {
-  if (e.code == 0) {
-    renderData(e.data)
-  } else if (e.code == -1) {
-    relogin();
-  } else if (e.code == 99){
-    notifyInfo(MSG_GET_TASK_DETAIL_ERR);
-  }
+  renderData(e.data)
 }
 
 function cbAudit(e) {
-  if (e.code == 0) {
-    alertBox(MSG_PAY_SUCC, doReturnList);
-  } else if (e.code == -1) {
-    relogin();
-  } else if (e.code == 99){
-    notifyInfo(e.message);
-  }  
+  alertBox(MSG_PAY_SUCC, doReturnList);
 }

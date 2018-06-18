@@ -14,7 +14,7 @@ function initList() {
     toDate: $("#sr-time-to").val(),
   };
   Object.assign(param, { transferType:1}, pageData);
-  TmplData(TMPL_SELL_RECHARGE_LIST, [URL_SELL_ALL_RECHARGE, encodeQuery(param)].join('?'), null, cbList)
+  promiseTmpl('GET', TMPL_SELL_RECHARGE_LIST, [URL_SELL_ALL_RECHARGE, encodeQuery(param)].join('?'), null, cbList)
 }
 
 function initTime() {
@@ -25,16 +25,12 @@ function initTime() {
 }
 
 function cbList(r, e) {
-  let data = e[0];
-  if (data.code == 0) {
-    Object.assign(data, pageData);
-    totalPages = Math.ceil(data.total/PAGE_DATA.pageSize);
-    $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(data, rdHelper));
-    if ($('.table-pg').text() == '') initPage(totalPages);
-  } else if ([-1, 99].includes(e.code)) {
-    relogin();
-  }
+  let ret = e;
+  Object.assign(ret, pageData);
+  totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
+  $(".portlet-body .table").remove();
+  $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
+  if ($('.table-pg').text() == '') initPage(totalPages);
 }
 
 function initPage(totalPages) {

@@ -24,18 +24,12 @@ function doChoose(e) {
   var obj = {
     taskkeyId: _id
   }
-  promiseData('GET',[URL_BUYER_GET_TASK, encodeQuery(obj)].join('?') ,null, cbChoose)
+  promise('GET',[URL_BUYER_GET_TASK, encodeQuery(obj)].join('?') ,null, cbChoose, null)
 } 
 
 
 function cbChoose(e) {
-  if (e.code == 0) {
-    msgbox(MSG_ACCEPT_TASK_SUCC,MSG_GOON_ACCEPT,MSG_LOOKUP_TASK,gotoPage)
-  }else if (e.code==99) {
-    notifyInfo(e.message);
-  }else if (e.code==-1) {
-    relogin();
-  };
+  msgbox(MSG_ACCEPT_TASK_SUCC,MSG_GOON_ACCEPT,MSG_LOOKUP_TASK,gotoPage)
 }
 
 function gotoPage(result) {

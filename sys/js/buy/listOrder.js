@@ -13,23 +13,17 @@ function init() {
 }
 
 function initList(param = pageData) {
-  TmplData(TMPL_BUY_ALL_ORDER, [URL_BUYER_ALL_ORDER, encodeQuery(param)].join('?'),null, cbList)
+  promiseTmpl('GET', TMPL_BUY_ALL_ORDER, [URL_BUYER_ALL_ORDER, encodeQuery(param)].join('?'),null, cbList)
 }
 
 function cbList(r, e) {
-  let ret = e[0];
-  if (ret.code == 0) {
-    _listtask = ret.data;
-    Object.assign(ret, pageData);
-    totalPages = Math.ceil(ret.total/pageData.pageSize);
-    $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(ret, rdHelper));
-    if ($('.table-pg').text() == '') initPage(totalPages);
-  } else if (ret.code == 99) {
-    notifyInfo(ret.message);
-  } else if (ret.code == -1) {
-    relogin();
-  }
+  let ret = e;
+  _listtask = ret.data;
+  Object.assign(ret, pageData);
+  totalPages = Math.ceil(ret.total/pageData.pageSize);
+  $(".portlet-body .table").remove();
+  $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
+  if ($('.table-pg').text() == '') initPage(totalPages);
 }
 
 function doCommit() {
@@ -51,10 +45,9 @@ function doEvalTask(e) {
 
 function doDetail() {
   
-
   if ($('#ig-info').hasClass('hide')) {
     var obj = { taskkeyid: $(this).data('tid') }
-    TmplData(TMPL_BUY_TASK_DETAIL, [URL_BUY_TASKDETAIL, encodeQuery(obj)].join('?'),null, cbDetail)
+    promiseTmpl('GET', TMPL_BUY_TASK_DETAIL, [URL_BUY_TASKDETAIL, encodeQuery(obj)].join('?'),null, cbDetail)
   }else{
     $("#ig-info").empty();
     $("#ig-info").addClass("hide");
@@ -62,35 +55,23 @@ function doDetail() {
 }
 
 function cbDetail(r, e) {
-  let ret = e[0];
-  if (ret.code == 0) {
-    ret.data.imgPrefix = IMG_PREFIX;
-    $("#ig-info").append($.templates(r[0]).render(ret.data, rdHelper));
-    // $("#ig-info").toggle("slide", { direction: "left" }, 200);
-    $("#ig-info").removeClass("hide");
-  } else if (ret.code == 99) {
-    notifyInfo(ret.message);
-  } else if (ret.code == -1) {
-    relogin();
-  }
+  let ret = e;
+  ret.data.imgPrefix = IMG_PREFIX;
+  $("#ig-info").append($.templates(r).render(ret.data, rdHelper));
+  // $("#ig-info").toggle("slide", { direction: "left" }, 200);
+  $("#ig-info").removeClass("hide");
 }
 
 function doCancelTask() {
   var obj = {
     buyerTaskId: $(this).data('id')
   }
-  promiseData('GET',[URL_BUY_CANCEL_TASK, encodeQuery(obj)].join('?') ,null, cbCancelTask)
+  promise('GET',[URL_BUY_CANCEL_TASK, encodeQuery(obj)].join('?') ,null, cbCancelTask, null)
 }
 
 function cbCancelTask(e)  {
-  if (e.code == 0) {
-    notifyInfo('退单成功！');
-    initList()
-  } else if (e.code == 99) {
-    notifyInfo(e.message);
-  } else if (e.code == -1) {
-    relogin();
-  }
+  notifyInfo('退单成功！');
+  initList()
 }
 
 

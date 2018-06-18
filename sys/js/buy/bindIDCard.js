@@ -23,7 +23,7 @@ function doReturn() {
 }
 
 function initStatus() {
-  promise('GET', URL_BUY_INFO, null, cbInitStatus);
+  promise('GET', URL_BUY_INFO, null, cbInitStatus, null);
 }
 
 function doSave(data) {
@@ -40,17 +40,11 @@ function doSave(data) {
       return errorInfo(`缺少${idCardImgInfo[i-1]}`);
     }
   }
-  promiseData('POST', URL_BUY_BIND_ID_CARD, JSON.stringify(obj), cbBind);
+  promise('POST', URL_BUY_BIND_ID_CARD, JSON.stringify(obj), cbBind, null);
 }
 function cbBind(e) {
-  if (e.code === 0) {
-    initUserInfo();
-    alertBox(MSG_BIND_SUCCESS, ()=>{ goto("newTask.html") })
-  } else if (e.code==99) {
-    notifyInfo(e.message);
-  } else if (e.code==-1) {
-    relogin();
-  };
+  initUserInfo();
+  alertBox(MSG_BIND_SUCCESS, ()=>{ goto("newTask.html") })
 }
 
 function cbInitStatus(e) {

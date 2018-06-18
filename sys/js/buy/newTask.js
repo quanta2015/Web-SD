@@ -11,7 +11,7 @@ function init() {
 }
 
 function initStatus() {
-  promise('GET', URL_BUY_INFO, null, cbInitStatus);
+  promise('GET', URL_BUY_INFO, null, cbInitStatus, null);
 }
 
 function cbInitStatus(e) {
@@ -24,7 +24,6 @@ function cbInitStatus(e) {
   toggleBindStatus('id-card', approveState);
   toggleBindStatus('jingdong', jingdongState);
   toggleBindStatus('bank-card', bankCardState);
-
 }
 
 function toggleBindStatus(id, status) {

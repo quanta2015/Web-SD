@@ -51,7 +51,7 @@ function doAudit(e) {
         approve: ($(e.currentTarget).data('type')=='pass')?AUDIT_PASS:AUDIT_FAIL,
         reason: ret
       }
-      promise('POST',URL_ADMIN_IDCARD_AUDIT,JSON.stringify(obj), cbAudit)
+      promise('POST',URL_ADMIN_IDCARD_AUDIT,JSON.stringify(obj), cbAudit, null)
     }; 
   }); 
 }

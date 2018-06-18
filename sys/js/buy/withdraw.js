@@ -26,33 +26,18 @@ function init() {
   $('body').on('input propertychange', '#withdraw-money', doCompute);
 
 }
-function cbBind(e) {
-  if (e.code === 0) {
-    initUserInfo();
-    alertBox(MSG_BIND_SUCCESS, ()=>{ goto("newTask.html") })
-  } else if (e.code==99) {
-    notifyInfo(e.message);
-  } else if (e.code==-1) {
-    relogin();
-  };
-}
+
 
 function initBalanceInfo() {
-  promiseData('GET', URL_BUY_BALANCE, null, cbBalanceInfo);
+  promise('GET', URL_BUY_BALANCE, null, cbBalanceInfo, null);
 }
 
 function cbBalanceInfo(e) {
-  if (e.code === 0) {
-    _balanceData = e.data;
-    $('#buyer-id').val(cookie('id'));
-    $('#buyer-name').val(cookie('name'));
-    $('#bankno').val(cookie2('bankNo', 'buyerBankList'));
-    $('#balance').text(_balanceData.balance);
-  } else if (e.code == 99) {
-    errorInfo(e.message);
-  } else if (e.code==-1) {
-    relogin();
-  };
+  _balanceData = e.data;
+  $('#buyer-id').val(cookie('id'));
+  $('#buyer-name').val(cookie('name'));
+  $('#bankno').val(cookie2('bankNo', 'buyerBankList'));
+  $('#balance').text(_balanceData.balance);
 
   $("#form-withdraw").validate({
     rules: rules,
@@ -99,17 +84,11 @@ function doWithdraw() {
     return errorInfo('提现超出余额！');
   }
   let url = type === 0 ? URL_BUY_WITHDRAW : URL_BUY_FEE_WITHDRAW;
-  promiseData('POST', url, JSON.stringify(obj), cdWithdraw);
+  promise('POST', url, JSON.stringify(obj), cdWithdraw, null);
 }
 
 function cdWithdraw(e) {
-  if (e.code === 0) {
-    notifyInfo(MSG_WITHDRAW_SUCCESS);
-  } else if (e.code == 99) {
-    errorInfo(e.message);
-  } else if (e.code==-1) {
-    relogin();
-  };
+  notifyInfo(MSG_WITHDRAW_SUCCESS);
 }
 
 function doInitTip() {

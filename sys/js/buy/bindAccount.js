@@ -34,7 +34,7 @@ function init() {
 }
 
 function initBindInfo() {
-  promise('GET', URL_BUY_INFO, null, cbInitBindInfo);
+  promise('GET', URL_BUY_INFO, null, cbInitBindInfo, null);
 }
 
 async function cbInitBindInfo(e) {
@@ -125,16 +125,10 @@ function doSave(data) {
     }
   }
   
-  promiseData('POST', URL_BUY_BIND_ACCOUNT, JSON.stringify(obj), cbBind);
+  promise('POST', URL_BUY_BIND_ACCOUNT, JSON.stringify(obj), cbBind, null);
 }
 
 function cbBind(e) {
-  if (e.code === 0) {
-    initUserInfo();
-    alertBox(MSG_BIND_SUCCESS, ()=>{ goto("newTask.html") })
-  } else if (e.code==99) {
-    notifyInfo(e.message);
-  } else if (e.code==-1) {
-    relogin();
-  };
+  initUserInfo();
+  alertBox(MSG_BIND_SUCCESS, ()=>{ goto("newTask.html") })
 }

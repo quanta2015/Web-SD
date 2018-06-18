@@ -25,7 +25,7 @@
     <tbody>
       {{for data}}
         <tr>
-            <td> <input type="checkbox" name="tid" value="{{:id}}"> </td>
+            <td> <input type="checkbox" name="tid" value="{{:id}}" class="u-tid"> </td>
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
             <td> {{:shopType}} </td>
             <td> {{:shopName}} </td>
@@ -33,7 +33,7 @@
             <td> {{:~formatTime(taskCreatetime)}} </td>
             <td> {{:~formatTime(acceptTime)}} </td>
             <td> {{:buyerId}} </td>
-            <td class="z-status{{:status}}"> {{:~formatOrderStatus(status)}}</td>
+            <td class="z-status{{:status}} status"> {{:~formatOrderStatus(status)}}</td>
             <td> {{:orderid}} </td>
             <td> {{:sumMoney}} </td>
             <td> {{:serviceSum}} </td>

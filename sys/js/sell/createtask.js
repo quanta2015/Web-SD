@@ -308,7 +308,7 @@ function doPublish() {
     taskKeyList: getTaskData()
   }
 
-  TmplDataP(TMPL_SELL_TASK_COST, URL_TASK_CAL_MONEY, JSON.stringify(taskObj), cbInfo)
+  promiseTmpl('POST', TMPL_SELL_TASK_COST, URL_TASK_CAL_MONEY, JSON.stringify(taskObj), cbInfo)
 }
 
 
@@ -375,25 +375,17 @@ function formatCost(ret) {
 
 
 function cbInfo(r, e) {
-  console.log(e)
+  let ret = e;
+  let obj = formatCost(ret.data)
+  // Object.assign(obj, {balance: $('#u-money', parent.document).text()})
+  $('.step3').empty()
+  $('.step3').append($.templates(r).render(obj, rdHelper))
 
-  let ret = e[0];
-  if (ret.code == 0) {
-    let obj = formatCost(ret.data)
-    // Object.assign(obj, {balance: $('#u-money', parent.document).text()})
-    $('.step3').empty()
-    $('.step3').append($.templates(r[0]).render(obj, rdHelper))
-
-    renderTask(NEXT)
-  }else if (ret.code==99) {
-    notifyInfo(ret.message);
-  }else if (ret.code==-1) {
-    relogin();
-  };
+  renderTask(NEXT)
 }
 
 function doComplete() {
-  TmplDataP(TMPL_SELL_TASK_COST, URL_TASK_PUBLISH, JSON.stringify(taskObj), cbComplete)
+  promiseTmpl('POST', TMPL_SELL_TASK_COST, URL_TASK_PUBLISH, JSON.stringify(taskObj), cbComplete)
 }
 
 function cbComplete() {
@@ -408,18 +400,11 @@ function cbComplete() {
 
 
 function initPlatforms() {
-  promiseData('GET', URL_TASK_ALL_PLATFORM, null, cbPlatformInfo);
+  promise('GET', URL_TASK_ALL_PLATFORM, null, cbPlatformInfo, null);
 }
 
 function cbPlatformInfo(e) {
-  console.log(e);
-  if (e.code == 0) {
-    initPlatformList(e.data);
-  }else if (e.code==99) {
-    notifyInfo(e.message);
-  } else if (e.code == -1) {
-    relogin();
-  }
+  initPlatformList(e.data);
 }
 
 async function initPlatformList(data) {

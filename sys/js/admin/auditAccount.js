@@ -51,7 +51,7 @@ function doAudit(e) {
         id: sid = $(e.currentTarget).data('id'),
         approve: ($(e.currentTarget).data('type')=='pass')?AUDIT_PASS:AUDIT_FAIL
       }
-      promise('POST',URL_ADMIN_ACOUNT_AUDIT,JSON.stringify(obj), cbAudit)
+      promise('POST',URL_ADMIN_ACOUNT_AUDIT,JSON.stringify(obj), cbAudit, null)
     }; 
   }); 
 }

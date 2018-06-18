@@ -62,18 +62,12 @@ function doSubmitBuy(e) {
     shopname:$('#shop-name').val()
   }
 
-  promiseData('post', URL_BUY_SUBMIT_ORDER , JSON.stringify(data), cbSubmitBuy)
+  promise('post', URL_BUY_SUBMIT_ORDER , JSON.stringify(data), cbSubmitBuy, null)
 }
 
 
 function cbSubmitBuy(e) {
-  if (e.code == 0) {
-    alertBox(MSG_SUBMIT_BUY_CORRECT ,gotoPage)
-  }else if (e.code==99) {
-    notifyInfo(e.message);
-  }else if (e.code==-1) {
-    relogin();
-  };
+  alertBox(MSG_SUBMIT_BUY_CORRECT ,gotoPage)
 }
 
 function gotoPage() {
@@ -89,16 +83,9 @@ function doCheckShop() {
     buyTaskId: _id,
     shopName: $('#u-shop-name').val()
   }
-  promiseData('get', URL_BUY_CHECK_SHOP , data, cbCheckShop)
+  promise('get', URL_BUY_CHECK_SHOP , data, cbCheckShop, null)
 }
 
 function cbCheckShop(e) {
-  if (e.code == 0) {
-    alertBox(MSG_SHOPNAME_CORRECT,null)
-
-  }else if (e.code==99) {
-    notifyInfo(e.message);
-  }else if (e.code==-1) {
-    relogin();
-  };
+  alertBox(MSG_SHOPNAME_CORRECT,null)
 }

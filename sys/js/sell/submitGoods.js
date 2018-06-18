@@ -15,7 +15,7 @@ function init() {
 
 function initList() {
   var obj = { buyerTaskId: _id }
-  promiseData('get',URL_SELL_ACC_TASK_DETAIL,obj, cbList)
+  promise('get',URL_SELL_ACC_TASK_DETAIL,obj, cbList, null)
 }
 
 function doSubmitGoods() {
@@ -27,8 +27,7 @@ function doSubmitGoods() {
       approve: 1  // 1表示发货  2表示退回
     }
 
-    promiseData('POST',URL_SELL_DELIVERY, JSON.stringify(obj), cbSubmitGoods)
-    
+    promise('POST',URL_SELL_DELIVERY, JSON.stringify(obj), cbSubmitGoods, null)
 }
 
 function doReturnList() {
@@ -51,21 +50,9 @@ function renderData(ret) {
 }
 
 function cbList(e) {
-  if (e.code == 0) {
-    renderData(e.data)
-  } else if (e.code == -1) {
-    relogin();
-  } else if (e.code == 99){
-    notifyInfo(MSG_GET_TASK_DETAIL_ERR);
-  }
+  renderData(e.data)
 }
 
 function cbSubmitGoods(e) {
-  if (e.code == 0) {
-    alertBox(MSG_DELIVERY_SUCCESS, doReturnList);
-  } else if (e.code == -1) {
-    relogin();
-  } else if (e.code == 99){
-    notifyInfo(MSG_DELIVERY_ERR);
-  }  
+  alertBox(MSG_DELIVERY_SUCCESS, doReturnList);
 }

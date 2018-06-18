@@ -14,9 +14,50 @@ function init() {
   $('#shop-name').on('change', doChangeShop);
   $('#search-order').on('click', doSearch);
   $('#batch-pay').on('click', null);
-  $('#batch-cancel').on('click', null);
-  $('#batch-send').on('click', null);
+  $('#batch-cancel').on('click', doBatchCancel);
+  $('#batch-send').on('click', doBatchSend);
   $('#export').on('click', doExport);
+}
+
+
+function getCheckedVal() {
+  var r = [];
+
+  if ($('.u-tid:checked').length === 0) {
+    notifyInfo('请选择订单！');
+    return null;
+  }
+
+  $('.u-tid:checked').each(function(){
+    status = $(this).parent().parent().find('.status').text().trim();
+    if ( status !== '待发货') {
+      notifyInfo('请选择待发货状态的订单！');
+      r = null;
+    }else{
+      r.push($(this).val())
+    }
+  })
+
+  return r;
+}
+
+function doBatchCancel() {
+  var ret = getCheckedVal();
+  if ( ret === null ) return;
+  var obj = {
+    buyerTaskIds: ret
+  }
+  promise('POST', '/task/cancel_task_batch', JSON.stringify(obj), cbBatchCancel, null);
+}
+
+function doBatchSend() {
+
+}
+
+function cbBatchCancel(e) {
+  $('.portlet-body .table-pg').remove();
+  $('.portlet-body').append('<div class="table-pg"></div>');
+  initList(pageData)
 }
 
 
@@ -41,24 +82,18 @@ function initTime() {
 }
 
 function initShops() {
-  promiseData('GET', URL_TASK_ALL_PLATFORM, null, cbShops);
+  promise('GET', URL_TASK_ALL_PLATFORM, null, cbShops, null);
 }
 
 function cbShops(e) {
-  if (e.code == 0) {
-    for(i=0; i< e.data.length; i++) {
-      for(j=0; j< e.data[i].shops.length; j++) {
-        _shop[e.data[i].shops[j].name] = e.data[i].platform;
-        let val = e.data[i].shops[j].name;
-        let sid = e.data[i].shops[j].id;
-        let cnt = $.format('<option value="{0}">{1}</option>', sid, val )
-        $("#shop-name").append(cnt)
-      }
+  for(i=0; i< e.length; i++) {
+    for(j=0; j< e[i].shops.length; j++) {
+      _shop[e[i].shops[j].name] = e[i].platform;
+      let val = e[i].shops[j].name;
+      let sid = e[i].shops[j].id;
+      let cnt = $.format('<option value="{0}">{1}</option>', sid, val )
+      $("#shop-name").append(cnt)
     }
-  } else if (e.code == -1) {
-    relogin();
-  } else if (e.code == 99){
-    notifyInfo(MSG_DEL_FAILED);
   }
 }
 
@@ -77,24 +112,17 @@ function initList(pg) {
     acceptEnd: $("#task-to").val()+ ':00'
   }
   Object.assign( cdt, pg);
-  TmplData(URL_SELL_LIST_ORDER, ['/task/task_accept_list_all', encodeQuery(cdt)].join('?'), null, cbListTask)
+  promiseTmpl('GET', URL_SELL_LIST_ORDER, ['/task/task_accept_list_all', encodeQuery(cdt)].join('?'), null, cbListTask)
 }
 
 
 function cbListTask(r,e) {
-  let ret = e[0];
-  if (ret.code == 0) {
-    Object.assign(ret, pageData);
-    totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
-    $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(ret, rdHelper));
-    if ($('.table-pg').text() == '') initPage(totalPages);
-  } else if (ret.code == 99) {
-    notifyInfo(ret.message);
-  } else if (ret.code == -1) {
-    relogin();
-  }
-
+  let ret = e;
+  Object.assign(ret, pageData);
+  totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
+  $(".portlet-body .table").remove();
+  $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
+  if ($('.table-pg').text() == '') initPage(totalPages);
 }
 
 function initPage(totalPages) {

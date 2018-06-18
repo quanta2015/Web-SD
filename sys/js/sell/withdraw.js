@@ -38,23 +38,16 @@ function initList() {
     toDate: $("#sr-time-to").val(),
   };
   Object.assign(param, {transferType: 0}, pageData);
-  TmplData(TMPL_SELL_WITHDRAW_LIST, [URL_SELL_ALL_RECHARGE, encodeQuery(param)].join('?'), null, cbList)
+  promiseTmpl('GET', TMPL_SELL_WITHDRAW_LIST, [URL_SELL_ALL_RECHARGE, encodeQuery(param)].join('?'), null, cbList)
 }
 
 function cbList(r, e) {
-  let ret = e[0];
-  if (ret.code == 0) {
-    Object.assign(ret, pageData, {name: cookie('name')});
-    totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
-    $(".portlet-body .table").remove();
-    $('#tab-list .table-data').prepend($.templates(r[0]).render(ret, rdHelper));
-    if ($('.table-pg').text() == '') initPage(totalPages);
-  } else if (e[0].code == -1) {
-    relogin();
-  } else if (e.code == 99){
-    notifyInfo(e.message);
-  }
-
+  let ret = e;
+  Object.assign(ret, pageData, {name: cookie('name')});
+  totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
+  $(".portlet-body .table").remove();
+  $('#tab-list .table-data').prepend($.templates(r).render(ret, rdHelper));
+  if ($('.table-pg').text() == '') initPage(totalPages);
 }
 
 function initPage(totalPages) {
@@ -68,21 +61,15 @@ function initPage(totalPages) {
 }
 
 function initBalanceInfo() {
-  promiseData('GET', URL_SELL_BALANCE, null, cbBalanceInfo);
+  promise('GET', URL_SELL_BALANCE, null, cbBalanceInfo, null);
 }
 
 function cbBalanceInfo(e) {
-  if (e.code === 0) {
-    $('#shoper-name').val(cookie('name'));
-    if (!cookie('name')) $('#form-tip').removeClass('hide');
-    $('#bankno').val(cookie('bankcard'));
-    $('#balance').text(e.data);
-    $('#u-money', parent.document).text(e.data);
-  } else if (e.code == 99) {
-    errorInfo(e.message);
-  } else if (e.code==-1) {
-    relogin();
-  };
+  $('#shoper-name').val(cookie('name'));
+  if (!cookie('name')) $('#form-tip').removeClass('hide');
+  $('#bankno').val(cookie('bankcard'));
+  $('#balance').text(e.data);
+  $('#u-money', parent.document).text(e.data);
 
   $("#form-withdraw").validate({
     rules: rules,
@@ -114,20 +101,14 @@ function doWithdraw() {
   if (sum > parseFloat($('#balance').text()) ) {
     return errorInfo('提现超出余额！');
   }
-  promiseData('POST', URL_SELL_TRANSFER, JSON.stringify(obj), cdWithdraw);
+  promise('POST', URL_SELL_TRANSFER, JSON.stringify(obj), cdWithdraw, null);
 }
 
 function cdWithdraw(e) {
-  if (e.code === 0) {
-    // 获取余额
-    document.getElementById('form-withdraw').reset();
-    initBalanceInfo();
-    notifyInfo(MSG_WITHDRAW_SUCCESS);
-  } else if (e.code == 99) {
-    errorInfo(e.message);
-  } else if (e.code==-1) {
-    relogin();
-  };
+  // 获取余额
+  document.getElementById('form-withdraw').reset();
+  initBalanceInfo();
+  notifyInfo(MSG_WITHDRAW_SUCCESS);
 }
 
 function doSearch() {

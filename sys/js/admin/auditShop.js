@@ -54,7 +54,7 @@ function doAudit(e) {
         approve: ($(e.currentTarget).data('type')=='pass')?1:2,
         reason: ret
       }
-      promise('POST',URL_ADMIN_SHOP_AUDIT,JSON.stringify(obj), cbAudit)
+      promise('POST',URL_ADMIN_SHOP_AUDIT,JSON.stringify(obj), cbAudit, null)
     }; 
   }); 
 }

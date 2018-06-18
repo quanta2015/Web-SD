@@ -1,17 +1,18 @@
 <div class="col-md-12"><p class="m-img-title">{{:type}}</p></div>
 <div class="col-md-12">
-  <div class="fileinput fileinput-new" data-provides="fileinput">
-    <div class="fileinput-new thumbnail" style="max-width: 120px; max-height: 90px;">
-      <img src="/img/noimg.png">
+  
+
+    <div class="fileinput fileinput-new" data-provides="fileinput">
+      <div class="fileinput-preview  thumbnail" style="max-width: 120px; max-height: 90px; line-height: 10px;">
+        <img src="/img/noimg.png">
+      </div>
+      <div class="fileinput-ctrl">
+          <span class="btn red btn-xs btn-file">
+            <i class="fa fa-upload"></i>
+            <span>  选择图片</span>
+            <input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="{{:pid}}">
+          </span>
+      </div>
     </div>
-    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-    <div>
-      <span class="btn default btn-file">
-        <span class="fileinput-new"> 选择图片 </span>
-        <span class="fileinput-exists"> 更换 </span>
-        <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="{{:pid}}">
-      </span>
-      <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 删除 </a>
-    </div>
-  </div>
+
 </div>

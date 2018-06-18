@@ -46,7 +46,7 @@ function initList() {
         $('#bankName').append('<option >' + BANKS[item] + '</option>')
     }
     
-    promiseData('GET', URL_MEMBERSHIP_FEE_TYPE, null, cbMembershipType);
+    promise('GET', URL_MEMBERSHIP_FEE_TYPE, null, cbMembershipType, null);
    
 
 
@@ -62,52 +62,29 @@ function initList() {
 }
 
 function cbMembershipType(e){
-    if (e.code == 0) {
-        console.log('cbMembershipType');
-        console.log(e);
-        $("#membershipFeeId").empty();
-        let str='<option value=""></option>';
-        $.each(e.data, function(index, val) {
-            str+='<option value="'+val.id+'" money="'+val.money+'">'+val.money+'元/'+val.name+'</option>';
-        });
-        $("#membershipFeeId").append(str);
-    } else if (e.code == -1) {
-        relogin();
-    } else if (e.code == 99) {
-        notifyInfo(e.message);
-    }
-
-
+    $("#membershipFeeId").empty();
+    let str='<option value=""></option>';
+    $.each(e.data, function(index, val) {
+        str+='<option value="'+val.id+'" money="'+val.money+'">'+val.money+'元/'+val.name+'</option>';
+    });
+    $("#membershipFeeId").append(str);
 }
 function doSetMoney(e){
     let obj=e.target;
     $("#transferMoney").val($(obj).find("option:selected").attr("money"));
-
 }
 
-
-/*function initRechargeTask(param = pageData) {
-    Object.assign(param, { transferType: 1 });
-    TmplData(TMPL_SELL_RECHARGE_LIST, [URL_SELL_ALL_RECHARGE, encodeQuery(param)].join('?'), null, cbRechargeTask)
-}*/
 function initVipRecharge(param = pageData) {
     Object.assign(param, { transferType: 1 });
-    TmplData(TMPL_VIP_RECHARGE_LIST, [URL_MEMBERSHIP_LIST, encodeQuery(param)].join('?'), null, cbVipRecharge)
+    promiseTmpl(TMPL_VIP_RECHARGE_LIST, [URL_MEMBERSHIP_LIST, encodeQuery(param)].join('?'), null, cbVipRecharge)
 }
 
 
 function cbVipRecharge(r, e) {
-    /*console.log('r.e')
-    console.log(r);
-    console.log(e)*/
-    let data = e[0];
-    if (data.code == 0) {
-        Object.assign(data, pageData);
-        // $(".portlet-body .table").remove();
-        $(".recharge-table").prepend($.templates(r[0]).render(data, rdHelper));
-    } else if ([-1, 99].includes(e.code)) {
-        relogin();
-    }
+    let ret = e;
+    Object.assign(ret, pageData);
+    // $(".portlet-body .table").remove();
+    $(".recharge-table").prepend($.templates(r).render(ret, rdHelper));
 }
 
 function doResetForm() {
@@ -134,22 +111,13 @@ function doSave(e) {
         transferType: 1
     }
     console.log(JSON.stringify(data));
-    promiseData('POST', URL_MEMBERSHIP_TRANSFER, JSON.stringify(data), cbSave)
+    promise('POST', URL_MEMBERSHIP_TRANSFER, JSON.stringify(data), cbSave, null)
 }
 
 function cbSave(e) {
-    if (e.code == 0) {
-        alertBox(MSG_RECHARGE_SUCCESS,cbGoto);
-        // msgbox(MSG_RECHARGE_SUCCESS, MSG_LOOKUP_RECHARGE, cbGoto)
-    } else if (e.code == -1) {
-        relogin();
-    } else if (e.code == 99) {
-        notifyInfo(e.message);
-    }
+    alertBox(MSG_RECHARGE_SUCCESS,cbGoto);
 }
 
 function cbGoto(result) {
-    
     parent.$("#mainframe").attr('src', HOST+'/vipRecharge.html');
-    
 }

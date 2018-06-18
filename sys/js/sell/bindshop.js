@@ -72,18 +72,15 @@ function doSave() {
     };
     if (!obj.shopimg1) return errorInfo('缺少店铺管理后台截图');
     $("#saveBtn").attr('disabled',true)
-  promiseData('POST', URL_SHOP_BIND, JSON.stringify(obj), cbSave);
+  promise('POST', URL_SHOP_BIND, JSON.stringify(obj), cbSave, cbSaveErr);
 }
 
 function cbSave(e) {
-  if (e.code == 0) {
-    msgbox(MSG_BIND_SHOP_SUCC,MSG_CONT_BIND_SHOP,MSG_GOTO_SHOP_LIST,cbGoto)
-  } else if (e.code == 99) {
-    notifyInfo(e.message)
-    $("#saveBtn").attr('disabled',false)
-  } else if (e.code == -1) {
-    relogin();
-  }
+  msgbox(MSG_BIND_SHOP_SUCC,MSG_CONT_BIND_SHOP,MSG_GOTO_SHOP_LIST,cbGoto)
+}
+
+function cbSaveErr() {
+  $("#saveBtn").attr('disabled',false)
 }
 
 

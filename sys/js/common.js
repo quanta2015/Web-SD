@@ -312,7 +312,32 @@ function promise(method, url, data, cb, err) {
       cb(e.data);
     } else if (e.code == 99) {
       errorInfo(e.message);
-      err(e);
+      if (err !== null) err(e);
+    } else if (e.code == -1) {
+      relogin();
+    }
+  })
+}
+
+
+function promiseNoMask(method, url, data, cb, err) {
+  var promise = $.ajax({
+    type: method,
+    url: HOST + url,
+    dataType: "json",
+    contentType: "application/json",
+    data: data,
+    xhrFields: {
+      withCredentials: true
+    },
+    crossDomain: true
+  });
+  promise.then((e)=>{
+    if (e.code == 0) {
+      cb(e.data);
+    } else if (e.code == 99) {
+      errorInfo(e.message);
+      if (err !== null) err(e);
     } else if (e.code == -1) {
       relogin();
     }
