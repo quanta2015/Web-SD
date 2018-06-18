@@ -12,7 +12,7 @@ function init() {
 
 
 function cbInfo(e) {
-    $("#balance").text(e);
+    $("#balance").text(e.balance);
     list = e.taskList;
     for(i=0;i<list.length;i++) {
         $('.u-status' + list[i].status).text(list[i].statusCount);
