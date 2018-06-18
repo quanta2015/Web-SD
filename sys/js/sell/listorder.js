@@ -5,7 +5,8 @@ let pageData = Object.assign({}, PAGE_DATA);
 $(init);
 
 function init() {
-  _id = '201806021905000011'
+  status = getUrlParam('status')
+  $("#task-status option[value='"+status+"']").attr("selected", "selected");
 
   initTime();
   initShops()
