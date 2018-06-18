@@ -21,6 +21,11 @@ let rules = {
     number: !0
   }
 }
+let messages = {
+  name: {
+    required: '请先绑定身份证'
+  }
+}
 let status;
 
 $(init);
@@ -42,7 +47,7 @@ function cbInitBindInfo(e) {
   if ( status == -1 || status == null) {
     //未绑定
     func = renderTmpl(TMPL_BUY_BIND_BKCARD, {
-      name: null,
+      name: cookie('name'),
       bank: null,
       bank_no: null,
       acount_name: null,
@@ -70,6 +75,7 @@ function cbInitBindInfo(e) {
     $('.container').append(h);
     $("#form-bind").validate({
       rules: rules,
+      messages: messages,
       submitHandler: (e) => { doSave() }
     })
   })

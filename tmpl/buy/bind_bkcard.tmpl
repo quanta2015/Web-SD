@@ -4,9 +4,8 @@
       <span class="required"> * </span>
     </label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" id="acount-name" placeholder="请输入开户姓名" value="{{:name}}" {{:type}} name="name">
+      <input type="text" class="form-control" id="acount-name" placeholder="请先绑定身份证" value="{{:name}}" name="name" {{:type}} readonly>
     </div>
-    <div class="col-xs-4 form-info">(银行卡姓名必须与身份证姓名一致)</div>
   </div>
   <div class="form-group">
     <label class="control-label col-xs-2">银行名称
@@ -23,18 +22,16 @@
   </div>
   <div class="form-group">
     <label class="control-label col-xs-2">开户支行
-      <span class="required"> * </span>
     </label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" id="acount-subbank" placeholder="请输入正确的开户支行" value="{{:acountSubbank}}" {{:type}} name="acountSubbank">
+      <input type="text" class="form-control" id="acount-subbank" placeholder="请输入正确的开户支行（非必填）" value="{{:acountSubbank}}" {{:type}} ">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-xs-2">开户行号
-      <span class="required"> * </span>
     </label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" id="acount-bankno" placeholder="请输入正确的开户行号" value="{{:acountBankno}}" {{:type}} name="acountBankno">
+      <input type="text" class="form-control" id="acount-bankno" placeholder="请输入正确的开户行号（非必填）" value="{{:acountBankno}}" {{:type}} >
     </div>
   </div>
   <div class="form-group">

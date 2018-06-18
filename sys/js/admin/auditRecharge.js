@@ -15,7 +15,7 @@ function initList() {
     approveStatus: $('#sr-status').val(),
     fromAccount: $('#sr-from-account').val(),
     toAccount: $('#sr-to-account').val(),
-    money: $('#sr-monet').val(),
+    transferMoney: $('#sr-money').val(),
     sdate: $("#sr-time-from").val() + ' 00:00:00',
     edate: $("#sr-time-to").val() + ' 23:59:00',
   };
