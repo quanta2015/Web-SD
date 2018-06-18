@@ -6,7 +6,7 @@ $(init);
 
 function init() {
   status = getUrlParam('status')
-  $("#task-status option[value='"+status+"']").attr("selected", "selected");
+  $("#task-status option[value='"+status+"']").prop("selected", true);
 
   initTime();
   initShops()
