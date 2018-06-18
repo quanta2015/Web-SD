@@ -9,9 +9,9 @@ $(init);
 
 function init() {
   if (viptype==1) {
-    $(".li-title").html("审核商家VIP缴费");
+    $(".li-title").html("审核卖家VIP缴费");
   }else if (viptype==0) {
-    $(".li-title").html("审核刷手VIP缴费");
+    $(".li-title").html("审核买家VIP缴费");
   }
   initTime();
   initList();
@@ -25,7 +25,7 @@ function initList() {
     vipType: $("#sr-viptype").val(),
     fromAccount: $("#sr-from-account").val(),
     toAccount: $("#sr-to-account").val(),
-    money: $("#sr-money").val(),
+    transferMoney: $("#sr-money").val(),
     sdate: $("#sr-time-from").val() + ' 00:00:00',
     edate: $("#sr-time-to").val() + ' 23:59:00',
   };

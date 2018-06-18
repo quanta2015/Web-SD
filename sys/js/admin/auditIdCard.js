@@ -13,7 +13,6 @@ function init() {
 function initList() {
   let param = {
     approveStatus: $('#sr-status').val(),
-    type: 1,
     searchKey: $('#sr-idcard').val(),
     sdate: $("#sr-time-from").val() + ' 00:00:00',
     edate: $("#sr-time-to").val() + ' 23:59:00',
@@ -61,7 +60,7 @@ function cbAudit(e) {
 }
 
 function initTime() {
-  let from =  moment().subtract('days',7).format('YYYY-MM-DD');
+  let from =  moment().subtract('month',1).format('YYYY-MM-DD');
   let to = moment().format('YYYY-MM-DD');
   $("#sr-time-from").datetimepicker({ value: from, format:'Y-m-d', timepicker:false});
   $("#sr-time-to").datetimepicker({value: to, format:'Y-m-d', timepicker:false});

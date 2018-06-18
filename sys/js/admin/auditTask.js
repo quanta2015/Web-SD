@@ -16,7 +16,7 @@ function initList() {
   let param = {
     approveStatus: $('#sr-status').val(),
     shopName: $('#sr-shopname').val(),
-    goodsName: $('#sr-goodsname').val(),
+    goodsname: $('#sr-goodsname').val(),
     taskId: $('#sr-taskid').val(),
     sdate: $("#sr-time-from").val() + ' 00:00:00',
     edate: $("#sr-time-to").val() + ' 23:59:00',
