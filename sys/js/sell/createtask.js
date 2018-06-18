@@ -52,6 +52,7 @@ function init() {
   $('body').on('click', '.task-del', delTask);
   $('body').on('click', '#publish-task-btn', doComplete);
   $('body').on('change', '#platform-list', doInitShop);
+  $('body').on('change', '#shop-list', doInitArea);
   $('body').on('change', '#color-size-chk', doColorSize);
   $('body').on('input propertychange', '.task-count', doCountTask);
 
@@ -430,6 +431,16 @@ async function doInitShop() {
     $('#r-task-mjd').prop('checked',true)
   }
   $("#shop-list").empty().append(await renderTmpl(TMPL_SELL_SHOP_SELECT, { list:platformMap[platform] }));
+}
+
+
+function doInitArea() {
+  let province =  $('#shop-list option:selected').data("province");
+  let city =  $('#shop-list option:selected').data("city");
+
+  $("#goods-province option[value='"+province+"']").attr("selected", "selected");
+  $("#goods-province").trigger("change");
+  $("#goods-city option[value='"+city+"']").attr("selected", "selected");
 }
 
 function doCountTask() {
