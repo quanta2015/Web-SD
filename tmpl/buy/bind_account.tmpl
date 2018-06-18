@@ -131,25 +131,24 @@
 
 
                 {{for list}}
-                <div class="fileinput fileinput-new img-info-box" data-provides="fileinput">
+
+                <div class="fileinput fileinput-new" data-provides="fileinput" style="margin-right:20px">
                   <div class="fileinput-preview  thumbnail" style="max-width: 200px; max-height: 150px; line-height: 10px;">
-                      {{if ~root.accountImg && ~root.accountImg[#getIndex()]}}
-                      <img src="{{:~root.imgPrefix}}{{:~root.accountImg[#getIndex()]}}">
-                      {{else}}
-                      <img src="/img/noimg.png">
-                      {{/if}}
+                    {{if ~root.idImg && ~root.idImg[#getIndex()]}}
+                    <img src="{{:~root.imgPrefix}}{{:~root.idImg[#getIndex()]}}">
+                    {{else}}
+                    <img src="/img/noimg.png" id="img-id-{{:#getIndex()}}">
+                    {{/if}}
                   </div>
                   <div class="fileinput-ctrl">
-                  <span>{{:~root.imgInfo[#getIndex()]}}</span>
+                    <div style="text-align:center">{{:~root.imgInfo[#getIndex()]}}</div>
                     <span class="btn red btn-xs btn-file">
                       <i class="fa fa-upload"></i>
                       <span>  选择图片</span>
-                      <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="platform-ipt{{:#index+1}}">
+                      <input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="upload-{{:#getIndex()}}">
                     </span>
                   </div>
-                 
-                
-              </div>
+                </div>
               {{/for}}  
 
 
