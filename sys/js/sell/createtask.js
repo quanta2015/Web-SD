@@ -377,7 +377,7 @@ function formatCost(ret) {
 function cbInfo(r, e) {
   let ret = e;
   let obj = formatCost(ret.data)
-  // Object.assign(obj, {balance: $('#u-money', parent.document).text()})
+  Object.assign(obj, {balance: $('#u-money', parent.document).text()})
   $('.step3').empty()
   $('.step3').append($.templates(r).render(obj, rdHelper))
 

@@ -6,6 +6,9 @@ let rules = {
     required: !0,
     url: true
   },
+  shopWangId: {
+    required: !0
+  },
   shopName: {
     required: !0
   },
