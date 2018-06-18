@@ -95,7 +95,7 @@ function doSave(data) {
     buyerId: cookie('id'),
     reBankNo: $('#rebankno').val(),
   };
-  if (obj.reBankNo !== obj.bankNo) return;
+  if (obj.reBankNo !== obj.bankNo) return errorInfo('两次输入的账号不相同');
   delete obj.reBankNo;
   if (status === 2) obj.id = cookie2('id', 'buyerBankList');
   promise('POST', URL_BUY_BIND_BANK, JSON.stringify(obj), cbBind, null);

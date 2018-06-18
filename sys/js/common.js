@@ -594,6 +594,14 @@ const rdHelper = {
       case 3: ret = '永久不重复'; break;
     }
     return ret;
+  },
+  formatExpressStatus: (s) => {
+    switch(s) {
+      case -1: ret = '未发货'; break;
+      case 0: ret = '已发'; break;
+      case 1: ret = '已收'; break;
+    }
+    return ret;
   }
 }
 
