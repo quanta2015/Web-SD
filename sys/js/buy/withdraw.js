@@ -1,5 +1,5 @@
 let rules = {
-  buyerId: {
+  mobile: {
     required: !0,
     number: !0
   },
@@ -23,6 +23,7 @@ function init() {
 
   initBalanceInfo();
   $('body').on('change', '#account-type', doInitTip);
+
   // $('body').on('input propertychange', '#withdraw-money', doCompute);
 
 }
@@ -34,11 +35,11 @@ function initBalanceInfo() {
 
 function cbBalanceInfo(e) {
   _balanceData = e;
-  $('#buyer-id').val(cookie('id'));
+  $('#buyer-mobile').val(cookie('mobile'));
   $('#buyer-name').val(cookie('name'));
   $('#bankno').val(cookie2('bankNo', 'buyerBankList'));
   $('#balance').text(_balanceData.balance);
-
+  $("#u-money", window.parent.document).text(e.balance+e.servicefee);
   $("#form-withdraw").validate({
     rules: rules,
     submitHandler: (e) => { doWithdraw() }
@@ -61,7 +62,7 @@ function doCompute() {
 
 function doWithdraw() {
   let obj = {
-    buyerId: parseInt($('#buyer-id').val()),
+    // mobile: parseInt($('#buyer-id').val()),
     buyerName: $('#buyer-name').val(),
     // buyerBankId:parseInt($('#bankno').val()),
     withdrawMoney: parseInt($('#withdraw-money').val()),
@@ -88,10 +89,14 @@ function doWithdraw() {
 }
 
 function cdWithdraw(e) {
+  // 获取余额
+  document.getElementById('form-withdraw').reset();
+  initBalanceInfo();
   notifyInfo(MSG_WITHDRAW_SUCCESS);
 }
 
 function doInitTip() {
   $('.withdraw-tip').toggleClass('hide');
-  $('#balance').text(_balanceData.servicefee);
+  let type = $('.withdraw-tip.hide').data('type');
+  $('#balance').text(type === 'balance' ? _balanceData.servicefee: _balanceData.balance);
 }
