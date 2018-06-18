@@ -7,8 +7,14 @@ function init() {
 
 
   //显示金额
-  promise('GET',URL_SELL_BALANCE,null, (e)=>{
-    $("#balance").text(e)
-  }, null)
+  promise('GET',URL_SELL_BALANCE,null, cbInfo, null)
 }
 
+
+function cbInfo(e) {
+    $("#balance").text(e);
+    list = e.taskList;
+    for(i=0;i<list.length;i++) {
+        $('.u-status' + list[i].status).text(list[i].statusCount);
+    }
+}
