@@ -4,7 +4,7 @@
             <th> 序号 </th>
             <th> 创建时间 </th>
             <th> 平台 </th>
-            <th> 店铺ID</th>
+            <th> 旺旺ID</th>
             <th> 店铺名称 </th>
             <th> 店铺类别 </th>
             <th> 店铺地址 </th>
@@ -20,7 +20,7 @@
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
             <td class="u-dt"> {{:~formatTime(createtime)}}</td>
             <td> {{:type}} </td>
-            <td> {{:id}} </td>
+            <td> {{:wangid}} </td>
             <td> <a href="#basic" class="shop-name" data-toggle="modal" data-index="{{:#index}}">{{:name}}</a></td>
             <td> {{:businesstype}}{{if subtype}} - {{:subtype}}{{/if}}</td>
             <td> {{:addressProvince}} - {{:addressCity}} - {{:addressCounty}}</td>

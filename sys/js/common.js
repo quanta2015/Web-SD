@@ -407,21 +407,6 @@ const promiseObj = (url, data) => {
 
 
 
-// OLD AJAX FUNCTION DEF
-function promiseDataOLD(method, url, data, cb) {
-  var promise = $.ajax({
-    type: method,
-    url: HOST + url,
-    dataType: "json",
-    contentType: "application/json",
-    data: data,
-    xhrFields: {
-      withCredentials: true
-    },
-    crossDomain: true,
-  });
-  promise.done(cb)
-}
 
 
 function promiseData(method, url, data, cb) {

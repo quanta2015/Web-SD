@@ -50,9 +50,9 @@
   </div>
   {{/if}}
 
-  {{if word}}
+  {{if word||img}}
   <div class="row key-task">
-    <div class="col-xs-2 form-imp"> 指定文字好评任务<span class="task-type hide">4</span></div>
+    <div class="col-xs-2 {{if word}}form-imp{{else}}fn-right{{/if}}"> {{if word}}指定文字好评任务{{else img}}文字评价{{/if}} <span class="task-type hide">4</span></div>
     <div class="col-xs-10">
         <span> 指定文字</span>
         <input type="text" id="ipt-word{{:count}}" class="wide-3 u-task-keyword" placeholder="注意！不能超过50个字！"> 

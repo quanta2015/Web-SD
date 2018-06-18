@@ -39,9 +39,9 @@ function initBindInfo() {
 
 async function cbInitBindInfo(e) {
   let key = getUrlParam('platform') === 'jingdong' ? 'jingdongList' : 'taobaoList';
-  status = e[key][0].approve;
+  (e[key].length === 0)?status = -1:status= 1;
+
   let func;
-  // status = 0
   if ( status == -1 || status == null) {
     //未绑定
     func = renderTmpl(TMPL_BUY_BIND_ACCOUNT, {

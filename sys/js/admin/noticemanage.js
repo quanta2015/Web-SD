@@ -21,14 +21,14 @@ function init() {
 
 function initList() {
 
-  TmplData(TMPL_ADMIN_NOTICE, URL_ADMIN_NOTICE_LIST,null, cbListNotice)
+  promiseTmpl('GET', TMPL_ADMIN_NOTICE, URL_ADMIN_NOTICE_LIST,null, cbListNotice)
 }
 
 
 function cbListNotice(r, e) {
 
-  let data = e[0];
-  $.each(data.data, function(index, val) {
+  let ret = e;
+  $.each(ret.data, function(index, val) {
      if (val.type==0) {
         val.type='所有人';
      }else if (val.type==1) {
@@ -41,16 +41,9 @@ function cbListNotice(r, e) {
       val.type='';
      }
   });
-  if (data.code == 0) {
-    // Object.assign(data, pageData);
-    // totalPages = Math.ceil(data.total/PAGE_DATA.pageSize);
-    $(".portlet-body .table").remove();
-    $(".portlet-body").prepend($.templates(r[0]).render(data, rdHelper));
-    // if ($('.table-pg').text() == '') initPage(totalPages);
-    
-  } else if ([-1, 99].includes(e.code)) {
-    relogin();
-  }
+
+  $(".portlet-body .table").remove();
+  $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
 }
 
 function doDelNotice() {
@@ -59,23 +52,14 @@ function doDelNotice() {
 
   function cbDel(e) {
     if (!e) {
-      promiseData('GET', URL_ADMIN_NOTICE_DEL+'?id=' + noticeid, null, cbDelNotice);
+      promise('GET', URL_ADMIN_NOTICE_DEL+'?id=' + noticeid, null, cbDelNotice, null);
     }
   }
 }
 
 function cbDelNotice(e) {
-  console.log(e);
-  if (e.code == 0) {
-    initList()
-  } else if (e.code == 99) {
-    notifyInfo(e.message)
-  } else if (e.code == -1) {
-    relogin();
-  }
+  initList()
 }
-
-
 
 function doSaveNotice() {
    obj = {
@@ -84,32 +68,13 @@ function doSaveNotice() {
     type:parseInt($('#type').val())
   }
   console.log(obj)
-  promiseData('POST', URL_SAVE_NOTICE, JSON.stringify(obj), cbSaveNotice);
+  promise('POST', URL_SAVE_NOTICE, JSON.stringify(obj), cbSaveNotice, null);
 }
 function cbSaveNotice(e){
-   console.log(e);
-  if (e.code == 0) {
-    initList()
-    doResetNotice();
-    $(".close-btn").click();
-  } else if (e.code == 99) {
-    notifyInfo(e.message)
-  } else if (e.code == -1) {
-    relogin();
-  }
-
+  initList()
+  doResetNotice();
+  $(".close-btn").click();
 }
-
-/*function initPage(totalPages) {
-  $('.portlet-body .table-pg').twbsPagination({
-    totalPages: totalPages || 1,
-    onPageClick: function(event, page) {
-      pageData.pageIndex = page - 1;
-      console.log('initList(pageData)')
-      initList(pageData);
-    }
-  })
-}*/
 
 function doResetNotice(){
   $("#form-bind")[0].reset();

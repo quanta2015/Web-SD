@@ -11,11 +11,13 @@ function init() {
 
   $('#task-capacity').text(cookie('remainderNumberOfMonth'))
 
-  initList();
+  initList(pageData);
   $('body').on('click', '.audit-task', doDetail);
 }
 
-function initList(param = pageData) {
+function initList(obj) {
+  (tasktype == 1)? pl = '淘宝':pl='京东';
+  param = Object.assign(obj, {platform: pl });
   promiseTmpl('GET', TMPL_BUY_ALL_TASK, [URL_BUYER_ALL_TASK, encodeQuery(param)].join('?'),null, cbList)
 }
 

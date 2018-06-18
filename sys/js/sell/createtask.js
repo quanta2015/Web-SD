@@ -42,6 +42,15 @@ let NEXT = 1;
 let platformMap = {};
 let taskObj;
 
+function doChangePicture() {
+  if ($('#picturetask').prop('checked')) $('#wordtask').prop('checked',false)
+}
+
+function doChangeWord() {
+  if ($('#wordtask').prop('checked')) $('#picturetask').prop('checked',false)
+}
+
+
 $(init);
 
 function init() {
@@ -54,10 +63,10 @@ function init() {
   $('body').on('change', '#platform-list', doInitShop);
   $('body').on('change', '#shop-list', doInitArea);
   $('body').on('change', '#color-size-chk', doColorSize);
-  $('body').on('input propertychange', '.task-count', doCountTask);
-
   $('body').on('click', '.task-add', addTask);
-
+  $('body').on('input propertychange', '.task-count', doCountTask);
+  $('body').on('change', '#picturetask', doChangePicture);
+  $('body').on('change', '#wordtask', doChangeWord);
 
 
   //初始化第一步验证对象
