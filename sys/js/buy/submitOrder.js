@@ -24,7 +24,7 @@ async function initDetail() {
   ret = await promiseCall( [URL_BUY_TASKDETAIL, encodeQuery(param)].join('?'), null )
   Object.assign(ret.data, { show:false,imgPrefix: IMG_PREFIX });
   $('#shop-name').text(ret.data.shopName)
-  $('.m-d-detail').append(await renderTmpl(TMPL_BUY_ORDER_DETAIL, ret.data))
+  $('.m-d-detail').append(await renderTmpl(TMPL_BUY_ORDER_DETAIL, ret.data, rdHelper))
 }
 
 
@@ -46,6 +46,29 @@ function renderImg() {
 
 
 function doSubmitBuy(e) {
+  let err = false;
+  $('.u-img').each(function() {
+    if ( isNull( $(this).attr('picurl')) ) {
+      err = true;
+    }
+  })
+
+  if (err) {
+    notifyInfo('请上传图片！');
+    return;
+  }
+
+  if ($('#order-id').val() === '' ) {
+    notifyInfo('请填写订单编号！');
+    return;
+  }
+
+  if ($('#pay-money').val() === '' ) {
+    notifyInfo('请填写实际付款金额');
+    return;
+  }
+  
+
   data = {
     buyerTaskId: _id,
     result: $('#i-s-result').attr('picurl'),

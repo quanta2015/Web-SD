@@ -127,11 +127,8 @@ function cbInfo(e) {
   notifyInfo(MSG_REGIS_SUCCESS);
 }
 
-
 function cbCode(e) {
-  if (e.code == 0) {
-     $('#reg-btn').attr("disabled",false);
-  }
+  $('#reg-btn').attr("disabled",false);
 }
 
 function doGetCode() {

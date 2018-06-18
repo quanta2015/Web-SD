@@ -125,6 +125,12 @@ const URL_BUY_TRADE_RECORD  = '/buyer/buyer_trade_records'
 const URL_BUY_INFO          = '/buyer/person_info'
 
 
+const URL_MEMBERSHIP_FEE_TYPE = '/membership_fee_type';//获取 会员套餐
+const URL_MEMBERSHIP_TRANSFER='/membership_transfer';//vip充值保存
+const URL_MEMBERSHIP_LIST='/membership_list';//获取当前用户会员充值记录
+const TMPL_VIP_RECHARGE_LIST = '/tmpl/list_vipRecharge.tmpl';
+
+
 // TMPL DEF
 
 // SELL
@@ -561,6 +567,33 @@ const rdHelper = {
   },
   formatBool: (s)=> {
     return ((s===1)?'是':'否')
+  },
+  formatAge: (s)=> {
+    switch(s) {
+      case 1: ret = '15到25岁'; break;
+      case 2: ret = '26到35岁'; break;
+      case 3: ret = '36岁以上'; break;
+    }
+    return ret;
+  },
+  formatTaobaoLevel: (s)=> {
+    switch(s) {
+      case 1: ret = '1心~2心'; break;
+      case 2: ret = '3心~4心'; break;
+      case 3: ret = '5心~1钻'; break;
+      case 4: ret = '2钻~4钻'; break;
+      case 5: ret = '5钻以上'; break;
+    }
+    return ret;
+  },
+  formatRepeat: (s)=> {
+    switch(s) {
+      case 0: ret = '15天不重复'; break;
+      case 1: ret = '30不重复('; break;
+      case 2: ret = '60天不重复'; break;
+      case 3: ret = '永久不重复'; break;
+    }
+    return ret;
   }
 }
 

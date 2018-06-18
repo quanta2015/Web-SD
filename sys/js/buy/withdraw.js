@@ -23,7 +23,7 @@ function init() {
 
   initBalanceInfo();
   $('body').on('change', '#account-type', doInitTip);
-  $('body').on('input propertychange', '#withdraw-money', doCompute);
+  // $('body').on('input propertychange', '#withdraw-money', doCompute);
 
 }
 
@@ -33,7 +33,7 @@ function initBalanceInfo() {
 }
 
 function cbBalanceInfo(e) {
-  _balanceData = e.data;
+  _balanceData = e;
   $('#buyer-id').val(cookie('id'));
   $('#buyer-name').val(cookie('name'));
   $('#bankno').val(cookie2('bankNo', 'buyerBankList'));
@@ -73,8 +73,8 @@ function doWithdraw() {
     }
   }
   if (type === 1) {
-    if (obj.withdrawMoney < 100) {
-      return errorInfo('提现金额必须大于100！');
+    if (obj.withdrawMoney <200){
+      return errorInfo('佣金提现必须大于等于200！');
     } else if (obj.withdrawMoney/100 === 0) {
       return errorInfo('佣金提现不是100的倍数！');
     }

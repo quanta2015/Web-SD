@@ -35,6 +35,20 @@ function renderImg() {
 
 
 function doSubmitEval(e) {
+
+  let err = false;
+  $('.u-img').each(function() {
+    if ( isNull( $(this).attr('picurl')) ) {
+      err = true;
+    }
+  })
+
+  if (err) {
+    notifyInfo('请上传图片！');
+    return;
+  }
+
+
   data = {
     buyerTaskId: _id,
     expressPicture: $("#u-express-picture").attr('picurl'),

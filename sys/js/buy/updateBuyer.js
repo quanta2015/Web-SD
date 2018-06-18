@@ -11,14 +11,14 @@ function init() {
 }
 
 function initList() {
-  promise('GET', URL_BUYER_INFO, null, cbList, err)
+  promise('GET', URL_BUYER_INFO, null, cbList, null)
 }
 
 function cbList(e) {
   buyer = new Vue({
     el: '#buyer',
     data: {
-      buyer: e.data,
+      buyer: e,
       opts: optList
     },
     methods: {

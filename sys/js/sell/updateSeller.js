@@ -17,7 +17,7 @@ function cbList(e) {
   seller = new Vue({
     el: '#seller',
     data: {
-      seller: e.data,
+      seller: e,
       opts: optList
     },
     methods: {

@@ -126,7 +126,7 @@
       <li>
         <div class="col-2">人群年龄段</div>
         <div class="col-1 font-red-thunderbird fn-right">
-        {{:ageLimit}} </div>
+        {{:~formatAge(ageLimit)}} </div>
       </li>
       <li>
         <div class="col-2">区域限制</div>
@@ -136,22 +136,22 @@
       <li>
         <div class="col-2">淘宝会员等级</div>
         <div class="col-1 font-red-thunderbird fn-right">
-        {{:taobaoLevel}} </div>
+        {{:~formatTaobaoLevel(taobaoLeve)}} </div>
       </li>
       <li>
         <div class="col-2">重复购买限制</div>
         <div class="col-1 font-red-thunderbird fn-right">
-        {{:rebuy}} </div>
+        {{:~formatRepeat(rebuy)}} </div>
       </li>
       <li>
         <div class="col-2">是否允许使用信用卡/花呗/白条</div>
         <div class="col-1 font-red-thunderbird fn-right">
-        {{:useHuabei}} </div>
+        {{:~formatBool(useHuabei) }} </div>
       </li>
       <li>
         <div class="col-2">是否要求账号需要开通白条/花呗</div>
         <div class="col-1 font-red-thunderbird fn-right">
-        {{:huabeiStart}} </div>
+        {{:~formatBool(huabeiStart) }} </div>
       </li>
       <li>
         <div class="col-2">是否默认签收</div>

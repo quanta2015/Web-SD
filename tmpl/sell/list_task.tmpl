@@ -51,7 +51,7 @@
               {{if (status==0)}}
               <a href="javascript:;" class="btn grey-cascade btn-xs  sbold uppercase pay-task" id="{{:id}}" ><i class="fa fa-hand-o-right"></i> 发布 </a> 
               {{/if}}
-              {{if (status==30)}}
+              {{if ((status==30)||(status==50))}}
               <a href="javascript:;" class="btn blue-soft btn-xs  sbold uppercase mag-task" id="{{:id}}" ><i class="fa fa-edit"></i> 管理 </a> 
               {{/if}}
             </td>

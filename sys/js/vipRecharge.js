@@ -1,8 +1,5 @@
 // let userType = cookie('userType');
-const URL_MEMBERSHIP_FEE_TYPE = '/membership_fee_type';//获取 会员套餐
-const URL_MEMBERSHIP_TRANSFER='/membership_transfer';//vip充值保存
-const URL_MEMBERSHIP_LIST='/membership_list';//获取当前用户会员充值记录
-const TMPL_VIP_RECHARGE_LIST = '/tmpl/list_vipRecharge.tmpl';
+
 
 
 let rules = {
@@ -64,7 +61,7 @@ function initList() {
 function cbMembershipType(e){
     $("#membershipFeeId").empty();
     let str='<option value=""></option>';
-    $.each(e.data, function(index, val) {
+    $.each(e, function(index, val) {
         str+='<option value="'+val.id+'" money="'+val.money+'">'+val.money+'元/'+val.name+'</option>';
     });
     $("#membershipFeeId").append(str);
@@ -76,7 +73,7 @@ function doSetMoney(e){
 
 function initVipRecharge(param = pageData) {
     Object.assign(param, { transferType: 1 });
-    promiseTmpl(TMPL_VIP_RECHARGE_LIST, [URL_MEMBERSHIP_LIST, encodeQuery(param)].join('?'), null, cbVipRecharge)
+    promiseTmpl('GET', TMPL_VIP_RECHARGE_LIST, [URL_MEMBERSHIP_LIST, encodeQuery(param)].join('?'), null, cbVipRecharge)
 }
 
 

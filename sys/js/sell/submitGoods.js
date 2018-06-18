@@ -27,6 +27,12 @@ function doSubmitGoods() {
       approve: 1  // 1表示发货  2表示退回
     }
 
+
+    if ( $('#u-expressno').val() === '' ) {
+      notifyInfo('请填写快递单号');
+      return;
+    }
+
     promise('POST',URL_SELL_DELIVERY, JSON.stringify(obj), cbSubmitGoods, null)
 }
 
@@ -50,7 +56,7 @@ function renderData(ret) {
 }
 
 function cbList(e) {
-  renderData(e.data)
+  renderData(e)
 }
 
 function cbSubmitGoods(e) {

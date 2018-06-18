@@ -10,10 +10,10 @@ function init() {
 
   //显示金额
   promise('GET','/buyer/buyer_balance',null, (e)=>{
-    $("#all").text(e.data.balance+e.data.servicefee);
-    $("#servicefee").text(e.data.servicefee);
-    $("#balance").text(e.data.balance);
-    $("#spread").text(e.data.spread);
+    $("#all").text(e.balance+e.servicefee);
+    $("#servicefee").text(e.servicefee);
+    $("#balance").text(e.balance);
+    $("#spread").text(e.spread);
   }, null)
 
   //显示金额流水

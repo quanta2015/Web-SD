@@ -44,7 +44,7 @@ function renderData(ret) {
 }
 
 function cbList(e) {
-  renderData(e.data)
+  renderData(e)
 }
 
 function cbAudit(e) {

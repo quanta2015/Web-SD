@@ -8,7 +8,7 @@ function init() {
 
   //显示金额
   promise('GET',URL_SELL_BALANCE,null, (e)=>{
-    $("#balance").text(e.data)
+    $("#balance").text(e)
   }, null)
 }
 

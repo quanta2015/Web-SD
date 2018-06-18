@@ -404,7 +404,7 @@ function initPlatforms() {
 }
 
 function cbPlatformInfo(e) {
-  initPlatformList(e.data);
+  initPlatformList(e);
 }
 
 async function initPlatformList(data) {

@@ -19,7 +19,7 @@ function init() {
   initTime();
   initList();
   initBalanceInfo();
-  $('body').on('input propertychange', '#withdraw-money', doCompute);
+  // $('body').on('input propertychange', '#withdraw-money', doCompute);
   $('body').on('click', '#btn-search', doSearch);
 }
 

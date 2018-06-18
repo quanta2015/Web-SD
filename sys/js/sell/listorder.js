@@ -12,8 +12,8 @@ function init() {
   initList(pageData);
   
   $('#shop-name').on('change', doChangeShop);
-  $('#search-order').on('click', doSearch);
-  $('#batch-pay').on('click', null);
+  $('#search-order').on('click', cbRefresh);
+  $('#batch-pay').on('click', doBatchPay);
   $('#batch-cancel').on('click', doBatchCancel);
   $('#batch-send').on('click', doBatchSend);
   $('#export').on('click', doExport);
@@ -31,7 +31,7 @@ function getCheckedVal() {
   $('.u-tid:checked').each(function(){
     status = $(this).parent().parent().find('.status').text().trim();
     if ( status !== '待发货') {
-      notifyInfo('请选择待发货状态的订单！');
+      notifyInfo('请选择正确状态的订单！');
       r = null;
     }else{
       r.push($(this).val())
@@ -47,21 +47,29 @@ function doBatchCancel() {
   var obj = {
     buyerTaskIds: ret
   }
-  promise('POST', '/task/cancel_task_batch', JSON.stringify(obj), cbBatchCancel, null);
+  promise('POST', '/task/cancel_task_batch', JSON.stringify(obj), cbRefresh, null);
+}
+
+function doBatchPay() {
+  var ret = getCheckedVal();
+  if ( ret === null ) return;
+  var obj = {
+    buyerTaskIds: ret
+  }
+  promise('POST', '/task/approve_buyer_task_batch', JSON.stringify(obj), cbRefresh, null);
 }
 
 function doBatchSend() {
-
+  var ret = getCheckedVal();
+  if ( ret === null ) return;
+  var obj = {
+    buyerTaskIds: ret
+  }
+  promise('POST', '/task/shoper_delivery_batch', JSON.stringify(obj), cbRefresh, null);
 }
 
-function cbBatchCancel(e) {
-  $('.portlet-body .table-pg').remove();
-  $('.portlet-body').append('<div class="table-pg"></div>');
-  initList(pageData)
-}
 
-
-function doSearch() {
+function cbRefresh() {
   $('.portlet-body .table-pg').remove();
   $('.portlet-body').append('<div class="table-pg"></div>');
   initList(pageData)
