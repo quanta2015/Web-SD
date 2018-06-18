@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+/*const TMPL_ADMIN_NOTICE = '/tmpl/admin/list_notice.tmpl';
+const URL_SAVE_NOTICE ='/admin/save_notice';
+const URL_ADMIN_NOTICE_LIST ='/admin/notice_list';
+const URL_ADMIN_NOTICE_DEL='/admin/notice_del';*/
+
+
+// let pageData = Object.assign({}, PAGE_DATA);
+>>>>>>> 00d86e5adb179faa7f38f0db17144284cba2f6d8
 $(init);
 
 function init() {
