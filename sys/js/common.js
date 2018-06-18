@@ -570,10 +570,12 @@ const rdHelper = {
   },
   formatAge: (s)=> {
     switch(s) {
-      case 0: ret = '无要求（免费）'; break;
+      case -1:
+      case 0: ret = '无要求'; break;
       case 1: ret = '15到25岁'; break;
       case 2: ret = '26到35岁'; break;
       case 3: ret = '36岁以上'; break;
+      default: ret = '无要求'; break;
     }
     return ret;
   },
@@ -584,6 +586,7 @@ const rdHelper = {
       case 3: ret = '5心~1钻'; break;
       case 4: ret = '2钻~4钻'; break;
       case 5: ret = '5钻以上'; break;
+      default: ret = '无要求'; break;
     }
     return ret;
   },
@@ -593,6 +596,7 @@ const rdHelper = {
       case 1: ret = '30天不重复'; break;
       case 2: ret = '60天不重复'; break;
       case 3: ret = '永久不重复'; break;
+      default: ret = '无要求'; break;
     }
     return ret;
   },
