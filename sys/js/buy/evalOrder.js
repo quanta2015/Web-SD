@@ -8,6 +8,8 @@ function init() {
 
   renderImg()
 
+  initInfo()
+
   $('body').on('click', '#submit-eval', doSubmitEval);
   $('body').on('click', '#return-list', gotoPage);
 }
@@ -16,6 +18,17 @@ function gotoPage() {
   location.href = 'listOrder.html'
 }
 
+
+function initInfo() {
+
+  var obj = { taskkeyid:_tid }
+  promise('GET', '/buyertask/taskdetail', obj, cbInfo, null)
+}
+
+
+function cbInfo(e) {
+  $('#task-type').text( e.taskkeyInfo.taskkeyTypeStr)
+}
 
 function renderImg() {
   $(".m-img").each( function(index,val) {

@@ -53,6 +53,17 @@ a:hover {
   color: #5d54e9;
 }
 
+.font-big {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+
+.fn-money {
+  margin: 0 5px;
+}
+
+
 .hide {
   display: none;  
 }

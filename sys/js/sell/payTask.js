@@ -34,7 +34,7 @@ function doPayTask(e) {
 }
 
 function doReturnList() {
-    location.href = 'listTaskItem.html?id=' +  _pid
+  history.back()
 }
 
 function renderData(ret) {

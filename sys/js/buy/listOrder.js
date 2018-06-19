@@ -22,9 +22,10 @@ function initList(param = pageData) {
 function cbList(r, e) {
   let ret = e;
   _listtask = ret.data;
+  ret.imgPrefix = IMG_PREFIX;
   Object.assign(ret, pageData);
   totalPages = Math.ceil(ret.total/pageData.pageSize);
-  $(".portlet-body .table").remove();
+  $(".portlet-body .u-wrap").remove();
   $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
   if ($('.table-pg').text() == '') initPage(totalPages);
 }

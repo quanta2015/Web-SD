@@ -38,7 +38,9 @@ body {
 }
 
 
-
+.m-img {
+    max-width: 200px!important;
+}
 
 
 .g-submit {

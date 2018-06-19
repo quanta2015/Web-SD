@@ -43,11 +43,11 @@ let platformMap = {};
 let taskObj;
 
 function doChangePicture() {
-  if ($('#picturetask').prop('checked')) $('#wordtask').prop('checked',false)
+  if ($('#picturetask').prop('checked')) $('#wordtask').prop('checked',false);
 }
 
 function doChangeWord() {
-  if ($('#wordtask').prop('checked')) $('#picturetask').prop('checked',false)
+  if ($('#wordtask').prop('checked')) $('#picturetask').prop('checked',false);
 }
 
 
@@ -259,10 +259,12 @@ async function addTask() {
 
   $(".task-wrap").append(await renderTmpl('/tmpl/sell/createtask.tmpl', { type:'nor-task', count:count, key:key, img:img, word:word, list:[1,1,1,1,1] }));
   initTime()
+  doCountTask()
 }
 
 function delTask() {
   $(this).parents('.task-wrap-item').remove();
+  doCountTask()
 }
 
 function doPublish() {
@@ -400,7 +402,7 @@ function doComplete() {
 }
 
 function cbComplete() {
-  msgbox(MSG_TASK_SAVE_SUCC,MSG_CONT_CREATE_TASK,MSG_PUB_TASK, function(ret) {
+  msgbox('提示信息',MSG_TASK_SAVE_SUCC,MSG_CONT_CREATE_TASK,MSG_PUB_TASK, function(ret) {
     if (ret) {
       goto('createTask.html')
     }else{

@@ -44,7 +44,12 @@
             <td> {{:expressNo}} </td>
             <td> {{:~formatExpressStatus(expressStatus)}}  </td>
             <td>
-              
+              {{if (status==10)}}
+              <a href="javascript:;" class="btn green-dark btn-xs  sbold uppercase sub-goods" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 发货 </a> 
+              {{/if}}
+              {{if (status==30)}}
+              <a href="javascript:;" class="btn red btn-xs  sbold uppercase pay-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 审核 </a> 
+              {{/if}}
             </td>
         </tr>
       {{/for}}

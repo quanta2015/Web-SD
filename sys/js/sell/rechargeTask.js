@@ -85,7 +85,7 @@ function doSave(e) {
 }
 
 function cbSave(e) {
-  msgbox(MSG_RECHARGE_SUCCESS,MSG_GOON_RECHARGE,MSG_LOOKUP_RECHARGE,cbGoto)
+  msgbox('提示信息',MSG_RECHARGE_SUCCESS,MSG_GOON_RECHARGE,MSG_LOOKUP_RECHARGE,cbGoto)
 }
 
 function cbGoto(result) {

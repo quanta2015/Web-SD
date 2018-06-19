@@ -43,3 +43,75 @@ body {
 .m-col-2 {
     flex:2;
 }
+
+
+
+
+
+
+.u-wrap {
+    border: 1px solid #eee;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.u-row {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    position: relative;
+}
+
+.u-row div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    flex-wrap: wrap;
+}
+
+.u-row div a {
+    margin-right: 10px;
+}
+
+.u-title {
+    flex: 1;
+    justify-content: flex-start!important;
+}
+
+.u-money {
+    width: 120px;
+    flex-direction: column;
+}
+
+.u-date {
+    width: 150px;
+}
+
+.u-status,.u-func {
+    width: 120px;
+}
+
+.u-img {
+    width: 100px;
+}
+
+
+.u-img img {
+    border: 1px solid #eee;
+    padding: 5px;
+}
+
+.u-id {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background: #336699;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    top: 0px;
+    left: 0;
+}

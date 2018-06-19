@@ -1,0 +1,63 @@
+<div class="m-detail-wrap">
+
+
+  <div class="m-d m-d-main">
+    <div class="m-d-item col-1">
+      <li class="v-m-title">
+        <div class="col-1"><span class="icon-layers"></span>任务订单</div>
+      </li>
+      <li>
+        <div class="col-1">订单编号</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:taskid}}</div>
+      </li>
+      <li>
+        <div class="col-1">垫付金额</div>
+        <div class="col-2 font-red-thunderbird fn-right ">{{:buyerTaskMoney.goodsMoney }}</div>
+      </li>
+      <li>
+        <div class="col-1">佣金</div>
+        <div class="col-2 font-red-thunderbird fn-right font-big"><img src="/img/money.png" class="fn-money"> {{:buyerTaskMoney.serviceSum }}</div>
+      </li>
+    </div>
+    <div class="m-d-item col-1">
+      <li class="v-m-title">
+        <div class="col-1"><span class="icon-layers"></span>任务要点</div>
+      </li>
+      <li>
+        <div class="col-1">任务类型</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:tasktype}}</div>
+      </li>
+      <li>
+        <div class="col-1">搜索关键字</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:keyword}}</div>
+      </li>
+      <li>
+        <div class="col-1">规则尺码</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:colorSize}}</div>
+      </li>
+      <li>
+        <div class="col-1">订单留言</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:orderwords}}</div>
+      </li>
+      <li>
+        <div class="col-1">评论要求</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:taskkeyTypeStr}}</div>
+      </li>
+      <li>
+        <div class="col-1">是否假聊</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{if chatNecessary}}是{{else}}否{{/if}}</div>
+      </li>
+      <li>
+        <div class="col-1">买家额外要求</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:explains}}</div>
+      </li>
+    </div>
+    
+  </div> 
+  <div class="m-d m-d-commit">
+    <span class="font-red-mint">今日还能接 {{:numberOfAcceptTask}} 单 </span>
+    {{if numberOfAcceptTask > 0}}
+    <a href="#" class="btn  btn-sm red choose-task">接单</a>{{/if}}
+    <a href="#" class="btn  btn-sm blue return">返回</a>
+  </div>
+</div>

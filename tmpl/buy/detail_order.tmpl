@@ -4,12 +4,13 @@
     <div class="v-sub-title ">
       <div class="col-1">订单编号</div>
       <div class="col-2 font-red-thunderbird">{{:taskid}}</div>
-      <div class="col-1">佣金</div>
-      <div class="col-2 font-red-thunderbird">{{:buyerTaskMoney.serviceSum }}</div>
+      <div class="col-1">佣金 / 垫付金额</div>
+      <div class="col-2 font-red-thunderbird">{{:buyerTaskMoney.serviceSum }}元 / {{:buyerTaskMoney.goodsMoney }}元</div>
     </div>
   </div>
   {{/if}}
 
+  {{if !show}}
   <div class="m-d m-d-main">
     <div class="m-d-item col-1">
       <li class="v-m-title">
@@ -60,6 +61,7 @@
       </li>
     </div>
   </div>
+  {{/if}}
 
 
   <div class="m-d m-d-main">
@@ -140,8 +142,8 @@
   </div> 
   {{if show}}
   <div class="m-d m-d-commit">
-    <a href="#" class="btn btn-outline btn-sm red choose-task">接单</a>
-    <a href="#" class="btn btn-outline btn-sm blue return">返回</a>
+    <a href="#" class="btn  btn-sm red choose-task">接单</a>
+    <a href="#" class="btn  btn-sm blue return">返回</a>
   </div>
   {{/if}}
 </div>

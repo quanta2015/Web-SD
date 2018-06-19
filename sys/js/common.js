@@ -167,6 +167,7 @@ const TMPL_BUY_BIND_ACCOUNT       = '/tmpl/buy/bind_account.tmpl'
 const TMPL_BUY_ALL_TASK           = '/tmpl/buy/list_all_task.tmpl'
 const TMPL_BUY_ALL_ORDER          = '/tmpl/buy/list_all_order.tmpl'
 const TMPL_BUY_ORDER_DETAIL       = '/tmpl/buy/detail_order.tmpl'
+const TMPL_BUY_CHOOSE_DETAIL       = '/tmpl/buy/detail_task.tmpl'
 const TMPL_BUY_UPLOAD_IMG         = '/tmpl/buy/upload_img.tmpl'
 const TMPL_BUY_WITHDRAW           = '/tmpl/buy/withdraw.tmpl'
 const TMPL_BUY_TASK_DETAIL        = '/tmpl/buy/show_detail.tmpl'
@@ -207,7 +208,7 @@ const MSG_WITHDRAW_SUCCESS    = '提现成功！'
 const MSG_WITHDRAW_FAILED     = '提现失败！'
 const MSG_TASK_SAVE_SUCC      = '任务保存成功！'
 const MSG_CONT_CREATE_TASK    = '继续创建任务'
-const MSG_PUB_TASK            = '发布任务'
+const MSG_PUB_TASK            = '去发布任务'
 const MSG_UPDATE_SHOP_SUCC    = '更新店铺数据成功！'
 const MSG_CONF_DEL_SHOP       = '请确认是否要删除店铺！'
 const MSG_CANCEL              = '取消'
@@ -259,9 +260,11 @@ function notifyInfo(info) {
   toastr.success(info)
 }
 
-function msgbox(info,titleA,titleB,cb) {
+
+function msgbox(title, msg,titleA,titleB,cb) {
   bootbox.confirm({
-    message: info,
+    title: title,
+    message: msg,
     buttons: {
         confirm: {
             label: '<i class="fa fa-times"></i> '+ titleA

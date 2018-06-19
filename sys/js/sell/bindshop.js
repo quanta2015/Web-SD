@@ -79,7 +79,7 @@ function doSave() {
 }
 
 function cbSave(e) {
-  msgbox(MSG_BIND_SHOP_SUCC,MSG_CONT_BIND_SHOP,MSG_GOTO_SHOP_LIST,cbGoto)
+  msgbox('提示信息', MSG_BIND_SHOP_SUCC,MSG_CONT_BIND_SHOP,MSG_GOTO_SHOP_LIST,cbGoto)
 }
 
 function cbSaveErr() {

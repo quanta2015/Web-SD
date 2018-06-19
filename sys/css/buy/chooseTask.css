@@ -1,19 +1,43 @@
 body {
-    min-width: 1050px;
+    min-width: 800px;
 }
 
-#g-audit.pass {
-  color: #ff6600;
+.u-wrap {
+    border: 1px solid #eee;
+    padding: 5px;
+    margin-bottom: 5px;
 }
 
-#g-audit.pass1 {
-    color: #006699;
+.u-row {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    position: relative;
 }
 
-#g-audit .pass2 {
-    color: #f00000;
+.u-row span {
+    margin-right: 5px;
 }
 
-#g-audit .pass3 {
-    color: #009900;
+
+.u-sp {
+    flex:1;
+}
+
+.u-type {
+    flex-basis: 50px;
+}
+
+.u-id {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    top: 0px;
+    left: 0;
 }

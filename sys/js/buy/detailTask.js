@@ -14,31 +14,27 @@ function init() {
 async function initList() {
   param = { taskkeyid: _id }
   ret = await promiseCall( [URL_BUY_TASKDETAIL, encodeQuery(param)].join('?'), null )
-  Object.assign(ret.data, { show:true,imgPrefix: IMG_PREFIX });
-  $('.g-detail').append(await renderTmpl(TMPL_BUY_ORDER_DETAIL, ret.data, rdHelper))
+  Object.assign(ret.data, { imgPrefix: IMG_PREFIX });
+  $('.g-detail').append(await renderTmpl(TMPL_BUY_CHOOSE_DETAIL, ret.data, rdHelper))
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
 }
 
 
 function doChoose(e) {
-  var obj = {
-    taskkeyId: _id
-  }
-  promise('GET',[URL_BUYER_GET_TASK, encodeQuery(obj)].join('?') ,null, cbChoose, null)
+  msgbox('温馨提示', '<span class="font-red">请于60分钟内完成任务，超过时间平台会自动取消任务并扣取2金！诺于15分钟内主动撤单，将不会扣取佣金！</span>','取消','确认',chooseTask)
 } 
 
-
-function cbChoose(e) {
-  msgbox(MSG_ACCEPT_TASK_SUCC,MSG_GOON_ACCEPT,MSG_LOOKUP_TASK,gotoPage)
-}
-
-function gotoPage(result) {
-  if (result) {
-    location.href = 'chooseTask.html'
-  }else{
-    location.href = 'listOrder.html'
+function chooseTask(ret) {
+  if (!ret) {
+    var obj = { taskkeyId: _id }
+    promise('GET',[URL_BUYER_GET_TASK, encodeQuery(obj)].join('?') ,null, cbChoose, null)
   }
 }
+
+function cbChoose(e) {
+  goto('listOrder.html')
+}
+
 
 function doReturn() {
   location.href = 'chooseTask.html'

@@ -18,8 +18,30 @@ function init() {
   $('#batch-cancel').on('click', doBatchCancel);
   $('#batch-send').on('click', doBatchSend);
   $('#export').on('click', doExport);
+
+  $('body').on('click', '.sub-goods', doSubmitGoods);
+  $('body').on('click', '.pay-task', doPayTask);
 }
 
+
+function doSubmitGoods(e) {
+  var obj = {
+    id: $(this).attr('id'),
+    tid: $(this).attr('tid'),
+    pid: $(this).attr('pid')
+  }
+  location.href = ['submitGoods.html', encodeQuery(obj)].join('?')
+}
+
+
+function doPayTask(e) {
+  var obj = {
+    id: $(this).attr('id'),
+    tid: $(this).attr('tid'),
+    pid: $(this).attr('pid')
+  }
+  location.href = ['payTask.html', encodeQuery(obj)].join('?')
+}
 
 function getCheckedVal() {
   var r = [];

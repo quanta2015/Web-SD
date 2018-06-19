@@ -52,6 +52,7 @@
 .m-d div li {
     display: flex;
     margin:10px;
+    position: relative;
 }
 
 .m-d .v-m-title {
@@ -83,6 +84,9 @@
 
 .col-2 {
     flex: 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 
@@ -98,3 +102,4 @@
     width: 200px;
     margin-right: 20px;
 }
+

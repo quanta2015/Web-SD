@@ -31,7 +31,7 @@ function cbListShop(r, e) {
 
 function doDelShop() {
   var sid = $(this).attr('id')
-  msgbox(MSG_CONF_DEL_SHOP,MSG_CANCEL,MSG_OK,cbDel)
+  msgbox('提示信息',MSG_CONF_DEL_SHOP,MSG_CANCEL,MSG_OK,cbDel)
 
   function cbDel(e) {
     if (!e) {

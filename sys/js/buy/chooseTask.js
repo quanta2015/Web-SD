@@ -7,6 +7,11 @@ $(init);
 function init() {
 
   tasktype = getUrlParam('tasktype')
+  if (tasktype == 1) {
+    typeicon = HOST + '/img/taobao.png'
+  }else{
+    typeicon = HOST + '/img/jingdong.png'
+  }
   console.log(tasktype);
 
   $('#task-capacity').text(cookie('remainderNumberOfMonth'))
@@ -25,8 +30,9 @@ function cbList(r, e) {
   let ret = e;
   _listtask = ret.data;
   Object.assign(ret, pageData);
+  Object.assign(ret, {typeicon: typeicon });
   totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
-  $(".portlet-body .table").remove();
+  $(".portlet-body .u-wrap").remove();
   $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
   if ($('.table-pg').text() == '') initPage(totalPages);
 }

@@ -110,7 +110,7 @@ function cbPayTask(e) {
 }
 
 function cbPayErr(e) {
-  msgbox(e.message,MSG_WAIT,MSG_RECHARGE, cbRecharge)
+  msgbox('提示信息',e.message,MSG_WAIT,MSG_RECHARGE, cbRecharge)
 }
 
 function cbListTask(r,ret) {
