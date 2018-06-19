@@ -139,6 +139,7 @@
 .fileinput-ctrl {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .fileinput-ctrl span {
