@@ -17,8 +17,8 @@ function initStatus() {
 function cbInitStatus(e) {
   let approveState = parseInt(e.approveState);
   let bankCardState = parseInt(e.bankcardState);
-  let jingdongState = parseInt(e.jingdongList[0].approve);
-  let taobaoState = parseInt(e.taobaoList[0].approve);
+  let jingdongState = parseInt(e.jingdongList[0] && e.jingdongList[0].approve >=0? e.jingdongList[0].approve : -1);
+  let taobaoState = parseInt(e.taobaoList[0] && e.taobaoList[0].approve >=0 ? e.taobaoList[0].approve : -1);
 
   toggleBindStatus('taobao', taobaoState);
   toggleBindStatus('id-card', approveState);

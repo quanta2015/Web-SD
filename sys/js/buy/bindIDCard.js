@@ -34,12 +34,13 @@ function doSave(data) {
   };
   for (let i = 1; i <= 2; i++) {
     let key = `idcardpng${i}`;
-    obj[key] = $(`#id-card-ipt${i}`).attr('picurl');
+    obj[key] = $(`#upload-${i-1}`).attr('picurl');
     (!obj[key] && status === 2) ? obj[key] = cookie(key) : null;
     if (!obj[key]) {
       return errorInfo(`缺少${idCardImgInfo[i-1]}`);
     }
   }
+
   promise('POST', URL_BUY_BIND_ID_CARD, JSON.stringify(obj), cbBind, null);
 }
 function cbBind(e) {
@@ -48,7 +49,7 @@ function cbBind(e) {
 }
 
 function cbInitStatus(e) {
-  status = e.approveState;
+  status = e.approveState >=0 ? e.approveState:-1;
   let func;
   // status = -1
   if ( status == -1 || status == null) {

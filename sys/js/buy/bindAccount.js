@@ -39,8 +39,7 @@ function initBindInfo() {
 
 async function cbInitBindInfo(e) {
   let key = getUrlParam('platform') === 'jingdong' ? 'jingdongList' : 'taobaoList';
-  (e[key].length === 0)?status = -1:status= 1;
-
+  status = e[key][0] && e[key][0].approve >=0 ? e[key][0].approve : -1;
   let func;
   if ( status == -1 || status == null) {
     //未绑定
@@ -108,9 +107,9 @@ function doSave(data) {
     receiveAddress: $('#receive-address').val(),
     receiver: $('#receiver').val(),
     receiveMobile: $('#receive-mobile').val(),
-    baitiaoImg: $('#platform-ipt1').attr('picurl') || cookie2('baitiaoImg', platform.cko),
-    mysiteImg: $('#platform-ipt2').attr('picurl') || cookie2('mysiteImg', platform.cko),
-    myacountImg: $('#platform-ipt3').attr('picurl') || cookie2('myacountImg', platform.cko)
+    baitiaoImg: $('#upload-0').attr('picurl') || cookie2('baitiaoImg', platform.cko),
+    mysiteImg: $('#upload-1').attr('picurl') || cookie2('mysiteImg', platform.cko),
+    myacountImg: $('#upload-2').attr('picurl') || cookie2('myacountImg', platform.cko)
   };
   // 没传新图片且状态为审核不通过尝试去cookie取
   let imgKeyList = ['baitiaoImg', 'mysiteImg', 'myacountImg'];
