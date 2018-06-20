@@ -1,47 +1,51 @@
-
-
-var seller;
+var _id;
 var optList = ['工商银行', '农业银行', '建设银行', '中国银行', '招商银行']
 
 $(init);
 
 function init() {
+  initBank();
   initList();
+
+
+  $("#saveBtn").on('click', doSave);
 }
+
+function initBank() {
+  optList.forEach((v)=>{
+    $("#bank").append('<option value="' + v +'">' + v +'</option>')
+  })
+}
+
 
 function initList() {
   promise('GET', `/shoper/shoper_detail/${cookie('id')}`, null, cbList, null)
 }
 
 function cbList(e) {
-  seller = new Vue({
-    el: '#seller',
-    data: {
-      seller: e,
-      opts: optList
-    },
-    methods: {
-      doSave: doSave
-    }
-  })
+  _id = e.id
+  $('#name').val(e.name)
+  $('#mobile').val(e.mobile)
+  $('#qq').val(e.qq)
+  $('#weixin').val(e.weixin)
+  $('#bankcard').val(e.bankcard)
+  $('#bank option[value="' + e.bank +'"]').prop('selected',true)
 }
 
-function saveList(s, list) {
-  var data = {};
-  for(i=0; i<list.length; i++) {
-    data[list[i]] = s[list[i]];
-  }
-  return data;
-}
 
 function doSave(e) {
-  var $s = seller._data.seller
-  var $l = ['id','name','qq','bank','mobile','weixin','bankcard']
-  var data = saveList($s, $l)
-  promise('POST',URL_SELL_UPDATE,JSON.stringify(data), cbSave, null)
+  var obj = {
+    id: _id,
+    name: $('#name').val(),
+    mobile: $('#mobile').val(),
+    qq: $('#qq').val(),
+    weixin: $('#weixin').val(),
+    bankcard: $('#bankcard').val(),
+    bank: $('#bank').val()
+  }
+  promise('POST',URL_SELL_UPDATE,JSON.stringify(obj), cbSave, null)
 }
 
 function cbSave(e) {
-  initUserInfo();
   notifyInfo(MSG_UPDATE_SUCCESS)
 }

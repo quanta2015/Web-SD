@@ -77,6 +77,7 @@ body {
 .u-title {
     flex: 1;
     justify-content: flex-start!important;
+    position: relative;
 }
 
 .u-money {
@@ -90,6 +91,13 @@ body {
 
 .u-status,.u-func {
     width: 120px;
+}
+
+
+.u-title img {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .u-img {
@@ -114,4 +122,12 @@ body {
     color: #fff;
     top: 0px;
     left: 0;
+}
+
+.u-col.u-func {
+    display: block;
+}
+
+.u-col.u-func>a {
+    margin: 0 5px 5px;
 }

@@ -43,37 +43,36 @@
         <div class="form-group">
           <label class="control-label col-xs-2">商家名称</label>
           <div class="col-xs-4">
-            <input type="text" class="form-control" id="name" v-model="seller.name">
+            <input type="text" class="form-control" id="name">
           </div>
         </div>
 
         <div class="form-group">
           <label class="control-label col-xs-2">手机号码</label>
           <div class="col-xs-4">
-            <input type="text" class="form-control" v-model="seller.mobile">
+            <input type="text" class="form-control" id="mobile">
           </div>
         </div>
 
         <div class="form-group"  data-toggle="typepicker" id="typepicker">
           <label class="control-label col-xs-2">QQ号码</label>
           <div class="col-xs-4">
-            <input type="text" class="form-control" v-model="seller.qq">
+            <input type="text" class="form-control" id="qq">
           </div>
         </div>
 
         <div class="form-group" data-toggle="distpicker" id="pick">
           <label class="control-label col-xs-2">微信号</label>
           <div class="col-xs-4">
-            <input type="text" class="form-control" v-model="seller.weixin">
+            <input type="text" class="form-control" id="weixin">
           </div>
         </div> 
 
         <div class="form-group">
           <label class="control-label col-xs-2">银行</label>
           <div class="col-xs-4">
-            <select class="form-control" v-model="seller.bank">
-              <option v-for="opt in opts" v-if="opt==seller.bank" selected v-bind:value="opt">{{opt}}</option>
-              <option v-for="opt in opts" v-if="opt!=seller.bank" v-bind:value="opt">{{opt}}</option>
+            <select class="form-control" id="bank">
+              <option value=""></option>
             </select>
           </div>
         </div>
@@ -81,14 +80,14 @@
         <div class="form-group" data-toggle="distpicker" id="pick">
           <label class="control-label col-xs-2">银行卡号</label>
           <div class="col-xs-4">
-            <input type="text" class="form-control" v-model="seller.bankcard">
+            <input type="text" class="form-control" id="bankcard">
           </div>
         </div> 
 
         <div class="form-group">
           <label class="control-label col-xs-2"></label>
           <div class="col-xs-10">
-            <button type="button" class="btn blue" id="saveBtn" v-on:click="doSave">保存</button>
+            <button type="button" class="btn blue" id="saveBtn" >保存</button>
           </div>
         </div>
       </form>

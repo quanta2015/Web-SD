@@ -430,57 +430,6 @@ function promiseData(method, url, data, cb) {
   })
 }
 
-function promiseDataN(method, url, data, cb) {
-  var promise = $.ajax({
-    type: method,
-    url: HOST + url,
-    dataType: "json",
-    contentType: "application/json",
-    data: data,
-    xhrFields: {
-      withCredentials: true
-    },
-    crossDomain: true,
-  });
-  promise.done(cb)
-}
-
-function TmplDataP(urlTmpl, urlData, data, cb) {
-  $("body").append(LOADER);
-  $.when($.ajax(urlTmpl), 
-    $.ajax({
-      type: 'POST',
-      url: HOST + urlData,
-      dataType: "json",
-      contentType: "application/json",
-      data: data,
-      xhrFields: {
-        withCredentials: true
-      },
-      crossDomain: true,
-  })).done(cb).always(()=>{
-    $("#i-mask").remove()
-  })
-}
-
-
-function TmplData(urlTmpl, urlData, data, cb) {
-  $("body").append(LOADER);
-  $.when($.ajax(urlTmpl), 
-    $.ajax({
-      type: 'GET',
-      url: HOST + urlData,
-      dataType: "json",
-      contentType: "application/json",
-      data: data,
-      xhrFields: {
-        withCredentials: true
-      },
-      crossDomain: true,
-  })).done(cb).always(()=>{
-    $("#i-mask").remove()
-  })
-}
 
 const promiseCall = (url, data) => {
   return new Promise((resolve, reject) => {
@@ -589,6 +538,14 @@ const rdHelper = {
     return ret;
   },
   formatExpressStatus: (s) => {
+    switch(s) {
+      case -1: ret = '未发货'; break;
+      case 0: ret = '已发'; break;
+      case 1: ret = '已收'; break;
+    }
+    return ret;
+  },
+  formatPlatformIcon: (s) => {
     switch(s) {
       case -1: ret = '未发货'; break;
       case 0: ret = '已发'; break;

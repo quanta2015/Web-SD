@@ -8,14 +8,15 @@ function init() {
   status = getUrlParam('status')
   console.log(status);
 
-  initList();
+  initList(pageData);
   $('body').on('click', '.commit-task', doCommit);
   $('body').on('click', '.cancel-task', doCancelTask);
   $('body').on('click', '.evaluate-task', doEvalTask);
   $('body').on('click', '.detail-task', doDetail);
 }
 
-function initList(param = pageData) {
+function initList() {
+  let param = Object.assign(pageData, {status: status});
   promiseTmpl('GET', TMPL_BUY_ALL_ORDER, [URL_BUYER_ALL_ORDER, encodeQuery(param)].join('?'),null, cbList)
 }
 
@@ -75,7 +76,7 @@ function doCancelTask() {
 
 function cbCancelTask(e)  {
   notifyInfo('退单成功！');
-  initList()
+  initList(pageData)
 }
 
 
