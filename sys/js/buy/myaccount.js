@@ -4,6 +4,16 @@ let pageData = Object.assign({}, PAGE_DATA);
 $(init);
 
 function init() {
+  
+
+
+
+
+  //  $('body').on('click', '#up', ()=>{ 
+  //   upit( $("#fileSelector")[0].files[0] ) 
+  // });
+
+
   $('body').on('click', '#withdraw', ()=>{ goto('withdraw.html') });
   $('body').on('click', '#withdraw-detail', ()=>{ goto('withdraw.html') });
 

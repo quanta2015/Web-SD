@@ -20,6 +20,7 @@ function initList() {
   promiseTmpl('GET', TMPL_BUY_ALL_ORDER, [URL_BUYER_ALL_ORDER, encodeQuery(param)].join('?'),null, cbList)
 }
 
+
 function cbList(r, e) {
   let ret = e;
   _listtask = ret.data;

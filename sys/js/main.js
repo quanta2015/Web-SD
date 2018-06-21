@@ -30,7 +30,7 @@ function init() {
     }
 
 
-    (status>=0)?pageName += `?status=${status}`: null;
+    (status>=-1)?pageName += `?status=${status}`: null;
     tasktype?pageName += `?tasktype=${tasktype}`: null;
     platform ? pageName += `?platform=${platform}` : null;
 
