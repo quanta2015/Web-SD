@@ -16,6 +16,9 @@ function init() {
 
   $('body').on('click', '#withdraw', ()=>{ goto('withdraw.html') });
   $('body').on('click', '#withdraw-detail', ()=>{ goto('withdraw.html') });
+  $('body').on('click', '.m-money-type', doShowMoney );
+
+  
 
   //显示金额
   promise('GET','/buyer/buyer_balance',null, (e)=>{
@@ -30,6 +33,13 @@ function init() {
   initList(pageData);
 }
 
+
+
+function doShowMoney() {
+  $('.m-money-type a').removeClass('cur');
+  $(this).find('a').addClass('cur');
+  
+}
 
 function initList(pg) {
   param = Object.assign({}, pg);

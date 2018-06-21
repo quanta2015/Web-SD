@@ -32,7 +32,7 @@ function chooseTask(ret) {
 }
 
 function cbChoose(e) {
-  goto('listOrder.html')
+  goto('listOrder.html?status=-1')
 }
 
 

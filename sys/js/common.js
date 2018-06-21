@@ -570,6 +570,14 @@ const rdHelper = {
       }
     })
     return ret.join('/')
+  },
+  formatShopType: (s) => {
+    if(s === '淘宝') {
+      ret = 'taobao.png'
+    }else if ( s === '京东' ){
+      ret = 'jingdong.png'
+    }
+    return ret;
   }
 }
 

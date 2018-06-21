@@ -151,7 +151,7 @@ function cbListTask(r,e) {
   let ret = e;
   Object.assign(ret, pageData);
   totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
-  $(".portlet-body .table").remove();
+  $(".portlet-body .u-wrap").remove();
   $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
   if ($('.table-pg').text() == '') initPage(totalPages);
 }
