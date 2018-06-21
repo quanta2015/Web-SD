@@ -72,8 +72,8 @@
             <div class="u-publishtime">发布时间：{{:~formatTime(taskCreatetime)}}</div>
         </div>
         <div class="u-col u-buy">
-            <div class="u-buyer">买家ID：{{:buyerId}}</div>
-            <div class="u-order-id">订单ID：{{:id}}</div>
+            <div class="u-buyer">买家ID：{{:buyerMobile}}</div>
+            <div class="u-order-id">订单ID：{{:code}}</div>
             <div class="u-accepttime">接单时间：{{:~formatTime(acceptTime)}}</div>
         </div>
 
@@ -84,7 +84,7 @@
         </div>
         <div class="u-col u-exp">
             <div class="u-exp-type">空包</div>
-            <div class="u-exp-id">238874981<!-- {{:expressNo}} --></div>
+            <div class="u-exp-id">{{:expressNo}}</div>
             <div class="u-exp-status">已发货<!-- {{:~formatExpressStatus(expressStatus)}} --></div>
         </div>
         <div class="u-col u-status z-status{{:status}}">{{:~formatOrderStatus(status)}}</div>

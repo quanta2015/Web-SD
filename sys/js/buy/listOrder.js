@@ -13,6 +13,7 @@ function init() {
   $('body').on('click', '.cancel-task', doCancelTask);
   $('body').on('click', '.evaluate-task', doEvalTask);
   $('body').on('click', '.detail-task', doDetail);
+  $('body').on('click', '.m-close', doClose);
 }
 
 function initList() {
@@ -50,22 +51,16 @@ function doEvalTask(e) {
 
 
 function doDetail() {
-  
-  if ($('#ig-info').hasClass('hide')) {
     var obj = { taskkeyid: $(this).data('tid') }
     promiseTmpl('GET', TMPL_BUY_TASK_DETAIL, [URL_BUY_TASKDETAIL, encodeQuery(obj)].join('?'),null, cbDetail)
-  }else{
-    $("#ig-info").empty();
-    $("#ig-info").addClass("hide");
-  }
 }
 
 function cbDetail(r, e) {
   let ret = e;
   ret.data.imgPrefix = IMG_PREFIX;
-  $("#ig-info").append($.templates(r).render(ret.data, rdHelper));
+  $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
   // $("#ig-info").toggle("slide", { direction: "left" }, 200);
-  $("#ig-info").removeClass("hide");
+  $(".g-detail").show();
 }
 
 function doCancelTask() {
@@ -90,4 +85,9 @@ function initPage(totalPages) {
       initList(pageData);
     }
   })
+}
+
+
+function doClose() {
+  $('.g-detail').hide()
 }
