@@ -85,10 +85,6 @@
         <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].orderwords}}</div>
       </li>
       <li>
-        <div class="col-1">评论要求</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:taskkeyTypeStr}}</div>
-      </li>
-      <li>
         <div class="col-1">是否假聊</div>
         <div class="col-2 font-red-thunderbird fn-right">{{if chatNecessary}}是{{else}}否{{/if}}</div>
       </li>
@@ -106,12 +102,12 @@
       <li>
         <div class="col-2">是否优先展示任务</div>
         <div class="col-1 font-red-thunderbird fn-right">
-        {{:~formatBool(showFirst)}} </div>
+         {{:showFirst}}金 </div>
       </li>
       <li>
         <div class="col-2">加赏任务佣金：每单加赏</div>
         <div class="col-1 font-red-thunderbird fn-right">
-        {{:extraBuy}} </div>
+        {{:addcharges}} </div>
       </li>
       <li>
         <div class="col-2">订单优先审核</div>
@@ -121,7 +117,7 @@
       <li>
         <div class="col-2">性别选择</div>
         <div class="col-1 font-red-thunderbird fn-right">
-        {{:sex}} </div>
+        {{:~formatNull(sex)}} </div>
       </li>
       <li>
         <div class="col-2">人群年龄段</div>
@@ -131,7 +127,7 @@
       <li>
         <div class="col-2">区域限制</div>
         <div class="col-1 font-red-thunderbird fn-right">
-        {{:location}} </div>
+        {{:~formatNull(location)}}</div>
       </li>
       <li>
         <div class="col-2">淘宝会员等级</div>
@@ -160,13 +156,13 @@
       </li>
       <li>
         <div class="col-2">问大家</div>
-        <div class="col-1 font-red-thunderbird fn-right">
+        <div class="col-1 font-red-thunderbird fn-right">{{:~formatBool(ask)}}
        </div>
       </li>
       <li>
         <div class="col-2">是否向平台购买面单</div>
         <div class="col-1 font-red-thunderbird fn-right">
-        {{:~formatBool(buyExpress)}}  </div>
+        {{:~formatBool(buyExpress)}} </div>
       </li>
     </div>
   </div> 
@@ -182,10 +178,15 @@
         </div>
       </li>
       <li>
-        <div class="col-1">搜索关键字: <span class="font-red-mint">{{:keyword}}</span></div>
+        <div class="col-1">评论要求</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:~formatEvalReq(taskkeyType)}}</div>
       </li>
+      
       <li>
         <div class="col-1">任务时间段：<span class="font-red-mint">{{:fromHour}}:{{:fromMin}}-{{:toHour}}:{{:toMin}}</span></div>
+      </li>
+      <li>
+        <div class="col-1">搜索关键字: <span class="font-red-mint">{{:keyword}}</span></div>
       </li>
 
       {{if appoints.length}}

@@ -111,3 +111,27 @@
     width: 120px;
     margin-right: 20px;
 }
+
+.m-menu {
+    display: flex;
+    margin: 10px;
+}
+
+.m-menu>span {
+    width: 120px;
+    text-align: center;
+    border-right: 1px solid #aaa;
+    display: inline-block;
+}
+
+.m-menu>span:last-child {
+    border-right: none
+}
+
+.m-menu a {
+    color: #333;
+}
+
+.m-menu a.cur {
+    color: #ff0000;
+}

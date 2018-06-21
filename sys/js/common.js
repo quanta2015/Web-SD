@@ -503,7 +503,8 @@ const rdHelper = {
     return retArr.join('/');
   },
   formatBool: (s)=> {
-    return ((s===1)?'是':'否')
+
+    return ((parseInt(s)===1)?'是':'否')
   },
   formatAge: (s)=> {
     switch(s) {
@@ -552,6 +553,31 @@ const rdHelper = {
       case 1: ret = '已收'; break;
     }
     return ret;
+  },
+  formatNull: (s) => {
+    ret = (s!=="")?s:"无要求";
+    return ret;
+  },
+  formatEvalReq: (s)=> {
+    arr = s.split("");
+    ret = [];
+    arr.forEach( (v)=>{
+      switch( parseInt(v) ) {
+        case 1: ret.push('普通评价任务'); break;
+        case 2: ret.push('关键字好评任务'); break;
+        case 3: ret.push('图片好评任务'); break;
+        case 3: ret.push('文字好评任务'); break;
+      }
+    })
+    return ret.join('/')
+  },
+  formatShopType: (s) => {
+    if(s === '淘宝') {
+      ret = 'taobao.png'
+    }else if ( s === '京东' ){
+      ret = 'jingdong.png'
+    }
+    return ret;
   }
 }
 
@@ -567,6 +593,15 @@ const renderTmpl = (url, data, help = null) => {
     })
   })
 }
+
+
+function guid() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+    return v.toString(16);
+  });
+}
+
 
 
 // UPLOAD IMAGE FUNCTION
@@ -603,6 +638,69 @@ var uploadFile = function(target) {
   })
 }
 
+
+function upit(file) {
+  let obj = {
+    key: guid()
+  }
+  promise('get', ['/cloudUploadUrl', encodeQuery(obj)].join('?'), null,  (e)=>{
+    console.log(e);
+    let url = e;
+    var form = new FormData();
+    form.append("file", file);
+
+    $.ajax({    
+          url: e,
+          type: 'POST',
+          data: form,
+          async:false,
+          processData: false,
+          contentType: false,
+          xhrFields: {
+            withCredentials: true
+          },
+          crossDomain: true
+      }).done(function(e) {
+        console.log('上传图片成功！');
+        resolve(e);
+      })
+  }, null)
+}
+
+
+// UPLOAD IMAGE FUNCTION
+var uploadImg = function(target) {
+  return new Promise(function(resolve, reject){
+    // $("body").append(LOADER);
+    var file = target;
+    var fileSize = file.size;
+    var maxSize = 5048576;    //最大5MB
+    if(parseInt(fileSize) >= parseInt(maxSize)){
+        notifyInfo('上传的文件不能超过1MB');
+        return false;  
+    }else{    
+      var form = new FormData();
+      form.append("file", file);
+      
+      $.ajax({    
+          url: HOST + URL_UPLOAD_FILE,
+          type: 'POST',
+          data: form,
+          async:false,
+          processData: false,
+          contentType: false,
+          xhrFields: {
+            withCredentials: true
+          },
+          crossDomain: true,
+      }).done(function(e) {
+        // $("#i-mask").remove()
+        console.log('上传图片成功！');
+        resolve(e.data);
+      })
+    }
+  })
+}
 
 function saveCookie(data) {
   // 先获取 password 和 userType，防止清空

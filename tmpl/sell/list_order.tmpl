@@ -1,4 +1,4 @@
-<table class="table table-hover table-light">
+<!-- <table class="table table-hover table-light">
     <thead>
         <tr class="uppercase">
             <th>  </th>
@@ -49,9 +49,54 @@
               {{/if}}
               {{if (status==30)}}
               <a href="javascript:;" class="btn red btn-xs  sbold uppercase pay-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 审核 </a> 
+              <a href="javascript:;" class="btn red btn-xs  sbold uppercase request-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 申诉 </a> 
               {{/if}}
             </td>
         </tr>
       {{/for}}
     </tbody>
-  </table>
+  </table> -->
+
+
+
+
+{{for data}}
+<div class="u-wrap">
+    <div class="u-row">
+        <div class="u-id">{{:#index+1 + ~root.pageSize*~root.pageIndex}}</div>
+        <div class="u-col u-sell">
+            <div class="u-shoptype"><img src="/img/{{:~formatShopType(shopType)}}"></div>
+            <div class="u-shopname">店铺名：{{:shopName}}</div>
+            <div class="u-tid">任务ID：{{:taskId}}</div>
+            <div class="u-tid">任务关键字：{{:keyword}}</div>
+            <div class="u-publishtime">发布时间：{{:~formatTime(taskCreatetime)}}</div>
+        </div>
+        <div class="u-col u-buy">
+            <div class="u-buyer">买家ID：{{:buyerId}}</div>
+            <div class="u-order-id">订单ID：{{:id}}</div>
+            <div class="u-accepttime">接单时间：{{:~formatTime(acceptTime)}}</div>
+        </div>
+
+        <div class="u-col u-money">
+          <div class="u-all-money">任务金额：{{:sumMoney}}</div>
+          <div class="font-red">垫付金额：{{:goodsSum}}</div>  
+          <div class="font-red font-big"><img src="/img/money.png" class="fn-money">{{:serviceSum}} </div>
+        </div>
+        <div class="u-col u-exp">
+            <div class="u-exp-type">空包</div>
+            <div class="u-exp-id">238874981<!-- {{:expressNo}} --></div>
+            <div class="u-exp-status">已发货<!-- {{:~formatExpressStatus(expressStatus)}} --></div>
+        </div>
+        <div class="u-col u-status z-status{{:status}}">{{:~formatOrderStatus(status)}}</div>
+        <div class="u-col u-func">
+          {{if (status==10)}}
+          <a href="javascript:;" class="btn green-dark btn-xs  sbold uppercase sub-goods" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 发货 </a> 
+          {{/if}}
+          {{if (status==30)}}
+          <a href="javascript:;" class="btn red btn-xs  sbold uppercase pay-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 审核 </a> 
+          <a href="javascript:;" class="btn red btn-xs  sbold uppercase request-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 申诉 </a> 
+          {{/if}}
+        </div>
+    </div>
+</div>
+{{/for}}

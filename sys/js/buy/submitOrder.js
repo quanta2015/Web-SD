@@ -12,7 +12,7 @@ function init() {
   $('body').on('click', '#clear-shop', doClearShop);
   $('body').on('click', '#check-shop', doCheckShop);
   $('body').on('click', '#submit-buy', doSubmitBuy);
-  $('body').on('click', '#return-list', gotoPage);
+  $('body').on('click', '#return-list', doReturn);
 }
 
 function initList() {
@@ -24,6 +24,9 @@ async function initDetail() {
   ret = await promiseCall( [URL_BUY_TASKDETAIL, encodeQuery(param)].join('?'), null )
   Object.assign(ret.data, { show:false,imgPrefix: IMG_PREFIX });
   $('#shop-name').text(ret.data.shopName)
+  if(ret.data.chatNecessary == 0) {
+    $('.m-talk').remove()
+  }
   $('.m-d-detail').append(await renderTmpl(TMPL_BUY_ORDER_DETAIL, ret.data, rdHelper))
 }
 
@@ -90,12 +93,16 @@ function doSubmitBuy(e) {
 
 
 function cbSubmitBuy(e) {
-  alertBox(MSG_SUBMIT_BUY_CORRECT ,gotoPage)
+  alertBox(MSG_SUBMIT_BUY_CORRECT , ()=>{
+    goto('listOrder.html?status=-1')
+  })
 }
 
-function gotoPage() {
-  location.href = 'listOrder.html'
+function doReturn() {
+  history.back()
 }
+
+
 
 function doClearShop() {
   $('#shop-name').val('')
