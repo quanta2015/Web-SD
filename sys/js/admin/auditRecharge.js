@@ -8,6 +8,9 @@ function init() {
   initList();
   $('body').on('click', '.audit-task', doAudit);
   $('body').on('click', '#btn-search', doSearch);
+  $('body').on('click', '.detail-recharge', doDetailRecharge);
+  $('body').on('click', '.m-close', doClose);
+  $('body').on('click','.b-close',doClose);
 }
 
 function initList() {
@@ -32,6 +35,17 @@ function cbListTask(r, e) {
   $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
   if ($('.table-pg').text() == '') initPage(totalPages);
+}
+
+function doDetailRecharge(e) {
+  var index = $(e.currentTarget).data('index');
+  $(".g-detail .m-detail-wrap").remove();
+  $(".g-detail").prepend($("#coverTmpl").render(_listshop[index]));
+  $(".g-detail").show()
+}
+
+function doClose() {
+  $('.g-detail').hide()
 }
 
 function initPage(totalPages) {

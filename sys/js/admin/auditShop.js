@@ -10,6 +10,9 @@ function init() {
   $('body').on('click', '.audit-shop', doAudit);
   $('body').on('click', '.shop-name', doShowDetail);
   $('body').on('click', '#btn-search', doSearch);
+  $('body').on('click', '.detail-shop', doDetailShop);
+  $('body').on('click', '.m-close', doClose);
+  $('body').on('click','.b-close',doClose);
 }
 
 function initList() {
@@ -47,6 +50,7 @@ function initPage(totalPages) {
 }
 
 function doAudit(e) {
+	doClose();
   bootbox.prompt(MSG_INPUT_AUDIT_INFO, function(ret){ 
     if( ret !== null) {
       var obj = {
@@ -61,6 +65,17 @@ function doAudit(e) {
 
 function cbAudit(e) {
   initList()
+}
+
+function doDetailShop(e) {
+  var index = $(e.currentTarget).data('index');
+  $(".g-detail .m-detail-wrap").remove();
+  $(".g-detail").prepend($("#coverTmpl").render(_listshop[index]));
+  $(".g-detail").show()
+}
+
+function doClose() {
+  $('.g-detail').hide()
 }
 
 function doShowDetail() {
