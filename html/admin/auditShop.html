@@ -117,12 +117,12 @@
 	</div>
 	
 	<div class="m-d m-d-main" style='text-align: center;'>
-		<div class="col-1" style='text-align: center;'>
+		<div class="col-1" style='text-align: center; padding:10px'>
 			{{if !approveState}}
-			<a href="#" class="btn red btn-sm btn-outline audit-shop"   data-id="{{:id}}" data-type="unpass"><i class="fa fa-edit"></i> 不通过 </a>
-            <a href="#" class="btn blue-madison btn-sm btn-outline audit-shop"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 通过 </a>
+			<a href="#" class="btn red btn-sm  audit-shop"   data-id="{{:id}}" data-type="unpass"><i class="fa fa-edit"></i> 不通过 </a>
+            <a href="#" class="btn blue-madison btn-sm  audit-shop"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 通过 </a>
 			{{/if}}
-			<a href="#" class="btn red btn-sm b-close"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 关闭 </a>
+			<a href="#" class="btn dark btn-sm b-close"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 关闭 </a>
 		</div>
 	</div>
 	{{/for}}
