@@ -15,6 +15,17 @@ let rules = {
     number: !0
   }
 }
+let messages = {
+  name: {
+    required: '请先绑定身份证'
+  },
+  mobile: {
+    required: '请先完善信息'
+  },
+  bankNo: {
+    required: '请先绑定银行卡'
+  },
+}
 let _balanceData;
 
 $(init);
@@ -42,6 +53,7 @@ function cbBalanceInfo(e) {
   $("#u-money", window.parent.document).text(e.balance+e.servicefee);
   $("#form-withdraw").validate({
     rules: rules,
+    messages: messages,
     submitHandler: (e) => { doWithdraw() }
   })
 

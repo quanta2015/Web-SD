@@ -129,19 +129,19 @@
                 <span class="required"> * </span>
               </div>
               <div class="col-xs-10">
-                <div class="fileinput fileinput-new" data-provides="fileinput" id="file-input">
-                  <div class="fileinput-new thumbnail">
+                <div class="fileinput fileinput-new fileinput-r" data-provides="fileinput">
+                  <div class="fileinput-preview  thumbnail" style="max-width: 200px; max-height: 150px; line-height: 10px;">
                     <img src="/img/noimg.png">
                   </div>
-                  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 10px;"></div>
-                  <div class="form-info">
-                    <div class="form-tip">为提高审核速度，可选提交截图（截图要求：清晰看到打款时间和转账金额）</div>
-                    <div class="btn default btn-file">
-                      <span class="fileinput-new"> 选择图片 </span>
-                      <span class="fileinput-exists"> 更换 </span>
-                      <input type="hidden"><input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="upload">
-                    </div>
-                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 删除 </a>
+                  <div class="fileinput-ctrl">
+                    <span>为提高审核速度，可选提交截图（截图要求：清晰看到打款时间和转账金额）</span>
+                    <span>
+                      <span class="btn red btn-xs btn-file">
+                        <i class="fa fa-upload"></i>
+                        <span>  选择图片</span>
+                        <input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="upload">
+                      </span>
+                    </span>
                   </div>
                 </div>
               </div>

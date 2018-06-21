@@ -13,3 +13,11 @@
 .id-card-box .row {
   margin-left: 0;
 }
+
+.form-group .wide-3 {
+  width: 400px;
+}
+
+.form-group .wide-s1 {
+  width: 50px;
+}

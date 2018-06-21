@@ -53,3 +53,6 @@ body {
   max-height: 120px;
   line-height: 10px;
 }
+.form-group .wide-3 {
+  width: 400px;
+}
