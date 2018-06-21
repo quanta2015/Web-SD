@@ -61,6 +61,10 @@
         </div>
     </div>
     </div>
+	
+	<div class="g-detail"  style="display: none;">
+      
+    </div>
 
     <script src="/lib/jquery/jquery.min.js"></script>
     <script src="/lib/jquery/jquery.cookie.js"></script>
@@ -82,7 +86,49 @@
     <script src="/sys/js/admin/auditShop.js"></script>
 </body>
 </html>
-
+<script id="coverTmpl" type="text/x-jsrender">
+<div class="m-detail-wrap">
+  <div class="m-close">X</div>
+  <div class="m-d m-title">
+    <div class="v-sub-title ">
+      <div class="col-1">店铺详情</div>
+      <div class="col-2 font-red-thunderbird"></div>
+      <div class="col-1"></div>
+      <div class="col-2 font-red-thunderbird"></div>
+    </div>
+  </div>
+  {{for}}
+  <div class="m-d m-d-main">
+    <div class="m-d-item col-1">
+      <li class="v-m-title">
+        <div class="col-1"><span class="icon-basket"></span>店铺名称：{{:name}}</div>
+      </li>
+      <li>
+        <div class="col-1 v-img"><img src="{{:~root.imgPrefix}}{{:shopimg1}}"></div>
+      </li>
+    </div>
+	<div class="col-11 m-d-item">
+		 <li><div class="col-1">店铺类别</div><div class="col-2 font-red-thunderbird fn-right">{{:businesstype}}-{{:subtype}}</div></li>
+		  <li><div class="col-1">店铺网址</div><div class="col-2 font-red-thunderbird fn-right">{{:shopurl}}</div></li>
+		  <li><div class="col-1">店铺地址</div><div class="col-2 font-red-thunderbird fn-right">{{:addressProvince}}-{{:addressCity}}-{{:addressCounty}}</div></li>
+		  <li><div class="col-1">详细地址</div><div class="col-2 font-red-thunderbird fn-right">{{:address}}</div></li>
+		  <li><div class="col-1">当前状态</div><div class="col-2 font-red-thunderbird fn-right">{{:approveStr}}</div></li>
+	</div>
+	</div>
+	
+	<div class="m-d m-d-main" style='text-align: center;'>
+		<div class="col-1" style='text-align: center;'>
+			{{if !approveState}}
+			<a href="#" class="btn red btn-sm btn-outline audit-shop"   data-id="{{:id}}" data-type="unpass"><i class="fa fa-edit"></i> 不通过 </a>
+            <a href="#" class="btn blue-madison btn-sm btn-outline audit-shop"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 通过 </a>
+			{{/if}}
+			<a href="#" class="btn red btn-sm b-close"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 关闭 </a>
+		</div>
+	</div>
+	{{/for}}
+  
+</div>
+</script>
 <div class="modal fade" id="basic" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
