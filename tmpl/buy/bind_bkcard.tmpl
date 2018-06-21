@@ -1,13 +1,13 @@
 <form action="#" id="form-bind" class="form-horizontal form-bordered">
-  <div class="form-group">
+  <div class="form-group  form-inline">
     <label class="control-label col-xs-2">开户姓名
       <span class="required"> * </span>
     </label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" id="acount-name" placeholder="请先绑定身份证" value="{{:name}}" name="name" {{:type}} readonly>
+      <input type="text" class="form-control wide-3" id="acount-name" placeholder="请先绑定身份证" value="{{:name}}" name="name" {{:type}} readonly>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group form-inline">
     <label class="control-label col-xs-2">银行名称
       <span class="required"> * </span>
     </label>
@@ -20,36 +20,36 @@
       </select>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group  form-inline">
     <label class="control-label col-xs-2">开户支行
     </label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" id="acount-subbank" placeholder="请输入正确的开户支行（非必填）" value="{{:acountSubbank}}" {{:type}} ">
+      <input type="text" class="form-control wide-3" id="acount-subbank" placeholder="请输入正确的开户支行（非必填）" value="{{:acountSubbank}}" {{:type}} ">
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group  form-inline">
     <label class="control-label col-xs-2">开户行号
     </label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" id="acount-bankno" placeholder="请输入正确的开户行号（非必填）" value="{{:acountBankno}}" {{:type}} >
+      <input type="text" class="form-control wide-3" id="acount-bankno" placeholder="请输入正确的开户行号（非必填）" value="{{:acountBankno}}" {{:type}} >
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group  form-inline">
     <label class="control-label col-xs-2">银行账号
       <span class="required"> * </span>
     </label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" id="bankno" placeholder="请输入正确的银行账号" value="{{:bankNo}}" {{:type}} name="bankNo">
+      <input type="text" class="form-control wide-3" id="bankno" placeholder="请输入正确的银行账号" value="{{:bankNo}}" {{:type}} name="bankNo">
     </div>
   </div>
 
   {{if status == -1 || status == 2}}
-  <div class="form-group">
+  <div class="form-group  form-inline">
     <label class="control-label col-xs-2">确认账号
       <span class="required"> * </span>
     </label>
     <div class="col-xs-6">
-      <input type="text" class="form-control" id="rebankno" placeholder="请再次输入银行账号确认" name="rebankno">
+      <input type="text" class="form-control wide-3" id="rebankno" placeholder="请再次输入银行账号确认" name="rebankno">
     </div>
   </div>
   {{/if}}

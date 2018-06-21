@@ -43,7 +43,7 @@ function initBindInfo() {
 function cbInitBindInfo(e) {
   status = e.bankcardState;
   let func;
-  // var status = 0
+  // status = -1
   if ( status == -1 || status == null) {
     //未绑定
     func = renderTmpl(TMPL_BUY_BIND_BKCARD, {
