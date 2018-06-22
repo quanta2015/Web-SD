@@ -64,7 +64,9 @@
         </div>
     </div>
     </div>
-
+	<div class="g-detail"  style="display: none;">
+      
+    </div>
     <script src="/lib/jquery/jquery.min.js"></script>
     <script src="/lib/jquery/jquery.cookie.js"></script>
     <script src="/lib/jquery-ui/jquery-ui.min.js"></script>
@@ -83,5 +85,45 @@
 
     <script src="/sys/js/common.js"></script>
     <script src="/sys/js/admin/auditRecharge.js"></script>
+	
+	<script id="coverTmpl" type="text/x-jsrender">
+<div class="m-detail-wrap">
+  <div class="m-close">X</div>
+  <div class="m-d m-title">
+    <div class="v-sub-title ">
+      <div class="col-1">审核充值详情</div>
+      <div class="col-2 font-red-thunderbird"></div>
+      <div class="col-1"></div>
+      <div class="col-2 font-red-thunderbird"></div>
+    </div>
+  </div>
+  {{for}}
+  <div class="m-d m-d-main">
+	<div class="col-11 m-d-item">
+		  <li><div class="col-1">充值账号</div><div class="col-2 font-red-thunderbird fn-right">{{:toAccount}}</div></li>
+		  <li><div class="col-1">充值金额</div><div class="col-2 font-red-thunderbird fn-right">{{:transferMoney}}</div></li>
+		  <li><div class="col-1">充值人</div><div class="col-2 font-red-thunderbird fn-right">{{:transferPerson}}</div></li>
+		  <li><div class="col-1">充值时间</div><div class="col-2 font-red-thunderbird fn-right"></div></li>
+		  <li><div class="col-1">充值凭证</div><div class="col-2 font-red-thunderbird fn-right"><a href="{{:~root.imgPrefix}}{{:picture}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture}}" style="width: 60px; height: 60px;"></a></div></li>
+		  <li><div class="col-1">转账账号</div><div class="col-2 font-red-thunderbird fn-right">{{:fromAccount}}</div></li>
+		  <li><div class="col-1">转账银行</div><div class="col-2 font-red-thunderbird fn-right">{{:bankName}}</div></li>
+		  <li><div class="col-1">当前状态</div><div class="col-2 font-red-thunderbird fn-right">{{:approveString}}</div></li>
+		  <li><div class="col-1">备注</div><div class="col-2 font-red-thunderbird fn-right">{{:remark}}</div></li>
+	</div>
+	</div>
+	
+	<div class="m-d m-d-main" style='text-align: center;'>
+		<div class="col-1" style='text-align: center; padding:10px'>
+			{{if !approve}}
+			<a href="#basic" class="btn red btn-sm btn-outline audit-task"   data-id="{{:id}}" data-type="unpass"><i class="fa fa-edit"></i> 不通过 </a> 
+              <a href="#basic" class="btn blue-madison btn-sm btn-outline audit-task"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 通过 </a>
+			{{/if}}
+			<a href="#" class="btn dark btn-sm b-close"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 关闭 </a>
+		</div>
+	</div>
+	{{/for}}
+  
+</div>
+</script>
 </body>
 </html>

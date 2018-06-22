@@ -69,8 +69,10 @@ function cbAudit(e) {
 
 function doDetailShop(e) {
   var index = $(e.currentTarget).data('index');
+  let ret = _listshop[index];
+  ret.imgPrefix = IMG_PREFIX;
   $(".g-detail .m-detail-wrap").remove();
-  $(".g-detail").prepend($("#coverTmpl").render(_listshop[index]));
+  $(".g-detail").prepend($("#coverTmpl").render(ret));
   $(".g-detail").show()
 }
 

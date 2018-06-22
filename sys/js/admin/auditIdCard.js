@@ -1,6 +1,6 @@
 let _id;
 let pageData = Object.assign({}, PAGE_DATA);
-
+let _listshop;
 $(init);
 
 function init() {
@@ -8,6 +8,9 @@ function init() {
   initList();
   $('body').on('click', '.audit-task', doAudit);
   $('body').on('click', '#btn-search', doSearch);
+    $('body').on('click', '.detail-idcard', doDetailIdCard);
+  $('body').on('click', '.m-close', doClose);
+  $('body').on('click','.b-close',doClose);
 }
 
 function initList() {
@@ -23,6 +26,7 @@ function initList() {
 
 function cbListIdCard(r, e) {
   let ret = e;
+  _listshop=ret.data;
   ret.imgPrefix = IMG_PREFIX;
   Object.assign(ret, pageData);
   totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
@@ -42,7 +46,22 @@ function initPage(totalPages) {
   })
 }
 
+function doDetailIdCard(e) {
+  var index = $(e.currentTarget).data('index');
+  let ret = _listshop[index];
+  console.log(JSON.stringify(ret));
+  ret.imgPrefix = IMG_PREFIX;
+  $(".g-detail .m-detail-wrap").remove();
+  $(".g-detail").prepend($("#coverTmpl").render(ret));
+  $(".g-detail").show()
+}
+
+function doClose() {
+  $('.g-detail').hide()
+}
+
 function doAudit(e) {
+doClose();
   bootbox.prompt(MSG_INPUT_AUDIT_INFO, function(ret){ 
     if( ret !== null) {
       var obj = {

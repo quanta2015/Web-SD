@@ -64,6 +64,10 @@
     </div>
     </div>
 
+	<div class="g-detail"  style="display: none;">
+      
+    </div>
+	
     <script src="/lib/jquery/jquery.min.js"></script>
     <script src="/lib/jquery/jquery-migrate.js"></script>
     <script src="/lib/jquery/jquery.cookie.js"></script>
@@ -83,5 +87,48 @@
 
     <script src="/sys/js/common.js"></script>
     <script src="/sys/js/admin/auditAccount.js"></script>
+	<script id="coverTmpl" type="text/x-jsrender">
+<div class="m-detail-wrap">
+  <div class="m-close">X</div>
+  <div class="m-d m-title">
+    <div class="v-sub-title ">
+      <div class="col-1">审核账号详情</div>
+      <div class="col-2 font-red-thunderbird"></div>
+      <div class="col-1"></div>
+      <div class="col-2 font-red-thunderbird"></div>
+    </div>
+  </div>
+  {{for}}
+  <div class="m-d m-d-main">
+	<div class="col-11 m-d-item">
+	      <li><div class="col-1">类型</div><div class="col-2 font-red-thunderbird fn-right">{{:type}}</div></li>
+		  <li><div class="col-1">账号名称</div><div class="col-2 font-red-thunderbird fn-right">{{:acount}}</div></li>
+		  <li><div class="col-1">等级</div><div class="col-2 font-red-thunderbird fn-right">{{:acountLevel}}</div></li>
+		  <li><div class="col-1">白条花呗</div><div class="col-2 font-red-thunderbird fn-right">{{:}}</div></li>
+		  <li><div class="col-1">收货人</div><div class="col-2 font-red-thunderbird fn-right">{{:receiver}}</div></li>
+		  <li><div class="col-1">手机号码</div><div class="col-2 font-red-thunderbird fn-right">{{:receiveMobile}}</div></li>
+		  <li><div class="col-1">详细地址</div><div class="col-2 font-red-thunderbird fn-right">{{:receiveProvince}}{{:receiveAddress}}</div></li>
+		  <li><div class="col-1">审核状态</div><div class="col-2 font-red-thunderbird fn-right">{{:approveStateSting}}</div></li>
+		  <li><div class="col-1">上传图片</div><div class="col-2 font-red-thunderbird fn-right">
+			<a href="{{:~root.imgPrefix}}{{:mysiteImg}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:mysiteImg}}" style="width: 60px; height: 60px;"></a>
+			<a href="{{:~root.imgPrefix}}{{:myacountImg}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:myacountImg}}" style="width: 60px; height: 60px;"></a>
+			<a href="{{:~root.imgPrefix}}{{:baitiaoImg}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:baitiaoImg}}" style="width: 60px; height: 60px;"></a>
+			</div></li>
+	</div>
+	</div>
+	
+	<div class="m-d m-d-main" style='text-align: center;'>
+		<div class="col-1" style='text-align: center; padding:10px'>
+			 {{if approve==0}}
+              <a href="#basic" class="btn red btn-xs btn-outline audit-task"   data-id="{{:id}}" data-type="unpass"><i class="fa fa-edit"></i> 不通过 </a>
+              <a href="#basic" class="btn blue-madison btn-xs btn-outline audit-task"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 通过 </a>
+              {{/if}}
+			<a href="#" class="btn dark btn-sm b-close"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 关闭 </a>
+		</div>
+	</div>
+	{{/for}}
+  
+</div>
+</script>
 </body>
 </html>
