@@ -92,7 +92,7 @@ function doResetForm() {
 function doSave(e) {
     var pic = $('#upload').attr('picurl');
     if (isNull(pic)) {
-        notifyInfo('请上传图片！')
+        errorInfo('请上传图片！')
         return;
     }
 

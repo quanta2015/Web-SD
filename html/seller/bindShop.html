@@ -39,8 +39,8 @@
           <label class="control-label col-xs-2">请选择平台
             <span class="required"> * </span>
           </label>
-          <div class="col-xs-6">
-            <select class="form-control " id="shop_type" name="shopType">
+          <div class="col-xs-6 form-inline">
+            <select class="form-control" id="shop_type" name="shopType">
               <option value="淘宝" selected>淘宝</option>
               <option value="京东" >京东</option>
             </select>
@@ -48,76 +48,68 @@
           <div class="col-xs-4"></div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group form-inline">
           <label class="control-label col-xs-2">店铺网址
             <span class="required"> * </span>
           </label>
-          <div class="col-xs-6">
-            <input type="text" class="form-control" id="shop_url" name="shopUrl">
+          <div class="col-xs-9 ">
+            <input type="text" class="form-control wide-3" id="shop_url" name="shopUrl">
+            <span class="form-info">店铺地址绑定后无法修改</span>
           </div>
-          <div class="col-xs-4 form-info">(店铺地址绑定后无法修改)</div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group form-inline">
           <label class="control-label col-xs-2">店铺名称
             <span class="required"> * </span>
           </label>
-          <div class="col-xs-6">
-            <input type="text" class="form-control" id="shop_name" name="shopName">
+          <div class="col-xs-9">
+            <input type="text" class="form-control wide-3" id="shop_name" name="shopName">
+            <span class="form-info">务必跟手机端宝贝页显示的店铺名一致</span>
           </div>
-          <div class="col-xs-4 form-info">(务必跟手机端宝贝页显示的店铺名一致)</div>
         </div>
 
-        <div class="form-group form-tb">
+        <div class="form-group form-tb form-inline">
           <label class="control-label col-xs-2">店铺主旺旺ID
             <span class="required"> * </span>
           </label>
-          <div class="col-xs-6">
-            <input type="text" class="form-control" id="shop-wangid" name="shopWangId">
+          <div class="col-xs-9">
+            <input type="text" class="form-control wide-3" id="shop-wangid" name="shopWangId">
           </div>
-          <div class="col-xs-4 form-info"></div>
         </div>
 
 
-        <div class="form-group"  data-toggle="typepicker" id="typepicker">
+        <div class="form-group form-inline"  data-toggle="typepicker" id="typepicker">
           <label class="control-label col-xs-2">店铺类别
             <span class="required"> * </span>
           </label>
-          <div class="col-xs-3">
-            <select class="form-control" id="shop-businesstype" name="businesstype"></select>
+          <div class="col-xs-9">
+            <select class="form-control" id="shop-businesstype" name="businesstype" data-province="生鲜"></select>
+            <select class="form-control" id="shop-subtype" name="subtype" data-city="水果"></select>
           </div>
-          <div class="col-xs-3">
-            <select class="form-control" id="shop-subtype" name="subtype"></select>
-          </div>
-          <div class="col-xs-4 form-info"></div>
         </div>
 
-        <div class="form-group" data-toggle="distpicker" id="pick">
+        <div class="form-group form-inline" data-toggle="distpicker" id="pick">
           <label class="control-label col-xs-2">省市区
             <span class="required"> * </span>
           </label>
-          <div class="col-xs-3">
-            <select class="form-control" id="shop-province" name="province"></select>
-          </div>
-          <div class="col-xs-3">
-            <select class="form-control" id="shop-city" name="city"></select>
-          </div>
-          <div class="col-xs-3">
-            <select class="form-control" id="shop-county" name="county"></select>
+          <div class="col-xs-9">
+            <select class="form-control" id="shop-province" name="province" data-province="浙江省"></select>
+            <select class="form-control" id="shop-city" name="city" data-city="杭州市"></select>
+            <select class="form-control" id="shop-county" name="county" data-district="西湖区"></select>
           </div>
         </div> 
 
-        <div class="form-group">
+        <div class="form-group form-inline">
           <label class="control-label col-xs-2">发货地址
             <span class="required"> * </span>
           </label>
-          <div class="col-xs-6">
-            <input type="text" class="form-control" id="shop_addr" name="addr">
+          <div class="col-xs-9">
+            <input type="text" class="form-control wide-3" id="shop_addr" name="addr">
+            <span class="form-info">详细地址用于发空包用，请填写商品发货地址</span>
           </div>
-          <div class="col-xs-4 form-info">详细地址用于发空包用，请填写商品发货地址</div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group ">
           <label class="control-label col-xs-2">店铺管理后台截图
               <span class="required"> * </span>
           </label>
@@ -140,8 +132,8 @@
         <div class="form-group">
           <label class="control-label col-xs-2"></label>
           <div class="col-xs-10">
-            <button type="submit" class="btn blue" id="saveBtn">保存</button>
             <button type="button" class="btn red" id="resetBtn"> 新建</button>
+            <button type="submit" class="btn blue" id="saveBtn">保存</button>
           </div>
         </div>
       </form>

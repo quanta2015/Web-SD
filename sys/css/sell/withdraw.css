@@ -59,3 +59,10 @@ table td {
   width: 140px;
 }
 
+.form-group .wide-3 {
+  width: 400px;
+}
+
+.form-group .wide-s1 {
+  width: 50px;
+}
