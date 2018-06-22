@@ -45,7 +45,7 @@ function initPage(totalPages) {
 }
 
 function doDetailTask(e) {
-  id = $(e.currentTarget).data('id');
+  id = $(e.currentTarget).data('id')
   promiseTmpl('GET', '/tmpl/admin/detail_task.tmpl','/task/task_detail/'+ id, null, cbDetail)
 }
 

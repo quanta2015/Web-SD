@@ -1,6 +1,6 @@
 let _id;
 let pageData = Object.assign({}, PAGE_DATA);
-
+let _listshop;
 $(init);
 
 function init() {
@@ -28,6 +28,7 @@ function initList() {
 
 function cbListTask(r, e) {
   let ret = e;
+  _listshop = ret.data;
   ret.imgPrefix = IMG_PREFIX;
   Object.assign(ret, pageData);
   totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
@@ -39,8 +40,10 @@ function cbListTask(r, e) {
 
 function doDetailRecharge(e) {
   var index = $(e.currentTarget).data('index');
+  let ret = _listshop[index];
+  ret.imgPrefix = IMG_PREFIX;
   $(".g-detail .m-detail-wrap").remove();
-  $(".g-detail").prepend($("#coverTmpl").render(_listshop[index]));
+  $(".g-detail").prepend($("#coverTmpl").render(ret));
   $(".g-detail").show()
 }
 
@@ -59,6 +62,7 @@ function initPage(totalPages) {
 }
 
 function doAudit(e) {
+doClose();
   bootbox.prompt(MSG_INPUT_AUDIT_INFO, function(ret){ 
     if( ret !== null) {
       var obj = {

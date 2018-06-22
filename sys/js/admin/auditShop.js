@@ -27,10 +27,7 @@ function initList() {
 }
 
 function cbListShop(r, e) {
-alert(e);
   let ret = e;
-  alert(ret);
-  alert(ret.data);
     _listshop = ret.data;
     ret.imgPrefix = IMG_PREFIX;
     Object.assign(ret, pageData);
