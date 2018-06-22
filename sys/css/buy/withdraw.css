@@ -14,3 +14,7 @@
 .withdraw-tip {
   font-size: 15px;
 }
+
+.form-group .wide-3 {
+  width: 400px;
+}

@@ -1,5 +1,4 @@
 body {
-    min-width: 1050px;
 }
 
 .u-wrap {
@@ -91,10 +90,8 @@ body {
 
 .g-detail {
     position: absolute;
+    width: 100%;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     z-index: 999999;
     background: rgba(0,0,0,.5);
 }
@@ -102,9 +99,9 @@ body {
 
 .m-detail-wrap {
     position: relative;
-    margin: 10px auto;
+    margin: 20px auto;
     background: #fff;
-    width: 1000px;
+    width: 800px;
     display: flex;
     flex-direction: column;
     box-shadow:1px 1px 5px #ccc;
@@ -193,4 +190,35 @@ body {
 .u-task-status>p>a {
     margin-bottom: 10px;
     width: 120px;
+}
+
+.u-step {
+    padding: 0 15px 5px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.u-step>div {
+    padding: 5px 20px 5px 40px;
+}
+
+.u-step-title {
+    background: #4B77BE;
+    color: #fff;
+}
+
+.u-step-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.u-step-info img {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #aaa;
+}
+
+.u-sp {
+    flex: 1;
 }

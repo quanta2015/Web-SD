@@ -10,6 +10,11 @@ let rules = {
     number: !0
   }
 }
+let messages = {
+  name: {
+    required: '请先完善信息'
+  },
+}
 let pageData = Object.assign({}, PAGE_DATA);
 
 $(init);
@@ -21,6 +26,12 @@ function init() {
   initBalanceInfo();
   // $('body').on('input propertychange', '#withdraw-money', doCompute);
   $('body').on('click', '#btn-search', doSearch);
+
+  $("#form-withdraw").validate({
+    rules: rules,
+    messages: messages,
+    submitHandler: (e) => { doWithdraw() }
+  })
 }
 
 function initTime() {
@@ -65,16 +76,12 @@ function initBalanceInfo() {
 }
 
 function cbBalanceInfo(e) {
+  console.log(e)
   $('#shoper-name').val(cookie('name'));
   if (!cookie('name')) $('#form-tip').removeClass('hide');
   $('#bankno').val(cookie('bankcard'));
-  $('#balance').text(e.data);
-  $('#u-money', parent.document).text(e.data);
-
-  $("#form-withdraw").validate({
-    rules: rules,
-    submitHandler: (e) => { doWithdraw() }
-  })
+  $('#balance').text(e.balance);
+  $('#u-money', parent.document).text(e.balance);
 
 }
 

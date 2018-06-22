@@ -19,3 +19,6 @@ body {
 #bind-info .col-xs-6 {
   padding-top: 7px;
 }
+.form-group .wide-3 {
+  width: 400px;
+}
