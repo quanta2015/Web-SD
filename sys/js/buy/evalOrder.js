@@ -76,5 +76,5 @@ function cbSubmitEval(e) {
 }
 
 function gotoPage() {
-  location.href = 'listOrder.html'
+  location.href = 'listOrder.html?status=20'
 }
