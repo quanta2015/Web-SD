@@ -23,15 +23,10 @@
             <td class="pass{{:approveState}}"> {{:approveStateSting}} </td>
             <td> {{:approveReason}} </td>
             <td class="fn-center"> 
-			  <a href="#basic" class="btn grey-mint btn-xs btn-outline detail-idcard" data-index="{{:#index}}"  data-id="{{:id}}">详情 </a>
+			  <a href="#basic" class="btn grey-mint btn-xs  detail-idcard" data-index="{{:#index}}"  data-id="{{:id}}">详情 </a>
               {{if approveState==0}}
-<<<<<<< HEAD
               <a href="#basic" class="btn red btn-xs  audit-task"   data-id="{{:id}}" data-type="unpass"><i class="fa fa-edit"></i> 不通过 </a>
               <a href="#basic" class="btn blue-madison btn-xs  audit-task"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 通过 </a> {{/if}}
-=======
-              <a href="#basic" class="btn red btn-xs btn-outline audit-task"   data-id="{{:id}}" data-type="unpass"><i class="fa fa-edit"></i> 不通过 </a>
-              <a href="#basic" class="btn blue-madison btn-xs btn-outline audit-task"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 通过 </a> {{/if}}
->>>>>>> 97a4809d0a563bcbd390607b42de49e6684b2c62
             </td>
         </tr>
       {{/for}}
