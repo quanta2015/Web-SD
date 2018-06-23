@@ -110,14 +110,19 @@
 		  <li><div class="col-1">充值金额</div><div class="col-2 font-red-thunderbird fn-right">{{:transferMoney}}</div></li>
 		  <li><div class="col-1">充值人</div><div class="col-2 font-red-thunderbird fn-right">{{:transferPerson}}</div></li>
 		  <li><div class="col-1">充值时间</div><div class="col-2 font-red-thunderbird fn-right"></div></li>
-		  <li><div class="col-1">充值凭证</div><div class="col-2 font-red-thunderbird fn-right"><a href="{{:~root.imgPrefix}}{{:picture}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture}}" style="width: 400px; height: 300px;"></a></div></li>
 		  <li><div class="col-1">转账账号</div><div class="col-2 font-red-thunderbird fn-right">{{:fromAccount}}</div></li>
 		  <li><div class="col-1">转账银行</div><div class="col-2 font-red-thunderbird fn-right">{{:bankName}}</div></li>
 		  <li><div class="col-1">当前状态</div><div class="col-2 font-red-thunderbird fn-right">{{:approveString}}</div></li>
 		  <li><div class="col-1">备注</div><div class="col-2 font-red-thunderbird fn-right">{{:remark}}</div></li>
 	</div>
 	</div>
-	
+	<div class="m-d m-d-main">
+    <div class="m-d-item col-1">
+      <li>
+        <div class="col-1 v-img"><a href="{{:~root.imgPrefix}}{{:picture}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture}}"></a></div>
+      </li>
+    </div>
+  </div>
 	<div class="m-d m-d-main" style='text-align: center;'>
 		<div class="col-1" style='text-align: center; padding:10px'>
 			{{if !approve}}

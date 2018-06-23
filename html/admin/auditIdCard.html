@@ -99,16 +99,41 @@
   <div class="m-d m-d-main">
 	<div class="col-11 m-d-item">
 		  <li><div class="col-1">用户名</div><div class="col-2 font-red-thunderbird fn-right">{{:name}}</div></li>
-		  <li><div class="col-1">身份证</div><div class="col-2 font-red-thunderbird fn-right">{{:idcard}}</div></li>
-		  <li><div class="col-1">身份证正面</div><div class="col-2 font-red-thunderbird fn-right"><a href="{{:~root.imgPrefix}}{{:idcardpng1}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:idcardpng1}}" style="width: 400px; height: 300px;"></a></div></li>
-		  <li><div class="col-1">身份证反面</div><div class="col-2 font-red-thunderbird fn-right"><a href="{{:~root.imgPrefix}}{{:idcardpng2}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:idcardpng2}}" style="width: 400px; height: 300px;"></a></div></li>
 		  <li><div class="col-1">联系电话</div><div class="col-2 font-red-thunderbird fn-right">{{:mobile}}</div></li>
 		  <li><div class="col-1">QQ</div><div class="col-2 font-red-thunderbird fn-right">{{:qq}}</div></li>
 		  <li><div class="col-1">微信</div><div class="col-2 font-red-thunderbird fn-right">{{:weixin}}</div></li>
 		  <li><div class="col-1">审核状态</div><div class="col-2 font-red-thunderbird fn-right">{{:approveStateSting}}</div></li>
 	</div>
 	</div>
-	
+  <div class="m-d m-d-main">
+    <div class="container">
+		<div id="myCarousel" class="carousel slide" >
+    <!-- 轮播（Carousel）指标 -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+    </ol>   
+    <!-- 轮播（Carousel）项目 -->
+    <div class="carousel-inner">
+        <div class="item active">
+			<a href="{{:~root.imgPrefix}}{{:idcardpng1}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:idcardpng1}}"></a>
+			<div class="carousel-caption">身份证正面</div>
+        </div>
+        <div class="item">
+            <a href="{{:~root.imgPrefix}}{{:idcardpng2}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:idcardpng2}}"></a>
+			<div class="carousel-caption">身份证反面</font></div>
+        </div>
+    </div>
+    <!-- 轮播（Carousel）导航 -->
+   <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+  <span class="glyphicon glyphicon-chevron-left"></span>
+</a>
+<a class="right carousel-control" href="#myCarousel" data-slide="next">
+  <span class="glyphicon glyphicon-chevron-right"></span>
+</a> 
+</div>
+</div>
+  </div>
 	<div class="m-d m-d-main" style='text-align: center;'>
 		<div class="col-1" style='text-align: center; padding:10px'>
 			 {{if approveState==0}}
