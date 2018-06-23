@@ -59,6 +59,9 @@
         </div>
       </div>
     </div>
+	
+	<div class="g-detail"  style="display: none;">
+    </div>
     <script src="/lib/jquery/jquery.min.js"></script>
     <script src="/lib/jquery/jquery-migrate.js"></script>
     <script src="/lib/jquery/jquery.cookie.js"></script>
@@ -77,5 +80,32 @@
     
     <script src="/sys/js/common.js"></script>
     <script src="/sys/js/buy/evalOrder.js"></script>
+	
+	<script id="coverTmpl" type="text/x-jsrender">
+<div class="m-detail-wrap">
+  <div class="m-close">X</div>
+  <div class="m-d m-title">
+    <div class="v-sub-title ">
+      <div class="col-1">评价说明</div>
+      <div class="col-2 font-red-thunderbird"></div>
+      <div class="col-1"></div>
+      <div class="col-2 font-red-thunderbird"></div>
+    </div>
+  </div>
+  <div class="m-d m-d-main">
+	<div class="col-11 m-d-item">
+		  <li><div class="col-1">普通好评任务</div><div class="col-2 font-red-thunderbird">评价要求：好评，评价可自由发挥</div></li>
+		  <li><div class="col-1">指定关键词好评任务</div><div class="col-2 font-red-thunderbird">评价要求：文字好评内容须涵盖以下指定关键词<br>指定关键词：</div></li>
+	</div>
+	</div>
+	
+	<div class="m-d m-d-main" style='text-align: center;'>
+		<div class="col-1" style='text-align: center; padding:10px'>
+			<a href="#" class="btn dark btn-sm b-close"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 关闭 </a>
+		</div>
+	</div>
+</div>
+</script>
+	
   </body>
 </html>
