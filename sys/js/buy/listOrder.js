@@ -49,15 +49,14 @@ function doEvalTask(e) {
   location.href = ['evalOrder.html', encodeQuery(obj)].join('?') 
 }
 
-
 function doDetail() {
-    var obj = { taskkeyid: $(this).data('tid') }
-    promiseTmpl('GET', TMPL_BUY_TASK_DETAIL, [URL_BUY_TASKDETAIL, encodeQuery(obj)].join('?'),null, cbDetail)
+    promiseTmpl('GET', TMPL_BUY_TASK_DETAIL, '/buyertask/buyer_task' + '/'+ $(this).data('id'),null, cbDetail)
 }
 
 function cbDetail(r, e) {
   let ret = e;
   ret.data.imgPrefix = IMG_PREFIX;
+  $(".g-detail").empty();
   $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
   // $("#ig-info").toggle("slide", { direction: "left" }, 200);
   $(".g-detail").show();

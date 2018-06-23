@@ -1,17 +1,9 @@
 let pageData = Object.assign({}, PAGE_DATA);
-
+let _type = 1;
 
 $(init);
 
 function init() {
-  
-
-
-
-
-  //  $('body').on('click', '#up', ()=>{ 
-  //   upit( $("#fileSelector")[0].files[0] ) 
-  // });
 
 
   $('body').on('click', '#withdraw', ()=>{ goto('withdraw.html') });
@@ -38,18 +30,22 @@ function init() {
 function doShowMoney() {
   $('.m-money-type a').removeClass('cur');
   $(this).find('a').addClass('cur');
-  
+  _type = parseInt($(this).data('type'));
+
+
+  initList(pageData)
 }
 
 function initList(pg) {
-  param = Object.assign({}, pg);
+  param = Object.assign(pg, { type: _type });
   promiseTmpl('GET', TMPL_BUY_TRADE_RECORD, [URL_BUY_TRADE_RECORD, encodeQuery(param)].join('?'), null, cbList)
 }
 
 
 function cbList(r,e) {
   let ret = e;
-  totalPages = Math.ceil(ret.data.total/PAGE_DATA.pageSize);
+  Object.assign(ret, { type: _type });
+  totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
   $(".portlet-body .table").remove();
   $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
   if ($('.table-pg').text() == '') initPage(totalPages);

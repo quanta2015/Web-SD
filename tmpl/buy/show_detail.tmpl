@@ -1,20 +1,18 @@
 <div class="m-detail-wrap">
-  <div class="m-close">
-    X
-  </div>
+  <div class="m-close"></div>
 
   <div class="u-head">
     <div class="u-task-info">
       <div>任务编号：D2018052713572489611</div>
       <div class="u-task-detail">
-        <h1>店铺名称：璐*酱*妆</h1>
+        <h1>店铺名称：{{:shopName}}</h1>
         <div>
-          <img src="" alt="">
+          <img src="{{:~root.imgPrefix}}{{:goodsmainimg}}">
           <div>
             <span class="u-bottom-line">目标商品</span>
-            <span>搜索展示价格：18.80元</span>
-            <span>商品成交价格：49.90元</span>
-            <span>规格或件数：水乳精华三件套  1件</span>
+            <span>搜索展示价格：{{:searchprice}}元</span>
+            <span>商品成交价格：{{:factprice}}元</span>
+            <span>规格或件数：{{:number}}</span>
           </div>
         </div>
       </div>
@@ -22,7 +20,7 @@
     <div class="u-task-status">
       <div>任务状态：</div>
       <p>
-        <span>淘宝 已完成</span>
+        <span>{{:type}} {{:~formatOrderStatus(status)}}</span>
         <a href="#" class="btn red ">申诉任务</a>
         <a href="#" class="btn red ">取消任务</a>
       </p>
@@ -36,22 +34,22 @@
     <div class="u-step-info">
       <span class="u-step-key">任务编号</span>
       <span class="u-sp"></span>
-      <span class="u-step-val">D2018052713572489611</span>
+      <span class="u-step-val">{{:code}}</span>
     </div>
     <div class="u-step-info">
       <span class="u-step-key">淘宝订单编号</span>
       <span class="u-sp"></span>
-      <span class="u-step-val">150382627000434470</span>
+      <span class="u-step-val">{{if buyerSubmit}}{{:buyerSubmit.orderid}}{{/if}}</span>
     </div>
     <div class="u-step-info">
       <span class="u-step-key">买家号</span>
       <span class="u-sp"></span>
-      <span class="u-step-val">zhaoqiaoqing4</span>
+      <span class="u-step-val">{{:acount}}</span>
     </div>
     <div class="u-step-info">
       <span class="u-step-key">商品金额</span>
       <span class="u-sp"></span>
-      <span class="u-step-val">49.90元</span>
+      <span class="u-step-val">{{:goodsMoneySum}}元</span>
     </div>
   </div>
 
@@ -59,39 +57,61 @@
     <div class="u-step-title">
       <span>2.订单付款</span>
     </div>
+
+    {{if status>0}}
     <div class="u-step-info">
       <span class="u-step-key">货比三家</span>
       <span class="u-sp"></span>
       <span class="u-step-val">
-        <img src="#" alt="">
-        <img src="#" alt="">
-        <img src="#" alt="">
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.goods1}}">
+        {{/if}}
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.goods2}}" >
+        {{/if}}
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.result}}">
+        {{/if}}
       </span>
     </div>
     <div class="u-step-info">
       <span class="u-step-key">浏览店铺</span>
       <span class="u-sp"></span>
       <span class="u-step-val">
-        <img src="#" alt="">
-        <img src="#" alt="">
-        <img src="#" alt="">
-        <img src="#" alt="">
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.head}}">
+        {{/if}}
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.ask}}">
+        {{/if}}
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.detail}}">
+        {{/if}}
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.cart}}">
+        {{/if}}
       </span>
     </div>
     <div class="u-step-info">
       <span class="u-step-key">聊天下单</span>
       <span class="u-sp"></span>
       <span class="u-step-val">
-        <img src="#" alt="">
-        <img src="#" alt="">
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.talk}}">
+        {{/if}}
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.pay}}">
+        {{/if}}
       </span>
     </div>
+    {{/if}}
   </div>
 
   <div class="u-step">
     <div class="u-step-title">
       <span>3.商家确认订单</span>
     </div> 
+    {{if status>10}}
     <div class="u-step-info">
       <span class="u-step-key">返款方式</span>
       <span class="u-sp"></span>
@@ -105,49 +125,58 @@
     <div class="u-step-info">
       <span class="u-step-key">返款金额</span>
       <span class="u-sp"></span>
-      <span class="u-step-val">57.05元</span>
+      <span class="u-step-val font-red">{{:goodsMoneySum}}元</span>
     </div>
     <div class="u-step-info">
       <span class="u-step-key"></span>
       <span class="u-sp"></span>
       <span class="u-step-val">
         平台规定提交评价后商家24小时内操作返款 
-        <a href="#" class="btn btn-xs red">崔返款</a>
+        <a href="#" class="btn btn-xs red">催返款</a>
       </span>
     </div>
+    {{/if}}
   </div>
 
   <div class="u-step">
     <div class="u-step-title">
       <span>4.收货好评</span>
     </div>  
+    {{if status>20}}
     <div class="u-step-info">
       <span class="u-step-key">评价/物流截图</span>
       <span class="u-sp"></span>
       <span class="u-step-val">
-        <img src="#" alt="">
-        <img src="#" alt="">
+        {{if (buyerSubmit)}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.expressPicture}}">
+        {{/if}}
+        {{if (buyerSubmit)}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.goodsEvaluate}}">
+        {{/if}}
       </span>
     </div>
     <div class="u-step-info">
       <span class="u-step-key"></span>
       <span class="u-sp"></span>
       <span class="u-step-val">
-        此单为：普通好评任务 
+        此单为：{{:~formatEvalReq(taskkeyType)}} 
         <a href="#" class="btn btn-xs red">评价要求</a>
       </span>
     </div>
+    {{/if}}
   </div>
 
   <div class="u-step">
     <div class="u-step-title">
       <span>5.任务完成</span>
     </div>
+    {{if status>30}}
     <div class="u-step-info">
       <span class="u-step-key">获得佣金</span>
       <span class="u-sp"></span>
-      <span class="u-step-val"> 7.15  金</span>
+      <span class="u-step-val font-red"> {{:serviceSum}}金</span>
     </div>
+    {{/if}}
   </div>
 
 </div>
