@@ -63,6 +63,7 @@
 {{for data}}
 <div class="u-wrap">
     <div class="u-row">
+        <div class="u-ck"><input type="checkbox" name="tid" value="{{:id}}" class="u-tid"></div>
         <div class="u-id">{{:#index+1 + ~root.pageSize*~root.pageIndex}}</div>
         <div class="u-col u-sell">
             <div class="u-shoptype"><img src="/img/{{:~formatShopType(shopType)}}"></div>
@@ -73,7 +74,9 @@
         </div>
         <div class="u-col u-buy">
             <div class="u-buyer">买家ID：{{:buyerMobile}}</div>
-            <div class="u-order-id">订单ID：{{:code}}</div>
+            <div class="u-buyer">买家淘宝/京东ID：{{:jingdongId}}{{:taobaoId}}</div>
+            <div class="u-order-id">平台订单ID：{{:code}}</div>
+            <div class="u-order-id">淘宝/京东订单ID：{{:orderid}}</div>
             <div class="u-accepttime">接单时间：{{:~formatTime(acceptTime)}}</div>
         </div>
 

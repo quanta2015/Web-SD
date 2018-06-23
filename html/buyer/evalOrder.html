@@ -33,7 +33,7 @@
 
 
       <div class="m-d m-d-main">
-        <div class="m-d-item col-3">
+        <div class="m-d-item col-1">
           <li class="v-m-title">
             <div class="col-1">
               <span class="icon-list"></span>
@@ -47,17 +47,41 @@
           <li>
               <div class="m-img" pid="u-express-picture"   type="评价截图"></div>
               <div class="m-img" pid="u-goods-evaluate"    type="物流截图"></div>
+              <div class="m-img" pid="u-express-evaluate"    type="物流好评"></div>
           </li>
-          <li></li><li></li>
+         
+        </div>
+        <div class="m-d-item col-1">
+          <li class="v-m-title">
+            <div class="col-1">
+              <span class="m-step">收货好评要求 </span>
+            </div>
+          </li>
           <li>
-            <div class="col-1 col-btn">
+            <div class="col-1">
               此单为：<span id="task-type" class="font-red"></span>
-              <a href="#" class="btn btn-xs  yellow-gold" id="watch-require">查看好评要求</a>
-              <a href="#" class="btn btn-xs red" id="submit-eval">提交评价</a>
-              <a href="#" class="btn btn-xs grey-mint" id="return-list">返回任务列表</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="col-1 m-eval">
+              
+            </div>
           </li>
         </div>
       </div>
+
+      <div class="m-d m-d-main">
+        <div class="m-d-item col-1">
+          <li>
+            <div class="col-1 col-btn">
+              
+              <a href="#" class="btn btn-sm red" id="submit-eval">提交评价</a>
+              <a href="#" class="btn btn-sm grey-mint" id="return-list">返回任务列表</a></div>
+          </li>
+        </div>
+      </div>
+
+
     </div>
 	
 	<div class="g-detail"  style="display: none;">
@@ -81,31 +105,41 @@
     <script src="/sys/js/common.js"></script>
     <script src="/sys/js/buy/evalOrder.js"></script>
 	
-	<script id="coverTmpl" type="text/x-jsrender">
-<div class="m-detail-wrap">
-  <div class="m-close">X</div>
-  <div class="m-d m-title">
-    <div class="v-sub-title ">
-      <div class="col-1">评价说明</div>
-      <div class="col-2 font-red-thunderbird"></div>
-      <div class="col-1"></div>
-      <div class="col-2 font-red-thunderbird"></div>
-    </div>
-  </div>
-  <div class="m-d m-d-main">
-	<div class="col-11 m-d-item">
-		  <li><div class="col-1">普通好评任务</div><div class="col-2 font-red-thunderbird">评价要求：好评，评价可自由发挥</div></li>
-		  <li><div class="col-1">指定关键词好评任务</div><div class="col-2 font-red-thunderbird">评价要求：文字好评内容须涵盖以下指定关键词<br>指定关键词：</div></li>
-	</div>
-	</div>
-	
-	<div class="m-d m-d-main" style='text-align: center;'>
-		<div class="col-1" style='text-align: center; padding:10px'>
-			<a href="#" class="btn dark btn-sm b-close"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 关闭 </a>
-		</div>
-	</div>
-</div>
-</script>
+
 	
   </body>
 </html>
+
+
+
+<script id="evalTmpl" type="text/x-jsrender">
+{{for taskTypeArr}}
+{{if #data==1}}
+<div>评价要求：<span class="font-red">好评，评价可自由发挥</span></div>
+{{/if}}
+{{if #data==2}}
+<div>评价要求：文字好评必选涵盖以下指定关键词</div>
+<div>指定关键词：
+  <p>
+    {{for ~root.appoints}}
+      <span class="font-red">{{:#data}}</span>
+    {{/for}}
+  </p>
+  
+</div>
+{{/if}}
+{{if #data==3}}
+<div>评价要求：请上传以下指定图片，并填写评价描述</div>
+<div>评价描述：
+  <span class="font-red">{{:~root.explains}}</span>
+</div>
+<div>
+  <span>img1/img2/img3/img4/img5</span>
+</div>
+{{/if}}
+{{if #data==4}}
+<div>评价要求：请完全按照以下文字填写好评内容</div>
+<div>评价要求：<span class="font-red">{{:~root.explains}}</span> </div>
+{{/if}}
+{{/for}}
+</script>

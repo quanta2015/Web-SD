@@ -8,9 +8,8 @@ let rules = {
   acountSubbank: {
     required: !0
   },
-  acountBankno: {
-    required: !0,
-    number: !0
+  acountSubbank: {
+    required: !0
   },
   bankNo: {
     required: !0,

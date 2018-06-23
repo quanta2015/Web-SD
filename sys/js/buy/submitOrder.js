@@ -11,7 +11,7 @@ function init() {
 
   $('body').on('click', '#clear-shop', doClearShop);
   $('body').on('click', '#check-shop', doCheckShop);
-  $('body').on('click', '#submit-buy', doSubmitBuy);
+  $('body').on('click', '#submit-buy', doConfirm);
   $('body').on('click', '#return-list', doReturn);
 }
 
@@ -47,8 +47,7 @@ function renderImg() {
   })
 }
 
-
-function doSubmitBuy(e) {
+function doConfirm() {
   let err = false;
   $('.u-img').each(function() {
     if ( isNull( $(this).attr('picurl')) ) {
@@ -70,7 +69,14 @@ function doSubmitBuy(e) {
     notifyInfo('请填写实际付款金额');
     return;
   }
-  
+
+  msgbox('温馨提示', '<span class="font-red">确认提交此任务？请核对清楚！</span>','取消','确认',doSubmitBuy)
+}
+
+
+function doSubmitBuy(ret) {
+
+  if (ret) return;
 
   data = {
     buyerTaskId: _id,
@@ -83,9 +89,10 @@ function doSubmitBuy(e) {
     cart:   $('#i-s-cart').attr('picurl'),
     talk:   $('#i-s-talk').attr('picurl'),
     pay:    $('#i-s-pay').attr('picurl'),
-    orderid:$('#order-id').val(),
-    paymoney:$('#pay-money').val(),
-    shopname:$('#shop-name').val()
+    // askPicture: $('#i-s-askall').attr('picurl'),
+    orderid:    $('#order-id').val(),
+    paymoney:   $('#pay-money').val(),
+    shopname:   $('#shop-name').val()
   }
 
   promise('post', URL_BUY_SUBMIT_ORDER , JSON.stringify(data), cbSubmitBuy, null)

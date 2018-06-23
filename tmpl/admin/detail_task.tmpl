@@ -60,34 +60,46 @@
         <div class="col-1">规则尺码</div>
         <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].colorSize}}</div>
       </li>
+      {{if goodsList[0].goodsposition}}
       <li>
         <div class="col-1">商品所在地</div>
         <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].goodsposition}}</div>
       </li>
+      {{/if}}
+      {{if goodsList[0].lowprice}}
       <li>
         <div class="col-1">价格区间</div>
         <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].lowprice}}-{{:goodsList[0].highprice}}</div>
       </li>
+      {{/if}}
+      {{if goodsList[0].salesVolume}}
       <li>
         <div class="col-1">商品现有销量约</div>
         <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].salesVolume}}</div>
       </li>
+      {{/if}}
+      {{if goodsList[0].locationway}}
       <li>
         <div class="col-1">定位商品排序</div>
         <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].locationway}}</div>
       </li>
+      {{/if}}
+      {{if goodsList[0].tbLocation}}
       <li>
         <div class="col-1">商品定位</div>
         <div class="col-2 font-red-thunderbird fn-right">{{:~formatTaobaoPos(tbLocation)}}</div>
       </li>
+      {{/if}}
+      {{if goodsList[0].orderwords}}
       <li>
         <div class="col-1">订单留言</div>
         <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].orderwords}}</div>
       </li>
-      <li>
+      {{/if}}
+<!--       <li>
         <div class="col-1">是否假聊</div>
         <div class="col-2 font-red-thunderbird fn-right">{{if chatNecessary}}是{{else}}否{{/if}}</div>
-      </li>
+      </li> -->
 
     </div>
     <div class="m-d-item col-1">
@@ -168,7 +180,7 @@
   </div> 
 
 
-    <div class="m-d m-d-main">
+    <div class="m-d m-d-main m-task">
     
     {{for taskKeyList}}
     <div class="m-d-item col-1">

@@ -60,5 +60,7 @@ function cbList(e) {
 }
 
 function cbSubmitGoods(e) {
-  alertBox(MSG_DELIVERY_SUCCESS, doReturnList);
+  alertBox(MSG_DELIVERY_SUCCESS, ()=>{
+    goto('listOrder.html')
+  });
 }

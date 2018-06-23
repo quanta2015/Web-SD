@@ -42,13 +42,7 @@ let NEXT = 1;
 let platformMap = {};
 let taskObj;
 
-function doChangePicture() {
-  if ($('#picturetask').prop('checked')) $('#wordtask').prop('checked',false);
-}
 
-function doChangeWord() {
-  if ($('#wordtask').prop('checked')) $('#picturetask').prop('checked',false);
-}
 
 
 $(init);
@@ -67,6 +61,11 @@ function init() {
   $('body').on('input propertychange', '.task-count', doCountTask);
   $('body').on('change', '#picturetask', doChangePicture);
   $('body').on('change', '#wordtask', doChangeWord);
+
+  // $('body').on('change', '#ask', doChangeAsk);
+  // $('body').on('change', '.r-ask', doChangeAskQue);
+
+
 
 
   //初始化第一步验证对象
@@ -117,7 +116,7 @@ function init() {
 function doColorSize() {
   if( $(this).prop('checked')  ) {
     $('#color-size-info').attr('readonly',true);
-    $('#color-size-info').val('无规格')
+    $('#color-size-info').val('自选任意规格')
   }else{
     $('#color-size-info').attr('readonly',false)
     $('#color-size-info').val('')
@@ -269,11 +268,26 @@ function delTask() {
 
 function doPublish() {
 
+  // if ( !$('#ask').prop('checked') ) {
+  //   ask = 0;
+  // }else if ( $('.r-ask').prop('checked') ) {
+  //   ask = 1;
+  // }else {
+  //   ask = 2;
+  // }
+
+  // if ( $('.r-ask').prop('checked') ) {
+  //   askContent = $('#ask-q-q').val();
+  // }else{
+  //   askContent = $('#ask-a-q').val();
+  //   answerContent = $('#ask-a-a').val();
+  // }
+
   taskObj = {
     tasktype: $("input[name='r-task-type']:checked").val(),
     // returntype: $("input[name='r-return-type']:checked").val(),
     goodsList: [{
-      colorSize: $('#color-size-chk').prop('checked')?'':$('#color-size-info').val(),
+      colorSize: $('#color-size-info').val(),
       factprice: $('#real-price').val().replace(/,/g, ''),
       goodsmainimg: $('#upload').attr('picurl'),
       goodsimg1: '',
@@ -307,7 +321,7 @@ function doPublish() {
     isRecieve: $('#is-recieve').val(),
     expressCompany: $('#express-company').val(),
     expressWeight: $('#express-weight').val(),
-    ask: $('#ask').prop('checked')?1:0,
+    ask: 0,
     chatNecessary: $("input[name='r-chat-necessary']:checked").val(),
     shopId: $('#shop-list').val(),
     singleAmount: $('#pub-itl-amount').val(),
@@ -318,7 +332,9 @@ function doPublish() {
     auditFirst: $('#audit-first').val(),
     showFirst: $('#show-first').val(),
     taskKeyList: getTaskData(),
-    explains: $('#other').val()
+    explains: $('#other').val(),
+    askContent: "",
+    answerContent: ""
   }
 
   promiseTmpl('POST', TMPL_SELL_TASK_COST, URL_TASK_CAL_MONEY, JSON.stringify(taskObj), cbInfo)
@@ -398,7 +414,22 @@ function cbInfo(r, e) {
 }
 
 function doComplete() {
-  promiseTmpl('POST', TMPL_SELL_TASK_COST, URL_TASK_PUBLISH, JSON.stringify(taskObj), cbComplete)
+  // promiseTmpl('POST', TMPL_SELL_TASK_COST, URL_TASK_PUBLISH, JSON.stringify(taskObj), cbComplete)
+  
+
+  promise('POST', URL_TASK_PUBLISH, JSON.stringify(taskObj), (e) => {
+      promise('GET', URL_SELL_PAY_TASK + e.id, null, (e)=>{
+        alertBox("成功发布任务", (e)=>{
+          goto('listTask.html')
+        })
+      }, (e)=>{
+        msgbox('提示信息',e.message,MSG_WAIT,MSG_RECHARGE, (ret)=>{
+          if (!ret) {
+            goto('rechargeTask.html')
+          }
+        })
+      });
+  })
 }
 
 function cbComplete() {
@@ -462,3 +493,27 @@ function doCountTask() {
   });
   $('#task-count').val(count);
 }
+
+
+function doChangePicture() {
+  if ($('#picturetask').prop('checked')) $('#wordtask').prop('checked',false);
+}
+
+function doChangeWord() {
+  if ($('#wordtask').prop('checked')) $('#picturetask').prop('checked',false);
+}
+
+
+// function doChangeAsk() {
+//   $('#ask').prop('checked')?$('.form-ask').show():$('.form-ask').hide();
+// }
+
+// function doChangeAskQue() {
+//   if ( $('.r-ask').prop('checked') ) {
+//     $('.form-ask-q').show()
+//     $('.form-ask-a').hide()
+//   }else{
+//     $('.form-ask-q').hide()
+//     $('.form-ask-a').show()
+//   }
+// }

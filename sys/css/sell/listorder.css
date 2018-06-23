@@ -1,4 +1,4 @@
-body {
+22body {
     min-width: 1000px;
 }
 
@@ -103,7 +103,7 @@ table td {
 }
 
 .u-buy {
-    min-width: 225px;
+    min-width: 320px;
 }
 
 .u-exp {
@@ -123,4 +123,9 @@ table td {
 
 .u-col.u-func>a {
     margin: 0 5px 5px;
+}
+
+.u-ck {
+    position: absolute;
+    top: 25px;
 }

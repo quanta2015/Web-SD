@@ -405,11 +405,11 @@
             </div>
 
             <div class="form-group">
-              <div class="col-xs-6 form-inline">
-                发布间隔时间 <input type="text" class="form-control wide-s1" id="pub-itl-time" name="pub-itl-time" value="5"> 分钟（时间段内平均间隔时间发布）
+              <div class="col-xs-12 form-inline">
+                任务发布间隔：每隔 <input type="text" class="form-control wide-s1" id="pub-itl-time" name="pub-itl-time" value="5"> 分钟发布 <input type="text" class="form-control wide-s1" id="pub-itl-amount" name="pub-itl-amount" value="1"> 单任务
               </div>
-              <div class="col-xs-4 form-inline">
-                以上发布任务共 <input type="text" class="form-control wide-s1" id="pub-itl-amount" name="pub-itl-amount" value="5"> 单
+              <div class="col-xs-12 form-inline font-red">
+                (填写此项任务后，平台将根据您的任务分批发布，以避免订单过于集中，为了安全性建议填写此项)
               </div>
             </div>
             
@@ -457,9 +457,9 @@
             <div class="form-group">
               <label class="control-label col-xs-3">是否优先展示任务：</label>
               <div class="col-xs-9 form-inline">
-                <input type="text" class="form-control wide-s1"  id="show-first"> 金 
-                <span class="form-info"></span>(1金以上，增加金币数越多，推荐任务排名越靠前，便于买家更快速查看完成任务，提
-升完成任务速度。)
+                <input type="text" class="form-control wide-s1"  id="show-first"> 金
+                <span class="form-info "> (1金以上，增加金币数越多，推荐任务排名越靠前，便于买家更快速查看完成任务，提
+升完成任务速度。)</span>
               </div>
             </div>
 
@@ -467,7 +467,7 @@
             <div class="form-group">
               <label class="control-label col-xs-3">加赏任务佣金：每单加赏</label>
               <div class="col-xs-9 form-inline">
-                <input type="text" class="form-control" id="award-money"> 金 (任务没人接或接不完时，建议加赏提升买家积极性，优先接手你的任务)
+                <input type="text" class="form-control wide-s1" id="award-money"> 金<span class="form-info "> (任务没人接或接不完时，建议加赏提升买家积极性，优先接手你的任务)</span>
               </div>
             </div>
 
@@ -597,8 +597,8 @@
                   <option value="">请选择</option>
                     <option value="0">15天不重复(免费)</option>
                     <option value="1">30天不重复(2.00金/单)</option>
-                    <option value="2">60天不重复（3金/单）</option>
-                    <option value="3">永久不重复（10金/单）</option>
+                    <option value="2">60天不重复（3.00金/单）</option>
+                    <option value="3">永久不重复（10.00金/单）</option>
                 </select>
                 <span class="form-info">例：选择了30天不重复，30天内单个买家只能接商家一单）</span>
               </div>
@@ -671,7 +671,7 @@
               </div>
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label class="control-label col-xs-3">
                 <span class="vip">VIP专享</span>问大家
               </label>
@@ -685,6 +685,39 @@
 指定问答)  </span>
               </div>
             </div>
+
+            <div class="form-group form-ask" style="display: none">
+              <label class="control-label col-xs-3"></label>
+              <div class="col-xs-9 ">
+                <label class="mt-radio">
+                  <input type="radio" name="r-ask" class="r-ask" value="0" checked> 提问<span></span>
+                </label>
+                <label class="mt-radio">
+                  <input type="radio" name="r-ask" class="r-ask" value="1"> 指定问答<span></span>
+                </label>
+              </div>
+            </div> -->
+
+<!-- 
+            <div class="form-group form-ask " style="display: none">
+              <div class="control-label col-xs-3 form-ask-q"></div>
+              <div class="col-xs-9 form-ask-q">
+                指定提问：<input type="text" id="ask-q-q">
+              </div>
+              <div class="control-label col-xs-3 form-ask-a" style="display: none" ></div>
+              <div class="col-xs-9 form-ask-a" style="display: none">
+                指定问题：<input type="text" id="ask-a-q">
+              </div>
+              <div class="control-label col-xs-3 form-ask-a" style="display: none"></div>
+              <div class="col-xs-9 form-ask-a" style="display: none">
+                指定回答：<input type="text" id="ask-a-a">
+              </div>
+            </div> -->
+<!-- 
+            <div class="form-group form-ask form-ask-a" style="display: none">
+              
+            </div> -->
+
 
             <div class="form-group">
               <label class="control-label col-xs-3">是否向平台购买面单/花呗</label>
@@ -731,7 +764,7 @@
         <div class="ctrl">
           <a href="#" class="btn blue-madison btn-pre hide"  ><i class="fa fa-arrow-left"></i> 上一步 </a> 
           <a href="#" class="btn blue-madison btn-next"  ><i class="fa fa-arrow-right"></i> 下一步 </a> 
-          <a href="#" class="btn blue-madison btn-finish hide" id="publish-task-btn"><i class="fa fa-arrow-right"></i> 完成 </a> 
+          <a href="#" class="btn blue-madison btn-finish hide" id="publish-task-btn"><i class="fa fa-arrow-right"></i> 发布 </a> 
         </div>
       
 

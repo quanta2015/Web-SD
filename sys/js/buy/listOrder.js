@@ -31,6 +31,8 @@ function cbList(r, e) {
   $(".portlet-body .u-wrap").remove();
   $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
   if ($('.table-pg').text() == '') initPage(totalPages);
+
+  $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
 }
 
 function doCommit() {
@@ -50,7 +52,9 @@ function doEvalTask(e) {
 }
 
 function doDetail() {
-    promiseTmpl('GET', TMPL_BUY_TASK_DETAIL, '/buyertask/buyer_task' + '/'+ $(this).data('id'),null, cbDetail)
+  id = $(this).data('id')
+  url = '/buyertask/buyer_task/'+ id
+  promiseTmpl('GET', TMPL_BUY_TASK_DETAIL, url ,null, cbDetail)
 }
 
 function cbDetail(r, e) {

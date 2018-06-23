@@ -38,8 +38,9 @@ function doReturnList() {
 }
 
 function renderData(ret) {
-    $("#u-goods-evaluate").attr('src', IMG_PREFIX + ret.goodsEvaluate).parent().attr('href', IMG_PREFIX + ret.result);
-    $("#u-express-picture").attr('src', IMG_PREFIX + ret.expressPicture).parent().attr('href', IMG_PREFIX + ret.goods1);
+    $("#u-goods-evaluate").attr('src', IMG_PREFIX + ret.goodsEvaluate).parent().attr('href', IMG_PREFIX + ret.goodsEvaluate);
+    $("#u-express-picture").attr('src', IMG_PREFIX + ret.expressPicture).parent().attr('href', IMG_PREFIX + ret.expressPicture);
+    $("#u-express-evaluate").attr('src', IMG_PREFIX + ret.expressEvaluate).parent().attr('href', IMG_PREFIX + ret.expressEvaluate);
     $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
 }
 
@@ -48,5 +49,7 @@ function cbList(e) {
 }
 
 function cbAudit(e) {
-  alertBox(MSG_PAY_SUCC, doReturnList);
+  alertBox(MSG_PAY_SUCC, ()=>{
+    goto('listOrder.html')
+  });
 }

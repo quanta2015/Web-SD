@@ -41,7 +41,7 @@
             <span class="btn red btn-xs btn-file">
               <i class="fa fa-upload"></i>
               <span>  选择图片</span>
-              <input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="upload">
+              <input type="file"  class="ipt-img" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="upload">
             </span>
         </div>
       </div>
@@ -52,10 +52,10 @@
 
   {{if word||img}}
   <div class="row key-task">
-    <div class="col-xs-2 {{if word}}form-imp{{else}}fn-right{{/if}}"> {{if word}}指定文字好评任务{{else img}}文字评价{{/if}} {{if word}}<span class="task-type hide">4</span>{{/if}}</div>
+    <div class="col-xs-2 {{if word}}form-imp{{else}}fn-right{{/if}}"> {{if word}}指定文字好评任务{{else img}}图片评价描述{{/if}} {{if word}}<span class="task-type hide">4</span>{{/if}}</div>
     <div class="col-xs-10">
         <span> 指定文字</span>
-        <input type="text" id="ipt-word{{:count}}" class="wide-3 u-task-keyword" placeholder="注意！不能超过50个字！"> 
+        <input type="text" id="ipt-word{{:count}}" class="wide-3 u-task-keyword" placeholder="注意！不能超过255个字！" maxlength="255"> 
     </div>
   </div>
   {{/if}}
