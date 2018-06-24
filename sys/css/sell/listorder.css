@@ -152,7 +152,9 @@ table td {
     background: rgba(0,0,0,.5);
 }
 
-
+.m-img {
+    max-width: 200px!important;
+}
 
 
 .m-detail-wrap {

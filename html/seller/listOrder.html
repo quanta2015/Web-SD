@@ -17,7 +17,8 @@
     <link href="/lib/jquery/jquery.datetimepicker.css" rel="stylesheet">
 
     <link href="/sys/css/common.css"  rel="stylesheet"  >
-    <link href="/sys/css/sell/listOrder.css"  rel="stylesheet"  >
+    <link href="/sys/css/sell/listorder.css"  rel="stylesheet"  >
+	<link href="/sys/css/buy/evalOrder.css"  rel="stylesheet" type="text/css" >
   </head>
   <body>
     <div class="page-bar">
@@ -124,10 +125,51 @@
 
 
     <div class="g-detail" style="display: none;" >
-      <div class="m-detail-wrap">
-        
-
+     <div class="g-submit">
+      <div class="m-d m-title">
+        <div>
+          <div class="col-1 ">
+            <span aria-hidden="true" class="icon-grid"></span> 提交评价任务步骤
+          </div>
+        </div>
       </div>
+
+
+      <div class="m-d m-d-main">
+        <div class="m-d-item col-1">
+          <li class="v-m-title">
+            <div class="col-1">
+              <span class="icon-list"></span>
+              <span class="m-step">第1步 </span>
+              收货好评
+            </div>
+          </li>
+          <li>
+            <div class="col-1">评价及物流截图</div>
+          </li>
+          <li>
+              <div class="m-img" pid="u-express-picture"   type="评价截图"></div>
+              <div class="m-img" pid="u-goods-evaluate"    type="物流截图"></div>
+              <div class="m-img" pid="u-express-evaluate"    type="物流好评"></div>
+          </li>
+         
+        </div>
+        
+      </div>
+
+      <div class="m-d m-d-main">
+        <div class="m-d-item col-1">
+          <li>
+            <div class="col-1 col-btn">
+              
+              <a href="#" class="btn btn-sm red" id="submit-eval">提交评价</a>
+              <a href="#" class="btn btn-sm grey-mint" id="return-list">返回任务列表</a></div>
+          </li>
+        </div>
+      </div>
+
+
+    </div>
     </div>
 
 

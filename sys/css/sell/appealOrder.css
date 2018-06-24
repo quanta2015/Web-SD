@@ -1,0 +1,182 @@
+body {
+    min-width: 1000px;
+    font-family: "microsoft yahei";
+    color: #666;
+}
+
+.m-detail-wrap {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.m-d-item {
+    margin: 5px 5px 0 5px;
+}
+
+.v-sub-title {
+    font-size: 18px;
+    display: flex;
+}
+
+.m-d-goods {
+    padding: 15px;
+    background: #eee;
+    display: flex;
+}
+
+.m-d-main, .m-d-other {
+    padding: 0 15px 15px 15px;
+    background: #eee;
+    display: flex;
+}
+
+.m-d>div {
+    flex:1;
+    background: #fff;
+    /*padding: 10px;*/
+}
+
+
+.m-img {
+    max-width: 200px!important;
+}
+
+
+.g-submit {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.g-submit .m-d:last-child {
+    padding-bottom: 10px;
+}
+
+.m-title {
+    font-size: 20px;
+    border-bottom: 1px solid #ccc;  
+    padding:  10px;
+    color: #578EBE
+}
+
+.m-title .col-1 span {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+
+.m-d-main {
+    padding: 5px;
+    background: #eee;
+    display: flex;
+}
+
+.m-d-item {
+    flex:1;
+    background: #fff;
+    padding: 10px;
+}
+
+/*.m-d>div:first-child {
+    margin-right: 10px;
+}
+*/
+
+.m-d div li {
+    display: flex;
+    margin:10px;
+}
+
+.m-d .v-m-title {
+    border-bottom: 1px dashed #999;  
+    padding-bottom: 10px;
+    color:  #4B77BE;
+    font-weight: 600;
+}
+
+.m-d .v-m-title span {
+    margin-right: 10px;
+}
+
+.v-img {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.v-img img {
+    width: auto;
+    height: 100%;
+}
+
+.m-img-title {
+    background: #4B77BE;
+    padding: 0;
+    margin: 0 0 5px 0;
+    width: 120px;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+}
+
+
+.col-1 {
+    flex: 1;
+}
+
+.col-2 {
+    flex: 2;
+}
+
+.col-3 {
+    flex: 3;
+}
+
+
+.fn-blur {
+    filter: blur(10px);
+}
+
+.col-img {
+    display: flex;
+    flex-direction: row;
+}
+
+.m-img {
+    flex: 1;
+}
+
+.col-img .col-md-12 {
+    padding:0 5px;
+}
+
+.m-step {
+    color: #D91E18
+}
+
+.col-btn {
+    text-align: center;
+}
+
+.col-btn a {
+    width: 120px;
+    margin-right: 20px;
+}
+
+.m-eval > div {
+    margin: 10px 0 0 20px;
+    border-top: 1px dashed #aaa;
+    padding: 10px 0 0 0;
+}
+
+
+.m-eval p {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 100px;
+}
+
+.m-eval p>span {
+    margin: 5px;
+}
