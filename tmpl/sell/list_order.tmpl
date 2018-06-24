@@ -92,6 +92,7 @@
         </div>
         <div class="u-col u-status z-status{{:status}}">{{:~formatOrderStatus(status)}}</div>
         <div class="u-col u-func">
+          <a href="javascript:;" class="btn green-dark btn-xs  sbold uppercase pay-detail" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 支付详情 </a> 
           {{if (status==10)}}
           <a href="javascript:;" class="btn green-dark btn-xs  sbold uppercase sub-goods" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 发货 </a> 
           {{/if}}

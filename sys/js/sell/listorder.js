@@ -19,10 +19,39 @@ function init() {
   $('#batch-send').on('click', doBatchSend);
   $('#export').on('click', doExport);
 
+
+  
+
   $('body').on('click', '.sub-goods', doSubmitGoods);
   $('body').on('click', '.pay-task', doPayTask);
+  $('body').on('click', '.pay-detail', doPayDetail);
+  $('body').on('click', '.m-close', doClose);
 }
 
+
+function doClose() {
+  $('.g-detail').hide()
+}
+
+function doPayDetail(e) {
+    pid = $(this).attr('pid');
+    promise('GET','/task/task_detail/'+pid, null, cbPayDetail, null)
+}
+
+
+function cbPayDetail(e) {
+  console.log(e);
+
+  func = renderTmpl(TMPL_SELL_TASK_COST, e.taskMoney);
+
+  func.then(ret => {
+    $(".g-detail").empty();
+    $(".g-detail").append(ret);
+    $(".g-detail").height( $("body").height() )
+    $(".g-detail").show()
+
+  })
+}
 
 function doSubmitGoods(e) {
   var obj = {

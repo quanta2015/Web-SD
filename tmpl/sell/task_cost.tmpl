@@ -1,209 +1,201 @@
-<div class="portlet light bordered ">      
-                         
-  <div class="portlet-body">
-     本次任务费用详情
+<div class="m-detail-wrap">
+  <div class="m-close"></div>
+
+  <div class="portlet light bordered ">
+    <div class="portlet-body">
+      本次任务费用详情
+    </div>
+    <div class="portlet-body">
+      <table class="table table-bordered ">
+        <thead>
+          <tr class="uppercase">
+            <th> 分类 </th>
+            <th> 费用明细 </th>
+            <th> 小计 </th>
+            <th> 数量 </th>
+            <th> 合计 </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{for data}}
+          <tr>
+            <td rowspan='{{:taskkeytypeLength}}'> 第{{:#index+1}}任务佣金</td>
+            <td> 基础佣金： </td>
+            <td> {{:baseMoney}}金/单 </td>
+            <td> {{:baseMoneyCount}}单</td>
+            <td> {{:baseMoneySum}}金 </td>
+          </tr>
+          
+          {{if keywordCommentCount>0}}
+          <tr>
+            <td> 指定关键词好评： </td>
+            <td> {{:keywordComment}}金/单 </td>
+            <td> {{:keywordCommentCount}}单</td>
+            <td> {{:keywordCommentSum}}金 </td>
+          </tr>
+          {{/if}}
+          
+          {{if pictureCommentCount>0}}
+          <tr>
+            <td> 指定图片好评： </td>
+            <td> {{:pictureComment}}金/单 </td>
+            <td> {{:pictureCommentCount}}单</td>
+            <td> {{:pictureCommentSum}}金 </td>
+          </tr>
+          {{/if}}
+          
+          {{if wordCommentCount>0}}
+          <tr>
+            <td> 指定文字好评： </td>
+            <td> {{:wordComment}}金/单 </td>
+            <td> {{:wordCommentCount}}单</td>
+            <td> {{:wordCommentSum}}金 </td>
+          </tr>
+          {{/if}}
+          
+          {{/for}}
+          <!--         <tr>
+            <td> 收藏商品： </td>
+            <td> {{:favoriteGoods}}金/单 </td>
+            <td> {{:favoriteGoodsCount}}单</td>
+            <td> {{:favoriteGoodsSum}}金 </td>
+          </tr> -->
+          <tr>
+            <td rowspan='13'> 增值服务</td>
+            <td> 是否优先展示任务</td>
+            <td> {{:showFirst}} 金/单 </td>
+            <td> {{:showFirstCount}} 单</td>
+            <td> {{:showFirstSum}} 金 </td>
+          </tr>
+          <!-- <tr>
+            <td> 是否聊天： </td>
+            <td> {{:chatNecessary}} 金/单 </td>
+            <td> {{:chatNecessaryCount}} 单</td>
+            <td> {{:chatNecessarySum}} 金 </td>
+          </tr> -->
+          <tr>
+            <td> 加赏任务佣金</td>
+            <td> {{:extraMoney}}金/单 </td>
+            <td> {{:extraMoneyCount}}单</td>
+            <td> {{:extraMoneySum}}金 </td>
+          </tr>
+          <tr>
+            <td> 订单优先审核</td>
+            <td> {{:auditFirst}} 金/单 </td>
+            <td> {{:auditFirstCount}} 单</td>
+            <td> {{:auditFirstSum}} 金 </td>
+          </tr>
+          <tr>
+            <td> 性别匹配</td>
+            <td> {{:sexMatch}}金 </td>
+            <td> {{:sexMatchCount}}单</td>
+            <td> {{:sexMatchSum}}金 </td>
+          </tr>
+          <tr>
+            <td> 年龄段匹配</td>
+            <td> {{:ageMatch}}金 </td>
+            <td> {{:ageMatchCount}}单</td>
+            <td> {{:ageMatchSum}}金 </td>
+          </tr>
+          <tr>
+            <td> 区域限制</td>
+            <td> {{:areaMatch}}金/单 </td>
+            <td> {{:areaMatchCount}}单</td>
+            <td> {{:areaMatchSum}}金 </td>
+          </tr>
+          <tr>
+            <td> 买家等级费</td>
+            <td> {{:taobaoGrade}}金/单 </td>
+            <td> {{:taobaoGradeCount}}单</td>
+            <td> {{:taobaoGradeSum}}金 </td>
+          </tr>
+          <tr>
+            <td> 重复购买限制</td>
+            <td> {{:rebuy}}金/单 </td>
+            <td> {{:rebuyCount}}单</td>
+            <td> {{:rebuySum}}金 </td>
+          </tr>
+          <tr>
+            <td> 是否要求账号需要开通白条/花呗</td>
+            <td> {{:huabei}}金/单 </td>
+            <td> {{:huabeiCount}}单</td>
+            <td> {{:huabeiSum}}金 </td>
+          </tr>
+          <tr>
+            <td> 是否允许使用信用卡/花呗/白条</td>
+            <td> {{:usehuabei}}金/单 </td>
+            <td> {{:usehuabeiCount}}单</td>
+            <td> {{:usehuabeiSum}}金 </td>
+          </tr>
+          <!-- <tr>
+            <td> 默认签收费</td>
+            <td> {{:isReceive}}金/单 </td>
+            <td> {{:isReceiveCount}}单</td>
+            <td> {{:isReceiveSum}}金 </td>
+          </tr> -->
+          <tr>
+            <td> 问大家</td>
+            <td> {{:askAll}}金/单 </td>
+            <td> {{:askAllCount}}单</td>
+            <td> {{:askAllSum}}金 </td>
+          </tr>
+          <tr>
+            <td> 面单购买</td>
+            <td> {{:buyExpress}}金/单 </td>
+            <td> {{:buyExpressCount}}单</td>
+            <td> {{:buyExpressSum}}金 </td>
+          </tr>
+          <tr>
+            <td> 平台服务费</td>
+            <td> {{:baseserverMoney}}金/单 </td>
+            <td> {{:baseserverCount}}单</td>
+            <td> {{:baseserverSum}}金 </td>
+          </tr>
+          <tr>
+            <td>  </td>
+            <td> </td>
+            <td> 合计 </td>
+            <td> {{:baseMoneyCount}} 单</td>
+            <td> {{:serviceSum}} 金 </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="portlet-body">
+      <table class="table table-bordered ">
+        <thead>
+          <tr class="uppercase">
+            <th> 分类 </th>
+            <th> 费用明细 </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td > 商品费用</td>
+            <td>  {{:goodsMoneySum}}元 ({{:goodsMoney}}元*{{:goodsCount}}件)</td>
+          </tr>
+          <tr>
+            <td > 保证金</td>
+            <td>  {{:securityMoney}}元</td>
+          </tr>
+          <tr>
+            <td> 佣金费用</td>
+            <td> {{:serviceSum}}元 </td>
+          </tr>
+          <tr>
+            <td> 快递押金</td>
+            <td> 单* 元/单 =  元</td>
+          </tr>
+          <tr>
+            <td> </td>
+            <td> 合计 {{:sum}} 元 </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
-  <div class="portlet-body">
-    <table class="table table-bordered ">
-      <thead>
-        <tr class="uppercase">
-          <th> 分类 </th>
-          <th> 费用明细 </th>
-          <th> 小计 </th>
-          <th> 数量 </th>
-          <th> 合计 </th>
-        </tr>
-      </thead>
-      <tbody>
-        {{for data}}
-        <tr>
-          <td rowspan='{{:taskkeytypeLength}}'> 第{{:#index+1}}任务佣金</td>
-          <td> 基础佣金： </td>
-          <td> {{:baseMoney}}金/单 </td>
-          <td> {{:baseMoneyCount}}单</td>
-          <td> {{:baseMoneySum}}金 </td>
-        </tr>
-        
-        {{if keywordCommentCount>0}}
-        <tr>
-          <td> 指定关键词好评： </td>
-          <td> {{:keywordComment}}金/单 </td>
-          <td> {{:keywordCommentCount}}单</td>
-          <td> {{:keywordCommentSum}}金 </td>
-        </tr>
-        {{/if}}
-        
-        {{if pictureCommentCount>0}}
-        <tr>
-          <td> 指定图片好评： </td>
-          <td> {{:pictureComment}}金/单 </td>
-          <td> {{:pictureCommentCount}}单</td>
-          <td> {{:pictureCommentSum}}金 </td>
-        </tr>
-        {{/if}}
-        
-        {{if wordCommentCount>0}}
-        <tr>
-          <td> 指定文字好评： </td>
-          <td> {{:wordComment}}金/单 </td>
-          <td> {{:wordCommentCount}}单</td>
-          <td> {{:wordCommentSum}}金 </td>
-        </tr>
-        {{/if}}
-        
-        {{/for}}
 
-<!--         <tr>
-          <td> 收藏商品： </td>
-          <td> {{:favoriteGoods}}金/单 </td>
-          <td> {{:favoriteGoodsCount}}单</td>
-          <td> {{:favoriteGoodsSum}}金 </td>
-        </tr> -->
-
-        <tr>
-          <td rowspan='13'> 增值服务</td>
-          <td> 是否优先展示任务</td>
-          <td> {{:showFirst}} 金/单 </td>
-          <td> {{:showFirstCount}} 单</td>
-          <td> {{:showFirstSum}} 金 </td>
-        </tr>
-        <!-- <tr>
-          <td> 是否聊天： </td>
-          <td> {{:chatNecessary}} 金/单 </td>
-          <td> {{:chatNecessaryCount}} 单</td>
-          <td> {{:chatNecessarySum}} 金 </td>
-        </tr> -->
-        <tr>
-          <td> 加赏任务佣金</td>
-          <td> {{:extraMoney}}金/单 </td>
-          <td> {{:extraMoneyCount}}单</td>
-          <td> {{:extraMoneySum}}金 </td>
-        </tr>
-        <tr>
-          <td> 订单优先审核</td>
-          <td> {{:auditFirst}} 金/单 </td>
-          <td> {{:auditFirstCount}} 单</td>
-          <td> {{:auditFirstSum}} 金 </td>
-        </tr>
-        <tr>
-          <td> 性别匹配</td>
-          <td> {{:sexMatch}}金 </td>
-          <td> {{:sexMatchCount}}单</td>
-          <td> {{:sexMatchSum}}金 </td>
-        </tr>
-        <tr>
-          <td> 年龄段匹配</td>
-          <td> {{:ageMatch}}金 </td>
-          <td> {{:ageMatchCount}}单</td>
-          <td> {{:ageMatchSum}}金 </td>
-        </tr>
-        <tr>
-          <td> 区域限制</td>
-          <td> {{:areaMatch}}金/单 </td>
-          <td> {{:areaMatchCount}}单</td>
-          <td> {{:areaMatchSum}}金 </td>
-        </tr>
-        <tr>
-          <td> 买家等级费</td>
-          <td> {{:taobaoGrade}}金/单 </td>
-          <td> {{:taobaoGradeCount}}单</td>
-          <td> {{:taobaoGradeSum}}金 </td>
-        </tr>
-        <tr>
-          <td> 重复购买限制</td>
-          <td> {{:rebuy}}金/单 </td>
-          <td> {{:rebuyCount}}单</td>
-          <td> {{:rebuySum}}金 </td>
-        </tr>
-        <tr>
-          <td> 是否要求账号需要开通白条/花呗</td>
-          <td> {{:huabei}}金/单 </td>
-          <td> {{:huabeiCount}}单</td>
-          <td> {{:huabeiSum}}金 </td>
-        </tr>
-        <tr>
-          <td> 是否允许使用信用卡/花呗/白条</td>
-          <td> {{:usehuabei}}金/单 </td>
-          <td> {{:usehuabeiCount}}单</td>
-          <td> {{:usehuabeiSum}}金 </td>
-        </tr>
-        <!-- <tr>
-          <td> 默认签收费</td>
-          <td> {{:isReceive}}金/单 </td>
-          <td> {{:isReceiveCount}}单</td>
-          <td> {{:isReceiveSum}}金 </td>
-        </tr> -->
-        <tr>
-          <td> 问大家</td>
-          <td> {{:askAll}}金/单 </td>
-          <td> {{:askAllCount}}单</td>
-          <td> {{:askAllSum}}金 </td>
-        </tr>
-        <tr>
-          <td> 面单购买</td>
-          <td> {{:buyExpress}}金/单 </td>
-          <td> {{:buyExpressCount}}单</td>
-          <td> {{:buyExpressSum}}金 </td>
-        </tr>
-        <tr>
-          <td> 平台服务费</td>
-          <td> {{:baseserverMoney}}金/单 </td>
-          <td> {{:baseserverCount}}单</td>
-          <td> {{:baseserverSum}}金 </td>
-        </tr>
-        <tr>
-          <td>  </td>
-          <td> </td>
-          <td> 合计 </td>
-          <td> {{:baseMoneyCount}} 单</td>
-          <td> {{:serviceSum}} 金 </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="portlet-body">
-    <table class="table table-bordered ">
-      <thead>
-        <tr class="uppercase">
-          <th> 分类 </th>
-          <th> 费用明细 </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td > 商品费用</td>
-          <td>  {{:goodsMoneySum}}元 ({{:goodsMoney}}元*{{:goodsCount}}件)</td>
-        </tr>
-        <tr>
-          <td > 保证金</td>
-          <td>  {{:securityMoney}}元</td>
-        </tr>
-        <tr>
-          <td> 佣金费用</td>
-          <td> {{:serviceSum}}元 </td> 
-        </tr>
-        <tr>
-          <td> 快递押金</td>
-          <td> 单* 元/单 =  元</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td> 合计 {{:sum}} 元 </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
- <!--  <div class="portlet-body">
-    选择支付方式
-  </div>
-
-  <div class="portlet-body">
-    <label class="mt-radio">
-        <input type="radio" name="r-platform" value="淘宝" checked> 使用账户余额支付（本金账户余额 {{:balance}} 元，充值成功后请刷新账户余额）
-        <span></span>
-    </label>
-  </div> -->
 </div>
+
+
