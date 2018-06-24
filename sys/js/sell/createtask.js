@@ -384,6 +384,7 @@ function getTaskData() {
       }
       if( $(this).text() == '3' ) {
         taskItem.taskPictureList = getArrVal( $(item).find('.ipt-img'), false)
+        taskItem.goodComment = getArrVal( $(item).find('.u-task-keyword'), true)
       }
       if( $(this).text() == '4' ) {
         taskItem.goodComment = getArrVal( $(item).find('.u-task-keyword'), true)
@@ -480,8 +481,7 @@ function initPlatforms() {
 }
 
 
-async function doInitShop() {
-  let platform = $(this).val();
+function changeType(platform) {
   if ( platform === '淘宝' ) {
     $('.form-group-tb').removeClass('hide')
     $('.form-group-jd').addClass('hide')
@@ -493,6 +493,13 @@ async function doInitShop() {
     $('#r-task-mtb').prop('checked',false)
     $('#r-task-mjd').prop('checked',true)
   }
+
+}
+
+async function doInitShop() {
+  let platform = $(this).val();
+  changeType(platform);
+  
   $("#shop-list").empty().append(await renderTmpl(TMPL_SELL_SHOP_SELECT, { list:platformMap[platform] }));
 }
 
@@ -545,12 +552,96 @@ function initTask() {
     console.log(e);
 
 
-    $(`#platform-list option[value=${e.shop.type}]`).prop('selected','selected')
-    $(`#shop-list option[value=${e.shop.id}]`).prop('selected','selected')
-    $('.btn-next').trigger('click')
+    $(`#platform-list option[value=${e.shop.type}]`).prop('selected','selected');
+    $(`#shop-list option[value=${e.shop.id}]`).prop('selected','selected');
 
 
+    changeType(e.shop.type);
+  
 
-  },null);
+
+    $('.btn-next').trigger('click');
+
+    //商品信息
+    $('#url').val(e.goodsList[0].goodsurl);
+    $('#name').val(e.goodsList[0].goodsname);
+    $('#uploadImg').attr('src', IMG_PREFIX + e.goodsList[0].goodsmainimg);
+    $('#upload').attr('picurl', e.goodsList[0].goodsmainimg);
+
+    if (e.goodsList[0].colorSize === '自选任意规格') {
+      $('#color-size-chk').trigger('click')
+    }else{
+      $('#color-size-info').val(e.goodsList[0].colorSize)
+    }
+
+    $('#real-price').val(e.goodsList[0].factprice)
+    $('#mobile-price').val(e.goodsList[0].searchprice)
+    $('#buy-count').val(e.goodsList[0].number)
+
+
+    //设置如何找到商品
+    $(`.r-locationway[value='${e.goodsList[0].locationway}']`).prop('checked',true)
+    $(`#goods-province option[value='${e.shop.addressProvince}']`).attr("selected", "selected");
+    $("#goods-province").trigger("change");
+    $(`#goods-city option[value='${e.shop.addressCity}']`).attr("selected", "selected");
+    $('#price-from').val(e.goodsList[0].lowprice)
+    $('#price-to').val(e.goodsList[0].highprice)
+    $('#sell-count').val(e.goodsList[0].salesVolume)
+    $('#order-message').val(e.goodsList[0].orderwords)
+
+    //淘宝定位
+    e.tbLocation.split(';').forEach((v)=>{
+      val = parseInt(v);
+      $(`.tb-location[value='${val}']`).prop('checked',true)
+    })
+
+    //任务类型和单数
+    e.taskKeyList.forEach((el,index)=>{
+      key = false;
+      img = false;
+      word = false;
+
+      typeList = el.taskkeyType.split("");
+      if (typeList.length>1) {
+        removeByValue(typeList,'1')
+      }
+      typeList.forEach((v)=>{
+        if (2 === parseInt(v)) key = true;
+        if (3 === parseInt(v)) img = true;
+        if (4 === parseInt(v)) word = true;
+      })
+
+      ret = { count:index+1, key:key, img:img, word:word, list:[1,1,1,1,1] , data:el, imgPrefix:IMG_PREFIX.trim()};
+
+      (function(dat) {
+          renderTmpl('/tmpl/sell/createtaskEx.tmpl', dat ).then(function(h) {
+            $(".task-wrap").append(h);
+            doCountTask()
+          })
+      })(ret);
+
+
+    })
+
+
+    //增值服务
+    $('.r-chat-necessary').prop('checked', (e.chatNecessary === 1)?true:false )
+    $('#show-first').val(e.showFirst)
+    $('#award-money').val(e.addcharges)
+    $(`#audit-first option[value='${e.auditFirst}']`).prop('selected','selected')
+    $(`#sex option[value='${e.sex}']`).prop('selected','selected')
+    $(`#age option[value='${e.ageLimit}']`).prop('selected','selected')
+    $(`#taobao-level option[value='${e.taobaoLevel}']`).prop('selected','selected')
+    $(`#rebuy option[value='${e.rebuy}']`).prop('selected','selected')
+    $(`#use-huabei option[value='${e.useHuabei}']`).prop('selected','selected')
+    $(`#huabei-start option[value='${e.huabeiStart}']`).prop('selected','selected')
+    $(`#is-recieve option[value='${e.isRecieve}']`).prop('selected','selected')
+    $(`#buy-express option[value='${e.buyExpress}']`).prop('selected','selected')
+
+    $('#limit-location').select2('val', e.location.split(';') );
+
+    $('#other').val(e.explains)
+
+  },null)
 }
 
