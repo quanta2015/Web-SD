@@ -26,6 +26,7 @@ function init() {
   $('body').on('click', '.pay-task', doPayTask);
   $('body').on('click', '.pay-detail', doPayDetail);
   $('body').on('click', '.m-close', doClose);
+  $('body').on('click','.complain-task',doComplainTask);
 }
 
 
@@ -91,6 +92,14 @@ function getCheckedVal() {
   })
 
   return r;
+}
+
+function doComplainTask(e){
+	var obj = {
+    id: $(this).prop('id'),
+    tid: $(this).attr('tid')
+  }
+  location.href = ['appealOrder.html', encodeQuery(obj)].join('?')
 }
 
 function doBatchCancel() {
