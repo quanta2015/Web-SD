@@ -566,7 +566,7 @@ const rdHelper = {
         case 1: ret.push('普通评价任务'); break;
         case 2: ret.push('关键字好评任务'); break;
         case 3: ret.push('图片好评任务'); break;
-        case 3: ret.push('文字好评任务'); break;
+        case 4: ret.push('文字好评任务'); break;
       }
     })
     return ret.join('/')

@@ -169,3 +169,14 @@ body {
 .m-sbar>div>input.u-dt {
     width: 140px;
 }
+
+
+
+.m-task {
+    flex-wrap: wrap;
+}
+
+.m-d-task {
+    width: calc( (100% - 20px)/2 )!important;
+    flex: none!important;
+}

@@ -140,7 +140,7 @@ body {
 .u-task-detail h1 {
     font-size: 14px;
     text-align: center;
-    margin: 0;
+    margin: 10px 0 15px 0;
     color: #333;
     font-weight: 600;
 }

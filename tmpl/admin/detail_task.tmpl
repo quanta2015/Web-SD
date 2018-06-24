@@ -129,7 +129,7 @@
       <li>
         <div class="col-2">性别选择</div>
         <div class="col-1 font-red-thunderbird fn-right">
-        {{:~formatNull(sex)}} </div>
+        {{:~formatBool(sex)}} </div>
       </li>
       <li>
         <div class="col-2">人群年龄段</div>
@@ -183,7 +183,7 @@
     <div class="m-d m-d-main m-task">
     
     {{for taskKeyList}}
-    <div class="m-d-item col-1">
+    <div class="m-d-item col-1 m-d-task">
       <li class="v-m-title">
         <div class="col-1">
           <span class="icon-layers"></span>第 {{:#index+1}}个任务
@@ -213,8 +213,11 @@
         <div class="col-1">好评图片图
       </li>
       <li>
-        <div class="col-2 font-red-mint">{{for taskPictureList}}
+        <div class="col-2 font-red-mint">
+          {{for taskPictureList}}
+          {{if picture}}
           <a href="{{:~root.imgPrefix}}{{:picture}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture}}" style="width: 60px; height: 60px; border: 1px solid #ccc;"></a>
+          {{/if}}
           {{/for}}</div>
       </li>
       {{/if}}

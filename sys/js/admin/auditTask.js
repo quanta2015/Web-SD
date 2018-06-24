@@ -54,7 +54,9 @@ function cbDetail(r, e) {
   $(".g-detail").empty();
   ret.data.imgPrefix = IMG_PREFIX;
   $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
+  $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
   $(".g-detail").show()
+  $(".g-detail").height( $(document).height())
 }
 
 function doAuditTask(e) {

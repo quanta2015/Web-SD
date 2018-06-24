@@ -4,7 +4,7 @@ function init() {
 
 
   var h = $(document).height();
-  $("iframe").height(h - 80);
+  $("iframe").height(h-55);
 
   //显示用户名
   $("#u-name").html(cookie('name') || '<a href="updateSeller.html" target="mainframe" class="font-red">请完善信息</a>');
