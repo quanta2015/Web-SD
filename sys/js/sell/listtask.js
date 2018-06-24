@@ -20,6 +20,26 @@ function init() {
   $('body').on('click', '.m-close', doClose);
   $('body').on('click', '.republish-task', doRepublish);
 
+  $('body').on('click', '.pay-detail', doPayDetail);
+
+}
+
+
+
+
+function doPayDetail(e) {
+    pid = $(this).attr('id');
+    promise('GET','/task/task_detail/'+pid, null, cbPayDetail, null)
+}
+
+
+function cbPayDetail(e) {
+  renderTmpl(TMPL_SELL_TASK_COST, e.taskMoney).then(ret => {
+    $(".g-detail").empty();
+    $(".g-detail").append(ret);
+    $(".g-detail").height( $("body").height() )
+    $(".g-detail").show()
+  })
 }
 
 

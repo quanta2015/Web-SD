@@ -24,8 +24,25 @@ function init() {
 
   $('body').on('click', '.sub-goods', doSubmitGoods);
   $('body').on('click', '.pay-task', doPayTask);
-  $('body').on('click', '.pay-detail', doPayDetail);
   $('body').on('click', '.m-close', doClose);
+  $('body').on('click', '.detail-task', doDetail);
+}
+
+
+
+function doDetail() {
+  id = $(this).attr('pid')
+  url = '/task/task_detail/'+ id
+  promiseTmpl('GET', TMPL_BUY_TASK_DETAIL, url ,null, cbDetail)
+}
+
+function cbDetail(r, e) {
+  let ret = e;
+  ret.data.imgPrefix = IMG_PREFIX;
+  $(".g-detail").empty();
+  $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
+  // $("#ig-info").toggle("slide", { direction: "left" }, 200);
+  $(".g-detail").show();
 }
 
 
@@ -33,25 +50,6 @@ function doClose() {
   $('.g-detail').hide()
 }
 
-function doPayDetail(e) {
-    pid = $(this).attr('pid');
-    promise('GET','/task/task_detail/'+pid, null, cbPayDetail, null)
-}
-
-
-function cbPayDetail(e) {
-  console.log(e);
-
-  func = renderTmpl(TMPL_SELL_TASK_COST, e.taskMoney);
-
-  func.then(ret => {
-    $(".g-detail").empty();
-    $(".g-detail").append(ret);
-    $(".g-detail").height( $("body").height() )
-    $(".g-detail").show()
-
-  })
-}
 
 function doSubmitGoods(e) {
   var obj = {

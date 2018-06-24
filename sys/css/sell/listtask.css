@@ -245,3 +245,7 @@ select,input {
     width: calc( (100% - 20px)/2 )!important;
     flex: none;
 }
+
+table a {
+    margin-bottom: 5px!important;
+}
