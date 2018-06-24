@@ -98,7 +98,7 @@ table td {
 }
 
 .u-money {
-    width: 120px;
+    min-width: 125px;
     align-items: center;
 }
 
@@ -107,7 +107,7 @@ table td {
 }
 
 .u-exp {
-    width: 180px;
+    min-width: 180px;
     align-items: center;
 }
 

@@ -92,14 +92,16 @@
         </div>
         <div class="u-col u-status z-status{{:status}}">{{:~formatOrderStatus(status)}}</div>
         <div class="u-col u-func">
-          <a href="javascript:;" class="btn green-dark btn-xs  sbold uppercase pay-detail" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 支付详情 </a> 
-          <a href="javascript:;" class="btn red-mint btn-xs  sbold uppercase complain-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 申诉任务 </a> 
+          <a href="javascript:;" class="btn grey-mint btn-xs   uppercase pay-detail" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 支付详情 </a> 
+          <a href="javascript:;" class="btn grey-mint btn-xs   uppercase task-detail" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 任务详情 </a> 
+          <a href="javascript:;" class="btn red-mint btn-xs   uppercase complain-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 申诉任务 </a> 
+          <a href="javascript:;" class="btn blue-steel btn-xs   uppercase change-money" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 修改价格 </a>
           {{if (status==10)}}
-          <a href="javascript:;" class="btn red btn-xs  sbold uppercase sub-goods" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 发货 </a> 
+          <a href="javascript:;" class="btn red btn-xs   uppercase sub-goods" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 发货 </a> 
           {{/if}}
           {{if (status==30)}}
-          <a href="javascript:;" class="btn red btn-xs  sbold uppercase pay-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 审核 </a> 
-          <a href="javascript:;" class="btn red btn-xs  sbold uppercase request-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 申诉 </a> 
+          <a href="javascript:;" class="btn red btn-xs   uppercase pay-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 审核 </a> 
+          <a href="javascript:;" class="btn red btn-xs   uppercase request-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-o-right"></i> 申诉 </a> 
           {{/if}}
         </div>
     </div>

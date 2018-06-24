@@ -18,7 +18,18 @@ function init() {
   $('body').on('click', '.search-task', doSearch);
   $('body').on('click', '.detail-task', doDetailTask);
   $('body').on('click', '.m-close', doClose);
+  $('body').on('click', '.republish-task', doRepublish);
+
 }
+
+
+function doRepublish(e) {
+  id = $(e.currentTarget).data('id');
+  goto('createTask.html?id='+id)
+}
+
+
+
 
 function doDetailTask(e) {
   id = $(e.currentTarget).data('id')

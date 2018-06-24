@@ -41,6 +41,7 @@ let PREV = 0;
 let NEXT = 1;
 let platformMap = {};
 let taskObj;
+let _tid;
 
 
 
@@ -48,6 +49,7 @@ let taskObj;
 $(init);
 
 function init() {
+
 
   $('body').on('click', '.btn-pre', doPre);
   $('body').on('click', '.btn-next', doNext);
@@ -64,8 +66,6 @@ function init() {
 
   // $('body').on('change', '#ask', doChangeAsk);
   // $('body').on('change', '.r-ask', doChangeAskQue);
-
-
 
 
   //初始化第一步验证对象
@@ -110,6 +110,12 @@ function init() {
   $('#express-weight').mask("#,##0", {reverse: true});
   $('#show-first').mask("#,##0", {reverse: true});
   $('.u-task-count').mask("#,##0", {reverse: true});
+
+
+
+
+  _tid = getUrlParam('id');
+  
 }
 
 
@@ -443,22 +449,36 @@ function cbComplete() {
 }
 
 
+// function initPlatforms() {
+//   promise('GET', URL_TASK_ALL_PLATFORM, null, cbPlatformInfo, null);
+// }
+
+// function cbPlatformInfo(e) {
+//   initPlatformList(e);
+// }
+// 
+
+
 function initPlatforms() {
-  promise('GET', URL_TASK_ALL_PLATFORM, null, cbPlatformInfo, null);
+  promise('GET', URL_TASK_ALL_PLATFORM, null, (ret)=>{
+    let platforms = ret.map(v => v.platform);
+    ret.forEach(v => {
+      platformMap[v.platform] = v.shops;
+    })
+
+    platformData = $.templates('<option value="">请选择平台</option>{{for list}}<option value="{{:#data}}">{{:#data}}</option>{{/for}}').render({ list:platforms });
+    shopData = $.templates('<option value="">请选择店铺</option>{{for list}}<option value="{{:#data.id}}" data-province="{{:#data.addressProvince}}" data-city="{{:#data.addressCity}}">{{:#data.name}}</option>{{/for}}').render({ list:platformMap[platforms[0]] });
+    $("#platform-list").append(platformData);
+    $("#shop-list").append(shopData);
+
+
+    //初始化任务
+    if (_tid !== null) initTask();
+
+
+  }, null);
 }
 
-function cbPlatformInfo(e) {
-  initPlatformList(e);
-}
-
-async function initPlatformList(data) {
-  let platforms = data.map(v => v.platform);
-  data.forEach(v => {
-    platformMap[v.platform] = v.shops;
-  })
-  $("#platform-list").append(await renderTmpl(TMPL_SELL_PLAT_SELECT, { list:platforms }));
-  $("#shop-list").append(await renderTmpl(TMPL_SELL_SHOP_SELECT, { list:platformMap[platforms[0]] }));
-}
 
 async function doInitShop() {
   let platform = $(this).val();
@@ -517,3 +537,20 @@ function doChangeWord() {
 //     $('.form-ask-a').show()
 //   }
 // }
+// 
+
+
+function initTask() {
+  promise('GET','/task/task_detail/'+_tid, null, (e)=>{
+    console.log(e);
+
+
+    $(`#platform-list option[value=${e.shop.type}]`).prop('selected','selected')
+    $(`#shop-list option[value=${e.shop.id}]`).prop('selected','selected')
+    $('.btn-next').trigger('click')
+
+
+
+  },null);
+}
+
