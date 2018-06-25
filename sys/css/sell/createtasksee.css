@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+a {
+    color: #006699;
+    text-decoration: none;
+}
+
+.mt-radio-inline .mt-radio {
+    margin-bottom: 0;
+}
+
+.mt-radio-list .mt-radio:last-child {
+    margin-bottom: 0;
+}
+
+.ctrl {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.stop-title {
+    font: 14px/1.5 "Microsoft Yahei";
+    font-weight: 600;
+    color: #f00000;
+    margin: 10px 0 20px;
+    padding: 5px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.form-info {
+    margin-left: 10px;
+    color: #E43A45;
+}
+
+.form-group .wide-3 {
+    width: 400px;
+}
+
+.form-group .wide-s1 {
+    width: 50px;
+}
+
+.form-group .wide-s2 {
+    width: 100px;
+}
+
+.form-imp {
+    position: relative;
+    text-align: right;
+}
+
+.form-imp:before {
+    content: "*";
+    display: inline-block;
+    margin-right: 5px;
+    /*border: 1px solid #ff0000;*/
+    color: #ff0000;
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+i { 
+    font-style: normal;
+    font-size: 12px;
+}
+
+
+.alladdress {
+    background-color: #fff;
+    border: 1px solid #bebfbf;
+    position: absolute;
+    top: 30px;
+    width: 320px;
+    z-index: 999999;
+    font-size: 10px;
+}
+
+
+.alladdress .all {
+    border-bottom: 1px dashed #bebfbf;
+    padding: 10px;
+}
+
+.alladdress div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding:2px 0;
+    border-bottom: 1px dashed #bebfbf;
+}
+
+.alladdress div li{
+    flex-basis: 20%;
+    text-align: center;
+    padding: 5px;
+    margin:0;
+}
+
+.task-wrap {
+    border: 1px solid #aaa;
+    padding: 10px;
+/*    margin: 5px 0 15px 15px;
+    box-sizing: border-box;
+    width: calc( 100% - 25px )*/
+}
+
+.task-wrap-item:first-child {
+    border-top: none;
+}
+
+.task-wrap-item {
+    border-top: 1px dashed #bebfbf;
+    padding-bottom: 10px;
+}
+
+.nor-task,.key-task, .task-add, .img-task, .word-task {
+    margin-bottom:10px;
+}
+
+.task-add {
+    width: 200px;
+    /*padding-bottom: 10px;*/
+}
+
+
+.img-task-list {
+    display: flex;
+}
+
+.img-task-list .fileinput-new {
+    padding: 5px;
+}
+
+.img-task-desc textarea {
+    width: 800px;
+    height: 80px;
+}
+
+.img-task-title {
+    font-weight: 600;
+    margin-top: 10px;
+    padding: 10px 0 ;
+}
+
+.step3 table>tbody>tr:last-child>td {
+    border: 0px solid #fff;
+}
+
+.step3 table {
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+.col-img-info {
+    display: flex;
+    flex-direction: column;
+    color: #E43A45
+}
+
+.vip {
+    color: #E43A45;
+    font-size: 12px;
+    margin-right: 5px;
+    font-weight: 600;
+}
+
+.m-task-info {
+    margin-bottom: 15px;
+}
+
+.form-time {
+    display: inline-block;
+    margin: 0!important;
+}
+
+

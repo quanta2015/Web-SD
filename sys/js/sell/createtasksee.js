@@ -61,8 +61,7 @@ function init() {
   $('body').on('change', '#color-size-chk', doColorSize);
   $('body').on('click', '.task-add', addTask);
   $('body').on('input propertychange', '.task-count', doCountTask);
-  $('body').on('change', '#picturetask', doChangePicture);
-  $('body').on('change', '#wordtask', doChangeWord);
+
 
   // $('body').on('change', '#ask', doChangeAsk);
   // $('body').on('change', '.r-ask', doChangeAskQue);
@@ -110,8 +109,6 @@ function init() {
   $('#express-weight').mask("#,##0", {reverse: true});
   $('#show-first').mask("#,##0", {reverse: true});
   $('.u-task-count').mask("#,##0", {reverse: true});
-
-
 
 
   _tid = getUrlParam('id');
@@ -255,14 +252,14 @@ function initTime(index) {
 
 async function addTask() {
   var count = $('.task-wrap-item').length + 1;
-  var key   = $('#keywordtask').prop('checked');
-  var img   = $('#picturetask').prop('checked');
-  var word  = $('#wordtask').prop('checked');
+  var store   = $('#keywordtask').prop('checked');
+  var follow   = $('#picturetask').prop('checked');
+  var add  = $('#wordtask').prop('checked');
   $('#keywordtask').prop('checked', false)
   $('#picturetask').prop('checked', false)
   $('#wordtask').prop('checked', false);
 
-  $(".task-wrap").append(await renderTmpl('/tmpl/sell/createtask.tmpl', { type:'nor-task', count:count, key:key, img:img, word:word, list:[1,1,1,1,1] }));
+  $(".task-wrap").append(await renderTmpl('/tmpl/sell/createtasksee.tmpl', { type:'nor-task', count:count, store:store, follow:follow, add:add, list:[1,1,1,1,1] }));
   initTime(count)
   doCountTask()
 }
@@ -274,20 +271,6 @@ function delTask() {
 
 function doPublish() {
 
-  // if ( !$('#ask').prop('checked') ) {
-  //   ask = 0;
-  // }else if ( $('.r-ask').prop('checked') ) {
-  //   ask = 1;
-  // }else {
-  //   ask = 2;
-  // }
-
-  // if ( $('.r-ask').prop('checked') ) {
-  //   askContent = $('#ask-q-q').val();
-  // }else{
-  //   askContent = $('#ask-a-q').val();
-  //   answerContent = $('#ask-a-a').val();
-  // }
 
   taskObj = {
     tasktype: $("input[name='r-task-type']:checked").val(),
@@ -384,7 +367,6 @@ function getTaskData() {
       }
       if( $(this).text() == '3' ) {
         taskItem.taskPictureList = getArrVal( $(item).find('.ipt-img'), false)
-        taskItem.goodComment = getArrVal( $(item).find('.u-task-keyword'), true)
       }
       if( $(this).text() == '4' ) {
         taskItem.goodComment = getArrVal( $(item).find('.u-task-keyword'), true)
@@ -450,15 +432,6 @@ function cbComplete() {
 }
 
 
-// function initPlatforms() {
-//   promise('GET', URL_TASK_ALL_PLATFORM, null, cbPlatformInfo, null);
-// }
-
-// function cbPlatformInfo(e) {
-//   initPlatformList(e);
-// }
-// 
-
 
 function initPlatforms() {
   promise('GET', URL_TASK_ALL_PLATFORM, null, (ret)=>{
@@ -473,7 +446,7 @@ function initPlatforms() {
     $("#shop-list").append(shopData);
 
 
-    //初始化任务
+    //重新发布 - 初始化任务
     if (_tid !== null) initTask();
 
 
@@ -481,7 +454,8 @@ function initPlatforms() {
 }
 
 
-function changeType(platform) {
+async function doInitShop() {
+  let platform = $(this).val();
   if ( platform === '淘宝' ) {
     $('.form-group-tb').removeClass('hide')
     $('.form-group-jd').addClass('hide')
@@ -493,13 +467,6 @@ function changeType(platform) {
     $('#r-task-mtb').prop('checked',false)
     $('#r-task-mjd').prop('checked',true)
   }
-
-}
-
-async function doInitShop() {
-  let platform = $(this).val();
-  changeType(platform);
-  
   $("#shop-list").empty().append(await renderTmpl(TMPL_SELL_SHOP_SELECT, { list:platformMap[platform] }));
 }
 
@@ -522,125 +489,18 @@ function doCountTask() {
 }
 
 
-function doChangePicture() {
-  if ($('#picturetask').prop('checked')) $('#wordtask').prop('checked',false);
-}
-
-function doChangeWord() {
-  if ($('#wordtask').prop('checked')) $('#picturetask').prop('checked',false);
-}
-
-
-// function doChangeAsk() {
-//   $('#ask').prop('checked')?$('.form-ask').show():$('.form-ask').hide();
-// }
-
-// function doChangeAskQue() {
-//   if ( $('.r-ask').prop('checked') ) {
-//     $('.form-ask-q').show()
-//     $('.form-ask-a').hide()
-//   }else{
-//     $('.form-ask-q').hide()
-//     $('.form-ask-a').show()
-//   }
-// }
-// 
-
 
 function initTask() {
   promise('GET','/task/task_detail/'+_tid, null, (e)=>{
     console.log(e);
 
 
-    $(`#platform-list option[value=${e.shop.type}]`).prop('selected','selected');
-    $(`#shop-list option[value=${e.shop.id}]`).prop('selected','selected');
+    $(`#platform-list option[value=${e.shop.type}]`).prop('selected','selected')
+    $(`#shop-list option[value=${e.shop.id}]`).prop('selected','selected')
+    $('.btn-next').trigger('click')
 
 
-    changeType(e.shop.type);
-  
 
-
-    $('.btn-next').trigger('click');
-
-    //商品信息
-    $('#url').val(e.goodsList[0].goodsurl);
-    $('#name').val(e.goodsList[0].goodsname);
-    $('#uploadImg').attr('src', IMG_PREFIX + e.goodsList[0].goodsmainimg);
-    $('#upload').attr('picurl', e.goodsList[0].goodsmainimg);
-
-    if (e.goodsList[0].colorSize === '自选任意规格') {
-      $('#color-size-chk').trigger('click')
-    }else{
-      $('#color-size-info').val(e.goodsList[0].colorSize)
-    }
-
-    $('#real-price').val(e.goodsList[0].factprice)
-    $('#mobile-price').val(e.goodsList[0].searchprice)
-    $('#buy-count').val(e.goodsList[0].number)
-
-
-    //设置如何找到商品
-    $(`.r-locationway[value='${e.goodsList[0].locationway}']`).prop('checked',true)
-    $(`#goods-province option[value='${e.shop.addressProvince}']`).attr("selected", "selected");
-    $("#goods-province").trigger("change");
-    $(`#goods-city option[value='${e.shop.addressCity}']`).attr("selected", "selected");
-    $('#price-from').val(e.goodsList[0].lowprice)
-    $('#price-to').val(e.goodsList[0].highprice)
-    $('#sell-count').val(e.goodsList[0].salesVolume)
-    $('#order-message').val(e.goodsList[0].orderwords)
-
-    //淘宝定位
-    e.tbLocation.split(';').forEach((v)=>{
-      val = parseInt(v);
-      $(`.tb-location[value='${val}']`).prop('checked',true)
-    })
-
-    //任务类型和单数
-    e.taskKeyList.forEach((el,index)=>{
-      key = false;
-      img = false;
-      word = false;
-
-      typeList = el.taskkeyType.split("");
-      if (typeList.length>1) {
-        removeByValue(typeList,'1')
-      }
-      typeList.forEach((v)=>{
-        if (2 === parseInt(v)) key = true;
-        if (3 === parseInt(v)) img = true;
-        if (4 === parseInt(v)) word = true;
-      })
-
-      ret = { count:index+1, key:key, img:img, word:word, list:[1,1,1,1,1] , data:el, imgPrefix:IMG_PREFIX.trim()};
-
-      (function(dat) {
-          renderTmpl('/tmpl/sell/createtaskEx.tmpl', dat ).then(function(h) {
-            $(".task-wrap").append(h);
-            doCountTask()
-          })
-      })(ret);
-
-
-    })
-
-
-    //增值服务
-    $('.r-chat-necessary').prop('checked', (e.chatNecessary === 1)?true:false )
-    $('#show-first').val(e.showFirst)
-    $('#award-money').val(e.addcharges)
-    $(`#audit-first option[value='${e.auditFirst}']`).prop('selected','selected')
-    $(`#sex option[value='${e.sex}']`).prop('selected','selected')
-    $(`#age option[value='${e.ageLimit}']`).prop('selected','selected')
-    $(`#taobao-level option[value='${e.taobaoLevel}']`).prop('selected','selected')
-    $(`#rebuy option[value='${e.rebuy}']`).prop('selected','selected')
-    $(`#use-huabei option[value='${e.useHuabei}']`).prop('selected','selected')
-    $(`#huabei-start option[value='${e.huabeiStart}']`).prop('selected','selected')
-    $(`#is-recieve option[value='${e.isRecieve}']`).prop('selected','selected')
-    $(`#buy-express option[value='${e.buyExpress}']`).prop('selected','selected')
-
-    $('#limit-location').select2('val', e.location.split(';') );
-
-    $('#other').val(e.explains)
-
-  },null)
+  },null);
 }
+

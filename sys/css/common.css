@@ -132,3 +132,8 @@ a:hover {
   color: #67809F;
 }
 
+
+.page-bar {
+    background-color: #666;
+    color: #fff!important;
+}
