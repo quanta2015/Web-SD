@@ -25,11 +25,8 @@ function init() {
   $('body').on('click', '.sub-goods', doSubmitGoods);
   $('body').on('click', '.pay-task', doPayTask);
   $('body').on('click', '.m-close', doClose);
-<<<<<<< HEAD
   $('body').on('click', '.detail-task', doDetail);
-=======
   $('body').on('click','.complain-task',doComplainTask);
->>>>>>> c55f10332f9c31f24860cedb411abb7e1d741e5f
 }
 
 
@@ -37,7 +34,7 @@ function init() {
 function doDetail() {
   id = $(this).attr('pid')
   url = '/task/task_detail/'+ id
-  promiseTmpl('GET', TMPL_BUY_TASK_DETAIL, url ,null, cbDetail)
+  promiseTmpl('GET', '/tmpl/sell/show_detail.tmpl', url ,null, cbDetail)
 }
 
 function cbDetail(r, e) {

@@ -25,6 +25,12 @@ function init() {
   initList(pageData);
 }
 
+function uploadFile() {
+
+  file = $('#upit')[0].files[0]
+  upit(file)
+}
+
 
 
 function doShowMoney() {

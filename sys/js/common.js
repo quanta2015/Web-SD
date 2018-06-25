@@ -3,10 +3,13 @@ const CODE_COUNT = 60
 const BUY = 0
 const SELL = 1
 const HOST = 'http://103.251.90.136:8011'
-const IMG_PREFIX = HOST + '/file/'
+// const IMG_PREFIX = HOST + '/file/'
 const AUDIT_PASS = 1
 const AUDIT_FAIL = 2
 const WITHDRAW_FEE = 0.05
+
+
+const IMG_PREFIX = 'https://abc-1256878718.cos.ap-shanghai.myqcloud.com/'
 
 const PLATFORM_DATA = {
   jingdong: {
@@ -612,103 +615,134 @@ function guid() {
 
 
 
-// UPLOAD IMAGE FUNCTION
-var uploadFile = function(target) {
-  return new Promise(function(resolve, reject){
-    // $("body").append(LOADER);
-    var file = target;
-    var fileSize = file.size;
-    var maxSize = 5048576;    //最大5MB
-    if(parseInt(fileSize) >= parseInt(maxSize)){
-        notifyInfo('上传的文件不能超过1MB');
-        return false;  
-    }else{    
-      var form = new FormData();
-      form.append("file", file);
+// // UPLOAD IMAGE FUNCTION
+// var uploadFile = function(target) {
+//   return new Promise(function(resolve, reject){
+//     // $("body").append(LOADER);
+//     var file = target;
+//     var fileSize = file.size;
+//     var maxSize = 5048576;    //最大5MB
+//     if(parseInt(fileSize) >= parseInt(maxSize)){
+//         notifyInfo('上传的文件不能超过1MB');
+//         return false;  
+//     }else{    
+//       var form = new FormData();
+//       form.append("file", file);
       
-      $.ajax({    
-          url: HOST + URL_UPLOAD_FILE,
-          type: 'POST',
-          data: form,
-          async:false,
-          processData: false,
-          contentType: false,
-          xhrFields: {
-            withCredentials: true
-          },
-          crossDomain: true,
-      }).done(function(e) {
-        // $("#i-mask").remove()
-        console.log('上传图片成功！');
-        resolve(e.data);
-      })
-    }
-  })
-}
+//       $.ajax({    
+//           url: HOST + URL_UPLOAD_FILE,
+//           type: 'POST',
+//           data: form,
+//           async:false,
+//           processData: false,
+//           contentType: false,
+//           xhrFields: {
+//             withCredentials: true
+//           },
+//           crossDomain: true,
+//       }).done(function(e) {
+//         // $("#i-mask").remove()
+//         console.log('上传图片成功！');
+//         resolve(e.data);
+//       })
+//     }
+//   })
+// }
+
+
 
 
 function upit(file) {
-  let obj = {
-    key: guid()
-  }
+  let obj = { key: guid() }
   promise('get', ['/cloudUploadUrl', encodeQuery(obj)].join('?'), null,  (e)=>{
     console.log(e);
-    let url = e;
-    var form = new FormData();
-    form.append("file", file);
-
+   
     $.ajax({    
           url: e,
-          type: 'POST',
-          data: form,
+          type: 'PUT',
+          data: file,
           async:false,
+          cache: false,
           processData: false,
           contentType: false,
-          xhrFields: {
-            withCredentials: true
-          },
-          crossDomain: true
-      }).done(function(e) {
-        console.log('上传图片成功！');
-        resolve(e);
+          success: function(data,file){
+                console.log(data);
+                console.log(file);
+                console.log(obj.key);
+            },
+            error: function(err) {
+                console.log(err);
+            }
       })
   }, null)
 }
 
 
+
+
+
+
 // UPLOAD IMAGE FUNCTION
-var uploadImg = function(target) {
+var uploadFile = function(target) {
   return new Promise(function(resolve, reject){
-    // $("body").append(LOADER);
-    var file = target;
-    var fileSize = file.size;
-    var maxSize = 5048576;    //最大5MB
-    if(parseInt(fileSize) >= parseInt(maxSize)){
-        notifyInfo('上传的文件不能超过1MB');
-        return false;  
-    }else{    
-      var form = new FormData();
-      form.append("file", file);
-      
+
+    let obj = { key: guid() }
+    promise('get', ['/cloudUploadUrl', encodeQuery(obj)].join('?'), null,  (url)=>{
+     
       $.ajax({    
-          url: HOST + URL_UPLOAD_FILE,
-          type: 'POST',
-          data: form,
-          async:false,
-          processData: false,
-          contentType: false,
-          xhrFields: {
-            withCredentials: true
-          },
-          crossDomain: true,
-      }).done(function(e) {
-        // $("#i-mask").remove()
-        console.log('上传图片成功！');
-        resolve(e.data);
+        url: url,
+        type: 'PUT',
+        data: target,
+        async:false,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: function(data,file){
+          resolve(obj.key);
+        }
       })
-    }
+    }, null)
+
   })
 }
+
+
+
+
+
+// // UPLOAD IMAGE FUNCTION
+// var uploadImg = function(target) {
+//   return new Promise(function(resolve, reject){
+//     // $("body").append(LOADER);
+//     var file = target;
+//     var fileSize = file.size;
+//     var maxSize = 5048576;    //最大5MB
+//     if(parseInt(fileSize) >= parseInt(maxSize)){
+//         notifyInfo('上传的文件不能超过1MB');
+//         return false;  
+//     }else{    
+//       var form = new FormData();
+//       form.append("file", file);
+      
+//       $.ajax({    
+//           url: HOST + URL_UPLOAD_FILE,
+//           type: 'POST',
+//           data: form,
+//           async:false,
+//           processData: false,
+//           contentType: false,
+//           xhrFields: {
+//             withCredentials: true
+//           },
+//           crossDomain: true,
+//       }).done(function(e) {
+//         // $("#i-mask").remove()
+//         console.log('上传图片成功！');
+//         resolve(e.data);
+//       })
+//     }
+//   })
+// }
 
 function saveCookie(data) {
   // 先获取 password 和 userType，防止清空
