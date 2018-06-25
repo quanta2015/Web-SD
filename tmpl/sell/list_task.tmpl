@@ -41,18 +41,25 @@
             <td> {{:tasksummoney}}</td>
             <td>
 
-              <a href="javascript:;" class="btn grey-mint btn-xs   uppercase pay-detail" id="{{:id}}"><i class="fa fa-hand-o-right"></i> 支付详情 </a> 
-              <a href="javascript:;" class="btn grey-mint btn-xs  sbold uppercase detail-task" data-id="{{:id}}" ><i class="fa fa-times"></i> 任务详情 </a>
-              <a href="javascript:;" class="btn green-seagreen btn-xs  sbold uppercase republish-task" data-id="{{:id}}" ><i class="fa fa-times"></i> 重新发布 </a>
+              <a href="javascript:;" class="btn grey-mint btn-xs   uppercase pay-detail" id="{{:id}}"><i class="fa fa-bars"></i> 支付详情 </a> 
+              <a href="javascript:;" class="btn grey-mint btn-xs  sbold uppercase detail-task" data-id="{{:id}}" ><i class="fa fa-bars"></i> 任务详情 </a>
+              
               {{if (status==0 || status==40)}}
-              <a href="javascript:;" class="btn red btn-xs  sbold uppercase del-task" id="{{:id}}" ><i class="fa fa-times"></i> 删除 </a> 
+              <a href="javascript:;" class="btn red-thunderbird btn-xs  sbold uppercase del-task" id="{{:id}}" ><i class="fa fa-times"></i> 删除任务 </a> 
               {{/if}}
               {{if (status==0)}}
-              <a href="javascript:;" class="btn red btn-xs  sbold uppercase pay-task" id="{{:id}}" ><i class="fa fa-hand-o-right"></i> 发布 </a> 
+              <a href="javascript:;" class="btn yellow-gold btn-xs  sbold uppercase pay-task" id="{{:id}}" ><i class="fa fa-hand-o-right"></i> 发布任务 </a> 
+              {{/if}}
+
+              {{if (status>0)}}
+              <a href="javascript:;" class="btn blue-dark btn-xs  sbold uppercase republish-task" data-id="{{:id}}" ><i class="fa fa-sticky-note-o"></i> 重新发布 </a>
               {{/if}}
               {{if ((status==30)||(status==50))}}
-              <a href="javascript:;" class="btn red btn-xs  sbold uppercase mag-task" id="{{:id}}" ><i class="fa fa-edit"></i> 管理 </a> 
+              <a href="javascript:;" class="btn blue-steel btn-xs  sbold uppercase mag-task" id="{{:id}}" ><i class="fa fa-edit"></i> 任务管理 </a> 
               {{/if}}
+
+
+
             </td>
         </tr>
       {{/for}}

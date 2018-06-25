@@ -248,4 +248,5 @@ select,input {
 
 table a {
     margin-bottom: 5px!important;
+    width: 100px;
 }

@@ -32,8 +32,8 @@ function init() {
 
 
 function doDetail() {
-  id = $(this).attr('pid')
-  url = '/task/task_detail/'+ id
+  id = $(this).attr('id')
+  url = '/task/buyer_task/'+ id
   promiseTmpl('GET', '/tmpl/sell/show_detail.tmpl', url ,null, cbDetail)
 }
 
