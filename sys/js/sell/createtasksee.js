@@ -49,22 +49,15 @@ let _tid;
 $(init);
 
 function init() {
-
-
   $('body').on('click', '.btn-pre', doPre);
   $('body').on('click', '.btn-next', doNext);
-  $('body').on('click', '.alladdress', getAddr);
+  $('body').on('click', '.task-add', addTask);
   $('body').on('click', '.task-del', delTask);
   $('body').on('click', '#publish-task-btn', doComplete);
   $('body').on('change', '#platform-list', doInitShop);
   $('body').on('change', '#shop-list', doInitArea);
   $('body').on('change', '#color-size-chk', doColorSize);
-  $('body').on('click', '.task-add', addTask);
   $('body').on('input propertychange', '.task-count', doCountTask);
-
-
-  // $('body').on('change', '#ask', doChangeAsk);
-  // $('body').on('change', '.r-ask', doChangeAskQue);
 
 
   //初始化第一步验证对象
@@ -152,11 +145,6 @@ function GotoStep3() {
     return;
   }
 
-  if ( (!$("#normaltask")[0].checked)&&(!$("#keywordtask")[0].checked)&&(!$("#picturetask")[0].checked)&&(!$("#wordtask")[0].checked) ) {
-    notifyInfo(MSG_SELECT_ONE);
-    return;
-  }
-
   if ( $('.task-wrap-item .u-task-key').length == 0 ) {
     notifyInfo('请添加任务！');
     return;
@@ -166,30 +154,8 @@ function GotoStep3() {
   if (checkInput('.task-wrap-item .u-task-key',MSG_INPUT_KEYWORD)) return;
   if (checkInput('.task-wrap-item .u-task-count',MSG_INPUT_TASK_COUNT))  return;
 
-  if ( $('.task-wrap-item .ipt-keyword').length > 0 ) {
-    if (checkInputHasOne('.task-wrap-item .ipt-keyword',MSG_INPUT_KEYWORD_EX)) return;
-  }
-
-  if ( $('.task-wrap-item .u-task-keyword').length > 0 ) {
-    if (checkInput('.task-wrap-item .u-task-keyword',MSG_INPUT_TEXT)) return;
-  }
 
   doPublish()
-}
-
-function checkInputHasOne(cls, msg) {
-  let ret = 1;
-
-  $(cls).each(function() {
-    if ($(this).val() !== "") {
-        ret = 0;
-        return ret;
-    }
-  })
-  if (ret == 1) {
-    notifyInfo(msg)
-  }
-  return ret;
 }
 
 
@@ -206,6 +172,7 @@ function checkInput(cls, msg) {
   }
   return ret;
 }
+
 
 //不同步骤页面渲染控制
 function renderTask(type) {
@@ -234,10 +201,6 @@ function renderTask(type) {
 }
 
 
-function getAddr(e) {
-  $(e.target).parents('.alladdress').prev().val(e.target.innerText)
-  $('.alladdress').hide()
-}
 
 function initTime(index) {
   $(`.task-wrap-item-${index} .timepicker-24`).timepicker({ showMeridian: false });
@@ -259,7 +222,7 @@ async function addTask() {
   $('#picturetask').prop('checked', false)
   $('#wordtask').prop('checked', false);
 
-  $(".task-wrap").append(await renderTmpl('/tmpl/sell/createtasksee.tmpl', { type:'nor-task', count:count, store:store, follow:follow, add:add, list:[1,1,1,1,1] }));
+  $(".task-wrap").append(await renderTmpl( TMPL_SELL_CREATE_TASKSEE , { count:count, store:store, follow:follow, add:add }));
   initTime(count)
   doCountTask()
 }
@@ -279,51 +242,50 @@ function doPublish() {
       colorSize: $('#color-size-info').val(),
       factprice: $('#real-price').val().replace(/,/g, ''),
       goodsmainimg: $('#upload').attr('picurl'),
-      goodsimg1: '',
-      goodsimg2: '',
       goodsname: $('#name').val(),
       goodsposition: $('#goods-province').val()+$('#goods-city').val(),
       goodsurl: $('#url').val(),
       highprice: $('#price-to').val().replace(/,/g, ''),
       lowprice: $('#price-from').val().replace(/,/g, ''),
-      number: $('#buy-count').val().replace(/,/g, ''),
       locationway: $("input[name='r-locationway']:checked").val(),
       orderwords: $('#order-message').val(),
       salesVolume: $('#sell-count').val().replace(/,/g, ''),
       searchprice: $('#mobile-price').val().replace(/,/g, ''),
+      goodsimg1: '',
+      goodsimg2: '',
+      number:''
     }],
     goodsname: $('#name').val(),
     
     startdate: $('#start-date').val(),
-    num: $('#task-count').val().replace(/,/g, ''),
-    addcharges: $('#award-money').val().replace(/,/g, ''),
-    share: $('#share').val(),
-    matchLabel: $('#match-label').val(),
+    num: $('#task-count').val().replace(/,/g, ''),    
     sex: $('#sex').val(),
     ageLimit: $('#age').val(),
     location: ( $('#limit-location').val() === null)? "":$('#limit-location').val().join(';'),
-    useHuabei: $('#use-huabei').val(),
     huabeiStart: $('#huabei-start').val(),
     jingdongLevel: $('#jingdong-level').val(),
     taobaoLevel: $('#taobao-level').val(),
-    rebuy: $('#rebuy').val(),
-    isRecieve: $('#is-recieve').val(),
-    expressCompany: $('#express-company').val(),
-    expressWeight: $('#express-weight').val(),
-    ask: 0,
     chatNecessary: $("input[name='r-chat-necessary']:checked").val(),
     shopId: $('#shop-list').val(),
     singleAmount: $('#pub-itl-amount').val(),
     intervals: $('#pub-itl-time').val(),
     jdLocation: getCheckedVal('jd-location'),
     tbLocation: getCheckedVal('tb-location'),
-    buyExpress: $('#buy-express').val(),
     auditFirst: $('#audit-first').val(),
     showFirst: $('#show-first').val(),
     taskKeyList: getTaskData(),
     explains: $('#other').val(),
     askContent: "",
-    answerContent: ""
+    answerContent: "",
+    share: $('#share').val(),
+    matchLabel: $('#match-label').val(),
+    useHuabei: $('#use-huabei').val(),
+    isRecieve: $('#is-recieve').val(),
+    rebuy: $('#rebuy').val(),
+    expressCompany: $('#express-company').val(),
+    expressWeight: $('#express-weight').val(),
+    buyExpress: $('#buy-express').val(),
+    ask: 0,
   }
 
   promiseTmpl('POST', TMPL_SELL_TASK_COST, URL_TASK_CAL_MONEY, JSON.stringify(taskObj), cbInfo)
@@ -355,22 +317,10 @@ function getTaskData() {
       taskkeyNum: $(this).find('.u-task-count').val(),
       from: $(this).find('.timepicker-from').val(),
       to: $(this).find('.timepicker-to').val(),
-      appoints: '',
-      taskPictureList: [],
-      goodComment: ''
     }
-
+    let typeList = [];
     typeArr.each(function() {
-      if( $(this).text() == '1' ) return;
-      if( $(this).text() == '2' ) {
-        taskItem.appoints = getArrVal( $(item).find('.ipt-keyword'), true)
-      }
-      if( $(this).text() == '3' ) {
-        taskItem.taskPictureList = getArrVal( $(item).find('.ipt-img'), false)
-      }
-      if( $(this).text() == '4' ) {
-        taskItem.goodComment = getArrVal( $(item).find('.u-task-keyword'), true)
-      }
+      typeList.push( $(this).text() );
     })
 
     result.push( taskItem )
@@ -403,8 +353,6 @@ function cbInfo(r, e) {
 }
 
 function doComplete() {
-  // promiseTmpl('POST', TMPL_SELL_TASK_COST, URL_TASK_PUBLISH, JSON.stringify(taskObj), cbComplete)
-  
 
   promise('POST', URL_TASK_PUBLISH, JSON.stringify(taskObj), (e) => {
       promise('GET', URL_SELL_PAY_TASK + e.id, null, (e)=>{
@@ -418,16 +366,6 @@ function doComplete() {
           }
         })
       });
-  })
-}
-
-function cbComplete() {
-  msgbox('提示信息',MSG_TASK_SAVE_SUCC,MSG_CONT_CREATE_TASK,MSG_PUB_TASK, function(ret) {
-    if (ret) {
-      goto('createTask.html')
-    }else{
-      goto('listTask.html')
-    }
   })
 }
 
@@ -447,7 +385,7 @@ function initPlatforms() {
 
 
     //重新发布 - 初始化任务
-    if (_tid !== null) initTask();
+    // if (_tid !== null) initTask();
 
 
   }, null);
@@ -488,19 +426,4 @@ function doCountTask() {
   $('#task-count').val(count);
 }
 
-
-
-function initTask() {
-  promise('GET','/task/task_detail/'+_tid, null, (e)=>{
-    console.log(e);
-
-
-    $(`#platform-list option[value=${e.shop.type}]`).prop('selected','selected')
-    $(`#shop-list option[value=${e.shop.id}]`).prop('selected','selected')
-    $('.btn-next').trigger('click')
-
-
-
-  },null);
-}
 

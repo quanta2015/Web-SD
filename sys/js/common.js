@@ -45,7 +45,7 @@ const STATUS_MAP = {
   60: '任务已过时',
 }
 
-const BANKS = ['工商银行', '农业银行', '建设银行', '中国银行', '招商银行']
+const BANKS = ['工商银行', '农业银行', '建设银行', '中国银行', '招商银行','其他银行']
 
 const PAGE_DATA = {
   pageIndex: 0,
@@ -144,14 +144,15 @@ const TMPL_SELL_CAPITAL_LIST      = '/tmpl/sell/list_capital.tmpl'
 const TMPL_SELL_WITHDRAW_LIST     = '/tmpl/sell/list_withdraw.tmpl'
 const TMPL_SELL_TASK_LIST         = '/tmpl/sell/list_task.tmpl'
 const TMPL_SELL_SHOP_LIST         = '/tmpl/sell/list_shop.tmpl'
-const TMPL_SELL_CREATETASK_P      = '/tmpl/sell/createtask_plain.tmpl'
-const TMPL_SELL_CREATETASK_I      = '/tmpl/sell/createtask_img.tmpl'
+const TMPL_SELL_CREATETASK        = '/tmpl/sell/createtask.tmpl'
 const TMPL_SELL_SHOP_SELECT       = '/tmpl/sell/select_shop.tmpl'
 const TMPL_SELL_PLAT_SELECT       = '/tmpl/sell/select_platform.tmpl'
 const TMPL_SELL_WITHDRAW          = '/tmpl/sell/withdraw.tmpl'
 const TMPL_SELL_TASKITEM_LIST     = '/tmpl/sell/list_taskitem.tmpl'
 const TMPL_SELL_COMMISSION_LIST   = '/tmpl/sell/list_commission.tmpl'
 const TMPL_SELL_TASK_COST         = '/tmpl/sell/task_cost.tmpl'
+
+const TMPL_SELL_CREATE_TASKSEE    =  '/tmpl/sell/createtasksee.tmpl'
 
 // ADMIN
 const TMPL_ADMIN_SHOP_LIST        = '/tmpl/admin/list_shop.tmpl'

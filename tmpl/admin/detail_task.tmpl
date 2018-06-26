@@ -162,7 +162,7 @@
         {{:~formatBool(huabeiStart) }} </div>
       </li>
       <li>
-        <div class="col-2">是否默认签收</div>
+        <div class="col-2">是否系统默认签收</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatBool(isRecieve)}} </div>
       </li>
@@ -186,7 +186,7 @@
     <div class="m-d-item col-1 m-d-task">
       <li class="v-m-title">
         <div class="col-1">
-          <span class="icon-layers"></span>第 {{:#index+1}}个任务
+          <span class="icon-layers"></span>第 {{:#index+1}}个任务 [ <strong class="font-red">{{:taskkeyNum}}单</strong> ]
         </div>
       </li>
       <li>
@@ -210,7 +210,7 @@
       
       {{if taskPictureList.length>0}}
       <li>
-        <div class="col-1">好评图片图
+        <div class="col-1">好评图片
       </li>
       <li>
         <div class="col-2 font-red-mint">

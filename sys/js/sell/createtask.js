@@ -245,24 +245,21 @@ function getAddr(e) {
 function initTime(index) {
   $(`.task-wrap-item-${index} .timepicker-24`).timepicker({ showMeridian: false });
   $(`.task-wrap-item-${index} .timepicker-from`).timepicker('setTime', moment().format('HH:mm'));
-
-  if (moment().diff(moment().set('hour',21).set('minute', 0)) > 0 ) {
-    $(`.task-wrap-item-${index} .timepicker-to`).timepicker('setTime', '23:59');
-  }else{
-    $(`.task-wrap-item-${index} .timepicker-to`).timepicker('setTime', moment().add('hours',3).format('HH:mm'));
-  }
+  $(`.task-wrap-item-${index} .timepicker-to`).timepicker('setTime', '23:59');
 }
 
 async function addTask() {
   var count = $('.task-wrap-item').length + 1;
+  var nor = $('#normaltask').prop('checked');
   var key   = $('#keywordtask').prop('checked');
   var img   = $('#picturetask').prop('checked');
   var word  = $('#wordtask').prop('checked');
+  $('#normaltask').prop('checked', true)
   $('#keywordtask').prop('checked', false)
   $('#picturetask').prop('checked', false)
   $('#wordtask').prop('checked', false);
 
-  $(".task-wrap").append(await renderTmpl('/tmpl/sell/createtask.tmpl', { type:'nor-task', count:count, key:key, img:img, word:word, list:[1,1,1,1,1] }));
+  $(".task-wrap").append(await renderTmpl( TMPL_SELL_CREATETASK , { nor:nor, count:count, key:key, img:img, word:word, list:[1,1,1,1,1] }));
   initTime(count)
   doCountTask()
 }
