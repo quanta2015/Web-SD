@@ -67,15 +67,15 @@
               <select id="task-status">
                 <option value="">全部</option>
                 <option value="0">待处理</option>
-                <option value="10">待发货</option>
-                <option value="20">待评价</option>
-                <option value="30">评价待审核</option>
+                <option value="10" class="group-browser">待发货</option>
+                <option value="20" class="group-browser">待评价</option>
+                <option value="30">待审核</option>
                 <option value="50">刷手撤销</option>
                 <option value="60">系统撤销</option>
                 <option value="70">已完成</option>
               </select>
             </div>
-            <div>
+            <div class="group-browser">
               <span>评价类型</span>
               <select name="" id="comment-type">
                 <option value="">全部</option>
@@ -91,7 +91,7 @@
               <span>接单时间 </span>
               <input type="text" id="task-from" class="u-dt"> - <input type="text" id="task-to" class="u-dt">
             </div>
-            <div>
+            <div class="group-browser">
               <span>快递状态 </span>
               <select name="" id="task-status">
                 <option value="0">全部</option>
@@ -99,7 +99,7 @@
                 <option value="2">成功</option>
               </select>
             </div>
-            <div>
+            <div class="group-browser">
               <span>发货类型 </span>
               <select name="" id="task-status">
                 <option value="0">全部</option>
@@ -110,9 +110,9 @@
           </div>
           <div class="m-sbar">
             <a href="#basic" class="btn red-sunglo btn-sm" id="search-order" ><i class="fa fa-search"></i> 查询 </a>
-            <a href="#basic" class="btn green-dark btn-sm" id="batch-pay"><i class="fa fa-rmb"></i> 批量返款 </a>
+            <a href="#basic" class="btn green-dark btn-sm group-browser" id="batch-pay"><i class="fa fa-rmb"></i> 批量返款 </a>
             <a href="#basic" class="btn green-dark btn-sm" id="batch-cancel"><i class="fa fa-remove"></i> 批量撤销 </a>
-            <a href="#basic" class="btn green-dark btn-sm" id="batch-send"><i class="fa fa-ambulance"></i> 批量发货 </a>
+            <a href="#basic" class="btn green-dark btn-sm group-browser" id="batch-send"><i class="fa fa-ambulance"></i> 批量发货 </a>
             <a href="#basic" class="btn blue-soft btn-sm" id="export"><i class="fa fa-mail-forward"></i> 导出 </a>
           </div>
         </div>

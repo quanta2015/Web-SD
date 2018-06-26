@@ -17,30 +17,30 @@ function init() {
   }
 
   $('[data-button]').on('click', function(e) {
-    var platform = $(this).data('platform');
-    var pos = $(this).data('pos');
-    var status = $(this).data('status');
-    var tasktype = $(this).data('tasktype');
     
-    (pos=='root')?pos='/':pos='';
+    ( $(this).data('pos')=='root' )?pos='/':pos='';
     var pageName = pos + $(this).data('button') + '.html';
 
-    if ($(this).data('button')=='auditVipRecharge') {
-      var viptype=$(this).data('viptype');
-      pageName+='?viptype='+viptype;
+    var o = {
+      viptype:  $(this).data('viptype'),
+      platform: $(this).data('platform'),
+      status:   $(this).data('status'),
+      tasktype: $(this).data('tasktype'),
+      type:     $(this).data('type')
     }
+    url = [pageName, encodeQuery(o)].join('?')
+    $("#mainframe", parent.document.body).attr("src", url);
 
-
-    (status>=-1)?pageName += `?status=${status}`: null;
-    tasktype?pageName += `?tasktype=${tasktype}`: null;
-    platform ? pageName += `?platform=${platform}` : null;
-
-
-    var type = $(this).data('type');
-    type ? pageName += `?type=${type}` : null;
-
-
-    $("#mainframe", parent.document.body).attr("src", pageName);
+    // var viptype=$(this).data('viptype');  
+    // var platform = $(this).data('platform');
+    // var status = $(this).data('status');
+    // var tasktype = $(this).data('tasktype');
+    // var type = $(this).data('type');
+    // (viptype>-1)?pageName+=`?viptype=${viptype}`: null;
+    // (status>=-1)?pageName += `?status=${status}`: null;
+    // tasktype?pageName += `?tasktype=${tasktype}`: null;
+    // platform ? pageName += `?platform=${platform}` : null;
+    // type ? pageName += `?type=${type}` : null;
   });
 
   $('#exitBtn').on('click', (e)=> {

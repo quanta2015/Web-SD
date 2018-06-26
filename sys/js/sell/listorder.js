@@ -6,10 +6,13 @@ $(init);
 
 function init() {
   type = getUrlParam('type');
-  pageData =  Object.assign({mainType: type}, PAGE_DATA)
+  pageData =  Object.assign({mainType: type}, PAGE_DATA);
+  if (type === 'browse') $(".group-browser").remove();
   
   status = getUrlParam('status')
   $("#task-status option[value='"+status+"']").prop("selected", true);
+
+
 
   initTime();
   initShops()
