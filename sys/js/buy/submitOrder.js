@@ -124,5 +124,7 @@ function doCheckShop() {
 }
 
 function cbCheckShop(e) {
-  alertBox(MSG_SHOPNAME_CORRECT,null)
+  notifyInfo(MSG_SHOPNAME_CORRECT,null)
+  $('#submit-buy').removeClass('hide')
 }
+

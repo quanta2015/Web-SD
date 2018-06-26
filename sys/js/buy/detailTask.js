@@ -37,5 +37,5 @@ function cbChoose(e) {
 
 
 function doReturn() {
-  location.href = 'chooseTask.html'
+  history.back()
 }
