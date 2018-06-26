@@ -205,12 +205,7 @@ function renderTask(type) {
 function initTime(index) {
   $(`.task-wrap-item-${index} .timepicker-24`).timepicker({ showMeridian: false });
   $(`.task-wrap-item-${index} .timepicker-from`).timepicker('setTime', moment().format('HH:mm'));
-
-  if (moment().diff(moment().set('hour',21).set('minute', 0)) > 0 ) {
-    $(`.task-wrap-item-${index} .timepicker-to`).timepicker('setTime', '23:59');
-  }else{
-    $(`.task-wrap-item-${index} .timepicker-to`).timepicker('setTime', moment().add('hours',3).format('HH:mm'));
-  }
+  $(`.task-wrap-item-${index} .timepicker-to`).timepicker('setTime', '23:59');
 }
 
 async function addTask() {

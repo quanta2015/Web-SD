@@ -44,20 +44,6 @@ a {
     width: 100px;
 }
 
-.form-imp {
-    position: relative;
-    text-align: right;
-}
-
-.form-imp:before {
-    content: "*";
-    display: inline-block;
-    margin-right: 5px;
-    /*border: 1px solid #ff0000;*/
-    color: #ff0000;
-    padding: 2px 5px;
-    font-size: 12px;
-}
 
 i { 
     font-style: normal;

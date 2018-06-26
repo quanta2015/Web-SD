@@ -48,21 +48,6 @@ a {
     width: 100px;
 }
 
-.form-imp {
-    position: relative;
-    text-align: right;
-}
-
-.form-imp:before {
-    content: "必填";
-    display: inline-block;
-    margin-right: 5px;
-    /* border: 1px solid #ff0000; */
-    color: #fff;
-    padding: 2px 5px;
-    font-size: 12px;
-    background: #E43A45;
-}
 
 i { 
     font-style: normal;

@@ -137,3 +137,20 @@ a:hover {
     background-color: #666;
     color: #fff!important;
 }
+
+
+
+.form-imp {
+    position: relative;
+    text-align: right;
+}
+
+.form-imp:before {
+    content: "必填";
+    display: inline-block;
+    margin-right: 5px;
+    color: #fff;
+    padding: 2px 5px;
+    font-size: 12px;
+    background: #E43A45;
+}

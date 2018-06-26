@@ -17,7 +17,6 @@ function init() {
   }
 
   $('[data-button]').on('click', function(e) {
-    var type = $('.page-sidebar-wrapper').data('type');
     var platform = $(this).data('platform');
     var pos = $(this).data('pos');
     var status = $(this).data('status');
