@@ -10,7 +10,7 @@
         <div class="col-1">订单编号</div>
         <div class="col-2 font-red-thunderbird fn-right">{{:taskid}}</div>
       </li>
-      <li>
+      <li class="group-{{:type}}">
         <div class="col-1">垫付金额</div>
         <div class="col-2 font-red-thunderbird fn-right ">{{:buyerTaskMoney.goodsMoney }}</div>
       </li>
@@ -40,10 +40,10 @@
         <div class="col-2 font-red-thunderbird fn-right">{{:orderwords}}</div>
       </li>
       <li>
-        <div class="col-1">评论要求</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:taskkeyTypeStr}}</div>
+        <div class="col-1">任务要求</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:~formatEvalReq(taskkeyType,type)}}</div>
       </li>
-      <li>
+      <li class="group-{{:type}}">
         <div class="col-1">是否假聊</div>
         <div class="col-2 font-red-thunderbird fn-right">{{if chatNecessary}}是{{else}}否{{/if}}</div>
       </li>
@@ -55,9 +55,14 @@
     
   </div> 
   <div class="m-d m-d-commit">
-    <span class="font-red-mint">今日还能接 {{:numberOfAcceptTask}} 单 </span>
-    {{if numberOfAcceptTask > 0}}
-    <a href="#" class="btn  btn-sm red choose-task">接单</a>{{/if}}
+    <span class="font-red-mint group-{{:type}}">今日还能接 {{:numberOfAcceptTask}} 单 </span>
+    
+    {{if (numberOfAcceptTask > 0)&&(type==='pay')}}
+    <a href="#" class="btn  btn-sm red choose-task">接单</a>
+    {{/if}}
+    {{if (type==='browse')}}
+    <a href="#" class="btn  btn-sm red choose-task">接单</a>
+    {{/if}}
     <a href="#" class="btn  btn-sm blue return">返回</a>
   </div>
 </div>

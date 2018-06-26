@@ -517,7 +517,6 @@ const rdHelper = {
       case 1: ret = '15到25岁'; break;
       case 2: ret = '26到35岁'; break;
       case 3: ret = '36岁以上'; break;
-      default: ret = '无要求'; break;
     }
     return ret;
   },
@@ -562,16 +561,27 @@ const rdHelper = {
     ret = (s!=="")?s:"无要求";
     return ret;
   },
-  formatEvalReq: (s)=> {
+  formatEvalReq: (s, t)=> {
     arr = s.split("");
     ret = [];
     arr.forEach( (v)=>{
-      switch( parseInt(v) ) {
-        case 1: ret.push('普通评价任务'); break;
-        case 2: ret.push('关键字好评任务'); break;
-        case 3: ret.push('图片好评任务'); break;
-        case 4: ret.push('文字好评任务'); break;
+
+      if (t === 'pay') {
+        switch( parseInt(v) ) {
+          case 1: ret.push('普通评价任务'); break;
+          case 2: ret.push('关键字好评任务'); break;
+          case 3: ret.push('图片好评任务'); break;
+          case 4: ret.push('文字好评任务'); break;
+        }
+      }else{
+        switch( parseInt(v) ) {
+          case 1: ret.push('浏览任务'); break;
+          case 2: ret.push('收藏商品'); break;
+          case 3: ret.push('关注店铺'); break;
+          case 4: ret.push('加购'); break;
+        }
       }
+      
     })
     return ret.join('/')
   },

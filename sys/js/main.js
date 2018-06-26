@@ -3,7 +3,7 @@ $(init)
 function init() {
 
 
-  var h = $(window).height();
+  var h = $(document).height();
   console.log(h);
   $("iframe").height(h-75);
 

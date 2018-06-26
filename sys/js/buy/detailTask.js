@@ -4,6 +4,7 @@ $(init);
 
 function init() {
   _id = getUrlParam('id')
+  type = getUrlParam('type');
 
 
   initList();
@@ -12,8 +13,9 @@ function init() {
 }
 
 async function initList() {
-  param = { taskkeyid: _id }
+  param = { taskkeyid: _id, type: type }
   ret = await promiseCall( [URL_BUY_TASKDETAIL, encodeQuery(param)].join('?'), null )
+  Object.assign(ret.data, param);
   Object.assign(ret.data, { imgPrefix: IMG_PREFIX });
   $('.g-detail').append(await renderTmpl(TMPL_BUY_CHOOSE_DETAIL, ret.data, rdHelper))
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});

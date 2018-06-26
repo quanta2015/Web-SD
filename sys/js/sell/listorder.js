@@ -7,6 +7,7 @@ $(init);
 function init() {
   type = getUrlParam('type');
   pageData =  Object.assign({mainType: type}, PAGE_DATA);
+  (type==='pay')?$('.u-task-title').text('垫付'):$('.u-task-title').text('浏览');
   if (type === 'browse') $(".group-browser").remove();
   
   status = getUrlParam('status')

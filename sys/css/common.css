@@ -134,10 +134,14 @@ a:hover {
 
 
 .page-bar {
-    background-color: #666;
+  display: fixed;
+    background-color: #4B77BE;
     color: #fff!important;
 }
 
+.page-bar span {
+    color: #fff!important;
+}
 
 
 .form-imp {
@@ -153,4 +157,10 @@ a:hover {
     padding: 2px 5px;
     font-size: 12px;
     background: #E43A45;
+}
+
+
+
+.group-browse {
+    display: none!important;
 }

@@ -32,12 +32,12 @@
         <div class="u-col u-type"></div>
         <div class="u-col">任务编号：{{:taskKeyId}}</div>
         <div class="u-col u-sp"></div>
-        <div class="u-col">垫付金额： <span class="font-red">{{:goodsMoney}}元</span></div>
+        <div class="u-col group-{{:~root.type}}">垫付金额： <span class="font-red">{{:goodsMoney}}元</span></div>
     </div>
     <div class="u-row">
         
         <div class="u-col u-type"><img src="{{:~root.typeicon}}"> </div>
-        <div class="u-col"><span><img src="/img/money.png" class="fn-money"><span class="font-red">{{:reward}}元</span></span><span>发布时间：{{:~formatTime(publishTime)}}</span></div>
+        <div class="u-col"><span><img src="/img/money.png" class="fn-money"><span class="font-red  font-big">{{:reward}}元</span></span><span>发布时间：{{:~formatTime(publishTime)}}</span></div>
         <div class="u-col u-sp"></div>
         <div class="u-col"><a href="#basic" class="btn blue-madison btn-xs  audit-task"  data-kid="{{:taskKeyId}}" ><i class="fa fa-edit"></i> 任务详情 </a></div>
     </div> 

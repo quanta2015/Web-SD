@@ -39,7 +39,7 @@
         <div class="col-1">商品成交价格</div>
         <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].factprice}}元</div>
       </li>
-      <li>
+      <li class="group-{{:type}}">
         <div class="col-1">件数</div>
         <div class="col-2 font-red-thunderbird fn-right">{{:goodsList[0].number}}件</div>
       </li>
@@ -106,7 +106,7 @@
       <li class="v-m-title">
         <div class="col-1"><span class="icon-star"></span>增值服务</div>
       </li>
-      <li>
+      <li class="group-{{:type}}">
         <div class="col-2">是否聊天</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatBool(chatNecessary)}}</div>
@@ -116,11 +116,14 @@
         <div class="col-1 font-red-thunderbird fn-right">
          {{:showFirst}}金 </div>
       </li>
+      {{if addcharges}}
       <li>
         <div class="col-2">加赏任务佣金：每单加赏</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:addcharges}} </div>
       </li>
+      {{/if}}
+
       <li>
         <div class="col-2">订单优先审核</div>
         <div class="col-1 font-red-thunderbird fn-right">
@@ -131,27 +134,35 @@
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatBool(sex)}} </div>
       </li>
+      {{if ageLimit}}
       <li>
         <div class="col-2">人群年龄段</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatAge(ageLimit)}} </div>
       </li>
+      {{/if}}
+      {{if location}}
       <li>
         <div class="col-2">区域限制</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatNull(location)}}</div>
       </li>
+      {{/if}}
+      {{if taobaoLeve}}
       <li>
         <div class="col-2">淘宝会员等级</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatTaobaoLevel(taobaoLeve)}} </div>
       </li>
-      <li>
+      {{/if}}
+      {{if rebuy}}
+      <li class="group-{{:type}}">
         <div class="col-2">重复购买限制</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatRepeat(rebuy)}} </div>
       </li>
-      <li>
+      {{/if}}
+      <li class="group-{{:type}}">
         <div class="col-2">是否允许使用信用卡/花呗/白条</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatBool(useHuabei) }} </div>
@@ -161,17 +172,17 @@
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatBool(huabeiStart) }} </div>
       </li>
-      <li>
+      <li class="group-{{:type}}">
         <div class="col-2">是否系统默认签收</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatBool(isRecieve)}} </div>
       </li>
-      <li>
+      <li class="group-{{:type}}">
         <div class="col-2">问大家</div>
         <div class="col-1 font-red-thunderbird fn-right">{{:~formatBool(ask)}}
        </div>
       </li>
-      <li>
+      <li class="group-{{:type}}">
         <div class="col-2">是否向平台购买面单</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatBool(buyExpress)}} </div>
@@ -191,7 +202,7 @@
       </li>
       <li>
         <div class="col-1">评论要求</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:~formatEvalReq(taskkeyType)}}</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:~formatEvalReq(taskkeyType,type)}}</div>
       </li>
       
       <li>
@@ -201,7 +212,7 @@
         <div class="col-1">搜索关键字: <span class="font-red-mint">{{:keyword}}</span></div>
       </li>
 
-      {{if appoints.length}}
+      {{if appoints}}
       <li>
         <div class="col-1">指定关键词：<span class="font-red-mint">{{:appoints}}</span></div>
       </li>

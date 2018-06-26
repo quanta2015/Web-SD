@@ -1,9 +1,13 @@
 let _id;
-let pageData = Object.assign({}, PAGE_DATA);
+let pageData;
 
 $(init);
 
 function init() {
+  type = getUrlParam('type');
+  pageData =  Object.assign({mainType: type}, PAGE_DATA);
+
+
   initTime();
   initList();
   $('body').on('click', '.audit-task', doAuditTask);
@@ -53,6 +57,7 @@ function cbDetail(r, e) {
   let ret = e;
   $(".g-detail").empty();
   ret.data.imgPrefix = IMG_PREFIX;
+  ret.data.type = type;
   $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
   $(".g-detail").show()

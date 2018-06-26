@@ -1,10 +1,16 @@
 let _id;
 let _listtask;
-let pageData = Object.assign({}, PAGE_DATA);
+let pageData;
+let tasktype;
+let typeicon;
+let type;
 
 $(init);
 
 function init() {
+
+  type = getUrlParam('type');
+  pageData =  Object.assign({mainType: type}, PAGE_DATA);
 
   tasktype = getUrlParam('tasktype')
   if (tasktype == 1) {
@@ -30,7 +36,7 @@ function cbList(r, e) {
   let ret = e;
   _listtask = ret.data;
   Object.assign(ret, pageData);
-  Object.assign(ret, {typeicon: typeicon });
+  Object.assign(ret, {typeicon: typeicon, type:type });
   totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
   $(".portlet-body .u-wrap").remove();
   $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
@@ -49,6 +55,7 @@ function initPage(totalPages) {
 }
 
 function doDetail() {
-  location.href = 'detailTask.html?id=' + $(this).data('kid')
+  id = $(this).data('kid');
+  location.href = `detailTask.html?id=${id}&type=${type}`;
 }
 
