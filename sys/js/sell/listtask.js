@@ -1,11 +1,14 @@
 let _listtask;
 let _id;
 var _shop = {};
-let pageData = Object.assign({}, PAGE_DATA);
+let pageData; 
 
 $(init);
 
 function init() {
+  type = getUrlParam('type');
+  pageData =  Object.assign({mainType: type}, PAGE_DATA)
+
   initTime();
   initShops();
   initList(pageData);

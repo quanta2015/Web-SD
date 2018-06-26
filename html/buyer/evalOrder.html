@@ -131,15 +131,23 @@
 {{if #data==3}}
 <div>评价要求：请上传以下指定图片，并填写评价描述</div>
 <div>评价描述：
-  <span class="font-red">{{:~root.explains}}</span>
+  <span class="font-red eval-command"></span>
 </div>
 <div>
-  <span>img1/img2/img3/img4/img5</span>
+  
+  <span>
+    {{for ~root.taskkeyInfo.taskPictureList}}
+    {{if picture}}
+    <a href="{{:~root.imgPrefix}}{{:picture}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture}}" style="width: 60px; height: 60px;"></a>
+    {{/if}}
+    {{/for}}
+  </span>
+  
 </div>
 {{/if}}
 {{if #data==4}}
 <div>评价要求：请完全按照以下文字填写好评内容</div>
-<div>评价要求：<span class="font-red">{{:~root.explains}}</span> </div>
+<div>评价要求：<span class="font-red eval-command"></span> </div>
 {{/if}}
 {{/for}}
 </script>

@@ -1,10 +1,13 @@
 var _id;
 var _shop = {};
-let pageData = Object.assign({}, PAGE_DATA);
+let pageData;
 
 $(init);
 
 function init() {
+  type = getUrlParam('type');
+  pageData =  Object.assign({mainType: type}, PAGE_DATA)
+  
   status = getUrlParam('status')
   $("#task-status option[value='"+status+"']").prop("selected", true);
 

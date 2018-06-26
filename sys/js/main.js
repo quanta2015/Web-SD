@@ -3,8 +3,9 @@ $(init)
 function init() {
 
 
-  var h = $(document).height();
-  $("iframe").height(h-55);
+  var h = $(window).height();
+  console.log(h);
+  $("iframe").height(h-75);
 
   //显示用户名
   $("#u-name").html(cookie('name') || '<a href="updateSeller.html" target="mainframe" class="font-red">请完善信息</a>');
@@ -21,6 +22,7 @@ function init() {
     var pos = $(this).data('pos');
     var status = $(this).data('status');
     var tasktype = $(this).data('tasktype');
+    
     (pos=='root')?pos='/':pos='';
     var pageName = pos + $(this).data('button') + '.html';
 
@@ -33,6 +35,11 @@ function init() {
     (status>=-1)?pageName += `?status=${status}`: null;
     tasktype?pageName += `?tasktype=${tasktype}`: null;
     platform ? pageName += `?platform=${platform}` : null;
+
+
+    var type = $(this).data('type');
+    type ? pageName += `?type=${type}` : null;
+
 
     $("#mainframe", parent.document.body).attr("src", pageName);
   });

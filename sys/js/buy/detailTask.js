@@ -37,5 +37,5 @@ function cbChoose(e) {
 
 
 function doReturn() {
-  history.back()
+  goBack()
 }

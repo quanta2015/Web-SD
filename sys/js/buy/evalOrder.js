@@ -44,10 +44,14 @@ function cbInfo(e) {
     removeByValue(e.taskTypeArr,'1')
   }
   e.appoints = e.appoints.split(';')
+  e.imgPrefix = IMG_PREFIX;
   $('#task-type').text( e.taskkeyInfo.taskkeyTypeStr);
 
   html = $('#evalTmpl').render(e);
-  $('.m-eval').append(html)
+  $('.m-eval').append(html);
+  // $('.eval-command:after').css('content', 'aaa')
+
+  $( `<style>.eval-command:after { content: "${e.taskkeyInfo.goodComment}" }</style>` ).appendTo( "head" )
 }
 
 function renderImg() {
