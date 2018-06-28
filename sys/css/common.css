@@ -58,6 +58,11 @@ a:hover {
   font-weight: 600;
 }
 
+.font-sbig {
+  font-size: 32px;
+  font-weight: 600;
+
+}
 
 .fn-money {
   margin: 0 5px;
@@ -164,3 +169,33 @@ a:hover {
 .group-browse {
     display: none!important;
 }
+
+
+
+.m-cost-wrap {
+    
+}
+
+.m-cost-row {
+    padding: 10px 25px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #eee;
+}
+
+.m-cost-title {
+  background: #4B77BE;
+  color: #fff;
+  font-size: 24px;
+}
+
+
+.m-cost-row>span {
+    flex: 1;
+}
+
+
+.u-cost {
+    flex: 2!important;
+}
+

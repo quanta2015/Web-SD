@@ -8,9 +8,15 @@ function init() {
   $("iframe").height(h-75);
 
   //显示用户名
-  $("#u-name").html(cookie('name') || '<a href="updateSeller.html" target="mainframe" class="font-red">请完善信息</a>');
+  userType = cookie('userType');
+  if (parseInt(userType) === 0) {
+    url = "newTask.html";
+  }else{
+    url = "updateSeller.html";
+  }
+  $("#u-name").html(cookie('name') || `<a href="${url}" target="mainframe" class="font-red">请完善信息</a>`);
 
-    // console.log(  cookie('memberValid') );
+
   if ( cookie('memberValid') ) {
     $(".u-vip").show();
     $("#u-vip-date").text( cookie('memberEndDate')  )

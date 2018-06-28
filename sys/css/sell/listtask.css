@@ -93,7 +93,7 @@ select,input {
 
 .m-detail-wrap {
     position: relative;
-    margin: 10px auto;
+    margin: 50px auto;
     background: #fff;
     width: 1000px;
     display: flex;

@@ -663,34 +663,6 @@ function guid() {
 
 
 
-function upit(file) {
-  let obj = { key: guid() }
-  promise('get', ['/cloudUploadUrl', encodeQuery(obj)].join('?'), null,  (e)=>{
-    console.log(e);
-   
-    $.ajax({    
-          url: e,
-          type: 'PUT',
-          data: file,
-          async:false,
-          cache: false,
-          processData: false,
-          contentType: false,
-          success: function(data,file){
-                console.log(data);
-                console.log(file);
-                console.log(obj.key);
-            },
-            error: function(err) {
-                console.log(err);
-            }
-      })
-  }, null)
-}
-
-
-
-
 
 
 // UPLOAD IMAGE FUNCTION
@@ -698,7 +670,7 @@ var uploadFile = function(target) {
   return new Promise(function(resolve, reject){
 
     let obj = { key: guid() }
-    promise('get', ['/cloudUploadUrl', encodeQuery(obj)].join('?'), null,  (url)=>{
+    promiseNoMask('get', ['/cloudUploadUrl', encodeQuery(obj)].join('?'), null,  (url)=>{
      
       $.ajax({    
         url: url,
@@ -845,3 +817,8 @@ function goBack(){
         window.history.back(-1);  //根据需要可使用history.go(-1);  
     }  
 }  
+
+
+function clickMenu(id) {
+  $(`#${id}`, parent.document)[0].click();
+}
