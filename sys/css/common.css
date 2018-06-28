@@ -155,7 +155,7 @@ a:hover {
 }
 
 .form-imp:before {
-    content: "必填";
+    content: "\5fc5\586b";
     display: inline-block;
     margin-right: 5px;
     color: #fff;

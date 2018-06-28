@@ -397,6 +397,7 @@ function formatCost(ret) {
   let index =0;
   let result = Object.assign({}, ret[0]);
   result.data = []
+  result.service = []
   if (ret.length>1) {
     index = 1;
   }

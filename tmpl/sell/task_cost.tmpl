@@ -11,14 +11,30 @@
       <span>数量   </span>
       <span>合计   </span>
     </div>
-    <div class="m-cost-row">
+    <div class="m-cost-row font-big">
       <span>佣金费用</span>
-      <span class="u-cost">任务1</span>
-      <span>小计   </span>
-      <span>数量   </span>
-      <span class="font-red">合计   </span>
+      <span class="u-cost"></span>
+      <span></span>
+      <span></span>
+      <span class="font-red"></span>
     </div>
-    
+    {{for data}}
+    <div class="m-cost-row">
+      <span></span>
+      <span class="u-cost">第{{:#index+1}}单任务</span>
+      <span>{{:baseserverMoney}}金/单 </span>
+      <span>{{:baseserverCount}}单  </span>
+      <span class="font-red">{{:baseserverSum}}金   </span>
+    </div>
+    {{/for}}
+    <div class="m-cost-row font-big">
+      <span>增值服务</span>
+      <span class="u-cost"></span>
+      <span></span>
+      <span></span>
+      <span class="font-red"></span>
+    </div>
+    {{if showFirstSum}}
     <div class="m-cost-row">
       <span>增值服务</span>
       <span class="u-cost">是否优先展示任务</span>
@@ -26,6 +42,8 @@
       <span>{{:showFirstCount}}单</span>
       <span class="font-red">{{:showFirstSum}}  金</span>
     </div>
+    {{/if}}
+    {{if extraMoneySum}}
     <div class="m-cost-row">
       <span></span>
       <span class="u-cost">加赏任务佣金</span>
@@ -33,6 +51,8 @@
       <span>{{:extraMoneyCount}}单</span>
       <span class="font-red">{{:extraMoneySum}}  金</span>
     </div>
+    {{/if}}
+    {{if auditFirstSum}}
     <div class="m-cost-row">
       <span></span>
       <span class="u-cost">订单优先审核</span>
@@ -40,6 +60,8 @@
       <span>{{:auditFirstCount}}单</span>
       <span class="font-red">{{:auditFirstSum}}  金</span>
     </div>
+    {{/if}}
+    {{if sexMatchSum}}
     <div class="m-cost-row">
       <span></span>
       <span class="u-cost">性别匹配</span>
@@ -47,6 +69,8 @@
       <span>{{:sexMatchCount}}单</span>
       <span class="font-red">{{:sexMatchSum}}  金</span>
     </div>
+    {{/if}}
+    {{if ageMatchSum}}
     <div class="m-cost-row">
       <span></span>
       <span class="u-cost">年龄段匹配</span>
@@ -54,6 +78,8 @@
       <span>{{:ageMatchCount}}单</span>
       <span class="font-red">{{:ageMatchSum}}  金</span>
     </div>
+    {{/if}}
+    {{if areaMatchSum}}
     <div class="m-cost-row">
       <span></span>
       <span class="u-cost">区域限制</span>
@@ -61,6 +87,8 @@
       <span>{{:areaMatchCount}}单</span>
       <span class="font-red">{{:areaMatchSum}}  金</span>
     </div>
+    {{/if}}
+    {{if taobaoGradeSum}}
     <div class="m-cost-row">
       <span></span>
       <span class="u-cost">买家等级费</span>
@@ -68,6 +96,8 @@
       <span>{{:taobaoGradeCount}}单</span>
       <span class="font-red">{{:taobaoGradeSum}}  金</span>
     </div>
+    {{/if}}
+    {{if rebuySum}}
     <div class="m-cost-row">
       <span></span>
       <span class="u-cost">重复购买限制</span>
@@ -75,6 +105,8 @@
       <span>{{:rebuyCount}}单</span>
       <span class="font-red">{{:rebuySum}}  金</span>
     </div>
+    {{/if}}
+    {{if huabeiSum}}
     <div class="m-cost-row">
       <span></span>
       <span class="u-cost">是否要求账号需要开通白条/花呗</span>
@@ -82,6 +114,8 @@
       <span>{{:huabeiCount}}单</span>
       <span class="font-red">{{:huabeiSum}}  金</span>
     </div>
+    {{/if}}
+    {{if usehuabeiSum}}
     <div class="m-cost-row">
       <span></span>
       <span class="u-cost">是否允许使用信用卡/花呗/白条</span>
@@ -89,6 +123,8 @@
       <span>{{:usehuabeiCount}}单</span>
       <span class="font-red">{{:usehuabeiSum}}  金</span>
     </div>
+    {{/if}}
+    {{if buyExpressSum}}
     <div class="m-cost-row">
       <span></span>
       <span class="u-cost">面单购买</span>
@@ -96,6 +132,16 @@
       <span>{{:buyExpressCount}}单</span>
       <span class="font-red">{{:buyExpressSum}}  金</span>
     </div>
+    {{/if}}
+    {{if isRecieveSum}}
+    <div class="m-cost-row">
+      <span></span>
+      <span class="u-cost">默认签收</span>
+      <span>{{:isRecieve}}     金/单</span>
+      <span>{{:isRecieveSum}}单</span>
+      <span class="font-red">{{:isRecieveSum}}  金</span>
+    </div>
+    {{/if}}
     <div class="m-cost-row">
       <span></span>
       <span class="u-cost">平台服务费</span>
