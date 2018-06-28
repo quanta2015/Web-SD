@@ -283,6 +283,7 @@ function msgbox(title, msg,titleA,titleB,cb) {
 
 function alertBox(info, cb) {
   bootbox.alert({
+    title:'温馨提示',
     message: info,
     size: 'small',
     callback: cb
@@ -624,47 +625,6 @@ function guid() {
   });
 }
 
-
-
-// // UPLOAD IMAGE FUNCTION
-// var uploadFile = function(target) {
-//   return new Promise(function(resolve, reject){
-//     // $("body").append(LOADER);
-//     var file = target;
-//     var fileSize = file.size;
-//     var maxSize = 5048576;    //最大5MB
-//     if(parseInt(fileSize) >= parseInt(maxSize)){
-//         notifyInfo('上传的文件不能超过1MB');
-//         return false;  
-//     }else{    
-//       var form = new FormData();
-//       form.append("file", file);
-      
-//       $.ajax({    
-//           url: HOST + URL_UPLOAD_FILE,
-//           type: 'POST',
-//           data: form,
-//           async:false,
-//           processData: false,
-//           contentType: false,
-//           xhrFields: {
-//             withCredentials: true
-//           },
-//           crossDomain: true,
-//       }).done(function(e) {
-//         // $("#i-mask").remove()
-//         console.log('上传图片成功！');
-//         resolve(e.data);
-//       })
-//     }
-//   })
-// }
-
-
-
-
-
-
 // UPLOAD IMAGE FUNCTION
 var uploadFile = function(target) {
   return new Promise(function(resolve, reject){
@@ -690,42 +650,6 @@ var uploadFile = function(target) {
 }
 
 
-
-
-
-// // UPLOAD IMAGE FUNCTION
-// var uploadImg = function(target) {
-//   return new Promise(function(resolve, reject){
-//     // $("body").append(LOADER);
-//     var file = target;
-//     var fileSize = file.size;
-//     var maxSize = 5048576;    //最大5MB
-//     if(parseInt(fileSize) >= parseInt(maxSize)){
-//         notifyInfo('上传的文件不能超过1MB');
-//         return false;  
-//     }else{    
-//       var form = new FormData();
-//       form.append("file", file);
-      
-//       $.ajax({    
-//           url: HOST + URL_UPLOAD_FILE,
-//           type: 'POST',
-//           data: form,
-//           async:false,
-//           processData: false,
-//           contentType: false,
-//           xhrFields: {
-//             withCredentials: true
-//           },
-//           crossDomain: true,
-//       }).done(function(e) {
-//         // $("#i-mask").remove()
-//         console.log('上传图片成功！');
-//         resolve(e.data);
-//       })
-//     }
-//   })
-// }
 
 function saveCookie(data) {
   // 先获取 password 和 userType，防止清空
@@ -806,7 +730,6 @@ function removeByValue(arr, val) {
     }
   }
 }
-
 
 
 function goBack(){  

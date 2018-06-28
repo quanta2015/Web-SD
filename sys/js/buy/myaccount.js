@@ -6,6 +6,12 @@ $(init);
 function init() {
 
 
+  if( parseInt(cookie('approveState')) !== 1 ) {
+    alertBox('新手请先至新手任务完成相关信息绑定，完成所有绑定后，平台奖励2金', null)
+    // toastr.success("新手请先至新手任务完成相关信息绑定，完成所有绑定后，平台奖励2金！", "新手温馨提示！");
+  }
+
+
   $('body').on('click', '#withdraw', ()=>{ goto('withdraw.html') });
   $('body').on('click', '#withdraw-detail', ()=>{ goto('withdraw.html') });
   $('body').on('click', '.m-money-type', doShowMoney );
