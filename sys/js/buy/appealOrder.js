@@ -11,6 +11,7 @@ function init() {
   $('body').on('click', '#return-list', gotoPage);
   $('body').on('click', '.m-close', doClose);
   $('body').on('click','.b-close',doClose);
+  $('body').on('click', '.detail-task', doDetail);
 }
 
 function renderImg() {
@@ -44,7 +45,6 @@ function doSubmitEval(e) {
     notifyInfo('请上传图片！');
     return;
   }
-  
     data = {
     buyerTaskId: _id,
 	complainContent:$("#complainContent").val(),
@@ -56,12 +56,27 @@ function doSubmitEval(e) {
 	picture5: $("#u-express-picture5").attr('picurl')
   }
   promise('post', '/submit_complain' , JSON.stringify(data), cbSubmitEval, null)
-
-
 }
 
 function cbSubmitEval(e) {
   alertBox('提交申诉成功',gotoPage);
+}
+
+function doDetail() {
+  var obj = {
+    id: $(this).data("id"),
+    type: 0
+  }
+  promiseTmpl('GET', '/tmpl/buy/appeal_detail.tmpl', ['/admin/complains_detail', encodeQuery(obj)].join('?') ,null, cbDetail)
+}
+
+function cbDetail(r, e) {
+  let ret = e;
+  ret.data.imgPrefix = IMG_PREFIX;
+  $(".g-detail").empty();
+  $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
+  $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
+  $(".g-detail").show();
 }
 
 function gotoPage() {
