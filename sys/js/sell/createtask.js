@@ -366,7 +366,7 @@ function getTaskData() {
     let taskItem = {
       taskkeyType: typeArr.text(),
       keyword: $(this).find('.u-task-key').val(),
-      taskkeyNum: $(this).find('.u-task-count').val(),
+      taskkeyNum: $(this).find('.u-task-count').val().replace(/,/g, ''),
       from: $(this).find('.timepicker-from').val(),
       to: $(this).find('.timepicker-to').val(),
       appoints: '',
@@ -397,6 +397,7 @@ function formatCost(ret) {
   let index =0;
   let result = Object.assign({}, ret[0]);
   result.data = []
+  result.service = []
   if (ret.length>1) {
     index = 1;
   }
@@ -424,27 +425,31 @@ function doComplete() {
   promise('POST', URL_TASK_PUBLISH, JSON.stringify(taskObj), (e) => {
       promise('GET', URL_SELL_PAY_TASK + e.id, null, (e)=>{
         alertBox("成功发布任务", (e)=>{
-          goto('listTask.html')
+          // goto('listTask.html')
+          clickMenu('payTaskList')
         })
       }, (e)=>{
         msgbox('提示信息',e.message,MSG_WAIT,MSG_RECHARGE, (ret)=>{
           if (!ret) {
             goto('rechargeTask.html')
+          }else{
+            clickMenu('payTaskList')
           }
         })
       });
-  })
+  }, null)
 }
 
-function cbComplete() {
-  msgbox('提示信息',MSG_TASK_SAVE_SUCC,MSG_CONT_CREATE_TASK,MSG_PUB_TASK, function(ret) {
-    if (ret) {
-      goto('createTask.html')
-    }else{
-      goto('listTask.html')
-    }
-  })
-}
+// function cbComplete() {
+//   msgbox('提示信息',MSG_TASK_SAVE_SUCC,MSG_CONT_CREATE_TASK,MSG_PUB_TASK, function(ret) {
+//     if (ret) {
+//       goto('createTask.html')
+//     }else{
+//       // goto('listTask.html')
+//       clickMenu('payTaskList')
+//     }
+//   })
+// }
 
 
 // function initPlatforms() {
@@ -616,7 +621,6 @@ function initTask() {
             doCountTask()
           })
       })(ret);
-
 
     })
 

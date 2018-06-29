@@ -49,7 +49,7 @@
         {{/if}}
         </div>
       </li>
-      <li>
+      <li  class="group-{{:type}}">
         <div class="col-1">件数</div>
         <div class="col-2 font-red-thunderbird fn-right">
         {{if number}}
@@ -106,29 +106,13 @@
         <div class="col-2 font-red-thunderbird fn-right">{{:orderwords}}</div>
       </li>
       <li>
-        <div class="col-1">评论要求</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:taskkeyTypeStr}}</div>
+        <div class="col-1">任务要求</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:~formatEvalReq(taskkeyType, type)}}</div>
       </li>
-      <li>
+      <li class="group-{{:type}}">
         <div class="col-1">是否假聊</div>
         <div class="col-2 font-red-thunderbird fn-right">{{if chatNecessary}}是{{else}}否{{/if}}</div>
       </li>
-      {{if ((taskkeyType==2)||(taskkeyType==4))}}
-      <li>
-        <div class="col-1">指定关键词</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:appoints}}</div>
-      </li>
-      {{/if}}
-      {{if (taskkeyType==3)}}
-      <li>
-        <div class="col-1">图片好评图</div>
-        <div class="col-2 font-red-thunderbird fn-right">
-          {{for taskkeyInfo.taskPictureList}}
-          <a href="{{:~root.imgPrefix}}{{:picture}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture}}" style="width: 60px; height: 60px; border: 1px solid #ccc;"></a>
-          {{/for}}
-        </div>
-      </li>
-      {{/if}}
 
     </div>
     <div class="m-d-item col-1">

@@ -109,12 +109,20 @@
           <li>
             <div class="col-1">3. 上传目标商品截图后，根据图片提示上传对应截图即可</div>
           </li>
-          <li>
+          <li class="group-pay">
             <div class="col-1 col-img">
               <div class="m-img" pid="i-s-head"   type="目标商品头部"></div>
               <div class="m-img" pid="i-s-ask"    type="商品问答"></div>
               <div class="m-img" pid="i-s-detail" type="商品详情"></div>
               <div class="m-img" pid="i-s-cart"   type="加入购物车"></div>
+            </div>
+          </li>
+          <li class="group-browser">
+            <div class="col-1 col-img">
+              <div class="m-img" pid="i-s-head"   type="目标商品头部"></div>
+              <div class="m-img" pid="i-s-tail"   type="目标商品底部"></div>
+              <div class="m-img" pid="i-s-goods1" type="店铺商品1"></div>
+              <div class="m-img" pid="i-s-goods2" type="店铺商品2"></div>
             </div>
           </li>
         </div>
@@ -123,47 +131,59 @@
             <div class="col-1">
               <span class=" icon-credit-card"></span>
               <span class="m-step">第4步 </span>
-              聊天下单支付
+              <span class="group-pay">聊天下单支付</span>
+              <span class="group-browser">关注商品/关注店铺/加购物车</span>
             </div>
           </li>
-          <li>
+          <li class="group-pay">
             <div class="col-1">1. 点击联系客服，要求至少和商家客服有4个问题互动，不得<span class="font-red">一次性复制</span>4个重复问题，完成截图一张</div>
           </li>
-          <li>
+          <li class="group-pay">
             <div class="col-1">2. 把商品加入购物车，确认件数、颜色、尺码和留言要求，下单付款</div>
           </li>
-          <li>
+          <li class="group-pay">
             <div class="col-1">3. 付款完成后，点击订单详情页，截图一张</div>
           </li>
-          <li>
+          <li class="group-browser">
+            <div class="col-1">1. 根据浏览行为要求，进行相应操作并上传图片，如：关注/收藏商品，加入购物车等。</div>
+          </li>
+          <li class="group-pay">
             <div class="col-1 col-img">
-              <!-- <div class="m-img" pid="i-s-askall" type="问大家"></div> -->
               <div class="m-img m-talk" pid="i-s-talk" type="聊天"></div>
               <div class="m-img" pid="i-s-pay" type="下单支付"></div>
             </div>
           </li>
+          <li class="group-browser">
+            <div class="col-1 col-img">
+              <div class="m-img m-f-goods" pid="i-f-goods" type="关注商品"></div>
+              <div class="m-img m-f-shop" pid="i-f-shop" type="关注店铺"></div>
+              <div class="m-img m-add-card" pid="i-add-cart" type="加购物车"></div>
+            </div>
+          </li>
+
+          
         </div>
       </div>
 
       <div class="m-d m-d-main">
         <div class="m-d-item col-1">
-          <li class="v-m-title">
+          <li class="v-m-title group-pay">
             <div class="col-1">
               <span class="icon-list"></span>
               <span class="m-step">第5步 </span>
               填写订单和实付金额
             </div>
           </li>
-          <li>
+          <li class="group-pay">
             <div class="col-1">1. 填写淘宝/京东/其他平台订单编号，请到手机淘宝/手机京东/其他凭他查看并复制</div>
           </li>
-          <li>
+          <li class="group-pay">
             <input type="text" class="form-control" placeholder="请输入订单编号" id="order-id">
           </li>
-          <li>
+          <li class="group-pay">
             <div class="col-1">2. 填写实际付款金额，手机淘宝/手机京东/其他平台订单详情显示的金额就是实付金额</div>
           </li>
-          <li>
+          <li class="group-pay">
             <input type="text" class="form-control" placeholder="请输入实际付款金额" id="pay-money">
           </li>
           <li>

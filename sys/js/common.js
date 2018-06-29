@@ -283,6 +283,7 @@ function msgbox(title, msg,titleA,titleB,cb) {
 
 function alertBox(info, cb) {
   bootbox.alert({
+    title:'温馨提示',
     message: info,
     size: 'small',
     callback: cb
@@ -624,81 +625,12 @@ function guid() {
   });
 }
 
-
-
-// // UPLOAD IMAGE FUNCTION
-// var uploadFile = function(target) {
-//   return new Promise(function(resolve, reject){
-//     // $("body").append(LOADER);
-//     var file = target;
-//     var fileSize = file.size;
-//     var maxSize = 5048576;    //最大5MB
-//     if(parseInt(fileSize) >= parseInt(maxSize)){
-//         notifyInfo('上传的文件不能超过1MB');
-//         return false;  
-//     }else{    
-//       var form = new FormData();
-//       form.append("file", file);
-      
-//       $.ajax({    
-//           url: HOST + URL_UPLOAD_FILE,
-//           type: 'POST',
-//           data: form,
-//           async:false,
-//           processData: false,
-//           contentType: false,
-//           xhrFields: {
-//             withCredentials: true
-//           },
-//           crossDomain: true,
-//       }).done(function(e) {
-//         // $("#i-mask").remove()
-//         console.log('上传图片成功！');
-//         resolve(e.data);
-//       })
-//     }
-//   })
-// }
-
-
-
-
-function upit(file) {
-  let obj = { key: guid() }
-  promise('get', ['/cloudUploadUrl', encodeQuery(obj)].join('?'), null,  (e)=>{
-    console.log(e);
-   
-    $.ajax({    
-          url: e,
-          type: 'PUT',
-          data: file,
-          async:false,
-          cache: false,
-          processData: false,
-          contentType: false,
-          success: function(data,file){
-                console.log(data);
-                console.log(file);
-                console.log(obj.key);
-            },
-            error: function(err) {
-                console.log(err);
-            }
-      })
-  }, null)
-}
-
-
-
-
-
-
 // UPLOAD IMAGE FUNCTION
 var uploadFile = function(target) {
   return new Promise(function(resolve, reject){
 
     let obj = { key: guid() }
-    promise('get', ['/cloudUploadUrl', encodeQuery(obj)].join('?'), null,  (url)=>{
+    promiseNoMask('get', ['/cloudUploadUrl', encodeQuery(obj)].join('?'), null,  (url)=>{
      
       $.ajax({    
         url: url,
@@ -718,42 +650,6 @@ var uploadFile = function(target) {
 }
 
 
-
-
-
-// // UPLOAD IMAGE FUNCTION
-// var uploadImg = function(target) {
-//   return new Promise(function(resolve, reject){
-//     // $("body").append(LOADER);
-//     var file = target;
-//     var fileSize = file.size;
-//     var maxSize = 5048576;    //最大5MB
-//     if(parseInt(fileSize) >= parseInt(maxSize)){
-//         notifyInfo('上传的文件不能超过1MB');
-//         return false;  
-//     }else{    
-//       var form = new FormData();
-//       form.append("file", file);
-      
-//       $.ajax({    
-//           url: HOST + URL_UPLOAD_FILE,
-//           type: 'POST',
-//           data: form,
-//           async:false,
-//           processData: false,
-//           contentType: false,
-//           xhrFields: {
-//             withCredentials: true
-//           },
-//           crossDomain: true,
-//       }).done(function(e) {
-//         // $("#i-mask").remove()
-//         console.log('上传图片成功！');
-//         resolve(e.data);
-//       })
-//     }
-//   })
-// }
 
 function saveCookie(data) {
   // 先获取 password 和 userType，防止清空
@@ -836,7 +732,6 @@ function removeByValue(arr, val) {
 }
 
 
-
 function goBack(){  
     //解决Safari中后退功能的兼容问题  
     if (navigator.userAgent && /(iPhone|iPad|iPod|Safari)/i.test(navigator.userAgent)) {  
@@ -845,3 +740,8 @@ function goBack(){
         window.history.back(-1);  //根据需要可使用history.go(-1);  
     }  
 }  
+
+
+function clickMenu(id) {
+  $(`#${id}`, parent.document)[0].click();
+}

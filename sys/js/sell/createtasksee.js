@@ -352,12 +352,14 @@ function doComplete() {
   promise('POST', URL_TASK_PUBLISH, JSON.stringify(taskObj), (e) => {
       promise('GET', URL_SELL_PAY_TASK + e.id, null, (e)=>{
         alertBox("成功发布任务", (e)=>{
-          goto('listTask.html')
+          clickMenu('browserTaskList')
         })
       }, (e)=>{
         msgbox('提示信息',e.message,MSG_WAIT,MSG_RECHARGE, (ret)=>{
           if (!ret) {
             goto('rechargeTask.html')
+          }else{
+            clickMenu('browserTaskList')
           }
         })
       });

@@ -35,7 +35,6 @@ let rules = {
 $(init);
 
 function init() {
-  $('body').on('click', '#resetBtn', doResetForm);
   $('#shop_type').on('change', doChange);
 
   $('#typepicker').typepicker();
@@ -55,9 +54,6 @@ function doChange(e) {
   }
 }
 
-function doResetForm() {
-  document.getElementById("form-bind").reset()
-}
 
 function doSave() {
   obj = { 

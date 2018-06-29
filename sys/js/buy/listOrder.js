@@ -6,7 +6,8 @@ $(init);
 function init() {
 
   status = getUrlParam('status')
-  console.log(status);
+  type = getUrlParam('type')
+  console.log(type);
 
   initList(pageData);
   $('body').on('click', '.commit-task', doCommit);
@@ -39,7 +40,8 @@ function cbList(r, e) {
 function doCommit() {
   var obj = {
     id: $(this).data("id"),
-    tid: $(this).data("tid")
+    tid: $(this).data("tid"),
+    type: $(this).data("type")
   }
   location.href = ['submitOrder.html', encodeQuery(obj)].join('?') 
 }
@@ -69,6 +71,7 @@ function doComplainTask(e){
 function cbDetail(r, e) {
   let ret = e;
   ret.data.imgPrefix = IMG_PREFIX;
+  ret.data.type = type;
   $(".g-detail").empty();
   $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
   // $("#ig-info").toggle("slide", { direction: "left" }, 200);

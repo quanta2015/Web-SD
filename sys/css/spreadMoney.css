@@ -1,0 +1,50 @@
+header {
+  padding: 10px;
+  background: #fff;
+  margin-top: 20px;
+}
+
+header .m-title {
+  font-size: 24px;
+  text-align: center;
+  color: #E43A45;
+  font-weight: 600;
+}
+
+section {
+  padding: 10px;
+  background: #fff;
+  margin: 20px auto;
+  width: 900px;
+}
+
+.m-row {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+section>.m-title>div {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.m-row>div {
+  display: flex;
+  align-items: center;
+}
+
+.m-idx {
+  width: 50px;
+  min-width: 50px;
+  background: #4B77BE;
+  height: 50px;
+  justify-content: center;
+  color: #fff;
+  border-radius: 25px;
+}
+
+.m-cnt {
+  margin-left: 20px;
+  font-size: 16px;
+}

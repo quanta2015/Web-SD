@@ -34,7 +34,8 @@ function chooseTask(ret) {
 }
 
 function cbChoose(e) {
-  goto('listOrder.html?status=-1')
+  clickMenu('listOrder-0')
+  // goto('listOrder.html?status=-1')
 }
 
 
