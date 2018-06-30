@@ -3,6 +3,7 @@
         <tr class="uppercase">
             <th></th>
             <th> 创建时间 </th>
+            <th> 申诉类型 </th>
             <th> 手机号码</th>
 			<th> 申诉描述</th>
             <th> 上传图片 </th>
@@ -17,6 +18,7 @@
         <tr>
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
             <td> {{:~formatTime(createtime)}} </td>
+            <td> </td>
             <td> {{:mobile}}</td>
             <td> {{:complainContent}}</td>
             <td> 
@@ -26,14 +28,13 @@
 				{{if picture4}}<a href="{{:~root.imgPrefix}}{{:picture4}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture4}}" style="width: 60px; height: 60px;"></a>{{/if}}
                 {{if picture5}}<a href="{{:~root.imgPrefix}}{{:picture5}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture5}}" style="width: 60px; height: 60px;"></a>{{/if}}			
 			</td>
-            <td class="">{{if handleStatus==0}}未处理{{/if}}{{if handleStatus==1}}通过{{/if}}{{if handleStatus==2}}未通过{{/if}}</td>
+            <td class="">{{if handleStatus==0}}未处理{{/if}}{{if handleStatus==1}}已处理{{/if}}</td>
 			 <td> {{if handleTime}}{{:~formatTime(handleTime)}}{{/if}}</td>
             <td> {{:handleResult}}</td>
 			<td>
               <a href="#basic" class="btn red btn-xs btn-outline detail-task"   data-id="{{:id}}"><i class="fa fa-edit"></i> 详情 </a>
 			  {{if handleStatus==0}}
-              <a href="#basic" class="btn red btn-xs btn-outline audit-appeal"   data-id="{{:id}}" data-type="2"><i class="fa fa-edit"></i> 不通过 </a>
-              <a href="#basic" class="btn blue-madison btn-xs btn-outline audit-appeal"   data-id="{{:id}}" data-type="1"><i class="fa fa-edit"></i> 通过 </a>
+              	<a href="#basic" class="btn blue-madison btn-xs btn-outline audit-appeal"   data-id="{{:id}}" data-type="1"><i class="fa fa-edit"></i> 处理 </a>
               {{/if}}
             </td>
         </tr>

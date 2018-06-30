@@ -29,7 +29,7 @@
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
             <td> {{:shopType}} </td>
             <td> {{:shopName}} </td>
-            <td> {{:id}} </td>
+            <td> {{:id}} <a class="btn red btn-xs btn-outline detail-appeal">拉黑</a></td>
             <td> {{:~formatTime(taskCreatetime)}} </td>
             <td> {{:~formatTime(acceptTime)}} </td>
             <td> {{:buyerId}} </td>
@@ -73,7 +73,7 @@
             <div class="u-publishtime">发布时间：{{:~formatTime(taskCreatetime)}}</div>
         </div>
         <div class="u-col u-buy">
-            <div class="u-buyer">买家ID：{{:buyerMobile}}</div>
+            <div class="u-buyer">买家ID：{{:buyerMobile}} <a class="btn red btn-xs  defriend-apply" buyerId="{{:buyerId}}">拉黑</a></div>
             <div class="u-buyer">买家淘宝/京东ID：{{:jingdongId}}{{:taobaoId}}</div>
             <div class="u-order-id">平台订单ID：{{:code}}</div>
             <div class="u-order-id">淘宝/京东订单ID：{{:orderid}}</div>

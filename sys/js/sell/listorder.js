@@ -34,6 +34,26 @@ function init() {
   $('body').on('click', '.m-close', doClose);
   $('body').on('click', '.detail-task', doDetail);
   $('body').on('click','.complain-task',doComplainTask);
+  $('body').on('click','.defriend-apply',defriendApply);
+}
+
+function defriendApply(e){
+	 let buyerId=$(this).attr("buyerId");
+	 let shoperId= JSON.parse($.cookie('cko')).id;
+	  bootbox.prompt("请填写拉黑原因", function(ret){ 
+		    if( ret !== null) {
+		      var obj = {
+		    		  buyerId: buyerId,
+		    		  shoperId: shoperId,
+		    		  reason: ret
+		    	}
+		      promise('POST','/shoper/save_black_buyer',JSON.stringify(obj), cbDefriend, null)
+		    }
+		  }); 
+}
+
+function cbDefriend(){
+	initList();
 }
 
 
