@@ -7,13 +7,14 @@ function init() {
   initList(pageData);
   $('body').on('click', '.detail-appeal', doDetail);
   $('body').on('click', '.m-close', doClose);
-    $('body').on('click', '.b-close', doClose);
+  $('body').on('click', '.b-close', doClose);
 }
 
 function initList() {
-  let param = Object.assign(pageData, {type: '0'});
+  let param = Object.assign(pageData, {type:1});
   promiseTmpl('GET', '/tmpl/buy/myappeal.tmpl', ['/complains_list', encodeQuery(param)].join('?'),null, cbList)
 }
+
 
 function cbList(r, e) {
   let ret = e;
@@ -21,17 +22,20 @@ function cbList(r, e) {
   ret.imgPrefix = IMG_PREFIX;
   Object.assign(ret, pageData);
   totalPages = Math.ceil(ret.total/pageData.pageSize);
-  $(".portlet-body .table").remove();
+  $(".portlet-body .u-wrap").remove();
   $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
   if ($('.table-pg').text() == '') initPage(totalPages);
 
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
 }
 
+
+
+
+
 function doDetail() {
   var obj = {
-    buyerTaskId: $(this).data("tid"),
-    type: 0
+    buyerTaskId: $(this).data("tid")
   }
   promiseTmpl('GET', '/tmpl/buy/appeal_detail.tmpl', ['/get_complain_detail', encodeQuery(obj)].join('?') ,null, cbDetail)
 }
@@ -45,6 +49,10 @@ function cbDetail(r, e) {
   $(".g-detail").show();
 }
 
+
+
+
+
 function initPage(totalPages) {
   $('.portlet-body .table-pg').twbsPagination({
     totalPages: totalPages || 1,
@@ -53,6 +61,7 @@ function initPage(totalPages) {
     }
   })
 }
+
 
 function doClose() {
   $('.g-detail').hide()

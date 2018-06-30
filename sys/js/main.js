@@ -36,7 +36,8 @@ function init() {
       platform: $(this).data('platform'),
       status:   $(this).data('status'),
       tasktype: $(this).data('tasktype'),
-      type:     $(this).data('type')
+      type:     $(this).data('type'),
+	  appealtype:$(this).data('appealtype')
     }
     url = [pageName, encodeQuery(o)].join('?')
     $("#mainframe", parent.document.body).attr("src", url);

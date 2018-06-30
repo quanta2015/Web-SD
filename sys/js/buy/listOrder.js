@@ -62,8 +62,8 @@ function doDetail() {
 
 function doComplainTask(e){
 	var obj = {
-    id: $(this).prop('id'),
-    tid: $(this).attr('tid')
+    id: $(this).data('id'),
+    tid: $(this).data('tid')
   }
   location.href = ['appealOrder.html', encodeQuery(obj)].join('?')
 }

@@ -1,19 +1,25 @@
 let _id;
 let pageData = Object.assign({}, PAGE_DATA);
-// pageData.pageSize= 1
+let appealtype=getUrlParam("appealtype");
 $(init);
 
 function init() {
   initList(pageData);
-  $('body').on('click', '.detail-appeal', doDetail);
+    $('body').on('click', '.audit-appeal', doAuditAppeal);
+  $('body').on('click', '.detail-task', doDetail);
   $('body').on('click', '.m-close', doClose);
-    $('body').on('click', '.b-close', doClose);
 }
 
 function initList() {
-  let param = Object.assign(pageData, {type: '0'});
-  promiseTmpl('GET', '/tmpl/buy/myappeal.tmpl', ['/complains_list', encodeQuery(param)].join('?'),null, cbList)
+  if (appealtype==1) {
+    $(".caption").append("卖家申诉处理");
+  }else if (appealtype==0) {
+   $(".caption").append("买家申诉处理");
+  }
+  let param = Object.assign(pageData, {type:appealtype});
+  promiseTmpl('GET', '/tmpl/admin/appealhandle.tmpl', ['/complains_list', encodeQuery(param)].join('?'),null, cbList)
 }
+
 
 function cbList(r, e) {
   let ret = e;
@@ -28,12 +34,30 @@ function cbList(r, e) {
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
 }
 
+function doAuditAppeal(e) {
+doClose();
+  bootbox.prompt(MSG_INPUT_AUDIT_INFO, function(ret){ 
+    if( ret !== null) {
+      var obj = {
+        id: sid = $(e.currentTarget).data('id'),
+        handleStatus: $(e.currentTarget).data('type'),
+        handleResult: ret
+      }
+      promise('POST','/admin/complains_handle',JSON.stringify(obj), cbAuditAppeal, null)
+    }; 
+  }); 
+}
+
+function cbAuditAppeal(e) {
+  initList()
+}
+
 function doDetail() {
   var obj = {
-    buyerTaskId: $(this).data("tid"),
-    type: 0
+    id: $(this).data("id"),
+    type: appealtype
   }
-  promiseTmpl('GET', '/tmpl/buy/appeal_detail.tmpl', ['/get_complain_detail', encodeQuery(obj)].join('?') ,null, cbDetail)
+  promiseTmpl('GET', '/tmpl/admin/appeal_detail.tmpl', ['/admin/complains_detail', encodeQuery(obj)].join('?') ,null, cbDetail)
 }
 
 function cbDetail(r, e) {
@@ -53,6 +77,7 @@ function initPage(totalPages) {
     }
   })
 }
+
 
 function doClose() {
   $('.g-detail').hide()
