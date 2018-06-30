@@ -601,6 +601,25 @@ const rdHelper = {
       ret = '买家返款'
     }
     return ret;
+  },
+  getTaskType: (s) => {
+    if(s.split('')[0] === 'L') {
+      ret = 'browse'
+    }else{
+      ret = 'pay'
+    }
+    return ret;
+  },
+  display: (s, t) => {
+    if ((s === 'pay')&&(!t)) {
+      ret = 'hide'
+    }
+
+    if ((s === 'browse')&&(!t)) {
+      ret = 'hide'
+    }
+
+    return ret;
   }
 }
 
@@ -744,4 +763,19 @@ function goBack(){
 
 function clickMenu(id) {
   $(`#${id}`, parent.document)[0].click();
+}
+
+
+
+function formatCost(ret) {
+  let index =0;
+  let result = Object.assign({}, ret[0]);
+  result.data = []
+  if (ret.length>1) {
+    index = 1;
+  }
+  for(i=index;i<ret.length;i++) {
+    result.data.push(ret[i]);
+  }
+  return result;
 }

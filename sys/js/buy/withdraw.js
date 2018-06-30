@@ -36,6 +36,9 @@ function init() {
   $('body').on('change', '#account-type', doInitTip);
 
   // $('body').on('input propertychange', '#withdraw-money', doCompute);
+  // 
+  
+  
 
 }
 

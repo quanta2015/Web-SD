@@ -226,3 +226,27 @@ body {
 .u-sp {
     flex: 1;
 }
+
+
+.u-type {
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    left: 40px;
+    border-radius: 16px!important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 600;
+}
+
+.u-type-pay {
+    background: #4B77BE
+}
+
+.u-type-browse {
+    background: #1BA39C
+}
