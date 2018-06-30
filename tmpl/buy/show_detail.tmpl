@@ -36,7 +36,7 @@
       <span class="u-step-val">{{:code}}</span>
     </div>
     <div class="u-step-info">
-      <span class="u-step-key">淘宝订单编号</span>
+      <span class="u-step-key group-{{:mainType}}">淘宝订单编号</span>
       <span class="u-sp"></span>
       <span class="u-step-val">{{if buyerSubmit}}{{:buyerSubmit.orderid}}{{/if}}</span>
     </div>
@@ -45,14 +45,14 @@
       <span class="u-sp"></span>
       <span class="u-step-val">{{:acount}}</span>
     </div>
-    <div class="u-step-info">
+    <div class="u-step-info group-{{:mainType}}">
       <span class="u-step-key">商品金额</span>
       <span class="u-sp"></span>
       <span class="u-step-val">{{:goodsMoneySum}}元</span>
     </div>
   </div>
 
-  <div class="u-step">
+  <div class="u-step  group-{{:mainType}}">
     <div class="u-step-title">
       <span>2.订单付款</span>
     </div>
@@ -108,7 +108,7 @@
 
   
 
-  <div class="u-step">
+  <div class="u-step  group-{{:mainType}}">
     <div class="u-step-title">
       <span>3.收货好评</span>
     </div>  
@@ -136,7 +136,7 @@
   </div>
 
 
-  <div class="u-step">
+  <div class="u-step  group-{{:mainType}}">
     <div class="u-step-title">
       <span>4.商家确认订单</span>
     </div> 
@@ -166,7 +166,7 @@
     {{/if}}
   </div>
 
-  <div class="u-step">
+  <div class="u-step  group-{{:mainType}}">
     <div class="u-step-title">
       <span>5.任务完成</span>
     </div>
@@ -178,5 +178,77 @@
     </div>
     {{/if}}
   </div>
+
+
+  <div class="u-step group-b-{{:mainType}}">
+    <div class="u-step-title">
+      <span>2.订单浏览</span>
+    </div>
+
+    {{if status>0}}
+    <div class="u-step-info">
+      <span class="u-step-key">货比三家</span>
+      <span class="u-sp"></span>
+      <span class="u-step-val">
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.goods1}}">
+        {{/if}}
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.goods2}}" >
+        {{/if}}
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.result}}">
+        {{/if}}
+      </span>
+    </div>
+    <div class="u-step-info">
+      <span class="u-step-key">浏览店铺</span>
+      <span class="u-sp"></span>
+      <span class="u-step-val">
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.head}}">
+        {{/if}}
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.bottom}}">
+        {{/if}}
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.shopgoods1}}">
+        {{/if}}
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.shopgoods2}}">
+        {{/if}}
+      </span>
+    </div>
+    <div class="u-step-info">
+      <span class="u-step-key">收藏加购物车</span>
+      <span class="u-sp"></span>
+      <span class="u-step-val">
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.followGoods}}">
+        {{/if}}
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.followShop}}">
+        {{/if}}
+        {{if buyerSubmit}}
+        <img src="{{:~root.imgPrefix}}{{:buyerSubmit.cart}}">
+        {{/if}}
+      </span>
+    </div>
+    {{/if}}
+  </div>
+
+  <div class="u-step group-b-{{:mainType}}">
+    <div class="u-step-title">
+      <span>3.任务完成</span>
+    </div>
+    {{if status>30}}
+    <div class="u-step-info">
+      <span class="u-step-key">获得佣金</span>
+      <span class="u-sp"></span>
+      <span class="u-step-val font-red"> {{:serviceSum}}金</span>
+    </div>
+    {{/if}}
+  </div>
+
 
 </div>

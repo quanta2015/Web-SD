@@ -24,7 +24,6 @@ function init() {
   initTime();
   initList();
   initBalanceInfo();
-  // $('body').on('input propertychange', '#withdraw-money', doCompute);
   $('body').on('click', '#btn-search', doSearch);
 
   $("#form-withdraw").validate({
@@ -32,6 +31,10 @@ function init() {
     messages: messages,
     submitHandler: (e) => { doWithdraw() }
   })
+
+  for(item in BANKS) {
+    $('#bankType').append('<option >' + BANKS[item] +'</option>')
+  }
 }
 
 function initTime() {
@@ -102,6 +105,9 @@ function doWithdraw() {
     toAccount:parseInt($('#bankno').val()),
     transferMoney: parseFloat($('#withdraw-money').val()),
     transferType: 0,
+    // bankName: $('#bankName').val(),
+    // accountName: $('#accountName').val(),
+    // bankType: $('#bankType').val(),
   }
 
   let sum = obj.transferMoney;

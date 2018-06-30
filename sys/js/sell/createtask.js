@@ -393,25 +393,13 @@ function getTaskData() {
   return result;
 }
 
-function formatCost(ret) {
-  let index =0;
-  let result = Object.assign({}, ret[0]);
-  result.data = []
-  result.service = []
-  if (ret.length>1) {
-    index = 1;
-  }
-  for(i=index;i<ret.length;i++) {
-    result.data.push(ret[i]);
-  }
-  return result;
-}
+
 
 
 function cbInfo(r, e) {
   let ret = e;
   let obj = formatCost(ret.data)
-  Object.assign(obj, {balance: $('#u-money', parent.document).text()})
+  Object.assign(obj, {balance: $('#u-money', parent.document).text(), type: 'pay'})
   $('.step3').empty()
   $('.step3').append($.templates(r).render(obj, rdHelper))
 
