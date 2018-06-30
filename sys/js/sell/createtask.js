@@ -596,7 +596,10 @@ function initTask() {
         removeByValue(typeList,'1')
       }
       typeList.forEach((v)=>{
-        if (2 === parseInt(v)) key = true;
+        if (2 === parseInt(v)) {
+          key = true;
+          el.keywordList = el.appoints.split(';')
+        }
         if (3 === parseInt(v)) img = true;
         if (4 === parseInt(v)) word = true;
       })
