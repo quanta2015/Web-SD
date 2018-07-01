@@ -287,3 +287,16 @@ table td {
 .u-sp {
     flex: 1;
 }
+
+.u-press-money {
+    width: 30px;
+    height: 30px;
+    background: #E43A45;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 15px!important;
+    font-size: 16px;
+    font-weight: bold;
+}

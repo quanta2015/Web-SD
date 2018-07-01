@@ -13,6 +13,7 @@ function init() {
 }
 
 async function initList() {
+
   param = { taskkeyid: _id, type: type }
   ret = await promiseCall( [URL_BUY_TASKDETAIL, encodeQuery(param)].join('?'), null )
   Object.assign(ret.data, param);
@@ -21,9 +22,14 @@ async function initList() {
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
 }
 
-
 function doChoose(e) {
-  msgbox('温馨提示', '<span class="font-red">请于60分钟内完成任务，超过时间平台会自动取消任务并扣取2金！诺于15分钟内主动撤单，将不会扣取佣金！</span>','取消','确认',chooseTask)
+
+  if(type === 'pay') {
+    msg = TEXT_PAY_TASK_INFO
+  }else{
+    msg = TEXT_BROWSER_TASK_INFO
+  }
+  msgbox('温馨提示', `<span class="font-red">${msg}</span>`,'取消','确认',chooseTask)
 } 
 
 function chooseTask(ret) {

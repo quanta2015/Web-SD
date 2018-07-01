@@ -34,26 +34,6 @@ function init() {
   $('body').on('click', '.m-close', doClose);
   $('body').on('click', '.detail-task', doDetail);
   $('body').on('click','.complain-task',doComplainTask);
-  $('body').on('click','.defriend-apply',defriendApply);
-}
-
-function defriendApply(e){
-	 let buyerId=$(this).attr("buyerId");
-	 let shoperId= JSON.parse($.cookie('cko')).id;
-	  bootbox.prompt("请填写拉黑原因", function(ret){ 
-		    if( ret !== null) {
-		      var obj = {
-		    		  buyerId: buyerId,
-		    		  shoperId: shoperId,
-		    		  reason: ret
-		    	}
-		      promise('POST','/shoper/save_black_buyer',JSON.stringify(obj), cbDefriend, null)
-		    }
-		  }); 
-}
-
-function cbDefriend(){
-	initList();
 }
 
 
@@ -93,7 +73,8 @@ function doPayTask(e) {
   var obj = {
     id: $(this).attr('id'),
     tid: $(this).attr('tid'),
-    pid: $(this).attr('pid')
+    pid: $(this).attr('pid'),
+    type: $(this).attr('type'),
   }
   location.href = ['payTask.html', encodeQuery(obj)].join('?')
 }
@@ -213,6 +194,7 @@ function initList(pg) {
 function cbListTask(r,e) {
   let ret = e;
   Object.assign(ret, pageData);
+  ret.type = type;
   totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
   $(".portlet-body .u-wrap").remove();
   $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));

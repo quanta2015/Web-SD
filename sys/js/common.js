@@ -233,6 +233,9 @@ const MSG_CONF_DEL_NOTICE = "请确认是否要删除该公告！"
 
 
 const TEXT_BIND_SUCCESS = '已绑定'
+const TEXT_PAY_TASK_INFO = '请于60分钟内完成任务，超时平台会自动取消任务并扣取0.5金！若于15分钟内主动撤单，将不会扣取佣金，15分钟后主动撤单，扣取0.2金！';
+const TEXT_BROWSER_TASK_INFO = '请于60分钟内完成任务，超时平台会自动取消任务并扣取0.2金！若于15分钟内主动撤单，将不会扣取佣金，15分钟后主动撤单，扣取0.1金！';
+
 
 // ARRAY & OBJ DEF
 const LOGIN_IMGS = [
@@ -601,6 +604,25 @@ const rdHelper = {
       ret = '买家返款'
     }
     return ret;
+  },
+  getTaskType: (s) => {
+    if(s.split('')[0] === 'L') {
+      ret = 'browse'
+    }else{
+      ret = 'pay'
+    }
+    return ret;
+  },
+  display: (s, t) => {
+    if ((s === 'pay')&&(!t)) {
+      ret = 'hide'
+    }
+
+    if ((s === 'browse')&&(!t)) {
+      ret = 'hide'
+    }
+
+    return ret;
   }
 }
 
@@ -744,4 +766,19 @@ function goBack(){
 
 function clickMenu(id) {
   $(`#${id}`, parent.document)[0].click();
+}
+
+
+
+function formatCost(ret) {
+  let index =0;
+  let result = Object.assign({}, ret[0]);
+  result.data = []
+  if (ret.length>1) {
+    index = 1;
+  }
+  for(i=index;i<ret.length;i++) {
+    result.data.push(ret[i]);
+  }
+  return result;
 }

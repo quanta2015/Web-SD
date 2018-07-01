@@ -37,7 +37,7 @@ function doSubmitGoods() {
 }
 
 function doReturnList() {
-    history.back()
+    goBack()
 }
 
 function renderData(ret) {
