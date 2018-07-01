@@ -1,0 +1,28 @@
+<table class="table table-hover table-light">
+    <thead>
+        <tr class="uppercase">
+            <th></th>
+            <th> 创建时间 </th>
+            <th> 被禁刷手</th>
+            <th> 刷手电话</th>
+			<th> 提交商家</th>
+            <th> 商家电话 </th>
+            <th> 禁用原因 </th>
+        </tr>
+    </thead>
+    <tbody>
+      {{for data}}
+        <tr>
+            <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
+            <td> {{:~formatTime(createtime)}} </td>
+            <td> {{:buyerName}}</td>
+            <td> {{:buyerMobile}}</td>
+            <td> {{:shoperNickname}}</td>
+			<td> {{:shoperMobile}}</td>
+			<td> {{:reason}}</td>
+           
+			<td>
+        </tr>
+      {{/for}}
+    </tbody>
+  </table>

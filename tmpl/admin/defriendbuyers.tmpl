@@ -1,0 +1,43 @@
+<table class="table table-hover table-light">
+    <thead>
+        <tr class="uppercase">
+            <th></th>
+            <th> 创建时间 </th>
+            <th> 申诉类型 </th>
+            <th> 手机号码</th>
+			<th> 申诉描述</th>
+            <th> 上传图片 </th>
+            <th> 处理情况 </th>
+			<th>处理时间</th>
+			<th>处理描述</th>
+            <th> 功能 </th>
+        </tr>
+    </thead>
+    <tbody>
+      {{for data}}
+        <tr>
+            <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
+            <td> {{:~formatTime(createtime)}} </td>
+            <td> </td>
+            <td> {{:mobile}}</td>
+            <td> {{:complainContent}}</td>
+            <td> 
+                {{if picture1}}<a href="{{:~root.imgPrefix}}{{:picture1}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture1}}" style="width: 60px; height: 60px;"></a>{{/if}}
+                {{if picture2}}<a href="{{:~root.imgPrefix}}{{:picture2}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture2}}" style="width: 60px; height: 60px;"></a>{{/if}}
+                {{if picture3}}<a href="{{:~root.imgPrefix}}{{:picture3}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture3}}" style="width: 60px; height: 60px;"></a>{{/if}}
+				{{if picture4}}<a href="{{:~root.imgPrefix}}{{:picture4}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture4}}" style="width: 60px; height: 60px;"></a>{{/if}}
+                {{if picture5}}<a href="{{:~root.imgPrefix}}{{:picture5}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture5}}" style="width: 60px; height: 60px;"></a>{{/if}}			
+			</td>
+            <td class="">{{if handleStatus==0}}未处理{{/if}}{{if handleStatus==1}}已处理{{/if}}</td>
+			 <td> {{if handleTime}}{{:~formatTime(handleTime)}}{{/if}}</td>
+            <td> {{:handleResult}}</td>
+			<td>
+              <a href="#basic" class="btn red btn-xs btn-outline detail-task"   data-id="{{:id}}"><i class="fa fa-edit"></i> 详情 </a>
+			  {{if handleStatus==0}}
+              	<a href="#basic" class="btn blue-madison btn-xs btn-outline audit-appeal"   data-id="{{:id}}" data-type="1"><i class="fa fa-edit"></i> 处理 </a>
+              {{/if}}
+            </td>
+        </tr>
+      {{/for}}
+    </tbody>
+  </table>

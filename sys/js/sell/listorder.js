@@ -93,8 +93,7 @@ function doPayTask(e) {
   var obj = {
     id: $(this).attr('id'),
     tid: $(this).attr('tid'),
-    pid: $(this).attr('pid'),
-    type: $(this).attr('type'),
+    pid: $(this).attr('pid')
   }
   location.href = ['payTask.html', encodeQuery(obj)].join('?')
 }

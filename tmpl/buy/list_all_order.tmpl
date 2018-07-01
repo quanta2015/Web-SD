@@ -5,11 +5,7 @@
         <div class="u-col u-img">
           <a href="{{:~root.imgPrefix}}{{:goodsmainimg}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:goodsmainimg}}" style="width: 100px; height: 100px;"></a>
         </div>
-        <div class="u-col u-title">
-          <img src="/img/taobao.png">
-          <label class="u-type u-type-{{:mainType}}">{{if mainType === 'pay'}}垫{{else}}浏{{/if}}</label>
-          {{:goodsName}}
-        </div>
+        <div class="u-col u-title"><img src="/img/taobao.png">{{:goodsName}}</div>
         <div class="u-col u-money">
           <span class="font-red group-{{:mainType}}">垫付金额：{{:goodsprice}}</span>  
           <span class="font-red font-big"><img src="/img/money.png" class="fn-money">{{:reward}}</span>
@@ -28,7 +24,7 @@
           <a href="#basic" class="btn red btn-xs  evaluate-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-commenting-o"></i> 评价 </a>
           {{/if}}
           {{if (status == 30)}}
-          <a href="#basic" class="btn red-mint btn-xs  order-money"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-money"></i> 催款 </a>
+          <a href="#basic" class="btn red-mint btn-xs  evaluate-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-money"></i> 催款 </a>
           {{/if}}
           <a href="#basic" class="btn green-jungle btn-xs  complain-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-commenting-o"></i> 申诉 </a>
         </div>

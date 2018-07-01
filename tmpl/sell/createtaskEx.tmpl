@@ -19,9 +19,11 @@
     <div class="col-xs-2 form-imp"> 关键字好评任务<span class="task-type hide">2</span></div>
     <div class="col-xs-10">
       <span> 设置指定关键词：建议至少设3个关键字，最多可设置5个</span>
-      {{for data.keywordList}}
-      <input type="text" class="wide-s2 ipt-keyword ipt-keyword-{{:#index+1}}" value="{{:#data}}" >
-      {{/for}}
+      <input type="text" class="wide-s2 ipt-keyword ipt-keyword1-{{:count}}" >
+      <input type="text" class="wide-s2 ipt-keyword ipt-keyword2-{{:count}}">
+      <input type="text" class="wide-s2 ipt-keyword ipt-keyword3-{{:count}}" >
+      <input type="text" class="wide-s2 ipt-keyword ipt-keyword4-{{:count}}" >
+      <input type="text" class="wide-s2 ipt-keyword ipt-keyword5-{{:count}}" >
     </div>
   </div>
   {{/if}}

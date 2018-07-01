@@ -178,6 +178,11 @@
         {{:~formatBool(isRecieve)}} </div>
       </li>
       <li class="group-{{:type}}">
+        <div class="col-2">问大家</div>
+        <div class="col-1 font-red-thunderbird fn-right">{{:~formatBool(ask)}}
+       </div>
+      </li>
+      <li class="group-{{:type}}">
         <div class="col-2">是否向平台购买面单</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatBool(buyExpress)}} </div>
@@ -197,7 +202,7 @@
       </li>
       <li>
         <div class="col-1">评论要求</div>
-        <div class="col-2 font-red-thunderbird fn-right">{{:~formatEvalReq(taskkeyType,~root.type)}}</div>
+        <div class="col-2 font-red-thunderbird fn-right">{{:~formatEvalReq(taskkeyType,type)}}</div>
       </li>
       
       <li>

@@ -167,13 +167,9 @@ a:hover {
 
 
 .group-browse {
-  display: none!important;
+    display: none!important;
 }
 
-
-.group-b-pay {
-  display: none!important;
-}
 
 
 .m-cost-wrap {
@@ -184,19 +180,15 @@ a:hover {
     padding: 10px 25px;
     display: flex;
     flex-direction: row;
-    border-top: 1px solid #eee;
-}
-
-.m-cost-row:last-child {
-    margin-bottom: 25px;
     border-bottom: 1px solid #eee;
 }
 
 .m-cost-title {
-    background: #666;
-    color: #fff;
-    font-size: 20px;
+  background: #4B77BE;
+  color: #fff;
+  font-size: 24px;
 }
+
 
 .m-cost-row>span {
     flex: 1;
@@ -207,26 +199,3 @@ a:hover {
     flex: 2!important;
 }
 
-
-.m-cost-second {
-  border-top: none;
-}
-
-
-.u-money-base:after {
-    content: '\57fa\7840\4f63\91d1';
-    font-weight: 600;
-    display: inline-block;
-    padding: 0 10px;
-    color: #ff0000;
-    font-size: 16px;
-}
-
-.u-money-add:after {
-    content: '\9644\52a0\4f63\91d1';
-    font-weight: 600;
-    display: inline-block;
-    padding: 0 10px;
-    color: #26C281;
-    font-size: 16px;
-}

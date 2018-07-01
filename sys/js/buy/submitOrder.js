@@ -69,18 +69,14 @@ function doConfirm() {
     return;
   }
 
-  
-  if (type === 'pay') {
+  if ($('#order-id').val() === '' ) {
+    notifyInfo('请填写订单编号！');
+    return;
+  }
 
-    if ($('#order-id').val() === '' ) {
-      notifyInfo('请填写订单编号！');
-      return;
-    }
-
-    if ( ($('#pay-money').val() === '' )||( !$.isNumeric( $('#pay-money').val() ) ) ) {
-      notifyInfo('请填写正确的实际付款金额');
-      return;
-    }
+  if ( ($('#pay-money').val() === '' )||( !$.isNumeric( $('#pay-money').val() ) ) ) {
+    notifyInfo('请填写正确的实际付款金额');
+    return;
   }
 
 
