@@ -24,8 +24,14 @@ function init() {
   $('body').on('click', '.m-close', doClose);
   $('body').on('click', '.republish-task', doRepublish);
   $('body').on('click', '.pay-detail', doPayDetail);
+  $('body').on('click', '.cancel-task', doCancelTask);
 }
 
+
+function doCancelTask(e) {
+  pid = $(this).attr('id');
+    promise('POST','/task/cancel_task/'+pid, null, cbPayDetail, null)
+}
 
 
 

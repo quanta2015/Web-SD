@@ -7,7 +7,7 @@ function init() {
   initList(pageData);
   $('body').on('click', '.detail-appeal', doDetail);
   $('body').on('click', '.m-close', doClose);
-    $('body').on('click', '.b-close', doClose);
+  $('body').on('click', '.b-close', doClose);
 }
 
 function initList() {

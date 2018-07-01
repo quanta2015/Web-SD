@@ -80,7 +80,8 @@ function cbDetail(r, e) {
 }
 
 function gotoPage() {
-  location.href = 'listOrder.html?status=20'
+  goBack()
+  // location.href = 'listOrder.html?status=20'
 }
 
 

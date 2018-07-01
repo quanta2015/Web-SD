@@ -186,7 +186,7 @@ const TMPL_REG                    = '/tmpl/reg.tmpl'
 const MSG_LOGIN_SUCCESS       = '登录成功！'
 const MSG_REGIS_SUCCESS       = '注册成功！'
 const MSG_PUBLISH_SUCCESS     = '发布成功！'
-const MSG_BIND_SUCCESS        = '绑定成功！'
+const MSG_BIND_SUCCESS        = '提交成功，待审核!'
 const MSG_UPDATE_SUCCESS      = '修改信息成功'
 const MSG_RECHARGE_SUCCESS    = '充值成功！'
 const MSG_SHOPNAME_CORRECT    = '店铺名称正确!'
@@ -482,7 +482,7 @@ const rdHelper = {
       case  0: ret = '待处理';    break;
       case 10: ret = '待发货';    break;
       case 20: ret = '待评价';    break;
-      case 30: ret = '评价待审核'; break;
+      case 30: ret = '待审核'; break;
       case 50: ret = '刷手撤销';  break;
       case 60: ret = '系统撤销';  break;
       case 70: ret = '已完成';    break;
@@ -781,4 +781,9 @@ function formatCost(ret) {
     result.data.push(ret[i]);
   }
   return result;
+}
+
+
+function fix(val) {
+  return parseFloat(val).toFixed(1)
 }
