@@ -1,77 +1,88 @@
 <div class="m-detail-wrap">
   <div class="m-close">X</div>
-  <div class="m-d m-title">
-    <div class="v-sub-title ">
-      <div class="col-1">申诉详情</div>
-      <div class="col-2 font-red-thunderbird"></div>
-      <div class="col-1"></div>
-      <div class="col-2 font-red-thunderbird"></div>
-    </div>
-  </div>
   {{for}}
-  <div class="m-d m-d-main">
-	<div class="col-11 m-d-item">
-	      <li><div class="col-1">申诉类型</div><div class="col-2 font-red-thunderbird fn-right">{{if buyerId>0}}买家申诉{{/if}}{{if shoperId>0}}商家申诉{{/if}}</div></li>
-		  <li><div class="col-1">创建时间</div><div class="col-2 font-red-thunderbird fn-right">{{:~formatTime(createtime)}}</div></li>
-		  <li><div class="col-1">手机号码</div><div class="col-2 font-red-thunderbird fn-right">{{:mobile}}</div></li>
-		  <li><div class="col-1">申诉描述</div><div class="col-2 font-red-thunderbird fn-right">{{:complainContent}}</div></li>
-	</div>
-	</div>
-	<div class="m-d m-d-main">
-    <div class="container">
-		<div id="myCarousel" class="carousel slide" >
-    <!-- 轮播（Carousel）指标 -->
-    <ol class="carousel-indicators">
-       
-    </ol>   
-    <!-- 轮播（Carousel）项目 -->
-    <div class="carousel-inner">
-        {{if picture1!=null && picture1!=''}}<div class="item active">
-			<a href="{{:~root.imgPrefix}}{{:picture1}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture1}}"></a>
-			<div class="carousel-caption">申诉截图1</div>
-        </div>{{/if}}
-        {{if picture2!=null && picture2!=''}}<div class="item">
-            <a href="{{:~root.imgPrefix}}{{:picture2}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture2}}"></a>
-			<div class="carousel-caption">申诉截图2</div>
-        </div>{{/if}}
-		{{if picture3!=null && picture3!=''}}<div class="item">
-            <a href="{{:~root.imgPrefix}}{{:picture3}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture3}}"></a>
-			<div class="carousel-caption">申诉截图3</div>
-        </div>{{/if}}
-		{{if picture4!=null && picture4!=''}}<div class="item">
-            <a href="{{:~root.imgPrefix}}{{:picture4}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture4}}"></a>
-			<div class="carousel-caption">申诉截图4</div>
-        </div>{{/if}}
-		{{if picture5!=null && picture5!=''}}<div class="item">
-            <a href="{{:~root.imgPrefix}}{{:picture5}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture5}}"></a>
-			<div class="carousel-caption">申诉截图5</div>
-        </div>{{/if}}
+  <div class="u-step">
+    <div class="u-step-title">
+      <span>申诉基础信息</span>
     </div>
-    <!-- 轮播（Carousel）导航 -->
-   <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-  <span class="glyphicon glyphicon-chevron-left"></span>
-</a>
-<a class="right carousel-control" href="#myCarousel" data-slide="next">
-  <span class="glyphicon glyphicon-chevron-right"></span>
-</a> 
-</div>
-</div>
+    <div class="u-step-info">
+      <span class="u-step-key">申诉类型</span>
+      <span class="u-sp"></span>
+      <span class="u-step-val">{{:typeStr}}</span>
+    </div>
+    <div class="u-step-info">
+      <span class="u-step-key">申诉对象</span>
+      <span class="u-sp"></span>
+      <span class="u-step-val">{{if buyerId>0}}买家申诉{{/if}}{{if shoperId>0}}商家申诉{{/if}}</span>
+    </div>
+    <div class="u-step-info">
+      <span class="u-step-key">创建时间</span>
+      <span class="u-sp"></span>
+      <span class="u-step-val">{{:~formatTime(createtime)}}</span>
+    </div>
+    <div class="u-step-info">
+      <span class="u-step-key">手机号码</span>
+      <span class="u-sp"></span>
+      <span class="u-step-val">{{:mobile}}</span>
+    </div>
+	 <div class="u-step-info">
+      <span class="u-step-key">申诉描述</span>
+      <span class="u-sp"></span>
+      <span class="u-step-val">{{:complainContent}}</span>
+    </div>
   </div>
-  
-   <div class="m-d m-d-main">
-	<div class="col-11 m-d-item">
-		{{if handleStatus!=0}}
-	      <li><div class="col-1">处理时间</div><div class="col-2 font-red-thunderbird fn-right">{{:~formatTime(handleTime)}}</div></li>
-		  <li><div class="col-1">处理情况</div><div class="col-2 font-red-thunderbird fn-right">{{:handleResult}}</div></li>
-		  {{/if}}
-		  <li><div class="col-1">处理状态</div><div class="col-2 font-red-thunderbird fn-right">{{if handleStatus==0}}未处理{{/if}}{{if handleStatus==2}}未通过{{/if}}{{if handleStatus==1}}通过{{/if}}</div></li>
+  <div class="u-step">
+    <div class="u-step-title">
+      <span>申诉截图</span>
+    </div>
+
+    <div class="u-step-info">
+      <span class="u-step-val">
+        {{if picture1!=null && picture1!=''}}
+				<a href="{{:~root.imgPrefix}}{{:picture1}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture1}}"></a>
+			{{/if}}
+			{{if picture2!=null && picture2!=''}}
+				<a href="{{:~root.imgPrefix}}{{:picture2}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture2}}"></a>
+			{{/if}}
+			{{if picture3!=null && picture3!=''}}
+				<a href="{{:~root.imgPrefix}}{{:picture3}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture3}}"></a>
+			{{/if}}
+			{{if picture4!=null && picture4!=''}}
+				<a href="{{:~root.imgPrefix}}{{:picture4}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture4}}"></a>
+			{{/if}}
+			{{if picture5!=null && picture5!=''}}
+				<a href="{{:~root.imgPrefix}}{{:picture5}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture5}}"></a>
+			{{/if}}
+      </span>
+    </div>
 	</div>
-	</div>
-	
+	<div class="u-step">
+    <div class="u-step-title">
+      <span>处理结果</span>
+    </div>
+	{{if handleStatus!=0}}
+    <div class="u-step-info">
+      <span class="u-step-key">处理时间</span>
+      <span class="u-sp"></span>
+      <span class="u-step-val">{{:~formatTime(handleTime)}}</span>
+    </div>
+    <div class="u-step-info">
+      <span class="u-step-key">处理情况</span>
+      <span class="u-sp"></span>
+      <span class="u-step-val">{{:handleResult}}</span>
+    </div>
+	{{/if}}
+	 <div class="u-step-info">
+      <span class="u-step-key">处理状态</span>
+      <span class="u-sp"></span>
+      <span class="u-step-val">{{if handleStatus==0}}未处理{{/if}}{{if handleStatus==1}}已经处理{{/if}}</span>
+    </div>
+  </div>
+  	{{/for}}
 	<div class="m-d m-d-main" style='text-align: center;'>
 		<div class="col-1" style='text-align: center; padding:10px'>
-			<a href="#" class="btn dark btn-xs b-close"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 关闭 </a>
+			<a href="#" class="btn dark btn-xs b-close"><i class="fa fa-edit"></i> 关闭 </a>
 		</div>
 	</div>
-	{{/for}}
+
 </div>
