@@ -16,6 +16,19 @@ function init() {
   $('body').on('click', '.detail-task', doDetail);
   $('body').on('click', '.m-close', doClose);
   $('body').on('click','.complain-task',doComplainTask);
+  $('body').on('click','.order-money',doOrderMoney);
+}
+
+function doOrderMoney() {
+  
+  var obj = {
+    id: $(this).data("id")
+  }
+  promise('POST','/buyertask/press_money', JSON.stringify(obj), cbOrderMoney, null)
+}
+
+function cbOrderMoney(e) {
+  notifyInfo('催款成功！请等待商家返款！');
 }
 
 function initList() {

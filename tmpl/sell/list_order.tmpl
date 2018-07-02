@@ -71,6 +71,9 @@
             <div class="u-tid">任务ID：{{:taskId}}</div>
             <div class="u-tid">任务关键字：{{:keyword}}</div>
             <div class="u-publishtime">发布时间：{{:~formatTime(taskCreatetime)}}</div>
+            {{if ((pressMoney===1) && (status !==70))}}
+            <div class="u-press-money">催</div>
+            {{/if}}
         </div>
         <div class="u-col u-buy">
             <div class="u-buyer">买家ID：{{:buyerMobile}} <a class="btn red btn-xs  defriend-apply" buyerId="{{:buyerId}}">拉黑</a></div>
@@ -83,6 +86,7 @@
         <div class="u-col u-money">
           <div class="u-all-money">任务金额：{{:sumMoney}}</div>
           <div class="font-red">垫付金额：{{:goodsSum}}</div>  
+          <div class="font-red">买家实际支付价格：{{:goodsSumBuyer}}</div>  
           <div class="font-red font-big"><img src="/img/money.png" class="fn-money">{{:serviceSum}} </div>
         </div>
         <div class="u-col u-exp">
@@ -99,7 +103,7 @@
           <a href="javascript:;" class="btn green-jungle btn-xs   uppercase sub-goods" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-truck"></i> 发货 </a> 
           {{/if}}
           {{if (status==30)}}
-          <a href="javascript:;" class="btn purple-studio btn-xs   uppercase pay-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-rmb"></i> 审核支付 </a> 
+          <a href="javascript:;" class="btn purple-studio btn-xs   uppercase pay-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}" type="{{:~root.type}}"><i class="fa fa-rmb"></i> 审核支付 </a> 
           {{/if}}
         </div>
     </div>

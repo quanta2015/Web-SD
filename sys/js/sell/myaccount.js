@@ -12,8 +12,9 @@ function init() {
 }
 
 function cbInfo(e) {
-    $("#balance").text(e.balance);
-    $("#u-money", window.parent.document).text(e.balance);
+    val = parseFloat(e.balance).toFixed(1)
+    $("#balance").text(val);
+    $("#u-money", window.parent.document).text(val);
     list = e.taskList;
     for(i=0;i<list.length;i++) {
         $('.u-status' + list[i].status).text(list[i].statusCount);

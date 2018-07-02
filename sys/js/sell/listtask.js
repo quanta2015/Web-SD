@@ -23,11 +23,15 @@ function init() {
   $('body').on('click', '.detail-task', doDetailTask);
   $('body').on('click', '.m-close', doClose);
   $('body').on('click', '.republish-task', doRepublish);
-
   $('body').on('click', '.pay-detail', doPayDetail);
-
+  $('body').on('click', '.cancel-task', doCancelTask);
 }
 
+
+function doCancelTask(e) {
+  pid = $(this).attr('id');
+    promise('POST','/task/cancel_task/'+pid, null, cbPayDetail, null)
+}
 
 
 
@@ -38,7 +42,9 @@ function doPayDetail(e) {
 
 
 function cbPayDetail(e) {
-  renderTmpl(TMPL_SELL_TASK_COST, e.taskMoney).then(ret => {
+  let obj = formatCost(e.taskMoneys)
+  obj.type = type
+  renderTmpl(TMPL_SELL_TASK_COST, obj).then(ret => {
     $(".g-detail").empty();
     $(".g-detail").append(ret);
     $(".g-detail").height( $("body").height() )
@@ -69,6 +75,7 @@ function cbDetail(r, e) {
   let ret = e;
   $(".g-detail").empty();
   ret.data.imgPrefix = IMG_PREFIX;
+  ret.data.type = type
   $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
   $(".g-detail").show()
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});

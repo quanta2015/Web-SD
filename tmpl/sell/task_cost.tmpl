@@ -21,18 +21,112 @@
     {{for data}}
     <div class="m-cost-row">
       <span></span>
-      <span class="u-cost">第{{:#index+1}}单任务</span>
-      <span>{{:baseserverMoney}}金/单 </span>
-      <span>{{:baseserverCount}}单  </span>
-      <span class="font-red">{{:baseserverSum}}金   </span>
+      <span class="u-cost">
+         第{{:#index+1}}单任务 
+         {{if ~root.type === 'pay'}}
+           {{if keywordCommentSum}} 
+            关键字好评任务
+           {{else pictureCommentSum}}
+            图片好评任务
+           {{else wordCommentSum}}
+            文字好评任务
+           {{else}}
+            普通好评任务
+           {{/if}}
+        {{else ~root.type === 'browse'}}
+          {{if browseSum}}浏览任务 {{/if}}
+          {{if addShoppingCartSum}}加购物车 {{/if}}
+          {{if favoriteGoodsSum}}关注商品 {{/if}}
+          {{if favoriteShopSum}}关注店铺 {{/if}}
+        {{/if}}
+      </span>
+      <span class="u-money-base">
+        {{if ~root.type === 'pay'}}
+          {{:baseMoney}}金/单
+        {{else ~root.type === 'browse'}}
+          {{:browse}}金/单
+        {{/if}}
+      </span>
+      <span>
+        {{if ~root.type === 'pay'}}
+          {{:baseMoneyCount}}单
+        {{else ~root.type === 'browse'}}
+          {{:browseCount}}单
+        {{/if}}
+      </span>
+      <span>
+        {{if ~root.type === 'pay'}}
+          {{:baseMoneySum}}金
+        {{else ~root.type === 'browse'}}
+          {{:browseSum}}金
+        {{/if}}
+      </span>
     </div>
+    {{if keywordCommentSum}}
+    <div class="m-cost-row  m-cost-second">
+      <span></span>
+      <span class="u-cost"></span>
+      <span class="u-money-add">{{:keywordComment}}金/单</span>
+      <span>{{:keywordCommentCount}}单  </span>
+      <span>{{:keywordCommentSum}}金   </span>
+    </div>
+    {{/if}}
+    {{if pictureCommentSum}}
+    <div class="m-cost-row m-cost-second">
+      <span></span>
+      <span class="u-cost"></span>
+      <span class="u-money-add">{{:pictureComment}}金/单</span>
+      <span>{{:pictureCommentCount}}单  </span>
+      <span>{{:pictureCommentSum}}金   </span>
+    </div>
+    {{/if}}
+    {{if wordCommentSum}}
+    <div class="m-cost-row m-cost-second">
+      <span></span>
+      <span class="u-cost"></span>
+      <span class="u-money-add">{{:wordComment}}金/单</span>
+      <span>{{:wordCommentCount}}单  </span>
+      <span>{{:wordCommentSum}}金   </span>
+    </div>
+    {{/if}}
+
+
+    {{if addShoppingCartSum}}
+    <div class="m-cost-row  m-cost-second">
+      <span></span>
+      <span class="u-cost"></span>
+      <span class="u-money-add">{{:addShoppingCart}}金/单</span>
+      <span>{{:addShoppingCartCount}}单  </span>
+      <span>{{:addShoppingCartSum}}金   </span>
+    </div>
+    {{/if}}
+    {{if favoriteGoodsSum}}
+    <div class="m-cost-row m-cost-second">
+      <span></span>
+      <span class="u-cost"></span>
+      <span class="u-money-add">{{:favoriteGoods}}金/单</span>
+      <span>{{:favoriteGoodsCount}}单  </span>
+      <span>{{:favoriteGoodsSum}}金   </span>
+    </div>
+    {{/if}}
+    {{if favoriteShopSum}}
+    <div class="m-cost-row m-cost-second">
+      <span></span>
+      <span class="u-cost"></span>
+      <span class="u-money-add">{{:favoriteShop}}金/单</span>
+      <span>{{:favoriteShopCount}}单  </span>
+      <span>{{:favoriteShopSum}}金   </span>
+    </div>
+    {{/if}}
+
+
     {{/for}}
     <div class="m-cost-row font-big">
       <span>增值服务</span>
       <span class="u-cost"></span>
       <span></span>
       <span></span>
-      <span class="font-red"></span>
+      <span></span>
     </div>
     {{if showFirstSum}}
     <div class="m-cost-row">
@@ -40,7 +134,7 @@
       <span class="u-cost">是否优先展示任务</span>
       <span>{{:showFirst}}     金/单</span>
       <span>{{:showFirstCount}}单</span>
-      <span class="font-red">{{:showFirstSum}}  金</span>
+      <span>{{:showFirstSum}}  金</span>
     </div>
     {{/if}}
     {{if extraMoneySum}}
@@ -49,7 +143,7 @@
       <span class="u-cost">加赏任务佣金</span>
       <span>{{:extraMoney}}     金/单</span>
       <span>{{:extraMoneyCount}}单</span>
-      <span class="font-red">{{:extraMoneySum}}  金</span>
+      <span>{{:extraMoneySum}}  金</span>
     </div>
     {{/if}}
     {{if auditFirstSum}}
@@ -58,7 +152,7 @@
       <span class="u-cost">订单优先审核</span>
       <span>{{:auditFirst}}     金/单</span>
       <span>{{:auditFirstCount}}单</span>
-      <span class="font-red">{{:auditFirstSum}}  金</span>
+      <span>{{:auditFirstSum}}  金</span>
     </div>
     {{/if}}
     {{if sexMatchSum}}
@@ -67,7 +161,7 @@
       <span class="u-cost">性别匹配</span>
       <span>{{:sexMatch}}     金/单</span>
       <span>{{:sexMatchCount}}单</span>
-      <span class="font-red">{{:sexMatchSum}}  金</span>
+      <span>{{:sexMatchSum}}  金</span>
     </div>
     {{/if}}
     {{if ageMatchSum}}
@@ -76,7 +170,7 @@
       <span class="u-cost">年龄段匹配</span>
       <span>{{:ageMatch}}     金/单</span>
       <span>{{:ageMatchCount}}单</span>
-      <span class="font-red">{{:ageMatchSum}}  金</span>
+      <span>{{:ageMatchSum}}  金</span>
     </div>
     {{/if}}
     {{if areaMatchSum}}
@@ -85,7 +179,7 @@
       <span class="u-cost">区域限制</span>
       <span>{{:areaMatch}}     金/单</span>
       <span>{{:areaMatchCount}}单</span>
-      <span class="font-red">{{:areaMatchSum}}  金</span>
+      <span>{{:areaMatchSum}}  金</span>
     </div>
     {{/if}}
     {{if taobaoGradeSum}}
@@ -94,7 +188,7 @@
       <span class="u-cost">买家等级费</span>
       <span>{{:taobaoGrade}}     金/单</span>
       <span>{{:taobaoGradeCount}}单</span>
-      <span class="font-red">{{:taobaoGradeSum}}  金</span>
+      <span>{{:taobaoGradeSum}}  金</span>
     </div>
     {{/if}}
     {{if rebuySum}}
@@ -103,7 +197,7 @@
       <span class="u-cost">重复购买限制</span>
       <span>{{:rebuy}}     金/单</span>
       <span>{{:rebuyCount}}单</span>
-      <span class="font-red">{{:rebuySum}}  金</span>
+      <span>{{:rebuySum}}  金</span>
     </div>
     {{/if}}
     {{if huabeiSum}}
@@ -112,7 +206,7 @@
       <span class="u-cost">是否要求账号需要开通白条/花呗</span>
       <span>{{:huabei}}     金/单</span>
       <span>{{:huabeiCount}}单</span>
-      <span class="font-red">{{:huabeiSum}}  金</span>
+      <span>{{:huabeiSum}}  金</span>
     </div>
     {{/if}}
     {{if usehuabeiSum}}
@@ -121,7 +215,7 @@
       <span class="u-cost">是否允许使用信用卡/花呗/白条</span>
       <span>{{:usehuabei}}     金/单</span>
       <span>{{:usehuabeiCount}}单</span>
-      <span class="font-red">{{:usehuabeiSum}}  金</span>
+      <span>{{:usehuabeiSum}}  金</span>
     </div>
     {{/if}}
     {{if buyExpressSum}}
@@ -130,7 +224,7 @@
       <span class="u-cost">面单购买</span>
       <span>{{:buyExpress}}     金/单</span>
       <span>{{:buyExpressCount}}单</span>
-      <span class="font-red">{{:buyExpressSum}}  金</span>
+      <span>{{:buyExpressSum}}  金</span>
     </div>
     {{/if}}
     {{if isRecieveSum}}
@@ -139,38 +233,40 @@
       <span class="u-cost">默认签收</span>
       <span>{{:isRecieve}}     金/单</span>
       <span>{{:isRecieveSum}}单</span>
-      <span class="font-red">{{:isRecieveSum}}  金</span>
+      <span>{{:isRecieveSum}}  金</span>
     </div>
     {{/if}}
+    {{if baseserverSum}}
     <div class="m-cost-row">
       <span></span>
       <span class="u-cost">平台服务费</span>
       <span>{{:baseserverMoney}}金/单</span>
       <span>{{:baseserverCount}}单</span>
-      <span class="font-red">{{:baseserverSum}}  金</span>
+      <span>{{:baseserverSum}}  金</span>
     </div>
+    {{/if}}
     
 
-    <div class="m-cost-row">
+    <div class="m-cost-row group-{{:type}}">
       <span>商品费用</span>
       <span class="u-cost"></span>
-      <span>{{:goodsMoney}}金/单</span>
+      <span>{{:goodsMoney}}元/件 * {{:~root.goodsNum}}件</span>
       <span>{{:goodsCount}}单</span>
-      <span class="font-red">{{:goodsMoneySum}}  金</span>
+      <span>{{:goodsMoneySum}}  金</span>
     </div>
-    <div class="m-cost-row">
+    <div class="m-cost-row group-{{:type}}">
       <span>保证金</span>
       <span class="u-cost"></span>
       <span></span>
       <span></span>
-      <span class="font-red">{{:securityMoney}}金</span>
+      <span>{{:securityMoney}}金</span>
     </div>
-    <div class="m-cost-row">
+    <div class="m-cost-row group-{{:type}}">
       <span>快递押金</span>
       <span class="u-cost"></span>
       <span>金/单</span>
       <span>单</span>
-      <span class="font-red">金</span>
+      <span>金</span>
     </div>
     <div class="m-cost-row">
       <span>合计</span>

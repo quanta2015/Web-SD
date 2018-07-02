@@ -20,7 +20,7 @@ function init() {
   }
   console.log(tasktype);
 
-  $('#task-capacity').text(cookie('remainderNumberOfMonth'))
+  // $('#task-capacity').text(cookie('remainderNumberOfMonth'))
 
   initList(pageData);
   $('body').on('click', '.audit-task', doDetail);

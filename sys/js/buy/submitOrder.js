@@ -69,14 +69,18 @@ function doConfirm() {
     return;
   }
 
-  if ($('#order-id').val() === '' ) {
-    notifyInfo('请填写订单编号！');
-    return;
-  }
+  
+  if (type === 'pay') {
 
-  if ( ($('#pay-money').val() === '' )||( !$.isNumeric( $('#pay-money').val() ) ) ) {
-    notifyInfo('请填写正确的实际付款金额');
-    return;
+    if ($('#order-id').val() === '' ) {
+      notifyInfo('请填写订单编号！');
+      return;
+    }
+
+    if ( ($('#pay-money').val() === '' )||( !$.isNumeric( $('#pay-money').val() ) ) ) {
+      notifyInfo('请填写正确的实际付款金额');
+      return;
+    }
   }
 
 
@@ -97,7 +101,7 @@ function doSubmitBuy(ret) {
       head:   $('#i-s-head').attr('picurl'),
       ask:    $('#i-s-ask').attr('picurl'),
       detail: $('#i-s-detail').attr('picurl'),
-      cart:   $('#i-s-cart').attr('picurl'),
+      cart:   (type==='pay')?$('#i-s-cart').attr('picurl'):$('#i-add-cart').attr('picurl'),
       talk:   $('#i-s-talk').attr('picurl'),
       pay:    $('#i-s-pay').attr('picurl'),
       bottom:    $('#i-s-tail').attr('picurl'),
@@ -105,7 +109,6 @@ function doSubmitBuy(ret) {
       shopgoods2:   $('#i-s-goods2').attr('picurl'),
       followShop:   $('#i-f-shop').attr('picurl'),
       followGoods:  $('#i-f-goods').attr('picurl'),
-      cart:         $('#i-add-cart').attr('picurl'),
       orderid:    $('#order-id').val(),
       paymoney:   $('#pay-money').val(),
       shopname:   $('#shop-name').val()
@@ -122,7 +125,7 @@ function cbSubmitBuy(e) {
 }
 
 function doReturn() {
-  history.back()
+  goBack()
 }
 
 

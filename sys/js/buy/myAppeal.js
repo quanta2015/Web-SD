@@ -9,7 +9,10 @@ function init() {
   $('body').on('click', '.detail-appeal', doDetail);
   $('body').on('click', '.m-close', doClose);
   $('body').on('click', '.b-close', doClose);
+<<<<<<< HEAD
   $('body').on('click','[_tab]',tabInitList)
+=======
+>>>>>>> 996bf484c4375b94d27f9809829d25025e2bac3a
 }
 
 function initList() {
