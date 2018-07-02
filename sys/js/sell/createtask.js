@@ -509,6 +509,12 @@ function doCountTask() {
     count += parseInt($(this).val() || 0);
   });
   $('#task-count').val(count);
+
+  let taskCount = 1;
+  $('.task-index').each( (i,e)=>{
+    $(e).text(`第 ${taskCount} 单任务`)  
+    taskCount ++;
+  })
 }
 
 
@@ -609,6 +615,7 @@ function initTask() {
       (function(dat) {
           renderTmpl('/tmpl/sell/createtaskEx.tmpl', dat ).then(function(h) {
             $(".task-wrap").append(h);
+            initTime(index+1)
             doCountTask()
           })
       })(ret);

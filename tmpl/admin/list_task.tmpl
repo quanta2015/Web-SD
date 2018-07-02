@@ -18,7 +18,7 @@
     <tbody>
       {{for data}}
         <tr>
-            <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
+            <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} {{if auditFirst}}<span class="u-audit-first">优</span>{{/if}}</td>
             <td class="u-dt"> {{:~formatTime(createtime)}}</td>
             <td> {{:platform}} </td>
             <td> {{:tasktype}}</td>

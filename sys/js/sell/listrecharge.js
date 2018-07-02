@@ -9,7 +9,7 @@ function init() {
 
 function initList() {
   let param = {
-    status: $('#sr-status'),
+    status: $('#sr-status').val(),
     fromDate: $("#sr-time-from").val(),
     toDate: $("#sr-time-to").val(),
   };

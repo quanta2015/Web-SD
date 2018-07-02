@@ -180,3 +180,15 @@ body {
     width: calc( (100% - 20px)/2 )!important;
     flex: none!important;
 }
+
+span.u-audit-first {
+    /* position: absolute; */
+    width: 20px;
+    height: 20px;
+    background: #E43A45;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    left: 0;
+}

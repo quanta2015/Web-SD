@@ -24,15 +24,24 @@ function init() {
   $('body').on('click', '.m-close', doClose);
   $('body').on('click', '.republish-task', doRepublish);
   $('body').on('click', '.pay-detail', doPayDetail);
-  $('body').on('click', '.cancel-task', doCancelTask);
+  $('body').on('click', '.end-task', doEndTask);
 }
 
 
-function doCancelTask(e) {
-  pid = $(this).attr('id');
-    promise('POST','/task/cancel_task/'+pid, null, cbPayDetail, null)
+function doEndTask(e) {
+  msgbox('温馨提示', '<span class="font-red">确认结束此任务？请核对清楚！</span>','取消','确认', 
+    (ret)=>{
+      if (!ret) {
+        var obj = { taskId: $(this).data('id') }
+        promise('GET',['/task/end_task/', encodeQuery(obj)].join('?') ,null, cbEndTask, null)
+      }
+  })  
 }
 
+function cbEndTask(e) {
+  notifyInfo('结束任务成功！')
+  doSearch()
+}
 
 
 function doPayDetail(e) {

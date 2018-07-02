@@ -33,9 +33,28 @@ async function initDetail() {
   ret = await promiseCall( [URL_BUY_TASKDETAIL, encodeQuery(param)].join('?'), null )
   Object.assign(ret.data, { show:false,imgPrefix: IMG_PREFIX, type:type });
   $('#shop-name').text(ret.data.shopName)
+
+  //不需要聊天
   if(ret.data.chatNecessary == 0) {
     $('.m-talk').remove()
   }
+  //
+  if(type === 'browse') {
+    var list = ret.data.taskkeyType.split('')
+    list.forEach((v)=>{
+      if ( parseInt(v) === 2)  $('.m-f-goods').addClass('keep');
+      if ( parseInt(v) === 3)  $('.m-f-shop').addClass('keep');
+      if ( parseInt(v) === 4)  $('.m-add-card').addClass('keep');
+    })
+
+    $('.m-d-item.col-2 .m-img').each((i, v)=>{
+      if (!$(v).hasClass('keep')) {
+        $(v).remove()
+      }
+    })
+  }
+
+
   $('.m-d-detail').append(await renderTmpl(TMPL_BUY_ORDER_DETAIL, ret.data, rdHelper))
 }
 

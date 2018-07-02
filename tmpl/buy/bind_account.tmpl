@@ -125,17 +125,11 @@
             <div class="col-xs-10 id-card-box">
               <div class="row img-task img-task-list id-card-box">
 
-
-
-
-
-
                 {{for list}}
-
                 <div class="fileinput fileinput-new" data-provides="fileinput" style="margin-right:20px">
                   <div class="fileinput-preview  thumbnail" style="max-width: 200px; max-height: 150px; line-height: 10px;">
-                    {{if ~root.idImg && ~root.idImg[#getIndex()]}}
-                    <img src="{{:~root.imgPrefix}}{{:~root.idImg[#getIndex()]}}">
+                    {{if ~root.accountImg && ~root.accountImg[#getIndex()]}}
+                    <img src="{{:~root.imgPrefix}}{{:~root.accountImg[#getIndex()]}}">
                     {{else}}
                     <img src="/img/noimg.png" id="img-id-{{:#getIndex()}}">
                     {{/if}}
@@ -150,10 +144,6 @@
                   </div>
                 </div>
               {{/for}}  
-
-
-
-
 
             </div>
           </div>

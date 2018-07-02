@@ -43,7 +43,10 @@
 
               <a href="javascript:;" class="btn grey-mint btn-xs   uppercase pay-detail" id="{{:id}}"><i class="fa fa-bars"></i> 支付详情 </a> 
               <a href="javascript:;" class="btn grey-mint btn-xs  sbold uppercase detail-task" data-id="{{:id}}" ><i class="fa fa-bars"></i> 任务详情 </a>
-              <a href="javascript:;" class="btn grey-mint btn-xs  sbold uppercase cancel-task" data-id="{{:id}}" ><i class="fa fa-bars"></i> 结束任务 </a>
+
+              {{if status!==50}}
+              <a href="javascript:;" class="btn yellow-lemon btn-xs  sbold uppercase end-task" data-id="{{:id}}" ><i class="fa fa-bars"></i> 结束任务 </a>
+              {{/if}}
               
               {{if (status==0 || status==40)}}
               <a href="javascript:;" class="btn red-thunderbird btn-xs  sbold uppercase del-task" id="{{:id}}" ><i class="fa fa-times"></i> 删除任务 </a> 
