@@ -1,6 +1,7 @@
 let _id;
 let pageData = Object.assign({}, PAGE_DATA);
 // pageData.pageSize= 1
+let tabType="my";
 $(init);
 
 function init() {
@@ -8,22 +9,36 @@ function init() {
   $('body').on('click', '.detail-appeal', doDetail);
   $('body').on('click', '.m-close', doClose);
   $('body').on('click', '.b-close', doClose);
+<<<<<<< HEAD
+  $('body').on('click','[_tab]',tabInitList)
+=======
+>>>>>>> 996bf484c4375b94d27f9809829d25025e2bac3a
 }
 
 function initList() {
-  let param = Object.assign(pageData, {type: '0'});
-  promiseTmpl('GET', '/tmpl/buy/myappeal.tmpl', ['/complains_list', encodeQuery(param)].join('?'),null, cbList)
+	  let param = Object.assign(pageData);
+	if(tabType=='my'){
+	  promiseTmpl('GET', '/tmpl/buy/myappeal.tmpl', ['/complains_list', encodeQuery(param)].join('?'),null, cbList)
+	}else{
+		promiseTmpl('GET', '/tmpl/buy/myappeal.tmpl', ['/get_complains_recieved', encodeQuery(param)].join('?'),null, cbList)
+	}
+}
+
+function tabInitList(){
+	tabType=$(this).attr("_tab");
+	initList();
 }
 
 function cbList(r, e) {
   let ret = e;
   _listtask = ret.data;
+  alert(ret);
   ret.imgPrefix = IMG_PREFIX;
   Object.assign(ret, pageData);
   totalPages = Math.ceil(ret.total/pageData.pageSize);
-  $(".portlet-body .table").remove();
-  $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
-  if ($('.table-pg').text() == '') initPage(totalPages);
+  $(".tab-content .portlet-body .table").remove();
+  $(".tab-content .portlet-body").prepend($.templates(r).render(ret, rdHelper));
+  if ($('.tab-content .table-pg').text() == '') initPage(totalPages);
 
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
 }
@@ -32,7 +47,7 @@ function doDetail() {
   var obj = {
     buyerTaskId: $(this).data("tid"),
     type: 0
-  }
+  };
   promiseTmpl('GET', '/tmpl/buy/appeal_detail.tmpl', ['/get_complain_detail', encodeQuery(obj)].join('?') ,null, cbDetail)
 }
 

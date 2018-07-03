@@ -8,6 +8,7 @@ function init() {
     $('body').on('click', '.audit-appeal', doAuditAppeal);
   $('body').on('click', '.detail-task', doDetail);
   $('body').on('click', '.m-close', doClose);
+  $('body').on('click', '.b-close', doClose);
 }
 
 function initList() {
@@ -36,13 +37,13 @@ function cbList(r, e) {
 
 function doAuditAppeal(e) {
 doClose();
-  bootbox.prompt(MSG_INPUT_AUDIT_INFO, function(ret){ 
+  bootbox.prompt("请输入处理结果", function(ret){ 
     if( ret !== null) {
       var obj = {
         id: sid = $(e.currentTarget).data('id'),
         handleStatus: $(e.currentTarget).data('type'),
         handleResult: ret
-      }
+      };
       promise('POST','/admin/complains_handle',JSON.stringify(obj), cbAuditAppeal, null)
     }; 
   }); 
@@ -56,7 +57,7 @@ function doDetail() {
   var obj = {
     id: $(this).data("id"),
     type: appealtype
-  }
+  };
   promiseTmpl('GET', '/tmpl/admin/appeal_detail.tmpl', ['/admin/complains_detail', encodeQuery(obj)].join('?') ,null, cbDetail)
 }
 
@@ -70,15 +71,15 @@ function cbDetail(r, e) {
 }
 
 function initPage(totalPages) {
-  $('.portlet-body .table-pg').twbsPagination({
-    totalPages: totalPages || 1,
-    onPageClick: function(event, page) {
-      pageData.pageIndex = page - 1;
-    }
-  })
+	$('.portlet-body .table-pg').twbsPagination({
+	    totalPages: totalPages || 1,
+	    onPageClick: function(event, page) {
+	      pageData.pageIndex = page - 1;
+	    }
+	  })
 }
 
 
 function doClose() {
-  $('.g-detail').hide()
+  $('.g-detail').hide();
 }

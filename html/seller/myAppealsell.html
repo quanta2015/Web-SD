@@ -25,12 +25,22 @@
         <div class="portlet ">
           <div class="portlet-title">
             <div class="caption">
-            <i class="fa fa-tasks"></i> 我的申诉</div>
-            
+            <i class="fa fa-tasks"></i> 申诉管理</div>
           </div>
           <div class="portlet-body">
-            <div class="table-data"></div>
-            <div class="table-pg"></div>
+          	<ul class="nav nav-tabs">
+            <li class="active"><a href="#" _tab="my"  data-toggle="tab"> 我的申诉 </a></li>
+            <li><a href="#" _tab="obtain" data-toggle="tab"> 收到申诉 </a></li>
+          </ul>
+          </div>
+          <div class="tab-content">
+          <div class="tab-pane fade active in" id="tab-list">
+            <div class="portlet ">
+              <div class="portlet-body">
+                <div class="table-data"></div>
+                <div class="table-pg"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -54,6 +64,6 @@
     <script src="/lib/twbs-pagination/jquery.twbsPagination.min.js"></script>
     <script src="/lib/pace/pace.min.js"></script>
     <script src="/sys/js/common.js"></script>
-    <script src="/sys/js/sell/myAppealsell.js"></script>
+    <script src="/sys/js/buy/myAppealsell.js"></script>
   </body>
 </html>

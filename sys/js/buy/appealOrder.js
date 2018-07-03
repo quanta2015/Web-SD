@@ -38,7 +38,10 @@ function doSubmitEval(e) {
     }
   })
 
-  if($("#complainContent").val()==""){
+  if($("#type").val()==""){
+	  notifyInfo('请选择申诉类型！');
+	  return;
+  }else if($("#complainContent").val()==""){
 	notifyInfo('请填写申诉内容！');
     return;
   }else if (!err) {
@@ -48,7 +51,7 @@ function doSubmitEval(e) {
     data = {
     buyerTaskId: _id,
 	complainContent:$("#complainContent").val(),
-	type:0,
+	type:$("#type").val(),
     picture1: $("#u-express-picture1").attr('picurl'),
     picture2: $("#u-express-picture2").attr('picurl'),
     picture3: $("#u-express-picture3").attr('picurl'),
@@ -64,10 +67,9 @@ function cbSubmitEval(e) {
 
 function doDetail() {
   var obj = {
-    id: $(this).data("id"),
-    type: 0
-  }
-  promiseTmpl('GET', '/tmpl/buy/appeal_detail.tmpl', ['/admin/complains_detail', encodeQuery(obj)].join('?') ,null, cbDetail)
+    id: $(this).data("id")
+  };
+  promiseTmpl('GET', '/tmpl/buy/appeal_detail.tmpl', ['/get_complain_detail', encodeQuery(obj)].join('?') ,null, cbDetail)
 }
 
 function cbDetail(r, e) {
