@@ -404,12 +404,5 @@ function doInitArea() {
   $("#goods-city option[value='"+city+"']").attr("selected", "selected");
 }
 
-function doCountTask() {
-  let count = 0;
-  $('.task-count').each(function() {
-    count += parseInt($(this).val() || 0);
-  });
-  $('#task-count').val(count);
-}
 
 

@@ -100,7 +100,7 @@ table td {
 
 .u-money {
     min-width: 125px;
-    align-items: center;
+    /*align-items: center;*/
 }
 
 .u-buy {

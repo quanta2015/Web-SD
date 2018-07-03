@@ -514,6 +514,9 @@ const rdHelper = {
 
     return ((parseInt(s)===1)?'是':'否')
   },
+  formatSex: (s)=> {
+    return (((parseInt(s)===0)||(s===''))?'无要求':s)
+  },
   formatAge: (s)=> {
     switch(s) {
       case -1:
@@ -536,7 +539,7 @@ const rdHelper = {
     return ret;
   },
   formatRepeat: (s)=> {
-    switch(s) {
+    switch(parseInt(s)) {
       case 0: ret = '15天不重复'; break;
       case 1: ret = '30天不重复'; break;
       case 2: ret = '60天不重复'; break;
@@ -786,4 +789,29 @@ function formatCost(ret) {
 
 function fix(val) {
   return parseFloat(val).toFixed(1)
+}
+
+
+function doCountTask() {
+  let count = 0;
+  $('.task-count').each(function() {
+    count += parseInt($(this).val() || 0);
+  });
+  $('#task-count').val(count);
+
+  let taskCount = 1;
+  $('.task-index').each( (i,e)=>{
+    $(e).text(`第 ${taskCount} 单任务`)  
+    taskCount ++;
+  })
+}
+
+
+function getTaskType(s) {
+  if(s.split('')[0] === 'L') {
+    ret = 'browse'
+  }else{
+    ret = 'pay'
+  }
+  return ret;
 }

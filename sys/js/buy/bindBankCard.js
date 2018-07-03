@@ -102,5 +102,5 @@ function doSave(data) {
 
 function cbBind(e) {
   initUserInfo();
-  alertBox(MSG_BIND_SUCCESS, ()=>{ goto("newTask.html") })   
+  alertBox('绑定成功!', ()=>{ goto("newTask.html") })   
 }

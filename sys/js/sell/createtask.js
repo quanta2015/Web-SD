@@ -363,8 +363,13 @@ function getTaskData() {
   $('.task-wrap-item').each(function() {
     let item = this;
     let typeArr = $(this).find('.task-type')
+    if (typeArr.length > 1) {
+      taskType = typeArr.text().split('')[1]
+    }else{
+      taskType = typeArr.text().split('')[0]
+    }
     let taskItem = {
-      taskkeyType: typeArr.text(),
+      taskkeyType: taskType,
       keyword: $(this).find('.u-task-key').val(),
       taskkeyNum: $(this).find('.u-task-count').val().replace(/,/g, ''),
       from: $(this).find('.timepicker-from').val(),
@@ -374,8 +379,11 @@ function getTaskData() {
       goodComment: ''
     }
 
+    var base = false;
     typeArr.each(function() {
-      if( $(this).text() == '1' ) return;
+      if( $(this).text() == '1' ) {
+        return;
+      }
       if( $(this).text() == '2' ) {
         taskItem.appoints = getArrVal( $(item).find('.ipt-keyword'), true)
       }
@@ -503,19 +511,6 @@ function doInitArea() {
   $("#goods-city option[value='"+city+"']").attr("selected", "selected");
 }
 
-function doCountTask() {
-  let count = 0;
-  $('.task-count').each(function() {
-    count += parseInt($(this).val() || 0);
-  });
-  $('#task-count').val(count);
-
-  let taskCount = 1;
-  $('.task-index').each( (i,e)=>{
-    $(e).text(`第 ${taskCount} 单任务`)  
-    taskCount ++;
-  })
-}
 
 
 function doChangePicture() {
@@ -593,15 +588,17 @@ function initTask() {
 
     //任务类型和单数
     e.taskKeyList.forEach((el,index)=>{
+      nor = false;
       key = false;
       img = false;
       word = false;
 
       typeList = el.taskkeyType.split("");
-      if (typeList.length>1) {
-        removeByValue(typeList,'1')
-      }
+      // if (typeList.length>1) {
+      //   removeByValue(typeList,'1')
+      // }
       typeList.forEach((v)=>{
+        if (1 === parseInt(v)) nor = true;
         if (2 === parseInt(v)) {
           key = true;
           el.keywordList = el.appoints.split(';')
@@ -610,17 +607,18 @@ function initTask() {
         if (4 === parseInt(v)) word = true;
       })
 
-      ret = { count:index+1, key:key, img:img, word:word, list:[1,1,1,1,1] , data:el, imgPrefix:IMG_PREFIX.trim()};
+      ret = { count:index+1, nor:nor, key:key, img:img, word:word, list:[1,1,1,1,1] , data:el, imgPrefix:IMG_PREFIX.trim()};
 
       (function(dat) {
           renderTmpl('/tmpl/sell/createtaskEx.tmpl', dat ).then(function(h) {
             $(".task-wrap").append(h);
             initTime(index+1)
-            doCountTask()
+            // doCountTask()
           })
       })(ret);
-
     })
+
+    doCountTask()
 
 
     //增值服务

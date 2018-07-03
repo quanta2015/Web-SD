@@ -4,8 +4,8 @@ let pageData;
 $(init);
 
 function init() {
-  type = getUrlParam('type');
-  pageData =  Object.assign({mainType: type}, PAGE_DATA);
+  // type = getUrlParam('type');
+  pageData =  Object.assign({mainType:''}, PAGE_DATA);
 
 
   initTime();
@@ -57,7 +57,7 @@ function cbDetail(r, e) {
   let ret = e;
   $(".g-detail").empty();
   ret.data.imgPrefix = IMG_PREFIX;
-  ret.data.type = type;
+  ret.data.type = getTaskType(ret.data.id);
   $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
   $(".g-detail").show()

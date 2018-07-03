@@ -1,10 +1,20 @@
 <div class="task-wrap-item  task-wrap-item-{{:count}}">
   <div class="row img-task img-task-title">
-      <div class="col-xs-2 fn-right"> 第 {{:count}} 单任务</div>
+      <div class="col-xs-2 fn-right task-index"> 第 {{:count}} 单任务</div>
       <div class="col-xs-10"><a class="btn red btn-xs task-del">删除任务</a></div>
   </div>
   <div class="row nor-task">
-    <div class="col-xs-2 form-imp"> 普通好评任务 <span class="task-type hide">1</span></div>
+    <div class="col-xs-2 form-imp"> 
+      {{if nor}}
+      普通好评任务 <span class="task-type hide">1</span>
+      {{else key}}
+      关键字好评任务<span class="task-type hide">2</span>
+      {{else img}}
+      图片好评任务<span class="task-type hide">3</span>
+      {{else word}}
+      指定文字好评任务<span class="task-type hide">4</span>
+      {{/if}}
+    </div>
     <div class="col-xs-10">
         <span> 搜索关键词</span>
         <input type="text" id="ipt-key{{:count}}" class="u-task-key" value="{{:data.keyword}}"> 添加 <input type="text" class="wide-s1 task-count  u-task-count" id="ipt-count{{:count}}" value="{{:data.taskkeyNum}}" {{if img||word}}disabled{{/if}}> 单 放单时间从 
@@ -16,7 +26,7 @@
 
   {{if key}}
   <div class="row key-task">
-    <div class="col-xs-2 form-imp"> 关键字好评任务<span class="task-type hide">2</span></div>
+    <div class="col-xs-2 form-imp"> </div>
     <div class="col-xs-10">
       <span> 设置指定关键词：建议至少设3个关键字，最多可设置5个</span>
       {{for data.keywordList}}
@@ -28,7 +38,7 @@
 
   {{if img}}
   <div class="row img-task img-task-list">
-    <div class="col-xs-2 form-imp"> 图片好评任务<span class="task-type hide">3</span></div>
+    <div class="col-xs-2 form-imp"> </div>
     <div class="col-xs-10">
       {{for data.taskPictureList}}
       <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -54,9 +64,9 @@
   </div>
   {{/if}}
 
-  {{if word||img}}
+  {{if word}}
   <div class="row key-task">
-    <div class="col-xs-2 {{if word}}form-imp{{else}}fn-right{{/if}}"> {{if word}}指定文字好评任务{{else img}}图片评价描述{{/if}} {{if word}}<span class="task-type hide">4</span>{{/if}}</div>
+    <div class="col-xs-2 form-imp"> </div>
     <div class="col-xs-10">
         <span> 指定文字</span>
         <input type="text" id="ipt-word{{:count}}" class="wide-3 u-task-keyword" placeholder="注意！不能超过255个字！" maxlength="255" value="{{:data.goodComment}}"> 
