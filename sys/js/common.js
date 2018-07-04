@@ -815,3 +815,32 @@ function getTaskType(s) {
   }
   return ret;
 }
+
+
+function updateSellMoney() {
+
+  promiseNoMask('GET',URL_SELL_BALANCE,null, (e)=>{
+    $("#u-money", window.parent.document).text(e.balance);
+  }, null)
+}
+
+
+// create Task functions
+
+function changeType(platform) {
+  if ( platform === '淘宝' ) {
+    $('.form-group-tb').removeClass('hide')
+    $('.form-group-jd').addClass('hide')
+    $('#r-task-mtb').prop('checked',true)
+    $('#r-task-mjd').prop('checked',false)
+  }else if(platform === '京东') {
+    $('.form-group-tb').addClass('hide')
+    $('.form-group-jd').removeClass('hide')
+    $('#r-task-mtb').prop('checked',false)
+    $('#r-task-mjd').prop('checked',true)
+  }
+}
+
+function initTimeControl(index) {
+  $(`.task-wrap-item-${index} .timepicker-24`).timepicker({ showMeridian: false });
+}

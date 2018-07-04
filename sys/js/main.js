@@ -14,8 +14,10 @@ function init() {
   userType = cookie('userType');
   if (parseInt(userType) === 0) {
     url = "newTask.html";
-  }else{
+  }else if(parseInt(userType) === 1){
     url = "updateSeller.html";
+
+    // setTimeout(updateSellMoney, 10000 )
   }
   $("#u-name").html(cookie('name') || `<a href="${url}" target="mainframe" class="font-red">请完善信息</a>`);
 

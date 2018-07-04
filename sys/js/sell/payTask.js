@@ -70,6 +70,10 @@ function cbList(e) {
 
 function cbAudit(e) {
   alertBox(MSG_PAY_SUCC, ()=>{
-    goto('listOrder.html')
+    if(type === 'pay') {
+      clickMenu('payTaskOrder');
+    }else{
+      clickMenu('browserTaskOrder');
+    }
   });
 }

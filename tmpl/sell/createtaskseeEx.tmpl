@@ -1,0 +1,28 @@
+<div class="task-wrap-item task-wrap-item-{{:count}}">
+  <div class="row img-task img-task-title">
+      <div class="col-xs-2 fn-right task-index"> 第 {{:count}} 单任务</div>
+      <div class="col-xs-10"><a class="btn red btn-xs task-del">删除任务</a></div>
+  </div>
+  <div class="row nor-task">
+    <div class="col-xs-2 form-imp"> 浏览任务 <span class="task-type hide">1</span></div>
+    <div class="col-xs-10">
+        <span> 搜索关键词</span>
+        <input type="text" id="ipt-key{{:count}}" class="u-task-key" value="{{:data.keyword}}"> 添加 <input type="text" class="wide-s1 task-count  u-task-count" id="ipt-count{{:count}}" value="{{:data.taskkeyNum}}"> 单 放单时间从 
+        <div class="form-group form-time"><input type="text" class="timepicker timepicker-24 timepicker-from" id="ipt-time-from{{:count}}" value="{{:data.from}}"></div> 到 
+        <div class="form-group form-time"><input type="text"
+            class="timepicker timepicker-24 timepicker-to" id="ipt-time-to{{:count}}" value="{{:data.to}}"></div>
+    </div>
+  </div>
+
+  
+  <div class="row key-task">
+    <div class="col-xs-2"> </div>
+    <div class="col-xs-10">  
+      {{if store}}<span class="font-red">[ 收藏商品 ]</span><span class="task-type hide">2</span>{{/if}}
+      {{if follow}}<span class="font-red">[ 关注店铺 ]</span><span class="task-type hide">3</span>{{/if}}
+      {{if add}}<span class="font-red">[ 加购 ]</span><span class="task-type hide">4</span>{{/if}}
+    </div>
+  </div>
+  
+
+</div>

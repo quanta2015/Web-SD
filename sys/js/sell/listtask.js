@@ -65,7 +65,12 @@ function cbPayDetail(e) {
 
 function doRepublish(e) {
   id = $(e.currentTarget).data('id');
-  goto('createTask.html?id='+id)
+  if (type==='pay') {
+    goto('createTask.html?id='+id)
+  }else{
+    goto('createTaskSee.html?id='+id)
+  }
+  
 }
 
 

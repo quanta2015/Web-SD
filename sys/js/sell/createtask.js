@@ -42,6 +42,7 @@ let NEXT = 1;
 let platformMap = {};
 let taskObj;
 let _tid;
+let subTaskCount = 0;
 
 
 
@@ -63,9 +64,6 @@ function init() {
   $('body').on('input propertychange', '.task-count', doCountTask);
   $('body').on('change', '#picturetask', doChangePicture);
   $('body').on('change', '#wordtask', doChangeWord);
-
-  // $('body').on('change', '#ask', doChangeAsk);
-  // $('body').on('change', '.r-ask', doChangeAskQue);
 
 
   //初始化第一步验证对象
@@ -98,7 +96,6 @@ function init() {
   $('#rp-tb').prop('checked',true);
   $('#rt-mobile').prop('checked',true);
   $('#rm-money').prop('checked',true);
-
   $('#real-price').mask("#,##0", {reverse: true});
   $('#mobile-price').mask("#,##0", {reverse: true});
   $('#buy-count').mask("#,##0", {reverse: true});
@@ -112,10 +109,7 @@ function init() {
   $('.u-task-count').mask("#,##0", {reverse: true});
 
 
-
-
   _tid = getUrlParam('id');
-  
 }
 
 
@@ -249,7 +243,6 @@ function initTime(index) {
 }
 
 async function addTask() {
-  var count = $('.task-wrap-item').length + 1;
   var nor = $('#normaltask').prop('checked');
   var key   = $('#keywordtask').prop('checked');
   var img   = $('#picturetask').prop('checked');
@@ -259,8 +252,10 @@ async function addTask() {
   $('#picturetask').prop('checked', false)
   $('#wordtask').prop('checked', false);
 
-  $(".task-wrap").append(await renderTmpl( TMPL_SELL_CREATETASK , { nor:nor, count:count, key:key, img:img, word:word, list:[1,1,1,1,1] }));
-  initTime(count)
+  subTaskCount++
+
+  $(".task-wrap").append(await renderTmpl( TMPL_SELL_CREATETASK , { count:subTaskCount, nor:nor, key:key, img:img, word:word, list:[1,1,1,1,1] }));
+  initTime(subTaskCount)
   doCountTask()
 }
 
@@ -271,24 +266,8 @@ function delTask() {
 
 function doPublish() {
 
-  // if ( !$('#ask').prop('checked') ) {
-  //   ask = 0;
-  // }else if ( $('.r-ask').prop('checked') ) {
-  //   ask = 1;
-  // }else {
-  //   ask = 2;
-  // }
-
-  // if ( $('.r-ask').prop('checked') ) {
-  //   askContent = $('#ask-q-q').val();
-  // }else{
-  //   askContent = $('#ask-a-q').val();
-  //   answerContent = $('#ask-a-a').val();
-  // }
-
   taskObj = {
     tasktype: $("input[name='r-task-type']:checked").val(),
-    // returntype: $("input[name='r-return-type']:checked").val(),
     goodsList: [{
       colorSize: $('#color-size-info').val(),
       factprice: $('#real-price').val().replace(/,/g, ''),
@@ -415,14 +394,11 @@ function cbInfo(r, e) {
 }
 
 function doComplete() {
-  // promiseTmpl('POST', TMPL_SELL_TASK_COST, URL_TASK_PUBLISH, JSON.stringify(taskObj), cbComplete)
-  
 
   promise('POST', URL_TASK_PUBLISH, JSON.stringify(taskObj), (e) => {
       promise('GET', URL_SELL_PAY_TASK + e.id, null, (e)=>{
         alertBox("成功发布任务", (e)=>{
-          // goto('listTask.html')
-          clickMenu('payTaskList')
+          clickMenu('payTaskList');
         })
       }, (e)=>{
         msgbox('提示信息',e.message,MSG_WAIT,MSG_RECHARGE, (ret)=>{
@@ -435,27 +411,6 @@ function doComplete() {
       });
   }, null)
 }
-
-// function cbComplete() {
-//   msgbox('提示信息',MSG_TASK_SAVE_SUCC,MSG_CONT_CREATE_TASK,MSG_PUB_TASK, function(ret) {
-//     if (ret) {
-//       goto('createTask.html')
-//     }else{
-//       // goto('listTask.html')
-//       clickMenu('payTaskList')
-//     }
-//   })
-// }
-
-
-// function initPlatforms() {
-//   promise('GET', URL_TASK_ALL_PLATFORM, null, cbPlatformInfo, null);
-// }
-
-// function cbPlatformInfo(e) {
-//   initPlatformList(e);
-// }
-// 
 
 
 function initPlatforms() {
@@ -478,21 +433,6 @@ function initPlatforms() {
   }, null);
 }
 
-
-function changeType(platform) {
-  if ( platform === '淘宝' ) {
-    $('.form-group-tb').removeClass('hide')
-    $('.form-group-jd').addClass('hide')
-    $('#r-task-mtb').prop('checked',true)
-    $('#r-task-mjd').prop('checked',false)
-  }else if(platform === '京东') {
-    $('.form-group-tb').addClass('hide')
-    $('.form-group-jd').removeClass('hide')
-    $('#r-task-mtb').prop('checked',false)
-    $('#r-task-mjd').prop('checked',true)
-  }
-
-}
 
 async function doInitShop() {
   let platform = $(this).val();
@@ -520,22 +460,6 @@ function doChangePicture() {
 function doChangeWord() {
   if ($('#wordtask').prop('checked')) $('#picturetask').prop('checked',false);
 }
-
-
-// function doChangeAsk() {
-//   $('#ask').prop('checked')?$('.form-ask').show():$('.form-ask').hide();
-// }
-
-// function doChangeAskQue() {
-//   if ( $('.r-ask').prop('checked') ) {
-//     $('.form-ask-q').show()
-//     $('.form-ask-a').hide()
-//   }else{
-//     $('.form-ask-q').hide()
-//     $('.form-ask-a').show()
-//   }
-// }
-// 
 
 
 function initTask() {
@@ -594,9 +518,7 @@ function initTask() {
       word = false;
 
       typeList = el.taskkeyType.split("");
-      // if (typeList.length>1) {
-      //   removeByValue(typeList,'1')
-      // }
+      
       typeList.forEach((v)=>{
         if (1 === parseInt(v)) nor = true;
         if (2 === parseInt(v)) {
@@ -612,7 +534,7 @@ function initTask() {
       (function(dat) {
           renderTmpl('/tmpl/sell/createtaskEx.tmpl', dat ).then(function(h) {
             $(".task-wrap").append(h);
-            initTime(index+1)
+            initTimeControl(index+1)
             // doCountTask()
           })
       })(ret);

@@ -61,6 +61,7 @@ function cbList(e) {
 
 function cbSubmitGoods(e) {
   alertBox(MSG_DELIVERY_SUCCESS, ()=>{
-    goto('listOrder.html')
+    // goto('listOrder.html')
+    clickMenu('payTaskOrder');
   });
 }
