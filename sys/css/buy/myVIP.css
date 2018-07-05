@@ -1,0 +1,46 @@
+.g-vip,.g-info {
+    margin: 20px auto;
+    width: 800px;
+    font-size: 16px;
+}
+
+
+.u-row {
+    display: flex;
+    flex-direction: row;
+    /*justify-content: center;*/
+    padding: 15px;
+    /*background: #666;*/
+    /*border-bottom: 1px solid #666;*/
+}
+
+.u-row-t {
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.u-row label {
+    flex: 1;
+    margin:0;
+}
+
+.u-row a {
+    margin-right: 20px;
+    width: 300px;
+}
+
+.u-row span {
+    flex: 1
+}
+
+.u-row-l {
+    border: 1px solid #ccc;
+    border-bottom: none;
+    text-align: center;
+}
+
+.u-row-l:last-child {
+    border-bottom: 1px solid #ccc;
+}

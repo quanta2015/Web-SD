@@ -1,7 +1,7 @@
 let rules = {
-  name: {
-    required: !0
-  },
+  // name: {
+  //   required: !0
+  // },
   bankno: {
     required: !0,
   },
@@ -105,9 +105,9 @@ function doWithdraw() {
     toAccount:parseInt($('#bankno').val()),
     transferMoney: parseFloat($('#withdraw-money').val()),
     transferType: 0,
-    // bankName: $('#bankName').val(),
-    // accountName: $('#accountName').val(),
-    // bankType: $('#bankType').val(),
+    accountBank: $('#bankName').val(),
+    transferPerson: $('#account-name').val(),
+    bankName: $('#bankType').val(),
   }
 
   let sum = obj.transferMoney;

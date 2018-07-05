@@ -443,6 +443,7 @@ function initTask() {
     })
 
     //任务类型和单数
+    taskNum = e.taskKeyList.length
     e.taskKeyList.forEach((el,index)=>{
 
       nor = false;
@@ -461,15 +462,18 @@ function initTask() {
 
       ret = { count:index+1, nor:nor, store:store, follow:follow, add:add, data:el, imgPrefix:IMG_PREFIX.trim()};
 
-      (function(dat) {
+      (function(dat, end, idx) {
           renderTmpl('/tmpl/sell/createtaskseeEx.tmpl', dat ).then(function(h) {
             $(".task-wrap").append(h);
             initTimeControl(index+1)
+            if (idx === end-1) {
+              doCountTask()
+            }
           })
-      })(ret);
+      })(ret, taskNum, index);
     })
 
-    doCountTask()
+    
 
 
     //增值服务

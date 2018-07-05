@@ -3,7 +3,9 @@
         <tr class="uppercase">
             <th> 序号 </th>
             <th> 创建时间 </th>
-            <th> 用户名称 </th>
+            <th> 开户姓名 </th>
+            <th> 银行名称 </th>
+            <th> 开户银行 </th>
             <th> 收款账号 </th>
             <th> 本金 </th>
             <th> 手续费 </th>
@@ -14,7 +16,9 @@
         <tr>
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
             <td> {{:~formatTime(createtime)}}</td>
-            <td> {{:~root.name}}</td>
+            <td> {{:transferPerson}}</td>
+            <td> {{:bankName}}</td>
+            <td> {{:accountBank}}</td>
             <td> {{:toAccount}}</td>
             <td> {{:actualValue}}</td>
             <td> {{:serviceFee}}</td>

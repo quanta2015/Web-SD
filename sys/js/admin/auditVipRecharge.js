@@ -9,6 +9,7 @@ const URL_ADMIN_AUDIT_VIPRECHARGE='/admin/VIP_approve';
 $(init);
 
 function init() {
+  $("#sr-status option[value='0']").prop("selected", true);
   if (viptype==1) {
     $(".li-title").html("审核卖家VIP缴费");
   }else if (viptype==0) {

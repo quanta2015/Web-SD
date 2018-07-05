@@ -5,7 +5,7 @@
       <div class="col-1">订单编号</div>
       <div class="col-2 font-red-thunderbird">{{:id}}</div>
       <div class="col-1">佣金</div>
-      <div class="col-2 font-red-thunderbird">{{:baseMoney}}</div>
+      <div class="col-2 font-red-thunderbird">{{:taskMoney.baseMoney}}金</div>
     </div>
   </div>
   <div class="m-d m-d-main">
@@ -106,16 +106,20 @@
       <li class="v-m-title">
         <div class="col-1"><span class="icon-star"></span>增值服务</div>
       </li>
+      {{if chatNecessary}}
       <li class="group-{{:type}}">
         <div class="col-2">是否聊天</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatBool(chatNecessary)}}</div>
       </li>
+      {{/if}}
+      {{if showFirst}}
       <li>
         <div class="col-2">是否优先展示任务</div>
         <div class="col-1 font-red-thunderbird fn-right">
          {{:showFirst}}金 </div>
       </li>
+      {{/if}}
       {{if addcharges}}
       <li>
         <div class="col-2">加赏任务佣金：每单加赏</div>
@@ -123,12 +127,13 @@
         {{:addcharges}}金</div>
       </li>
       {{/if}}
-
+      {{if auditFirst}}
       <li>
         <div class="col-2">订单优先审核</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatBool(auditFirst)}} </div>
       </li>
+      {{/if}}
       <li>
         <div class="col-2">性别选择</div>
         <div class="col-1 font-red-thunderbird fn-right">
@@ -162,29 +167,36 @@
         {{:~formatRepeat(rebuy)}} </div>
       </li>
       {{/if}}
+      {{if useHuabei}}
       <li class="group-{{:type}}">
         <div class="col-2">是否允许使用信用卡/花呗/白条</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatBool(useHuabei) }} </div>
       </li>
+      {{/if}}
+      {{if huabeiStart}}
       <li>
         <div class="col-2">是否要求账号需要开通白条/花呗</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatBool(huabeiStart) }} </div>
       </li>
+      {{/if}}
+      {{if isRecieve}}
       <li class="group-{{:type}}">
         <div class="col-2">是否系统默认签收</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatBool(isRecieve)}} </div>
       </li>
+      {{/if}}
+      {{if buyExpress}}
       <li class="group-{{:type}}">
         <div class="col-2">是否向平台购买面单</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatBool(buyExpress)}} </div>
       </li>
+      {{/if}}
     </div>
   </div> 
-
 
     <div class="m-d m-d-main m-task">
     

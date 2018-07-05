@@ -1,4 +1,5 @@
 let pageData = Object.assign({}, PAGE_DATA);
+let type = 'capital'
 
 $(init);
 
@@ -7,13 +8,33 @@ function init() {
   initTime();
   initList();
   $('body').on('click', '#btn-search', doSearch);
+  $('body').on('click', '.frazen-detail', doFrazenDetail);
+  $('body').on('click', '.m-close', doClose);
   
-
-  // $('[data-toggle]:gt(0)').one('click', async function(e) {
-  //   let tab = $(this).attr('href');
-  //   initList(tab);
-  // })
+  $('.tab').on('click', (e)=>{
+    type = $(e.currentTarget).data('type');
+    initList()
+  });
 }
+
+function doClose() {
+  $(".g-detail").hide();
+}
+
+function doFrazenDetail() {
+  let obj = {
+    taskId: $(this).attr('id')
+  }
+
+  promiseTmpl('GET', '/tmpl/sell/list_forzen_detail.tmpl', ['/shoper/task_frozen_detail', encodeQuery(obj)].join('?') ,null, cbForzenDetail)
+}
+
+function cbForzenDetail(r, e) {
+  $(".g-detail").empty();
+  $(".g-detail").append($.templates(r).render(e, rdHelper));
+  $(".g-detail").show();
+}
+
 
 function initTime() {
   let from =  moment().subtract('days',7).format('YYYY-MM-DD');
@@ -24,14 +45,18 @@ function initTime() {
 
 // TODO: 目前把佣金tab隐藏了
 function initList() {
-  let param = {
-    status: $('#sr-status'),
-    content: $('#sr-cnt'),
-    fromDate: $("#sr-time-from").val(),
-    toDate: $("#sr-time-to").val(),
-  };
-  Object.assign(param, pageData);
-  promiseTmpl('GET', TMPL_SELL_CAPITAL_LIST, [URL_SELL_TRADE_LIST, encodeQuery(param)].join('?'), null, cbList)
+  if (type === 'capital') {
+    let param = {
+      status: $('#sr-status'),
+      content: $('#sr-cnt'),
+      fromDate: $("#sr-time-from").val(),
+      toDate: $("#sr-time-to").val(),
+    };
+    Object.assign(param, pageData);
+    promiseTmpl('GET', TMPL_SELL_CAPITAL_LIST, [URL_SELL_TRADE_LIST, encodeQuery(param)].join('?'), null, cbList)
+  }else{
+    promiseTmpl('GET', TMPL_SELL_FORZEN_LIST, ['/shoper/frozen_list', encodeQuery(pageData)].join('?'), null, cbList)
+  }
 }
 
 function cbList(r, e) {

@@ -15,6 +15,7 @@ function doLogin() {
 }
 
 function cbLogin(e) {
+    e.userType = ADMIN;
     saveCookie(e);
     location.href = 'html/admin/mainSys.html';
 }

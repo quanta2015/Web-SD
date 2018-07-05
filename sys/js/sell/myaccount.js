@@ -12,7 +12,7 @@ function init() {
 }
 
 function cbInfo(e) {
-    val = parseFloat(e.balance).toFixed(1)
+    val = fix(e.balance)
     $("#balance").text(val);
     $("#u-money", window.parent.document).text(val);
     list = e.taskList;

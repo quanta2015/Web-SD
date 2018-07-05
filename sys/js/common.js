@@ -2,11 +2,13 @@
 const CODE_COUNT = 60
 const BUY = 0
 const SELL = 1
+const ADMIN = 2
 const HOST = 'http://103.251.90.136:8011'
 // const IMG_PREFIX = HOST + '/file/'
 const AUDIT_PASS = 1
 const AUDIT_FAIL = 2
 const WITHDRAW_FEE = 0.05
+const REFRESH_TIME = 5000
 
 
 const IMG_PREFIX = 'https://abc-1256878718.cos.ap-shanghai.myqcloud.com/'
@@ -141,6 +143,7 @@ const TMPL_SELL_SRH_WITHDRAW      = '/tmpl/sell/srh_withdraw.tmpl'
 const TMPL_SELL_SRH_CAPITAL       = '/tmpl/sell/srh_capital.tmpl'
 const TMPL_SELL_RECHARGE_LIST     = '/tmpl/sell/list_recharge.tmpl'
 const TMPL_SELL_CAPITAL_LIST      = '/tmpl/sell/list_capital.tmpl'
+const TMPL_SELL_FORZEN_LIST      = '/tmpl/sell/list_forzen.tmpl'
 const TMPL_SELL_WITHDRAW_LIST     = '/tmpl/sell/list_withdraw.tmpl'
 const TMPL_SELL_TASK_LIST         = '/tmpl/sell/list_task.tmpl'
 const TMPL_SELL_SHOP_LIST         = '/tmpl/sell/list_shop.tmpl'
@@ -460,6 +463,7 @@ const promiseCall = (url, data) => {
   })
 }
 
+
 // TMPL FUNCTION DEF
 const rdHelper = {
   formatTime: (t) => { return moment(t).format("YYYY-M-D HH:mm:ss") },
@@ -473,7 +477,14 @@ const rdHelper = {
       case 3: ret = '会费';break;
       case 4: ret = '提款佣金';break;
       case 5: ret = '存款';break;
-      case 6: ret = '下线佣金';break;
+      case 6: ret = '抽佣奖励';break;
+      case 7: ret = '初次任务赏金';break;
+      case 8: ret = '买家超时取消任务罚款';break;
+      case 9: ret = '卖家罚款';break;
+      case 10: ret = '预付资金';break;
+      case 11: ret = '结账';break;
+      case 12: ret = '首单现金奖励';break;
+      case 13: ret = '购买vip奖励';break;
     }
     return ret;
   },
@@ -820,7 +831,7 @@ function getTaskType(s) {
 function updateSellMoney() {
 
   promiseNoMask('GET',URL_SELL_BALANCE,null, (e)=>{
-    $("#u-money", window.parent.document).text(e.balance);
+    $("#u-money", window.parent.document).text( fix(e.balance));
   }, null)
 }
 

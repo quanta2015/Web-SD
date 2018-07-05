@@ -4,6 +4,7 @@ let _listshop;
 $(init);
 
 function init() {
+  $("#sr-status option[value='0']").prop("selected", true);
   initTime();
   initList();
   $('body').on('click', '.audit-task', doAudit);

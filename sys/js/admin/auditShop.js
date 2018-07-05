@@ -5,6 +5,8 @@ let pageData = Object.assign({}, PAGE_DATA);
 $(init);
 
 function init() {
+  $("#sr-status option[value='0']").prop("selected", true);
+  
   initTime();
   initList();
   $('body').on('click', '.audit-shop', doAudit);

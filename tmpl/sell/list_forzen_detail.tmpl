@@ -1,0 +1,37 @@
+<div class="m-detail-wrap">
+  <div class="m-close"></div>
+  <table class="table table-hover table-light">
+    <thead>
+      <tr class="uppercase">
+        <th> 序号 </th>
+        <th> 时间 </th>
+<!--         <th> shoperId </th>
+        <th> taskId </th>
+        <th> buyerId </th> -->
+        <th> 资金类型 </th>
+        <th> 保证金 </th>
+        <th> 服务费 </th>
+        <th> 总额 </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{for data}}
+      <tr>
+        <td> {{:#index+1}} </td>
+        <td> {{:~formatTime(createtime)}}</td>
+       <!--  <td> {{:shoperId}}</td>
+        <td> {{:buyerId}}</td> -->
+        <td>{{:~formatMoneyType(moneyType)}}</td>
+        <td> {{:securityMoney}}</td>
+        <td> {{:serviceMoney}}</td>
+        <td> {{:sumMoney}}</td>
+        <td> {{:description}}</td>
+
+
+        
+      </tr>
+      {{/for}}
+    </tbody>
+  </table>
+
+</div>

@@ -54,3 +54,37 @@ table td {
   width: 140px;
 }
 
+
+
+
+.g-detail {
+    position: absolute;
+    left: 0;
+    right:0;
+    top: 0;
+    bottom: 0;
+    z-index: 999999;
+    background: rgba(0,0,0,.5);
+}
+
+
+.m-detail-wrap {
+    position: relative;
+    margin: 20px auto;
+    background: #fff;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    box-shadow:1px 1px 5px #ccc;
+}
+
+.m-close {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    z-index: 9999;
+    background-image: url(/img/close.png);
+}

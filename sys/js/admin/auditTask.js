@@ -6,7 +6,7 @@ $(init);
 function init() {
   // type = getUrlParam('type');
   pageData =  Object.assign({mainType:''}, PAGE_DATA);
-
+  $("#sr-status option[value='0']").prop("selected", true);
 
   initTime();
   initList();

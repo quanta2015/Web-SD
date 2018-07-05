@@ -7,19 +7,16 @@ function init() {
   console.log(h);
   $("iframe").height(h-75);
 
-
-  
-
   //显示用户名
   userType = cookie('userType');
   if (parseInt(userType) === 0) {
     url = "newTask.html";
   }else if(parseInt(userType) === 1){
     url = "updateSeller.html";
-
-    // setTimeout(updateSellMoney, 10000 )
+    setInterval(updateSellMoney, REFRESH_TIME )
   }
-  $("#u-name").html(cookie('name') || `<a href="${url}" target="mainframe" class="font-red">请完善信息</a>`);
+
+  $("#u-name").html(cookie('name'));
 
   //显示VIP信息
   if ( cookie('memberValid') ) {
