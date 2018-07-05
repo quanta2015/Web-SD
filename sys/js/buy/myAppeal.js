@@ -15,7 +15,7 @@ function init() {
 function initList() {
 	  let param = Object.assign(pageData);
 	if(tabType=='my'){
-	  promiseTmpl('GET', '/tmpl/buy/myappeal.tmpl', ['/complains_list', encodeQuery(param)].join('?'),null, cbList)
+	  promiseTmpl('GET', '/tmpl/buy/myappeal.tmpl', ['/get_complains_list', encodeQuery(param)].join('?'),null, cbList)
 	}else{
 		promiseTmpl('GET', '/tmpl/buy/myappeal.tmpl', ['/get_complains_recieved', encodeQuery(param)].join('?'),null, cbList)
 	}
@@ -29,7 +29,6 @@ function tabInitList(){
 function cbList(r, e) {
   let ret = e;
   _listtask = ret.data;
-  alert(ret);
   ret.imgPrefix = IMG_PREFIX;
   Object.assign(ret, pageData);
   totalPages = Math.ceil(ret.total/pageData.pageSize);
