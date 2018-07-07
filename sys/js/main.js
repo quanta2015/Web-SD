@@ -50,7 +50,20 @@ function init() {
     $.cookie('cko', null);
     location.href = '/index.html'
   });
+  
+ // promiseTmpl('GET', '/tmpl/admin/mainmenu.tmpl', '/permission/user/get_my_menus',null, cbList)
 }
+
+function cbList(r, e) {
+	  let ret = e;
+	  alert(JSON.stringify(ret));
+	  _listtask = ret.data;
+	  ret.imgPrefix = IMG_PREFIX;
+	  $(".page-sidebar-menu .mainmenu").remove();
+	  $(".page-sidebar-menu").prepend($.templates(r).render(ret, rdHelper));
+}
+
+
 
 
 

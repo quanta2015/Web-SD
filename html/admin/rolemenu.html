@@ -6,6 +6,7 @@
     
     <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="/lib/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
+    <link href="/lib/bootstrap4/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="/lib/metronic/plugins.min.css" rel="stylesheet" type="text/css">
     <link href="/lib/metronic/components.css"  rel="stylesheet" type="text/css" id="style_components" >
@@ -25,10 +26,11 @@
         <div class="portlet ">
           <div class="portlet-title">
             <div class="caption">
-            <i class="fa fa-tasks"></i>角色权限管理</div>
+            <i class="fa fa-tasks"></i>菜单信息管理</div>
           </div>
           <div class="m-sbar">
-            <a href="#basic" class="btn red-sunglo btn-sm do-role-edit"> 创建角色  </a>
+            <a href="#basic" class="btn red-sunglo btn-sm save-role-menu"> 保 存 </a>
+            <a href="#basic" class="btn green-dark btn-sm group-browser gotopage"> 返 回 </a>
           </div>
           <div class="portlet-body">
             <div class="table-data"></div>
@@ -37,7 +39,6 @@
         </div>
       </div>
     </div>
-    
     <div class="g-detail" style="display: none;" ></div>
     <script src="/lib/jquery/jquery.min.js"></script>
     <script src="/lib/jquery/jquery-migrate.js"></script>
@@ -56,55 +57,7 @@
     <script src="/lib/twbs-pagination/jquery.twbsPagination.min.js"></script>
     <script src="/lib/pace/pace.min.js"></script>
     <script src="/sys/js/common.js"></script>
-    <script src="/sys/js/admin/roles.js"></script>
-    <script id="coverTmpl" type="text/x-jsrender">
-	<div class="m-detail-wrap">
-  		<div class="m-close">X</div>
- 			 <div class="m-d m-title">
-    			<div class="v-sub-title ">
-     				 <div class="col-1">角色编辑</div>
-      				 <div class="col-2 font-red-thunderbird"></div>
-      				 <div class="col-1"></div>
-      				 <div class="col-2 font-red-thunderbird"></div>
-    			</div>
-  			</div>
-		<div class="m-d m-d-main">
-			<div class="col-11 m-d-item">
-				<li class="v-m-title">
-            <div class="col-1">
-              <span class="icon-list"></span>
-              <span class="m-step"></span>
-            	角色名称
-            </div>
-          </li>
-		  <li>
-              <div style="width:100%"><input id="name" name="name" /></div>
-          </li>
-
-		 <li class="v-m-title">
-            <div class="col-1">
-              <span class="icon-list"></span>
-              <span class="m-step"></span>
-            	角色描述
-            </div>
-          </li>
-		  <li>
-              <div style="width:100%"><textarea id="description" rows="3" cols="50"></textarea></div>
-          </li>
-			</div>
-
-	</div>
-<div class="m-d m-d-main">
-        <div class="m-d-item col-11">
-          <li>
-            <div class="col-1 col-btn">
-              
-              <a href="#" class="btn btn-xs red" id="submit-role">提交</a>
-              <a href="#" class="btn btn-xs grey-mint b-close" id="return-list">关闭</a></div>
-          </li>
-        </div>
-		</div>
-</div>
-	</script>
+    <script src="/lib/jquery.form.js"></script>
+    <script src="/sys/js/admin/rolemenu.js"></script>
 </body>
 </html>

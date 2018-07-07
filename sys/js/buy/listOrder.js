@@ -77,7 +77,7 @@ function doComplainTask(e){
 	var obj = {
     id: $(this).data('id'),
     tid: $(this).data('tid')
-  }
+  };
   location.href = ['appealOrder.html', encodeQuery(obj)].join('?')
 }
 
@@ -94,7 +94,7 @@ function cbDetail(r, e) {
 function doCancelTask() {
   var obj = {
     buyerTaskId: $(this).data('id')
-  }
+  };
   promise('GET',[URL_BUY_CANCEL_TASK, encodeQuery(obj)].join('?') ,null, cbCancelTask, null)
 }
 
