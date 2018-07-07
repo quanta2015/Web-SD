@@ -66,6 +66,10 @@
           <input class="login-input" id="login-password" type="password" placeholder="请输入密码">
           <i class="fa fa-key"></i>
         </div>
+        <span class="login-title">验证码：</span>
+        <div class="input-group">
+          <div class="u-vc"><input class="login-vertify" id="login-vertify" type="text" placeholder="请输入验证码"><img src="http://103.251.90.136:8011/getVerify" id="vertifyCode"></div>
+        </div>
         <button class="md-btn" id="loginBtn">登 录</button>
         <div class="tip-register">
           <span>没有账号？</span>
@@ -123,11 +127,13 @@
   </div>
 </footer>
 
+
 <script src="lib/jquery/jquery.min.js"></script>
 <script src="lib/jsrender/jsrender.js"></script>
 <script src="lib/jquery/jquery.cookie.js"></script>
 <script src="lib/alertify/alertify.min.js"></script>
 <script src="lib/pace/pace.min.js"></script>
+<script src="lib/base64/base64.min.js"></script>
 
 <script src="sys/js/common.js"></script>
 <script src="sys/js/login.js"></script>

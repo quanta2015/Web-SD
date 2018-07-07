@@ -19,6 +19,8 @@ function init() {
   $('body').on('click', '#getcode-btn', doGetCode);
   $('body').on('click', '#loginBtn', doLogin);
   $('body').on('keydown', doPressLogin);
+
+
 }
 
 function checkInvite() {
@@ -62,6 +64,9 @@ function goLoginPage() {
 function goRegisterPage() {
   hideAllPages();
   $('.register').removeClass('hide');
+
+
+  // vertifyCode
 }
 
 async function showRegSell() {
@@ -156,7 +161,11 @@ function doCounter(count) {
 
 function doLogin() {
   let url = $('.loginYh').is('.on') ? URL_BUY_LOGIN : URL_SELL_LOGIN;
-  let obj = { mobile:$('#login-mobile').val(), password: $('#login-password').val() };
+  let obj = { 
+    mobile:$('#login-mobile').val(), 
+    password: $('#login-password').val(),
+    randomcode: $('#login-vertify').val()
+  };
   promiseNoMask('POST', url, JSON.stringify(obj), cbLogin, null);
 }
 

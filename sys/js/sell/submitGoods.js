@@ -20,13 +20,8 @@ function initList() {
 }
 
 function doSubmitGoods() {
-    var obj = {
-      buyerTaskId: _id,
-      delivery: $('#u-delivery').val(),
-      expressNo: $('#u-expressno').val(),
-      expressStatus: $('#u-express-status').val(),
-      approve: 1,  // 1表示发货  2表示退回
-      ytoMailno: {
+  if (_goods.buyExpress === 1) {
+    yto = {
         receiveAddr: $('#receiveAddr').val(),
         receiveCity: $('#receiveCity').val(),
         receiveName: $('#receiveName').val(),
@@ -38,14 +33,24 @@ function doSubmitGoods() {
         sendProv:   $('#sendProv').val(),
         sendPhone:   _goods.ytoMailno.sendPhone
       }
-    }
+  }else {
+    yto = null
+  }
+  var obj = {
+    buyerTaskId: _id,
+    delivery: $('#u-delivery').val(),
+    expressNo: $('#u-expressno').val(),
+    expressStatus: $('#u-express-status').val(),
+    approve: 1,  // 1表示发货  2表示退回
+    ytoMailno: yto
+  }
 
-    if ( $('#u-expressno').val() === '' ) {
-      notifyInfo('请填写快递单号');
-      return;
-    }
+  if ( $('#u-expressno').val() === '' ) {
+    notifyInfo('请填写快递单号');
+    return;
+  }
 
-    promise('POST',URL_SELL_DELIVERY, JSON.stringify(obj), cbSubmitGoods, null)
+  promise('POST',URL_SELL_DELIVERY, JSON.stringify(obj), cbSubmitGoods, null)
 }
 
 function doReturnList() {
