@@ -18,7 +18,7 @@
     <link href="/lib/loaders/loaders.min.css" rel="stylesheet" >
     
     <link href="/sys/css/common.css"  rel="stylesheet" type="text/css" >
-    <link href="/sys/css/buy/listOrder.css"  rel="stylesheet" type="text/css" >
+    <link href="/sys/css/admin/base.css"  rel="stylesheet" type="text/css" >
   </head>
 <body>
 <div class="g-order">
@@ -27,6 +27,9 @@
           <div class="portlet-title">
             <div class="caption">
             <i class="fa fa-tasks"></i>菜单信息管理</div>
+          </div>
+          <div class="m-sbar">
+            <a href="#basic" class="btn red-sunglo btn-sm do-menu-one" data-type="1"> 创建一级菜单  </a>
           </div>
           <div class="portlet-body">
             <div class="table-data"></div>
@@ -54,6 +57,7 @@
     <script src="/lib/twbs-pagination/jquery.twbsPagination.min.js"></script>
     <script src="/lib/pace/pace.min.js"></script>
     <script src="/sys/js/common.js"></script>
+    <script src="/lib/jquery.form.js"></script>
     <script src="/sys/js/admin/menus.js"></script>
     <script id="coverTmpl" type="text/x-jsrender">
 	<div class="m-detail-wrap">
@@ -68,10 +72,52 @@
   			</div>
 		<div class="m-d m-d-main">
 			<div class="col-11 m-d-item">
-				
+				<li class="v-m-title">
+            <div class="col-1">
+              <span class="icon-list"></span>
+              <span class="m-step"></span>
+            	菜单名称
+            </div>
+          </li>
+		  <li>
+              <div style="width:100%"><input id="name" name="name" /></div>
+          </li>
+
+		 <li class="v-m-title">
+            <div class="col-1">
+              <span class="icon-list"></span>
+              <span class="m-step"></span>
+            	菜单地址
+            </div>
+          </li>
+		  <li>
+              <div style="width:100%"><input id="path" name="path" /></div>
+          </li>
+<li class="v-m-title">
+            <div class="col-1">
+              <span class="icon-list"></span>
+              <span class="m-step"></span>
+            	上级菜单
+            </div>
+          </li>
+		  <li>
+               <div style="width:100%"><input type="text" id="parentName" readonly="readonly" disabled="disabled" /><input id="parentId" name="parentId" type="hidden" /></div>
+				<input id="level" name="level" value="2" type="hidden" />
+          </li>
 			</div>
-		</div>
+
 	</div>
+<div class="m-d m-d-main">
+        <div class="m-d-item col-11">
+          <li>
+            <div class="col-1 col-btn">
+              
+              <a href="#" class="btn btn-xs red" id="submit-menu">提交</a>
+              <a href="#" class="btn btn-xs grey-mint b-close">关闭</a></div>
+          </li>
+        </div>
+		</div>
+</div>
 	</script>
 </body>
 </html>
