@@ -1,0 +1,25 @@
+<div class="withdraw-list">
+    
+    <div class="u-wrap">
+        <div class="u-row">
+            <div class="u-col">序号</div>
+            <div class="u-col">提现日期</div>
+            <div class="u-col">提现金额</div>
+            <div class="u-col">实际返款</div>
+            <div class="u-col">手续费</div>
+            <div class="u-col">描述说明</div>
+        </div>
+        {{for data}}
+        <div class="u-row">
+            <div class="u-col">{{:#index+1 + ~root.pageSize*~root.pageIndex}}</div>
+            <div class="u-col">{{:~formatTime(createtime)}}</div>
+            <div class="u-col"><span class="font-red">{{:withdrawMoney}}元</span> </div>
+            <div class="u-col"><span class="font-red">{{:actualValue}}元</span></div>
+            <div class="u-col"><span class="font-red">{{:serviceFee}}元</span></div>
+            <div class="u-col"></div>
+        </div> 
+        {{/for}}
+    </div>
+    
+</div>
+

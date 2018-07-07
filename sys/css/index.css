@@ -32,7 +32,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 100px;
+    height: 155px;
     min-width: 1050px;
 }
 
@@ -385,4 +385,12 @@ button.code {
 
 button:disabled { 
     background-color: #dddddd;
+}
+
+.logo {
+    width: 300px;
+}
+
+.bar .logo img {
+    width: 100%;
 }

@@ -11,6 +11,7 @@ function init() {
   userType = cookie('userType');
   if (parseInt(userType) === 0) {
     url = "newTask.html";
+    setInterval(updateBuyMoney, REFRESH_TIME )
   }else if(parseInt(userType) === 1){
     url = "updateSeller.html";
     setInterval(updateSellMoney, REFRESH_TIME )

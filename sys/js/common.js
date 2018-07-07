@@ -4,6 +4,7 @@ const BUY = 0
 const SELL = 1
 const ADMIN = 2
 const HOST = 'http://103.251.90.136:8011'
+// const HOST = 'http://localhost:8011'
 // const IMG_PREFIX = HOST + '/file/'
 const AUDIT_PASS = 1
 const AUDIT_FAIL = 2
@@ -242,8 +243,8 @@ const TEXT_BROWSER_TASK_INFO = '请于60分钟内完成任务，超时平台会�
 
 // ARRAY & OBJ DEF
 const LOGIN_IMGS = [
-  'img/login01.jpg',
-  'img/login02.jpg'
+  'img/login01.png',
+  'img/login02.png'
 ];
 
 const PAGES = ['login', 'register', 'regs'];
@@ -828,15 +829,19 @@ function getTaskType(s) {
 }
 
 
-function updateSellMoney() {
+function updateBuyMoney() {
+  promiseNoMask('GET','/buyer/buyer_balance',null, (e)=>{
+    $("#u-money", window.parent.document).text( fix(e.balance+e.servicefee) );
+  }, null)
+}
 
+
+function updateSellMoney() {
   promiseNoMask('GET',URL_SELL_BALANCE,null, (e)=>{
     $("#u-money", window.parent.document).text( fix(e.balance));
   }, null)
 }
 
-
-// create Task functions
 
 function changeType(platform) {
   if ( platform === '淘宝' ) {

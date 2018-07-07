@@ -64,7 +64,13 @@ async function cbInitBindInfo(e) {
       acountLevel: e.taobaoList[0].acountLevel,
       baitiaoStart: parseInt(e.taobaoList[0].baitiaoStart)?"checked":null,
       baitiaoUnStart: parseInt(e.taobaoList[0].baitiaoStart)?null:"checked",
+
+
       receiveProvince: e.taobaoList[0].receiveProvince,
+      receiveCity:  e.taobaoList[0].receiveCity,
+      receiveCountry: e.taobaoList[0].receiveCountry,
+
+
       receiveAddress: e.taobaoList[0].receiveAddress,
       receiver: e.taobaoList[0].receiver,
       receiveMobile: e.taobaoList[0].receiveMobile,
@@ -90,7 +96,6 @@ async function cbInitBindInfo(e) {
       submitHandler: (e) => { doSave() }
     })
   })
-  
 }
 
 function doReturn() {
@@ -104,7 +109,13 @@ function doSave(data) {
     acount: $('#account').val(),
     acountLevel: $('#acount-level').val(),
     baitiaoStart: $("input[name='r-baitiao-start']:checked").val(),
+
+
     receiveProvince: $('#receive-province').val(),
+    receiveCity: $('#receive-city').val(),
+    receiveCountry: $('#receive-country').val(),
+
+
     receiveAddress: $('#receive-address').val(),
     receiver: $('#receiver').val(),
     receiveMobile: $('#receive-mobile').val(),

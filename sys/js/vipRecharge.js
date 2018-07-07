@@ -44,8 +44,6 @@ function initList() {
     }
     
     promise('GET', URL_MEMBERSHIP_FEE_TYPE, null, cbMembershipType, null);
-   
-
 
     $("#vipRechargeForm").validate({
         rules: rules,

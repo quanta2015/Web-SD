@@ -124,8 +124,48 @@
         </div>
       </div>
 
+       <div class="m-d m-d-main m-buy-express">
+        <div class="m-d-item col-1">
+          <li class="v-m-title">
+            <div class="col-1">
+              <span class="icon-list"></span>
+              <span class="m-step">第5步 </span>
+              填写快递和快递单号
+            </div>
+          </li>
+          <li class="u-d">
+            <div class="u-d-item">
+              <div><span class="font-big font-red">发货方</span></div>
+              <div><span>联系人</span><input type="text" id="sendName"></div>
+              <div><span>省</span><input type="text" id="sendProv"></div>
+              <div><span>市</span><input type="text" id="sendCity"></div>
+              <div><span>地址</span><input type="text" id="sendAddr"></div>
+            </div>
+            <div class="u-d-item">
+              <div><span class="font-big font-red">收货方</span></div>
+              <div><span>联系人</span><input type="text" id="receiveName"></span></div>
+              <div><span>省</span><input type="text" id="receiveProv"></span></div>
+              <div><span>市</span><input type="text" id="receiveCity"></span></div>
+              <div><span>地址</span><input type="text" id="receiveAddr"></span></div>
+            </div>
+          </li>
+          <li>
+            <div class="col-1">快递公司： 圆通快递</div>
+          </li><!-- 
+          <li>
+            <div class="col-1">快递单号： <span class="font-red" id="tradeNo">xxx-xxx-xxx</span></div>
+          </li> -->
+          <li>
+            <div class="col-1 col-btn">
+              <a href="#" class="btn red-thunderbird" id="submit-goods">发 货</a>
+              <a href="#" class="btn grey-mint" id="return-list">返回任务列表</a></div>
+          </li>
+        </div>
+      </div>
 
-      <div class="m-d m-d-main">
+
+
+      <div class="m-d m-d-main m-no-express">
         <div class="m-d-item col-1">
           <li class="v-m-title">
             <div class="col-1">
@@ -139,8 +179,8 @@
           </li>
           <li>
             <select class="form-control" id="u-express-status">
-              <option value="1">空包</option>
-              <option value="2">面单</option>
+              <option value="1">面单</option>
+              <!-- <option value="2">空包</option> -->
             </select>
           </li>
           <li>

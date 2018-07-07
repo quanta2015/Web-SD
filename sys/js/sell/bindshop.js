@@ -9,6 +9,10 @@ let rules = {
   shopWangId: {
     required: !0
   },
+  shopMobile: {
+    required: !0,
+    isPhone: true
+  },
   shopName: {
     required: !0
   },
@@ -61,6 +65,7 @@ function doSave() {
       "address": $('#shop_addr').val(),
       "name": $('#shop_name').val(),
       "shopurl": $('#shop_url').val(),
+      "mobile": $('#shop-mobile').val(),
       "businesstype": $('#shop-businesstype').val(),
       "subtype": $('#shop-subtype').val(),
       "addressProvince": $('#shop-province').val(),

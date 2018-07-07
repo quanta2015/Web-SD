@@ -18,3 +18,39 @@
 .form-group .wide-3 {
   width: 400px;
 }
+
+
+.page-tab {
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.page-tab span {
+    margin:10px 0;
+    padding: 5px 20px;
+    /*border-right: 1px solid #ccc;*/
+    border-left: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.page-tab span:last-child {
+    border-right: 1px solid #ccc;
+}
+
+.page-tab .active {
+    color: #ff0000;
+}
+
+
+.u-row {
+    display: flex;
+    padding: 10px;
+}
+
+
+.u-row .u-col{
+    margin: 5px 10px;
+    flex:1;
+}

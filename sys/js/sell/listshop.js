@@ -57,6 +57,7 @@ function doEditShop() {
   $('#shop_url').val(_listshop[index].shopurl);
   $('#shop_addr').val(_listshop[index].address);
   $('#shop-wangid').val(_listshop[index].wangid);
+  $('#shop-mobile').val(_listshop[index].mobile);
   $('#shop_img').attr('src', IMG_PREFIX + _listshop[index].shopimg1);
   $('#upload').attr('picurl', _listshop[index].shopimg1);
 
@@ -85,6 +86,7 @@ function doSaveShop() {
     type: $('#shop_type').val(),
     name: $('#shop_name').val(),
     address: $('#shop_addr').val(),
+    mobile: $('#shop-mobile').val(),
     businesstype: $('#shop-businesstype').val(),
     subtype: $('#shop-subtype').val(),
     addressProvince: $('#shop-province').val(),

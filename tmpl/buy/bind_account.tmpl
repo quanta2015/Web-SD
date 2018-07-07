@@ -1,10 +1,6 @@
 <div class="page-bar">
   <ul class="page-breadcrumb">
     <li>
-      <a href="index.html">刷手管理</a>
-      <i class="fa fa-circle"></i>
-    </li>
-    <li>
       <span>绑定{{:platform}}账号</span>
     </li>
   </ul>
@@ -85,11 +81,13 @@
         </div>
 
         <div class="form-group form-inline" data-toggle="distpicker" id="pick">
-          <label class="control-label col-xs-2">收货人省份
+          <label class="control-label col-xs-2">收货人省市区
             <span class="required"> * </span>
           </label>
-          <div class="col-xs-3">
-            <select class="form-control" id="receive-province" data-province="{{:receiveProvince}}" {{:type}} name="receiveProvince"></select>
+          <div class="col-xs-6">
+            <select class="form-control" id="receive-province" data-province="{{:receiveProvince}}" {{:type}}></select>
+            <select class="form-control" id="receive-city" data-city="{{:receiveCity}}"></select>
+            <select class="form-control" id="receive-country" data-district="{{:receiveCountry}}"></select>
           </div>
         </div> 
         <div class="form-group form-inline">

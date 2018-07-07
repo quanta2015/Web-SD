@@ -1,0 +1,10 @@
+.g-help {
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.g-help li {
+    text-align: center;
+    margin: 10px 0;
+}
