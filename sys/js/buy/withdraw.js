@@ -144,7 +144,7 @@ function doInitTip() {
 
 
   if (type === 'balance') {
-    info = ` 佣金账户: 可提现金额${_balanceData.mission}元 (任务佣金${_balanceData.servicefee}元，推广赚金${_balanceData.spread}元，平台奖励金不可提现)`
+    info = ` 佣金账户: 可提现金额${_balanceData.servicefee}元 （其中包括推广赚金${_balanceData.spread}元，平台奖励金不可提现）`
   }else{
     info = ` 本金账户: 可提现金额${_balanceData.balance}元`
   }

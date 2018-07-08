@@ -120,8 +120,10 @@
 .m-menu>span {
     width: 120px;
     text-align: center;
-    border-right: 1px solid #aaa;
+    border-right: 1px solid #fff;
     display: inline-block;
+    background: #ccc;
+    color: #fff;
 }
 
 .m-menu>span:last-child {
@@ -129,7 +131,7 @@
 }
 
 .m-menu a {
-    color: #333;
+    color:#fff;
 }
 
 .m-menu a.cur {

@@ -251,7 +251,7 @@ section.regs>.regs-cnt {
 
 .input-group>i {
     position: absolute;
-    top: 10px;
+    top: 15px;
     left: 15px;
     width: 20px;
     font-size: 20px;
@@ -297,7 +297,7 @@ section.regs>.regs-cnt {
 }
 
 footer {
-    background: #53221b;
+    background: #333;
     padding: 10px;
     display: flex;
     color: #fff;

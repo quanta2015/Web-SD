@@ -60,6 +60,8 @@ function doGetPwd() {
 function doReturn() {
   $('.login').removeClass('hide')
   $('.forget').addClass('hide')
+  $('#getPwd').text('获取验证码');
+  $('#getPwd').attr("disabled",false);
 }
 
 
@@ -194,7 +196,7 @@ function doCounter(count, id) {
   setTimeout( () => {
     $(`#${id}`).text(--count);
     if (count) {
-      doCounter(count)
+      doCounter(count,id )
     }else{
       $(`#${id}`).text('获取验证码');
       $(`#${id}`).attr("disabled",false);

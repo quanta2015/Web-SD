@@ -26,8 +26,6 @@ function init() {
   initBalanceInfo();
 
 
-
-
   $('body').on('click', '#btn-search', doSearch);
 
   $("#form-withdraw").validate({
