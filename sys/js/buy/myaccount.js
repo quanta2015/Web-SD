@@ -12,7 +12,7 @@ function init() {
 
 
   $('body').on('click', '#withdraw', ()=>{ goto('withdraw.html') });
-  $('body').on('click', '#withdraw-detail', ()=>{ goto('withdraw.html') });
+  $('body').on('click', '#withdraw-detail', ()=>{ goto('withdraw.html?type=getmoney') });
   $('body').on('click', '.m-money-type', doShowMoney );
 
   

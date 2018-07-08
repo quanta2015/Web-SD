@@ -19,8 +19,53 @@ function init() {
   $('body').on('click', '#getcode-btn', doGetCode);
   $('body').on('click', '#loginBtn', doLogin);
   $('body').on('keydown', doPressLogin);
+  $('body').on('click', '#forgetPwd', doForget);
+  $('body').on('click', '#return', doReturn);
+  $('body').on('click', '#getPwd', doGetPwd);
+  $('body').on('click', '#changePwd', doChgPwd);
+}
 
 
+function doChgPwd() {
+  let obj = {
+    mobile: $('#mobile-pwd').val(),
+    smscode: $('#smscode').val(),
+    password: $('#pwd').val()
+  }
+
+  type = $("input[name='user-type']:checked").val();
+  (type==='buy')?url='/buyer/replace_buyer_password':url='/shoper/replace_shoper_password';
+
+  promise('post',url,JSON.stringify(obj), (e)=>{
+    notifyInfo('密码已经修改成功！');
+    doReturn();
+  },null)
+}
+
+function doGetPwd() {
+  let obj = { mobile: $('#mobile-pwd').val() }
+  type = $("input[name='user-type']:checked").val();
+  (type==='buy')?url='/buyer/mobile_exist':url='/shoper/mobile_exist';
+
+  promise('get',[url, encodeQuery(obj)].join('?'),null, (e)=>{
+    var obj = { mobilephone: $('#mobile-pwd').val() }
+    $('#getPwd').attr("disabled",true);
+    promise('GET', URL_SMS_SEND, obj, (e)=>{
+      notifyInfo('密码已经发送到您的手机！')
+    },null);
+    doCounter(CODE_COUNT,'getPwd');
+  },null)
+}
+
+function doReturn() {
+  $('.login').removeClass('hide')
+  $('.forget').addClass('hide')
+}
+
+
+function doForget() {
+  $('.login').addClass('hide')
+  $('.forget').removeClass('hide')
 }
 
 function checkInvite() {
@@ -141,19 +186,18 @@ function doGetCode() {
     'mobilephone':$('#mobile').val()
   }
   $('#getcode-btn').attr("disabled",true);
-  promiseNoMask('GET', URL_SMS_SEND, obj, cbCode);
-  let count = CODE_COUNT;
-  doCounter(count);
+  promiseNoMask('GET', URL_SMS_SEND, obj, cbCode, null);
+  doCounter(CODE_COUNT,'getcode-btn');
 }
 
-function doCounter(count) {
+function doCounter(count, id) {
   setTimeout( () => {
-    $('#getcode-btn').text(--count);
+    $(`#${id}`).text(--count);
     if (count) {
       doCounter(count)
     }else{
-      $('#getcode-btn').text('获取验证码');
-      $('#getcode-btn').attr("disabled",false);
+      $(`#${id}`).text('获取验证码');
+      $(`#${id}`).attr("disabled",false);
     }
   }, 1000 );
 }

@@ -3,7 +3,7 @@ const CODE_COUNT = 60
 const BUY = 0
 const SELL = 1
 const ADMIN = 2
-const HOST = 'http://103.251.90.136:8011'
+const HOST = 'http://122.152.199.90:8011'
 // const HOST = 'http://localhost:8011'
 // const IMG_PREFIX = HOST + '/file/'
 const AUDIT_PASS = 1
@@ -800,7 +800,7 @@ function formatCost(ret) {
 
 
 function fix(val) {
-  return parseFloat(val).toFixed(1)
+  return parseFloat(val).toFixed(2)
 }
 
 

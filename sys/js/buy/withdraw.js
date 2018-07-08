@@ -34,11 +34,16 @@ let pageData = Object.assign({}, PAGE_DATA);
 $(init);
 
 function init() {
-
-  initBalanceInfo();
+  type = _id = getUrlParam('type')
 
   $('body').on('change', '#account-type', doInitTip);
-  $('body').on('click', '.page-tab', doChangeTab);
+  $('.page-tab').on('click', doChangeTab);
+
+  initBalanceInfo();
+  
+  if (type === 'getmoney') {
+    $('.page-tab span:eq(1)')[0].click()
+  }
 }
 
 
@@ -151,11 +156,9 @@ function doInitTip() {
 function doChangeTab(e) {
   $('.page-tab span').removeClass('active');
   $(e.target).addClass('active');
-
+   $('.cnt-tab').addClass('hide');
 
   type = $(e.target).data('type');
-
-  $('.cnt-tab').addClass('hide')
   $(`.cnt-${type}`).removeClass('hide')
 
   if (type==='history') {

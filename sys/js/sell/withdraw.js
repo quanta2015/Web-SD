@@ -24,6 +24,10 @@ function init() {
   initTime();
   initList();
   initBalanceInfo();
+
+
+
+
   $('body').on('click', '#btn-search', doSearch);
 
   $("#form-withdraw").validate({

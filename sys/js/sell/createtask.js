@@ -19,10 +19,12 @@ let rules_step2 = {
     required: !0
   },
   "real-price": {
-    required: !0
+    required: !0,
+    number: true
   },
   "mobile-price": {
-    required: !0
+    required: !0,
+    number: true
   },
   "buy-count": {
     required: !0
@@ -96,8 +98,8 @@ function init() {
   $('#rp-tb').prop('checked',true);
   $('#rt-mobile').prop('checked',true);
   $('#rm-money').prop('checked',true);
-  $('#real-price').mask("#,##0", {reverse: true});
-  $('#mobile-price').mask("#,##0", {reverse: true});
+  // $('#real-price').mask("#,##0.0", {reverse: true});
+  // $('#mobile-price').mask("#,##0.0", {reverse: true});
   $('#buy-count').mask("#,##0", {reverse: true});
   $('#sell-count').mask("#,##0", {reverse: true});
   $('#price-from').mask("#,##0", {reverse: true});

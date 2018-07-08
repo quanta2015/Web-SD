@@ -12,6 +12,11 @@
 <link href="lib/alertify/alertify.core.css" rel="stylesheet" >
 <link href="lib/fontawesome/css/fontawesome-all.min.css" rel="stylesheet">
 <link href="lib/pace/pace.css" rel="stylesheet" >
+<link href="lib/loaders/loaders.min.css" rel="stylesheet" >
+
+
+<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="lib/metronic/components.css"  id="style_components"  rel="stylesheet">
 </head>
 <body>
 
@@ -46,7 +51,7 @@
   </ul>
 </nav>
 
-<section class="login ">
+<section class="login">
   <div class="login-cnt">
     <div class="login-logo"><img src="img/login01.png" alt=""></div>
     <div class="login-main">
@@ -74,6 +79,7 @@
         <div class="tip-register">
           <span>没有账号？</span>
           <a class="action-register">[免费注册]</a>
+          <a id="forgetPwd">[忘记密码]</a>
         </div>
       </div>
     
@@ -106,7 +112,44 @@
   </div>
 </section>
 
-  <section class="regs hide"></section>
+<section class="regs hide"></section>
+
+
+<section class="forget hide">
+  <div class="forget-cnt">
+    <li>
+      <label class="mt-radio">
+        <input type="radio" name="user-type" value="sell" checked> 商家
+        <span></span>
+      </label>
+      <label class="mt-radio">
+        <input type="radio" name="user-type" value="buy" > 买家
+        <span></span>
+      </label>
+    </li>
+    <li>
+      <input type="text" class="login-input" id="mobile-pwd" placeholder="请输入找回密码的手机号">
+      <a href="#" class="btn red" id="getPwd">获取验证码</a>
+    </li>
+    
+    <li><span></span></li>
+    <li>
+      <input type="text" class="login-input" id="smscode" placeholder="请输入验证码">
+    </li>
+    <li>
+      <input type="text" class="login-input" id="pwd" placeholder="请输入密码" >
+    </li>
+    <li>
+      <input type="text" class="login-input" id="repwd" placeholder="请输入确认密码" >
+    </li>
+    <li>
+      <a href="#" class="btn red" id="changePwd">找回密码</a>
+      <a href="#" class="btn green" id="return">返回</a>
+    </li>
+    
+  </div>
+  
+</section>
 
 <footer>
   <div class="qr"><img src="img/qr.png" alt=""></div>
@@ -133,7 +176,6 @@
 <script src="lib/jquery/jquery.cookie.js"></script>
 <script src="lib/alertify/alertify.min.js"></script>
 <script src="lib/pace/pace.min.js"></script>
-<script src="lib/base64/base64.min.js"></script>
 
 <script src="sys/js/common.js"></script>
 <script src="sys/js/login.js"></script>
