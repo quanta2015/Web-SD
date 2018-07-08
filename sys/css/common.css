@@ -229,3 +229,7 @@ a:hover {
     color: #26C281;
     font-size: 16px;
 }
+
+tbody tr:nth-child(2n+1) {
+  background: #eee;
+}

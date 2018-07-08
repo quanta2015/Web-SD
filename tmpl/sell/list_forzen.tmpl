@@ -5,7 +5,6 @@
       <th> 时间 </th>
       <th> 任务编号 </th>
       <th> 金额 </th>
-      <th> 详细 </th>
       <th> 功能 </th>
     </tr>
   </thead>
@@ -16,9 +15,8 @@
       <td> {{:~formatTime(createtime)}}</td>
       <td> {{:taskId}}</td>
       <td> {{:sumMoney}}</td>
-      <td> </td>
       <td>
-        <a href="javascript:;" class="btn grey-mint btn-xs frazen-detail" id="{{:taskId}}">冻结详情 </a>
+        <a href="javascript:;" class="btn red-mint btn-xs frazen-detail" id="{{:taskId}}">冻结详情 </a>
       </td>
     </tr>
     {{/for}}
