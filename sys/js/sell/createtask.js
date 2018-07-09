@@ -34,6 +34,10 @@ let rules_step2 = {
   },
   "pub-itl-amount": {
     required: !0
+  },
+  "express-weight": {
+    required: !0,
+    number: true
   }
 };
 
@@ -66,6 +70,9 @@ function init() {
   $('body').on('input propertychange', '.task-count', doCountTask);
   $('body').on('change', '#picturetask', doChangePicture);
   $('body').on('change', '#wordtask', doChangeWord);
+  $('body').on('change', '#buy-express', doChangeExpress);
+
+  
 
 
   //初始化第一步验证对象
@@ -106,12 +113,18 @@ function init() {
   $('#price-to').mask("#,##0", {reverse: true});
   $('#task-count').mask("#,##0", {reverse: true});
   $('#award-money').mask("#,##0", {reverse: true});
-  $('#express-weight').mask("#,##0", {reverse: true});
   $('#show-first').mask("#,##0", {reverse: true});
   $('.u-task-count').mask("#,##0", {reverse: true});
 
 
   _tid = getUrlParam('id');
+}
+
+
+function doChangeExpress() {
+  if ( $('#buy-express').val() === "1" ) {
+    $('.form-weight').removeClass('hide')
+  }
 }
 
 

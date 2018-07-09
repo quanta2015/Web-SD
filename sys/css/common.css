@@ -233,3 +233,7 @@ a:hover {
 tbody tr:nth-child(2n+1) {
   background: #eee;
 }
+
+.no-margin {
+  margin: 0!important;
+}

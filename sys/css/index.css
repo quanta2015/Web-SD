@@ -408,6 +408,7 @@ button {
 
 button.code {
     margin:5px;
+    color: #fff;
 }
 
 .agreement {
@@ -438,4 +439,8 @@ button:disabled {
 .u-hc {
     display: flex;
     justify-content: center;
+}
+
+.input-group {
+    display: flex!important;
 }
