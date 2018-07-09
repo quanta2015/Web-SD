@@ -82,7 +82,7 @@ function initBalanceInfo() {
 
 function cbBalanceInfo(e) {
   console.log(e)
-  $('#shoper-name').val(cookie('name'));
+  $('#shoper-name').val(cookie('mobile'));
   if (!cookie('name')) $('#form-tip').removeClass('hide');
   $('#bankno').val(cookie('bankcard'));
   $('#balance').text(e.balance);

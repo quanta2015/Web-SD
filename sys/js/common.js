@@ -11,6 +11,15 @@ const AUDIT_FAIL = 2
 const WITHDRAW_FEE = 0.05
 const REFRESH_TIME = 5000
 
+const MENU = {
+  buyMgr: ['auditShop','auditTask','auditRecharge','auditRecharge','auditVipRecharge','appealHandle','defriendLog'],
+  selMgr: [],
+  finMgr:[]
+}
+
+
+
+
 
 const IMG_PREFIX = 'https://abc-1256878718.cos.ap-shanghai.myqcloud.com/'
 
