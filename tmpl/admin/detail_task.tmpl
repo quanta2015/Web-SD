@@ -134,11 +134,16 @@
         {{:~formatBool(auditFirst)}} </div>
       </li>
       {{/if}}
+
+      {{if ~root.vip}}
       <li>
         <div class="col-2">性别选择</div>
         <div class="col-1 font-red-thunderbird fn-right">
         {{:~formatSex(sex)}} </div>
       </li>
+      {{/if}}
+
+      {{if ~root.vip}}
       {{if ageLimit}}
       <li>
         <div class="col-2">人群年龄段</div>
@@ -146,6 +151,9 @@
         {{:~formatAge(ageLimit)}} </div>
       </li>
       {{/if}}
+      {{/if}}
+
+      {{if ~root.vip}}
       {{if location}}
       <li>
         <div class="col-2">区域限制</div>
@@ -153,6 +161,9 @@
         {{:~formatNull(location)}}</div>
       </li>
       {{/if}}
+      {{/if}}
+
+      {{if ~root.vip}}
       {{if taobaoLeve}}
       <li>
         <div class="col-2">淘宝会员等级</div>
@@ -160,6 +171,9 @@
         {{:~formatTaobaoLevel(taobaoLeve)}} </div>
       </li>
       {{/if}}
+      {{/if}}
+
+      {{if ~root.vip}}
       {{if rebuy}}
       <li class="group-{{:type}}">
         <div class="col-2">重复购买限制</div>
@@ -167,6 +181,9 @@
         {{:~formatRepeat(rebuy)}} </div>
       </li>
       {{/if}}
+      {{/if}}
+
+      {{if ~root.vip}}
       {{if useHuabei}}
       <li class="group-{{:type}}">
         <div class="col-2">是否允许使用信用卡/花呗/白条</div>
@@ -174,6 +191,9 @@
         {{:~formatBool(useHuabei) }} </div>
       </li>
       {{/if}}
+      {{/if}}
+
+      {{if ~root.vip}}
       {{if huabeiStart}}
       <li>
         <div class="col-2">是否要求账号需要开通白条/花呗</div>
@@ -181,6 +201,9 @@
         {{:~formatBool(huabeiStart) }} </div>
       </li>
       {{/if}}
+      {{/if}}
+
+
       {{if isRecieve}}
       <li class="group-{{:type}}">
         <div class="col-2">是否系统默认签收</div>
@@ -188,6 +211,8 @@
         {{:~formatBool(isRecieve)}} </div>
       </li>
       {{/if}}
+
+      
       {{if buyExpress}}
       <li class="group-{{:type}}">
         <div class="col-2">是否向平台购买面单</div>

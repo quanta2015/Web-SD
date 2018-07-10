@@ -867,6 +867,8 @@ function getTaskType(s) {
 function updateBuyMoney() {
   promiseNoMask('GET','/buyer/buyer_balance',null, (e)=>{
     $("#u-money", window.parent.document).text( fix(e.balance+e.servicefee) );
+    $("#u-balance", window.parent.document).text( fix(e.balance) );
+    
   }, null)
 }
 

@@ -30,7 +30,47 @@ function init() {
 
   initBindInfo();
   $('body').on('click', '#returnBtn', doReturn);
+  $('body').on('click', '#modifyBtn', doModify );
 
+}
+
+async function doModify() {
+  $(".g-account").empty();
+  renderTmpl(TMPL_BUY_BIND_ACCOUNT, {
+    platform: platform.type,
+    creditType: platform.creditType,
+    levels: platform.levels,
+    buyerId: bindInfo.taobaoList[0].id,
+    acount: bindInfo.taobaoList[0].acount,
+    acountLevel: bindInfo.taobaoList[0].acountLevel,
+    baitiaoStart: parseInt(bindInfo.taobaoList[0].baitiaoStart)?"checked":null,
+    baitiaoUnStart: parseInt(bindInfo.taobaoList[0].baitiaoStart)?null:"checked",
+    receiveProvince: bindInfo.taobaoList[0].receiveProvince,
+    receiveCity:  bindInfo.taobaoList[0].receiveCity,
+    receiveCountry: bindInfo.taobaoList[0].receiveCountry,
+    receiveAddress: bindInfo.taobaoList[0].receiveAddress,
+    receiver: bindInfo.taobaoList[0].receiver,
+    receiveMobile: bindInfo.taobaoList[0].receiveMobile,
+    accountImg: [
+      bindInfo.taobaoList[0].baitiaoImg,
+      bindInfo.taobaoList[0].mysiteImg,
+      bindInfo.taobaoList[0].myacountImg
+    ],
+    list: [1,1,1],
+    imgInfo: ['我的页面', '我的账号页面', `开通${creditType}情况`],
+    type: null,
+    status: 2,
+    statusText: AUDIT_STATUS[2],
+    imgPrefix: IMG_PREFIX
+  }).then( (h)=> {
+    $(".g-account").append(h);
+    $('#pick').distpicker();
+    $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
+    $("#form-bind").validate({
+      rules: rules,
+      submitHandler: (e) => { doSave() }
+    })
+  })
 }
 
 function initBindInfo() {
@@ -38,6 +78,7 @@ function initBindInfo() {
 }
 
 async function cbInitBindInfo(e) {
+  bindInfo = e;
   let key = getUrlParam('platform') === 'jingdong' ? 'jingdongList' : 'taobaoList';
   status = e[key][0] && e[key][0].approve >=0 ? e[key][0].approve : -1;
   let func;
@@ -88,7 +129,7 @@ async function cbInitBindInfo(e) {
     })
   }
   func.then(h => {
-    $("body").append(h);
+    $(".g-account").append(h);
     $('#pick').distpicker();
     $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
     $("#form-bind").validate({

@@ -9,6 +9,8 @@ function init() {
 
   checkInvite();
 
+  $('#vertifyCode').attr('src',HOST + '/getVerify')
+
   $('body').on('click', '.login-hd li', toggleUserLogin);
   $('body').on('click', '.action-login', goLoginPage);
   $('body').on('click', '.action-register', goRegisterPage);

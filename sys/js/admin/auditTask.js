@@ -57,6 +57,7 @@ function cbDetail(r, e) {
   let ret = e;
   $(".g-detail").empty();
   ret.data.imgPrefix = IMG_PREFIX;
+  ret.data.vip = true;
   ret.data.type = getTaskType(ret.data.id);
   $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});

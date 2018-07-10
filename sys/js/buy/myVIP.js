@@ -2,6 +2,9 @@ $(init)
 
 function init() {
   $('#r-vip-default').prop('checked',true)
+  $('#balance').text( $('#u-balance',parent.document).text() )
+
+
 
   $('.bank-vip').on('click', ()=>{
     clickMenu('toVIP')

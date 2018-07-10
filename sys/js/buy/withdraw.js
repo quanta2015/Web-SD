@@ -104,31 +104,45 @@ function doCompute() {
 }
 
 function doWithdraw() {
-  let obj = {
-    // mobile: parseInt($('#buyer-id').val()),
-    buyerName: $('#buyer-name').val(),
-    // buyerBankId:parseInt($('#bankno').val()),
-    withdrawMoney: parseInt($('#withdraw-money').val()),
-  }
-  let type = parseInt($('#account-type').val());
-  if (type === 0) {
-    if (obj.withdrawMoney < 200) {
-      return errorInfo('提现金额必须大于200！');
-    }
-  }
-  if (type === 1) {
-    if (obj.withdrawMoney <200){
-      return errorInfo('佣金提现必须大于等于200！');
-    } else if (obj.withdrawMoney/100 === 0) {
-      return errorInfo('佣金提现不是100的倍数！');
-    }
+  money = parseInt($('#withdraw-money').val());
+
+  if (money<500) {
+    cost = money * 0.01
+  }else if((money>=500)&&(money<=1999)) {
+    cost = 5
+  }else if( money >=2000) {
+    cost = 0
   }
 
-  if (obj.withdrawMoney > parseFloat($('#balance').text()) ) {
-    return errorInfo('提现超出余额！');
-  }
-  let url = type === 0 ? URL_BUY_WITHDRAW : URL_BUY_FEE_WITHDRAW;
-  promise('POST', url, JSON.stringify(obj), cdWithdraw, null);
+  msgbox('温馨提示', `<span class="font-red">本次提现金额${money}元，扣取手续费${cost}元</span>`,'取消','确认',(ret)=>{
+    if (ret) return;
+    
+    let obj = {
+      // mobile: parseInt($('#buyer-id').val()),
+      buyerName: $('#buyer-name').val(),
+      // buyerBankId:parseInt($('#bankno').val()),
+      withdrawMoney: parseInt($('#withdraw-money').val()),
+    }
+    let type = parseInt($('#account-type').val());
+    if (type === 0) {
+      if (obj.withdrawMoney < 200) {
+        return errorInfo('提现金额必须大于200！');
+      }
+    }
+    if (type === 1) {
+      if (obj.withdrawMoney <200){
+        return errorInfo('佣金提现必须大于等于200！');
+      } else if (obj.withdrawMoney/100 === 0) {
+        return errorInfo('佣金提现不是100的倍数！');
+      }
+    }
+
+    if (obj.withdrawMoney > parseFloat($('#balance').text()) ) {
+      return errorInfo('提现超出余额！');
+    }
+    let url = type === 0 ? URL_BUY_WITHDRAW : URL_BUY_FEE_WITHDRAW;
+    promise('POST', url, JSON.stringify(obj), cdWithdraw, null);
+  })
 }
 
 function cdWithdraw(e) {
