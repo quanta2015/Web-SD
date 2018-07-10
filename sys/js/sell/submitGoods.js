@@ -45,10 +45,10 @@ function doSubmitGoods() {
     ytoMailno: yto
   }
 
-  if ( $('#u-expressno').val() === '' ) {
-    notifyInfo('请填写快递单号');
-    return;
-  }
+  // if ( $('#u-expressno').val() === '' ) {
+  //   notifyInfo('请填写快递单号');
+  //   return;
+  // }
 
   promise('POST',URL_SELL_DELIVERY, JSON.stringify(obj), cbSubmitGoods, null)
 }

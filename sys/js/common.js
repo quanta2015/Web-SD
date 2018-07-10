@@ -18,9 +18,6 @@ const MENU = {
 }
 
 
-
-
-
 const IMG_PREFIX = 'https://abc-1256878718.cos.ap-shanghai.myqcloud.com/'
 
 const PLATFORM_DATA = {
@@ -56,6 +53,19 @@ const STATUS_MAP = {
   50: '任务完成',
   60: '任务已过时',
 }
+
+
+const appealType = [
+{ id: 0, type: 'buy', desc: '找不到该商品'},
+{ id: 1,type: 'buy',desc: '垫付价格不一致'},
+{ id: 2,type: 'buy',desc: '其他问题'},
+{ id: 3,type: 'sel',desc: '买家在操作聊天过程中出现刷单字眼、催促商家返款等'},
+{ id: 4,type: 'sel',desc: '买家未按商家提出的额外要求操作'},
+{ id: 5,type: 'sel',desc: '买家未按任务要求操作'},
+{ id: 6,type: 'sel',desc: '返款金额问题'},
+{ id: 7,type: 'sel',desc: '垫付价格不一致'},
+{ id: 8,type: 'sel',desc: '买家提供虚假收货地址导致商家无法发货'},
+{ id: 9,type: 'sel',desc: '商家判定的买家其他违规操作'}]
 
 const BANKS = ['工商银行', '农业银行', '建设银行', '中国银行', '招商银行','其他银行']
 
@@ -646,6 +656,22 @@ const rdHelper = {
       ret = 'hide'
     }
 
+    return ret;
+  },
+  formatAppeal: (s) => {
+    switch(s) {
+      case 0: ret = '找不到该商品'; break;
+      case 1: ret = '垫付价格不一致'; break;
+      case 2: ret = '其他问题'; break;
+      case 3: ret = '买家在操作聊天过程中出现刷单字眼、催促商家返款等'; break;
+      case 4: ret = '买家未按商家提出的额外要求操作'; break;
+      case 5: ret = '买家未按任务要求操作'; break;
+      case 6: ret = '返款金额问题'; break;
+      case 7: ret = '垫付价格不一致'; break;
+      case 8: ret = '买家提供虚假收货地址导致商家无法发货'; break;
+      case 9: ret = '商家判定的买家其他违规操作'; break;
+      default: ret = ''; break;
+    }
     return ret;
   }
 }

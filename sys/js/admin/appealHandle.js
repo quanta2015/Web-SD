@@ -58,7 +58,7 @@ function doDetail() {
     id: $(this).data("id"),
     type: appealtype
   };
-  promiseTmpl('GET', '/tmpl/admin/appeal_detail.tmpl', ['/admin/complains_detail', encodeQuery(obj)].join('?') ,null, cbDetail)
+  promiseTmpl('GET', '/tmpl/myappeal_detail.tmpl', ['/admin/complains_detail', encodeQuery(obj)].join('?') ,null, cbDetail)
 }
 
 function cbDetail(r, e) {

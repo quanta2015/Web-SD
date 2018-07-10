@@ -104,9 +104,10 @@ function getCheckedVal() {
 function doComplainTask(e){
 	var obj = {
     id: $(this).prop('id'),
-    tid: $(this).attr('tid')
+    tid: $(this).attr('tid'),
+    type: 'sel'
   }
-  location.href = ['appealOrder.html', encodeQuery(obj)].join('?')
+  location.href = ['/html/appealOrder.html', encodeQuery(obj)].join('?')
 }
 
 function doBatchCancel() {

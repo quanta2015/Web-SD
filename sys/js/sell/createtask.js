@@ -90,6 +90,7 @@ function init() {
   //设置VIP过滤
   _vip = cookie("memberValid");
   if (!_vip) $('.u-vip').attr('disabled',true);
+  $('#express-weight').val('0')
 
   //设置发货地下拉框
   $('#pick').distpicker();
@@ -123,7 +124,11 @@ function init() {
 
 function doChangeExpress() {
   if ( $('#buy-express').val() === "1" ) {
-    $('.form-weight').removeClass('hide')
+    $('.form-weight').removeClass('hide');
+    $('#express-weight').val('')
+  }else{
+    $('.form-weight').addClass('hide');
+    $('#express-weight').val('0')
   }
 }
 

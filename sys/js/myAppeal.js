@@ -13,11 +13,11 @@ function init() {
 }
 
 function initList() {
-	let param = Object.assign(pageData);
+	  let param = Object.assign(pageData);
 	if(tabType=='my'){
-	  promiseTmpl('GET', '/tmpl/buy/myappeal.tmpl', ['/get_complains_list', encodeQuery(param)].join('?'),null, cbList)
+	  promiseTmpl('GET', '/tmpl/myappeal.tmpl', ['/get_complains_list', encodeQuery(param)].join('?'),null, cbList)
 	}else{
-		promiseTmpl('GET', '/tmpl/buy/myappeal.tmpl', ['/get_complains_recieved', encodeQuery(param)].join('?'),null, cbList)
+		promiseTmpl('GET', '/tmpl/myappeal.tmpl', ['/get_complains_recieved', encodeQuery(param)].join('?'),null, cbList)
 	}
 }
 
@@ -41,10 +41,10 @@ function cbList(r, e) {
 
 function doDetail() {
   var obj = {
-    buyerTaskId: $(this).data("tid"),
+    id: $(this).data("id"),
     type: 0
   };
-  promiseTmpl('GET', '/tmpl/buy/appeal_detail.tmpl', ['/get_complain_detail', encodeQuery(obj)].join('?') ,null, cbDetail)
+  promiseTmpl('GET', '/tmpl/myappeal_detail.tmpl', ['/admin/complains_detail', encodeQuery(obj)].join('?') ,null, cbDetail)
 }
 
 function cbDetail(r, e) {

@@ -32,9 +32,9 @@
 			 <td> {{if handleTime}}{{:~formatTime(handleTime)}}{{/if}}</td>
             <td> {{:handleResult}}</td>
 			<td>
-              <a href="#basic" class="btn red btn-xs btn-outline detail-task"   data-id="{{:id}}"><i class="fa fa-edit"></i> 详情 </a>
+              <a href="#basic" class="btn red btn-xs detail-task"   data-id="{{:id}}"><i class="fa fa-edit"></i> 详情 </a>
 			  {{if handleStatus==0}}
-              	<a href="#basic" class="btn blue-madison btn-xs btn-outline audit-appeal"   data-id="{{:id}}" data-type="1"><i class="fa fa-edit"></i> 处理 </a>
+              	<a href="#basic" class="btn blue-madison btn-xs audit-appeal"   data-id="{{:id}}" data-type="1"><i class="fa fa-edit"></i> 处理 </a>
               {{/if}}
             </td>
         </tr>

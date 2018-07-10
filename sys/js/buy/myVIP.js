@@ -21,11 +21,12 @@ function init() {
 
   $('.balance-vip').on('click', ()=>{
     
-    let obj = {
-        membershipFeeId: parseInt($("input:checked").val())
-    }
-
-    promise('GET', ['/buyer/pay_membershipfee', encodeQuery(obj)].join('?'), null, cdBuyVip, null);
+    msgbox('温馨提示', `请确认购买VIP权益！`,'取消','确认',(ret)=>{
+      if (!ret) {
+        let obj = { membershipFeeId: parseInt($("input:checked").val()) }
+        promise('GET', ['/buyer/pay_membershipfee', encodeQuery(obj)].join('?'), null, cdBuyVip, null);
+      }
+    })
   });
 }
 

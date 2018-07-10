@@ -4,7 +4,7 @@
             <th></th>
             <th> 创建时间 </th>
             <th> 申诉类型 </th>
-            <th> 手机号码</th>
+            <th> 申诉用户</th>
 			<th> 申诉描述</th>
             <th> 上传图片 </th>
             <th> 处理情况 </th>
@@ -28,11 +28,11 @@
 				{{if picture4}}<a href="{{:~root.imgPrefix}}{{:picture4}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture4}}" style="width: 60px; height: 60px;"></a>{{/if}}
                 {{if picture5}}<a href="{{:~root.imgPrefix}}{{:picture5}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:picture5}}" style="width: 60px; height: 60px;"></a>{{/if}}			
 			</td>
-             <td class="">{{if handleStatus==0}}未处理{{/if}}{{if handleStatus==1}}已处理{{/if}}</td>
+             <td class="font-red">{{if handleStatus==0}}未处理{{/if}}{{if handleStatus==1}}已处理{{/if}}</td>
 			 <td> {{if handleTime}}{{:~formatTime(handleTime)}}{{/if}}</td>
             <td> {{:handleResult}}</td>
 			<td>
-              <a href="#basic" class="btn red btn-sm btn-outline detail-appeal"   data-id="{{:id}}" data-tid="{{:buyerTaskId}}"><i class="fa fa-edit"></i> 详情 </a>
+              <a href="#basic" class="btn red btn-sm detail-appeal"   data-id="{{:id}}" data-tid="{{:buyerTaskId}}"><i class="fa fa-edit"></i> 详情 </a>
             </td>
         </tr>
       {{/for}}

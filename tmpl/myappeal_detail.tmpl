@@ -25,7 +25,12 @@
       <span class="u-sp"></span>
       <span class="u-step-val">{{:mobile}}</span>
     </div>
-	 <div class="u-step-info">
+    <div class="u-step-info">
+      <span class="u-step-key">申诉类型</span>
+      <span class="u-sp"></span>
+      <span class="u-step-val">{{:~formatAppeal(type)}}</span>
+    </div>
+	  <div class="u-step-info">
       <span class="u-step-key">申诉描述</span>
       <span class="u-sp"></span>
       <span class="u-step-val">{{:complainContent}}</span>
@@ -79,10 +84,4 @@
     </div>
   </div>
   	{{/for}}
-	<div class="m-d m-d-main" style='text-align: center;'>
-		<div class="col-1" style='text-align: center; padding:10px'>
-			<a href="#" class="btn dark btn-xs b-close"><i class="fa fa-edit"></i> 关闭 </a>
-		</div>
-	</div>
-
 </div>

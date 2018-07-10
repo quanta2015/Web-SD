@@ -13,7 +13,9 @@
     <div class="u-step-info">
       <span class="u-step-key">申诉对象</span>
       <span class="u-sp"></span>
-      <span class="u-step-val">{{if buyerId>0}}买家申诉{{/if}}{{if shoperId>0}}商家申诉{{/if}}</span>
+      <span class="u-step-val">
+        {{if buyerId>0}}买家申诉{{/if}}{{if shoperId>0}}商家申诉{{/if}}
+      </span>
     </div>
     <div class="u-step-info">
       <span class="u-step-key">创建时间</span>
@@ -80,10 +82,10 @@
   </div>
 	<div class="m-d m-d-main" style='text-align: center;'>
 		<div class="col-1" style='text-align: center; padding:10px'>
-			 {{if handleStatus==0}}
-              <a href="#basic" class="btn blue-madison btn-xs btn-outline audit-appeal"   data-id="{{:id}}" data-type="1"><i class="fa fa-edit"></i> 处理 </a>
-              {{/if}}
-			<a href="#basic" class="btn dark btn-xs b-close"><i class="fa fa-edit"></i> 关闭 </a>
+			{{if handleStatus==0}}
+        <a href="#basic" class="btn red-mint btn-sm audit-appeal"   data-id="{{:id}}" data-type="1"><i class="fa fa-edit"></i> 处理 </a>
+      {{/if}}
+			<a href="#basic" class="btn grey btn-sm b-close"><i class="fa fa-edit"></i> 关闭 </a>
 		</div>
 	</div>
 	{{/for}}

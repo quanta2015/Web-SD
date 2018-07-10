@@ -1,17 +1,28 @@
-var _id, _tid;
+var _id, _tid, _type;
 
 $(init);
 
 function init() {
   _id = getUrlParam('id')
   _tid = getUrlParam('tid')
+  _type = getUrlParam('type')
+
   renderImg()
+
+  initAppeal(_type)
 
   $('body').on('click', '#submit-eval', doSubmitEval);
   $('body').on('click', '#return-list', gotoPage);
-  $('body').on('click', '.m-close', doClose);
-  $('body').on('click','.b-close',doClose);
-  $('body').on('click', '.detail-task', doDetail);
+}
+
+
+function initAppeal(type) {
+
+  appealType.forEach((e)=>{
+    if(e.type === type) {
+      $('#type').append( `<option value="${e.id}"> ${e.desc}</option>` )
+    }
+  })
 }
 
 function renderImg() {
@@ -49,15 +60,15 @@ function doSubmitEval(e) {
     return;
   }
     data = {
-    buyerTaskId: _id,
-	complainContent:$("#complainContent").val(),
-	type:$("#type").val(),
-    picture1: $("#u-express-picture1").attr('picurl'),
-    picture2: $("#u-express-picture2").attr('picurl'),
-    picture3: $("#u-express-picture3").attr('picurl'),
-	picture4: $("#u-express-picture4").attr('picurl'),
-	picture5: $("#u-express-picture5").attr('picurl')
-  }
+      buyerTaskId: _id,
+  	  complainContent:$("#complainContent").val(),
+  	  type:$("#type").val(),
+      picture1: $("#u-express-picture1").attr('picurl'),
+      picture2: $("#u-express-picture2").attr('picurl'),
+      picture3: $("#u-express-picture3").attr('picurl'),
+  	  picture4: $("#u-express-picture4").attr('picurl'),
+  	  picture5: $("#u-express-picture5").attr('picurl')
+    }
   promise('post', '/submit_complain' , JSON.stringify(data), cbSubmitEval, null)
 }
 
@@ -65,28 +76,7 @@ function cbSubmitEval(e) {
   alertBox('提交申诉成功',gotoPage);
 }
 
-function doDetail() {
-  var obj = {
-    id: $(this).data("id")
-  };
-  promiseTmpl('GET', '/tmpl/buy/appeal_detail.tmpl', ['/get_complain_detail', encodeQuery(obj)].join('?') ,null, cbDetail)
-}
-
-function cbDetail(r, e) {
-  let ret = e;
-  ret.data.imgPrefix = IMG_PREFIX;
-  $(".g-detail").empty();
-  $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
-  $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
-  $(".g-detail").show();
-}
-
 function gotoPage() {
   goBack()
-  // location.href = 'listOrder.html?status=20'
 }
 
-
-function doClose() {
-  $('.g-detail').hide()
-}
