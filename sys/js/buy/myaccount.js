@@ -5,7 +5,8 @@ $(init);
 
 function init() {
 
-
+  initNotice()
+  
   if( parseInt(cookie('approveState')) !== 1 ) {
     alertBox('新手请先至新手任务完成相关信息绑定，完成所有绑定后，平台奖励2金', null)
   }

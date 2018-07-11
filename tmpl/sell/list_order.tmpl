@@ -30,11 +30,17 @@
 
           <!-- <div class="font-red font-big"><img src="/img/money.png" class="fn-money">{{:serviceSum}} </div> -->
         </div>
+        
+        
         <div class="u-col u-exp">
+             {{if (expressNo)&&(status>=10)}}
             <div class="u-exp-type">快递单号</div>
             <div class="u-exp-id">{{:expressNo}}</div>
-            <div class="u-exp-status">已发货<!-- {{:~formatExpressStatus(expressStatus)}} --></div>
+            <div class="u-exp-status">已发货</div>
+            {{/if}}
         </div>
+        
+
         <div class="u-col u-status z-status{{:status}}">{{:~formatOrderStatus(status)}}</div>
         <div class="u-col u-func">
           <a href="javascript:;" class="btn blue-steel btn-xs   uppercase detail-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-bars"></i> 任务详情 </a> 
