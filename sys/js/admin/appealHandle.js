@@ -22,8 +22,7 @@ function initList() {
 }
 
 
-function cbList(r, e) {
-  let ret = e;
+function cbList(r, ret) {
   _listtask = ret.data;
   ret.imgPrefix = IMG_PREFIX;
   Object.assign(ret, pageData);
@@ -45,8 +44,8 @@ doClose();
         handleResult: ret
       };
       promise('POST','/admin/complains_handle',JSON.stringify(obj), cbAuditAppeal, null)
-    }; 
-  }); 
+    };
+  });
 }
 
 function cbAuditAppeal(e) {
