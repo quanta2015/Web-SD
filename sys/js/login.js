@@ -8,8 +8,9 @@ function init() {
 
 
   checkInvite();
-
-  $('#vertifyCode').attr('src',HOST + '/getVerify')
+  
+  //加载验证码
+  doReloadCode()
 
   $('body').on('click', '.login-hd li', toggleUserLogin);
   $('body').on('click', '.action-login', goLoginPage);
@@ -25,8 +26,13 @@ function init() {
   $('body').on('click', '#return', doReturn);
   $('body').on('click', '#getPwd', doGetPwd);
   $('body').on('click', '#changePwd', doChgPwd);
+
+  $('body').on('click', '#vertifyCode', doReloadCode);
 }
 
+function doReloadCode() {
+  $('#vertifyCode').attr('src',HOST + `/getVerify?${Math.random()}`)
+}
 
 function doChgPwd() {
   let obj = {

@@ -9,7 +9,7 @@ const HOST = 'http://122.152.199.90:8011'
 const AUDIT_PASS = 1
 const AUDIT_FAIL = 2
 const WITHDRAW_FEE = 0.05
-const REFRESH_TIME = 5000
+const REFRESH_TIME = 30000
 
 const MENU = {
   buyMgr: ['auditShop','auditTask','auditRecharge','auditRecharge','auditVipRecharge','appealHandle','defriendLog'],

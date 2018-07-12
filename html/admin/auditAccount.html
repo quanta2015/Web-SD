@@ -87,7 +87,10 @@
 
     <script src="/sys/js/common.js"></script>
     <script src="/sys/js/admin/auditAccount.js"></script>
-	<script id="coverTmpl" type="text/x-jsrender">
+
+
+    
+<script id="coverTmpl" type="text/x-jsrender">
 <div class="m-detail-wrap">
   <div class="m-close">X</div>
   <div class="m-d m-title">
@@ -104,53 +107,44 @@
 	      <li><div class="col-1">类型</div><div class="col-2 font-red-thunderbird fn-right">{{:type}}</div></li>
 		  <li><div class="col-1">账号名称</div><div class="col-2 font-red-thunderbird fn-right">{{:acount}}</div></li>
 		  <li><div class="col-1">等级</div><div class="col-2 font-red-thunderbird fn-right">{{:acountLevel}}</div></li>
-		  <li><div class="col-1">白条花呗</div><div class="col-2 font-red-thunderbird fn-right">{{:}}</div></li>
+		  <li><div class="col-1">白条花呗</div><div class="col-2 font-red-thunderbird fn-right">{{:~formatBool(baitiaoStart)}}</div></li>
 		  <li><div class="col-1">收货人</div><div class="col-2 font-red-thunderbird fn-right">{{:receiver}}</div></li>
 		  <li><div class="col-1">手机号码</div><div class="col-2 font-red-thunderbird fn-right">{{:receiveMobile}}</div></li>
 		  <li><div class="col-1">详细地址</div><div class="col-2 font-red-thunderbird fn-right">{{:receiveProvince}}{{:receiveCity}}{{:receiveCountry}}{{:receiveAddress}}</div></li>
 		  <li><div class="col-1">审核状态</div><div class="col-2 font-red-thunderbird fn-right">{{:approveStateSting}}</div></li>
 	</div>
 	</div>
-	<div class="m-d m-d-main">
-    <div class="container">
-		<div id="myCarousel" class="carousel slide" >
-    <!-- 轮播（Carousel）指标 -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-    </ol>   
-    <!-- 轮播（Carousel）项目 -->
-    <div class="carousel-inner">
-        <div class="item active">
-			<a href="{{:~root.imgPrefix}}{{:mysiteImg}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:mysiteImg}}"></a>
-			<div class="carousel-caption">身份证正面</div>
-        </div>
-        <div class="item">
-            <a href="{{:~root.imgPrefix}}{{:baitiaoImg}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:baitiaoImg}}"></a>
-			<div class="carousel-caption">身份证反面</font></div>
-        </div>
-		<div class="item">
-            <a href="{{:~root.imgPrefix}}{{:myacountImg}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:myacountImg}}"></a>
-			<div class="carousel-caption">身份证正反面</font></div>
-        </div>
-    </div>
-    <!-- 轮播（Carousel）导航 -->
-   <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-  <span class="glyphicon glyphicon-chevron-left"></span>
-</a>
-<a class="right carousel-control" href="#myCarousel" data-slide="next">
-  <span class="glyphicon glyphicon-chevron-right"></span>
-</a> 
-</div>
-</div>
+	<div class="m-d m-d-main m-d-cnt">
+    
+      <div class="m-menu">
+        <li class="m-menu-item cur">站点首页</li>
+        <li class="m-menu-item">我的白条</li>
+        <li class="m-menu-item">我的账号</li>
+      </div>
+      <div class="m-cnt">
+        <a href="{{:~root.imgPrefix}}{{:mysiteImg}}" class="fancybox img-info-box">
+          <img src="{{:~root.imgPrefix}}{{:mysiteImg}}">
+        </a>
+      </div>
+      <div class="m-cnt hide">
+        <a href="{{:~root.imgPrefix}}{{:baitiaoImg}}" class="fancybox img-info-box">
+          <img src="{{:~root.imgPrefix}}{{:baitiaoImg}}">
+        </a>
+      </div>
+      <div class="m-cnt hide">
+        <a href="{{:~root.imgPrefix}}{{:myacountImg}}" class="fancybox img-info-box">
+          <img src="{{:~root.imgPrefix}}{{:myacountImg}}">
+        </a>
+      </div>
+    
   </div>
 	<div class="m-d m-d-main" style='text-align: center;'>
 		<div class="col-1" style='text-align: center; padding:10px'>
-			 {{if approve==0}}
-              <a href="#basic" class="btn red btn-xs btn-outline audit-task"   data-id="{{:id}}" data-type="unpass"><i class="fa fa-edit"></i> 不通过 </a>
-              <a href="#basic" class="btn blue-madison btn-xs btn-outline audit-task"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 通过 </a>
-              {{/if}}
-			<a href="#" class="btn dark btn-sm b-close"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 关闭 </a>
+			{{if approve==0}}
+      <a href="#basic" class="btn red btn-sm  audit-task" data-id="{{:id}}" data-type="unpass"><i class="fa fa-edit"></i> 不通过 </a>
+      <a href="#basic" class="btn blue-madison btn-sm  audit-task"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 通过 </a>
+      {{/if}}
+			<a href="#" class="btn dark btn-sm b-close" data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 关闭 </a>
 		</div>
 	</div>
 	{{/for}}

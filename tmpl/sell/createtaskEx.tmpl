@@ -43,13 +43,16 @@
       {{for data.taskPictureList}}
       <div class="fileinput fileinput-new" data-provides="fileinput">
         <div class="fileinput-preview  thumbnail" style="max-width: 150px; max-height: 120px; line-height: 10px;">
-          <img src="
-          {{if picture}}
-            {{:~root.imgPrefix}}{{:picture}}
-          {{else}}
-            /img/noimg.png
-          {{/if}}
-          ">
+          <div class="fileinput-wrap" style="max-width: 150px; max-height: 120px; line-height: 10px;">
+            <img src="
+            {{if picture}}
+              {{:~root.imgPrefix}}{{:picture}}
+            {{else}}
+              /img/noimg.png
+            {{/if}}
+            ">
+          </div>
+          <label class="fileinput-close"></label>
         </div>
         <div class="fileinput-ctrl">
             <span class="btn red btn-xs btn-file">

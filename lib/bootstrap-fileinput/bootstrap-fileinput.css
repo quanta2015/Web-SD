@@ -26,6 +26,7 @@
 .fileinput {
   display: inline-block;
   margin-bottom: 9px;
+  position: relative;
 }
 .fileinput .form-control {
   display: inline-block;
@@ -38,13 +39,14 @@
 .fileinput .thumbnail {
   display: inline-block;
   margin-bottom: 5px;
-  overflow: hidden;
+  /*overflow: hidden;*/
   text-align: center;
   vertical-align: middle;
   position: relative;
 }
-.fileinput .thumbnail > img {
+.fileinput .thumbnail  img {
   max-height: 100%;
+  width: 100%;
 }
 .fileinput .btn {
   vertical-align: middle;
@@ -144,4 +146,22 @@
 
 .fileinput-ctrl span {
     margin: 3px 0;
+}
+
+label.fileinput-close {
+    position: absolute;
+    right: -10px;
+    display: none;
+    width: 20px;
+    height: 20px;
+    top: -10px;
+    background: url(/img/fileclose.png);
+    z-index: 100;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+
+.fileinput-wrap {
+  overflow: hidden;
 }
