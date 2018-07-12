@@ -33,8 +33,6 @@ function doCreateUser() {
 	// })
 }
 
-
-
 function deleteRole(){
 	promise('DELETE', '/permission/user/del_admin_user/'+$(this).data("id") , null, cbDelete);
 }
@@ -42,8 +40,6 @@ function deleteRole(){
 function cbDelete(){
 	alertBox('删除成功',gotoPage);
 }
-
-
 
 function roleEdit(){
 	let data={
