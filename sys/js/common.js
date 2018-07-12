@@ -9,7 +9,7 @@ const HOST = 'http://122.152.199.90:8011'
 const AUDIT_PASS = 1
 const AUDIT_FAIL = 2
 const WITHDRAW_FEE = 0.05
-const REFRESH_TIME = 5000
+const REFRESH_TIME = 30000
 
 const MENU = {
   selMgr: ['auditShop;审核店铺;;:auditTask;审核垫付任务;pay;:auditTask;审核浏览任务;browse;:auditRecharge;审核充值;;:auditVipRecharge;审核卖家VIP缴费;1;:appealHandle;卖家申诉处理;1;:defriendLog;卖家拉黑记录;;'],

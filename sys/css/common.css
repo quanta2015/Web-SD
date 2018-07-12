@@ -237,3 +237,17 @@ tbody tr:nth-child(2n+1) {
 .no-margin {
   margin: 0!important;
 }
+
+.fn-vf {
+  display: flex!important;
+  justify-content: center;
+}
+
+.fn-hf {
+  display: flex!important;
+  align-items: center;
+}
+
+select {
+    height: 25px;
+}

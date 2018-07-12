@@ -12,6 +12,16 @@ function init() {
     $('body').on('click', '.detail-idcard', doDetailIdCard);
   $('body').on('click', '.m-close', doClose);
   $('body').on('click','.b-close',doClose);
+
+  $('body').on('click', '.m-menu-item', doChange);
+}
+
+function doChange() {
+  $('.m-menu-item').removeClass('cur');
+  $('.m-cnt').addClass('hide');
+  $(this).addClass('cur')
+  index = $(".m-menu-item").index(this)
+  $(`.m-cnt:eq(${index})`).removeClass('hide');
 }
 
 function initList() {

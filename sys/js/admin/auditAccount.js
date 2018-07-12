@@ -12,6 +12,16 @@ function init() {
   $('body').on('click', '.detail-account', doDetailAccount);
   $('body').on('click', '.m-close', doClose);
   $('body').on('click','.b-close',doClose);
+
+  $('body').on('click', '.m-menu-item', doChange);
+}
+
+function doChange() {
+  $('.m-menu-item').removeClass('cur');
+  $('.m-cnt').addClass('hide');
+  $(this).addClass('cur')
+  index = $(".m-menu-item").index(this)
+  $(`.m-cnt:eq(${index})`).removeClass('hide');
 }
 
 function initList() {
@@ -55,7 +65,7 @@ function doDetailAccount(e){
   console.log(JSON.stringify(ret));
   ret.imgPrefix = IMG_PREFIX;
   $(".g-detail .m-detail-wrap").remove();
-  $(".g-detail").prepend($("#coverTmpl").render(ret));
+  $(".g-detail").prepend($("#coverTmpl").render(ret, rdHelper));
   $(".g-detail").show()
 }
 

@@ -21,7 +21,7 @@ body {
     position: relative;
     margin: 10px auto;
     background: #fff;
-    width: 1000px;
+    width: 700px;
     display: flex;
     flex-direction: column;
     box-shadow:1px 1px 5px #ccc;
@@ -175,4 +175,32 @@ body {
 
 .m-sbar>div>input.u-dt {
     width: 140px;
+}
+
+
+
+
+.m-d-cnt {
+    display: flex;
+    flex-direction: column;
+}
+
+.m-menu {
+    display: flex;
+    flex-direction: row;
+}
+
+.cur {
+    background: #E43A45;
+    color: #fff;
+}
+
+li.m-menu-item {
+    display: inline-block;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.m-cnt img {
+    width: 100%;
 }
