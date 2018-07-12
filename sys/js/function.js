@@ -1,5 +1,3 @@
-
-
 $.format = function (source, params) {
     if (arguments.length == 1)
         return function () {
