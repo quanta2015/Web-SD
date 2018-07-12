@@ -26,6 +26,9 @@
           <!-- <div class="u-all-money">任务金额：{{:sumMoney}}</div> -->
           <div class="font-red">垫付金额：{{:goodsSum}}元</div>  
           <div class="font-red">实际付款：{{:goodsSumBuyer}}元</div>  
+          {{if goodsSumShoper}}
+          <div class="font-blue">修改金额：{{:goodsSumShoper}}元</div> 
+          {{/if}}
           {{/if}}
 
           <!-- <div class="font-red font-big"><img src="/img/money.png" class="fn-money">{{:serviceSum}} </div> -->

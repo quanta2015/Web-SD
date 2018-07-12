@@ -26,3 +26,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+#invertLink {
+    width: 500px!important;
+}

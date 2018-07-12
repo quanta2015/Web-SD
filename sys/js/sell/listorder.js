@@ -34,6 +34,25 @@ function init() {
   $('body').on('click', '.m-close', doClose);
   $('body').on('click', '.detail-task', doDetail);
   $('body').on('click','.complain-task',doComplainTask);
+  $('body').on('click','.change-money',doChangeMoney);
+}
+
+function doChangeMoney() {
+  id = $(this).attr('id')
+  bootbox.prompt('请输入修改的价格！', function(ret){ 
+    if ( (!ret)||(!$.isNumeric(ret)) ) return;
+
+      var obj = {
+        buyerTaskId: id,
+        goodsMoney: ret
+      }
+      promise('POST','/task/update_buyertask_goodsmoney',JSON.stringify(obj), cbChangeMoney, null)
+  }); 
+}
+
+function cbChangeMoney(e) {
+  console.log(e);
+  notifyInfo('价格修改成功！')
 }
 
 
