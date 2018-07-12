@@ -1,6 +1,6 @@
 let _id;
 let pageData = Object.assign({}, PAGE_DATA);
-let appealtype=getUrlParam("appealtype");
+let appealtype=getUrlParam("type");
 $(init);
 
 function init() {

@@ -4,18 +4,8 @@ $(init);
 
 function init() {
   initList(pageData);
-  // 卖家权限
-  $('body').on('click', '.sellPermission', bindingMenu);
-
-  // 买家权限
-  $('body').on('click', '.buyPermission', bindingMenu);
-
-  // 财务权限
-  $('body').on('click', '.finPermission', bindingMenu);
-
-
+ 
   $('body').on('click', '.btn-create-user', doCreateUser);
-
   $('body').on('click','.detail-role-menu',roleMenuDetail);
   $('body').on('click','.do-role-edit',doRoleEdit);
   $('body').on('click','#submit-role',roleEdit);
@@ -36,18 +26,6 @@ function doCreateUser() {
     $('.g-detail').append(e);
     $('.g-detail').show();
   })
-  // $(".g-detail .m-detail-wrap").remove();
-  // promiseTmpl('GET', '/tmpl/admin/create_role.tmpl', null,null, (e)=>{
-  //  console.log(e)
-  // })
-}
-
-function bindingMenu(){
-  let data={
-      sellPermission:$("selMgr").val(),
-      buyPermission:$("buyMgr").val(),
-      finPermission:$("finMgr").val(),
-  };  promise('POST', '/permission/role/save_role' , JSON.stringify(data), null, null)
 }
 
 function roleMenuDetail(){
@@ -75,14 +53,33 @@ function roleEdit(){
 	let data={
 			name:$("#name").val(),
 			description:$("#description").val(),
+      sellPermission:checkBox('sel'),
+      buyPermission:checkBox('buy'),
+      finPermission:checkBox('fin'),
 	};
 	promise('post', '/permission/role/save_role' , JSON.stringify(data), cbSubmitEval, null);
+}
+
+function checkBox(id) {
+  let arr = []
+  $(`input[name="${id}"]:checked`).each( (i,e)=>{ 
+    console.log(e); 
+
+    if (typeof($(e).data('type')) == "undefined") {
+      type = '';
+    }else{
+      type = $(e).data('type');
+    }
+
+    item = `${$(e).val()}:${$(e).attr('title')}:${type}`; 
+    arr.push(item)
+  })
+  return arr.join(';')
 }
 
 function cbSubmitEval(){
 	alertBox('创建角色成功并去授权',gotoPage);
 }
-
 
 function cbList(r, e) {
   let ret = e;
@@ -94,8 +91,6 @@ function cbList(r, e) {
   $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
   if ($('.table-pg').text() == '') initPage(totalPages);
 }
-
-
 
 function initPage(totalPages) {
 	$('.portlet-body .table-pg').twbsPagination({

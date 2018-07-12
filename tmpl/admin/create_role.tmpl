@@ -44,26 +44,30 @@
                 <form name="iForm" methood="post" action="">
                   <span>卖家管理</span>
                   <br>
-                  <input type="checkbox" name="sellPermission" value="auditShop">审核店铺
-                  <input type="checkbox" name="sellPermission" value="auditTask">审核垫付任务
-                  <input type="checkbox" name="sellPermission" value="auditTask">审核浏览任务
-                  <input type="checkbox" name="sellPermission" value="auditRecharge">审核充值
-                  <input type="checkbox" name="sellPermission" value="auditVipRecharge">审核卖家VIP缴费
-                  <input type="checkbox" name="sellPermission" value="appealHandle">卖家申诉处理
-                  <input type="checkbox" name="sellPermission" value="defriendLog">卖家拉黑记录
+                  <input type="checkbox" name="sel" title="审核店铺" value="auditShop">审核店铺
+                  <input type="checkbox" name="sel" title="审核垫付任务" value="auditTask" data-type='pay'>审核垫付任务
+                  <input type="checkbox" name="sel" title="审核浏览任务" value="auditTask" data-type='browse'>审核浏览任务
+                  <input type="checkbox" name="sel" title="审核充值" value="auditRecharge">审核充值
+                  <input type="checkbox" name="sel" title="审核卖家VIP缴费" value="auditVipRecharge" data-type='1'>审核卖家VIP缴费
+                  <input type="checkbox" name="sel" title="卖家申诉处理" value="appealHandle" data-type='1'>卖家申诉处理
+                  <input type="checkbox" name="sel" title="卖家拉黑记录" value="defriendLog">卖家拉黑记录
                   <br>
                   <span>买家管理</span>
                   <br>
-                  <input type="checkbox" name="buyPermission" value="auditIdCard">审核身份证
-                  <input type="checkbox" name="buyPermission" value="auditAccount">审核账号
-                  <input type="checkbox" name="buyPermission" value="auditQQ">审核QQ
-                  <input type="checkbox" name="buyPermission" value="auditVipRecharge">审核买家VIP缴费
-                  <input type="checkbox" name="buyPermission" value="appealHandle">买家申诉处理
+                  <input type="checkbox" name="buy" title="审核身份证" value="auditIdCard">审核身份证
+                  <input type="checkbox" name="buy" title="审核账号" value="auditAccount">审核账号
+                  <input type="checkbox" name="buy" title="审核QQ" value="auditQQ">审核QQ
+                  <input type="checkbox" name="buy" title="审核买家VIP缴费" value="auditVipRecharge" data-type='0'>审核买家VIP缴费
+                  <input type="checkbox" name="buy" title="买家申诉处理" value="appealHandle" data-type='0'>买家申诉处理
                   <br>
                   <span>财务管理</span>
                   <br>
-                  <input type="checkbox" name="finPermission" value="XXXX">XXXX
-                  <input type="checkbox" name="finPermission" value="XXXX">XXXX
+                  <input type="checkbox" name="fin" title="商家账户报表" value="chartSelAccount">商家账户报表
+                  <input type="checkbox" name="fin" title="买家账户报表" value="chartBuyAccount">买家账户报表
+                  <input type="checkbox" name="fin" title="平台统计报表" value="XXXX">平台统计报表
+                  <input type="checkbox" name="fin" title="商家冻结金表" value="XXXX">商家冻结金表
+                  <input type="checkbox" name="fin" title="商家费用审核表" value="XXXX">商家费用审核表
+                  <input type="checkbox" name="fin" title="买家费用审核表" value="XXXX">买家费用审核表
                 </form>
               </div>
           </li>
