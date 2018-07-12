@@ -23,23 +23,33 @@
 
         <div class="u-col u-money">
           {{if ~root.type === 'pay'}}
-          <div class="u-all-money">任务金额：{{:sumMoney}}</div>
-          <div class="font-red">垫付金额：{{:goodsSum}}</div>  
-          <div class="font-red">实际付款：{{:goodsSumBuyer}}</div>  
+          <!-- <div class="u-all-money">任务金额：{{:sumMoney}}</div> -->
+          <div class="font-red">垫付金额：{{:goodsSum}}元</div>  
+          <div class="font-red">实际付款：{{:goodsSumBuyer}}元</div>  
           {{/if}}
 
           <!-- <div class="font-red font-big"><img src="/img/money.png" class="fn-money">{{:serviceSum}} </div> -->
         </div>
+        
+        
         <div class="u-col u-exp">
+             {{if (expressNo)&&(status>=10)}}
             <div class="u-exp-type">快递单号</div>
             <div class="u-exp-id">{{:expressNo}}</div>
-            <div class="u-exp-status">已发货<!-- {{:~formatExpressStatus(expressStatus)}} --></div>
+            <div class="u-exp-status">已发货</div>
+            {{/if}}
         </div>
+        
+
         <div class="u-col u-status z-status{{:status}}">{{:~formatOrderStatus(status)}}</div>
         <div class="u-col u-func">
           <a href="javascript:;" class="btn blue-steel btn-xs   uppercase detail-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-bars"></i> 任务详情 </a> 
           <a href="javascript:;" class="btn red-mint btn-xs   uppercase complain-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-paper-o"></i> 申诉任务 </a> 
+          
+          {{if ~root.type==="pay"}}
           <a href="javascript:;" class="btn grey-mint btn-xs   uppercase change-money" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-edit"></i> 修改价格 </a>
+          {{/if}}
+
           {{if (status==10)}}
           <a href="javascript:;" class="btn green-jungle btn-xs   uppercase sub-goods" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-truck"></i> 发货 </a> 
           {{/if}}

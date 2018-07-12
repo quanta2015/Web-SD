@@ -558,6 +558,7 @@ function initTask() {
             initTimeControl(index+1)
             if (idx === end-1) {
               doCountTask()
+              $('.timepicker-from').timepicker('setTime', moment().format('HH:mm'))
             }
             // doCountTask()
           })
@@ -582,6 +583,12 @@ function initTask() {
     $(`#buy-express option[value='${e.buyExpress}']`).prop('selected','selected')
 
     $('#limit-location').select2('val', e.location.split(';') );
+
+    if (e.buyExpress === '1') {
+      $('.form-weight').removeClass('hide')
+      $('#express-weight').val( e.expressWeight )
+
+    }
 
     $('#other').val(e.explains)
 

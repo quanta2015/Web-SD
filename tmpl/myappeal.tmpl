@@ -4,6 +4,7 @@
             <th></th>
             <th> 创建时间 </th>
             <th> 申诉类型 </th>
+            <th> 任务编号</th>
             <th> 申诉用户</th>
 			<th> 申诉描述</th>
             <th> 上传图片 </th>
@@ -18,7 +19,8 @@
         <tr>
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
             <td> {{:~formatTime(createtime)}} </td>
-            <td>{{:typeStr}}</td>
+            <td>{{:~formatAppeal(type)}}</td>
+            <td> {{:taskCode}}</td>
             <td> {{:mobile}}</td>
             <td> {{:complainContent}}</td>
             <td> 

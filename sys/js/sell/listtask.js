@@ -9,6 +9,7 @@ function init() {
   type = getUrlParam('type');
   pageData =  Object.assign({mainType: type}, PAGE_DATA);
   (type==='pay')?$('.u-task-title').text('垫付'):$('.u-task-title').text('浏览');
+  vip = cookie('memberValid')
 
   initTime();
   initShops();
@@ -73,9 +74,6 @@ function doRepublish(e) {
   
 }
 
-
-
-
 function doDetailTask(e) {
   id = $(e.currentTarget).data('id')
   promiseTmpl('GET', '/tmpl/admin/detail_task.tmpl','/task/task_detail/'+ id, null, cbDetail)
@@ -89,6 +87,7 @@ function cbDetail(r, e) {
   let ret = e;
   $(".g-detail").empty();
   ret.data.imgPrefix = IMG_PREFIX;
+  ret.data.vip = vip;
   ret.data.type = type
   $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
   $(".g-detail").show()

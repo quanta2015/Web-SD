@@ -18,7 +18,7 @@ function initList(param) {
 }
 
 function doReturnList() {
-  location.href = 'listTask.html'
+  goBack()
 }
 
 function doSubmitGoods(e) {

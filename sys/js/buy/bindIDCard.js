@@ -15,7 +15,29 @@ function init() {
   
   initStatus();
   $('body').on('click', '#returnBtn', doReturn);
+  $('body').on('click', '#modifyBtn', doModify );
+}
 
+function doModify() {
+  $(".container").empty();
+  func = renderTmpl(TMPL_BUY_BIND_IDCARD, {
+    name: cookie('name'),
+    idCard: cookie('idcard'),
+    idImg: [ cookie('idcardpng1'),cookie('idcardpng2') ],
+    status: 2,
+    list: [1,1],
+    imgInfo: idCardImgInfo,
+    type: null,
+    statusText: AUDIT_STATUS[status],
+    imgPrefix: IMG_PREFIX
+  }).then( (h)=> {
+    $(".container").append(h);
+    $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
+    $("#form-bind").validate({
+      rules: rules,
+      submitHandler: (e) => { doSave() }
+    })
+  })
 }
 
 function doReturn() {

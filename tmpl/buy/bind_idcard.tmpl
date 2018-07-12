@@ -83,6 +83,10 @@
             {{if status == -1 || status == 2}}
             <button type="submit" class="btn blue" id="saveBtn">保存</button>
             {{/if}}
+            {{if status == 1 }}
+            <button type="button" class="btn blue" id="modifyBtn">修改</button>
+            <button type="submit" class="btn blue hide" id="saveChgBtn">保存修改</button>
+            {{/if}}
             <button type="button" class="btn red" id="returnBtn"> 返回</button>
           </div>
         </div>

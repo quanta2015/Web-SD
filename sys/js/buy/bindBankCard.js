@@ -33,6 +33,18 @@ function init() {
   initBindInfo();
 
   $('body').on('click', '#returnBtn', doReturn );
+  $('body').on('click', '#modifyBtn', doModify );
+}
+
+
+function doModify() {
+  $('#acount-name').prop('disabled',false)
+  $('#bank').prop('disabled',false)
+  $('#acount-subbank').prop('disabled',false)
+  $('#acount-bankno').prop('disabled',false)
+  $('#bankno').prop('disabled',false)
+  $('#modifyBtn').addClass('hide')
+  $('#saveChgBtn').removeClass('hide')
 }
 
 function initBindInfo() {
@@ -94,9 +106,11 @@ function doSave(data) {
     buyerId: cookie('id'),
     reBankNo: $('#rebankno').val(),
   };
-  if (obj.reBankNo !== obj.bankNo) return errorInfo('两次输入的账号不相同');
+
+  
+  if ((obj.reBankNo !== obj.bankNo)&&(status !== 1)) return errorInfo('两次输入的账号不相同');
   delete obj.reBankNo;
-  if (status === 2) obj.id = cookie2('id', 'buyerBankList');
+  if ((status === 2)||(status === 1)) obj.id = cookie2('id', 'buyerBankList');
   promise('POST', URL_BUY_BIND_BANK, JSON.stringify(obj), cbBind, null);
 }
 

@@ -5,7 +5,7 @@ function init() {
   $('body').on('click', '#withdraw', ()=>{ goto('withdraw.html') });
   $('body').on('click', '#create-task', ()=>{ goto('createTask.html') });
 
-  // setTimeout(updateSellMoney, 10000);
+  initNotice()
 
   //显示金额
   promise('GET',URL_SELL_BALANCE,null, cbInfo, null)

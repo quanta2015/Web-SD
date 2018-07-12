@@ -870,6 +870,8 @@ function getTaskType(s) {
 function updateBuyMoney() {
   promiseNoMask('GET','/buyer/buyer_balance',null, (e)=>{
     $("#u-money", window.parent.document).text( fix(e.balance+e.servicefee) );
+    $("#u-balance", window.parent.document).text( fix(e.balance) );
+    
   }, null)
 }
 
@@ -898,3 +900,11 @@ function changeType(platform) {
 function initTimeControl(index) {
   $(`.task-wrap-item-${index} .timepicker-24`).timepicker({ showMeridian: false });
 }
+
+function initNotice() {
+  promiseTmpl('GET', '/tmpl/list_notice.tmpl','/admin/notice_list', null, (r, ret)=>{
+    $(".m-notice").after($.templates(r).render(ret, rdHelper));
+  })
+}
+
+

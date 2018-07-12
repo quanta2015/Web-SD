@@ -102,21 +102,29 @@ function doCompute() {
 }
 
 function doWithdraw() {
-  let obj = {
-    shoperId: cookie('id'),
-    toAccount:parseInt($('#bankno').val()),
-    transferMoney: parseFloat($('#withdraw-money').val()),
-    transferType: 0,
-    accountBank: $('#bankName').val(),
-    transferPerson: $('#account-name').val(),
-    bankName: $('#bankType').val(),
-  }
 
-  let sum = obj.transferMoney;
-  if (sum > parseFloat($('#balance').text()) ) {
-    return errorInfo('提现超出余额！');
-  }
-  promise('POST', URL_SELL_TRANSFER, JSON.stringify(obj), cdWithdraw, null);
+  money = parseFloat($('#withdraw-money').val());
+  cost = money * 0.005;
+
+  msgbox('温馨提示', `<span class="font-red">本次提现金额${money}元，扣取手续费${cost}元</span>`,'取消','确认',(ret)=>{
+
+    if (ret) return;
+    let obj = {
+      shoperId: cookie('id'),
+      toAccount:parseInt($('#bankno').val()),
+      transferMoney: parseFloat($('#withdraw-money').val()),
+      transferType: 0,
+      accountBank: $('#bankName').val(),
+      transferPerson: $('#account-name').val(),
+      bankName: $('#bankType').val(),
+    }
+
+    let sum = obj.transferMoney;
+    if (sum > parseFloat($('#balance').text()) ) {
+      return errorInfo('提现超出余额！');
+    }
+    promise('POST', URL_SELL_TRANSFER, JSON.stringify(obj), cdWithdraw, null);
+  })
 }
 
 function cdWithdraw(e) {
