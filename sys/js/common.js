@@ -12,11 +12,10 @@ const WITHDRAW_FEE = 0.05
 const REFRESH_TIME = 5000
 
 const MENU = {
-  buyMgr: ['auditShop','auditTask','auditRecharge','auditRecharge','auditVipRecharge','appealHandle','defriendLog'],
-  selMgr: [],
-  finMgr:[]
+  selMgr: ['auditShop;审核店铺;;:auditTask;审核垫付任务;pay;:auditTask;审核浏览任务;browse;:auditRecharge;审核充值;;:auditVipRecharge;审核卖家VIP缴费;1;:appealHandle;卖家申诉处理;1;:defriendLog;卖家拉黑记录;;'],
+  buyMgr: ['auditIdCard;审核身份证;;:auditAccount;审核账号;;:auditQQ;审核QQ;;:auditVipRecharge;审核买家VIP缴费;0;:appealHandle;买家申诉处理;0;'],
+  finMgr: [';XXXX;;:;XXXX;;']
 }
-
 
 const IMG_PREFIX = 'https://abc-1256878718.cos.ap-shanghai.myqcloud.com/'
 
@@ -56,7 +55,7 @@ const STATUS_MAP = {
 
 
 const appealType = [
-{ id: 0, type: 'buy', desc: '找不到该商品'},
+{ id: 0, type: 'buy',desc: '找不到该商品'},
 { id: 1,type: 'buy',desc: '垫付价格不一致'},
 { id: 2,type: 'buy',desc: '其他问题'},
 { id: 3,type: 'sel',desc: '买家在操作聊天过程中出现刷单字眼、催促商家返款等'},
@@ -672,6 +671,10 @@ const rdHelper = {
       case 9: ret = '商家判定的买家其他违规操作'; break;
       default: ret = ''; break;
     }
+    return ret;
+  },
+  isArrayNull: (s) => {
+    (s.length>0)?ret=true:ret=false;
     return ret;
   }
 }

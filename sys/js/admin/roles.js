@@ -4,6 +4,18 @@ $(init);
 
 function init() {
   initList(pageData);
+  // 卖家权限
+  $('body').on('click', '.sellPermission', bindingMenu);
+
+  // 买家权限
+  $('body').on('click', '.buyPermission', bindingMenu);
+
+  // 财务权限
+  $('body').on('click', '.finPermission', bindingMenu);
+
+
+  $('body').on('click', '.btn-create-user', doCreateUser);
+
   $('body').on('click','.detail-role-menu',roleMenuDetail);
   $('body').on('click','.do-role-edit',doRoleEdit);
   $('body').on('click','#submit-role',roleEdit);
@@ -15,6 +27,27 @@ function init() {
 function initList() {
   let param = Object.assign(pageData);
   promiseTmpl('GET', '/tmpl/admin/role_list.tmpl', ['/permission/role/get_roles', encodeQuery(param)].join('?'),null, cbList)
+}
+
+function doCreateUser() {
+  $.ajax('/tmpl/admin/create_role.tmpl').then((e)=>{
+    console.log(e)
+    $('.g-detail').empty();
+    $('.g-detail').append(e);
+    $('.g-detail').show();
+  })
+  // $(".g-detail .m-detail-wrap").remove();
+  // promiseTmpl('GET', '/tmpl/admin/create_role.tmpl', null,null, (e)=>{
+  //  console.log(e)
+  // })
+}
+
+function bindingMenu(){
+  let data={
+      sellPermission:$("selMgr").val(),
+      buyPermission:$("buyMgr").val(),
+      finPermission:$("finMgr").val(),
+  };  promise('POST', '/permission/role/save_role' , JSON.stringify(data), null, null)
 }
 
 function roleMenuDetail(){
@@ -47,7 +80,7 @@ function roleEdit(){
 }
 
 function cbSubmitEval(){
-	alertBox('创建成功并去授权',gotoPage);
+	alertBox('创建角色成功并去授权',gotoPage);
 }
 
 

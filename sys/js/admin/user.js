@@ -6,16 +6,64 @@ $(init);
 
 function init() {
   initList(pageData);
-  $('body').on('click','#btn-search',initList);
-  $('body').on('click','.set-role',setRole);
-  $('body').on('click','#submit-role-set',saveRoleSet);
+
+  $('body').on('click', '.set-role', setRole);
+  $('body').on('click', '#btn-search', initList);
+
+  $('body').on('click','#submit-role',roleEdit);
+
+  $('body').on('click', '.btn-create-user', doCreateUser);
+  $('body').on('click', '#submit-role-set', saveRoleSet);
   $('body').on('click', '.m-close', doClose);
   $('body').on('click', '.b-close', doClose);
+
+  $('body').on('click','.delete-role',deleteRole);
+}
+
+function doCreateUser() {
+	$.ajax('/tmpl/admin/create_user.tmpl').then((e)=>{
+		console.log(e)
+		$('.g-detail').empty();
+		$('.g-detail').append(e);
+		$('.g-detail').show();
+	})
+	// $(".g-detail .m-detail-wrap").remove();
+	// promiseTmpl('GET', '/tmpl/admin/create_user.tmpl', null,null, (e)=>{
+	// 	console.log(e)
+	// })
+}
+
+
+
+function deleteRole(){
+	promise('DELETE', '/permission/user/del_admin_user/'+$(this).data("id") , null, cbDelete);
+}
+
+function cbDelete(){
+	alertBox('删除成功',gotoPage);
+}
+
+
+
+function roleEdit(){
+	let data={
+			userName:$("#userName").val(),
+			password:$("#password").val(),
+	};
+	promise('post', '/permission/user/add_admin_user' , JSON.stringify(data), createSubmitEval, null);
+}
+
+function createSubmitEval(){
+	alertBox('创建用户成功',gotoPage);
+}
+
+function addAdminUser() {
+  let param = Object.assign(pageData,{userType: 1});
+  promise('POST', URL_ADD_ADMIN_USER, JSON.stringify(obj), cbAudit, null);
 }
 
 function initList() {
-  userType=$("#userType").val();
-  let param = Object.assign(pageData,{userType: userType});
+  let param = Object.assign(pageData,{userType: 1});
   promiseTmpl('GET', '/tmpl/admin/user_list.tmpl', ['/permission/user/get_users', encodeQuery(param)].join('?'),null, cbList)
 }
 
@@ -33,7 +81,7 @@ function deleteRole(){
 function setRole(){
 	 userId=$(this).data('id');
 	 let param = Object.assign(pageData);
-	 promiseTmpl('GET', '', ['/permission/role/get_roles', encodeQuery(param)].join('?'),null, cdRoleList)
+	 promiseTmpl('GET', '/tmpl/admin/user_rights.tmpl', ['/permission/role/get_roles', encodeQuery(param)].join('?'),null, cdRoleList)
 }
 
 function cdRoleList(r,e){
@@ -42,7 +90,7 @@ function cdRoleList(r,e){
 	Object.assign(ret, pageData);
 	totalPages = Math.ceil(ret.total/pageData.pageSize);
 	$(".g-detail .m-detail-wrap").remove();
-	$(".g-detail").prepend($("#coverTmpl").render(ret));
+	$(".g-detail").prepend($.templates(r).render(ret, rdHelper));
 	$(".g-detail").show();
 }
 
@@ -68,7 +116,6 @@ function saveRoleSet(){
 function cbSubmitEval(){
 	alertBox('设置角色成功',gotoPage);
 }
-
 
 function cbList(r, e) {
   let ret = e;

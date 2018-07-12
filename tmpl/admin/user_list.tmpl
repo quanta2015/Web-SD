@@ -4,25 +4,27 @@
             <th></th>
             <th> 创建时间 </th>
             <th> 用户名称 </th>
-            <th> 联系电话</th>
-			<th>用户类型</th>
-			<th>包含角色</th>
+			      <th> 用户角色 </th>
             <th> 功能 </th>
         </tr>
     </thead>
     <tbody>
       {{for data}}
-        <tr>
-            <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
-            <td> {{:~formatTime(createTime)}} </td>
-            <td> {{:name}}</td>
-            <td> {{:mobile}}</td>
-            <td> {{if userType==1}}管理人员{{/if}}{{if userType==2}}买家{{/if}}{{if userType==3}}卖家{{/if}}</td>
-			<td> {{for roles}}[{{:name}}] {{/for}}</td>
-			<td>
-				<a href="#basic" class="btn red btn-xs btn-outline set-role"   data-id="{{:id}}"><i class="fa fa-edit"></i>设置权限</a>
-            </td>
-        </tr>
+      <tr>
+        <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
+        <td> {{:~formatTime(createTime)}} </td>
+        <td> {{:name}} </td>
+			  <td>
+        {{if ~isArrayNull(roles)}} 
+          {{:roles[0].name}} 
+        {{/if}}
+        </td>
+			  <td>
+          <a href="#basic" class="btn red btn-xs btn-outline delete-role"   data-id="{{:id}}"><i class="fa fa-delete"></i> 删除 </a>
+          
+				  <a href="#basic" class="btn red btn-xs btn-outline set-role"   data-id="{{:id}}"><i class="fa fa-edit"></i>设置权限</a>
+        </td>
+      </tr>
       {{/for}}
     </tbody>
   </table>

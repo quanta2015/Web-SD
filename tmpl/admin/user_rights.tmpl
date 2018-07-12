@@ -1,0 +1,48 @@
+<div class="m-detail-wrap">
+      <div class="m-close">X</div>
+      <div class="m-d m-title">
+          <div class="v-sub-title ">
+             <div class="col-1">选择角色信息</div>
+               <div class="col-2 font-red-thunderbird"></div>
+               <div class="col-1"></div>
+               <div class="col-2 font-red-thunderbird"></div>
+          </div>
+        </div>
+    <div class="m-d m-d-main">
+      <div class="col-11 m-d-item">
+        <table class="table table-hover table-light">
+    <thead>
+        <tr class="uppercase">
+            <th></th>
+      <th></th>
+            <th> 角色名称 </th>
+            <th> 角色描述</th>
+      <th> 创建人</th>
+        </tr>
+    </thead>
+    <tbody>
+      {{for data}}
+        <tr>
+            <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
+      <td> <input type="radio" _roleId="{{:id}}" /> </td>
+            <td> {{:name}}</td>
+            <td> {{:description}}</td>
+            <td> {{:creator}}</td>
+        </tr>
+      {{/for}}
+    </tbody>
+  </table>
+      </div>
+
+  </div>
+<div class="m-d m-d-main">
+        <div class="m-d-item col-11">
+          <li>
+            <div class="col-1 col-btn">
+              
+              <a href="#" class="btn btn-xs red" id="submit-role-set">提交</a>
+              <a href="#" class="btn btn-xs grey-mint b-close" id="return-list">关闭</a></div>
+          </li>
+        </div>
+    </div>
+</div>
