@@ -1,7 +1,7 @@
 $(init)
 
 function init() {
-  $('#qrcode').qrcode(HOST + '/index.html?invite=' + cookie("invitecode"));
+  $('#qrcode').qrcode(HOST + '/mobile.html#/register?invite='  + cookie("invitecode"));
   $('#invertLink').val(HOST + '/index.html?invite=' + cookie("invitecode"));
 
   $('#invite').text( cookie("invitecode"));

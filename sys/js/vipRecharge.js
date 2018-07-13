@@ -37,6 +37,14 @@ function init() {
 }
 
 function initList() {
+    usertype = cookie('userType')
+
+    if (usertype == BUY) {
+        $('.m-sell').hide()
+    }else{
+        $('.m-buy').hide()
+    }
+
     $('#remark').val('商家ID:' + cookie('mobile'));
     $('#acountList input:eq(0)').trigger('click');
     for (item in BANKS) {

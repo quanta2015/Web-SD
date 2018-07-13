@@ -4,7 +4,12 @@ let _invite;
 
 $(init);
 
+
 function init() {
+
+  if ( isMobile()) {
+    window.location.href = "http://m.jsz800.com/mobile.html?r=" + Math.random()
+  }
 
 
   checkInvite();

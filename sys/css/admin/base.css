@@ -1,10 +1,3 @@
-body {
-    min-width: 1280px;
-}
-
-.table.table-light > tbody > tr > td,.table.table-light > tbody > tr > th {
-    font-size: 12px;
-}
 
 .g-detail {
     position: absolute;
@@ -19,7 +12,7 @@ body {
 
 .m-detail-wrap {
     position: relative;
-    margin: 10px auto;
+    margin: 50px auto;
     background: #fff;
     width: 800px;
     display: flex;
@@ -71,7 +64,7 @@ body {
 }
 
 .m-d .v-m-title {
-    border-bottom: 1px dashed #999;  
+    /*border-bottom: 1px dashed #999;  */
     padding-bottom: 5px;
     color:  #4B77BE;
     font-weight: 600;
@@ -163,4 +156,43 @@ body {
 
 .m-sbar>div>input.u-dt {
     width: 140px;
+}
+
+.m-detail-wrap input[type='text'],.m-detail-wrap input[type='password'] {
+    height: 40px;
+    width: 100%;
+}
+
+.col-btn {
+    text-align: center;
+}
+
+.col-btn a{
+    width: 200px;
+    margin-right: 10px;
+}
+
+
+.m-row-cell {
+    flex-wrap: wrap;
+}
+
+
+.m-row-t {
+    color: #ee0000;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 10px;
+}
+
+.m-row {
+    margin: 5px 0 5px 0;
+}
+
+.m-row div {
+    display: inline-block;
+    margin: 5px 10px 5px 0;
+}
+
+textarea {
+    width: 100%;
 }

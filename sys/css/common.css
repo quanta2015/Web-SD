@@ -251,3 +251,8 @@ tbody tr:nth-child(2n+1) {
 select {
     height: 25px;
 }
+
+thead {
+    background: #336699;
+    color: #fff!important;
+}
