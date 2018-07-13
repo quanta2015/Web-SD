@@ -2,7 +2,7 @@ $(init);
 
 function init() {
   
-  if(cookie('userName') === 'tt') return;
+  if(cookie('userName') === 'root') return;
 
   $('.sub-menu-sel').empty()
   $('.sub-menu-buy').empty()
