@@ -38,21 +38,25 @@ function init() {
 }
 
 function doChangeMoney() {
-  id = $(this).attr('id')
-  bootbox.prompt('请输入修改的价格！', function(ret){ 
-    if ( (!ret)||(!$.isNumeric(ret)) ) return;
+  id = $(this).attr('id') 
 
-      var obj = {
-        buyerTaskId: id,
-        goodsMoney: ret
-      }
-      promise('POST','/task/update_buyertask_goodsmoney',JSON.stringify(obj), cbChangeMoney, null)
-  }); 
+  promise('POST','/task/update_buyertask_goodsmoney',JSON.stringify({buyerTaskId: id}), (e)=>{
+    bootbox.prompt(`请输入修改的价格！此次修改最大的范围是<span class="font-red">${e}</span>元。<br>如果修改价格超过最大修改范围，请发起申诉。`, function(ret){ 
+      if ( (!ret)||(!$.isNumeric(ret)) ) return;
+
+        var obj = {
+          buyerTaskId: id,
+          goodsMoney: ret
+        }
+        promise('POST','/task/update_buyertask_goodsmoney',JSON.stringify(obj), cbChangeMoney, null)
+    });
+  }, null)
 }
 
 function cbChangeMoney(e) {
   console.log(e);
   notifyInfo('价格修改成功！')
+  initList(pageData);
 }
 
 
