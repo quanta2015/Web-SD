@@ -20,7 +20,6 @@ function initList() {
   promiseTmpl('GET', '/tmpl/admin/list_user.tmpl', ['/permission/user/get_users', encodeQuery(param)].join('?'),null, cbList)
 }
 
-
 function cbList(r, e) {
   let ret = e;
   _listtask = ret.data;
@@ -30,6 +29,7 @@ function cbList(r, e) {
   $(".portlet-body .table").remove();
   $(".portlet-body").prepend($.templates(r).render(ret, rdHelper));
   if ($('.table-pg').text() == '') initPage(totalPages);
+
 }
 
 function doRenderAdd() {
@@ -70,8 +70,6 @@ function cbRoleList(r,e){
   $(".g-detail").prepend($.templates(r).render(ret, rdHelper));
   $(".g-detail").show();
 }
-
-
 
 function doDelete(){
 	promise('DELETE', '/permission/user/del_admin_user/'+$(this).data("id") , null, cbDelete);
