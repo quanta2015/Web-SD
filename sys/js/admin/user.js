@@ -7,6 +7,11 @@ $(init);
 function init() {
   initList(pageData);
 
+  // if(cookie('userName') === 'root') {
+  //   $('.delete-user').empty()
+  //   $('.btn-render-rights').empty()
+  // }
+
   $('body').on('click', '.btn-render', doRenderAdd);
   $('body').on('click','.btn-adduser',doSave);
   $('body').on('click', '.btn-render-rights', doRenderRights);

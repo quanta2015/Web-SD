@@ -18,9 +18,10 @@
         {{/if}}
         </td>
 			  <td>
+          {{if name!=='root'}}
           <a href="#basic" class="btn red btn-xs btn-outline delete-user"   data-id="{{:id}}"><i class="fa fa-delete"></i> 删除 </a>
-          
 				  <a href="#basic" class="btn red btn-xs btn-outline btn-render-rights"   data-id="{{:id}}"><i class="fa fa-edit"></i>设置权限</a>
+          {{/if}}
         </td>
       </tr>
       {{/for}}
