@@ -14,6 +14,8 @@ function init() {
 function cbInfo(e) {
     val = fix(e.balance)
     $("#balance").text(val);
+    
+    $("#u-balance", window.parent.document).text(val);
     $("#u-money", window.parent.document).text(val);
     list = e.taskList;
     for(i=0;i<list.length;i++) {

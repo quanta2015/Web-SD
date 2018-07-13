@@ -93,10 +93,16 @@ function cbDetail(r, e) {
 }
 
 function doCancelTask() {
-  var obj = {
-    buyerTaskId: $(this).data('id')
-  };
-  promise('GET',[URL_BUY_CANCEL_TASK, encodeQuery(obj)].join('?') ,null, cbCancelTask, null)
+
+  msgbox('温馨提示', `<span class="font-red">本次提现金额${money}元，扣取手续费${cost}元</span>`,'取消','确认',(ret)=>{
+    if (ret) return;
+
+    var obj = {
+      buyerTaskId: $(this).data('id')
+    };
+    promise('GET',[URL_BUY_CANCEL_TASK, encodeQuery(obj)].join('?') ,null, cbCancelTask, null)
+    
+  })
 }
 
 function cbCancelTask(e)  {
