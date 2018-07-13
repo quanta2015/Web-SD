@@ -61,7 +61,11 @@ function doGetPwd() {
   (type==='buy')?url='/buyer/mobile_exist':url='/shoper/mobile_exist';
 
   promise('get',[url, encodeQuery(obj)].join('?'),null, (e)=>{
-    var obj = { mobilephone: $('#mobile-pwd').val() }
+    var obj = { 
+      mobilephone: $('#mobile-pwd').val(),
+      forgetPassword:1  
+    }
+    
     $('#getPwd').attr("disabled",true);
     promise('GET', URL_SMS_SEND, obj, (e)=>{
       notifyInfo('密码已经发送到您的手机！')

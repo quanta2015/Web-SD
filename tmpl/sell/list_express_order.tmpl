@@ -7,7 +7,6 @@
             <div class="u-shoptype"><img src="/img/{{:~formatShopType(shopType)}}"></div>
             <div class="u-shopname">店铺名：{{:shopName}}</div>
             <div class="u-tid">任务ID：{{:taskId}}</div>
-            <div class="u-tid">任务关键字：{{:keyword}}</div>
             <div class="u-publishtime">发布时间：{{:~formatTime(taskCreatetime)}}</div>
             {{if ((pressMoney===1) && (status !==70))}}
             <div class="u-press-money">催</div>
@@ -21,15 +20,6 @@
             <div class="u-accepttime">接单时间：{{:~formatTime(acceptTime)}}</div>
         </div>
 
-        <div class="u-col u-money">
-          {{if ~root.type === 'pay'}}
-          <div class="u-all-money">任务金额：{{:sumMoney}}</div>
-          <div class="font-red">垫付金额：{{:goodsSum}}</div>  
-          <div class="font-red">实际付款：{{:goodsSumBuyer}}</div>  
-          {{/if}}
-
-          <div class="font-red font-big"><img src="/img/money.png" class="fn-money">{{:serviceSum}} </div>
-        </div>
         <div class="u-col u-exp">
             <div class="u-exp-type">圆通快递</div>
             <div class="u-exp-id">单号：{{:expressNo}}</div>
