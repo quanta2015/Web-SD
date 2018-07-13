@@ -1,88 +1,79 @@
-	<div class="m-detail-wrap">
-  		<div class="m-close">X</div>
- 			 <div class="m-d m-title">
-    			<div class="v-sub-title ">
-     				 <div class="col-1">角色编辑</div>
-      				 <div class="col-2 font-red-thunderbird"></div>
-      				 <div class="col-1"></div>
-      				 <div class="col-2 font-red-thunderbird"></div>
-    			</div>
-  			</div>
-		<div class="m-d m-d-main">
-			<div class="col-11 m-d-item">
-				<li class="v-m-title">
-            <div class="col-1">
-              <span class="icon-list"></span>
-              <span class="m-step"></span>
-            	角色名称
-            </div>
-          </li>
-		  <li>
-              <div style="width:100%"><input id="name" name="name" /></div>
-          </li>
-
-		 <li class="v-m-title">
-            <div class="col-1">
-              <span class="icon-list"></span>
-              <span class="m-step"></span>
-            	角色描述
-            </div>
-          </li>
-		  <li>
-              <div style="width:100%"><textarea id="description" rows="3" cols="50"></textarea></div>
-          </li>
-
+<div class="m-detail-wrap">
+  <div class="m-close">X</div>
+  <div class="m-d m-title">
+    <div class="v-sub-title ">
+      <div class="col-1">角色编辑</div>
+      <div class="col-2 font-red-thunderbird"></div>
+      <div class="col-1"></div>
+      <div class="col-2 font-red-thunderbird"></div>
+    </div>
+  </div>
+  <div class="m-d m-d-main">
+    <div class="col-11 m-d-item">
       <li class="v-m-title">
-            <div class="col-1">
-              <span class="icon-list"></span>
-              <span class="m-step"></span>
-              角色权限
-            </div>
-          </li>
-      <li>
-              <div style="width:100%">
-                <form name="iForm" methood="post" action="">
-                  <span>卖家管理</span>
-                  <br>
-                  <input type="checkbox" name="sel" title="审核店铺" value="auditShop">审核店铺
-                  <input type="checkbox" name="sel" title="审核垫付任务" value="auditTask" data-type='pay'>审核垫付任务
-                  <input type="checkbox" name="sel" title="审核浏览任务" value="auditTask" data-type='browse'>审核浏览任务
-                  <input type="checkbox" name="sel" title="审核充值" value="auditRecharge">审核充值
-                  <input type="checkbox" name="sel" title="审核卖家VIP缴费" value="auditVipRecharge" data-type='1'>审核卖家VIP缴费
-                  <input type="checkbox" name="sel" title="卖家申诉处理" value="appealHandle" data-type='1'>卖家申诉处理
-                  <input type="checkbox" name="sel" title="卖家拉黑记录" value="defriendLog">卖家拉黑记录
-                  <br>
-                  <span>买家管理</span>
-                  <br>
-                  <input type="checkbox" name="buy" title="审核身份证" value="auditIdCard">审核身份证
-                  <input type="checkbox" name="buy" title="审核账号" value="auditAccount">审核账号
-                  <input type="checkbox" name="buy" title="审核QQ" value="auditQQ">审核QQ
-                  <input type="checkbox" name="buy" title="审核买家VIP缴费" value="auditVipRecharge" data-type='0'>审核买家VIP缴费
-                  <input type="checkbox" name="buy" title="买家申诉处理" value="appealHandle" data-type='0'>买家申诉处理
-                  <br>
-                  <span>财务管理</span>
-                  <br>
-                  <input type="checkbox" name="fin" title="商家账户报表" value="chartSelAccount">商家账户报表
-                  <input type="checkbox" name="fin" title="买家账户报表" value="chartBuyAccount">买家账户报表
-                  <input type="checkbox" name="fin" title="平台统计报表" value="XXXX">平台统计报表
-                  <input type="checkbox" name="fin" title="商家冻结金表" value="XXXX">商家冻结金表
-                  <input type="checkbox" name="fin" title="商家费用审核表" value="XXXX">商家费用审核表
-                  <input type="checkbox" name="fin" title="买家费用审核表" value="XXXX">买家费用审核表
-                </form>
-              </div>
-          </li>
-
-			</div>
-
-	</div>
-<div class="m-d m-d-main">
-        <div class="m-d-item col-11">
-          <li>
-            <div class="col-1 col-btn">
-              
-              <a href="#" class="btn btn-xs red" id="submit-role">创建</a>
-              <a href="#" class="btn btn-xs grey-mint b-close" id="return-list">关闭</a></div>
-          </li>
+        <div class="col-1">
+          角色名称
         </div>
-		</div>
-</div>
+      </li>
+      <li>
+        <input id="name" type="text" />
+      </li>
+      <li class="v-m-title">
+        <div class="col-1">
+          角色描述
+        </div>
+      </li>
+      <li>
+        <div><textarea id="description" rows="6" cols="110"></textarea></div>
+      </li>
+      <li class="v-m-title">
+        <div class="col-1">
+          角色权限
+        </div>
+      </li>
+      <li>
+        <div>
+          <form name="iForm" methood="post" action="">
+            <div class="m-row m-row-t">卖家管理</div>
+            <div class="m-row">
+              <div><input type="checkbox" name="sel" title="审核店铺" value="auditShop">审核店铺</div>
+              <div><input type="checkbox" name="sel" title="审核垫付任务" value="auditTask" data-type='pay'>审核垫付任务</div>
+              <div><input type="checkbox" name="sel" title="审核浏览任务" value="auditTask" data-type='browse'>审核浏览任务</div>
+              <div><input type="checkbox" name="sel" title="审核充值" value="auditRecharge">审核充值</div>
+              <div><input type="checkbox" name="sel" title="审核卖家VIP缴费" value="auditVipRecharge" data-type='1'>审核卖家VIP缴费</div>
+              <div><input type="checkbox" name="sel" title="卖家申诉处理" value="appealHandle" data-type='1'>卖家申诉处理</div>
+              <div><input type="checkbox" name="sel" title="卖家拉黑记录" value="defriendLog">卖家拉黑记录</div>
+            </div>
+            <div class="m-row m-row-t">买家管理</div>
+            <div class="m-row">
+              <div><input type="checkbox" name="buy" title="审核身份证" value="auditIdCard">审核身份证</div>
+              <div><input type="checkbox" name="buy" title="审核账号" value="auditAccount">审核账号</div>
+              <div><input type="checkbox" name="buy" title="审核QQ" value="auditQQ">审核QQ</div>
+              <div><input type="checkbox" name="buy" title="审核买家VIP缴费" value="auditVipRecharge" data-type='0'>审核买家VIP缴费</div>
+              <div><input type="checkbox" name="buy" title="买家申诉处理" value="appealHandle" data-type='0'>买家申诉处理</div>
+            </div>
+            <div class="m-row m-row-t">财务管理</div>
+            <div class="m-row">
+              <div><input type="checkbox" name="fin" title="商家账户报表" value="chartSelAccount">商家账户报表</div>
+              <div><input type="checkbox" name="fin" title="买家账户报表" value="chartBuyAccount">买家账户报表</div>
+              <div><input type="checkbox" name="fin" title="平台统计报表" value="XXXX">平台统计报表</div>
+              <div><input type="checkbox" name="fin" title="商家冻结金表" value="XXXX">商家冻结金表</div>
+              <div><input type="checkbox" name="fin" title="商家费用审核表" value="XXXX">商家费用审核表</div>
+              <div><input type="checkbox" name="fin" title="买家费用审核表" value="XXXX">买家费用审核表</div>
+            </div>
+          </form>
+        </div>
+      </li>
+    </div>
+  </div>
+  <div class="m-d m-d-main">
+    <div class="m-d-item col-11">
+      <li>
+        <div class="col-1 col-btn">
+          
+          <a href="#" class="btn red" id="submit-role">创建</a>
+          <a href="#" class="btn grey-mint b-close" id="return-list">关闭</a></div>
+        </li>
+      </div>
+    </div>
+  </div>

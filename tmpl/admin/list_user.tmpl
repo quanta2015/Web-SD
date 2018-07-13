@@ -2,7 +2,6 @@
     <thead>
         <tr class="uppercase">
             <th></th>
-            <th> 创建时间 </th>
             <th> 用户名称 </th>
 			      <th> 用户角色 </th>
             <th> 功能 </th>
@@ -12,7 +11,6 @@
       {{for data}}
       <tr>
         <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
-        <td> {{:~formatTime(createTime)}} </td>
         <td> {{:name}} </td>
 			  <td>
         {{if ~isArrayNull(roles)}} 
@@ -20,9 +18,9 @@
         {{/if}}
         </td>
 			  <td>
-          <a href="#basic" class="btn red btn-xs btn-outline delete-role"   data-id="{{:id}}"><i class="fa fa-delete"></i> 删除 </a>
+          <a href="#basic" class="btn red btn-xs btn-outline delete-user"   data-id="{{:id}}"><i class="fa fa-delete"></i> 删除 </a>
           
-				  <a href="#basic" class="btn red btn-xs btn-outline set-role"   data-id="{{:id}}"><i class="fa fa-edit"></i>设置权限</a>
+				  <a href="#basic" class="btn red btn-xs btn-outline btn-render-rights"   data-id="{{:id}}"><i class="fa fa-edit"></i>设置权限</a>
         </td>
       </tr>
       {{/for}}

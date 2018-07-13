@@ -11987,7 +11987,7 @@ Light Table
   .table.table-light > thead > tr > th {
     font-weight: 600;
     font-size: 13px;
-    color: #93a2a9;
+    /*color: #93a2a9;*/
     font-family: "Open Sans", sans-serif;
     border: 0;
     border-bottom: 1px solid #F2F5F8; }
