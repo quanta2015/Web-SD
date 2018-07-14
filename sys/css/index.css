@@ -442,5 +442,5 @@ button:disabled {
 }
 
 .input-group {
-    display: flex!important;
+    display: flex;
 }

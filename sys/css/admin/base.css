@@ -1,4 +1,3 @@
-
 .g-detail {
     position: absolute;
     top: 0;
@@ -161,6 +160,7 @@
 .m-detail-wrap input[type='text'],.m-detail-wrap input[type='password'] {
     height: 40px;
     width: 100%;
+    padding: 5px 15px;
 }
 
 .col-btn {
@@ -186,13 +186,17 @@
 
 .m-row {
     margin: 5px 0 5px 0;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .m-row div {
     display: inline-block;
     margin: 5px 10px 5px 0;
+    flex-basis: calc( (100% - 40px)/4 );
 }
 
 textarea {
     width: 100%;
+    padding: 5px 15px;
 }

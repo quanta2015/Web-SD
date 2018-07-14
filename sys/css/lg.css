@@ -29,11 +29,14 @@
     min-width: 400px;
 }
 
-.g-login label {
-    font-weight: 100;
+
+.form-group div {
+    width: 300px;
+    display: flex;
 }
 
-.g-login input {
+.form-group input {
+    height: 40px;
     border-radius: 0;
-
 }
+

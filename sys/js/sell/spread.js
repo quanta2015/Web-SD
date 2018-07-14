@@ -1,8 +1,8 @@
 $(init)
 
 function init() {
-  $('#qrcode').qrcode(HOST + '/mobile.html#/register?invite='  + cookie("invitecode"));
-  $('#invertLink').val(HOST + '/index.html?invite=' + cookie("invitecode"));
+  $('#qrcode').qrcode('http://m.jsz800.com/mobile.html#/register?invite='  + cookie("invitecode"));
+  $('#invertLink').val('http://m.jsz800.com/index.html?invite=' + cookie("invitecode"));
 
   $('#invite').text( cookie("invitecode"));
 
