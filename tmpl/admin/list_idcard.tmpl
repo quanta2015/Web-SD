@@ -15,7 +15,7 @@
       {{for data}}
         <tr>
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
-            <td class="u-dt"> {{:~formatTime(createtime)}}</td>
+            <td class="u-dt"> {{:~formatTime(regtime)}}</td>
             <td> {{:name}}</td>
             <td> {{:idcard}} </td>
             <td> <a href="{{:~root.imgPrefix}}{{:idcardpng1}}" class="fancybox"><img src="{{:~root.imgPrefix}}{{:idcardpng1}}" style="width: 60px; height: 60px;"></a></td>

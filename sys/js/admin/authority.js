@@ -9,16 +9,23 @@ function init() {
   $('.sub-menu-fin').empty()
   $('.sub-menu-ope').empty()
   $('.sub-menu-sys').empty()
- 
-  sel = cookie2('sellPermission','roles').split(";");
-  buy = cookie2('buyPermission','roles').split(";");
-  fin = cookie2('finPermission','roles').split(";");
 
-  doRirght(sel,'sub-menu-sel');
-  doRirght(buy,'sub-menu-buy');
-  doRirght(fin,'sub-menu-fin');
-  
+  if (cookie2('sellPermission','roles') !== "") {
+    doRirght( cookie2('sellPermission','roles').split(";"),'sub-menu-sel');
+  }
 
+  if (cookie2('buyPermission','roles') !== "") {
+    doRirght( cookie2('buyPermission','roles').split(";"),'sub-menu-buy');
+  }
+
+  if (cookie2('finPermission','roles') !== "") {
+    doRirght( cookie2('finPermission','roles').split(";"),'sub-menu-fin');
+  }
+}
+
+
+function initMenu() {
+  cookie2('sellPermission','roles').split(";");
 }
 
 function doRirght(i, o) {

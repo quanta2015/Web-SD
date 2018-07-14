@@ -4,10 +4,10 @@ $(init);
 
 function init() {
   initList(pageData);
+
+
  
   $('body').on('click', '.btn-render', doRenderAdd);
-  $('body').on('click','.detail-role-menu',roleMenuDetail);
-  $('body').on('click','.do-role-edit',doRoleEdit);
   $('body').on('click','.btn-addrole',doSave);
   $('body').on('click', '.u-close', doClose);
   $('body').on('click','.delete-role',doDelete);
@@ -31,19 +31,16 @@ function cbList(r, e) {
 
 function doRenderAdd() {
   $.ajax('/tmpl/admin/create_role.tmpl').then((e)=>{
-    console.log(e)
     $('.g-detail').empty();
     $('.g-detail').append(e);
+    $('input').iCheck({
+        checkboxClass: 'icheckbox_flat-red',  
+        radioClass: 'iradio_flat-red'
+    });
     $('.g-detail').show();
   })
 }
 
-function roleMenuDetail(){
-  var obj = {
-        id: $(this).data('id')
-      };
-  location.href = ['rolemenu.html', encodeQuery(obj)].join('?')
-}
 
 function doSave(){
   let data={
@@ -71,16 +68,10 @@ function cbDelete(){
 	alertBox('删除成功',refresh);
 }
 
-function doRoleEdit(){
-  $(".g-detail .m-detail-wrap").remove();
-  $(".g-detail").prepend($("#coverTmpl").render());
-  $(".g-detail").show();
-}
 
 function checkBox(id) {
   let arr = []
   $(`input[name="${id}"]:checked`).each( (i,e)=>{ 
-    console.log(e); 
 
     if (typeof($(e).data('type')) == "undefined") {
       type = '';

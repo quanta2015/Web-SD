@@ -14,7 +14,7 @@ function init() {
 
   checkInvite();
   
-  //加载验证码
+  // //加载验证码
   doReloadCode()
 
   $('body').on('click', '.login-hd li', toggleUserLogin);
@@ -35,9 +35,6 @@ function init() {
   $('body').on('click', '#vertifyCode', doReloadCode);
 }
 
-function doReloadCode() {
-  $('#vertifyCode').attr('src',HOST + `/getVerify?${Math.random()}`)
-}
 
 function doChgPwd() {
   let obj = {
@@ -118,6 +115,14 @@ function toggleUserLogin() {
   $('.login-hd li').removeClass('on');
   (!el.is('.on'))?el.addClass('on'):null;
   $('.login-logo>img').attr('src', LOGIN_IMGS[el.index()])
+
+
+  if( !$(this).index() ) {
+    $('.u-verify').hide()
+  }else{
+    $('.u-verify').show()
+  }
+
 }
 
 function goLoginPage() {
