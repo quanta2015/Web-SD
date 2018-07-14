@@ -13,11 +13,13 @@ function init() {
   sel = cookie2('sellPermission','roles').split(";");
   buy = cookie2('buyPermission','roles').split(";");
   fin = cookie2('finPermission','roles').split(";");
+  // ope = cookie2('opePermission','roles').split(";");
+
 
   doRirght(sel,'sub-menu-sel');
   doRirght(buy,'sub-menu-buy');
   doRirght(fin,'sub-menu-fin');
-  
+  // doRirght(ope,'sub-menu-ope');
 
 }
 
