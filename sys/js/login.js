@@ -7,6 +7,8 @@ $(init);
 
 function init() {
 
+  
+
   if ( isMobile()) {
     window.location.href = "http://m.jsz800.com/mobile.html?r=" + Math.random()
   }
@@ -117,11 +119,11 @@ function toggleUserLogin() {
   $('.login-logo>img').attr('src', LOGIN_IMGS[el.index()])
 
 
-  if( !$(this).index() ) {
-    $('.u-verify').hide()
-  }else{
-    $('.u-verify').show()
-  }
+  // if( !$(this).index() ) {
+  //   $('.u-verify').hide()
+  // }else{
+  //   $('.u-verify').show()
+  // }
 
 }
 
@@ -232,7 +234,7 @@ function doLogin() {
   let obj = { 
     mobile:$('#login-mobile').val(), 
     password: $('#login-password').val(),
-    randomcode: $('#login-vertify').val()
+    // randomcode: $('#login-vertify').val()
   };
   promiseNoMask('POST', url, JSON.stringify(obj), cbLogin, null);
 }

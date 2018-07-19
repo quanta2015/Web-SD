@@ -35,6 +35,25 @@ function init() {
   $('body').on('click', '.detail-task', doDetail);
   $('body').on('click','.complain-task',doComplainTask);
   $('body').on('click','.change-money',doChangeMoney);
+  $('body').on('click','.btn-defriend',doDefriend);
+}
+
+
+function doDefriend() {
+  id = $(this).data('id') 
+
+
+  bootbox.prompt(`请输入拉黑理由！`, function(ret){ 
+    if(( ret !== "")&&( ret!== null)) {
+      var obj = {
+        buyerId: id,
+        reason: ret
+      }
+      promise('POST','/shoper/save_black_buyer', JSON.stringify(obj), (e)=>{
+        notifyInfo(`拉黑改买家成功！`)
+      }, null)
+    }
+  });
 }
 
 function doChangeMoney() {

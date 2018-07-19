@@ -12,44 +12,25 @@
     <link href="/lib/metronic/layout.min.css"  rel="stylesheet" >
     <link href="/lib/alertify/alertify.core.css" rel="stylesheet" >
     <link href="/lib/jquery/jquery.datetimepicker.css" rel="stylesheet">
-    <link href="/lib/fancybox/jquery.fancybox.css" rel="stylesheet" >
     
+    <link href="/lib/fancybox/jquery.fancybox.css" rel="stylesheet" >
     <link href="/lib/pace/pace.css" rel="stylesheet" >
     <link href="/lib/loaders/loaders.min.css" rel="stylesheet" >
-    <link href="/lib/jquery/jquery.datetimepicker.css" rel="stylesheet">
 
     <link href="/sys/css/common.css"  rel="stylesheet" >
-    <link href="/sys/css/admin/auditTask.css"  rel="stylesheet" >
+    <link href="/sys/css/admin/auditSeller.css"  rel="stylesheet" >
   </head>
   <body>
     <div class="container-fluid">
       <div class="portlet ">
         <div class="portlet-title">
-          <div class="caption">垫付任务列表</div>
-          <div class="actions">
-            <div class="btn-group btn-group-devided" data-toggle="buttons">  
-              <label class="btn grey-salsa btn-sm">
-                <input type="radio" name="options" class="toggle" id="option2">设置
-              </label>
-            </div>
-          </div>
+          <div class="caption">商家列表</div>
         </div>
         <div class="portlet-title ">
           <div class="m-sbar">
+            <div><span>商家名称 </span><input type="text" id="sr-shopname" ></div>
             <div>
-              <span>审核状态</span>
-              <select class="" id="sr-status">
-                <option value="5">全部</option>
-                <option value="0">待审核</option>
-                <option value="1">审核通过</option>
-                <option value="2">审核未通过</option>
-              </select>
-            </div>
-            <div><span>店铺名称 </span><input type="text" id="sr-shopname" ></div>
-            <div><span>商品名称 </span><input type="text" id="sr-goodsname" ></div>
-            <div><span>任务编号 </span><input type="text" id="sr-taskid" ></div>
-            <div>
-              <span>发布日期</span>
+              <span>注册时间</span>
               <input type="text" id="sr-time-from" class="u-dt"> - <input type="text" id="sr-time-to" class="u-dt">
             </div>
             <div>
@@ -61,29 +42,28 @@
           <div class="table-data"></div>
           <div class="table-pg"></div>
         </div>
-      </div>
     </div>
-
-    <div class="g-detail" style="display: none;"></div>
+    </div>
+	
+	<div class="g-detail"  style="display: none;"></div>
 
     <script src="/lib/jquery/jquery.min.js"></script>
-    <script src="/lib/jquery/jquery.datetimepicker.full.js"></script>
     <script src="/lib/jquery/jquery.cookie.js"></script>
     <script src="/lib/jquery-ui/jquery-ui.min.js"></script>
-    <script src="/lib/fancybox/jquery.fancybox.js"></script>
     <script src="/lib/jsrender/jsrender.js"></script>
+    <script src="/lib/fancybox/jquery.fancybox.js"></script>
     <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="/lib/alertify/alertify.min.js"></script>
     <script src="/lib/bootbox/bootbox.min.js"></script>
     <script src="/lib/distpicker/distpicker.js"></script>
     <script src="/lib/typepicker/typepicker.js"></script>
     <script src="/lib/metronic/moment.min.js"></script>
-    <script src="/lib/metronic/ui-modals.min.js"></script>
     <script src="/lib/twbs-pagination/jquery.twbsPagination.min.js"></script>
     <script src="/lib/jquery/jquery.datetimepicker.full.js"></script>
+    <script src="/lib/metronic/ui-modals.min.js"></script>
     <script src="/lib/pace/pace.min.js"></script>
 
     <script src="/sys/js/common.js"></script>
-    <script src="/sys/js/admin/auditTask.js"></script>
+    <script src="/sys/js/admin/auditSeller.js"></script>
 </body>
 </html>

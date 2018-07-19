@@ -47,8 +47,8 @@ function initTime() {
 function initList() {
   if (type === 'capital') {
     let param = {
-      status: $('#sr-status'),
-      content: $('#sr-cnt'),
+      // status: $('#sr-type').val(),
+      // content: $('#sr-cnt').val(),
       fromDate: $("#sr-time-from").val(),
       toDate: $("#sr-time-to").val(),
     };

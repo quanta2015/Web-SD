@@ -18,12 +18,13 @@ function init() {
   $('body').on('click', '.frozen-account', doFrozenAccount);
 }
 
-function procAppeal(id, attr, msg, url) {
+function procAppeal(id, cid, attr, msg, url) {
 
   bootbox.prompt(`请输入${msg}！`, function(ret){ 
     if(( ret !== "")&&( ret!== null)) {
       var obj = {
         buyerId: 0,
+        complainsId: cid,
         buyerTaskId: id,
         goodsMoney: null,
         reason: null,
@@ -41,31 +42,31 @@ function procAppeal(id, attr, msg, url) {
 }
 
 function doFrozenAccount() {
-  procAppeal( $(this).data("id") , 'reason', '冻结买家', '/complain/admin_frozen_buyer')
+  procAppeal( $(this).data("id"), $(this).data("cid"), 'reason', '冻结买家', '/complain/admin_frozen_buyer')
 }
 
 function doCancelPay() {
-  procAppeal( $(this).data("id") , 'reason', '平台卖家都不返佣', '/complain/admin_nofee')
+  procAppeal( $(this).data("id") , $(this).data("cid"),'reason', '平台卖家都不返佣', '/complain/admin_nofee')
 }
 
 function doPlatformPay() {
-  procAppeal( $(this).data("id") , 'returnMoney', '平台返佣金额', '/complain/admin_platform_return')
+  procAppeal( $(this).data("id") , $(this).data("cid"),'returnMoney', '平台返佣金额', '/complain/admin_platform_return')
 }
 
 function doChangeMoney() {
-  procAppeal( $(this).data("id") , 'goodsMoney', '修改价格', '/complain/admin_update_buyertask_goodsMoney')
+  procAppeal( $(this).data("id") , $(this).data("cid"),'goodsMoney', '修改价格', '/complain/admin_update_buyertask_goodsMoney')
 }
 
 function doCancelOrder() {
-  procAppeal( $(this).data("id") , 'reason', '撤销订单结果', '/complain/admin_cancel_buyertask')
+  procAppeal( $(this).data("id") , $(this).data("cid"),'reason', '撤销订单结果', '/complain/admin_cancel_buyertask')
 }
 
 
 function initList() {
   if (appealtype==1) {
-    $(".caption").append("卖家申诉处理");
+    $(".caption").text("卖家申诉处理");
   }else if (appealtype==0) {
-   $(".caption").append("买家申诉处理");
+    $(".caption").text("买家申诉处理");
   }
   let param = Object.assign(pageData, {type:appealtype});
   promiseTmpl('GET', '/tmpl/admin/appealhandle.tmpl', ['/complains_list', encodeQuery(param)].join('?'),null, cbList)
@@ -114,8 +115,7 @@ function cbAuditAppeal(e) {
 
 function doDetail() {
   var obj = {
-    id: $(this).data("id"),
-    type: appealtype
+    id: $(this).data("cid")
   };
   promiseTmpl('GET', '/tmpl/myappeal_detail.tmpl', ['/admin/complains_detail', encodeQuery(obj)].join('?') ,null, cbDetail)
 }

@@ -88,7 +88,7 @@ function doConfirm() {
     return;
   }
 
-  
+
   if (type === 'pay') {
 
     if ($('#order-id').val() === '' ) {

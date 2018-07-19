@@ -31,14 +31,14 @@
                 <span>处理描述: {{:handleResult}}</span>
             </td>
 			<td class="u-func">
-              <a href="#basic" class="btn red btn-xs detail-task"   data-id="{{:buyerTaskId}}"><i class="fa fa-info"></i> 详情 </a>
+              <a href="#basic" class="btn red btn-xs detail-task"  data-cid="{{:id}}"  data-id="{{:buyerTaskId}}"><i class="fa fa-info"></i> 详情 </a>
 			  {{if handleStatus==0}}<!-- 
               	<a href="#basic" class="btn blue-madison btn-xs audit-appeal"   data-id="{{:id}}" data-type="1"><i class="fa fa-edit"></i> 处理 </a> -->
-                <a href="#basic" class="btn grey-mint btn-xs frozen-account"   data-id="{{:buyerTaskId}}" data-type="1"><i class="fa fa-ban"></i> 冻结账号 </a>
-                <a href="#basic" class="btn grey-mint btn-xs cancel-order"   data-id="{{:buyerTaskId}}" data-type="1"><i class="fa fa-remove"></i> 撤单 </a>
-                <a href="#basic" class="btn blue-steel btn-xs change-money"   data-id="{{:buyerTaskId}}" data-type="1"><i class="fa fa-edit"></i> 修改价格 </a>
-                <a href="#basic" class="btn blue-steel btn-xs platform-pay"   data-id="{{:buyerTaskId}}" data-type="1"><i class="fa fa-share"></i> 平台返佣 </a>
-                <a href="#basic" class="btn blue-steel btn-xs cancel-pay"   data-id="{{:buyerTaskId}}" data-type="1"><i class="fa fa-unlink"></i> 取消佣金 </a>
+                <a href="#basic" class="btn grey-mint btn-xs frozen-account" data-cid="{{:id}}"  data-id="{{:buyerTaskId}}" data-type="1"><i class="fa fa-ban"></i> 冻结账号 </a>
+                <a href="#basic" class="btn grey-mint btn-xs cancel-order"   data-cid="{{:id}}" data-id="{{:buyerTaskId}}" data-type="1"><i class="fa fa-remove"></i> 撤单 </a>
+                <a href="#basic" class="btn blue-steel btn-xs change-money"   data-cid="{{:id}}" data-id="{{:buyerTaskId}}" data-type="1"><i class="fa fa-edit"></i> 修改价格 </a>
+                <a href="#basic" class="btn blue-steel btn-xs platform-pay"   data-cid="{{:id}}" data-id="{{:buyerTaskId}}" data-type="1"><i class="fa fa-share"></i> 平台返佣 </a>
+                <a href="#basic" class="btn blue-steel btn-xs cancel-pay"   data-cid="{{:id}}" data-id="{{:buyerTaskId}}" data-type="1"><i class="fa fa-unlink"></i> 取消佣金 </a>
               {{/if}}
             </td>
         </tr>

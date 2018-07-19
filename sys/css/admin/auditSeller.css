@@ -1,17 +1,22 @@
-body {
-    min-width: 1280px;
-}
+
 
 .table.table-light > tbody > tr > td,.table.table-light > tbody > tr > th {
     font-size: 12px;
 }
 
+.goodsname {
+    width: 200px;
+    word-break: break-all;
+}
+
 .g-detail {
     position: absolute;
+    width: auto;
+    height: auto;
     top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
     z-index: 2000;
     background: rgba(0,0,0,.5);
 }
@@ -28,7 +33,6 @@ body {
     right: 50%;
     transform: translateY(-50%) translateX(50%)!important;
 }
-
 
 .m-title {
     /*padding: 15px;*/
@@ -84,14 +88,13 @@ body {
 }
 
 .v-img {
-    width: 120px;
-    height: 100px;
     overflow: hidden;
+    height: 400px;
+    max-height: 400px;
 }
 
 .v-img img {
-    width: auto;
-    height: 100%;
+    width: 100%;
 }
 
 

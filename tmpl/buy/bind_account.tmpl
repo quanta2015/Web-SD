@@ -38,10 +38,10 @@
               {{if status == -1 || status == 2}}
               <option value="">请选择</option>
               {{for levels}}
-              <option value="{{:#data}}" {{if #data == ~root.acountLevel}}selected{{/if}} >{{:#data}}</option>
+              <option value="{{:val}}" {{if ~isEqual(val,~root.acountLevel)}}selected{{/if}} >{{:name}}</option>
               {{/for}}
               {{else}}
-              <option value="">{{:acountLevel}}</option>
+              <option value="">{{:~formatTaobaoVal(~root.acountLevel)}}</option>
               {{/if}}
             </select>
           </div>
@@ -126,18 +126,20 @@
                 {{for list}}
                 <div class="fileinput fileinput-new" data-provides="fileinput" style="margin-right:20px">
                   <div class="fileinput-preview  thumbnail" style="max-width: 200px; max-height: 150px; line-height: 10px;">
+                    {{if ~root.accountImg}}
                     {{if ~root.accountImg && ~root.accountImg[#getIndex()]}}
                     <img src="{{:~root.imgPrefix}}{{:~root.accountImg[#getIndex()]}}">
                     {{else}}
                     <img src="/img/noimg.png" id="img-id-{{:#getIndex()}}">
                     {{/if}}
+                    {{/if}}
                   </div>
                   <div class="fileinput-ctrl">
-                    <div style="text-align:center">{{:~root.imgInfo[#getIndex()]}}</div>
+                    <div style="text-align:center"> {{if ~root.accountImg}}{{:~root.imgInfo[#getIndex()]}}{{/if}}</div>
                     <span class="btn red btn-xs btn-file">
                       <i class="fa fa-upload"></i>
                       <span>  选择图片</span>
-                      <input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="upload-{{:#getIndex()}}">
+                      <input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="upload-{{:#getIndex()}}" {{if ~root.accountImg}}picurl="{{:~root.accountImg[#getIndex()]}}"{{/if}}>
                     </span>
                   </div>
                 </div>

@@ -24,15 +24,7 @@
     <div class="container-fluid">
       <div class="portlet ">
         <div class="portlet-title">
-          <div class="caption">
-            <i class="fa fa-tasks"></i> 店铺列表</div>
-          <div class="actions">
-            <div class="btn-group btn-group-devided" data-toggle="buttons">  
-              <label class="btn grey-salsa btn-sm">
-                <input type="radio" name="options" class="toggle" id="option2">设置
-              </label>
-            </div>
-          </div>
+          <div class="caption">店铺列表</div>
         </div>
         <div class="portlet-title ">
           <div class="m-sbar">
@@ -104,6 +96,7 @@
         <div class="col-1"><span class="icon-basket"></span>店铺名称：{{:name}}</div>
       </li>
       <li><div class="col-1">店铺类别</div><div class="col-2 font-red-thunderbird fn-right">{{:businesstype}}-{{:subtype}}</div></li>
+      <li><div class="col-1">联系方式</div><div class="col-2 font-red-thunderbird fn-right">{{:mobile}}</div></li>
       <li><div class="col-1">店铺网址</div><div class="col-2 font-red-thunderbird fn-right">{{:shopurl}}</div></li>
       <li><div class="col-1">店铺地址</div><div class="col-2 font-red-thunderbird fn-right">{{:addressProvince}}-{{:addressCity}}-{{:addressCounty}}</div></li>
       <li><div class="col-1">详细地址</div><div class="col-2 font-red-thunderbird fn-right">{{:address}}</div></li>
@@ -125,7 +118,6 @@
 			<a href="#" class="btn red btn-sm  audit-shop"   data-id="{{:id}}" data-type="unpass"><i class="fa fa-edit"></i> 不通过 </a>
             <a href="#" class="btn blue-madison btn-sm  audit-shop"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 通过 </a>
 			{{/if}}
-			<a href="#" class="btn dark btn-sm b-close"   data-id="{{:id}}" data-type="pass"><i class="fa fa-edit"></i> 关闭 </a>
 		</div>
 	</div>
 	{{/for}}

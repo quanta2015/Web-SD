@@ -26,10 +26,10 @@
             <td class="pass{{:approveState}}"> {{:approveStr}} </td>
             <td>  </td>
             <td>
-              {{if approveState==0 || approveState==1 }}
+              {{if approveState==1 || approveState==2 }}
               <a href="javascript:;" class="btn red-sunglo btn-xs sbold uppercase del-shop" id="{{:id}} " ><i class="fa fa-times"></i> 店铺撤销 </a> 
               {{/if}}
-              {{if approveState==0 || approveState==2}}
+              {{if approveState==1 || approveState==2}}
               <a href="#basic" class="btn blue-soft btn-xs sbold uppercase  edit-shop"  data-toggle="modal" data-index="{{:#getIndex()}}" data-id="{{:id}}"><i class="fa fa-edit"></i> 修改店铺信息 </a> 
               {{/if}}
             </td>

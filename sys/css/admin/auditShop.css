@@ -25,15 +25,16 @@ body {
 
 
 .m-detail-wrap {
-    position: relative;
-    margin: 10px auto;
+    position: absolute;
     background: #fff;
-    width: 1000px;
+    width: 800px;
     display: flex;
     flex-direction: column;
     box-shadow:1px 1px 5px #ccc;
+    top: 50%  ;
+    right: 50%;
+    transform: translateY(-50%) translateX(50%)!important;
 }
-
 
 .m-title {
     /*padding: 15px;*/
@@ -92,6 +93,8 @@ body {
 /*    width: 120px;
     height: 100px;*/
     overflow: hidden;
+    height: 400px;
+    max-height: 400px;
 }
 
 .v-img img {

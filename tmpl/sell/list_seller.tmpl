@@ -1,0 +1,31 @@
+<table class="table table-hover table-light">
+    <thead>
+        <tr class="uppercase">
+            <th> # </th>
+            <th> 注册时间 </th>
+            <th> 手机 </th>
+            <th> QQ/微信 </th>
+            <th> VIP </th>
+            <th> VIP有效期 </th>
+            <th> 功能 </th>
+        </tr>
+    </thead>
+    <tbody>
+      {{for data}}
+        <tr>
+            <td> {{:#index+1}} </td>
+            <td> {{:~formatTime(regtime)}} </td>
+            <td> {{:mobile}}</td>
+            <td> {{:qq}}/{{:weixin}}</td>
+            <td> {{:~formatBoolEx(memberValid)}}  </td>
+            <td> {{:memberEndDate}}  </td>
+            
+            <td>
+              
+              <a href="javascript:;" class="btn red-mint btn-xs btn-setvip" data-id="{{:id}} " ><i class="fa fa-edit"></i> 设置VIP </a> 
+              
+            </td>
+        </tr>
+      {{/for}}
+    </tbody>
+  </table>

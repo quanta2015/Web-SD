@@ -9,6 +9,13 @@ function init() {
 
   //显示金额
   promise('GET',URL_SELL_BALANCE,null, cbInfo, null)
+
+  //查询店铺
+  promise('GET', '/shoper/shoper_shops',null, (e)=>{
+    if( e.length <= 0 ) {
+      notifyInfo('请先于店铺管理中绑定店铺后，才能发布任务！')
+    }
+  },null)
 }
 
 function cbInfo(e) {

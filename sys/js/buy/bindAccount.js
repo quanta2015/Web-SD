@@ -62,7 +62,7 @@ async function doModify() {
     status: 2,
     statusText: AUDIT_STATUS[2],
     imgPrefix: IMG_PREFIX
-  }).then( (h)=> {
+  }, rdHelper).then( (h)=> {
     $(".g-account").append(h);
     $('#pick').distpicker();
     $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
@@ -93,7 +93,7 @@ async function cbInitBindInfo(e) {
       imgInfo: ['我的页面', '我的账号页面', `开通${creditType}情况`],
       status: -1,
       baitiaoStart: "checked"
-    })
+    }, rdHelper)
   } else {
     //显示已经绑定表单
     func = renderTmpl(TMPL_BUY_BIND_ACCOUNT, {
@@ -126,7 +126,7 @@ async function cbInitBindInfo(e) {
       status: status,
       statusText: AUDIT_STATUS[status],
       imgPrefix: IMG_PREFIX
-    })
+    }, rdHelper)
   }
   func.then(h => {
     $(".g-account").append(h);
@@ -160,9 +160,9 @@ function doSave(data) {
     receiveAddress: $('#receive-address').val(),
     receiver: $('#receiver').val(),
     receiveMobile: $('#receive-mobile').val(),
-    baitiaoImg: $('#upload-0').attr('picurl') || cookie2('baitiaoImg', platform.cko),
-    mysiteImg: $('#upload-1').attr('picurl') || cookie2('mysiteImg', platform.cko),
-    myacountImg: $('#upload-2').attr('picurl') || cookie2('myacountImg', platform.cko)
+    baitiaoImg: $('#upload-0').attr('picurl'),
+    mysiteImg: $('#upload-1').attr('picurl'),
+    myacountImg: $('#upload-2').attr('picurl')
   };
   // 没传新图片且状态为审核不通过尝试去cookie取
   let imgKeyList = ['baitiaoImg', 'mysiteImg', 'myacountImg'];
@@ -170,7 +170,7 @@ function doSave(data) {
   for (let i = 0; i < imgKeyList.length; i++) {
     let key = imgKeyList[i];
     if (!obj[key] && status === 2) {
-      obj[key] = cookie2(key, platform.cko);
+      obj[key] = $(`#upload-${i}`).attr('picurl');
     }
     if (!obj[key]) {
       return errorInfo(`缺少${imgKeyInfos[i]}图片`);

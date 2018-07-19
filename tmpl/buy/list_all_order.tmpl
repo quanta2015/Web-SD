@@ -8,6 +8,7 @@
         <div class="u-col u-title">
           <img src="/img/taobao.png">
           <label class="u-type u-type-{{:mainType}}">{{if mainType === 'pay'}}垫{{else}}浏{{/if}}</label>
+          
           {{:goodsName}}
         </div>
         <div class="u-col u-money">
@@ -15,22 +16,30 @@
           <span class="font-red font-big"><img src="/img/money.png" class="fn-money">{{:reward}}</span>
         </div>
         <div class="u-col u-date">{{:publishTime}}</div>
-        <div class="u-col u-status z-status{{:status}}">{{:~formatOrderStatus(status)}}</div>
+        <div class="u-col u-status z-status{{:status}}">
+          {{:~formatOrderStatus(status)}}
+          {{if complainStatus === 1}}
+          <label class="u-type-complain">申诉中</label>
+          {{/if}}
+          {{if complainStatus === 2}}
+          <label class="u-type-complain u-type-complain-end">申诉结束</label>
+          {{/if}}
+        </div>
         <div class="u-col u-func">
           <a href="#basic" class="btn blue-steel btn-xs  detail-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-info"></i> 详情 </a>
           {{if (status == 0)}}
           <a href="#basic" class="btn blue-steel btn-xs  cancel-task "  data-id="{{:id}}" ><i class="fa fa-reply"></i> 退单 </a>
           {{/if}}
           {{if (status == 0)}}
-          <a href="#basic" class="btn red btn-xs  commit-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}" data-type="{{:mainType}}"><i class="fa fa-edit"></i> 操作 </a>
+          <a href="#basic" class="btn red-mint btn-xs  commit-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}" data-type="{{:mainType}}"><i class="fa fa-edit"></i> 操作 </a>
           {{/if}}
           {{if (status == 20)}}
-          <a href="#basic" class="btn red btn-xs  evaluate-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-commenting-o"></i> 评价 </a>
+          <a href="#basic" class="btn red-mint btn-xs  evaluate-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-commenting-o"></i> 评价 </a>
           {{/if}}
           {{if (status == 30)}}
           <a href="#basic" class="btn red-mint btn-xs  order-money"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-money"></i> 催款 </a>
           {{/if}}
-          <a href="#basic" class="btn green-jungle btn-xs  complain-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-commenting-o"></i> 申诉 </a>
+          <a href="#basic" class="btn red-mint btn-xs  complain-task"  data-id="{{:id}}" data-tid="{{:taskkeyId}}"><i class="fa fa-commenting-o"></i> 申诉 </a>
         </div>
     </div>
 </div>

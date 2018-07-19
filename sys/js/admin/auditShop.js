@@ -14,7 +14,6 @@ function init() {
   $('body').on('click', '#btn-search', doSearch);
   $('body').on('click', '.detail-shop', doDetailShop);
   $('body').on('click', '.m-close', doClose);
-  $('body').on('click','.b-close',doClose);
 }
 
 function initList() {

@@ -40,6 +40,7 @@ function initList() {
 function cbList(r, e) {
   let ret = e;
   _listtask = ret.data;
+  // ret.data[0].complainStatus = 1;
   ret.imgPrefix = IMG_PREFIX;
   Object.assign(ret, pageData);
   totalPages = Math.ceil(ret.total/pageData.pageSize);
@@ -94,7 +95,7 @@ function cbDetail(r, e) {
 
 function doCancelTask() {
 
-  msgbox('温馨提示', `<span class="font-red">本次提现金额${money}元，扣取手续费${cost}元</span>`,'取消','确认',(ret)=>{
+  msgbox('温馨提示', `请确认取消本任务？`,'取消','确认',(ret)=>{
     if (ret) return;
 
     var obj = {
