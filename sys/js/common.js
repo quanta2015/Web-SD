@@ -22,7 +22,8 @@ const REFRESH_TIME = 30000
 const MENU = {
   selMgr: ['auditShop;审核店铺;;:auditTask;审核垫付任务;pay;:auditTask;审核浏览任务;browse;:auditRecharge;审核充值;;:auditVipRecharge;审核卖家VIP缴费;1;:appealHandle;卖家申诉处理;1;:defriendLog;卖家拉黑记录;;'],
   buyMgr: ['auditIdCard;审核身份证;;:auditAccount;审核账号;;:auditQQ;审核QQ;;:auditVipRecharge;审核买家VIP缴费;0;:appealHandle;买家申诉处理;0;'],
-  finMgr: [';XXXX;;:;XXXX;;']
+  finMgr: ['chartSelAccount;商家账户报表;;:chartBuyAccount;买家账户报表;;:chartPlatformStats;平台统计报表;;:chartSelFreeze;商家冻结金表;;:chartSelExpenseAudit;商家费用审核表;;:chartBuyExpenseAudit;买家费用审核表;;'],
+  opeMgr: ['chartOpeSyn;运营综合报表;;:chartVipCharge;VIP管理报表;;:chartSelService;商家客服报表;;:chartBuyService;买家客服报表;;']
 }
 
 const IMG_PREFIX = 'https://abc-1256878718.cos.ap-shanghai.myqcloud.com/'

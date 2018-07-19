@@ -10,6 +10,7 @@ function init() {
   $('.sub-menu-ope').empty()
   $('.sub-menu-sys').empty()
 
+
   if (cookie2('sellPermission','roles') !== "") {
     doRirght( cookie2('sellPermission','roles').split(";"),'sub-menu-sel');
   }
@@ -21,6 +22,10 @@ function init() {
   if (cookie2('finPermission','roles') !== "") {
     doRirght( cookie2('finPermission','roles').split(";"),'sub-menu-fin');
   }
+
+  // if (cookie2('opePermission','roles') !== "") {
+  //   doRirght( cookie2('opePermission','roles').split(";"),'sub-menu-ope');
+  // }
 }
 
 

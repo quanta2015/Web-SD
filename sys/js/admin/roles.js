@@ -49,6 +49,7 @@ function doSave(){
       sellPermission:checkBox('sel'),
       buyPermission:checkBox('buy'),
       finPermission:checkBox('fin'),
+      // opePermission:checkBox('ope'),
   };
   promise('post', '/permission/role/save_role' , JSON.stringify(data), cbSave, null);
 }
