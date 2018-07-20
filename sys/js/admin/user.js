@@ -73,7 +73,7 @@ function cbRoleList(r,e){
   totalPages = Math.ceil(ret.total/pageData.pageSize);
   $(".g-detail .m-detail-wrap").remove();
   $(".g-detail").prepend($.templates(r).render(ret, rdHelper));
-  $(".g-detail").show();
+  showModel('.g-detail')
 }
 
 function doDelete(){

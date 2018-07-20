@@ -24,6 +24,12 @@
       <p>
         <span>{{:type}}</span>
         <span>{{:~formatOrderStatus(status)}}</span>
+        {{if complainStatus === 1}}
+        <span class="u-type-complain">申诉中</span>
+        {{/if}}
+        {{if complainStatus === 2}}
+        <span class="u-type-complain u-type-complain-end">申诉结束</span>
+        {{/if}}
       </p>
     </div>
   </div>

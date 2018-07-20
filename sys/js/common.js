@@ -5,8 +5,8 @@ const SELL = 1
 const ADMIN = 2
 // const HOST = 'http://103.251.90.136'
 // const HOST = 'http://122.152.199.90'
-// let dev = true;
-let dev = false;
+let dev = true;
+// let dev = false;
 
 if (dev) {
   HOST = 'http://103.251.90.136'
@@ -1018,3 +1018,9 @@ var uploadFile = function(target) {
     }) //end return promise
 }
 
+
+
+function showModel(id) {
+  $(`${id}`).height( $(document).height())
+  $(`${id}`).show();
+}

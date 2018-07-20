@@ -64,8 +64,7 @@ function doDetailIdCard(e) {
   ret.imgPrefix = IMG_PREFIX;
   $(".g-detail .m-detail-wrap").remove();
   $(".g-detail").prepend($("#coverTmpl").render(ret));
-  $(".g-detail").show();
-  $("#myCarousel").carousel('cycle');
+  showModel('.g-detail')
 }
 
 function doClose() {

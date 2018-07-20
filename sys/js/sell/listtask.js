@@ -58,8 +58,7 @@ function cbPayDetail(e) {
     $(".g-detail").empty();
     $(".g-detail").append(ret);
     $(".g-detail").height( $("body").height() )
-    $(".g-detail").show();
-    $(".g-detail").height( $(document).height() );
+    showModel('.g-detail')
   })
 }
 

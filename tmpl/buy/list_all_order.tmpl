@@ -19,10 +19,10 @@
         <div class="u-col u-status z-status{{:status}}">
           {{:~formatOrderStatus(status)}}
           {{if complainStatus === 1}}
-          <label class="u-type-complain">申诉中</label>
+          <label class="u-type-complain u-type-complain-offset">申诉中</label>
           {{/if}}
           {{if complainStatus === 2}}
-          <label class="u-type-complain u-type-complain-end">申诉结束</label>
+          <label class="u-type-complain u-type-complain-offset u-type-complain-end">申诉结束</label>
           {{/if}}
         </div>
         <div class="u-col u-func">

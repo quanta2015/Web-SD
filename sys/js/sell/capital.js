@@ -32,7 +32,7 @@ function doFrazenDetail() {
 function cbForzenDetail(r, e) {
   $(".g-detail").empty();
   $(".g-detail").append($.templates(r).render(e, rdHelper));
-  $(".g-detail").show();
+  showModel('.g-detail')
 }
 
 

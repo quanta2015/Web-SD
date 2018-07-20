@@ -90,7 +90,7 @@ function cbDetail(r, e) {
   $(".g-detail").empty();
   $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
   // $("#ig-info").toggle("slide", { direction: "left" }, 200);
-  $(".g-detail").show();
+  showModel('.g-detail')
 }
 
 function doCancelTask() {

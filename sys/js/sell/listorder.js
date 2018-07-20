@@ -92,8 +92,7 @@ function cbDetail(r, e) {
   ret.data.mainType = type;
   $(".g-detail").empty();
   $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
-  // $("#ig-info").toggle("slide", { direction: "left" }, 200);
-  $(".g-detail").show();
+  showModel('.g-detail')
 }
 
 
@@ -238,7 +237,7 @@ function initList(pg) {
 function cbListTask(r,e) {
   let ret = e;
   Object.assign(ret, pageData);
-  ret.data[0].complainStatus = 1;
+  // ret.data[0].complainStatus = 1;
   ret.type = type;
   totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
   $(".portlet-body .u-wrap").remove();

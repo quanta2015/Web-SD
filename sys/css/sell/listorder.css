@@ -159,13 +159,16 @@ table td {
 
 
 .m-detail-wrap {
-    position: relative;
-    margin: 20px auto;
+    position: absolute;
+    /*margin: 20px auto;*/
     background: #fff;
     width: 800px;
     display: flex;
     flex-direction: column;
     box-shadow:1px 1px 5px #ccc;
+    top: 50%  ;
+    right: 50%;
+    transform: translateY(-50%) translateX(50%)!important;
 }
 
 .m-close {

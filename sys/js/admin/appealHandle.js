@@ -126,7 +126,7 @@ function cbDetail(r, e) {
   $(".g-detail").empty();
   $(".g-detail").append($.templates(r).render(ret.data, rdHelper));
   $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
-  $(".g-detail").show();
+  showModel('.g-detail')
 }
 
 
