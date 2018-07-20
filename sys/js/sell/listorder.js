@@ -238,6 +238,7 @@ function initList(pg) {
 function cbListTask(r,e) {
   let ret = e;
   Object.assign(ret, pageData);
+  ret.data[0].complainStatus = 1;
   ret.type = type;
   totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
   $(".portlet-body .u-wrap").remove();

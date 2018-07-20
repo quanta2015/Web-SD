@@ -6,9 +6,7 @@ function init() {
 
 
 
-  $('.bank-vip').on('click', ()=>{
-    clickMenu('toVIP')
-  });
+
 
 
   //取会员数据

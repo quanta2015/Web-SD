@@ -5,6 +5,15 @@ function init() {
   initTime();
   initList();
   $('body').on('click', '#btn-search', doSearch);
+
+  $('.tab').on('click', (e)=>{
+    type = $(e.currentTarget).data('type');
+    (type === 'bank')?initList():initListBalance();
+  });
+}
+
+function initListBalance() {
+  promiseTmpl('GET', '/tmpl/list_recharge_balance.tmpl', ['/shoper/vip_record_list', encodeQuery(pageData)].join('?'), null, cbList)
 }
 
 function initList() {

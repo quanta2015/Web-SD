@@ -252,16 +252,4 @@ body {
     background: #1BA39C
 }
 
-.u-type-complain {
-    position: absolute;
-    top: 70px;
-    background: #E43A45;
-    color: #fff;
-    padding: 5px 10px;
-}
-
-.u-type-complain-end {
-    background: #1BA39C;
-}
-
 

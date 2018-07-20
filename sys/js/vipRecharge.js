@@ -1,7 +1,3 @@
-// let userType = cookie('userType');
-
-
-
 let rules = {
     money: {
         required: !0,
@@ -33,7 +29,7 @@ $(init);
 function init() {
     initList();
     // initRechargeTask();//选择充值列表
-    initVipRecharge();//选择充值列表
+    // initVipRecharge();//选择充值列表
 }
 
 function initList() {
@@ -58,7 +54,7 @@ function initList() {
         submitHandler: (e) => { doSave() }
     })
 
-    $('body').on('click', '#resetBtn', doResetForm);
+    // $('body').on('click', '#resetBtn', doResetForm);
     $('body').on('change', '#membershipFeeId', doSetMoney);
     
 
@@ -77,23 +73,23 @@ function doSetMoney(e){
     $("#transferMoney").val($(obj).find("option:selected").attr("money"));
 }
 
-function initVipRecharge(param = pageData) {
-    Object.assign(param, { transferType: 1 });
-    promiseTmpl('GET', TMPL_VIP_RECHARGE_LIST, [URL_MEMBERSHIP_LIST, encodeQuery(param)].join('?'), null, cbVipRecharge)
-}
+// function initVipRecharge(param = pageData) {
+//     Object.assign(param, { transferType: 1 });
+//     promiseTmpl('GET', TMPL_VIP_RECHARGE_LIST, [URL_MEMBERSHIP_LIST, encodeQuery(param)].join('?'), null, cbVipRecharge)
+// }
 
 
-function cbVipRecharge(r, e) {
-    let ret = e;
-    Object.assign(ret, pageData);
-    // $(".portlet-body .table").remove();
-    $(".recharge-table").prepend($.templates(r).render(ret, rdHelper));
-}
+// function cbVipRecharge(r, e) {
+//     let ret = e;
+//     Object.assign(ret, pageData);
+//     // $(".portlet-body .table").remove();
+//     $(".recharge-table").prepend($.templates(r).render(ret, rdHelper));
+// }
 
-function doResetForm() {
-    document.getElementById("vipRechargeForm").reset();
-    $('#file-input').fileinput('clear')
-}
+// function doResetForm() {
+//     document.getElementById("vipRechargeForm").reset();
+//     $('#file-input').fileinput('clear')
+// }
 
 function doSave(e) {
     var pic = $('#upload').attr('picurl');
