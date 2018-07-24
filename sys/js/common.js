@@ -287,6 +287,7 @@ const LOGIN_IMGS = [
 
 const PAGES = ['login', 'register', 'regs'];
 
+
 const REGISTER_REGEXS = {
   mobile: /^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/,
   qq: /[1-9][0-9]{4,14}/,

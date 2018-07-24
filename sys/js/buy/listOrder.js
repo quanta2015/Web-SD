@@ -1,6 +1,6 @@
 let _id;
 let pageData = Object.assign({}, PAGE_DATA);
-// pageData.pageSize= 1
+
 $(init);
 
 function init() {
@@ -10,6 +10,7 @@ function init() {
   console.log(type);
 
   initList(pageData);
+  
   $('body').on('click', '.commit-task', doCommit);
   $('body').on('click', '.cancel-task', doCancelTask);
   $('body').on('click', '.evaluate-task', doEvalTask);

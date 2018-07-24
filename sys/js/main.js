@@ -2,7 +2,7 @@ $(init)
 
 function init() {
 
-
+  //控制高度
   var h = $(document).height();
   console.log(h);
   $("iframe").height(h-75);
@@ -19,11 +19,15 @@ function init() {
 
   $("#u-name").html(cookie('name'));
 
+
+
   //显示VIP信息
   if ( cookie('memberValid') ) {
     $(".u-vip").show();
     $("#u-vip-date").text( cookie('memberEndDate')  )
   }
+
+
 
   //菜单参数封装
   $('[data-button]').on('click', function(e) {
