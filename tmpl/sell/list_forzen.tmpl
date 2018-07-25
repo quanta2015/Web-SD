@@ -4,6 +4,7 @@
       <th> 序号 </th>
       <th> 时间 </th>
       <th> 任务编号 </th>
+      <th> 状态 </th>
       <th> 金额 </th>
       <th> 功能 </th>
     </tr>
@@ -13,6 +14,7 @@
     <tr>
       <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
       <td> {{:~formatTime(createtime)}}</td>
+      <td> {{:~formatForzen(checkout)}}</td>
       <td> {{:taskId}}</td>
       <td> {{:sumMoney}}</td>
       <td>
