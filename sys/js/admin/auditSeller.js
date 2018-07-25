@@ -9,7 +9,7 @@ function init() {
   initTime();
   initList();
   // $('body').on('click', '.audit-shop', doAudit);
-  $('body').on('click', '.shop-name', doDetailShop);
+  $('body').on('click', '.detail-data', doDetailShop);
   $('body').on('click', '.btn-setvip', doSetVip);
 }
 
