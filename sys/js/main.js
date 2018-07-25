@@ -31,7 +31,7 @@ function init() {
   //菜单参数封装
   $('[data-button]').on('click', function(e) {
     
-    ( $(this).data('pos')=='root' )?pos='/html':pos='';
+    ( $(this).data('pos')=='root' )?pos='/html/':pos='';
     var pageName = pos + $(this).data('button') + '.html';
 
     var o = {
