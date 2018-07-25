@@ -406,7 +406,8 @@ function promiseNoMask(method, url, data, cb, err) {
 
 function promiseTmpl(method, urlTmpl, urlData, data, cb) {
   $("body").append(LOADER);
-  $.when($.ajax(urlTmpl), 
+  $.when(
+    $.ajax(urlTmpl), 
     $.ajax({
       type: method,
       url: HOST + urlData,
@@ -1025,3 +1026,6 @@ function showModel(id) {
   $(`${id}`).height( $(document).height())
   $(`${id}`).show();
 }
+
+
+

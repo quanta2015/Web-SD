@@ -7,6 +7,7 @@ let rules = {
   },
 }
 let status;
+let info;
 let idCardImgInfo = ['身份证正面', '身份证背面'];
 
 $(init);
@@ -21,9 +22,9 @@ function init() {
 function doModify() {
   $(".container").empty();
   func = renderTmpl(TMPL_BUY_BIND_IDCARD, {
-    name: cookie('name'),
-    idCard: cookie('idcard'),
-    idImg: [ cookie('idcardpng1'),cookie('idcardpng2') ],
+    name: info.name,
+    idCard: info.idcard,
+    idImg: [ info.idcardpng1,info.idcardpng2 ],
     status: 2,
     list: [1,1],
     imgInfo: idCardImgInfo,
@@ -72,6 +73,7 @@ function cbBind(e) {
 
 function cbInitStatus(e) {
   status = e.approveState >=0 ? e.approveState:-1;
+  info = e;
   let func;
   // status = -1
   if ( status == -1 || status == null) {
@@ -84,9 +86,9 @@ function cbInitStatus(e) {
   } else {
     // 待审核或审核通过 显示已经绑定表单
     func = renderTmpl(TMPL_BUY_BIND_IDCARD, {
-      name: cookie('name'),
-      idCard: cookie('idcard'),
-      idImg: [ cookie('idcardpng1'),cookie('idcardpng2') ],
+      name: e.name,
+      idCard: e.idcard,
+      idImg: [ e.idcardpng1,e.idcardpng2 ],
       status: status,
       list: [1,1],
       imgInfo: idCardImgInfo,

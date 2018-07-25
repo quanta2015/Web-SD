@@ -57,7 +57,7 @@
                   <span class="btn red btn-xs btn-file">
                     <i class="fa fa-upload"></i>
                     <span>  选择图片</span>
-                    <input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="upload-{{:#getIndex()}}">
+                    <input type="file" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" id="upload-{{:#getIndex()}}" {{if ~root.idImg && ~root.idImg[#getIndex()]}} picurl="{{:~root.idImg[#getIndex()]}}"{{/if}}>
                   </span>
                 </div>
               </div>

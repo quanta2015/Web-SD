@@ -4,7 +4,6 @@ function init() {
 
   //控制高度
   var h = $(document).height();
-  console.log(h);
   $("iframe").height(h-75);
 
   //显示用户名
