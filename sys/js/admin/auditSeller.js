@@ -9,7 +9,7 @@ function init() {
   initTime();
   initList();
   // $('body').on('click', '.audit-shop', doAudit);
-  // $('body').on('click', '.shop-name', doShowDetail);
+  $('body').on('click', '.shop-name', doDetailShop);
   $('body').on('click', '.btn-setvip', doSetVip);
 }
 
@@ -31,6 +31,7 @@ function doSetVip() {
     }
   });
 }
+
 
 function initList() {
   let param = {
@@ -74,4 +75,15 @@ function doSearch() {
   $('.portlet-body .table-pg').remove();
   $('.portlet-body').append('<div class="table-pg"></div>');
   initList();
+}
+
+
+function doDetailShop() {
+  id = $(this).data("id")
+  var index = $(e.currentTarget).data('index');
+  let ret = _listshop[index];
+  $(".g-detail .m-detail-wrap").remove();
+  $(".g-detail").prepend($("#coverTmpl").render(ret));
+  $(".g-detail").show()
+  
 }

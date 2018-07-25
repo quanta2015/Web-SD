@@ -2,27 +2,28 @@
     <thead>
         <tr class="uppercase">
             <th> # </th>
+            <th> 商家ID</th>
             <th> 注册时间 </th>
-            <th> 手机 </th>
-            <th> QQ/微信 </th>
-            <th> VIP </th>
-            <th> VIP有效期 </th>
-            <th> 功能 </th>
+            <th> VIP情况 </th>
+            <th> 账户余额情况 </th>
+            <th> 推广人数情况 </th>
+            <th> 信誉情况 </th>
         </tr>
     </thead>
     <tbody>
       {{for data}}
         <tr>
             <td> {{:#index+1}} </td>
+            <td> {{:id}}</td>
             <td> {{:~formatTime(regtime)}} </td>
-            <td> {{:mobile}}</td>
-            <td> {{:qq}}/{{:weixin}}</td>
-            <td> {{:~formatBoolEx(memberValid)}}  </td>
-            <td> {{:memberEndDate}}  </td>
-            
+            <th> {{:memberValid}}</th>
+            <th> {{:}}</th>
+            <th> {{:}}</th>
+            <th> </th>
             <td>
               
               <a href="javascript:;" class="btn red-mint btn-xs btn-setvip" data-id="{{:id}} " ><i class="fa fa-edit"></i> 设置VIP </a> 
+              <a href="javascript:;" class="btn red-mint btn-xs btn-setvip" data-id="{{:id}} " ><i class="fa fa-edit"></i> 详细数据 </a> 
               
             </td>
         </tr>
