@@ -1,4 +1,4 @@
-﻿// BASIC DEF
+// BASIC DEF
 const CODE_COUNT = 60
 const BUY = 0
 const SELL = 1
@@ -6,7 +6,7 @@ const ADMIN = 2
 // const HOST = 'http://103.251.90.136'
 // const HOST = 'http://122.152.199.90'
 // let dev = true;
-let dev = true;
+let dev = false;
 
 if (dev) {
   HOST = 'http://103.251.90.136'
@@ -995,16 +995,19 @@ switch(type){case 1:case 7:if(numValues==1){return file.getUint8(entryOffset+8,!
 
 
 
-function isEdited(exif) {
+function isEdited(exif, dt) {
   ret = false;
-  if (typeof(exif)==='undefined') return false;
+  if (typeof(exif)==='undefined') return true;
+  if (typeof(dt)==='undefined') return true;
+
   exif = exif.toLowerCase()
   if (exif.indexOf('photoshop')>=0) ret = true;
   if (exif.indexOf('acd')>=0) ret = true;
   if (exif.indexOf('snapseed')>=0) ret = true;
+  if (dt.length>19) ret = true;
+
   return ret;
 }
-
 
 
 // UPLOAD IMAGE 
@@ -1015,12 +1018,13 @@ var uploadFile = function(target, check) {
       if (check) {
         EXIF.getData(target, function() {
           sw = EXIF.getTag(this, "Software")
-          console.log(sw);
-          if (isEdited(sw)) {
+          dt = EXIF.getTag(this, "DateTime") 
+          console.log(sw + ' ----- ' +dt);
+          if (isEdited(sw,dt)) {
             notifyInfo("请选择原图上传！");
             resolve('0');
           }else{
-            notifyInfo('yes');
+            notifyInfo('图片通过审核！');
 
             const compressor = new Compress()
             compressor.compress([target], {
