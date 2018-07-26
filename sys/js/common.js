@@ -661,6 +661,9 @@ const rdHelper = {
     }
     return ret;
   },
+  formatFrozen: (s)=> {
+    return ((s)?'冻结中':'正常')
+  },
   getTaskType: (s) => {
     if(s.split('')[0] === 'L') {
       ret = 'browse'

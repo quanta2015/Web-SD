@@ -1,5 +1,7 @@
 
-
+a.btn {
+    margin: 5px 0;
+}
 .table.table-light > tbody > tr > td,.table.table-light > tbody > tr > th {
     font-size: 12px;
 }
@@ -11,16 +13,42 @@
 
 .g-detail {
     position: absolute;
-    width: auto;
-    height: auto;
+    left: 0;
+    right:0;
     top: 0;
     bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 2000;
+    z-index: 999999;
     background: rgba(0,0,0,.5);
 }
 
+.m-img {
+    max-width: 200px!important;
+}
+
+
+.m-detail-wrap {
+    position: absolute;
+    /*margin: 20px auto;*/
+    background: #fff;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    box-shadow:1px 1px 5px #ccc;
+    top: 50%  ;
+    right: 50%;
+    transform: translateY(-50%) translateX(50%)!important;
+}
+
+.m-close {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    z-index: 9999;
+    background-image: url(/img/close.png);
+}
 
 .m-detail-wrap {
     position: absolute;

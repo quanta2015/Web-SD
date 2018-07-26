@@ -5,13 +5,148 @@ let pageData = Object.assign({}, PAGE_DATA);
 $(init);
 
 function init() {
+
   
   initTime();
   initList();
   // $('body').on('click', '.audit-shop', doAudit);
-  $('body').on('click', '.detail-data', doDetailShop);
+  $('body').on('click', '.btn-detail-shopname', doDetailShop);
+  $('body').on('click', '.btn-detail-pay', doDetailPay);
+  $('body').on('click', '.btn-detail-browse', doDetailBrowse);
+  $('body').on('click', '.btn-detail-oneappeal', doDetailOneappeal);
+  $('body').on('click', '.btn-detail-zeroappeal', doDetailZeroappeal);
+  // $('body').on('click', '.btn-detail-balance', doDetailBalance);
+  // $('body').on('click', '.btn-detail-recharge', doDetailRecharge);
+  // $('body').on('click', '.btn-detail-putforward', doDetailPuforward);
+  // $('body').on('click', '.btn-detail-express', doDetailExpress);
+  
+  $('body').on('click', '.m-close', doClose);
   $('body').on('click', '.btn-setvip', doSetVip);
 }
+
+
+function doDetailShop() {
+  var obj ={
+    shoperId: $(this).data("id")
+  }
+  promiseTmpl('get', '/tmpl/admin/list_shoper_shop.tmpl' ,['/adminshoper/shoper_shops', encodeQuery(obj)].join('?'), null,cbDetailShop)
+}
+
+
+function cbDetailShop(r,ret) {
+
+  $(".g-detail").empty();
+  $(".g-detail").prepend($.templates(r).render(ret));
+  showModel('.g-detail')
+}
+
+
+
+function doDetailPay() {
+  pageData =  Object.assign({mainType:'pay'}, PAGE_DATA);
+  $("#sr-status option[value='-1']").prop("selected", true);
+  var param ={
+    shoperId: $(this).data("id"),
+    tasktype: $('#sr-tasktype').val(),
+    num: $('#sr-num').val(),
+    isRecieve: $('#sr-isRecieve').val(),
+  }
+  Object.assign(param, pageData);
+  promiseTmpl('get', '/tmpl/admin/list_shoper_tasks.tmpl' ,['/adminshoper/shoper_tasks', encodeQuery(param)].join('?'), null, cbDetailPay)
+}
+
+
+function cbDetailPay(r,ret) {
+
+  $(".g-detail").empty();
+  $(".g-detail").prepend($.templates(r).render(ret,rdHelper));
+  showModel('.g-detail')
+}
+
+
+function doDetailBrowse() {
+  pageData =  Object.assign({mainType:'browse'}, PAGE_DATA);
+  $("#sr-status option[value='-1']").prop("selected", true);
+  var param ={
+    shoperId: $(this).data("id"),
+    tasktype: $('#sr-tasktype').val(),
+    isRecieve: $('#sr-isRecieve').val(),
+  }
+  Object.assign(param, pageData);
+  promiseTmpl('get', '/tmpl/admin/list_shoper_tasks.tmpl' ,['/adminshoper/shoper_tasks', encodeQuery(param)].join('?'), null, cbDetailBrowse)
+}
+
+
+function cbDetailBrowse(r,ret) {
+
+  $(".g-detail").empty();
+  $(".g-detail").prepend($.templates(r).render(ret,rdHelper));
+  showModel('.g-detail')
+}
+
+
+
+function doDetailOneappeal() {
+  pageData =  Object.assign({mainType:'browse'}, PAGE_DATA);
+  $("#sr-status option[value='-1']").prop("selected", true);
+  var param ={
+    shoperId: $(this).data("id"),
+    tasktype: $('#sr-tasktype').val(),
+    isRecieve: $('#sr-isRecieve').val(),
+  }
+  Object.assign(param, pageData);
+  promiseTmpl('get', '/tmpl/admin/list_shoper_oneappeal.tmpl' ,['/adminshoper/get_shoper_complains_list', encodeQuery(param)].join('?'), null, cbDetailBrowse)
+}
+
+
+
+function cbDetailOneappeal(r,ret) {
+
+  $(".g-detail").empty();
+  $(".g-detail").prepend($.templates(r).render(ret,rdHelper));
+  showModel('.g-detail')
+}
+
+
+
+function doDetailZeroappeal() {
+  pageData =  Object.assign({mainType:'browse'}, PAGE_DATA);
+  $("#sr-status option[value='-1']").prop("selected", true);
+  var param ={
+    shoperId: $(this).data("id"),
+    tasktype: $('#sr-tasktype').val(),
+    num: $('#sr-num').val(),
+    isRecieve: $('#sr-isRecieve').val(),
+  }
+  Object.assign(param, pageData);
+  promiseTmpl('get', '/tmpl/admin/list_shoper_tasks.tmpl' ,['/adminshoper/shoper_tasks', encodeQuery(param)].join('?'), null, cbDetailBrowse)
+}
+
+
+
+function cbDetailZeroappeal(r,ret) {
+
+  $(".g-detail").empty();
+  $(".g-detail").prepend($.templates(r).render(ret,rdHelper));
+  showModel('.g-detail')
+}
+
+
+
+
+
+
+
+
+function doClose() {
+  $('.g-detail').hide()
+}
+
+
+
+
+
+
 
 function doSetVip() {
 
@@ -31,6 +166,17 @@ function doSetVip() {
     }
   });
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 function initList() {
@@ -77,13 +223,3 @@ function doSearch() {
   initList();
 }
 
-
-function doDetailShop() {
-  id = $(this).data("id")
-  var index = $(e.currentTarget).data('index');
-  let ret = _listshop[index];
-  $(".g-detail .m-detail-wrap").remove();
-  $(".g-detail").prepend($("#coverTmpl").render(ret));
-  $(".g-detail").show()
-  
-}

@@ -1,30 +1,69 @@
+
+
 <table class="table table-hover table-light">
     <thead>
         <tr class="uppercase">
-            <th> # </th>
-            <th> 商家ID</th>
-            <th> 注册时间 </th>
-            <th> VIP情况 </th>
-            <th> 账户余额情况 </th>
-            <th> 推广人数情况 </th>
-            <th> 信誉情况 </th>
+            <td>          </td>
+            <td class="basic-info"> 基本信息 </td>
+            <td class="task-info"> 任务信息 </td>
+            <td class="appeal-info"> 申诉信息 </td>
+            <td class="finance-info"> 财务信息 </td>
+            <th> 操作</th>
         </tr>
     </thead>
     <tbody>
       {{for data}}
         <tr>
-            <td> {{:#index+1}} </td>
-            <td> {{:id}}</td>
-            <td> {{:~formatTime(regtime)}} </td>
-            <th> {{:memberValid}}</th>
-            <th> {{:}}</th>
-            <th> {{:}}</th>
-            <th> </th>
-            <td>
-              
+            <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
+            <td class="basic-info">
+             <span>状态：{{:~formatFrozen(frozen)}}</span>
+             <span>级别：#</span>
+             <span>商家ID：{{:id}}</span>
+             <br>
+             <span>注册时间：{{:~formatTime(regtime)}} </span>
+             <br>
+             <span>VIP：{{:~formatBoolEx(memberValid)}}</span>
+             <span>推广人数：#</span>
+             <br>
+             <span>信誉评估：#</span>
+             <span>店铺名称：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-shopname" data-id="{{:id}}" > 详细 </a></span>
+            </td>
+
+            <td class="task-info"> 
+                    垫付任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-pay" data-id="{{:id}}" > 详细 </a>
+                    <br>
+                    浏览任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-browse" data-id="{{:id}}" > 详细 </
+            </td>
+
+            <td class="appeal-info"> 
+                发起的申诉:<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-oneappeal" data-id="{{:id}}" > 详细 </a>
+                <br>
+                收到的申诉:<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-zeroappeal" data-id="{{:id}}" > 详细 </a>
+            </td>
+
+            <td class="finance-info"> 
+                <span>
+                   余额：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-balance" data-id="{{:id}} " > 详细 </a>
+                 
+                </span>
+
+                <span>
+                   充值：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-recharge" data-id="{{:id}} " > 详细 </a>
+                 
+                </span>
+                <br>
+                <span>
+                   提现：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-putforward" data-id="{{:id}} " > 详细 </a>
+                 
+                </span>
+                <span>
+                快递：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-express" data-id="{{:id}} " > 详细 </a>
+            
+                </span>
+            </td>
+
+            <td>              
               <a href="javascript:;" class="btn red-mint btn-xs btn-setvip" data-id="{{:id}} " ><i class="fa fa-edit"></i> 设置VIP </a> 
-              <a href="javascript:;" class="btn red-mint btn-xs btn-detail-data" data-id="{{:id}} " ><i class="fa fa-edit"></i> 详细数据 </a> 
-              
             </td>
         </tr>
       {{/for}}
