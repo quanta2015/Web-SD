@@ -457,7 +457,22 @@ const promiseObj = (url, data) => {
 }
 
 //------------------------------------------------------
-
+function promiseWithdraw(url,filename){
+      var formData = new FormData();
+      formData.append(filename);
+      $.ajax({    
+        url: HOST + url,
+        type: 'POST',
+        data: formData[0],
+        async:false,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: function(data,file){
+          resolve(obj.key);
+        }
+      })
+}
 
 
 

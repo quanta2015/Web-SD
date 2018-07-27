@@ -98,6 +98,7 @@ function doLeadingIn(filename) {
     }else if(withdrawtype == 'sell'){
       joggle = '/adminshoper/import_shoper_withdraw_list';
     } 
-    location.href = [HOST+joggle]
+    promiseWithdraw(joggle,filename)
+    
 }
 
