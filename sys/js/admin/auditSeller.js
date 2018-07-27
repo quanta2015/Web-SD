@@ -175,10 +175,6 @@ function doSetVip() {
 
 
 
-
-
-
-
 function initList() {
   let param = {
     sdate: $("#sr-time-from").val() + ' 00:00:00',

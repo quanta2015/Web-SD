@@ -4,7 +4,8 @@
     <thead>
         <tr class="uppercase">
             <td>          </td>
-            <td class="basic-info"> 基本信息 </td>
+            <td class="shoper-info"> 商家信息 </td>
+            <td class="shop-info"> 店铺信息</td>
             <td class="task-info"> 任务信息 </td>
             <td class="appeal-info"> 申诉信息 </td>
             <td class="finance-info"> 财务信息 </td>
@@ -15,53 +16,55 @@
       {{for data}}
         <tr>
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
-            <td class="basic-info">
+            <td class="shoper-info">
              <span>状态：{{:~formatFrozen(frozen)}}</span>
              <span>级别：#</span>
              <span>商家ID：{{:id}}</span>
              <br>
              <span>注册时间：{{:~formatTime(regtime)}} </span>
              <br>
-             <span>VIP：{{:~formatBoolEx(memberValid)}}</span>
+             <span>VIP：{{:~formatBoolEx(memberValid)}} 到期时间</span>
              <span>推广人数：#</span>
-             <br>
+            </td>
+
+            <td class="shop-info">
              <span>信誉评估：#</span>
              <span>店铺名称：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-shopname" data-id="{{:id}}" > 详细 </a></span>
             </td>
+            {{for data}}
+                <td class="task-info"> 
+                        垫付任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-pay" data-id="{{:id}}" > 详细 </a>
+                        <br>
+                        浏览任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-browse" data-id="{{:id}}" > 详细 </
+                </td>
 
-            <td class="task-info"> 
-                    垫付任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-pay" data-id="{{:id}}" > 详细 </a>
+                <td class="appeal-info"> 
+                    发起的申诉:<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-oneappeal" data-id="{{:id}}" > 详细 </a>
                     <br>
-                    浏览任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-browse" data-id="{{:id}}" > 详细 </
-            </td>
+                    收到的申诉:<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-zeroappeal" data-id="{{:id}}" > 详细 </a>
+                </td>
 
-            <td class="appeal-info"> 
-                发起的申诉:<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-oneappeal" data-id="{{:id}}" > 详细 </a>
-                <br>
-                收到的申诉:<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-zeroappeal" data-id="{{:id}}" > 详细 </a>
-            </td>
+                <td class="finance-info"> 
+                    <span>
+                       余额：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-balance" data-id="{{:id}} " > 详细 </a>
+                     
+                    </span>
 
-            <td class="finance-info"> 
-                <span>
-                   余额：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-balance" data-id="{{:id}} " > 详细 </a>
-                 
-                </span>
-
-                <span>
-                   充值：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-recharge" data-id="{{:id}} " > 详细 </a>
-                 
-                </span>
-                <br>
-                <span>
-                   提现：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-putforward" data-id="{{:id}} " > 详细 </a>
-                 
-                </span>
-                <span>
-                快递：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-express" data-id="{{:id}} " > 详细 </a>
-            
-                </span>
-            </td>
-
+                    <span>
+                       充值：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-recharge" data-id="{{:id}} " > 详细 </a>
+                     
+                    </span>
+                    <br>
+                    <span>
+                       提现：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-putforward" data-id="{{:id}} " > 详细 </a>
+                     
+                    </span>
+                    <span>
+                    快递：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-express" data-id="{{:id}} " > 详细 </a>
+                
+                    </span>
+                </td>
+            {{/for}}
             <td>              
               <a href="javascript:;" class="btn red-mint btn-xs btn-setvip" data-id="{{:id}} " ><i class="fa fa-edit"></i> 设置VIP </a> 
             </td>
