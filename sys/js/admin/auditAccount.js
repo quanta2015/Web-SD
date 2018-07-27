@@ -79,7 +79,8 @@ doClose();
     if( ret !== null) {
       var obj = {
         id: sid = $(e.currentTarget).data('id'),
-        approve: ($(e.currentTarget).data('type')=='pass')?AUDIT_PASS:AUDIT_FAIL
+        approve: ($(e.currentTarget).data('type')=='pass')?AUDIT_PASS:AUDIT_FAIL,
+        reason:ret
       }
       promise('POST',URL_ADMIN_ACOUNT_AUDIT,JSON.stringify(obj), cbAudit, null)
     }; 

@@ -3,7 +3,20 @@ $(init);
 
 function init() {
   initTime();
+  initShops()
   initList(pageData);
+}
+
+function initShops() {
+  promise('GET', URL_TASK_ALL_PLATFORM, null, cbShops, null);
+}
+
+function cbShops(e) {
+  for(i=0; i< e.length; i++) {
+    for(j=0; j< e[i].shops.length; j++) {
+      $("#shop-name").append(`<option value="${e[i].shops[j].id}">${e[i].shops[j].name}</option>`)
+    }
+  }
 }
 
 function initTime() {

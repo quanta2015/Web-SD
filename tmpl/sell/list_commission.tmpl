@@ -3,7 +3,6 @@
         <tr class="uppercase">
             <th> # </th>
             <th> 发布时间 </th>
-            <th> 完成时间 </th>
             <th> 店铺名 </th>
             <th> 任务ID </th>
             <th> 发布单数 </th>
@@ -16,7 +15,6 @@
         <tr>
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
             <td> {{:~formatTime(createtime)}} </td>
-            <td> {{:~formatTime(completeTime)}} </td>
             <th> {{:shopName}} </th>
             <td> {{:taskId}} </td>
             <td> {{:number}} </td>
