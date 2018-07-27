@@ -26,6 +26,7 @@ let messages = {
   }
 }
 let status;
+let bankinfo;
 
 $(init);
 
@@ -53,12 +54,13 @@ function initBindInfo() {
 
 function cbInitBindInfo(e) {
   status = e.bankcardState;
+  bankinfo = e;
   let func;
   // status = -1
   if ( status == -1 || status == null) {
     //未绑定
     func = renderTmpl(TMPL_BUY_BIND_BKCARD, {
-      name: cookie('name'),
+      name: e.name,
       bank: null,
       bank_no: null,
       acount_name: null,
@@ -70,12 +72,12 @@ function cbInitBindInfo(e) {
   } else {
     //显示已经绑定表单
     func = renderTmpl(TMPL_BUY_BIND_BKCARD, {
-      name: cookie('name'),
-      bank: cookie2('bank', 'buyerBankList'),
-      bankNo: cookie2('bankNo', 'buyerBankList'),
-      acountName: cookie2('acountName', 'buyerBankList'),
-      acountSubbank: cookie2('acountSubbank', 'buyerBankList'),
-      acountBankno: cookie2('acountBankno', 'buyerBankList'),
+      name: e.name,
+      bank: e.buyerBankList[0].bank,
+      bankNo: e.buyerBankList[0].bankNo,
+      acountName: e.buyerBankList[0].acountName,
+      acountSubbank: e.buyerBankList[0].acountSubbank,
+      acountBankno: e.buyerBankList[0].acountBankno,
       type: status !== 2 ? "disabled" : null,
       status: status,
       statusText: AUDIT_STATUS[status],
@@ -110,7 +112,7 @@ function doSave(data) {
   
   if ((obj.reBankNo !== obj.bankNo)&&(status !== 1)) return errorInfo('两次输入的账号不相同');
   delete obj.reBankNo;
-  if ((status === 2)||(status === 1)) obj.id = cookie2('id', 'buyerBankList');
+  if ((status === 2)||(status === 1)) obj.id = bankinfo.buyerBankList[0].id;
   promise('POST', URL_BUY_BIND_BANK, JSON.stringify(obj), cbBind, null);
 }
 

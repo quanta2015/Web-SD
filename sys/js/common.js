@@ -1,4 +1,4 @@
-// BASIC DEF
+﻿// BASIC DEF
 const CODE_COUNT = 60
 const BUY = 0
 const SELL = 1
@@ -997,8 +997,8 @@ switch(type){case 1:case 7:if(numValues==1){return file.getUint8(entryOffset+8,!
 
 function isEdited(exif, dt) {
   ret = false;
-  if (typeof(exif)==='undefined') return true;
-  if (typeof(dt)==='undefined') return true;
+  if (typeof(exif)==='undefined') return false;
+  if (typeof(dt)==='undefined') return false;
 
   exif = exif.toLowerCase()
   if (exif.indexOf('photoshop')>=0) ret = true;

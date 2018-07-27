@@ -7,8 +7,6 @@ function init() {
 
 
 
-
-
   //取会员数据
   promise('GET', URL_MEMBERSHIP_FEE_TYPE, null, (e)=>{
     $(".u-vip-selection").empty();
@@ -16,12 +14,9 @@ function init() {
         $(".u-vip-selection").append(`<label class="mt-radio"><input type="radio" name="r-vip-type" value="${val.id}"> ${val.money}元 | ${val.name}<span></span></label>`);
     });
     $('.mt-radio input').first().prop('checked',true)
+  }, null)
 
-
-  }, null);
-
-  $('.balance-vip').on('click', ()=>{
-    
+  $('.balance-vip').on('click', ()=>{  
     msgbox('温馨提示', `请确认购买VIP权益！`,'取消','确认',(ret)=>{
       if (!ret) {
         let obj = { membershipFeeId: parseInt($("input:checked").val()) }
