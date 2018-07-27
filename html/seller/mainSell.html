@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html lang="en"><head>
+<html>
+<head>
   <meta charset="utf-8">
   <title>商家中心</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,7 +28,7 @@
             <a href="tencent://message/?uin=2181198399&Menu=yes" target="blank">商家客服A</a>
             <a href="tencent://message/?uin=2265048770&Menu=yes" target="blank">商家客服B</a></span>
         </li>
-        <li><span class="m-title"><a href="/helpSell.html" target="mainframe">帮助中心</a></span></li>
+        <li><span class="m-title"><a href="../helpSell.html" target="mainframe">帮助中心</a></span></li>
         <li><span class="m-title">账户金额 </span>[ <span id="u-money"></span> <span id="u-balance" class="hide"></span>]</li>
         <li class="u-vip" style="display: none"><span class="m-title">VIP </span>[ <span id="u-vip-date"></span> ]</li>
         <li><span class="m-title">用户名称 </span>[ <span id="u-name"></span> ]</li>
@@ -49,9 +50,8 @@
               <a href="#"><i class="fa fa-vimeo-square"></i> 我的VIP</a>
             </li>
           <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar" >
-            <a href="/spreadMoney.html"  target="mainframe"><i class=" icon-paper-plane"></i> 推广说明</a>
+            <a href="../spreadMoney.html"  target="mainframe"><i class=" icon-paper-plane"></i> 推广说明</a>
           </li>
-          
           <li class="dropdown dropdown-quick-sidebar-toggler">
             <a id="exitBtn"><i class="icon-power"></i> 退出</a>
           </li>
@@ -190,6 +190,25 @@
           <li class="nav-item active open">
             <a href="javascript:;" class="nav-link nav-toggle">
               <i class="icon-home"></i>
+              <span class="title">面单管理</span>
+              <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+              <li class="nav-item">
+                <a href="#" class="nav-link " data-button="buyExpress">
+                  <span class="title">购买面单</span>
+                </a>
+              </li>
+              <li class="nav-item  ">
+                <a href="#" class="nav-link " data-button="statExpress">
+                  <span class="title">统计面单</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item active open">
+            <a href="javascript:;" class="nav-link nav-toggle">
+              <i class="icon-home"></i>
               <span class="title">商家中心</span>
               <span class="arrow"></span>
             </a>
@@ -197,11 +216,6 @@
               <li class="nav-item">
                 <a href="#" class="nav-link " data-button="myAccount">
                   <span class="title">账户信息</span>
-                </a>
-              </li>
-              <li class="nav-item  ">
-                <a href="#" class="nav-link " data-button="statExpress">
-                  <span class="title">统计面单</span>
                 </a>
               </li>
               <li class="nav-item  ">

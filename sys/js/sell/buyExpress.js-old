@@ -1,0 +1,39 @@
+// let pageData = Object.assign({}, PAGE_DATA);
+
+$(init);
+
+function init() {
+
+  initTime()
+  initList()
+  $('#btn-search').on('click', initList);
+}
+
+
+function initList() {
+  let param = {
+    fromDate: $("#from").val() + ' 00:00:00',
+    endDate: $("#to").val() + ' 23:59:00',
+  };
+  // Object.assign(param, pageData);
+  promiseTmpl('GET', '/tmpl/buy/list_buy_express.tmpl', ['/user/express_buy_list', encodeQuery(param)].join('?'), null, cbList)
+}
+
+function cbList(r, ret) {
+    // Object.assign(ret, pageData);
+    // totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
+    $(".portlet-body .table").remove();
+    $(".portlet-body").append($.templates(r).render(ret, rdHelper));
+    // if ($('.table-pg').text() == '') initPage(totalPages);
+}
+
+
+// function initPage(totalPages) {
+//   $('.portlet-body .table-pg').twbsPagination({
+//     totalPages: totalPages || 1,
+//     onPageClick: function(event, page) {
+//       pageData.pageIndex = page - 1;
+//       initList();
+//     }
+//   })
+// }

@@ -19,10 +19,7 @@ function doExport() {
     fromDate: $("#from").val() + ':00',
     toDate: $("#to").val()+ ':00'
   }
-
   window.location.href =HOST +  ['/task/export_express', encodeQuery(cdt)].join('?');
-
-
 }
 
 function doSearch() {

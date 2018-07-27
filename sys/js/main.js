@@ -4,7 +4,6 @@ function init() {
 
   //控制高度
   var h = $(document).height();
-  console.log(h);
   $("iframe").height(h-75);
 
   //显示用户名
@@ -32,7 +31,7 @@ function init() {
   //菜单参数封装
   $('[data-button]').on('click', function(e) {
     
-    ( $(this).data('pos')=='root' )?pos='/':pos='';
+    ( $(this).data('pos')=='root' )?pos='/html/':pos='';
     var pageName = pos + $(this).data('button') + '.html';
 
     var o = {
