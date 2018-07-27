@@ -1,0 +1,199 @@
+
+a.btn {
+    margin: 5px 0;
+}
+.table.table-light > tbody > tr > td,.table.table-light > tbody > tr > th {
+    font-size: 12px;
+}
+
+.goodsname {
+    width: 200px;
+    word-break: break-all;
+}
+
+.g-detail {
+    position: absolute;
+    left: 0;
+    right:0;
+    top: 0;
+    bottom: 0;
+    z-index: 999999;
+    background: rgba(0,0,0,.5);
+}
+
+.m-img {
+    max-width: 200px!important;
+}
+
+
+.m-detail-wrap {
+    position: absolute;
+    /*margin: 20px auto;*/
+    background: #fff;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    box-shadow:1px 1px 5px #ccc;
+    top: 50%  ;
+    right: 50%;
+    transform: translateY(-50%) translateX(50%)!important;
+}
+
+.m-close {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    z-index: 9999;
+    background-image: url(/img/close.png);
+}
+
+.m-detail-wrap {
+    position: absolute;
+    background: #fff;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    box-shadow:1px 1px 5px #ccc;
+    top: 50%  ;
+    right: 50%;
+    transform: translateY(-50%) translateX(50%)!important;
+}
+
+.m-title {
+    /*padding: 15px;*/
+    background: #eee;
+}
+
+.m-d-item {
+    margin: 5px 5px 0 5px;
+}
+
+
+.v-sub-title {
+    font-size: 16px;
+    display: flex;
+    padding-top: 5px!important;
+}
+
+.m-d-goods {
+    padding: 15px;
+    background: #eee;
+    display: flex;
+}
+
+
+
+.m-d-main, .m-d-other {
+    padding: 0 5px 5px 5px;
+    background: #eee;
+    display: flex;
+}
+
+.m-d>div {
+    flex: 1;
+    background: #fff;
+    padding: 0px 5px 5px 5px;
+}
+
+
+.m-d div li {
+    display: flex;
+    margin:5px 10px;
+}
+
+.m-d .v-m-title {
+    border-bottom: 1px dashed #999;  
+    padding-bottom: 5px;
+    color:  #4B77BE;
+    font-weight: 600;
+}
+
+.m-d .v-m-title span {
+    margin-right: 10px;
+}
+
+.v-img {
+    overflow: hidden;
+    height: 400px;
+    max-height: 400px;
+}
+
+.v-img img {
+    width: 100%;
+}
+
+
+.col-1 {
+    flex: 1;
+}
+
+.col-2 {
+    flex: 2;
+}
+
+
+
+.m-d-commit {
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+.m-d-commit a {
+    width: 200px;
+    margin-right: 20px;
+}
+
+.u-task-count {
+    float: right;
+    margin: 0!important;
+}
+
+
+.m-close {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    z-index: 9999;
+    background-image: url(/img/close.png);
+}
+
+.row-s {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.row-s>div {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.m-sbar {
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.m-sbar>div,
+.m-sbar>a {
+    margin-right: 15px;
+}
+
+.m-sbar>div>select,
+.m-sbar>div>input {
+    display: inline-block;
+    width: 100px;
+}
+
+.m-sbar>div>input.u-dt {
+    width: 140px;
+}
