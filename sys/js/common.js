@@ -522,6 +522,10 @@ const promiseCall = (url, data) => {
 
 // TMPL FUNCTION DEF
 const rdHelper = {
+  getLength: (list) => {    
+    if (typeof list === 'undefined') return 0;
+    if (list === '') return 0;
+    return list.length},
   formatTime: (t) => { return moment(t).format("YYYY-M-D HH:mm:ss") },
   div: (val1,val2) => { return  Number(val1) / Number(val2) * 100},
   add: (val1,val2,val3) => { return Number(val1) + Number(val2) + Number(val3) },
