@@ -29,35 +29,46 @@
              <span> 推广人数：#</span><span>     信誉评估：#</span>
             </td>
 
+            
             <td class="shop-info">
-             <span>店铺1名称：{{:name}}<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-shopname1" data-id="{{:id}}" > 详细 </a></span>
+            {{if shopList}}
+            {{for shopList}}
+             <span>店铺名称: 
+                {{:name}}
+                <a href="javascript:;" class="btn blue-steel btn-xs btn-detail-shopname" data-id="{{:id}}"> 详细 </a></span>
              <br>
-             <span>店铺2名称：{{:name}}<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-shopname1" data-id="{{:id}}" > 详细 </a></span>             
-            </td>
+            {{/for}}
+            {{/if}}
 
+            </td>
+            
 
                 <td class="task-info"> 
-                        店铺1的垫付任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-pay1" data-id="{{:id}}" > 详细 </a>
+                    {{if shopList}}
+                    {{for shopList}}
+                        垫付任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-pay" data-id="{{:id}}" > 详细 </a>
                         <br>
-                        店铺1的浏览任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-browse1" data-id="{{:id}}" > 详细 </a>
+                        浏览任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-browse" data-id="{{:id}}" > 详细 </a>
                         <br>
-                        店铺2的垫付任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-pay2" data-id="{{:id}}" > 详细 </a>
-                        <br>
-                        店铺2的浏览任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-browse2" data-id="{{:id}}" > 详细 </
+                    {{/for}}
+                    {{/if}}
 
                 </td>
 
                 <td class="appeal-info"> 
+                    {{if shopList}}
+                    {{for shopList}}
                     发起的申诉:<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-oneappeal1" data-id="{{:id}}" > 详细 </a>
                     <br>
                     收到的申诉:<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-zeroappeal1" data-id="{{:id}}" > 详细 </a>
                     <br>
-                    发起的申诉:<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-oneappeal2" data-id="{{:id}}" > 详细 </a>
-                    <br>
-                    收到的申诉:<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-zeroappeal2" data-id="{{:id}}" > 详细 </a>
+                    {{/for}}
+                    {{/if}}
                 </td>
 
-                <td class="finance-info"> 
+                <td class="finance-info">
+                    {{if shopList}}
+                    {{for shopList}}
                     <span>
                        余额：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-balance1" data-id="{{:id}} " > 详细 </a>
                      
@@ -77,31 +88,20 @@
                 
                     </span>
                     <br>
-
-                    <span>
-                       余额：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-balance2" data-id="{{:id}} " > 详细 </a>
-                     
-                    </span>
-
-                    <span>
-                       充值：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-recharge2" data-id="{{:id}} " > 详细 </a>
-                     
-                    </span>
-                    <br>
-                    <span>
-                       提现：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-putforward2" data-id="{{:id}} " > 详细 </a>
-                     
-                    </span>
-                    <span>
-                    快递：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-express2" data-id="{{:id}} " > 详细 </a>
-                
-                    </span>
+                    {{/for}}
+                    {{/if}}
                 </td>
 
 
 
             <td>              
               <a href="javascript:;" class="btn red-mint btn-xs btn-setvip" data-id="{{:id}} " ><i class="fa fa-edit"></i> 设置VIP </a> 
+              <br>
+              <a href="javascript:;" class="btn blue-steel btn-xs btn-remarks" data-id="{{:id}} " ><i class="fa fa-edit"></i> 级别备注 </a> 
+              <br>
+              <a href="javascript:;" class="btn grey-mint btn-xs btn-punish" data-id="{{:id}} " ><i class="fa fa-edit"></i> 违规处理 </a> 
+              <br>
+              <a href="javascript:;" class="btn blue-madison btn-xs btn-activity" data-id="{{:id}} " ><i class="fa fa-edit"></i> 平台活动 </a> 
             </td>
         </tr>
       {{/for}}
