@@ -48,7 +48,8 @@ function init() {
 
   //退出清空cookie
   $('#exitBtn').on('click', (e)=> {
-    $.removeCookie('cko', { path: '/' });
+    // $.removeCookie('cko', { path: '/' });
+    Cookies.remove('cko');
     location.href = '/index.html'
   });
   

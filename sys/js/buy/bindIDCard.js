@@ -67,7 +67,6 @@ function doSave(data) {
   promise('POST', URL_BUY_BIND_ID_CARD, JSON.stringify(obj), cbBind, null);
 }
 function cbBind(e) {
-  initUserInfo();
   alertBox(MSG_BIND_SUCCESS, ()=>{ goto("newTask.html") })
 }
 

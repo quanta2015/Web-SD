@@ -45,6 +45,5 @@ function doSave(e) {
 }
 
 function cbSave(e) {
-  initUserInfo();
   notifyInfo(MSG_UPDATE_SUCCESS)
 }
