@@ -265,10 +265,19 @@ thead {
 }
 
 .u-type-complain-offset {
-    position: absolute;
-    top: 70px;
+/*    position: absolute;
+    top: 70px;*/
 }
 
 .u-type-complain-end {
     background: #1BA39C;
+}
+
+
+.u-msg-time {
+    color: #4B77BE; 
+}
+
+.u-msg-title {
+    color: #D91E18
 }
