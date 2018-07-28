@@ -1,3 +1,27 @@
+
+
+#btn-leading-in {
+    position: relative;
+}
+
+#btn-leading-in > input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-size: 23px;
+    cursor: pointer;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    direction: ltr;
+}
+
+input[type=file] {
+    display: block;
+}
+
 body {
     min-width: 1200px;
 }

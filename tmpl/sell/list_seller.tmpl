@@ -1,30 +1,107 @@
+
+
 <table class="table table-hover table-light">
     <thead>
         <tr class="uppercase">
-            <th> # </th>
-            <th> 商家ID</th>
-            <th> 注册时间 </th>
-            <th> VIP情况 </th>
-            <th> 账户余额情况 </th>
-            <th> 推广人数情况 </th>
-            <th> 信誉情况 </th>
+            <td>          </td>
+            <td class="shoper-info"> 商家信息 </td>
+            <td class="shop-info"> 店铺信息</td>
+            <td class="task-info"> 任务信息 </td>
+            <td class="appeal-info"> 申诉信息 </td>
+            <td class="finance-info"> 财务信息 </td>
+            <th> 操作</th>
         </tr>
     </thead>
     <tbody>
       {{for data}}
         <tr>
-            <td> {{:#index+1}} </td>
-            <td> {{:id}}</td>
-            <td> {{:~formatTime(regtime)}} </td>
-            <th> {{:memberValid}}</th>
-            <th> {{:}}</th>
-            <th> {{:}}</th>
-            <th> </th>
-            <td>
-              
+            <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
+            <td class="shoper-info">
+             <span>状态：{{:~formatFrozen(frozen)}}</span>
+             <span>     级别：#</span>
+             <br>
+             <span>商家ID：{{:id}}</span>
+             <br>
+             <span>注册时间：{{:~formatTime(regtime)}} </span>
+             <br>
+             <span>VIP：{{:~formatBoolEx(memberValid)}}      到期时间:{{if memberValid==true}}{{:memberEndDate}}{{/if}}{{if memberValid==false}}无{{/if}}</span>
+             <br>
+             <span> 推广人数：#</span><span>     信誉评估：#</span>
+            </td>
+
+            <td class="shop-info">
+             <span>店铺1名称：{{:name}}<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-shopname1" data-id="{{:id}}" > 详细 </a></span>
+             <br>
+             <span>店铺2名称：{{:name}}<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-shopname1" data-id="{{:id}}" > 详细 </a></span>             
+            </td>
+
+
+                <td class="task-info"> 
+                        店铺1的垫付任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-pay1" data-id="{{:id}}" > 详细 </a>
+                        <br>
+                        店铺1的浏览任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-browse1" data-id="{{:id}}" > 详细 </a>
+                        <br>
+                        店铺2的垫付任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-pay2" data-id="{{:id}}" > 详细 </a>
+                        <br>
+                        店铺2的浏览任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-browse2" data-id="{{:id}}" > 详细 </
+
+                </td>
+
+                <td class="appeal-info"> 
+                    发起的申诉:<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-oneappeal1" data-id="{{:id}}" > 详细 </a>
+                    <br>
+                    收到的申诉:<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-zeroappeal1" data-id="{{:id}}" > 详细 </a>
+                    <br>
+                    发起的申诉:<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-oneappeal2" data-id="{{:id}}" > 详细 </a>
+                    <br>
+                    收到的申诉:<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-zeroappeal2" data-id="{{:id}}" > 详细 </a>
+                </td>
+
+                <td class="finance-info"> 
+                    <span>
+                       余额：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-balance1" data-id="{{:id}} " > 详细 </a>
+                     
+                    </span>
+
+                    <span>
+                       充值：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-recharge1" data-id="{{:id}} " > 详细 </a>
+                     
+                    </span>
+                    <br>
+                    <span>
+                       提现：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-putforward1" data-id="{{:id}} " > 详细 </a>
+                     
+                    </span>
+                    <span>
+                    快递：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-express1" data-id="{{:id}} " > 详细 </a>
+                
+                    </span>
+                    <br>
+
+                    <span>
+                       余额：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-balance2" data-id="{{:id}} " > 详细 </a>
+                     
+                    </span>
+
+                    <span>
+                       充值：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-recharge2" data-id="{{:id}} " > 详细 </a>
+                     
+                    </span>
+                    <br>
+                    <span>
+                       提现：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-putforward2" data-id="{{:id}} " > 详细 </a>
+                     
+                    </span>
+                    <span>
+                    快递：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-express2" data-id="{{:id}} " > 详细 </a>
+                
+                    </span>
+                </td>
+
+
+
+            <td>              
               <a href="javascript:;" class="btn red-mint btn-xs btn-setvip" data-id="{{:id}} " ><i class="fa fa-edit"></i> 设置VIP </a> 
-              <a href="javascript:;" class="btn red-mint btn-xs btn-detail-data" data-id="{{:id}} " ><i class="fa fa-edit"></i> 详细数据 </a> 
-              
             </td>
         </tr>
       {{/for}}

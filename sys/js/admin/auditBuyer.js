@@ -10,18 +10,18 @@ function init() {
   initTime();
   initList();
   // $('body').on('click', '.audit-shop', doAudit);
-  $('body').on('click', '.btn-detail-shopname', doDetailShop);
-  $('body').on('click', '.btn-detail-pay', doDetailPay);
-  $('body').on('click', '.btn-detail-browse', doDetailBrowse);
+  $('body').on('click', '.btn-detail-task', doDetailShop);
   $('body').on('click', '.btn-detail-oneappeal', doDetailOneappeal);
   $('body').on('click', '.btn-detail-zeroappeal', doDetailZeroappeal);
+  $('body').on('click', '.btn-detail-capital', doDetailCapital);
+  $('body').on('click', '.btn-detail-commission', doDetailCommission);
   // $('body').on('click', '.btn-detail-balance', doDetailBalance);
   // $('body').on('click', '.btn-detail-recharge', doDetailRecharge);
   // $('body').on('click', '.btn-detail-putforward', doDetailPuforward);
-  // $('body').on('click', '.btn-detail-express', doDetailExpress);
+  // $('body').on('click', '.btn-detail-activity', doActivity);
   
   $('body').on('click', '.m-close', doClose);
-  $('body').on('click', '.btn-setvip', doSetVip);
+  $('body').on('click', '.btn-setvip', doRemarks);
 }
 
 
@@ -29,7 +29,7 @@ function doDetailShop() {
   var obj ={
     shoperId: $(this).data("id")
   }
-  promiseTmpl('get', '/tmpl/admin/list_shoper_shop.tmpl' ,['/adminshoper/shoper_shops', encodeQuery(obj)].join('?'), null,cbDetailShop)
+  promiseTmpl('get', '/tmpl/admin/list_buyer.tmpl' ,['/adminbuyer/buyer_shops', encodeQuery(obj)].join('?'), null,cbDetailShop)
 }
 
 
@@ -143,24 +143,11 @@ function doClose() {
 
 
 
-function doSetVip() {
+// function doRemarks() {
 
-  id = $(this).data("id")
-  bootbox.prompt(`请输入设置VIp的数量（以月为单位）！`, function(ret){ 
-    if(( ret !== "")&&( ret!== null)&&($.isNumeric(ret))) {
-      var obj = {
-        shoperId: id,
-        month: ret
-      };
-      promise('POST','/admin/give_vip_shoper', JSON.stringify(obj), (e)=>{
-        notifyInfo(`设置VIP充值成功！`)
-        initList()
-      }, null)
-    }else{
-      notifyInfo(`请输入正确的充值数量！`)
-    }
-  });
-}
+//   id = $(this).data("id")
+
+// }
 
 
 
@@ -170,7 +157,7 @@ function initList() {
     edate: $("#sr-time-to").val() + ' 23:59:00',
   };
   Object.assign(param, pageData);
-  promiseTmpl('GET', '/tmpl/sell/list_seller.tmpl', ['/admin/shoper_acount_list', encodeQuery(param)].join('?'), null, cbList)
+  promiseTmpl('GET', '/tmpl/buy/list_buyer.tmpl', ['/admin/shoper_acount_list', encodeQuery(param)].join('?'), null, cbList)
 }
 
 function cbList(r, e) {

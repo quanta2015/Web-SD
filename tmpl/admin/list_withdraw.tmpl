@@ -9,7 +9,7 @@
             <th> 申请提现金额 </th>
             <th> 实际到账结金额 </th>
             <th> 提现种类 </th>
-            <th> 小费 </th>
+            <th> 服务费 </th>
             <th> 审核状态 </th>
         </tr>
     </thead>
@@ -18,14 +18,14 @@
         <tr>
             <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}}</td>
             <td class="u-dt"> {{:~formatTime(createtime)}}</td>
-            <td class="buyername"> {{:buyerName}}</td>
+            <td class="buyername"> {{:transferPerson}}</td>
             <td> {{:toAccount}} </td>
-            <td> {{:toBank}}</td>
-            <td> {{:withdrawMoney}}</td>
+            <td> {{:bankName}}</td>
+            <td> {{:transferMoney}}</td>
             <td> {{:actualValue}}</td>
             <td> {{:remark}}</td>
             <td> {{:serviceFee}}</td>
-            <td> {{:state}}</td> 
+            <td> {{:approveString}}</td> 
         </tr>
       {{/for}}
     </tbody>

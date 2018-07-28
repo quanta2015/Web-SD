@@ -1,0 +1,81 @@
+
+<table class="table table-hover table-light">
+    <thead>
+        <tr class="uppercase">
+            <td>          </td>
+            <td class="buyer-info"> 买家信息 </td>
+            <td class="taobao-info"> 个人信息</td>
+            <td class="task-info"> 任务信息 </td>
+            <td class="appeal-info"> 申诉信息 </td>
+            <td class="finance-info"> 财务信息 </td>
+            <th> 操作</th>
+        </tr>
+    </thead>
+    <tbody>
+      {{for data}}
+        <tr>
+            <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
+            <td class="buyer-info">
+             <span>状态：{{:~formatFrozen(frozen)}}</span>
+             <span>     级别：#</span>
+             <br>
+             <span>买家ID：{{:id}}</span>    <span>身份证:</span>
+             <br>
+             <span>注册时间：{{:~formatTime(regtime)}} </span>
+             <br>
+             <span>VIP:{{:~formatBoolEx(memberValid)}}      到期时间:{{if memberValid==true}}{{:memberEndDate}}{{/if}}{{if memberValid==false}}无{{/if}}</span>
+             <br>
+             <span> 推广人数：#</span>   <span>  被拉黑次数：#</span>   <span>     信誉评估：#  </span>
+            </td>
+
+            <td class="taobao-info">
+
+             <span>淘宝账号:</span>   
+            </td>
+
+
+                <td class="appeal-info"> 
+                        已接单的操作任务：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-task" data-id="{{:id}}" > 详细 </a>
+                </td>
+
+                <td class="task-info"> 
+                    发起的申诉:<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-oneappeal" data-id="{{:id}}" > 详细 </a>
+                    <br>
+                    收到的申诉:<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-zeroappeal" data-id="{{:id}}" > 详细 </a>
+                </td>
+
+                <td class="finance-info">
+                    <span>
+                       本金余额：
+                    </span>
+                    <br>
+                    <span>
+                       佣金余额：
+                     
+                    </span>
+                    <br>
+                    <span>
+                       本金提现：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-capital" data-id="{{:id}} " > 详细 </a>
+                     
+                    </span>
+                    <br>
+                    <span>
+                        佣金提现：<a href="javascript:;" class="btn blue-steel btn-xs btn-detail-commission" data-id="{{:id}} " > 详细 </a>
+                
+                    </span>
+
+                </td>
+
+               
+
+            <td>              
+              <a href="javascript:;" class="btn red-mint btn-xs btn-remarks" data-id="{{:id}} " ><i class="fa fa-edit"></i> 级别备注 </a> 
+              <a href="javascript:;" class="btn red-mint btn-xs btn-punish" data-id="{{:id}} " ><i class="fa fa-edit"></i> 违规处理 </a> 
+              <a href="javascript:;" class="btn red-mint btn-xs btn-activity" data-id="{{:id}} " ><i class="fa fa-edit"></i> 平台活动 </a> 
+
+
+            </td>
+        </tr>
+      {{/for}}
+    </tbody>
+  </table>

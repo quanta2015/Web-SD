@@ -458,7 +458,22 @@ const promiseObj = (url, data) => {
 }
 
 //------------------------------------------------------
-
+function promiseWithdraw(url,filename){
+      var formData = new FormData();
+      formData.append(filename);
+      $.ajax({    
+        url: HOST + url,
+        type: 'POST',
+        data: formData[0],
+        async:false,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: function(data,file){
+          resolve(obj.key);
+        }
+      })
+}
 
 
 
@@ -661,6 +676,9 @@ const rdHelper = {
       ret = '买家返款'
     }
     return ret;
+  },
+  formatFrozen: (s)=> {
+    return ((s)?'冻结中':'正常')
   },
   getTaskType: (s) => {
     if(s.split('')[0] === 'L') {

@@ -1,35 +1,35 @@
-let pageData;
-let viptype=getUrlParam("type");
-let pageData =  Object.assign({mainType:''}, PAGE_DATA);
+let withdrawtype = getUrlParam('type');
+let pageData =  Object.assign({}, PAGE_DATA);
 $(init);
 
 function init() {
   type = getUrlParam('type');
   $("#sr-status option[value='0']").prop("selected", true);
-  if (viptype==1) {
-    $(".li-title").html("审核卖家提现");
-  }else if (viptype==0) {
-    $(".li-title").html("审核买家提现");
-  }
 
   initTime();
   initList();
-  $('body').on('click', '#btn-leading-in', doLeadingIn);
+  // $('body').on('click', '#btn-leading-in', doLeadingIn);
   $('body').on('click', '#btn-search', doSearch);
   $('body').on('click', '#btn-leading-out', doLeadingOut);
 }
 
 function initList() {
-
-
+  $("#sr-status option[value='0']").prop("selected", true);
   let param = {
-    status: $('#sr-status').val(),
+    
     sdate: $("#sr-time-from").val() + ' 00:00:00',
     edate: $("#sr-time-to").val() + ' 23:59:00',
-    vipType: $("#sr-viptype").val(),
+    status: $('#sr-status').val(),
   };
-  Object.assign(param, pageData,{"type":viptype});
-  promiseTmpl('GET', '/tmpl/admin/list_withdraw.tmpl', ['/admin/buyer_withdraw_list', encodeQuery(param)].join('?'), null, cbListTask)
+  if((withdrawtype == 'buy')){
+    $(".caption").text("买家提现处理");
+    joggle = '/adminbuyer/buyer_withdraw_list';
+  }else if(withdrawtype == 'sell'){
+    $(".caption").text("卖家提现处理");
+    joggle = '/adminshoper/shoper_withdraw_list';
+  } 
+  Object.assign(param, pageData);
+  promiseTmpl('GET','/tmpl/admin/list_withdraw.tmpl', [joggle, encodeQuery(param)].join('?'), null, cbListTask)
 }
 
 
@@ -69,11 +69,36 @@ function doSearch() {
 }
 
 
-function doLeadingIn() {
-
+function doLeadingOut() {
+    
+    if(withdrawtype == 'buy'){
+      joggle = '/adminbuyer/expoert_buyer_withdraw_list?';
+      param = {
+      fromDate: $("#sr-time-from").val() + ' 00:00:00',
+      toDate: $("#sr-time-to").val() + ' 23:59:00',
+      status: $('#sr-status').val(),
+      };
+      
+    }else if(withdrawtype == 'sell'){
+      joggle = '/adminshoper/expoert_shoper_withdraw_list?';
+      param = {
+      fromDate: $("#sr-time-from").val() + ' 00:00:00',
+      toDate: $("#sr-time-to").val() + ' 23:59:00',
+      status: $('#sr-status').val(),
+      };
+    }
+    location.href = [HOST+joggle+encodeQuery(param)]
 }
 
-function doLeadingOut() {
-  
+
+
+function doLeadingIn(filename) {
+    if((withdrawtype == 'buy')){
+      joggle = '/adminshoper/import_buyer_withdraw_list';
+    }else if(withdrawtype == 'sell'){
+      joggle = '/adminshoper/import_shoper_withdraw_list';
+    } 
+    promiseWithdraw(joggle,filename)
+    
 }
 
