@@ -1,75 +1,69 @@
 {{for data}}
 <div class="u-wrap">
-    <div class="u-row">
-        <div class="u-ck"><input type="checkbox" name="tid" value="{{:id}}" class="u-tid"></div>
-        <div class="u-id">{{:#index+1 + ~root.pageSize*~root.pageIndex}}</div>
-        <div class="u-col u-sell">
-            <div class="u-shoptype"><img src="/img/{{:~formatShopType(shopType)}}"></div>
-            <div class="u-shopname">店铺名：{{:shopName}}</div>
-            <div class="u-tid">任务ID：{{:taskId}}</div>
-            <div class="u-tid">任务关键字：{{:keyword}}</div>
-            <div class="u-publishtime">发布时间：{{:~formatTime(taskCreatetime)}}</div>
-            {{if ((pressMoney===1) && (status !==70))}}
-            <div class="u-press-money">催</div>
-            {{/if}}
-        </div>
-        <div class="u-col u-buy">
-            <div class="u-buyer">买家ID：{{:buyerMobile}} <a class="btn red-mint btn-xs btn-defriend" data-id="{{:buyerId}}">拉黑</a></div>
-            <div class="u-buyer">买家淘宝/京东ID：{{:jingdongId}}{{:taobaoId}}</div>
-            <div class="u-order-id">平台订单ID：{{:code}}</div>
-            <div class="u-order-id">淘宝/京东订单ID：{{:orderid}}</div>
-            <div class="u-accepttime">接单时间：{{:~formatTime(acceptTime)}}</div>
-        </div>
-
-        <div class="u-col u-money">
-          {{if ~root.type === 'pay'}}
-          <!-- <div class="u-all-money">任务金额：{{:sumMoney}}</div> -->
-          <div class="font-red">垫付金额：{{:goodsSum}}元</div>  
-          <div class="font-red">实际付款：{{:goodsSumBuyer}}元</div>  
-          {{if goodsSumShoper}}
-          <div class="font-blue">修改金额：{{:goodsSumShoper}}元</div> 
-          {{/if}}
-          {{/if}}
-
-          <!-- <div class="font-red font-big"><img src="/img/money.png" class="fn-money">{{:serviceSum}} </div> -->
-        </div>
-        
-        
-        <div class="u-col u-exp">
-             {{if (expressNo)&&(status>=10)}}
-            <div class="u-exp-type">快递单号</div>
-            <div class="u-exp-id">{{:expressNo}}</div>
-            <div class="u-exp-status">已发货</div>
-            {{/if}}
-        </div>
-        
-
-        <div class="u-col u-status z-status{{:status}}">
-          {{:~formatOrderStatus(status)}}
-          {{if complainStatus === 1}}
-          <label class="u-type-complain u-type-complain-offset">申诉中</label>
-          {{/if}}
-          {{if complainStatus === 2}}
-          <label class="u-type-complain u-type-complain-offset u-type-complain-end">申诉结束</label>
-          {{/if}}
-        </div>
-
-
-        <div class="u-col u-func">
-          <a href="javascript:;" class="btn blue-steel btn-xs   uppercase detail-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-bars"></i> 任务详情 </a> 
-          <a href="javascript:;" class="btn red-mint btn-xs   uppercase complain-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-paper-o"></i> 申诉任务 </a> 
-          
-          {{if ~root.type==="pay"}}
-          <a href="javascript:;" class="btn grey-mint btn-xs   uppercase change-money" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-edit"></i> 修改价格 </a>
-          {{/if}}
-
-          {{if (status==10)}}
-          <a href="javascript:;" class="btn green-jungle btn-xs   uppercase sub-goods" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-truck"></i> 发货 </a> 
-          {{/if}}
-          {{if (status==30)}}
-          <a href="javascript:;" class="btn purple-studio btn-xs   uppercase pay-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}" type="{{:~root.type}}"><i class="fa fa-rmb"></i> 审核支付 </a> 
-          {{/if}}
-        </div>
+  <div class="u-row">
+    <div class="u-ck"><input type="checkbox" name="tid" value="{{:id}}" class="u-tid"></div>
+    <div class="u-id">{{:#index+1 + ~root.pageSize*~root.pageIndex}}</div>
+    <div class="u-col u-sell">
+      <div class="u-shoptype"><img src="/img/{{:~formatShopType(shopType)}}"></div>
+      <div class="u-shopname">店铺名：{{:shopName}}</div>
+      <div class="u-tid">任务ID：{{:taskId}}</div>
+      <div class="u-tid">任务关键字：{{:keyword}}</div>
+      <div class="u-publishtime">发布时间：{{:~formatTime(taskCreatetime)}}</div>
+      {{if ((pressMoney===1) && (status !==70))}}
+      <div class="u-press-money">催</div>
+      {{/if}}
     </div>
+    <div class="u-col u-buy">
+      <div class="u-buyer">买家ID：{{:buyerMobile}} <a class="btn red-mint btn-xs btn-defriend" data-id="{{:buyerId}}">拉黑</a></div>
+      <div class="u-buyer">买家淘宝/京东ID：{{:jingdongId}}{{:taobaoId}}</div>
+      <div class="u-order-id">平台订单ID：{{:code}}</div>
+      <div class="u-order-id">淘宝/京东订单ID：{{:orderid}}</div>
+      <div class="u-accepttime">接单时间：{{:~formatTime(acceptTime)}}</div>
+    </div>
+    <div class="u-col u-money">
+      {{if ~root.type === 'pay'}}
+      <!-- <div class="u-all-money">任务金额：{{:sumMoney}}</div> -->
+      <div class="font-red">垫付金额：{{:goodsSum}}元</div>
+      <div class="font-red">实际付款：{{:goodsSumBuyer}}元</div>
+      {{if goodsSumShoper}}
+      <div class="font-blue">修改金额：{{:goodsSumShoper}}元</div>
+      {{/if}}
+      {{/if}}
+      <!-- <div class="font-red font-big"><img src="/img/money.png" class="fn-money">{{:serviceSum}} </div> -->
+    </div>
+    
+    
+    <div class="u-col u-exp">
+      {{if (expressNo)&&(status>=10)}}
+      <div class="u-exp-type">快递单号</div>
+      <div class="u-exp-id">{{:expressNo}}</div>
+      <div class="u-exp-status">已发货</div>
+      {{/if}}
+    </div>
+    
+    <div class="u-col u-status z-status{{:status}}">
+      {{:~formatOrderStatus(status)}}
+      {{if complainStatus === 1}}
+      <label class="u-type-complain u-type-complain-offset">申诉中</label>
+      {{/if}}
+      {{if complainStatus === 2}}
+      <label class="u-type-complain u-type-complain-offset u-type-complain-end">申诉结束</label>
+      {{/if}}
+    </div>
+    <div class="u-col u-func">
+      <a href="javascript:;" class="btn blue-steel btn-xs   uppercase detail-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-bars"></i> 任务详情 </a>
+      <a href="javascript:;" class="btn red-mint btn-xs   uppercase complain-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-hand-paper-o"></i> 申诉任务 </a>
+      
+      {{if ~root.type==="pay"}}
+      <a href="javascript:;" class="btn grey-mint btn-xs   uppercase change-money" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-edit"></i> 修改价格 </a>
+      {{/if}}
+      {{if (status==10)}}
+      <a href="javascript:;" class="btn green-jungle btn-xs   uppercase sub-goods" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}"><i class="fa fa-truck"></i> 发货 </a>
+      {{/if}}
+      {{if (status==30)}}
+      <a href="javascript:;" class="btn purple-studio btn-xs   uppercase pay-task" id="{{:id}}"  tid="{{:taskkeyId}}" pid="{{:taskId}}" type="{{:~root.type}}"><i class="fa fa-rmb"></i> 审核支付 </a>
+      {{/if}}
+    </div>
+  </div>
 </div>
 {{/for}}

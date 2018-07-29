@@ -806,27 +806,20 @@ function saveCookie(data) {
   // 先获取 password 和 userType，防止清空
   // data.password ? null : data.password = cookie('password');
   // data.userType || data.userType === 0 ? null : data.userType = cookie('userType');
-  $.cookie('cko', JSON.stringify(data), { expires: 365 });
+  Cookies.set('cko', JSON.stringify(data), { expires: 365 });
 }
 
 function cookie(id) {
-  var obj = JSON.parse($.cookie('cko'));
+  var obj = JSON.parse(Cookies.get('cko'));
 
   return (obj!= null)?obj[id]:null;
 }
 
 function cookie2(id, pid) {
-  var obj = JSON.parse($.cookie('cko'));
+  var obj = JSON.parse(Cookies.get('cko'));
   return obj[pid][0] ? obj[pid][0][id] : null;
 }
 
-function initUserInfo() {
-  let obj = { mobile: cookie('mobile'), password: cookie('password') };
-  let url = parseInt(cookie('userType')) === 0 ? URL_BUY_LOGIN : URL_SELL_LOGIN;
-  promiseData('POST', url, JSON.stringify(obj), (e) => {
-    saveCookie(e.data);
-  });
-}
 
 // 获取url中的参数
 function getUrlParam(name) {
@@ -978,7 +971,7 @@ function initTimeControl(index) {
 }
 
 function initNotice() {
-  promiseTmpl('GET', '/tmpl/list_notice.tmpl','/admin/notice_list', null, (r, ret)=>{
+  promiseTmpl('GET', '/tmpl/list_notice.tmpl','/notice_list', null, (r, ret)=>{
     $(".m-notice").after($.templates(r).render(ret, rdHelper));
   })
 }

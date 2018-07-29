@@ -117,6 +117,5 @@ function doSave(data) {
 }
 
 function cbBind(e) {
-  initUserInfo();
   alertBox('绑定成功!', ()=>{ goto("newTask.html") })   
 }
