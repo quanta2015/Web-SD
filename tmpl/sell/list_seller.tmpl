@@ -1,55 +1,55 @@
 <div class="m-detail-wrap">
 <!--     <div class="m-close"></div> -->
+    {{for data}}
     <div class="u-wrap">
         <div class="u-row">
-            {{for data}}
             <div class="u-ck"><input type="checkbox" name="tid" value="{{:id}}" class="u-tid"></div>
-            <div>{{:#index+1}}</div>
-            <div class="u-col u-shop"">
-               <div class="u-shoperID">商家ID：{{:id}}</div>
-               <div class="u-status">状态：{{:~formatFrozen(frozen)}}</div>
-               <div class="u-level">级别：#</div>
+            <div class="u-id">{{:#index+1 + ~root.pageSize*~root.pageIndex}}</div>
+                <div class="u-col u-shop"">
+                   <div class="u-shoperID">商家ID：{{:id}}</div>
+                   <div class="u-status">状态：{{:~formatFrozen(frozen)}}</div>
+                   <div class="u-level">级别：#</div>
 
-               <div class="u-time">注册时间：{{:~formatTime(regtime)}} </div>
+                   <div class="u-time">注册时间：{{:~formatTime(regtime)}} </div>
 
-               <div class="u-vip">VIP到期时间:{{if memberValid==true}}{{:memberEndDate}}{{/if}}{{if memberValid==false}}无{{/if}}</div>
+                   <div class="u-vip">VIP到期时间:{{if memberValid==true}}{{:memberEndDate}}{{/if}}{{if memberValid==false}}无{{/if}}</div>
 
-               <div class="font-blue"> 推广人数：#</div>
+                   <div class="font-blue"> 推广人数：#</div>
 
-               <div class="font-red"> 信誉评估：#</div>
-            </div>
+                   <div class="font-red"> 信誉评估：#</div>
+                </div>
+                {{if shopList}}
+                {{for shopList}}                    
+                <div class="u-col u-shopname">
+                <div>店铺名称:{{:name}}</div>
+                    <a href="javascript:;" class="btn blue-hoki btn-xs btn-detail-shopname" data-id="{{:id}}"> 详细 </a>
+                </div>
 
-            {{if shopList}}
-            {{for shopList}}                    
-            <div class="u-col u-shopname">
-            <div>店铺名称:{{:name}}</div>
-            <a href="javascript:;" class="btn blue-hoki btn-xs btn-detail-shopname" data-id="{{:id}}"> 详细 </a>
-            </div>
+                <div class="u-col task-info"> 
+                    <a href="javascript:;" class="btn yellow-gold btn-xs btn-detail-pay" data-id="{{:id}}" > 垫付任务 </a>
+                    <a href="javascript:;" class="btn purple-plum btn-xs btn-detail-browse" data-id="{{:id}}" > 浏览任务 </a>
+                </div>
+                <div class="u-col appeal-info"> 
+                    <a href="javascript:;" class="btn green dropdown-toggle btn-xs btn-detail-oneappeal1" data-id="{{:id}}" > 发起的申诉 </a>
+                    <a href="javascript:;" class="btn purple-studio btn-xs btn-detail-zeroappeal1" data-id="{{:id}}" > 收到的申诉 </a>
+                </div>
+                <div class="u-col finance-info">
+                    <a href="javascript:;" class="btn red-mint btn-xs btn-detail-balance" data-id="{{:id}} " > 余额 </a>
+                    <a href="javascript:;" class="btn blue-steel btn-xs btn-detail-recharge" data-id="{{:id}} " > 充值 </a>
+                    <a href="javascript:;" class="btn blue-madison btn-xs btn-detail-putforward" data-id="{{:id}} " > 提现 </a>
+                    <a href="javascript:;" class="btn green-jungle btn-xs uppercase btn-detail-express" data-id="{{:id}} " > 快递 </a>
+                </div>
 
-            <div class="u-col task-info"> 
-                <a href="javascript:;" class="btn yellow-gold btn-xs btn-detail-pay" data-id="{{:id}}" > 垫付任务 </a>
-                <a href="javascript:;" class="btn purple-plum btn-xs btn-detail-browse" data-id="{{:id}}" > 浏览任务 </a>
-            </div>
-            <div class="u-col appeal-info"> 
-                <a href="javascript:;" class="btn green dropdown-toggle btn-xs btn-detail-oneappeal1" data-id="{{:id}}" > 发起的申诉 </a>
-                <a href="javascript:;" class="btn purple-studio btn-xs btn-detail-zeroappeal1" data-id="{{:id}}" > 收到的申诉 </a>
-            </div>
-            <div class="u-col finance-info">
-                <a href="javascript:;" class="btn red-mint btn-xs btn-detail-balance" data-id="{{:id}} " > 余额 </a>
-                <a href="javascript:;" class="btn blue-steel btn-xs btn-detail-recharge" data-id="{{:id}} " > 充值 </a>
-                <a href="javascript:;" class="btn blue-madison btn-xs btn-detail-putforward" data-id="{{:id}} " > 提现 </a>
-                <a href="javascript:;" class="btn green-jungle btn-xs uppercase btn-detail-express" data-id="{{:id}} " > 快递 </a>
-            </div>
+                <div class="u-col u-func">              
+                    <a href="javascript:;" class="btn red-mint btn-xs btn-setvip" data-id="{{:id}} " ><i class="fa fa-edit"></i> 设置VIP </a> 
+                    <a href="javascript:;" class="btn blue-steel btn-xs btn-remarks" data-id="{{:id}} " ><i class="fa fa-edit"></i> 级别备注 </a> 
+                    <a href="javascript:;" class="btn grey-mint btn-xs btn-punish" data-id="{{:id}} " ><i class="fa fa-edit"></i> 违规处理 </a> 
+                    <a href="javascript:;" class="btn blue-madison btn-xs btn-activity" data-id="{{:id}} " ><i class="fa fa-edit"></i> 平台活动 </a> 
+                </div>
+                {{/for}}
+                {{/if}}
 
-            <div class="u-col u-func">              
-          <a href="javascript:;" class="btn red-mint btn-xs btn-setvip" data-id="{{:id}} " ><i class="fa fa-edit"></i> 设置VIP </a> 
-          <a href="javascript:;" class="btn blue-steel btn-xs btn-remarks" data-id="{{:id}} " ><i class="fa fa-edit"></i> 级别备注 </a> 
-          <a href="javascript:;" class="btn grey-mint btn-xs btn-punish" data-id="{{:id}} " ><i class="fa fa-edit"></i> 违规处理 </a> 
-          <a href="javascript:;" class="btn blue-madison btn-xs btn-activity" data-id="{{:id}} " ><i class="fa fa-edit"></i> 平台活动 </a> 
-            </div>
-            {{/for}}
-            {{/if}}
-            {{/for}}
         </div>
     </div>
+    {{/for}}
 </div>

@@ -1,0 +1,47 @@
+.u-wrap {
+    border: 1px solid #eee;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.u-row {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    position: relative;
+}
+
+.u-row>div {
+    display: flex;
+    margin-right: 10px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.u-row>div>a {
+    margin-right: 10px;
+    width: 100px;
+}
+
+.u-id {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background: #aaa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    top: 0;
+    left: 0;
+}
+
+.u-col {
+    flex:1;
+}
+
+.u-col>div {
+    margin: 0 0 5px 0;
+}
