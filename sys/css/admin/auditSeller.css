@@ -1,6 +1,16 @@
+.portlet {
+    margin-top: 0px;
+    margin-bottom: 25px;
+    padding: 0px;
+    width: 1080px;
+}
+
+
+
+
 .u-wrap {
     border: 1px solid #eee;
-    padding: 5px;
+    padding: 5px 5px 0 5px;
     margin-bottom: 5px;
 }
 
@@ -10,9 +20,42 @@
     flex-direction: row;
 }
 
+.u-status-info {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    margin-right: 5px;
+    height: 17px;
+}
+
+.u-status {
+    color: #fff;
+    background: #ff0000;
+    /* width: 32px; */
+    font-size: 12px;
+    text-align: center;
+    margin-right: 3px;
+    padding: 0 5px;
+    position: relative;
+}
+
+.u-status.u-vip {
+    margin-left: 25px;
+}
+
+.u-status.u-vip:after {
+    content: 'VIP';
+    background: #333;
+    display: block;
+    position: absolute;
+    left: -24px;
+    top: 0;
+    padding: 0 3px;
+}
+
 
 .u-id {
-    width: 20px;
+    /* width: 20px; */
     height: 20px;
     border-radius: 10px;
     background: #aaa;
@@ -20,24 +63,40 @@
     justify-content: center;
     align-items: center;
     color: #fff;
-    top: 0;
-    left: 0;
+    margin-right: 5px;
+    /* left: 0; */
+}
+
+.u-id span {
+    display: inline-block;
+    padding: 0 5px;
+    background: #666;
 }
 
 
 .u-seller {
     display: flex;
-    flex-direction: column;
-    flex-basis: 400px!important;
+    flex-direction: row;
+    flex: 1;
 }
-
+.u-pri {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+}
 
 .u-shops {
     flex-direction: row;
     flex: 1;
 }
 
-
+.u-wrap a {
+    width: 80px;
+    border: 1px solid #eee;
+    margin: 0 5px 3px 0;
+    color: #666;
+    height: 24px;
+}
 
 .u-shop {
     display: flex;
@@ -45,19 +104,24 @@
 }
 
 .u-shop .u-col {
-    flex-direction: column;
     flex: 1;
+    width: 150px;
+    margin-right: 10px;
+    align-items: flex-start;
 }
 
-/*.u-task {
-    flex-basis: 30px!important;
-}*/
-
-
-.u-col>div {
-    margin: 0 0 5px 0;
+.u-shop .u-col.u-col-shopname {
+    display: flex;
+    width: 200px;
+    flex-direction: column;
 }
+
+
 
 .u-col>a {
     margin: 0 0 5px 0;
+}
+
+.u-col-info {
+    margin: 10px;
 }
