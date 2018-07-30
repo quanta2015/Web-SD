@@ -5,25 +5,11 @@
 }
 
 .u-row {
+    padding: 5px;
     display: flex;
     flex-direction: row;
-    padding: 5px;
-    position: relative;
 }
 
-.u-row>div {
-    display: flex;
-    margin-right: 10px;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-}
-
-
-.u-row>div>a {
-    margin-right: 10px;
-    width: 100px;
-}
 
 .u-id {
     width: 20px;
@@ -38,10 +24,40 @@
     left: 0;
 }
 
-.u-col {
-    flex:1;
+
+.u-seller {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 400px!important;
 }
 
+
+.u-shops {
+    flex-direction: row;
+    flex: 1;
+}
+
+
+
+.u-shop {
+    display: flex;
+    flex-direction: row;
+}
+
+.u-shop .u-col {
+    flex-direction: column;
+    flex: 1;
+}
+
+/*.u-task {
+    flex-basis: 30px!important;
+}*/
+
+
 .u-col>div {
+    margin: 0 0 5px 0;
+}
+
+.u-col>a {
     margin: 0 0 5px 0;
 }

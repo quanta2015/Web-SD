@@ -30,9 +30,18 @@ function initList() {
   };
   Object.assign(param, pageData);
   promiseTmpl('GET', '/tmpl/sell/list_seller.tmpl', ['/admin/shoper_acount_list', encodeQuery(param)].join('?'), null, cbList)
+  // cbList();
 }
 
 function cbList(r, e) {
+  // e = {
+  //   data={
+  //         'id':48,
+  //         'frozen':true,
+  //         'regtime':'2017-07-12 00:00:00',
+  //         'memberEndDate':'2018-07-12 00:00:00',
+  //       }
+  //   }
   let ret = e;
     _listshop = ret.data;
     Object.assign(ret, pageData);

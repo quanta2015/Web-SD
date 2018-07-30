@@ -9,7 +9,8 @@ const ADMIN = 2
 //let dev = false;
 
 if (dev) {
-  HOST = 'http://103.251.90.136'
+  // HOST = 'http://103.251.90.136'
+  HOST = 'http://122.152.199.90'
 }else{
   HOST = ''
 }
@@ -526,7 +527,7 @@ const rdHelper = {
     if (typeof list === 'undefined') return 0;
     if (list === '') return 0;
     return list.length},
-  formatTime: (t) => { return moment(t).format("YYYY-M-D HH:mm:ss") },
+  formatTime: (t) => { return moment(t).format("YYYY-M-D") },
   div: (val1,val2) => { return  Number(val1) / Number(val2) * 100},
   add: (val1,val2,val3) => { return Number(val1) + Number(val2) + Number(val3) },
   formatMoneyType: (typeId) => {
