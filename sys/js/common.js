@@ -9,7 +9,8 @@ let dev = true;
 // let dev = false;
 
 if (dev) {
-  HOST = 'http://103.251.90.136'
+  // HOST = 'http://103.251.90.136'
+  HOST = 'http://122.152.199.90'
 }else{
   HOST = ''
 }
