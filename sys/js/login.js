@@ -242,6 +242,10 @@ function doLogin() {
 function cbLogin(e) {
   e.userType = $('.loginYh').is('.on')?BUY:SELL;
   e.password = $('#login-password').val();
+  delete e.jingdongList
+  delete e.taobaoList
+  delete e.buyerBankList
+
   saveCookie(e);
   location.href = $('.loginYh').is('.on')? 'html/buyer/mainBuy.html' : 'html/seller/mainSell.html';
   notifyInfo(MSG_LOGIN_SUCCESS);
