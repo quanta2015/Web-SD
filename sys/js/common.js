@@ -5,8 +5,8 @@ const SELL = 1
 const ADMIN = 2
 // const HOST = 'http://103.251.90.136'
 // const HOST = 'http://122.152.199.90'
- let dev = true;
-//let dev = false;
+ // let dev = true;
+let dev = false;
 
 if (dev) {
   // HOST = 'http://103.251.90.136'
@@ -729,11 +729,11 @@ const rdHelper = {
   },
   formatTaobaoVal: (s) => {
     switch(parseInt(s)) {
-      case 0: ret = '一星';break;
-      case 1: ret = '二星';break;
-      case 2: ret = '三星';break;
-      case 3: ret = '四星';break;
-      case 4: ret = '五星';break;
+      case 0: ret = '一心';break;
+      case 1: ret = '二心';break;
+      case 2: ret = '三心';break;
+      case 3: ret = '四心';break;
+      case 4: ret = '五心';break;
       case 5: ret = '一钻';break;
       case 6: ret = '二钻';break;
       case 7: ret = '三钻';break;
