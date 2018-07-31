@@ -5,19 +5,36 @@
     width: 1080px;
 }
 
+.m-sbar {
+    display: flex;
+    align-items: center;
+}
 
+.m-sbar div {
+    padding: 0 10px;
+}
 
 
 .u-wrap {
-    border: 1px solid #eee;
-    padding: 5px 5px 0 5px;
+    border: 1px solid #ccc;
     margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.u-wrap:hover {
+    border: 1px solid #aaa;
 }
 
 .u-row {
     padding: 5px;
     display: flex;
     flex-direction: row;
+    align-items: center;
+}
+
+.u-row-info {
+    background: #eee;
+    border-bottom: 1px solid #ddd;
 }
 
 .u-status-info {
@@ -25,7 +42,6 @@
     flex-direction: row;
     flex: 1;
     margin-right: 5px;
-    height: 17px;
 }
 
 .u-status {
@@ -55,7 +71,6 @@
 
 
 .u-id {
-    /* width: 20px; */
     height: 20px;
     border-radius: 10px;
     background: #aaa;
@@ -63,8 +78,7 @@
     justify-content: center;
     align-items: center;
     color: #fff;
-    margin-right: 5px;
-    /* left: 0; */
+    margin-right: 15px;
 }
 
 .u-id span {
@@ -78,7 +92,9 @@
     display: flex;
     flex-direction: row;
     flex: 1;
+    align-items: center;
 }
+
 .u-pri {
     padding: 5px;
     display: flex;
@@ -93,9 +109,21 @@
 .u-wrap a {
     width: 80px;
     border: 1px solid #eee;
-    margin: 0 5px 3px 0;
+    margin: 0 0 5px 0; 
     color: #666;
     height: 24px;
+}
+
+.u-wrap a:hover {
+    border: 1px solid #aaa;
+}
+
+
+.u-col.u-col-shopname>a {
+    width: auto;
+    height: auto;
+    padding: 5px 10px;
+    display: inline-block;
 }
 
 .u-shop {
@@ -104,23 +132,20 @@
 }
 
 .u-shop .u-col {
-    flex: 1;
-    width: 150px;
+    /*flex: 1;*/
+    width: 165px;
     margin-right: 10px;
     align-items: flex-start;
 }
 
 .u-shop .u-col.u-col-shopname {
     display: flex;
-    width: 200px;
+    flex: 1;
     flex-direction: column;
 }
 
 
 
-.u-col>a {
-    margin: 0 0 5px 0;
-}
 
 .u-col-info {
     margin: 10px;

@@ -13,10 +13,6 @@ function init() {
   $('body').on('click', '.btn-detail-browse', doDetailBrowse);
   $('body').on('click', '.btn-detail-oneappeal', doDetailOneappeal);
   $('body').on('click', '.btn-detail-zeroappeal', doDetailZeroappeal);
-  //$('body').on('click', '.btn-detail-balance', doDetailBalance);
-  // $('body').on('click', '.btn-detail-recharge', doDetailRecharge);
-  // $('body').on('click', '.btn-detail-putforward', doDetailPuforward);
-  // $('body').on('click', '.btn-detail-express', doDetailExpress);
   
   $('body').on('click', '.m-close', doClose);
   $('body').on('click', '.btn-setvip', doSetVip);
@@ -29,26 +25,16 @@ function initList() {
     edate: $("#sr-time-to").val() + ' 23:59:00',
   };
   Object.assign(param, pageData);
-  promiseTmpl('GET', '/tmpl/sell/list_seller.tmpl', ['/admin/shoper_acount_list', encodeQuery(param)].join('?'), null, cbList)
-  // cbList();
+  promiseTmpl('GET', '/tmpl/admin/list_seller.tmpl', ['/admin/shoper_acount_list', encodeQuery(param)].join('?'), null, cbList)
 }
 
 function cbList(r, e) {
-  // e = {
-  //   data={
-  //         'id':48,
-  //         'frozen':true,
-  //         'regtime':'2017-07-12 00:00:00',
-  //         'memberEndDate':'2018-07-12 00:00:00',
-  //       }
-  //   }
   let ret = e;
     _listshop = ret.data;
     Object.assign(ret, pageData);
     totalPages = Math.ceil(ret.total/PAGE_DATA.pageSize);
     $(".portlet-body .u-wrap").remove();
-    $(".portlet-body").append($.templates(r).render(ret,rdHelper));
-    $(".fancybox").fancybox({'titlePosition':'inside','type':'image'});
+    $(".portlet-body").prepend($.templates(r).render(ret,rdHelper));
     if ($('.table-pg').text() == '') initPage(totalPages);
 }
 
