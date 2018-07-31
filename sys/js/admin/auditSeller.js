@@ -9,10 +9,10 @@ function init() {
   initList();
   // $('body').on('click', '.audit-shop', doAudit);
   $('body').on('click', '.btn-detail-shopname', doDetailShop);
-  $('body').on('click', '.btn-detail-pay', doDetailPay);
-  $('body').on('click', '.btn-detail-browse', doDetailBrowse);
-  $('body').on('click', '.btn-detail-oneappeal', doDetailOneappeal);
-  $('body').on('click', '.btn-detail-zeroappeal', doDetailZeroappeal);
+  // $('body').on('click', '.btn-detail-pay', doDetailPay);
+  // $('body').on('click', '.btn-detail-browse', doDetailBrowse);
+  // $('body').on('click', '.btn-detail-oneappeal', doDetailOneappeal);
+  // $('body').on('click', '.btn-detail-zeroappeal', doDetailZeroappeal);
   
   $('body').on('click', '.m-close', doClose);
   $('body').on('click', '.btn-setvip', doSetVip);
@@ -65,14 +65,13 @@ function doSearch() {
 
 function doDetailShop() {
   var obj ={
-    shoperId: $(this).data("id")
+    shopId: $(this).data("id")
   }
-  promiseTmpl('get', '/tmpl/admin/list_shoper_shop.tmpl' ,['/adminshoper/shoper_shops', encodeQuery(obj)].join('?'), null,cbDetailShop)
+  promiseTmpl('get', '/tmpl/admin/list_shoper_shop.tmpl' ,['/adminshoper/shop_component_info', encodeQuery(obj)].join('?'), null,cbDetailShop)
 }
 
 
 function cbDetailShop(r,ret) {
-
   $(".g-detail").empty();
   $(".g-detail").prepend($.templates(r).render(ret));
   showModel('.g-detail')
