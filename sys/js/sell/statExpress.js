@@ -12,6 +12,15 @@ function init() {
 
   $('#searchBtn').on('click', doSearch);
   $('#exportBtn').on('click', doExport);
+  $('#batchExpressBtn').on('change', doBatchExpress);
+
+}
+
+function doBatchExpress(e) {
+  var files = e.target.files === undefined ? (e.target && e.target.value ? [{ name: e.target.value.replace(/^.+\\/, '')}] : []) : e.target.files
+  if (files.length === 0) return;
+
+  promiseUpload('/task/batch_sendexpress',files[0])
 }
 
 function doExport() {

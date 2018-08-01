@@ -5,8 +5,8 @@ const SELL = 1
 const ADMIN = 2
 // const HOST = 'http://103.251.90.136'
 // const HOST = 'http://122.152.199.90'
- let dev = true;
-// let dev = false;
+ // let dev = true;
+let dev = true;
 
 if (dev) {
   HOST = 'http://103.251.90.136'
@@ -354,8 +354,6 @@ function isNull(exp) {
 }
 
 
-
-
 // new ajax def
 function promise(method, url, data, cb, err) {
   $("body").append(LOADER);
@@ -435,71 +433,27 @@ function promiseTmpl(method, urlTmpl, urlData, data, cb) {
 }
 
 
-const promiseObj = (url, data) => {
-  return new Promise((resolve, reject) => {
-    $("body").append(LOADER);
-    $.ajax({
-      type: 'get',
-      url: HOST + url,
-      dataType: "json",
-      contentType: "application/json",
-      data: data,
-      xhrFields: {
-        withCredentials: true
-      },
-      crossDomain: true
-    }).done(e => {
-      $("#i-mask").remove();
-      if (e.code == 0) {
-        resolve(e);
-      } else if (e.code == 99) {
-        notifyInfo(e.message);
-      } else if (e.code == -1) {
-        relogin();
-      }
-    })
-  })
-}
 
-//------------------------------------------------------
-function promiseWithdraw(url,filename){
+
+function promiseUpload(url,file){
       var formData = new FormData();
-      formData.append(filename);
+      formData.append("file", file);
       $.ajax({    
         url: HOST + url,
         type: 'POST',
-        data: formData[0],
+        data: formData,
         async:false,
         cache: false,
+        dataType: "json",
         processData: false,
-        contentType: false,
-        success: function(data,file){
-          resolve(obj.key);
-        }
+        contentType: false
+      }).done(e=>{
+        console.log(e);
       })
 }
 
 
 
-
-
-function promiseData(method, url, data, cb) {
-  $("body").append(LOADER);
-  var promise = $.ajax({
-    type: method,
-    url: HOST + url,
-    dataType: "json",
-    contentType: "application/json",
-    data: data,
-    xhrFields: {
-      withCredentials: true
-    },
-    crossDomain: true,
-  });
-  promise.done(cb).always(()=>{
-    $("#i-mask").remove()
-  })
-}
 
 
 const promiseCall = (url, data) => {
