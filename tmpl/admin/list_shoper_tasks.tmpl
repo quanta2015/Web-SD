@@ -1,42 +1,37 @@
 <div class="m-detail-wrap">
     <div class="m-close"></div>
-
-
-<table class="table table-hover table-light">
-    <thead>
-        <tr class="uppercase">
-            <th> 编号</th>
-            <th class="u-dt"> 发布时间 </th>
-            <th> 已发总任务数 </th>
-            <th> 任务类型 </th>
-            <th> 任务详情</th>
-            <th> 订单详情</th>
-<!--             <th> 店铺名称 </th>
-            <th> 商品名称 </th>
-            <th> 单数 </th>
-            <th> 搜索关键词 </th>
-            <th> 任务编号 </th> -->
-
-        </tr>
-    </thead>
-    <tbody>
-      {{for data}}
-        <tr>
-            <td> {{:#index+1}}</td>
-            <td class="u-dt"> {{:~formatTime(createtime)}}</td>
-            <td> {{:num}} </td>
-            <td> {{:tasktype}}</td>
-            <td> # </td>
-            <td> # </td>
-<!--             <td> {{:shopName}}</td>
-            <td class="goodsname"> {{:goodsname}}</td>
-            <td> {{:num}}</td>
-            <td> {{:keywords}}</td>
-            <td> {{:id}}</td> -->
-
-        </tr>
-      {{/for}}
-    </tbody>
-  </table>
-
-  </div>
+    <table class="table table-hover table-light">
+        <thead>
+            <tr class="uppercase">
+                <th> 编号</th>
+                <th class="u-dt"> 发布时间 </th>
+                <th> 已发总任务数 </th>
+                <th> 任务类型 </th>
+                <th> 任务详情</th>
+                <th> 订单详情</th>
+                <!--             <th> 店铺名称 </th>
+                <th> 商品名称 </th>
+                <th> 单数 </th>
+                <th> 搜索关键词 </th>
+                <th> 任务编号 </th> -->
+            </tr>
+        </thead>
+        <tbody>
+            {{for data}}
+            <tr>
+                <td> {{:#index+1}}</td>
+                <td class="u-dt"> {{:~formatTime(createtime)}}</td>
+                <td> {{:num}} </td>
+                <td> {{:tasktype}}</td>
+                <td> # </td>
+                <td> # </td>
+                <!--             <td> {{:shopName}}</td>
+                <td class="goodsname"> {{:goodsname}}</td>
+                <td> {{:num}}</td>
+                <td> {{:keywords}}</td>
+                <td> {{:id}}</td> -->
+            </tr>
+            {{/for}}
+        </tbody>
+    </table>
+</div>
