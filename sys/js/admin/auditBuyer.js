@@ -10,11 +10,11 @@ function init() {
   initTime();
   initList();
   // $('body').on('click', '.audit-shop', doAudit);
-  $('body').on('click', '.btn-detail-task', doDetailShop);
-  $('body').on('click', '.btn-detail-oneappeal', doDetailOneappeal);
-  $('body').on('click', '.btn-detail-zeroappeal', doDetailZeroappeal);
-  $('body').on('click', '.btn-detail-capital', doDetailCapital);
-  $('body').on('click', '.btn-detail-commission', doDetailCommission);
+  $('body').on('click', '.btn-detail-task', doDetailTaoBao);
+  // $('body').on('click', '.btn-detail-oneappeal', doDetailOneappeal);
+  // $('body').on('click', '.btn-detail-zeroappeal', doDetailZeroappeal);
+  // $('body').on('click', '.btn-detail-capital', doDetailCapital);
+  // $('body').on('click', '.btn-detail-commission', doDetailCommission);
   // $('body').on('click', '.btn-detail-balance', doDetailBalance);
   // $('body').on('click', '.btn-detail-recharge', doDetailRecharge);
   // $('body').on('click', '.btn-detail-putforward', doDetailPuforward);
@@ -25,7 +25,7 @@ function init() {
 }
 
 
-function doDetailShop() {
+function doDetailTaoBao() {
   var obj ={
     shoperId: $(this).data("id")
   }
@@ -33,7 +33,7 @@ function doDetailShop() {
 }
 
 
-function cbDetailShop(r,ret) {
+function cbDetailTaoBao(r,ret) {
 
   $(".g-detail").empty();
   $(".g-detail").prepend($.templates(r).render(ret));

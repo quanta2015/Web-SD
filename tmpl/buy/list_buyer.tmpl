@@ -7,32 +7,32 @@
                 <div class="u-status">{{:~formatFrozen(frozen)}}</div>
                 <div class="u-status">LV5</div>
                 <div class="u-status u-vip">{{if memberValid==true}}{{:memberEndDate}}{{/if}}{{if memberValid==false}}无{{/if}}</div>
+                <div class="u-status u-ident">3304241997********</div>
             </div>
-            <div class="u-status u-ident">3304241997********</div>
-            <div class="u-col-info">   注册：{{:~formatTime(regtime)}} </div>
-            <div class="u-col-info">   推广：20</div>
-            <div class="u-col-info">   信誉:90</div>
-            <div class="u-col-info">   佣金余额:200</div>
-            <div class="u-col-info">   本金余额:1200</div>
-            <div class="u-col-info">   Tel:135****3797</div>
+            <div class="u-col-info">   注册：<span class="font-sred">{{:~formatTime(regtime)}}</span> </div>
+            <div class="u-col-info">   推广：<span class="font-sred">20</span></div>
+            <div class="u-col-info">   信誉: <span class="font-sred">90</span></div>
+            <div class="u-col-info">   佣金余额:<span class="font-sred">200</span></div>
+            <div class="u-col-info">   本金余额:<span class="font-sred">1200</span></div>
+            <div class="u-col-info">   Tel:<span class="font-sred">135****3797</span></div>
         </div>
     </div>
     <div class="u-col">
         <div class="u-col u-acounts">
             <div class="u-row u-acount">
-                <div class="u-col u-col-shopname">
-                    <a href="javascript:;" class="btn blue-steel btn-xs btn-detail-shopname" data-id="{{:id}}"> {{:name}} </a>
+                <div class="u-col u-col-taobao">
+                    <a href="javascript:;" class="btn blue-steel btn-xs btn-detail-taobao" data-id="{{:id}}"> 淘宝账号 </a>
                 </div>
                 <div class="u-col u-task">
-                    <a href="javascript:;" class="btn blue-steel btn-xs btn-detail-task" data-id="{{:id}}" > 已接单的任务 </a>
+                    <a href="javascript:;" class="btn btn-xs btn-detail-task" data-id="{{:id}}" > 已接单的任务 </a>
                     <a href="javascript:;" class="btn btn-xs btn-detail-oneappeal1" data-id="{{:id}}" > 发起的申诉 </a>
                     <a href="javascript:;" class="btn btn-xs btn-detail-zeroappeal1" data-id="{{:id}}" > 收到的申诉 </a>
                 </div>
                 <div class="u-col u-finance">
                     
-                    <a href="javascript:;" class="btn blue-steel btn-xs btn-detail-capital" data-id="{{:id}} " > 本金提现 </a>
-                    <a href="javascript:;" class="btn blue-steel btn-xs btn-detail-commission" data-id="{{:id}} " > 佣金提现 </a>
-                    <a href="javascript:;" class="btn btn-xs uppercase btn-detail-express" data-id="{{:id}} " > 快递 </a>
+                    <a href="javascript:;" class="btn btn-xs btn-detail-capital" data-id="{{:id}} " > 本金提现 </a>
+                    <a href="javascript:;" class="btn btn-xs btn-detail-commission" data-id="{{:id}} " > 佣金提现 </a>
+                    <a href="javascript:;" class="btn btn-xs btn-detail-express" data-id="{{:id}} " > 快递 </a>
                 </div>
                 <div class="u-col u-opt">
                     <a href="javascript:;" class="btn btn-xs btn-setvip" data-id="{{:id}} " > 设置VIP </a>

@@ -7,10 +7,9 @@ $(init);
 function init() {  
   initTime();
   initList();
-  // $('body').on('click', '.audit-shop', doAudit);
   $('body').on('click', '.btn-detail-shopname', doDetailShop);
-  // $('body').on('click', '.btn-detail-pay', doDetailPay);
-  // $('body').on('click', '.btn-detail-browse', doDetailBrowse);
+  $('body').on('click', '.btn-detail-pay', doDetailPay);
+  $('body').on('click', '.btn-detail-browse', doDetailBrowse);
   // $('body').on('click', '.btn-detail-oneappeal', doDetailOneappeal);
   // $('body').on('click', '.btn-detail-zeroappeal', doDetailZeroappeal);
   
@@ -73,7 +72,7 @@ function doDetailShop() {
 
 function cbDetailShop(r,ret) {
   $(".g-detail").empty();
-  $(".g-detail").prepend($.templates(r).render(ret));
+  $(".g-detail").prepend($.templates(r).render(ret,rdHelper));
   showModel('.g-detail')
 }
 
@@ -83,13 +82,10 @@ function doDetailPay() {
   pageData =  Object.assign({mainType:'pay'}, PAGE_DATA);
   $("#sr-status option[value='-1']").prop("selected", true);
   var param ={
-    shoperId: $(this).data("id"),
-    tasktype: $('#sr-tasktype').val(),
-    num: $('#sr-num').val(),
-    isRecieve: $('#sr-isRecieve').val(),
+    shopId: $(this).data("id"),
   }
   Object.assign(param, pageData);
-  promiseTmpl('get', '/tmpl/admin/list_shoper_tasks.tmpl' ,['/adminshoper/shoper_tasks', encodeQuery(param)].join('?'), null, cbDetailPay)
+  promiseTmpl('get', '/tmpl/admin/list_shoper_tasks.tmpl' ,['/adminshoper/shop_component_info', encodeQuery(param)].join('?'), null, cbDetailPay)
 }
 
 
@@ -105,12 +101,10 @@ function doDetailBrowse() {
   pageData =  Object.assign({mainType:'browse'}, PAGE_DATA);
   $("#sr-status option[value='-1']").prop("selected", true);
   var param ={
-    shoperId: $(this).data("id"),
-    tasktype: $('#sr-tasktype').val(),
-    isRecieve: $('#sr-isRecieve').val(),
+    shopId: $(this).data("id"),
   }
   Object.assign(param, pageData);
-  promiseTmpl('get', '/tmpl/admin/list_shoper_tasks.tmpl' ,['/adminshoper/shoper_tasks', encodeQuery(param)].join('?'), null, cbDetailBrowse)
+  promiseTmpl('get', '/tmpl/admin/list_shoper_tasks.tmpl' ,['/adminshoper/shop_component_info', encodeQuery(param)].join('?'), null, cbDetailBrowse)
 }
 
 
