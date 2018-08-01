@@ -53,6 +53,10 @@ a:hover {
   color: #5d54e9;
 }
 
+.font-sred {
+  color: #E43A45
+}
+
 .font-big {
   font-size: 16px;
   font-weight: 600;
