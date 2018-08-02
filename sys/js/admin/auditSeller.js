@@ -63,20 +63,13 @@ function doSearch() {
 
 
 function doDetailShop() {
-  var obj ={
-    shopId: $(this).data("id")
-  }
+  var obj ={ shopId: $(this).data("id") }
   promiseTmpl('get', '/tmpl/admin/list_shoper_shop.tmpl' ,['/adminshoper/shop_component_info', encodeQuery(obj)].join('?'), null,cbDetailShop)
 }
 
-
-function cbDetailShop(r,ret) {
-  $(".g-detail").empty();
-  $(".g-detail").prepend($.templates(r).render(ret,rdHelper));
-  showModel('.g-detail')
+function cbDetailShop(r,e) {
+  DetailBox().show( RenderHtml(r,e,rdHelper) )
 }
-
-
 
 function doDetailPay() {
   pageData =  Object.assign({mainType:'pay'}, PAGE_DATA);

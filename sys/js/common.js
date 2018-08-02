@@ -5,8 +5,8 @@ const SELL = 1
 const ADMIN = 2
 // const HOST = 'http://103.251.90.136'
 // const HOST = 'http://122.152.199.90'
- // let dev = true;
-let dev = false;
+ let dev = true;
+// let dev = false;
 
 if (dev) {
   HOST = 'http://103.251.90.136'
@@ -1073,5 +1073,20 @@ function showModel(id) {
   $(`${id}`).show();
 }
 
+function RenderHtml(r,e,f) {
+  return $.templates(r).render(e,f)
+}
 
-
+function DetailBox() {
+  return {
+    show: function(ret) {
+      $('.g-dt').remove()
+      $('body').append('<div class="g-dt"  style="position:absolute;width:auto;height:auto;top:0;bottom:0;left:0;right:0;z-index:9999;background:rgba(0,0,0,.5);display:block;"><div class="m-dtw" style="position:absolute;background:#fff;min-width:600px;display:flex;flex-direction:column;box-shadow:1px 1px 5px #ccc;top:50%;right:50%;transform:translateY(-50%) translateX(50%)!important;"><div class="m-cls" style="position:absolute;top:-18px;right:-18px;width:36px;height:36px;cursor:pointer;z-index:9999;background-image:url(/img/close.png);"></div></div></div>')
+      $('.m-dtw').append(ret)
+      $('.m-cls').on('click', this.close)
+    },
+    close: function() {
+      $('.g-dt').remove()
+    }
+  }
+}
