@@ -13,13 +13,11 @@ function init() {
   $('#searchBtn').on('click', doSearch);
   $('#exportBtn').on('click', doExport);
   $('#batchExpressBtn').on('change', doBatchExpress);
-
 }
 
 function doBatchExpress(e) {
   var files = e.target.files === undefined ? (e.target && e.target.value ? [{ name: e.target.value.replace(/^.+\\/, '')}] : []) : e.target.files
   if (files.length === 0) return;
-
   promiseUpload('/task/batch_sendexpress',files[0])
 }
 
@@ -48,7 +46,7 @@ function initList(pg) {
     toDate: $("#to").val()+ ':00'
   }
   Object.assign( cdt, pg);
-  promiseTmpl('GET', '/tmpl/sell/list_stat_express.tmpl', ['/task/stat_express', encodeQuery(cdt)].join('?'), null, cbListTask)
+  promiseTmpl('GET', '/tmpl/sell/list_stat_express.tmpl', ['/task/get_express_used', encodeQuery(cdt)].join('?'), null, cbListTask)
 }
 
 

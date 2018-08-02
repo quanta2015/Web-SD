@@ -150,3 +150,18 @@
 .u-col-info {
     margin: 10px;
 }
+
+
+
+/*fix row*/
+.u-row.u-shop:first-child {
+    border-bottom: 1px dashed #ddd;
+}
+
+.u-row.u-shop:nth-child(2n) {
+    margin-top: 5px;
+}
+.u-row.u-shop:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
