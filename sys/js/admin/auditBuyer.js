@@ -14,14 +14,8 @@ function init() {
   // $('body').on('click', '.btn-detail-oneappeal', doDetailOneappeal);
   // $('body').on('click', '.btn-detail-zeroappeal', doDetailZeroappeal);
   // $('body').on('click', '.btn-detail-capital', doDetailCapital);
-  // $('body').on('click', '.btn-detail-commission', doDetailCommission);
-  // $('body').on('click', '.btn-detail-balance', doDetailBalance);
-  // $('body').on('click', '.btn-detail-recharge', doDetailRecharge);
-  // $('body').on('click', '.btn-detail-putforward', doDetailPuforward);
-  // $('body').on('click', '.btn-detail-activity', doActivity);
-  
   $('body').on('click', '.m-close', doClose);
-  $('body').on('click', '.btn-setvip', doRemarks);
+  // $('body').on('click', '.btn-setvip', doRemarks);
 }
 
 function initList() {
@@ -30,7 +24,7 @@ function initList() {
     edate: $("#sr-time-to").val() + ' 23:59:00',
   };
   Object.assign(param, pageData);
-  promiseTmpl('GET', '/tmpl/buy/list_buyer.tmpl', ['/admin/buyer_acount_list', encodeQuery(param)].join('?'), null, cbList)
+  promiseTmpl('GET', '/tmpl/admin/list_buyer.tmpl', ['/admin/buyer_acount_list', encodeQuery(param)].join('?'), null, cbList)
 }
 
 function cbList(r, e) {

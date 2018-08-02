@@ -1,26 +1,26 @@
 {{for data}}
 <div class="u-wrap">
   <div class="u-row u-row-info">
-
     <div class="u-id"><span>{{:id}}</span></div>
-    <div class="u-col u-seller"">
+    <div class="u-col u-seller">
       <div class="u-status-info">
         <div class="u-status">{{:~formatFrozen(frozen)}}</div>
         <div class="u-status">LV5</div>
-        <div class="u-status u-vip">{{if memberValid==true}}{{:memberEndDate}}{{/if}}{{if memberValid==false}}无{{/if}}</div>
+        {{if memberValid==true}}
+        <div class="u-status u-vip">{{:memberEndDate}}</div>
+        {{/if}}
       </div>
- 
-        <div class="u-col-info">注册：<span class="font-sred">{{:~formatTime(regtime)}}</span></div>
-        <div class="u-col-info">推广：<span class="font-sred">20</span></div>
-        <div class="u-col-info">信誉：<span class="font-sred">90</span></div>
-        <div class="u-col-info">余额：<span class="font-sred">2000</span></div>
-        <div class="u-col-info">Tel：<span class="font-sred">{{:mobile}}</span></div>       
+      
+      <div class="u-col-info">注册：<span class="font-sred">{{:~formatTime(regtime)}}</span></div>
+      <div class="u-col-info">推广：<span class="font-sred">20</span></div>
+      <div class="u-col-info">信誉：<span class="font-sred">59</span></div>
+      <div class="u-col-info">余额：<span class="font-sred">2000</span></div>
+      <div class="u-col-info">Tel：<span class="font-sred">{{:mobile}}</span></div>
     </div>
   </div>
-
   {{if ~getLength(shopList) != 0}}
   <div class="u-row">
-    <div class="u-col u-shops"> 
+    <div class="u-col u-shops">
       {{for shopList}}
       <div class="u-row u-shop">
         <div class="u-col u-col-shopname">
@@ -44,7 +44,7 @@
           <a href="javascript:;" class="btn btn-xs btn-punish" data-id="{{:id}} " >违规处理 </a>
           <a href="javascript:;" class="btn btn-xs btn-activity" data-id="{{:id}} " >平台活动 </a>
         </div>
-      </div> 
+      </div>
       {{/for}}
     </div>
   </div>

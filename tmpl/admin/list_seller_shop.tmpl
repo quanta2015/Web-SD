@@ -1,0 +1,12 @@
+{{for data}}
+<div class="m-col m-label">
+    <div class="ID">店铺ID：{{:shop}}</div>
+    <div class="platform">电商平台：{{:type}}</div>
+    <div class="name">店铺名称：{{:shopName}}</div>
+    <div class="adress1">店铺地址：<a href="{{:shopurl}}" target="_blank">点击查看</a> </div>
+    <div class="type">店铺类型：{{:businesstype}} - {{:subtype}}</div>
+    <div class="adress2">发货地址：{{:address}}</div>
+    <div class="status">店铺状态：{{:~formatFrozen(frozen)}}</div>
+    <div class="approveState">审核意见：{{:bindStatusStr}} </div>
+</div>
+{{/for}}

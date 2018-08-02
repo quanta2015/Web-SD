@@ -66,7 +66,7 @@ function doDetailShop() {
   var obj ={
     shopId: $(this).data("id")
   }
-  promiseTmpl('get', '/tmpl/admin/list_shoper_shop.tmpl' ,['/adminshoper/shop_component_info', encodeQuery(obj)].join('?'), null,cbDetailShop)
+  promiseTmpl('get', '/tmpl/admin/list_seller_shop.tmpl' ,['/adminshoper/shop_component_info', encodeQuery(obj)].join('?'), null,cbDetailShop)
 }
 
 
@@ -85,7 +85,7 @@ function doDetailPay() {
     shopId: $(this).data("id"),
   }
   Object.assign(param, pageData);
-  promiseTmpl('get', '/tmpl/admin/list_shoper_tasks.tmpl' ,['/adminshoper/shop_component_info', encodeQuery(param)].join('?'), null, cbDetailPay)
+  promiseTmpl('get', '/tmpl/admin/list_seller_tasks.tmpl' ,['/adminshoper/shop_component_info', encodeQuery(param)].join('?'), null, cbDetailPay)
 }
 
 
@@ -104,7 +104,7 @@ function doDetailBrowse() {
     shopId: $(this).data("id"),
   }
   Object.assign(param, pageData);
-  promiseTmpl('get', '/tmpl/admin/list_shoper_tasks.tmpl' ,['/adminshoper/shop_component_info', encodeQuery(param)].join('?'), null, cbDetailBrowse)
+  promiseTmpl('get', '/tmpl/admin/list_seller_tasks.tmpl' ,['/adminshoper/shop_component_info', encodeQuery(param)].join('?'), null, cbDetailBrowse)
 }
 
 
@@ -126,7 +126,7 @@ function doDetailOneappeal() {
     isRecieve: $('#sr-isRecieve').val(),
   }
   Object.assign(param, pageData);
-  promiseTmpl('get', '/tmpl/admin/list_shoper_oneappeal.tmpl' ,['/adminshoper/get_shoper_complains_list', encodeQuery(param)].join('?'), null, cbDetailBrowse)
+  promiseTmpl('get', '/tmpl/admin/list_seller_oneappeal.tmpl' ,['/adminshoper/get_shoper_complains_list', encodeQuery(param)].join('?'), null, cbDetailBrowse)
 }
 
 
@@ -150,7 +150,7 @@ function doDetailZeroappeal() {
     isRecieve: $('#sr-isRecieve').val(),
   }
   Object.assign(param, pageData);
-  promiseTmpl('get', '/tmpl/admin/list_shoper_tasks.tmpl' ,['/adminshoper/shoper_tasks', encodeQuery(param)].join('?'), null, cbDetailBrowse)
+  promiseTmpl('get', '/tmpl/admin/list_seller_tasks.tmpl' ,['/adminshoper/shoper_tasks', encodeQuery(param)].join('?'), null, cbDetailBrowse)
 }
 
 

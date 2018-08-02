@@ -6,14 +6,16 @@
             <div class="u-status-info">
                 <div class="u-status">{{:~formatFrozen(frozen)}}</div>
                 <div class="u-status">LV5</div>
-                <div class="u-status u-vip">{{if memberValid==true}}{{:memberEndDate}}{{/if}}{{if memberValid==false}}无{{/if}}</div>
                 <div class="u-status u-ident">3304241997********</div>
+                {{if memberValid==true}}
+                <div class="u-status u-vip">{{:memberEndDate}}</div>
+                {{/if}}
             </div>
             <div class="u-col-info">   注册：<span class="font-sred">{{:~formatTime(regtime)}}</span> </div>
             <div class="u-col-info">   推广：<span class="font-sred">20</span></div>
             <div class="u-col-info">   信誉: <span class="font-sred">90</span></div>
             <div class="u-col-info">   佣金余额:<span class="font-sred">200</span></div>
-            <div class="u-col-info">   本金余额:<span class="font-sred">1200</span></div>
+            <div class="u-col-info">   本金余额:<span class="font-sred">2200</span></div>
             <div class="u-col-info">   Tel:<span class="font-sred">135****3797</span></div>
         </div>
     </div>
