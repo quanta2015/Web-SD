@@ -106,13 +106,7 @@
     flex: 1;
 }
 
-.u-wrap a {
-    width: 80px;
-    border: 1px solid #eee;
-    margin: 0 0 5px 0; 
-    color: #666;
-    height: 24px;
-}
+
 
 .u-wrap a:hover {
     border: 1px solid #aaa;
@@ -136,6 +130,14 @@
     width: 165px;
     margin-right: 10px;
     align-items: flex-start;
+}
+
+.u-wrap a {
+    width: 80px;
+    border: 1px solid #eee;
+    margin: 0 0 5px 0; 
+    color: #666;
+    height: 24px;
 }
 
 .u-acount .u-col.u-col-taobao {
@@ -172,7 +174,13 @@
     margin-top: 5px;
 }*/
 
-.u-row.u-acount:last-child {
+.u-row .u-acount:last-child {
     border-bottom: none;
     padding-bottom: 0;
+}
+
+.u-col.u-finance {
+    width: 80px;
+    margin-right: 10px;
+    align-items: flex-start;
 }

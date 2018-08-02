@@ -5,9 +5,9 @@ const SELL = 1
 const ADMIN = 2
 // const HOST = 'http://103.251.90.136'
 // const HOST = 'http://122.152.199.90'
-<<<<<<< HEAD
+
 let dev = true;
->>>>>>> 45a590c272a28dc57fd99e28bd09bf6394d1f827
+
 // let dev = false;
 
 if (dev) {

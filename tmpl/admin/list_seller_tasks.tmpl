@@ -1,27 +1,12 @@
-<div class="m-detail-wrap">
-    <div class="m-close"></div>
-    <table class="table table-hover table-light">
-        <thead>
-            <tr class="uppercase">
-                <th> 已发总任务数: </th>
-                <th> 任务申请中的数量: </th>
-                <th> 已发布的任务: </th>
-                <th> 已结束的任务: </th>
-                <th> 已结束的任务: </th>
-                <th> 查看详情</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{for data}}
-            <tr>
-                <td> {{:payTaskNumSum}}</td>
-                <td> {{:payTaskNumApproving}} </td>
-                <td> {{:payTaskNumDoing}}</td>
-                <td> {{:payTaskNumFinished}}</td>
-                <td> {{:payTaskOrderNumSum}} </td>
-                <td> <a href="javascript:;" target="_blank">点击查看</a> </td>
-            </tr>
-            {{/for}}
-        </tbody>
-    </table>
+{{for data}}
+<div class="m-col m-label">
+    <div class="m-label sum">已发总任务数:：{{:payTaskNumSum}}</div>
+    <div class="m-label approve">任务申请中的数量：{{:payTaskNumApproving}}</div>
+    <div class="m-label publish">已发布的任务：{{:payTaskNumDoing}}</div>
+    <div class="m-label end">已结束的任务：{{:payTaskNumFinished}}</div>
+    <div class="m-label finish">已完成的任务：{{:payTaskOrderNumSum}}</div>
+    <div class="m-label detail">查看详情：<a href="javascript:;" target="_blank">点击查看</a></div>
+   
 </div>
+{{/for}}
+
