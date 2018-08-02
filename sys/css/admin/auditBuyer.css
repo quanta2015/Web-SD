@@ -88,7 +88,7 @@
 }
 
 
-.u-seller {
+.u-buyer {
     display: flex;
     flex-direction: row;
     flex: 1;
@@ -101,7 +101,7 @@
     flex-direction: row;
 }
 
-.u-shops {
+.u-acounts {
     flex-direction: row;
     flex: 1;
 }
@@ -119,33 +119,35 @@
 }
 
 
-.u-col.u-col-shopname>a {
+.u-col .u-col-taobao>a {
     width: auto;
     height: auto;
     padding: 5px 10px;
     display: inline-block;
 }
 
-.u-shop {
+.u-acount {
     display: flex;
     flex-direction: row;
 }
 
-.u-shop .u-col {
+.u-acount .u-col {
     /*flex: 1;*/
     width: 165px;
     margin-right: 10px;
     align-items: flex-start;
 }
 
-.u-shop .u-col.u-col-shopname {
+.u-acount .u-col.u-col-taobao {
     display: flex;
     flex: 1;
     flex-direction: column;
 }
 
 
-
+.font-sred {
+    color: rgb(228, 58, 69);
+}
 
 .u-col-info {
     margin: 10px;

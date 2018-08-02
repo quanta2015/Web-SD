@@ -144,13 +144,9 @@
     flex-direction: column;
 }
 
-
-
-
 .u-col-info {
     margin: 10px;
 }
-
 
 
 /*fix row*/
@@ -164,4 +160,41 @@
 .u-row.u-shop:last-child {
     border-bottom: none;
     padding-bottom: 0;
+}
+
+
+.g-detail {
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    background: rgba(0,0,0,.5);
+}
+
+
+.m-detail-wrap {
+    position: absolute;
+    background: #fff;
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    box-shadow:1px 1px 5px #ccc;
+    top: 50%  ;
+    right: 50%;
+    transform: translateY(-50%) translateX(50%)!important;
+}
+
+.m-close {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    z-index: 9999;
+    background-image: url(/img/close.png);
 }
