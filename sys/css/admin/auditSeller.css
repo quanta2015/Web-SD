@@ -198,3 +198,14 @@
     z-index: 9999;
     background-image: url(/img/close.png);
 }
+
+
+.m-sbar input {
+    height: 30px;
+    padding: 5px 10px;
+    outline: none;
+}
+
+.m-sbar div span {
+    margin-right: 5px;
+}
