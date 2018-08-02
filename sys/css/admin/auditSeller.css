@@ -144,13 +144,23 @@
     flex-direction: column;
 }
 
-
-
-
 .u-col-info {
     margin: 10px;
 }
 
+
+/*fix row*/
+.u-row.u-shop:first-child {
+    border-bottom: 1px dashed #ddd;
+}
+
+.u-row.u-shop:nth-child(2n) {
+    margin-top: 5px;
+}
+.u-row.u-shop:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
 
 
 .g-detail {
@@ -187,4 +197,15 @@
     cursor: pointer;
     z-index: 9999;
     background-image: url(/img/close.png);
+}
+
+
+.m-sbar input {
+    height: 30px;
+    padding: 5px 10px;
+    outline: none;
+}
+
+.m-sbar div span {
+    margin-right: 5px;
 }

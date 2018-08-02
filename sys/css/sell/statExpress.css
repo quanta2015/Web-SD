@@ -126,4 +126,9 @@
     top: 25px;
 }
 
+a {
+    position: relative;
+    cursor: pointer;
+}
+
 

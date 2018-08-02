@@ -8,7 +8,6 @@ function init() {
 
   initTime();
   initList();
-  // $('body').on('click', '#btn-leading-in', doLeadingIn);
   $('body').on('click', '#btn-search', doSearch);
   $('body').on('click', '#btn-leading-out', doLeadingOut);
 }
@@ -90,15 +89,4 @@ function doLeadingOut() {
     location.href = [HOST+joggle+encodeQuery(param)]
 }
 
-
-
-function doLeadingIn(filename) {
-    if((withdrawtype == 'buy')){
-      joggle = '/adminshoper/import_buyer_withdraw_list';
-    }else if(withdrawtype == 'sell'){
-      joggle = '/adminshoper/import_shoper_withdraw_list';
-    } 
-    promiseWithdraw(joggle,filename)
-    
-}
 
