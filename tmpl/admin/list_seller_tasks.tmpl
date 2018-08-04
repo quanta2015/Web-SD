@@ -1,12 +1,43 @@
 {{for data}}
-<div class="m-col m-label">
-    <div class="m-label sum">已发总任务数:：{{:payTaskNumSum}}</div>
-    <div class="m-label approve">任务申请中的数量：{{:payTaskNumApproving}}</div>
-    <div class="m-label publish">已发布的任务：{{:payTaskNumDoing}}</div>
-    <div class="m-label end">已结束的任务：{{:payTaskNumFinished}}</div>
-    <div class="m-label finish">已完成的任务：{{:payTaskOrderNumSum}}</div>
-    <div class="m-label detail">查看详情：<a href="javascript:;" target="_blank">点击查看</a></div>
-   
-</div>
+<table class="ui table">
+    <thead>
+        <tr><th class="six wide">店铺ID：{{:shop}}</th>
+        <th class="ten wide">数据</th>
+    </tr></thead>
+    <tbody>
+        <tr>
+            <td>已发总任务数</td>
+            <td>{{:payTaskNumSum}}</td>
+        </tr>
+        <tr>
+            <td>任务申请中的数量</td>
+            <td>{{:payTaskNumApproving}}</td>
+        </tr>
+        <tr>
+            <td>已发布的任务</td>
+            <td>{{:payTaskNumDoing}}</td>
+        </tr>
+        <tr>
+            <td>已结束的任务</td>
+            <td>{{:payTaskNumFinished}}</td>
+        </tr>
+        <tr>
+            <td>已完成的任务</td>
+            <td>{{:payTaskOrderNumSum}}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>详情</th>
+        <th><a href="javascript:;" target="_blank">点击查看</a></th>
+    </tr>
+    <tr>
+        <th>操作</th>
+        <th>
+            <a href="#basic" class="btn red btn-xs  audit-task" data-id="{{:id}}" data-type="task-unpass">不通过 </a>
+            <a href="#basic" class="btn blue-madison btn-xs  audit-task" data-id="{{:id }}" data-type="task-pass">通过 </a>
+        </th>
+    </tr>
+    </tfoot>
+</table>
 {{/for}}
-

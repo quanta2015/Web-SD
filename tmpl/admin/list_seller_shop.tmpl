@@ -29,11 +29,18 @@
             <td>店铺状态</td>
             <td>{{:~formatFrozen(frozen)}}</td>
         </tr>
+        <tr>
+            <td>审核意见</td>
+            <td>{{:bindStatusStr}}</td>
+        </tr>
     </tbody>
     <tfoot>
     <tr>
-        <th>审核意见</th>
-        <th>{{:bindStatusStr}}</th>
+        <th>操作</th>
+        <th> 
+            <a href="#basic" class="btn red btn-xs  audit-task" data-id="{{:id}}" data-type="shop-unpass">不通过 </a>
+            <a href="#basic" class="btn blue-madison btn-xs  audit-task" data-id="{{:id }}" data-type="shop-pass">通过 </a>
+        </th>
     </tr>
     </tfoot>
 </table>
