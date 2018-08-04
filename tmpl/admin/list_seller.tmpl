@@ -1,7 +1,7 @@
 {{for data}}
 <div class="u-wrap">
   <div class="u-row u-row-info">
-    <div class="u-id"><span>{{:id}}</span></div>
+    <div class="u-id"><span>{{:mobile}}</span></div>
     <div class="u-col u-seller">
       <div class="u-status-info">
         <div class="u-status">{{:~formatFrozen(frozen)}}</div>
@@ -14,8 +14,24 @@
       <div class="u-col-info">注册：<span class="font-sred">{{:~formatTime(regtime)}}</span></div>
       <div class="u-col-info">推广：<span class="font-sred">20</span></div>
       <div class="u-col-info">信誉：<span class="font-sred">59</span></div>
-      <div class="u-col-info">余额：<span class="font-sred">2000</span></div>
-      <div class="u-col-info">Tel：<span class="font-sred">{{:mobile}}</span></div>
+      <div class="u-col-info">账户余额：<span class="font-sred">2000</span></div>
+      <div class="u-col-info">推广余额：<span class="font-sred">2000</span></div>
+    </div>
+  </div>
+  <div class="u-row u-row-info">
+    
+    <div class="u-col u-seller">
+      <div class="u-status-info"> </div>
+      
+      <a href="javascript:;" class="btn btn-xs btn-detail-Initiateappeal" data-id="{{:id}}" > 发起申诉 </a>
+      <a href="javascript:;" class="btn btn-xs btn-detail-Receiveappeal" data-id="{{:id}}" > 收到申诉 </a>
+      <a href="javascript:;" class="btn btn-xs btn-detail-recharge" data-id="{{:id}} " > 充值 </a>
+      <a href="javascript:;" class="btn btn-xs btn-detail-putforward" data-id="{{:id}} " > 提现 </a>
+      <a href="javascript:;" class="btn btn-xs uppercase btn-detail-express" data-id="{{:id}} " > 快递 </a>
+      <a href="javascript:;" class="btn btn-xs btn-setvip" data-id="{{:id}} " > VIP </a>
+      <a href="javascript:;" class="btn btn-xs btn-remarks" data-id="{{:id}} " > 级别 </a>
+      <a href="javascript:;" class="btn btn-xs btn-punish" data-id="{{:id}} " >违规 </a>
+      <a href="javascript:;" class="btn btn-xs btn-activity" data-id="{{:id}} " >活动 </a>
     </div>
   </div>
   {{if ~getLength(shopList) != 0}}
@@ -27,22 +43,8 @@
           <a href="javascript:;" class="btn blue-steel btn-xs btn-detail-shopname" data-id="{{:id}}"> {{:name}} </a>
         </div>
         <div class="u-col u-task">
-          <a href="javascript:;" class="btn btn-xs btn-detail-pay" data-id="{{:id}}" > 垫付任务 </a>
-          <a href="javascript:;" class="btn btn-xs btn-detail-browse" data-id="{{:id}}" > 浏览任务 </a>
-          <a href="javascript:;" class="btn btn-xs btn-detail-Initiateappeal" data-id="{{:id}}" > 发起的申诉 </a>
-          <a href="javascript:;" class="btn btn-xs btn-detail-Receiveappeal" data-id="{{:id}}" > 收到的申诉 </a>
-        </div>
-        <div class="u-col u-finance">
-          
-          <a href="javascript:;" class="btn btn-xs btn-detail-recharge" data-id="{{:id}} " > 充值 </a>
-          <a href="javascript:;" class="btn btn-xs btn-detail-putforward" data-id="{{:id}} " > 提现 </a>
-          <a href="javascript:;" class="btn btn-xs uppercase btn-detail-express" data-id="{{:id}} " > 快递 </a>
-        </div>
-        <div class="u-col u-opt">
-          <a href="javascript:;" class="btn btn-xs btn-setvip" data-id="{{:id}} " > 设置VIP </a>
-          <a href="javascript:;" class="btn btn-xs btn-remarks" data-id="{{:id}} " > 级别备注 </a>
-          <a href="javascript:;" class="btn btn-xs btn-punish" data-id="{{:id}} " >违规处理 </a>
-          <a href="javascript:;" class="btn btn-xs btn-activity" data-id="{{:id}} " >平台活动 </a>
+          <a href="javascript:;" class="btn btn-xs btn-detail-pay red-mint" data-id="{{:id}}" > 垫付任务 </a>
+          <a href="javascript:;" class="btn btn-xs btn-detail-browse red-mint" data-id="{{:id}}" > 浏览任务 </a>
         </div>
       </div>
       {{/for}}
@@ -51,3 +53,5 @@
   {{/if}}
 </div>
 {{/for}}
+
+

@@ -34,6 +34,10 @@
 
 .u-row-info {
     background: #eee;
+    /*border-bottom: 1px solid #ddd;*/
+}
+
+.u-row-info:nth-child(2) {
     border-bottom: 1px solid #ddd;
 }
 
@@ -106,16 +110,23 @@
     flex: 1;
 }
 
-.u-wrap a {
-    width: 80px;
+.u-row-info a {
     border: 1px solid #eee;
-    margin: 0 0 5px 0; 
+    margin: 0 5px 0 0;
     color: #666;
-    height: 24px;
+    min-width: 50px;
+    background: #666;
+    color: #fff;
 }
 
-.u-wrap a:hover {
+.u-row-info a:hover {
     border: 1px solid #aaa;
+    color: #eee;
+}
+
+.u-task {
+    text-align: right;
+    margin-right: 0!important;
 }
 
 
@@ -145,7 +156,7 @@
 }
 
 .u-col-info {
-    margin: 10px;
+    margin: 5px 10px 0;
 }
 
 
