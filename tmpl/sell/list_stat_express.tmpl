@@ -1,24 +1,30 @@
 <table class="table table-hover table-light">
-    <thead>
-        <tr class="uppercase">
-            <th> # </th>
-            <th> 创建时间 </th>
-            <th> 任务ID </th>
-            <th> 订单ID </th>
-            <th> 快递编号 </th>
-            <th> 面单价格 </th>
-        </tr>
-    </thead>
-    <tbody>
-      {{for data}}
-        <tr>
-            <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
-            <td> {{:~formatTime(createtime)}} </td>
-             <th> {{:taskId}} </th>
-             <td> {{:buyerTaskCode}} </td>
-            <td> {{:mailNo}} </td>
-            <td> {{:expressPrice}} </td>
-        </tr>
-      {{/for}}
-    </tbody>
-  </table>
+  <thead>
+    <tr class="uppercase">
+      <th> # </th>
+      <th> 创建时间 </th>
+      <th> 任务ID </th>
+      <th> 订单ID </th>
+      <th> 快递编号 </th>
+      <th> 收货人 </th>
+      <th> 收货电话 </th>
+      <th> 收货地址 </th>
+      <th> 面单价格 </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{for data}}
+    <tr>
+      <td> {{:#index+1 + ~root.pageSize*~root.pageIndex}} </td>
+      <td> {{:~formatTime(createtime)}} </td>
+      <th> {{:taskId}} </th>
+      <td> {{:buyerTaskCode}} </td>
+      <td> {{:mailNo}} </td>
+      <td> {{:receiveName}} </td>
+      <td> {{:receivePhone}} </td>
+      <td> {{:receiveProv}}{{:receiveCity}}{{:receiveAddr}} </td>
+      <td> {{:expressPrice}} </td>
+    </tr>
+    {{/for}}
+  </tbody>
+</table>

@@ -100,7 +100,6 @@ function doDetailBrowse() {
   promiseTmpl('get', '/tmpl/admin/list_shoper_tasks.tmpl' ,['/adminshoper/shop_component_info', encodeQuery(param)].join('?'), null, cbDetailBrowse)
 }
 
-
 function cbDetailBrowse(r,ret) {
 
   $(".g-detail").empty();

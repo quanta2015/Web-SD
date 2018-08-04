@@ -6,7 +6,7 @@ const ADMIN = 2
 // const HOST = 'http://103.251.90.136'
 // const HOST = 'http://122.152.199.90'
  let dev = true;
-// let dev = false;
+// let dev = true;
 
 if (dev) {
   HOST = 'http://103.251.90.136'
@@ -435,21 +435,29 @@ function promiseTmpl(method, urlTmpl, urlData, data, cb) {
 
 
 
-function promiseUpload(url,file){
-      var formData = new FormData();
-      formData.append("file", file);
-      $.ajax({    
-        url: HOST + url,
-        type: 'POST',
-        data: formData,
-        async:false,
-        cache: false,
-        dataType: "json",
-        processData: false,
-        contentType: false
-      }).done(e=>{
-        console.log(e);
-      })
+function promiseUpload(url,file,cb){
+  $("body").append(LOADER);
+  var formData = new FormData();
+  formData.append("file", file);
+  $.ajax({    
+    url: HOST + url,
+    type: 'POST',
+    data: formData,
+    async:false,
+    cache: false,
+    dataType: "json",
+    processData: false,
+    contentType: false
+  }).success(e=>{
+    $("#i-mask").remove();
+    if (e.code == 0) {
+      cb(e.data);
+    } else if (e.code == 99) {
+      errorInfo(e.message);
+    } else if (e.code == -1) {
+      relogin();
+    }
+  })
 }
 
 
