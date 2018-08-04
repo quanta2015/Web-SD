@@ -1,0 +1,40 @@
+{{for data}}
+<table class="ui table">
+    <thead>
+        <tr><th class="six wide">店铺ID：{{:shop}}</th>
+        <th class="ten wide">数据</th>
+    </tr></thead>
+    <tbody>
+        <tr>
+            <td>电商平台</td>
+            <td>{{:type}}</td>
+        </tr>
+        <tr>
+            <td>店铺名称</td>
+            <td>{{:shopName}}</td>
+        </tr>
+        <tr>
+            <td>店铺地址</td>
+            <td><a href="{{:shopurl}}" target="_blank">点击查看</a></td>
+        </tr>
+        <tr>
+            <td>店铺类型</td>
+            <td>{{:businesstype}} - {{:subtype}}</td>
+        </tr>
+        <tr>
+            <td>发货地址</td>
+            <td>{{:address}}</td>
+        </tr>
+        <tr>
+            <td>店铺状态</td>
+            <td>{{:~formatFrozen(frozen)}}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>审核意见</th>
+        <th>{{:bindStatusStr}}</th>
+    </tr>
+    </tfoot>
+</table>
+{{/for}}

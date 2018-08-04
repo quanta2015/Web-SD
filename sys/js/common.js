@@ -5,8 +5,10 @@ const SELL = 1
 const ADMIN = 2
 // const HOST = 'http://103.251.90.136'
 // const HOST = 'http://122.152.199.90'
- let dev = true;
-// let dev = true;
+
+let dev = true;
+
+// let dev = false;
 
 if (dev) {
   HOST = 'http://103.251.90.136'
@@ -1097,4 +1099,60 @@ function DetailBox() {
       $('.g-dt').remove()
     }
   }
+}
+
+
+
+function xhrUD(url, file) {
+  var fd = new FormData();
+  fd.append("file", file);
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', url, true);
+  
+  xhr.upload.onprogress = function(e) {
+    if (e.lengthComputable) {
+      var percentComplete = (e.loaded / e.total) * 100;
+      console.log(percentComplete + '% uploaded');
+    }
+  };
+
+  xhr.onload = function () {
+    if (this.status === 200) {
+      var filename = "";
+      var disposition = xhr.getResponseHeader('Content-Disposition');
+      if (disposition && disposition.indexOf('attachment') !== -1) {
+          var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+          var matches = filenameRegex.exec(disposition);
+          if (matches != null && matches[1]) filename = matches[1].replace(/['"]/g, '');
+      }
+      var type = xhr.getResponseHeader('Content-Type');
+
+      var blob = typeof File === 'function'
+          ? new File([this.response], filename, { type: type })
+          : new Blob([this.response], { type: type });
+      if (typeof window.navigator.msSaveBlob !== 'undefined') {
+          window.navigator.msSaveBlob(blob, filename);
+      } else {
+        var URL = window.URL || window.webkitURL;
+        var downloadUrl = URL.createObjectURL(blob);
+
+        if (filename) {
+          var a = document.createElement("a");
+          if (typeof a.download === 'undefined') {
+            window.location = downloadUrl;
+          } else {
+            a.href = downloadUrl;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+          }
+        } else {
+          window.location = downloadUrl;
+        }
+        setTimeout(function () { URL.revokeObjectURL(downloadUrl); }, 100);
+      }
+    }
+  };
+  xhr.send(fd);
 }

@@ -18,13 +18,7 @@ function init() {
 function doBatchExpress(e) {
   var files = e.target.files === undefined ? (e.target && e.target.value ? [{ name: e.target.value.replace(/^.+\\/, '')}] : []) : e.target.files
   if (files.length === 0) return;
-  promiseUpload('/task/batch_sendexpress',files[0], cbBatchExpress)
-  // promiseUpload('/task/batch_sendexpress', $('#uploadFile')[0].files[0] )
-}
-
-
-function cbBatchExpress() {
-  notifyInfo('上传成功！')
+  xhrUD('/task/batch_sendexpress', files[0])
 }
 
 
