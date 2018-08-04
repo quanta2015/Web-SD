@@ -10,8 +10,8 @@ function init() {
   $('body').on('click', '.btn-detail-shopname', doDetailShop);
   $('body').on('click', '.btn-detail-pay', doDetailPay);
   $('body').on('click', '.btn-detail-browse', doDetailBrowse);
-  // $('body').on('click', '.btn-detail-oneappeal', doDetailOneappeal);
-  // $('body').on('click', '.btn-detail-zeroappeal', doDetailZeroappeal);
+  $('body').on('click', '.btn-detail-Initiateappeal', doDetailInitiateAppeal);
+  $('body').on('click', '.btn-detail-Receiveappeal', doDetailReceiveAppeal);
   
   $('body').on('click', '.m-close', doClose);
   $('body').on('click', '.btn-setvip', doSetVip);
@@ -75,6 +75,8 @@ function cbDetailShop(r,e) {
   DetailBox().show( RenderHtml(r,e,rdHelper) )
 }
 
+
+
 function doDetailPay() {
   pageData =  Object.assign({mainType:'pay'}, PAGE_DATA);
   $("#sr-status option[value='-1']").prop("selected", true);
@@ -85,11 +87,11 @@ function doDetailPay() {
   promiseTmpl('get', '/tmpl/admin/list_seller_tasks.tmpl' ,['/adminshoper/shop_component_info', encodeQuery(param)].join('?'), null, cbDetailPay)
 }
 
-
 function cbDetailPay(r,e) {
-
   DetailBox().show( RenderHtml(r,e,rdHelper) )
 }
+
+
 
 
 function doDetailBrowse() {
@@ -108,43 +110,34 @@ function cbDetailBrowse(r,e) {
 
 
 
-function doDetailOneappeal() {
+function doDetailInitiateAppeal() {
   pageData =  Object.assign({mainType:'browse'}, PAGE_DATA);
   $("#sr-status option[value='-1']").prop("selected", true);
   var param ={
-    shoperId: $(this).data("id"),
-    tasktype: $('#sr-tasktype').val(),
-    isRecieve: $('#sr-isRecieve').val(),
+    shopId: $(this).data("id"),
   }
   Object.assign(param, pageData);
-  promiseTmpl('get', '/tmpl/admin/list_seller_oneappeal.tmpl' ,['/adminshoper/get_shoper_complains_list', encodeQuery(param)].join('?'), null, cbDetailBrowse)
+  promiseTmpl('get', '/tmpl/admin/list_seller_appeal.tmpl' ,['/adminshoper/shop_component_info', encodeQuery(param)].join('?'), null, cbDetailBrowse)
 }
 
-
-
-function cbDetailOneappeal(r,e) {
-
+function cbDetailInitiateAppeal(r,e) {
   DetailBox().show( RenderHtml(r,e,rdHelper) )
 }
 
 
 
-function doDetailZeroappeal() {
+function doDetailReceiveAppeal() {
   pageData =  Object.assign({mainType:'browse'}, PAGE_DATA);
   $("#sr-status option[value='-1']").prop("selected", true);
   var param ={
-    shoperId: $(this).data("id"),
-    tasktype: $('#sr-tasktype').val(),
-    num: $('#sr-num').val(),
-    isRecieve: $('#sr-isRecieve').val(),
+    shopId: $(this).data("id"),
   }
   Object.assign(param, pageData);
-  promiseTmpl('get', '/tmpl/admin/list_seller_tasks.tmpl' ,['/adminshoper/shoper_tasks', encodeQuery(param)].join('?'), null, cbDetailBrowse)
+  promiseTmpl('get', '/tmpl/admin/list_seller_appeal.tmpl' ,['/adminshoper/shop_component_info', encodeQuery(param)].join('?'), null, cbDetailBrowse)
 }
 
 
-
-function cbDetailZeroappeal(r,e) {
+function cbDetailReceiveAppeal(r,e) {
   DetailBox().show( RenderHtml(r,e,rdHelper) )
 }
 
